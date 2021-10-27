@@ -3,7 +3,7 @@ start:
 	la_ $v0, 0x80077a08
 	la_ $v1, 0x801edf38
 .Lzero_loop:
-	sw $zero, ($v0)
+	sw $zr, ($v0)
 	addiu $v0, 0x04
 	sltu $at, $v0, $v1
 	bnez $at, .Lzero_loop
@@ -26,7 +26,7 @@ start:
 	swi $a0, 0x8006f988
 	swi $ra, 0x80077a20
 	la_ $gp, 0x80077a08
-	addu $fp, $sp, $zero
+	addu $fp, $sp, $zr
 	jal 0x06a734
 		addi $a0, 0x04
 	lwi $ra, 0x80077a20

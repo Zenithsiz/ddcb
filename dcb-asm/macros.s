@@ -17,3 +17,6 @@ lw \reg, %lo(\addr)(\reg)
 lui $at, %hi(\addr)
 sw \reg, %lo(\addr)($at)
 .endm
+
+# `$zr` -> `$zero`
+.set $zr, $zero
