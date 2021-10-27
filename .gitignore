@@ -1,0 +1,11 @@
+# Rust
+/target
+
+# Build
+/build
+
+# Auto generated linker functions
+/fns.ld
+
+# Python
+__pycache__
