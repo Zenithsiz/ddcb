@@ -1,0 +1,10 @@
+[package]
+edition = "2021"
+name = "core-impl"
+version = "0.1.0"
+
+[lib]
+crate-type = ["rlib"]
+name = "core_impl"
+
+[dependencies]
