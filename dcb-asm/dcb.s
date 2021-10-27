@@ -1,1 +1,9 @@
-.include "dcb-asm/test.s"
+# Globally disable the assembler's ability to use `$at` and reorders
+.set noat
+.set noreorder
+
+# Headers
+.include "dcb-asm/macros.s"
+
+# Code
+.include "dcb-asm/start.s"

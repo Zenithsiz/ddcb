@@ -8,3 +8,5 @@ crate-type = ["staticlib"]
 name = "dcb"
 
 [dependencies]
+
+core-impl = {path = "../core-impl"}

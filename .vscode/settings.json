@@ -1,15 +1,15 @@
 {
-    "rust-analyzer.checkOnSave.allTargets": false,
-    "rust-analyzer.checkOnSave.extraArgs": [
-        "--target",
-        "mipsel-sony-psx.json",
-    ],
-    "cSpell.words": [
-        "SLUS",
-        "addrs",
-        "mipsel",
-        "psexe",
-        "psxexe"
-    ],
-    "editor.insertSpaces": false,
+	"rust-analyzer.checkOnSave.allTargets": false,
+	"rust-analyzer.checkOnSave.extraArgs": [
+		"--target",
+		"mipsel-sony-psx.json",
+	],
+	"cSpell.words": [
+		"SLUS",
+		"addrs",
+		"mipsel",
+		"psexe",
+		"psxexe"
+	],
+	"editor.insertSpaces": false,
 }
