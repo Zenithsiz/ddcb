@@ -65,3 +65,15 @@ macro_rules! concat {
 pub macro asm("assembly template", $(operands,)* $(options($(option),*))?) {
 	/* compiler built-in */
 }
+
+#[rustc_builtin_macro]
+#[macro_export]
+macro_rules! include {
+	($file:expr $(,)?) => {{ /* compiler built-in */ }};
+}
+
+#[rustc_builtin_macro]
+#[macro_export]
+macro_rules! include_str {
+	($file:expr $(,)?) => {{ /* compiler built-in */ }};
+}

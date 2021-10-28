@@ -7,11 +7,9 @@ MEMORY {
 /* Include all function definitions */
 INCLUDE fns.ld
 
-/* Put anything remaining from `.text` after the ram to give an error */
-/* TODO: Improve this, the error doesn't quote say what is put here */
+/* Put anything else from `.text` into a `.error` section */
 SECTIONS {
-	.text : {
-		. = 0x1f0000;
+	.error : {
 		*(.text*)
 	}
 }

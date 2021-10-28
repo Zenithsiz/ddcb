@@ -5,19 +5,27 @@
 		"mipsel-sony-psx.json",
 	],
 	"cSpell.words": [
+		"Digimon",
+		"Digimon's",
 		"SLUS",
 		"addiu",
 		"addrs",
 		"andi",
+		"evoseg",
+		"kawseg",
 		"mflo",
 		"mipsel",
 		"noat",
 		"noreorder",
 		"noreturn",
+		"openseg",
 		"prng",
 		"psexe",
 		"psxexe",
-		"rlib"
+		"rlib",
+		"saiseg",
+		"subseg",
+		"sugseg"
 	],
 	"editor.insertSpaces": false,
 }

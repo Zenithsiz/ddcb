@@ -33,8 +33,8 @@ start:
 	nop
 	jal 0x013e4c
 	nop
-	la_ $a0, STATIC_0x80010000
-	la_ $a1, STATIC_0x80010000
+	la_ $a0, s0x80010000
+	la_ $a1, s0x80010000
 	jal 0x56388
 	nop
 	break 0x01
