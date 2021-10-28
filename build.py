@@ -8,6 +8,7 @@ import shutil
 import glob
 import pathlib
 import generate_linker_fns
+import preprocess_asm_file
 
 # Create the build folders if they don't exist
 for path in ["build", "build/llvm", "build/asm"]:
@@ -69,12 +70,24 @@ with scoping():
 		]
 		subprocess.run(args, check=True)
 
+# Preprocss all assembly files onto `build/asm/dcb-asm`
+with scoping():
+	print(" !Preprocessing asm")
+	for path, _, files in os.walk("dcb-asm"):
+		for file in files:
+			if not file.endswith(".s"):
+				continue
+
+			file_path = os.path.join(path, file)
+			output_path = str("build/asm" / pathlib.Path(file_path))
+			preprocess_asm_file.main(file_path, output_path)
+
 # Now compile all `asm` into object files
 with scoping():
 	print(" !Compiling asm")
 	args = [
 	    "mips-linux-gnu-as", "-o", "build/dcb.o", "-EL", "-mips1", "-march=r3000", "-O2", "build/asm/dcb-llvm.s",
-	    "dcb-asm/dcb.s"
+	    "build/asm/dcb-asm/dcb.s"
 	]
 	subprocess.run(args, check=True)
 

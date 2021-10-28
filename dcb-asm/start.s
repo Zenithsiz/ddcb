@@ -2,11 +2,11 @@
 start:
 	la_ $v0, 0x80077a08
 	la_ $v1, 0x801edf38
-.Lzero_loop:
+.zero_loop:
 	sw $zr, ($v0)
 	addiu $v0, 0x04
 	sltu $at, $v0, $v1
-	bnez $at, .Lzero_loop
+	bnez $at, .zero_loop
 		nop
 	lwi $v0, 0x8006dd44
 	nop

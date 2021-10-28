@@ -83,3 +83,4 @@
 start: 0x80056270
 main_loop: 0x80013e4c
 prng_next: 0x80069124
+f0: 0x80013f04

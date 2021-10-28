@@ -41,10 +41,10 @@ main_loop:
 	la_ $a2, 0x800155f4
 	jal 0x800149a8
 		move $a3, $zr
-.L0:
+.0:
 	jal prng_next
 		nop
-	j .L0
+	j .0
 		nop
-.L1:
+.1:
 	

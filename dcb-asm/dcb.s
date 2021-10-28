@@ -8,3 +8,4 @@
 # Code
 .include "dcb-asm/start.s"
 .include "dcb-asm/main_loop.s"
+.include "dcb-asm/todo.s"
