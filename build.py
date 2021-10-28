@@ -89,7 +89,21 @@ with scoping():
 	    "mips-linux-gnu-as", "-o", "build/dcb.o", "-EL", "-mips1", "-march=r3000", "-O2", "build/asm/dcb-llvm.s",
 	    "build/asm/dcb-asm/dcb.s"
 	]
-	subprocess.run(args, check=True)
+
+	reader, writer = os.pipe()
+
+	process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	retcode = process.wait()
+
+	if retcode != 0:
+		print(" !!Unable to compile asm:")
+
+	output = process.communicate()[1].decode()
+	output = output.replace("build/asm/dcb-asm", "dcb-asm")
+	print(output)
+
+	if retcode != 0:
+		exit(1)
 
 # Then generate all the linker functions
 print(" !Generating linker functions")
