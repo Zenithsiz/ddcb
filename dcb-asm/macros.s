@@ -6,6 +6,11 @@ lui \reg, %hi(\addr)
 addiu \reg, \reg, %lo(\addr)
 .endm
 
+# `move` but using `addu`
+.macro move_ lhs, rhs
+addu \lhs, \rhs, $zr
+.endm
+
 # `lui` + `lw`
 .macro lwi reg, addr
 lui \reg, %hi(\addr)

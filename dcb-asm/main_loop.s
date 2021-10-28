@@ -7,15 +7,15 @@ main_loop:
 	jal 0x800565f4
 		nop
 	jal 0x800563e4
-		move $a0, $zr
+		move_ $a0, $zr
 	jal 0x800648e8
-		move $a0, $zr
+		move_ $a0, $zr
 	sw $zr, 0x10($sp)
 	li $a0, 0x140
 	li $a1, 0xf0
-	move $a2, $zr
+	move_ $a2, $zr
 	jal 0x800618e4
-		move $a3, $zr
+		move_ $a3, $zr
 	sh $zr, 0x20($sp)
 	sh $zr, 0x22($sp)
 	li $v0, 0x280
@@ -23,12 +23,12 @@ main_loop:
 	li $v0, 0x1ff
 	sh $v0, 0x26($sp)
 	addiu $a0, $sp, 0x20
-	move $a1, $zr
-	move $a2, $zr
+	move_ $a1, $zr
+	move_ $a2, $zr
 	jal 0x80064b04
-		move $a3, $zr
+		move_ $a3, $zr
 	jal 0x80064980
-		move $a0, $zr
+		move_ $a0, $zr
 	jal 0x8004c570
 		nop
 	jal 0x8001aa80
@@ -40,7 +40,7 @@ main_loop:
 	li $a1, 0x400
 	la_ $a2, 0x800155f4
 	jal 0x800149a8
-		move $a3, $zr
+		move_ $a3, $zr
 .0:
 	jal prng_next
 		nop

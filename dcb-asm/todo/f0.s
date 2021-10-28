@@ -4,7 +4,7 @@ f0:
 	sw $ra, 0x14($sp)
 	sw $s0, 0x10($sp)
 	jal 0x8006a804
-		move $s0, $a0
+		move_ $s0, $a0
 	beqz $s0, .2
 		lui $v1, 0x8007
 	lw $v0, 0x7a08($v1)
