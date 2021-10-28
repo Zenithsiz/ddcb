@@ -35,9 +35,10 @@ with scoping():
 with scoping():
 	# Run the C preprocessor on the llvm input
 	# TODO: Check if this is actually a good idea, doesn't feel like it
+	# TODO: Maybe don't ignore ALL warnings
 	print(" !Preprocessing llvm")
 	with scoping():
-		args = ["cpp", "-E", "-P", "dcb-llvm/dcb.ll", "-o", "build/llvm/dcb-llvm.ll"]
+		args = ["cpp", "-E", "-P", "-w", "dcb-llvm/dcb.ll", "-o", "build/llvm/dcb-llvm.ll"]
 		subprocess.run(args, check=True)
 
 	# Then link both together
@@ -58,6 +59,10 @@ with scoping():
 		args = [
 		    "/opt/llvm-mips1/bin/llc",
 		    "build/llvm/dcb.ll",
+		    "-O0",
+		    "-march=mips",
+		    "-mcpu=mips1",
+		    "-mattr=+mips1,+soft-float",
 		    "-o=build/asm/dcb-llvm.s",
 		]
 		subprocess.run(args, check=True)
