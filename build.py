@@ -13,23 +13,25 @@ import generate_linker_fns
 for path in ["build", "build/llvm", "build/asm"]:
 	os.makedirs(path, exist_ok=True)
 
-# Compile `dcb-rs` onto `llvm-ir`, then copy it's result
-# to `build/llvm`.
+# Compile `core-impl` onto a `rlib`
 with scoping():
 	args = [
-	    "cargo",
-	    "rustc",
-	    "-p=dcb-rs",
-	    "--release",
-	    "--target=mipsel-sony-psx.json",
-	    "--",
-	    "--emit=llvm-ir",
+	    "rustc", "--crate-name", "core_impl", "--edition=2021", "core-impl/src/lib.rs", "--crate-type", "rlib",
+	    "--emit=link", "-C", "opt-level=3", "-C", "embed-bitcode=no", "--target=mipsel-sony-psx.json", "--out-dir",
+	    "build/"
 	]
-	print(" !Compiling rust")
+	print(" !Compiling `core-impl`")
 	subprocess.run(args, check=True)
 
-	output_file = glob.glob("target/mipsel-sony-psx/release/deps/dcb-*.ll")[0]
-	shutil.copyfile(output_file, "build/llvm/dcb-rs.ll")
+# Compile `dcb-rs` onto `llvm-ir`
+with scoping():
+	args = [
+	    "rustc", "--crate-name", "dcb", "--edition=2021", "dcb-rs/src/lib.rs", "--emit=llvm-ir", "-C", "opt-level=3",
+	    "-C", "embed-bitcode=no", "-C", "extra-filename=-rs", "--target=mipsel-sony-psx.json", "--out-dir", "build/llvm/",
+	    "--extern", "core_impl=build/libcore_impl.rlib"
+	]
+	print(" !Compiling `dcb-rs`")
+	subprocess.run(args, check=True)
 
 # Compile all `llvm-ir` onto `asm`
 with scoping():

@@ -6,10 +6,18 @@
 	],
 	"cSpell.words": [
 		"SLUS",
+		"addiu",
 		"addrs",
+		"andi",
+		"mflo",
 		"mipsel",
+		"noat",
+		"noreorder",
+		"noreturn",
+		"prng",
 		"psexe",
-		"psxexe"
+		"psxexe",
+		"rlib"
 	],
 	"editor.insertSpaces": false,
 }
