@@ -95,12 +95,9 @@ with scoping():
 	process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	retcode = process.wait()
 
-	if retcode != 0:
-		print(" !!Unable to compile asm:")
-
 	output = process.communicate()[1].decode()
 	output = output.replace("build/asm/dcb-asm", "dcb-asm")
-	print(output)
+	print(output, end="")
 
 	if retcode != 0:
 		exit(1)

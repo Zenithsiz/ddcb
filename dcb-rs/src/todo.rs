@@ -18,23 +18,39 @@ macro decl_static($( $NAME:ident @ $addr:literal: $T:ty = $value:expr; )*) {
 
 // Helper macro to declare all functions
 #[allow(unused_macros)] // We might use it eventually
-macro decl_fn($(
-	fn $name:ident( $($arg_name:ident: $arg_ty:ty),* $(,)? ) $(-> $ret_ty:ty)? {
-		$($body:tt)*
-	}
-)*) {
-	$(
-		#[no_mangle]
-		#[link_section = concat!(".text.", stringify!($name))]
-		pub unsafe extern "C" fn $name( $($arg_name: $arg_ty),* ) $(-> $ret_ty)? {
-			asm!(
-				".set noat",
-				".set noreorder",
-				$($body)*
-				options(noreturn)
-			);
+macro decl_fn {
+	($(
+		naked fn $name:ident( $($arg_name:ident: $arg_ty:ty),* $(,)? ) $(-> $ret_ty:ty)? {
+			$($body:tt)*
 		}
-	)*
+	)*) => {
+		$(
+			#[no_mangle]
+			#[naked]
+			#[link_section = concat!(".text.", stringify!($name))]
+			pub unsafe extern "C" fn $name( $($arg_name: $arg_ty),* ) $(-> $ret_ty)? {
+				asm!(
+					".set noat",
+					".set noreorder",
+					$($body)*
+					options(noreturn)
+				);
+			}
+		)*
+	},
+	($(
+		fn $name:ident( $($arg_name:ident: $arg_ty:ty),* $(,)? ) $(-> $ret_ty:ty)? {
+			$($body:tt)*
+		}
+	)*) => {
+		$(
+			#[no_mangle]
+			#[link_section = concat!(".text.", stringify!($name))]
+			pub unsafe extern "C" fn $name( $($arg_name: $arg_ty),* ) $(-> $ret_ty)? {
+				$($body)*
+			}
+		)*
+	}
 }
 
 decl_static! {

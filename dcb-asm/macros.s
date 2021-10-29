@@ -17,6 +17,12 @@ lui \reg, %hi(\addr)
 lw \reg, %lo(\addr)(\reg)
 .endm
 
+# `lui` + `lhu`
+.macro lhui reg, addr
+lui \reg, %hi(\addr)
+lhu \reg, %lo(\addr)(\reg)
+.endm
+
 # `lui` + `sw` with `$at`
 .macro swi reg, addr
 lui $at, %hi(\addr)

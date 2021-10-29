@@ -15,6 +15,18 @@ pub trait AddAssign<Rhs = Self> {
 	fn add_assign(self, other: Rhs);
 }
 
+#[lang = "sub"]
+pub trait Sub<Rhs = Self> {
+	type Output;
+
+	fn sub(self, other: Rhs) -> Self::Output;
+}
+
+#[lang = "sub_assign"]
+pub trait SubAssign<Rhs = Self> {
+	fn sub_assign(self, other: Rhs);
+}
+
 #[lang = "shr"]
 pub trait Shr<Rhs = Self> {
 	type Output;
@@ -125,6 +137,9 @@ macro impl_bi($Trait:ty, $trait_name:ident, $($T:ty),* $(,)?) {
 impl_bi_output!(Add, add, u8, u16, u32, usize);
 impl_bi_output!(Add, add, i8, i16, i32, isize);
 
+impl_bi_output!(Sub, sub, u8, u16, u32, usize);
+impl_bi_output!(Sub, sub, i8, i16, i32, isize);
+
 impl_bi_output!(Shr, shr, u8, u16, u32, usize);
 impl_bi_output!(Shr, shr, i8, i16, i32, isize);
 
@@ -139,6 +154,9 @@ impl_bi_output!(Mul, mul, i8, i16, i32, isize);
 
 impl_bi!(AddAssign, add_assign, u8, u16, u32, usize);
 impl_bi!(AddAssign, add_assign, i8, i16, i32, isize);
+
+impl_bi!(SubAssign, sub_assign, u8, u16, u32, usize);
+impl_bi!(SubAssign, sub_assign, i8, i16, i32, isize);
 
 impl_bi!(ShrAssign, shr_assign, u8, u16, u32, usize);
 impl_bi!(ShrAssign, shr_assign, i8, i16, i32, isize);

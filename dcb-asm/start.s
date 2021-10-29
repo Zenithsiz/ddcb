@@ -1,7 +1,7 @@
 	.section .text.start
 start:
 	la_ $v0, 0x80077a08
-	la_ $v1, 0x801edf38
+	la_ $v1, 0x801ddf38
 .zero_loop:
 	sw $zr, ($v0)
 	addiu $v0, 0x04
