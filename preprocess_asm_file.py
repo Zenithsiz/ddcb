@@ -6,9 +6,10 @@ import re
 import pathlib
 
 # Line processing regex
-line_non_dot_label_def_regex = re.compile("^([^#.][^#]*):")
-line_dot_label_def_regex = re.compile("^\.([^#]*):")
-line_dot_label_use_regex = re.compile("^\s*[^\s\.].*\.(.*)$")
+# TODO: Maybe support dots in labels?
+line_non_dot_label_def_regex = re.compile("^([^#.]*):")
+line_dot_label_def_regex = re.compile("^\s*\.([^#]*):")
+line_dot_label_use_regex = re.compile(".+\.([^:\"\s.]*)$")
 
 
 # Preprocesses an assembly file
