@@ -7,8 +7,8 @@ import pathlib
 
 # Line processing regex
 # TODO: Maybe support dots in labels?
-line_non_dot_label_def_regex = re.compile("^([^#.]*):")
-line_dot_label_def_regex = re.compile("^\s*\.([^#]*):")
+line_non_dot_label_def_regex = re.compile("^\s*([^#.\s]*):")
+line_dot_label_def_regex = re.compile("^\s*\.([^#.\s]*):")
 line_dot_label_use_regex = re.compile(".+\.([^:\"\s.]*)$")
 
 
@@ -27,18 +27,18 @@ def main(input_path, output_path):
 			line = line.replace(".include \"", ".include \"build/asm/")
 
 			# If this is a non-dot label definition, set it as the lastest
-			non_dot_def_matches = line_non_dot_label_def_regex.match(line)
+			non_dot_def_matches = line_non_dot_label_def_regex.search(line)
 			if non_dot_def_matches is not None:
 				latest_non_dot_label_def = non_dot_def_matches.group(1)
 
 			# If this is a dot label definition, add the latest non-dot definition
-			dot_def_matches = line_dot_label_def_regex.match(line)
+			dot_def_matches = line_dot_label_def_regex.search(line)
 			if dot_def_matches is not None:
 				label = dot_def_matches.group(1)
 				line = line.replace(f".{label}", f".L{latest_non_dot_label_def}_{label}")
 
 			# If this is a dot label usage, add the latest non-dot definition
-			dot_use_matches = line_dot_label_use_regex.match(line)
+			dot_use_matches = line_dot_label_use_regex.search(line)
 			if dot_use_matches is not None:
 				label = dot_use_matches.group(1)
 				line = line.replace(f".{label}", f".L{latest_non_dot_label_def}_{label}")

@@ -2,6 +2,7 @@
 
 # Imports
 import os
+import io
 import subprocess
 from scoping import scoping
 import shutil
@@ -90,16 +91,14 @@ with scoping():
 	    "build/asm/dcb-asm/dcb.s"
 	]
 
-	reader, writer = os.pipe()
+	process = subprocess.Popen(args, stderr=subprocess.PIPE)
 
-	process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	retcode = process.wait()
+	for line in io.TextIOWrapper(process.stderr, encoding="utf-8"):
+		line = line.replace("build/asm/dcb-asm", "dcb-asm")
+		print(line, end="")
 
-	output = process.communicate()[1].decode()
-	output = output.replace("build/asm/dcb-asm", "dcb-asm")
-	print(output, end="")
-
-	if retcode != 0:
+	process.wait()
+	if process.returncode != 0:
 		exit(1)
 
 # Then generate all the linker functions
