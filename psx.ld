@@ -4,8 +4,8 @@ MEMORY {
 		LENGTH = 0x001f0000
 }
 
-/* Include all function definitions */
-INCLUDE fns.ld
+/* Include all symbol definitions */
+INCLUDE symbols.ld
 
 /* Put anything else from `.text` into a `.error` section */
 SECTIONS {

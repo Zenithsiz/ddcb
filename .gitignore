@@ -4,8 +4,8 @@
 # Build
 /build
 
-# Auto generated linker functions
-/fns.ld
+# Auto generated linker symbols
+/symbols.ld
 
 # Python
 __pycache__

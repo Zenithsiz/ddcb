@@ -10,8 +10,8 @@ use core_impl::{concat, stringify};
 // Helper macro to declare all statics
 macro decl_static($( $NAME:ident @ $addr:literal: $T:ty = $value:expr; )*) {
 	$(
-		#[export_name = concat!("s", stringify!($addr))]
-		#[link_section = concat!(".text.", stringify!($addr))]
+		#[no_mangle]
+		#[link_section = concat!(".text.", stringify!($NAME))]
 		pub static $NAME: $T = $value;
 	)*
 }
@@ -55,7 +55,7 @@ macro decl_fn {
 
 decl_static! {
 	// File extension and version for iso9660 filesystem drv files
-	S_0x80010000 @ 0x80010000: [u8; 6] = *b".DRV;1";
+	cd_drv_extension_version @ 0x80010000: [u8; 6] = *b".DRV;1";
 
 	// ?
 	S_0x80010008 @ 0x80010008: [u32; 7] = [
@@ -65,14 +65,17 @@ decl_static! {
 	// Generic strings
 	S_0x80010024 @ 0x80010024: [u8; 1] = *b"\n";
 	S_0x80010028 @ 0x80010028: [u8; 3] = *b"Yes";
-	S_0x8001002c @ 0x8001002c: [u8; 2] = *b"No";
+	no_str @ 0x8001002c: [u8; 2] = *b"No";
 
-	// Function pointers, first one being null terminated?
-	S_0x80010030 @ 0x80010030: [u32; 30] = [
-		0x8001a870, 0x8001a874, 0x8001a870, 0x8001a874, 0x8001a874, 0x8001a870, 0x8001a874, 0x8001e53c, 0x8001e580,
-		0x8001e5c4, 0x8001e660, 0x8001e688, 0x8002100c, 0x80020fe4, 0x80021058, 0x80021024, 0x800213ec, 0x800216d8,
-		0x800216fc, 0x80021770, 0x800217e8, 0x80021860, 0x80021094, 0x800210ec, 0x8002115c, 0x800211cc, 0x80021244,
-		0x800212bc, 0x8002134c, 0x00000000,
+
+	unknown_fn_ptrs0 @ 0x80010030: [u32; 7] = [
+		0x8001a870, 0x8001a874, 0x8001a870,
+		0x8001a874, 0x8001a874, 0x8001a870, 0x8001a874
+	];
+	unknown_fn_ptrs1 @ 0x8001004c: [u32; 23] = [
+		0x8001e53c, 0x8001e580, 0x8001e5c4, 0x8001e660, 0x8001e688, 0x8002100c, 0x80020fe4, 0x80021058, 0x80021024,
+		0x800213ec, 0x800216d8, 0x800216fc, 0x80021770, 0x800217e8, 0x80021860, 0x80021094, 0x800210ec, 0x8002115c,
+		0x800211cc, 0x80021244, 0x800212bc, 0x8002134c, 0x00000000,
 	];
 	S_0x800100a8 @ 0x800100a8: [u32; 6] = [0x80021428, 0x800214a0, 0x80021510, 0x80021590, 0x80021608, 0x80021668];
 

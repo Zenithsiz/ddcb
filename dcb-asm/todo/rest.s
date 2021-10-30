@@ -4103,7 +4103,7 @@ func_51:
 		lui $v0, 0x8001
 	addiu $v0, 0x28
 	sw $v0, 0x98($s0)
-	la_ $v0, 0x8001002c
+	la_ $v0, no_str
 	sw $v0, 0x9c($s0)
 	.2:
 	lw $a0, 0x98($s0)
@@ -4679,7 +4679,7 @@ func_57:
 	sltiu $v0, $v1, 0x7
 	beqz $v0, .2
 		move_ $a0, $zr
-	la_ $v0, 0x80010030
+	la_ $v0, unknown_fn_ptrs0
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -8813,7 +8813,7 @@ func_87:
 	sltiu $v0, $v1, 0x5
 	beqz $v0, .0x8001e690
 		sra $a3, $a1, 0x10
-	la_ $v0, 0x8001004c
+	la_ $v0, unknown_fn_ptrs1
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -67445,8 +67445,8 @@ start:
 	nop
 	jal 0x80013e4c
 		nop
-	la_ $a0, 0x80010000
-	la_ $a1, 0x80010000
+	la_ $a0, cd_drv_extension_version
+	la_ $a1, cd_drv_extension_version
 	jal 0x80056388
 		nop
 	break 0x0, 0x1
@@ -67458,8 +67458,8 @@ func_461:
 	bnez $t0, .0
 		li $t0, 0x1
 	swi $t0, 0x8006f984
-	la_ $a0, 0x80010000
-	la_ $a1, 0x80010000
+	la_ $a0, cd_drv_extension_version
+	la_ $a1, cd_drv_extension_version
 	jal 0x80056388
 		nop
 	.0:
