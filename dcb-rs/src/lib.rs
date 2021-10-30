@@ -15,11 +15,12 @@ extern crate core_impl;
 mod todo;
 
 // Imports
-use core_impl::asm;
+//use core_impl::asm;
 
 /// Prng value pointer
 pub const PRNG_VALUE_PTR: u32 = 0x801ddc10;
 
+/*
 #[no_mangle]
 #[link_section = ".text.prng_next"]
 pub unsafe extern "C" fn prng_next() {
@@ -44,6 +45,7 @@ pub unsafe extern "C" fn prng_next() {
 		options(noreturn)
 	);
 }
+*/
 
 extern "C" {
 	pub fn start();

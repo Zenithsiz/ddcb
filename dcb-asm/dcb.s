@@ -2,6 +2,9 @@
 .set noat
 .set noreorder
 
+# Export `start`
+.global start
+
 # Headers
 .include "dcb-asm/macros.s"
 

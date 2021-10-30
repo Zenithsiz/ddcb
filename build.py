@@ -132,9 +132,3 @@ with scoping():
 	]
 	print(" !Converting elf to psexe")
 	subprocess.run(args, check=True)
-
-# Then truncate it to size
-with scoping():
-	args = ["truncate", "build/dcb.psexe", "--size", "418KiB"]
-	print(" !Truncating psexe")
-	subprocess.run(args, check=True)

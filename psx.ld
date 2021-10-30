@@ -18,3 +18,6 @@ SECTIONS {
 SECTIONS {
 	/DISCARD/ : { *(*) }
 }
+
+/* Set entry to `start` */
+ENTRY(start);
