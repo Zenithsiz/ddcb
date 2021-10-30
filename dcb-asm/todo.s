@@ -12,3 +12,4 @@
 .include "dcb-asm/todo/f9.s"
 .include "dcb-asm/todo/f10.s"
 .include "dcb-asm/todo/f11.s"
+.include "dcb-asm/todo/rest.s"

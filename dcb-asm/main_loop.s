@@ -1,4 +1,4 @@
-	.section .text.main_loop
+	.section ".text.main_loop"
 main_loop:
 	addiu $sp, -0x30
 	sw $ra, 0x28($sp)
@@ -42,7 +42,7 @@ main_loop:
 	jal 0x800149a8
 		move_ $a3, $zr
 .0:
-	jal prng_next
+	jal 0x80069124
 		nop
 	j .0
 		nop
