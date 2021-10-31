@@ -5,6 +5,7 @@
 #![allow(non_upper_case_globals)]
 
 // Imports
+use crate::asm_exact;
 use core_impl::{concat, stringify};
 
 // Helper macro to declare all statics
@@ -14218,4 +14219,49 @@ decl_static! {
 		0x00000000,
 		0x00000000,
 	];
+}
+
+decl_fn! {
+	fn f41() -> u32 {
+		const SRC: u32 = 0x800793a0;
+		const DST: u32 = 0x800897e8;
+
+		// Setup the destination pointer
+		let dst_ptr: u32;
+		asm_exact!(
+			"lui $v1, %hi({ptr})",
+			ptr = const DST,
+			out("$3") dst_ptr
+		);
+
+		// Read the src pointer
+		let src_ptr: u32;
+		asm_exact!(
+			"lui $v0, %hi({ptr})",
+			"lw $v0, %lo({ptr})($v0)",
+			ptr = const SRC,
+			out("$2") src_ptr,
+		);
+
+		// Then read the value
+		let value: u32;
+		asm_exact!(
+			".set noat",
+			"lw $v0, {offset}({src})",
+			src = in(reg) src_ptr,
+			offset = const 0x40bc,
+			lateout("$2") value,
+
+		);
+
+		// Store it and return
+		asm_exact!(
+			"jr $ra",
+			"sw {value}, %lo({ptr})({dst_ptr})",
+			ptr = const DST,
+			value = in(reg) value,
+			dst_ptr = in(reg) dst_ptr,
+			options(noreturn)
+		);
+	}
 }

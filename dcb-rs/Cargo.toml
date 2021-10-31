@@ -10,3 +10,4 @@ name = "dcb"
 [dependencies]
 
 core-impl = {path = "../core-impl"}
+dcb-macros = {path = "../dcb-macros"}

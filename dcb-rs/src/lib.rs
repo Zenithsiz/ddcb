@@ -10,15 +10,22 @@
 
 // Extern crates
 extern crate core_impl;
+extern crate dcb_macros;
 
 // Modules
 mod todo;
 
-// Imports
-//use core_impl::asm;
-
 /// Prng value pointer
 pub const PRNG_VALUE_PTR: u32 = 0x801ddc10;
+
+/// Assembly macro that appends `.set noat` and `.set noreorder`
+pub macro asm_exact($($args:tt)*) {
+	::core_impl::asm!(
+		".set noat",
+		".set noreorder",
+		$($args)*
+	);
+}
 
 /*
 #[no_mangle]

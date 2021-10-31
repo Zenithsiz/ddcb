@@ -7,8 +7,13 @@ name = "core-impl"
 version = "0.1.0"
 
 [[package]]
+name = "dcb-macros"
+version = "0.1.0"
+
+[[package]]
 name = "dcb-rs"
 version = "0.1.0"
 dependencies = [
  "core-impl",
+ "dcb-macros",
 ]

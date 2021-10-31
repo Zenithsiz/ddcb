@@ -25,12 +25,21 @@ with scoping():
 	print(" !Compiling `core-impl`")
 	subprocess.run(args, check=True)
 
+# Compile `dcb-macros` onto a `rlib`
+with scoping():
+	args = [
+	    "rustc", "--crate-name", "dcb_macros", "--edition=2021", "dcb-macros/src/lib.rs", "--crate-type", "proc-macro",
+	    "--emit=link", "-C", "opt-level=3", "-C", "embed-bitcode=no", "--out-dir", "build/"
+	]
+	print(" !Compiling `dcb-macros`")
+	subprocess.run(args, check=True)
+
 # Compile `dcb-rs` onto `llvm-ir`
 with scoping():
 	args = [
 	    "rustc", "--crate-name", "dcb", "--edition=2021", "dcb-rs/src/lib.rs", "--emit=llvm-ir", "-C", "opt-level=3",
 	    "-C", "embed-bitcode=no", "-C", "extra-filename=-rs", "--target=mipsel-sony-psx.json", "--out-dir", "build/llvm/",
-	    "--extern", "core_impl=build/libcore_impl.rlib"
+	    "--extern", "core_impl=build/libcore_impl.rlib", "--extern", "dcb_macros=build/libdcb_macros.so"
 	]
 	print(" !Compiling `dcb-rs`")
 	subprocess.run(args, check=True)
@@ -43,6 +52,13 @@ with scoping():
 	print(" !Preprocessing llvm")
 	with scoping():
 		args = ["cpp", "-E", "-P", "-w", "dcb-llvm/dcb.ll", "-o", "build/llvm/dcb-llvm.ll"]
+		subprocess.run(args, check=True)
+
+	# Replace any `mips2` with `mips1` in the rust output
+	# TODO: Do this properly somehow
+	print(" !Replacing `mips2` with `mips1` in dcb-rs")
+	with scoping():
+		args = ["sed", "-i", "-e", "s/mips2/mips1/g", "build/llvm/dcb-rs.ll"]
 		subprocess.run(args, check=True)
 
 	# Then link both together

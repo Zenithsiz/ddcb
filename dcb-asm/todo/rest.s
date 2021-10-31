@@ -1,11 +1,4 @@
 rest:
-func_35:
-	lui $v1, 0x8009
-	lwi $v0, 0x800793a0
-	nop
-	lw $v0, 0x40bc($v0)
-	jr $ra
-		sw $v0, -0x6818($v1)
 func_36:
 	lw $t2, 0x14($sp)
 	lw $t1, 0x18($sp)
