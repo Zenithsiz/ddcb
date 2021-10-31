@@ -1,7 +1,7 @@
 //! `dcb` implementation
 
 // Features
-#![feature(no_core, naked_functions, decl_macro)]
+#![feature(no_core, naked_functions, decl_macro, proc_macro_hygiene, stmt_expr_attributes)]
 #![no_std]
 #![no_core]
 // Lints
@@ -19,13 +19,14 @@ mod todo;
 pub const PRNG_VALUE_PTR: u32 = 0x801ddc10;
 
 /// Assembly macro that appends `.set noat` and `.set noreorder`
-pub macro asm_exact($($args:tt)*) {
+pub macro asm_exact($($args:tt)*) {{
+	#[dcb_macros::asm_use_mips_operands]
 	::core_impl::asm!(
 		".set noat",
 		".set noreorder",
 		$($args)*
-	);
-}
+	)
+}}
 
 /*
 #[no_mangle]

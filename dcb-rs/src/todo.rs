@@ -21,25 +21,6 @@ macro decl_static($( $NAME:ident @ $addr:literal: $T:ty = $value:expr; )*) {
 #[allow(unused_macros)] // We might use it eventually
 macro decl_fn {
 	($(
-		naked fn $name:ident( $($arg_name:ident: $arg_ty:ty),* $(,)? ) $(-> $ret_ty:ty)? {
-			$($body:tt)*
-		}
-	)*) => {
-		$(
-			#[no_mangle]
-			#[naked]
-			#[link_section = concat!(".text.", stringify!($name))]
-			pub unsafe extern "C" fn $name( $($arg_name: $arg_ty),* ) $(-> $ret_ty)? {
-				asm!(
-					".set noat",
-					".set noreorder",
-					$($body)*
-					options(noreturn)
-				);
-			}
-		)*
-	},
-	($(
 		fn $name:ident( $($arg_name:ident: $arg_ty:ty),* $(,)? ) $(-> $ret_ty:ty)? {
 			$($body:tt)*
 		}
@@ -14231,7 +14212,7 @@ decl_fn! {
 		asm_exact!(
 			"lui $v1, %hi({ptr})",
 			ptr = const DST,
-			out("$3") dst_ptr
+			out("$v1") dst_ptr
 		);
 
 		// Read the src pointer
@@ -14240,7 +14221,7 @@ decl_fn! {
 			"lui $v0, %hi({ptr})",
 			"lw $v0, %lo({ptr})($v0)",
 			ptr = const SRC,
-			out("$2") src_ptr,
+			out("$v0") src_ptr,
 		);
 
 		// Then read the value
@@ -14250,7 +14231,7 @@ decl_fn! {
 			"lw $v0, {offset}({src})",
 			src = in(reg) src_ptr,
 			offset = const 0x40bc,
-			lateout("$2") value,
+			lateout("$v0") value,
 
 		);
 
@@ -14261,6 +14242,89 @@ decl_fn! {
 			ptr = const DST,
 			value = in(reg) value,
 			dst_ptr = in(reg) dst_ptr,
+			options(noreturn)
+		);
+	}
+
+	fn f44(a0: u32, a1: u32, a2: u32) {
+		// `if a0[0x3e] < 6 { a0[0x3e] = 0; }`
+		let mut a0 = a0;
+		asm_exact!(
+			"lb $v0, 0x3e($a0)",
+			"nop",
+			"slti $v0, $v0, 0x6",
+			"bnez $v0, 0f",
+			"nop",
+			"sb $zero, 0x3e($a0)",
+			"0:",
+			inout("$a0") a0,
+			out("$v0") _,
+		);
+
+		let mut arg1: u32;
+		asm_exact!(
+			"lh $v0, 0x8($a0)",
+			"lh $v1, 0x10($a0)",
+			"nop",
+			"subu $v1, $v0, $v1",
+			"slt $v0, $v1, $a1",
+			"beqz $v0, 0f",
+			"nop",
+			"addu $a1, $v1, $zero",
+			"0:",
+			inout("$a0") a0,
+			inlateout("$a1") a1 => arg1,
+			out("$v0") _,
+			out("$v1") _,
+		);
+
+		let mut arg2: u32;
+		asm_exact!(
+			"lh $v0, 0xa($a0)",
+			"lh $v1, 0x12($a0)",
+			"nop",
+			"subu $v1, $v0, $v1",
+			"slt $v0, $v1, $a2",
+			"beqz $v0, 0f",
+			"nop",
+			"addu $a2, $v1, $zero",
+			"0:",
+			inout("$a0") a0,
+			inlateout("$a2") a2 => arg2,
+			out("$v0") _,
+			out("$v1") _,
+		);
+
+		// If either arg1 or arg2 are < 0, set them to 0.
+		asm_exact!(
+			"bgez $a1, 0f",
+			"nop",
+			"addu $a1, $zero, $zero",
+			"0:",
+
+			"bgez $a2, 1f",
+			"nop",
+			"addu $a2, $zero, $zero",
+			"1:",
+			inlateout("$a1") arg1,
+			inlateout("$a2") arg2,
+		);
+
+		asm_exact!(
+			"lhu $v0, 0x4($a0)",
+			"nop",
+			"sh $v0, 0x30($a0)",
+
+			"lhu $v0, 0x6($a0)",
+			"nop",
+			"sh $v0, 0x32($a0)",
+
+			"sh $a1, 0x34($a0)",
+			"jr $ra",
+			"sh $a2, 0x36($a0)",
+			in("$a0") a0,
+			in("$a1") arg1,
+			in("$a2") arg2,
 			options(noreturn)
 		);
 	}
