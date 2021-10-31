@@ -135,7 +135,10 @@ f40:
 	li $a2, 0x1
 	jal 0x800679c4
 		move_ $a3, $s4
-	sh $zr, 0x10($sp);sh  $zr, 0x12($sp);sh  $zr, 0x14($sp);sh  $zr, 0x16($sp);
+	sh $zr, 0x10($sp)
+	sh $zr, 0x12($sp)
+	sh $zr, 0x14($sp)
+	sh $zr, 0x16($sp)
 	addiu $a0, $s2, 0x118
 	jal 0x80067a34
 		addiu $a1, $sp, 0x10

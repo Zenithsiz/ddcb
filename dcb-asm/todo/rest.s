@@ -7,7 +7,8 @@ func_35:
 	jr $ra
 		sw $v0, -0x6818($v1)
 func_36:
-	lw $t2, 0x14($sp);lw  $t1, 0x18($sp);
+	lw $t2, 0x14($sp)
+	lw $t1, 0x18($sp)
 	li $v0, -0x1
 	bne $a1, $v0, .0
 		move_ $t0, $a0
@@ -718,7 +719,8 @@ func_39:
 	lbu $a3, 0x40($s5)
 	lbu $v0, 0x38($s5)
 	nop
-	sw $v0, 0x10($sp);sw  $s6, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $s6, 0x14($sp)
 	addiu $a0, $s5, 0x1c
 	jal 0x80017b88
 		andi $a2, 0x1
@@ -886,7 +888,8 @@ func_41:
 	nop
 	mult $v1, $t0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	div $zr, $v1, $a0
 	mflo $v1
 	bnez $a0, .7
@@ -925,7 +928,8 @@ func_41:
 	subu $v0, $v1
 	mult $v0, $a3
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $a0
 	mfhi $a0
 	sra $v0, 0x1f
@@ -967,7 +971,8 @@ func_41:
 	nop
 	mult $a0, $v0
 	mflo $a0
-	nop; nop
+	nop
+	nop
 	div $zr, $a0, $a1
 	mflo $v0
 	bnez $a1, .11
@@ -1009,7 +1014,8 @@ func_41:
 	nop
 	mult $v1, $v0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	div $zr, $v1, $a1
 	mflo $v0
 	bnez $a1, .15
@@ -1068,7 +1074,8 @@ func_42:
 	sw $s1, 0x6c($sp)
 	sw $s0, 0x68($sp)
 	sw $a0, 0x90($sp)
-	sw $a2, 0x98($sp);sw  $a3, 0x9c($sp);
+	sw $a2, 0x98($sp)
+	sw $a3, 0x9c($sp)
 	lw $a2, 0xa0($sp)
 	andi $a1, 0xff
 	sw $a1, 0x58($sp)
@@ -1410,7 +1417,8 @@ func_42:
 	addu $a0, $s1, $a0
 	lbu $v0, ($a0)
 	nop
-	sh $v0, 0x1a($sp);sh  $zr, 0x1c($sp);
+	sh $v0, 0x1a($sp)
+	sh $zr, 0x1c($sp)
 	lbu $v0, ($s7)
 	nop
 	sh $v0, 0x1e($sp)
@@ -1421,7 +1429,8 @@ func_42:
 	addu $a1, $s1, $a1
 	lbu $v0, ($a1)
 	nop
-	sh $v0, 0x22($sp);sh  $zr, 0x24($sp);
+	sh $v0, 0x22($sp)
+	sh $zr, 0x24($sp)
 	lw $a2, 0x60($sp)
 	nop
 	lbu $v0, ($a2)
@@ -1438,7 +1447,8 @@ func_42:
 	sh $v0, 0x2a($sp)
 	lbu $v0, ($s2)
 	nop
-	sh $v0, 0x2c($sp);sh  $zr, 0x2e($sp);
+	sh $v0, 0x2c($sp)
+	sh $zr, 0x2e($sp)
 	addiu $s0, 0x2
 	addu $s1, $s0
 	lbu $v0, ($s1)
@@ -1451,7 +1461,8 @@ func_42:
 	nop
 	lbu $v0, ($a3)
 	nop
-	sh $v0, 0x34($sp);sh  $zr, 0x36($sp);
+	sh $v0, 0x34($sp)
+	sh $zr, 0x36($sp)
 	lbu $v0, ($a2)
 	nop
 	sh $v0, 0x38($sp)
@@ -2598,7 +2609,8 @@ func_50:
 	subu $v0, $v1
 	mult $v0, $a2
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $a1
 	mfhi $v1
 	sra $v0, 0x1f
@@ -2612,7 +2624,8 @@ func_50:
 	subu $v0, $v1
 	mult $v0, $a2
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $a1
 	mfhi $v1
 	sra $v0, 0x1f
@@ -2626,7 +2639,8 @@ func_50:
 	subu $v0, $v1
 	mult $v0, $a2
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $a1
 	mfhi $a1
 	sra $v0, 0x1f
@@ -3455,13 +3469,16 @@ func_51:
 	srl $v1, $v0, 0x1f
 	addu $v0, $v1
 	sra $v0, 0x1
-	sh $v0, 0x22($sp);sh  $a2, 0x24($sp);sh  $a0, 0x26($sp);
+	sh $v0, 0x22($sp)
+	sh $a2, 0x24($sp)
+	sh $a0, 0x26($sp)
 	li $v1, 0x8
 	sw $v1, 0x10($sp)
 	li $v0, 0x77
 	sw $v0, 0x14($sp)
 	li $v0, 0x80
-	sw $v0, 0x18($sp);sw  $v1, 0x1c($sp);
+	sw $v0, 0x18($sp)
+	sw $v1, 0x1c($sp)
 	move_ $a0, $s0
 	addiu $a1, $sp, 0x20
 	li $a2, -0x1
@@ -3495,7 +3512,11 @@ func_52:
 	jal f8
 		move_ $s0, $a0
 	la_ $v1, 0x8001a1d8
-	sw $v1, 0x10($sp);sw  $s0, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $s0, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -3519,7 +3540,11 @@ func_53:
 		move_ $s0, $a1
 	sb $s0, 0xa6($s1)
 	la_ $v1, 0x8001a1d8
-	sw $v1, 0x10($sp);sw  $s1, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $s1, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -3564,7 +3589,8 @@ func_53:
 	sra $v0, 0x1
 	addu $v0, $a0
 	addiu $v0, -0xe
-	sh $v0, 0x12($sp);sh  $a1, 0x14($sp);
+	sh $v0, 0x12($sp)
+	sh $a1, 0x14($sp)
 	li $v0, 0xc
 	sh $v0, 0x16($sp)
 	addiu $a0, $s0, 0x44
@@ -3741,7 +3767,8 @@ func_53:
 	sb $v1, 0xa5($s0)
 	lhu $v0, 0xac($s0)
 	nop
-	sh $v0, 0x18($sp);sh  $s1, 0x1a($sp);
+	sh $v0, 0x18($sp)
+	sh $s1, 0x1a($sp)
 	lhu $v0, 0xae($s0)
 	nop
 	sh $v0, 0x1c($sp)
@@ -3772,7 +3799,8 @@ func_53:
 	sb $v1, 0xa5($s0)
 	lhu $v0, 0xb0($s0)
 	nop
-	sh $v0, 0x18($sp);sh  $s1, 0x1a($sp);
+	sh $v0, 0x18($sp)
+	sh $s1, 0x1a($sp)
 	lhu $v0, 0xb2($s0)
 	nop
 	sh $v0, 0x1c($sp)
@@ -4661,7 +4689,6 @@ func_68:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x28
-
 rest2:
 	addiu $sp, -0x30
 	sw $ra, 0x28($sp)
@@ -4874,7 +4901,8 @@ func_70:
 		li $v0, -0x2
 	beq $s1, $v0, .5
 		nop
-	sh $s1, 0x10($sp);sh  $s4, 0x12($sp);
+	sh $s1, 0x10($sp)
+	sh $s4, 0x12($sp)
 	lw $v0, 0x4($s2)
 	nop
 	lhu $v1, 0x4($v0)
@@ -5756,7 +5784,12 @@ func_85:
 	sw $ra, 0x1c($sp)
 	sw $s0, 0x18($sp)
 	move_ $s0, $a0
-	lw $t3, 0x30($sp);lw  $t0, 0x34($sp);lw  $t1, 0x38($sp);lw  $v1, 0x3c($sp);lw  $a0, 0x40($sp);lw  $t2, 0x44($sp);
+	lw $t3, 0x30($sp)
+	lw $t0, 0x34($sp)
+	lw $t1, 0x38($sp)
+	lw $v1, 0x3c($sp)
+	lw $a0, 0x40($sp)
+	lw $t2, 0x44($sp)
 	li $v0, 0x4
 	sb $v0, 0xf($s0)
 	li $v0, 0x64
@@ -6062,7 +6095,9 @@ func_85:
 	move_ $s4, $a0
 	move_ $fp, $a1
 	move_ $s5, $a2
-	lw $s2, 0x50($sp);lw  $s6, 0x54($sp);lw  $s7, 0x58($sp);
+	lw $s2, 0x50($sp)
+	lw $s6, 0x54($sp)
+	lw $s7, 0x58($sp)
 	lbu $s3, 0x5c($sp)
 	lbu $s0, 0x60($sp)
 	jal 0x800677a4
@@ -6156,7 +6191,9 @@ func_85:
 	move_ $s4, $a0
 	move_ $fp, $a1
 	move_ $s7, $a2
-	lw $s2, 0x48($sp);lw  $s5, 0x4c($sp);lw  $s6, 0x50($sp);
+	lw $s2, 0x48($sp)
+	lw $s5, 0x4c($sp)
+	lw $s6, 0x50($sp)
 	lbu $s3, 0x54($sp)
 	lbu $s0, 0x58($sp)
 	jal 0x80067724
@@ -6303,7 +6340,11 @@ func_85:
 	move_ $s3, $a0
 	sw $a1, 0x3c($sp)
 	move_ $s5, $a2
-	lw $fp, 0x48($sp);lw  $s0, 0x4c($sp);lw  $s2, 0x50($sp);lw  $s4, 0x54($sp);lw  $s6, 0x58($sp);
+	lw $fp, 0x48($sp)
+	lw $s0, 0x4c($sp)
+	lw $s2, 0x50($sp)
+	lw $s4, 0x54($sp)
+	lw $s6, 0x58($sp)
 	lbu $s1, 0x5c($sp)
 	jal 0x80067764
 		move_ $s7, $a3
@@ -6458,7 +6499,11 @@ func_85:
 	move_ $s3, $a0
 	sw $a1, 0x44($sp)
 	move_ $s4, $a2
-	lw $s6, 0x50($sp);lw  $fp, 0x54($sp);lw  $s0, 0x58($sp);lw  $s2, 0x5c($sp);lw  $s7, 0x60($sp);
+	lw $s6, 0x50($sp)
+	lw $fp, 0x54($sp)
+	lw $s0, 0x58($sp)
+	lw $s2, 0x5c($sp)
+	lw $s7, 0x60($sp)
 	lbu $s1, 0x68($sp)
 	jal 0x800677e4
 		move_ $s5, $a3
@@ -6573,7 +6618,9 @@ func_85:
 	move_ $s1, $a0
 	move_ $s4, $a1
 	move_ $s2, $a2
-	lw $s5, 0x50($sp);lw  $s7, 0x54($sp);lw  $s3, 0x58($sp);
+	lw $s5, 0x50($sp)
+	lw $s7, 0x54($sp)
+	lw $s3, 0x58($sp)
 	lbu $s0, 0x5c($sp)
 	jal 0x80067784
 		move_ $s6, $a3
@@ -6667,7 +6714,10 @@ func_85:
 	move_ $s2, $a0
 	sw $a1, 0x44($sp)
 	move_ $s1, $a2
-	lw $s4, 0x50($sp);lw  $s5, 0x54($sp);lw  $fp, 0x58($sp);lw  $s7, 0x5c($sp);
+	lw $s4, 0x50($sp)
+	lw $s5, 0x54($sp)
+	lw $fp, 0x58($sp)
+	lw $s7, 0x5c($sp)
 	lw $s6, 0x64($sp)
 	lbu $s0, 0x68($sp)
 	jal 0x800677c4
@@ -6789,7 +6839,10 @@ func_85:
 	move_ $s1, $a0
 	move_ $s3, $a1
 	move_ $s2, $a2
-	lw $s5, 0x48($sp);lw  $s7, 0x4c($sp);lw  $s6, 0x50($sp);lw  $fp, 0x54($sp);
+	lw $s5, 0x48($sp)
+	lw $s7, 0x4c($sp)
+	lw $s6, 0x50($sp)
+	lw $fp, 0x54($sp)
 	lbu $s0, 0x58($sp)
 	jal 0x80067744
 		move_ $s4, $a3
@@ -6890,7 +6943,8 @@ func_85:
 	move_ $s1, $a0
 	move_ $s3, $a1
 	move_ $s2, $a2
-	lw $s4, 0x40($sp);lw  $s6, 0x44($sp);
+	lw $s4, 0x40($sp)
+	lw $s6, 0x44($sp)
 	lbu $s0, 0x48($sp)
 	jal 0x80067704
 		move_ $s5, $a3
@@ -6968,7 +7022,9 @@ func_85:
 	move_ $s1, $a0
 	move_ $s4, $a1
 	move_ $s2, $a2
-	lw $s6, 0x48($sp);lw  $s5, 0x4c($sp);lw  $s7, 0x50($sp);
+	lw $s6, 0x48($sp)
+	lw $s5, 0x4c($sp)
+	lw $s7, 0x50($sp)
 	lbu $s0, 0x54($sp)
 	jal 0x80067904
 		move_ $s3, $a3
@@ -7054,7 +7110,8 @@ func_85:
 	move_ $s1, $a0
 	move_ $s3, $a1
 	move_ $s2, $a2
-	lw $s4, 0x40($sp);lw  $s6, 0x44($sp);
+	lw $s4, 0x40($sp)
+	lw $s6, 0x44($sp)
 	lbu $s0, 0x48($sp)
 	jal 0x800678e4
 		move_ $s5, $a3
@@ -7452,7 +7509,8 @@ func_86:
 	move_ $s3, $a1
 	move_ $a0, $a2
 	move_ $a1, $a3
-	lw $a2, 0x68($sp);lw  $a3, 0x6c($sp);
+	lw $a2, 0x68($sp)
+	lw $a3, 0x6c($sp)
 	lw $s0, 0x78($sp)
 	lbu $s4, 0x70($sp)
 	lbu $v0, 0x74($sp)
@@ -7730,7 +7788,8 @@ func_87:
 	move_ $s3, $a1
 	move_ $a0, $a2
 	move_ $a1, $a3
-	lw $a2, 0x68($sp);lw  $a3, 0x6c($sp);
+	lw $a2, 0x68($sp)
+	lw $a3, 0x6c($sp)
 	lw $s0, 0x78($sp)
 	lbu $s4, 0x70($sp)
 	lbu $v0, 0x74($sp)
@@ -7978,7 +8037,9 @@ func_87:
 		addiu $sp, 0x38
 	move_ $t3, $a0
 	move_ $t1, $a2
-	lw $t2, 0x10($sp);lw  $t5, 0x14($sp);lw  $t4, 0x18($sp);
+	lw $t2, 0x10($sp)
+	lw $t5, 0x14($sp)
+	lw $t4, 0x18($sp)
 	lbu $a2, ($a1)
 	lbu $v1, ($a3)
 	lbu $a0, ($t5)
@@ -8173,7 +8234,8 @@ func_87:
 	addiu $sp, -0x20
 	sw $ra, 0x18($sp)
 	move_ $v0, $a0
-	sh $a1, 0x10($sp);sh  $a2, 0x12($sp);
+	sh $a1, 0x10($sp)
+	sh $a2, 0x12($sp)
 	li $v1, 0x100
 	sh $v1, 0x14($sp)
 	li $v1, 0x1
@@ -9068,8 +9130,6 @@ func_118:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x30
-
-
 rest3:
 	lw $v1, ($a0)
 	addiu $a0, 0x4
@@ -9129,7 +9189,8 @@ rest3:
 	lwc2 $3, 0xc($a0)
 	lwc2 $4, 0x10($a0)
 	lwc2 $5, 0x14($a0)
-	nop; nop
+	nop
+	nop
 .3:
 	cop2 0x118043f
 	addiu $a0, 0x18
@@ -10281,7 +10342,8 @@ func_133:
 	mtc2 $v0, $6
 	lwc2 $0, ($a3)
 	lwc2 $1, 0x4($a3)
-	nop; nop
+	nop
+	nop
 .2:
 	cop2 0x486012
 	lw $a2, 0x8($a3)
@@ -11656,7 +11718,8 @@ func_139:
 	move_ $t4, $v0
 	lwc2 $0, ($t4)
 	lwc2 $1, 0x4($t4)
-	nop; nop
+	nop
+	nop
 	cop2 0x480012
 	addiu $v0, $sp, 0x38
 	move_ $t4, $v0
@@ -11693,7 +11756,9 @@ func_139:
 	jr $ra
 		addiu $sp, 0x60
 func_140:
-	lw $v1, 0x10($sp);lw  $t1, 0x14($sp);lw  $t2, 0x18($sp);
+	lw $v1, 0x10($sp)
+	lw $t1, 0x14($sp)
+	lw $t2, 0x18($sp)
 	sll $v1, 0x14
 	sw $v1, ($a0)
 	sll $v0, $t1, 0x14
@@ -11742,7 +11807,9 @@ func_140:
 	jr $ra
 		sw $a1, 0xc($a0)
 func_141:
-	lw $v0, 0x10($sp);lw  $v1, 0x14($sp);lw  $t1, 0x18($sp);
+	lw $v0, 0x10($sp)
+	lw $v1, 0x14($sp)
+	lw $t1, 0x18($sp)
 	sll $t0, $v0, 0x10
 	sw $t0, ($a0)
 	sll $v0, $v1, 0x10
@@ -14187,7 +14254,8 @@ func_161:
 	move_ $t4, $v0
 	lwc2 $0, ($t4)
 	lwc2 $1, 0x4($t4)
-	nop; nop
+	nop
+	nop
 	cop2 0x480012
 	addiu $v0, $sp, 0x24
 	move_ $t4, $v0
@@ -15513,7 +15581,8 @@ func_167:
 	move_ $t4, $s7
 	lwc2 $0, ($t4)
 	lwc2 $1, 0x4($t4)
-	nop; nop
+	nop
+	nop
 	cop2 0x480012
 	move_ $t4, $fp
 	swc2 $25, ($t4)
@@ -15743,7 +15812,8 @@ func_167:
 	move_ $t4, $s7
 	lwc2 $0, ($t4)
 	lwc2 $1, 0x4($t4)
-	nop; nop
+	nop
+	nop
 	cop2 0x480012
 	move_ $t4, $fp
 	swc2 $25, ($t4)
@@ -16113,7 +16183,8 @@ func_172:
 	multu $a3, $t3
 	mflo $t6
 	mfhi $t7
-	nop; nop
+	nop
+	nop
 	multu $a3, $t2
 	mfhi $t5
 	addu $t6, $t5, $t6
@@ -16126,7 +16197,8 @@ func_172:
 	subu $t6, $zr, $t6
 	mflo $t2
 	mfhi $t3
-	nop; nop
+	nop
+	nop
 	multu $t6, $a3
 	mfhi $t5
 	addu $t2, $t5, $t2
@@ -16139,7 +16211,8 @@ func_172:
 	sll $t2, 0x1
 	mflo $t6
 	mfhi $t7
-	nop; nop
+	nop
+	nop
 	multu $t0, $t3
 	mfhi $t5
 	addu $t6, $t5, $t6
@@ -16220,7 +16293,8 @@ func_172:
 	bne $t7, $at, .0x80025c34
 		nop
 .0x80025e4c:
-	sw $t9, 0x8($sp);sw  $ra, 0xc($sp);
+	sw $t9, 0x8($sp)
+	sw $ra, 0xc($sp)
 	lw $a1, 0x4($sp)
 	jal 0x80026c70
 		li $a0, 0x400
@@ -16303,7 +16377,8 @@ func_174:
 	srl $v0, 0x15
 	mflo $t6
 	mfhi $t7
-	nop; nop
+	nop
+	nop
 	multu $t0, $t3
 	mfhi $t5
 	addu $t6, $t5, $t6
@@ -16923,7 +16998,8 @@ func_178:
 	nop
 	multu $a3, $t7
 	mfhi $a3
-	nop; nop
+	nop
+	nop
 	multu $a3, $t3
 	mfhi $a3
 	sll $a3, 0x1
@@ -17192,7 +17268,9 @@ func_179:
 data_w120:
 .word 0x41e00000
 	addiu $sp, -0x24
-	sw $ra, 0xc($sp);sw  $s1, 0x10($sp);sw  $s0, 0x14($sp);
+	sw $ra, 0xc($sp)
+	sw $s1, 0x10($sp)
+	sw $s0, 0x14($sp)
 	lwi $a2, 0x80026bdc
 	lwi $a3, 0x80026be0
 	addu $s0, $zr, $a0
@@ -17216,12 +17294,17 @@ data_w120:
 		addu $a1, $zr, $v1
 	lui $at, 0x8000
 	addu $v0, $at
-	lw $ra, 0xc($sp);lw  $s1, 0x10($sp);lw  $s0, 0x14($sp);
+	lw $ra, 0xc($sp)
+	lw $s1, 0x10($sp)
+	lw $s0, 0x14($sp)
 	jr $ra
 		addiu $sp, 0x24
 func_180:
 	addiu $sp, -0x20
-	sw $ra, 0x8($sp);sw  $fp, 0xc($sp);sw  $s1, 0x10($sp);sw  $s0, 0x14($sp);
+	sw $ra, 0x8($sp)
+	sw $fp, 0xc($sp)
+	sw $s1, 0x10($sp)
+	sw $s0, 0x14($sp)
 	addu $s0, $zr, $a0
 	addiu $fp, $sp, 0x20
 	la_ $a0, 0x801d6a80
@@ -17259,13 +17342,17 @@ func_180:
 	li $v0, 0x0
 .1:
 	addiu $sp, $fp, -0x20
-	lw $ra, 0x8($sp);lw  $fp, 0xc($sp);lw  $s1, 0x10($sp);lw  $s0, 0x14($sp);
+	lw $ra, 0x8($sp)
+	lw $fp, 0xc($sp)
+	lw $s1, 0x10($sp)
+	lw $s0, 0x14($sp)
 	jr $ra
 		addiu $sp, 0x20
 func_181:
 	la_ $v0, 0x801d6a90
 	addiu $sp, -0x18
-	sw $ra, 0x8($sp);sw  $fp, 0xc($sp);
+	sw $ra, 0x8($sp)
+	sw $fp, 0xc($sp)
 	lw $v1, ($v0)
 	addiu $fp, $sp, 0x18
 	lui $at, 0x2
@@ -17278,7 +17365,8 @@ func_181:
 		li $a0, 0x200
 	addiu $sp, 0x8
 	addiu $sp, $fp, -0x18
-	lw $ra, 0x8($sp);lw  $fp, 0xc($sp);
+	lw $ra, 0x8($sp)
+	lw $fp, 0xc($sp)
 	jr $ra
 		addiu $sp, 0x18
 func_182:
@@ -17377,7 +17465,8 @@ func_183:
 	la_ $v1, 0x8001b144
 	sw $v1, 0x10($sp)
 	la_ $v1, system_tiles_path
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -17569,9 +17658,12 @@ func_185:
 		sw $v0, 0x6b24($v1)
 	addiu $sp, -0x28
 	sw $ra, 0x20($sp)
-	lw $v0, 0x38($sp);lw  $v1, 0x3c($sp);
+	lw $v0, 0x38($sp)
+	lw $v1, 0x3c($sp)
 	andi $a3, 0xffff
-	sw $a3, 0x10($sp);sw  $v0, 0x14($sp);sw  $v1, 0x18($sp);
+	sw $a3, 0x10($sp)
+	sw $v0, 0x14($sp)
+	sw $v1, 0x18($sp)
 	lui $a3, 0x8007
 	jal 0x80027228
 		addiu $a3, -0x2068
@@ -17702,8 +17794,13 @@ func_186:
 		addiu $sp, 0x30
 	addiu $sp, -0x30
 	sw $ra, 0x28($sp)
-	lw $v0, 0x40($sp);lw  $v1, 0x44($sp);lw  $t0, 0x48($sp);lw  $t1, 0x4c($sp);
-	sw $v0, 0x10($sp);sw  $v1, 0x14($sp);sw  $t0, 0x18($sp);
+	lw $v0, 0x40($sp)
+	lw $v1, 0x44($sp)
+	lw $t0, 0x48($sp)
+	lw $t1, 0x4c($sp)
+	sw $v0, 0x10($sp)
+	sw $v1, 0x14($sp)
+	sw $t0, 0x18($sp)
 	la_ $v0, 0x8006df98
 	sw $v0, 0x1c($sp)
 	jal 0x80027458
@@ -17724,7 +17821,8 @@ func_187:
 	move_ $s2, $a0
 	move_ $s3, $a1
 	move_ $s4, $a2
-	lw $s0, 0x48($sp);lw  $s1, 0x4c($sp);
+	lw $s0, 0x48($sp)
+	lw $s1, 0x4c($sp)
 	jal 0x80029990
 		move_ $s5, $a3
 	bnez $v0, .0
@@ -17846,9 +17944,18 @@ func_187:
 		addiu $sp, 0x30
 	addiu $sp, -0x30
 	sw $ra, 0x28($sp)
-	lw $v1, 0x40($sp);lw  $t0, 0x44($sp);lw  $t1, 0x48($sp);lw  $t2, 0x4c($sp);lw  $t3, 0x50($sp);
+	lw $v1, 0x40($sp)
+	lw $t0, 0x44($sp)
+	lw $t1, 0x48($sp)
+	lw $t2, 0x4c($sp)
+	lw $t3, 0x50($sp)
 	la_ $v0, 0x8006df98
-	sw $v0, 0x10($sp);sw  $v1, 0x14($sp);sw  $t0, 0x18($sp);sw  $t1, 0x1c($sp);sw  $t2, 0x20($sp);sw  $t3, 0x24($sp);
+	sw $v0, 0x10($sp)
+	sw $v1, 0x14($sp)
+	sw $t0, 0x18($sp)
+	sw $t1, 0x1c($sp)
+	sw $t2, 0x20($sp)
+	sw $t3, 0x24($sp)
 	jal 0x800276c8
 		andi $a2, 0xff
 	lw $ra, 0x28($sp)
@@ -18023,7 +18130,8 @@ func_189:
 	move_ $s2, $a0
 	move_ $s3, $a1
 	move_ $s0, $a2
-	lw $s4, 0x50($sp);lw  $s6, 0x54($sp);
+	lw $s4, 0x50($sp)
+	lw $s6, 0x54($sp)
 	move_ $s7, $s2
 	lui $v1, 0x801d
 	srl $v0, $a3, 0x1f
@@ -18103,7 +18211,8 @@ func_189:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s4, 0x10($sp);sw  $s6, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s6, 0x14($sp)
 	move_ $a0, $s2
 	move_ $a1, $s3
 	li $a2, 0x3
@@ -18114,7 +18223,8 @@ func_189:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s4, 0x10($sp);sw  $s6, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s6, 0x14($sp)
 	move_ $a0, $s2
 	move_ $a1, $s3
 	li $a2, 0x3
@@ -18149,7 +18259,8 @@ func_189:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s4, 0x10($sp);sw  $s6, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s6, 0x14($sp)
 	move_ $a0, $s2
 	move_ $a1, $s3
 	li $a2, 0x3
@@ -18169,7 +18280,8 @@ func_189:
 		li $a3, 0x11
 	addiu $a3, $v1, -0x22
 .5:
-	sw $s4, 0x10($sp);sw  $s6, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s6, 0x14($sp)
 	move_ $a0, $s2
 	move_ $a1, $s3
 	jal 0x80029a0c
@@ -18324,7 +18436,8 @@ func_191:
 	move_ $s2, $a0
 	move_ $s3, $a1
 	move_ $s0, $a2
-	lw $s4, 0x50($sp);lw  $s5, 0x54($sp);
+	lw $s4, 0x50($sp)
+	lw $s5, 0x54($sp)
 	move_ $s7, $s2
 .0:
 	lui $v1, 0x801d
@@ -18364,7 +18477,8 @@ func_191:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s4, 0x10($sp);sw  $s5, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s5, 0x14($sp)
 	move_ $a0, $s2
 	move_ $a1, $s3
 	li $a2, 0x3
@@ -18387,7 +18501,8 @@ func_191:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s4, 0x10($sp);sw  $s5, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s5, 0x14($sp)
 	move_ $a0, $s2
 	move_ $a1, $s3
 	li $a2, 0x3
@@ -18396,7 +18511,8 @@ func_191:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s4, 0x10($sp);sw  $s5, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s5, 0x14($sp)
 	move_ $a0, $s2
 	move_ $a1, $s3
 	li $a2, 0x3
@@ -18411,7 +18527,8 @@ func_191:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s4, 0x10($sp);sw  $s5, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s5, 0x14($sp)
 	move_ $a0, $s2
 	move_ $a1, $s3
 	li $a2, 0x3
@@ -18433,7 +18550,8 @@ func_191:
 		li $a3, 0x11
 	addiu $a3, $v1, -0x22
 .4:
-	sw $s4, 0x10($sp);sw  $s5, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s5, 0x14($sp)
 	move_ $a0, $s2
 	move_ $a1, $s3
 	jal 0x80029a0c
@@ -18812,7 +18930,8 @@ func_195:
 	move_ $s1, $a0
 	move_ $s3, $a1
 	move_ $s0, $a2
-	lw $s4, 0x50($sp);lw  $s6, 0x54($sp);
+	lw $s4, 0x50($sp)
+	lw $s6, 0x54($sp)
 	move_ $s7, $s1
 .0:
 	lui $v1, 0x801d
@@ -18872,7 +18991,8 @@ func_195:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s4, 0x10($sp);sw  $s6, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s6, 0x14($sp)
 	move_ $a0, $s1
 	move_ $a1, $s3
 	li $a2, 0x3
@@ -18881,7 +19001,8 @@ func_195:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s4, 0x10($sp);sw  $s6, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s6, 0x14($sp)
 	move_ $a0, $s1
 	move_ $a1, $s3
 	li $a2, 0x3
@@ -18896,7 +19017,8 @@ func_195:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s4, 0x10($sp);sw  $s6, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s6, 0x14($sp)
 	move_ $a0, $s1
 	move_ $a1, $s3
 	li $a2, 0x3
@@ -18918,7 +19040,8 @@ func_195:
 		li $a3, 0x11
 	addiu $a3, $v1, -0x22
 .5:
-	sw $s4, 0x10($sp);sw  $s6, 0x14($sp);
+	sw $s4, 0x10($sp)
+	sw $s6, 0x14($sp)
 	move_ $a0, $s1
 	move_ $a1, $s3
 	jal 0x80029a0c
@@ -19293,7 +19416,8 @@ func_197:
 	addiu $sp, -0x20
 	sw $ra, 0x18($sp)
 	lw $v0, 0x30($sp)
-	sw $a3, 0x10($sp);sw  $v0, 0x14($sp);
+	sw $a3, 0x10($sp)
+	sw $v0, 0x14($sp)
 	lui $a3, 0x8007
 	jal 0x80028d48
 		addiu $a3, -0x2068
@@ -19317,7 +19441,8 @@ func_198:
 	move_ $s3, $a1
 	move_ $s0, $a2
 	move_ $s6, $a3
-	lw $a1, 0x60($sp);lw  $fp, 0x64($sp);
+	lw $a1, 0x60($sp)
+	lw $fp, 0x64($sp)
 	move_ $s4, $zr
 	move_ $s5, $s2
 	sw $s3, 0x18($sp)
@@ -19373,7 +19498,8 @@ func_198:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s6, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s6, 0x10($sp)
+	sw $fp, 0x14($sp)
 	move_ $a0, $s2
 	addiu $a1, $s3, 0x1
 	move_ $a2, $zr
@@ -19385,7 +19511,8 @@ func_198:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s6, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s6, 0x10($sp)
+	sw $fp, 0x14($sp)
 	move_ $a0, $s2
 	addiu $a1, $s3, 0x1
 	move_ $a2, $zr
@@ -19421,7 +19548,8 @@ func_198:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s6, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s6, 0x10($sp)
+	sw $fp, 0x14($sp)
 	move_ $a0, $s2
 	addiu $a1, $s3, 0x1
 	move_ $a2, $zr
@@ -19441,7 +19569,8 @@ func_198:
 		li $a3, 0x11
 	addiu $a3, $v1, -0x22
 .1:
-	sw $s6, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s6, 0x10($sp)
+	sw $fp, 0x14($sp)
 	move_ $a0, $s2
 	addiu $a1, $s3, 0x1
 	jal 0x80029a0c
@@ -19459,7 +19588,8 @@ func_198:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s6, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s6, 0x10($sp)
+	sw $fp, 0x14($sp)
 	move_ $a0, $s2
 	move_ $a1, $s3
 	li $a2, 0x2
@@ -19903,7 +20033,8 @@ func_200:
 	sw $a1, 0x3c($sp)
 	move_ $s1, $a2
 	move_ $s7, $a3
-	lw $a1, 0x48($sp);lw  $fp, 0x4c($sp);
+	lw $a1, 0x48($sp)
+	lw $fp, 0x4c($sp)
 	lui $v1, 0x801d
 	srl $v0, $a1, 0x1f
 	addu $v0, $a1, $v0
@@ -20458,9 +20589,11 @@ func_203:
 		addiu $sp, 0x30
 	addiu $sp, -0x28
 	sw $ra, 0x20($sp)
-	lw $v0, 0x38($sp);lw  $t0, 0x3c($sp);
+	lw $v0, 0x38($sp)
+	lw $t0, 0x3c($sp)
 	la_ $v1, 0x8006df98
-	sw $v1, 0x10($sp);sw  $v0, 0x14($sp);
+	sw $v1, 0x10($sp)
+	sw $v0, 0x14($sp)
 	jal 0x80029efc
 		sw $t0, 0x18($sp)
 	lw $ra, 0x20($sp)
@@ -20482,7 +20615,9 @@ func_204:
 	move_ $s1, $a0
 	move_ $s2, $a1
 	move_ $s3, $a2
-	lw $s5, 0x58($sp);lw  $s7, 0x5c($sp);lw  $s0, 0x60($sp);
+	lw $s5, 0x58($sp)
+	lw $s7, 0x5c($sp)
+	lw $s0, 0x60($sp)
 	move_ $s6, $s1
 	move_ $s4, $zr
 	move_ $fp, $zr
@@ -20528,7 +20663,8 @@ func_204:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s5, 0x10($sp);sw  $s7, 0x14($sp);
+	sw $s5, 0x10($sp)
+	sw $s7, 0x14($sp)
 	move_ $a0, $s1
 	addiu $a1, $s2, 0x1
 	move_ $a2, $zr
@@ -20537,7 +20673,8 @@ func_204:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s5, 0x10($sp);sw  $s7, 0x14($sp);
+	sw $s5, 0x10($sp)
+	sw $s7, 0x14($sp)
 	move_ $a0, $s1
 	addiu $a1, $s2, 0x1
 	move_ $a2, $zr
@@ -20552,7 +20689,8 @@ func_204:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s5, 0x10($sp);sw  $s7, 0x14($sp);
+	sw $s5, 0x10($sp)
+	sw $s7, 0x14($sp)
 	move_ $a0, $s1
 	addiu $a1, $s2, 0x1
 	move_ $a2, $zr
@@ -20574,7 +20712,8 @@ func_204:
 		li $a3, 0x11
 	addiu $a3, $v1, -0x22
 .2:
-	sw $s5, 0x10($sp);sw  $s7, 0x14($sp);
+	sw $s5, 0x10($sp)
+	sw $s7, 0x14($sp)
 	move_ $a0, $s1
 	addiu $a1, $s2, 0x1
 	jal 0x80029a0c
@@ -20584,7 +20723,8 @@ func_204:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	addiu $s0, 0x1
-	sw $s5, 0x10($sp);sw  $s7, 0x14($sp);
+	sw $s5, 0x10($sp)
+	sw $s7, 0x14($sp)
 	move_ $a0, $s1
 	move_ $a1, $s2
 	li $a2, 0x2
@@ -21893,7 +22033,8 @@ func_215:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -21937,7 +22078,8 @@ func_216:
 	sra $v0, 0x10
 	sw $v0, 0x14($sp)
 	li $v0, 0x6e
-	sw $v0, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v0, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	jal 0x80050c40
 		sra $a2, 0x10
 	lw $v0, -0x1fbc($s0)
@@ -21974,7 +22116,8 @@ func_216:
 	sw $v0, 0x14($sp)
 	sll $a1, 0x10
 	sra $a1, 0x10
-	sw $a1, 0x18($sp);sw  $a1, 0x1c($sp);
+	sw $a1, 0x18($sp)
+	sw $a1, 0x1c($sp)
 	move_ $a1, $v1
 	jal 0x80050c40
 		sra $a2, 0x10
@@ -22009,7 +22152,8 @@ func_216:
 	sra $v0, 0x10
 	sw $v0, 0x14($sp)
 	li $v0, 0x6e
-	sw $v0, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v0, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	sra $a0, 0x10
 	jal 0x80050c40
 		sra $a2, 0x10
@@ -22142,7 +22286,8 @@ func_219:
 	sw $v0, 0x10($sp)
 	lh $v0, 0x2($s0)
 	nop
-	sw $v0, 0x14($sp);sw  $s1, 0x18($sp);
+	sw $v0, 0x14($sp)
+	sw $s1, 0x18($sp)
 	li $a0, 0x1c
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -22317,7 +22462,10 @@ func_221:
 	jal 0x8002ba24
 		nop
 	la_ $v0, 0x8002b900
-	sw $v0, 0x10($sp);sw  $s0, 0x14($sp);sw  $s1, 0x18($sp);sw  $s2, 0x1c($sp);
+	sw $v0, 0x10($sp)
+	sw $s0, 0x14($sp)
+	sw $s1, 0x18($sp)
+	sw $s2, 0x1c($sp)
 	li $v0, 0x1
 	sw $v0, 0x20($sp)
 	move_ $a0, $zr
@@ -22335,7 +22483,11 @@ func_221:
 	jal 0x8002ba24
 		nop
 	la_ $v0, 0x8002b900
-	sw $v0, 0x10($sp);sw  $s0, 0x14($sp);sw  $s1, 0x18($sp);sw  $s2, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $s0, 0x14($sp)
+	sw $s1, 0x18($sp)
+	sw $s2, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -24990,7 +25142,8 @@ func_238:
 	lui $s1, 0x8001
 	lw $v1, 0xc9c($s1)
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25006,7 +25159,9 @@ func_238:
 	jal f8
 		nop
 	la_ $v1, 0x801eee90
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25026,7 +25181,8 @@ func_238:
 	sw $v1, 0x14($sp)
 	lw $v1, 0xc9c($s1)
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25087,7 +25243,8 @@ func_239:
 	la_ $v1, 0x8001b248
 	sw $v1, 0x10($sp)
 	addiu $v1, $sp, 0x20
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
 	li $v0, 0x81
 	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
@@ -25236,7 +25393,8 @@ func_240:
 	jal 0x80014a00
 		li $a0, 0x1b
 	la_ $v0, 0x80022b98
-	sw $v0, 0x10($sp);sw  $s3, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $s3, 0x14($sp)
 	li $a0, 0x1b
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25371,7 +25529,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25385,7 +25544,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801ebafc
-	sw $v1, 0x10($sp);sw  $s0, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $s0, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25412,7 +25575,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25428,7 +25592,10 @@ func_242:
 	la_ $v1, 0x801f00f4
 	sw $v1, 0x10($sp)
 	li $v1, 0x1
-	sw $v1, 0x14($sp);sw  $v1, 0x18($sp);sw  $v0, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x14($sp)
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25447,7 +25614,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25461,7 +25629,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801e4d80
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25478,7 +25650,10 @@ func_242:
 	la_ $v1, 0x801ebafc
 	sw $v1, 0x10($sp)
 	li $v1, 0xff
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25494,7 +25669,11 @@ func_242:
 	jal 0x8002fac8
 		nop
 	la_ $v0, 0x8002f4f4
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25513,7 +25692,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25538,7 +25718,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801f00f4
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $zr, 0x18($sp);sw  $v0, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $v0, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25550,7 +25734,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801e4d80
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25577,7 +25765,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25589,7 +25778,11 @@ func_242:
 	jal 0x80014c08
 		li $a0, 0x2
 	la_ $v0, 0x801e8e88
-	sw $v0, 0x10($sp);sw  $s0, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $s0, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25611,7 +25804,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25625,7 +25819,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801e4d80
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25649,7 +25847,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25663,7 +25862,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801e8c04
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25689,7 +25892,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25703,9 +25907,12 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801f00f4
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
 	li $v1, 0x1
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25724,7 +25931,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25738,7 +25946,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801e4d80
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25762,7 +25974,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25776,7 +25989,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801e4b34
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25802,7 +26019,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25816,9 +26034,12 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801f00f4
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
 	li $v1, 0x1
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25837,7 +26058,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25851,7 +26073,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801e4d80
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25878,7 +26104,8 @@ func_242:
 	lui $s1, 0x8001
 	lw $v1, 0xc9c($s1)
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25892,7 +26119,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801e8c04
-	sw $v1, 0x10($sp);sw  $s2, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $s2, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25910,7 +26141,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lw $v1, 0xc9c($s1)
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25944,7 +26176,8 @@ func_242:
 	lui $s1, 0x8001
 	lw $v1, 0xc9c($s1)
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25958,9 +26191,12 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801e4b34
-	sw $v1, 0x10($sp);sw  $s2, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x10($sp)
+	sw $s2, 0x14($sp)
+	sw $v0, 0x18($sp)
 	li $v0, 0x1
-	sw $v0, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -25978,7 +26214,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lw $v1, 0xc9c($s1)
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -26012,7 +26249,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -26026,7 +26264,11 @@ func_242:
 	lui $v0, %hi(0x801ea2f8)
 .0x8002f578:
 	addiu $v0, %lo(0x801ea2f8)
-	sw $v0, 0x10($sp);sw  $s1, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $s1, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -26059,7 +26301,11 @@ func_242:
 	jal 0x8002f920
 		li $a3, 0x380
 	la_ $v0, 0x801e6454
-	sw $v0, 0x10($sp);sw  $s1, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $s1, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -26078,7 +26324,8 @@ func_242:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -26092,7 +26339,11 @@ func_242:
 	jal f8
 		nop
 	la_ $v1, 0x801e4d80
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -26124,7 +26375,11 @@ func_242:
 	bnez $s0, .0x8002f774
 		lui $v0, 0x801f
 	addiu $v0, -0x4d18
-	sw $v0, 0x10($sp);sw  $s1, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $s1, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -26189,7 +26444,10 @@ func_244:
 	sh $v0, 0x10($s1)
 	li $v0, 0xf0
 	sh $v0, 0x12($s1)
-	sh $zr, 0x20($sp);sh  $zr, 0x22($sp);sh  $zr, 0x24($sp);sh  $zr, 0x26($sp);
+	sh $zr, 0x20($sp)
+	sh $zr, 0x22($sp)
+	sh $zr, 0x24($sp)
+	sh $zr, 0x26($sp)
 	addu $a0, $s0, $s3
 	jal 0x80067a34
 		addiu $a1, $sp, 0x20
@@ -26202,7 +26460,8 @@ func_244:
 	la_ $v1, 0x8001b248
 	sw $v1, 0x10($sp)
 	la_ $v1, S_0x800108a4
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
 	li $v0, -0x2
 	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
@@ -26775,7 +27034,8 @@ func_250:
 	nop
 	mult $a1, $v0
 	mflo $a1
-	nop; nop
+	nop
+	nop
 	mult $a1, $v0
 	mflo $a1
 	lh $v1, 0x120($a0)
@@ -26822,10 +27082,12 @@ func_251:
 	nop
 	mult $a0, $v0
 	mflo $a0
-	nop; nop
+	nop
+	nop
 	mult $v1, $v0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v1, $v0
 	mflo $v1
 	li $v0, 0x92492493
@@ -26929,7 +27191,8 @@ func_254:
 	nop
 	mult $v1, $v0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v1, $v0
 	mflo $v1
 	li $v0, 0x92492493
@@ -27011,7 +27274,8 @@ func_255:
 	nop
 	mult $v1, $a1
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v1, $a1
 	mflo $v1
 	li $v0, 0x92492493
@@ -27136,7 +27400,8 @@ func_257:
 	sw $v0, 0x18($sp)
 	mult $a2, $a2
 	mflo $a2
-	nop; nop
+	nop
+	nop
 	mult $v1, $v1
 	mflo $v1
 	addu $a2, $v1
@@ -27186,7 +27451,8 @@ func_258:
 	sw $a0, 0x28($sp)
 	mult $t0, $t6
 	mflo $t0
-	nop; nop
+	nop
+	nop
 	mult $v1, $t5
 	mflo $v1
 	addu $t0, $v1
@@ -27197,7 +27463,8 @@ func_258:
 	sra $t0, 0xc
 	mult $t1, $t6
 	mflo $t1
-	nop; nop
+	nop
+	nop
 	mult $a3, $t5
 	mflo $a3
 	addu $t1, $a3
@@ -27244,7 +27511,8 @@ func_259:
 	sw $a0, 0x18($sp)
 	mult $a1, $a1
 	mflo $a1
-	nop; nop
+	nop
+	nop
 	mult $v0, $v0
 	mflo $v0
 	addu $a1, $v0
@@ -27480,7 +27748,8 @@ func_262:
 	sw $v0, 0x18($sp)
 	mult $a2, $a2
 	mflo $a2
-	nop; nop
+	nop
+	nop
 	mult $v1, $v1
 	mflo $v1
 	addu $a2, $v1
@@ -27648,7 +27917,10 @@ func_264:
 	lh $a3, 0xde($s0)
 	lh $v0, 0xe0($s0)
 	nop
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
 	lw $a1, 0x98($s0)
 	jal 0x8001efdc
 		addiu $a0, $s0, 0x4c
@@ -27833,7 +28105,8 @@ func_265:
 	nop
 	mult $v0, $v1
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $v1
 	mflo $v0
 	bgez $v0, .12
@@ -27856,7 +28129,8 @@ func_265:
 	nop
 	mult $v0, $v1
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $v1
 	mflo $v0
 	bgez $v0, .13
@@ -27879,7 +28153,8 @@ func_265:
 	nop
 	mult $v0, $v1
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $v1
 	mflo $v0
 	bgez $v0, .14
@@ -28510,7 +28785,8 @@ func_268:
 	nop
 	mult $v1, $a0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v1, $s4
 	mfhi $a0
 	sra $a0, 0x5
@@ -28544,7 +28820,8 @@ func_268:
 	nop
 	mult $v1, $a0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v1, $s4
 	mfhi $a0
 	sra $a0, 0x5
@@ -28569,7 +28846,8 @@ func_268:
 	nop
 	mult $v1, $v0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v1, $s4
 	mfhi $v0
 	sra $v0, 0x5
@@ -28598,7 +28876,8 @@ func_268:
 	nop
 	mult $v1, $a0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v1, $s4
 	mfhi $a0
 	sra $a0, 0x5
@@ -28633,7 +28912,8 @@ func_268:
 	nop
 	mult $v1, $a0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v1, $s4
 	mfhi $a0
 	sra $a0, 0x5
@@ -28658,7 +28938,8 @@ func_268:
 	nop
 	mult $v1, $v0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v1, $s4
 	mfhi $v0
 	sra $v0, 0x5
@@ -28788,7 +29069,9 @@ func_268:
 	sw $s2, 0x30($sp)
 	sw $s1, 0x2c($sp)
 	sw $s0, 0x28($sp)
-	sw $a1, 0x54($sp);sw  $a2, 0x58($sp);sw  $a3, 0x5c($sp);
+	sw $a1, 0x54($sp)
+	sw $a2, 0x58($sp)
+	sw $a3, 0x5c($sp)
 	lw $s0, 0x64($sp)
 	sll $a0, 0x10
 	sra $a0, 0x10
@@ -29193,28 +29476,44 @@ func_268:
 	nop
 	beq $v1, $v0, .0x80032630
 		addiu $v0, $s3, 0x10
-	lbu $a1, 0x28($sp);lbu  $a2, 0x29($sp);lbu  $a3, 0x2a($sp);
+	lbu $a1, 0x28($sp)
+	lbu $a2, 0x29($sp)
+	lbu $a3, 0x2a($sp)
 	jal 0x8001e75c
 		move_ $a0, $s0
-	lbu $a1, 0x28($sp);lbu  $a2, 0x29($sp);lbu  $a3, 0x2a($sp);
+	lbu $a1, 0x28($sp)
+	lbu $a2, 0x29($sp)
+	lbu $a3, 0x2a($sp)
 	jal 0x8001e76c
 		move_ $a0, $s0
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e7b8
 		move_ $a0, $s0
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e804
 		move_ $a0, $s0
-	lbu $a1, 0x28($sp);lbu  $a2, 0x29($sp);lbu  $a3, 0x2a($sp);
+	lbu $a1, 0x28($sp)
+	lbu $a2, 0x29($sp)
+	lbu $a3, 0x2a($sp)
 	jal 0x8001e75c
 		move_ $a0, $s2
-	lbu $a1, 0x28($sp);lbu  $a2, 0x29($sp);lbu  $a3, 0x2a($sp);
+	lbu $a1, 0x28($sp)
+	lbu $a2, 0x29($sp)
+	lbu $a3, 0x2a($sp)
 	jal 0x8001e76c
 		move_ $a0, $s2
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e7b8
 		move_ $a0, $s2
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e804
 		move_ $a0, $s2
 	addiu $v0, $s3, 0x10
@@ -29243,28 +29542,44 @@ func_268:
 	nop
 	beq $v1, $v0, .0x80032730
 		addiu $s4, 0x8
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e75c
 		move_ $a0, $s0
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e76c
 		move_ $a0, $s0
-	lbu $a1, 0x38($sp);lbu  $a2, 0x39($sp);lbu  $a3, 0x3a($sp);
+	lbu $a1, 0x38($sp)
+	lbu $a2, 0x39($sp)
+	lbu $a3, 0x3a($sp)
 	jal 0x8001e7b8
 		move_ $a0, $s0
-	lbu $a1, 0x38($sp);lbu  $a2, 0x39($sp);lbu  $a3, 0x3a($sp);
+	lbu $a1, 0x38($sp)
+	lbu $a2, 0x39($sp)
+	lbu $a3, 0x3a($sp)
 	jal 0x8001e804
 		move_ $a0, $s0
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e75c
 		move_ $a0, $s2
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e76c
 		move_ $a0, $s2
-	lbu $a1, 0x38($sp);lbu  $a2, 0x39($sp);lbu  $a3, 0x3a($sp);
+	lbu $a1, 0x38($sp)
+	lbu $a2, 0x39($sp)
+	lbu $a3, 0x3a($sp)
 	jal 0x8001e7b8
 		move_ $a0, $s2
-	lbu $a1, 0x38($sp);lbu  $a2, 0x39($sp);lbu  $a3, 0x3a($sp);
+	lbu $a1, 0x38($sp)
+	lbu $a2, 0x39($sp)
+	lbu $a3, 0x3a($sp)
 	jal 0x8001e804
 		move_ $a0, $s2
 .0x80032730:
@@ -29342,28 +29657,44 @@ func_268:
 	nop
 	beq $v1, $v0, .0x800328f0
 		addiu $v0, $s3, 0x18
-	lbu $a1, 0x28($sp);lbu  $a2, 0x29($sp);lbu  $a3, 0x2a($sp);
+	lbu $a1, 0x28($sp)
+	lbu $a2, 0x29($sp)
+	lbu $a3, 0x2a($sp)
 	jal 0x8001e75c
 		move_ $a0, $s0
-	lbu $a1, 0x28($sp);lbu  $a2, 0x29($sp);lbu  $a3, 0x2a($sp);
+	lbu $a1, 0x28($sp)
+	lbu $a2, 0x29($sp)
+	lbu $a3, 0x2a($sp)
 	jal 0x8001e76c
 		move_ $a0, $s0
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e7b8
 		move_ $a0, $s0
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e804
 		move_ $a0, $s0
-	lbu $a1, 0x28($sp);lbu  $a2, 0x29($sp);lbu  $a3, 0x2a($sp);
+	lbu $a1, 0x28($sp)
+	lbu $a2, 0x29($sp)
+	lbu $a3, 0x2a($sp)
 	jal 0x8001e75c
 		move_ $a0, $s2
-	lbu $a1, 0x28($sp);lbu  $a2, 0x29($sp);lbu  $a3, 0x2a($sp);
+	lbu $a1, 0x28($sp)
+	lbu $a2, 0x29($sp)
+	lbu $a3, 0x2a($sp)
 	jal 0x8001e76c
 		move_ $a0, $s2
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e7b8
 		move_ $a0, $s2
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e804
 		move_ $a0, $s2
 	addiu $v0, $s3, 0x18
@@ -29401,28 +29732,44 @@ func_268:
 	nop
 	beq $v1, $v0, .0x80032a18
 		addiu $v0, $s3, 0x28
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e75c
 		move_ $a0, $s0
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e76c
 		move_ $a0, $s0
-	lbu $a1, 0x38($sp);lbu  $a2, 0x39($sp);lbu  $a3, 0x3a($sp);
+	lbu $a1, 0x38($sp)
+	lbu $a2, 0x39($sp)
+	lbu $a3, 0x3a($sp)
 	jal 0x8001e7b8
 		move_ $a0, $s0
-	lbu $a1, 0x38($sp);lbu  $a2, 0x39($sp);lbu  $a3, 0x3a($sp);
+	lbu $a1, 0x38($sp)
+	lbu $a2, 0x39($sp)
+	lbu $a3, 0x3a($sp)
 	jal 0x8001e804
 		move_ $a0, $s0
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e75c
 		move_ $a0, $s2
-	lbu $a1, 0x30($sp);lbu  $a2, 0x31($sp);lbu  $a3, 0x32($sp);
+	lbu $a1, 0x30($sp)
+	lbu $a2, 0x31($sp)
+	lbu $a3, 0x32($sp)
 	jal 0x8001e76c
 		move_ $a0, $s2
-	lbu $a1, 0x38($sp);lbu  $a2, 0x39($sp);lbu  $a3, 0x3a($sp);
+	lbu $a1, 0x38($sp)
+	lbu $a2, 0x39($sp)
+	lbu $a3, 0x3a($sp)
 	jal 0x8001e7b8
 		move_ $a0, $s2
-	lbu $a1, 0x38($sp);lbu  $a2, 0x39($sp);lbu  $a3, 0x3a($sp);
+	lbu $a1, 0x38($sp)
+	lbu $a2, 0x39($sp)
+	lbu $a3, 0x3a($sp)
 	jal 0x8001e804
 		move_ $a0, $s2
 	addiu $v0, $s3, 0x28
@@ -29777,7 +30124,10 @@ func_268:
 	lbu $v0, 0x2($fp)
 	nop
 	sb $v0, 0xe($s0)
-	sw $zr, 0x10($sp);sw  $zr, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);
+	sw $zr, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
 	move_ $a0, $s1
 	lw $a1, 0x13c($s2)
 	move_ $a2, $zr
@@ -31192,7 +31542,10 @@ func_271:
 	la_ $v1, 0x80049ef8
 	sw $v1, 0x10($sp)
 	li $v1, 0x2
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -36529,7 +36882,8 @@ func_275:
 	move_ $v1, $v0
 	lbu $v0, 0x132($v1)
 	nop
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
 	subu $a0, $s1
 	subu $a1, $a2, $a1
 	addiu $a2, $sp, 0x18
@@ -37257,7 +37611,8 @@ func_276:
 	jr $v0
 		nop
 	addiu $v0, $sp, 0x64
-	sw $v0, 0x90($sp);sw  $v0, 0x94($sp);
+	sw $v0, 0x90($sp)
+	sw $v0, 0x94($sp)
 	sw $v0, 0xac($sp)
 	j .19
 		sw $v0, 0xb0($sp)
@@ -37394,7 +37749,8 @@ func_276:
 	lh $a0, 0x10($s4)
 	lh $a1, 0x12($s4)
 	li $s0, 0x7
-	sw $s0, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s0, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x7a
 	addiu $a1, 0x17
 	lw $a3, 0x90($sp)
@@ -37406,7 +37762,8 @@ func_276:
 		addiu $a1, $s1, 0x1108
 	lh $a0, 0x10($s4)
 	lh $a1, 0x12($s4)
-	sw $s0, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s0, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x7c
 	addiu $a1, 0x2d
 	lw $a3, 0x94($sp)
@@ -37475,7 +37832,8 @@ func_276:
 		sll $a2, 0x1
 	lh $a0, 0x10($s4)
 	lh $a1, 0x12($s4)
-	sw $s7, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s7, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x56
 	addiu $a1, 0xe
 	lw $a3, 0x98($sp)
@@ -37512,7 +37870,8 @@ func_276:
 	addiu $v0, $s2, 0x3
 	sll $v0, 0x2
 	addu $v0, $sp, $v0
-	sw $s7, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s7, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x56
 	addiu $a1, 0x1a
 	lw $a3, 0x90($v0)
@@ -37572,7 +37931,8 @@ func_276:
 	addiu $v0, $s2, 0x2
 	sll $v0, 0x2
 	addu $v0, $sp, $v0
-	sw $s7, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s7, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x56
 	addiu $a1, $s0, 0xe
 	lw $a3, 0x90($v0)
@@ -37592,7 +37952,8 @@ func_276:
 	lh $a0, 0x10($s4)
 	lh $a1, 0x12($s4)
 	li $v0, 0x7
-	sw $v0, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x56
 	addiu $a1, 0xe
 	lw $a3, 0x98($sp)
@@ -37619,7 +37980,8 @@ func_276:
 	sll $v0, 0x2
 	addu $v1, $sp, $v0
 	li $v0, 0x7
-	sw $v0, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x56
 	addiu $a1, 0x1a
 	lw $a3, 0x90($v1)
@@ -37689,7 +38051,8 @@ func_276:
 	addiu $v0, $s2, 0x2
 	sll $v0, 0x2
 	addu $v0, $sp, $v0
-	sw $s7, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s7, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x56
 	addiu $a1, $s0, 0xe
 	lw $a3, 0x90($v0)
@@ -37730,7 +38093,8 @@ func_276:
 	lh $a0, 0x10($s4)
 	lh $a1, 0x12($s4)
 	li $v0, 0x7
-	sw $v0, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x56
 	addiu $a1, 0xe
 	lw $a3, 0x98($sp)
@@ -37757,7 +38121,8 @@ func_276:
 	sll $v0, 0x2
 	addu $v1, $sp, $v0
 	li $v0, 0x7
-	sw $v0, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x56
 	addiu $a1, 0x1a
 	lw $a3, 0x90($v1)
@@ -37786,7 +38151,8 @@ func_276:
 	addu $v1, $v0
 	lw $v0, 0xa8($sp)
 	nop
-	sw $v0, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x44
 	addiu $a1, 0x40
 	lw $a2, ($v1)
@@ -37854,7 +38220,8 @@ func_276:
 	sll $a2, 0x2
 	addu $a2, $s2
 	addiu $a2, 0xe7
-	sw $s0, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s0, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x8e
 	addu $a1, $v0, $a1
 	lw $a3, 0xac($sp)
@@ -37940,7 +38307,8 @@ func_276:
 	sll $a2, 0x2
 	addu $a2, $s2
 	addiu $a2, 0x8d
-	sw $s1, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s1, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x8e
 	addu $a1, $v0, $a1
 	lw $a3, 0xb0($sp)
@@ -38013,7 +38381,8 @@ func_276:
 	sll $a2, 0x2
 	addu $a2, $s2
 	addiu $a2, 0x1b
-	sw $s1, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s1, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0x8e
 	addu $a1, $v0, $a1
 	lw $a3, 0xb4($sp)
@@ -38086,7 +38455,8 @@ func_276:
 	nop
 	andi $a3, 0xf
 	addiu $s1, $sp, 0x60
-	sw $s1, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s1, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0xa4
 	addiu $a1, 0x2
 	move_ $a2, $zr
@@ -38099,7 +38469,8 @@ func_276:
 	lw $a3, 0x178($v0)
 	nop
 	srl $a3, 0x13
-	sw $s1, 0x10($sp);sw  $fp, 0x14($sp);
+	sw $s1, 0x10($sp)
+	sw $fp, 0x14($sp)
 	addiu $a0, 0xb6
 	addiu $a1, 0x2
 	move_ $a2, $zr
@@ -40773,7 +41144,8 @@ func_278:
 	andi $v1, 0xffff
 	sw $v1, 0x10($sp)
 	li $v0, 0xc
-	sw $v0, 0x14($sp);sw  $s1, 0x18($sp);
+	sw $v0, 0x14($sp)
+	sw $s1, 0x18($sp)
 	addiu $a0, 0x1
 	addiu $a1, 0x1e
 	addiu $a2, $sp, 0x28
@@ -41945,7 +42317,8 @@ func_290:
 	jal 0x80024460
 		move_ $a0, $zr
 	la_ $v0, 0x800250f4
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
 	li $a0, 0x19
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -41996,7 +42369,11 @@ func_291:
 	nop
 	sw $v0, 0x58($v1)
 	la_ $v0, 0x80034260
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	li $a0, 0x1e
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -42011,7 +42388,11 @@ func_291:
 	bnez $v0, .0
 		lui $v0, 0x8004
 	la_ $v0, 0x80038f68
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -42020,7 +42401,11 @@ func_291:
 	lui $v0, 0x8004
 .0:
 	addiu $v0, 0x1e00
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -42040,7 +42425,11 @@ func_291:
 	lui $v0, 0x8003
 .2:
 	addiu $v0, -0x1fcc
-	sw $v0, 0x10($sp);sw  $a0, 0x14($sp);sw  $v1, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $a0, 0x14($sp)
+	sw $v1, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -42464,11 +42853,13 @@ func_292:
 	bne $s2, $v0, .0x8003f1cc
 		li $v0, 0x78
 	la_ $v0, 0x8001f094
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
 	li $v0, 0x1
 	sw $v0, 0x18($sp)
 	li $v0, 0x6
-	sw $v0, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -42507,11 +42898,13 @@ func_292:
 	addiu $v0, 0x1
 	sb $v0, 0x810($v1)
 	la_ $v0, 0x8001f094
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
 	li $v0, 0x2
 	sw $v0, 0x18($sp)
 	li $v0, 0x4
-	sw $v0, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -42663,12 +43056,15 @@ func_292:
 	jal 0x8002f7a8
 		nop
 	la_ $v0, 0x801f2a40
-	sw $v0, 0x10($sp);sw  $s5, 0x14($sp);sw  $s2, 0x18($sp);
+	sw $v0, 0x10($sp)
+	sw $s5, 0x14($sp)
+	sw $s2, 0x18($sp)
 	lwi $v0, 0x8006e054
 	nop
 	lbu $v0, 0x4($v0)
 	nop
-	sw $v0, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -44941,7 +45337,8 @@ func_310:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -44957,7 +45354,8 @@ func_310:
 	la_ $v1, 0x8001b144
 	sw $v1, 0x10($sp)
 	la_ $v1, S_0x800113d0
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45036,7 +45434,10 @@ func_310:
 	la_ $v1, 0x8003ec4c
 	sw $v1, 0x10($sp)
 	li $v1, 0x1
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45092,7 +45493,8 @@ func_310:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45109,7 +45511,11 @@ func_310:
 	jal f8
 		sb $s0, 0x1a6($v0)
 	la_ $v1, 0x801e4d80
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45131,7 +45537,8 @@ func_310:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45147,7 +45554,8 @@ func_310:
 	la_ $v1, 0x8001b144
 	sw $v1, 0x10($sp)
 	la_ $v1, S_0x800113d0
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45162,7 +45570,11 @@ func_310:
 	jal f8
 		sb $zr, 0x1022($v1)
 	la_ $v1, 0x8003ec4c
-	sw $v1, 0x10($sp);sw  $zr, 0x14($sp);sw  $v0, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $v0, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45240,7 +45652,8 @@ func_310:
 	sw $v1, 0x14($sp)
 	lwi $v1, S_0x80010c9c
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45254,7 +45667,11 @@ func_310:
 	jal f8
 		nop
 	la_ $v1, 0x801eb2e8
-	sw $v1, 0x10($sp);sw  $v0, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v1, 0x10($sp)
+	sw $v0, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45284,7 +45701,8 @@ func_310:
 	la_ $v1, 0x8001b144
 	sw $v1, 0x10($sp)
 	la_ $v1, S_0x80011400
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45495,7 +45913,8 @@ func_310:
 	la_ $v1, 0x8001b144
 	sw $v1, 0x10($sp)
 	addiu $v1, $sp, 0x20
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45591,7 +46010,8 @@ func_310:
 	la_ $v1, 0x8001b144
 	sw $v1, 0x10($sp)
 	la_ $v1, S_0x80011420
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -45643,7 +46063,8 @@ func_310:
 	la_ $v1, 0x8001b144
 	sw $v1, 0x10($sp)
 	la_ $v1, S_0x80011430
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -47360,7 +47781,9 @@ func_317:
 	li $v0, -0x1
 	beq $v1, $v0, .8
 		nop
-	sb $a0, 0x38($sp);sb  $a0, 0x39($sp);sb  $a0, 0x3a($sp);
+	sb $a0, 0x38($sp)
+	sb $a0, 0x39($sp)
+	sb $a0, 0x3a($sp)
 	jal 0x800656a8
 		addiu $a0, $sp, 0x18
 	lui $s1, 0x8008
@@ -47583,7 +48006,9 @@ func_318:
 	li $v0, -0x1
 	beq $v1, $v0, .8
 		move_ $s3, $a0
-	sb $s3, 0x38($sp);sb  $s3, 0x39($sp);sb  $s3, 0x3a($sp);
+	sb $s3, 0x38($sp)
+	sb $s3, 0x39($sp)
+	sb $s3, 0x3a($sp)
 	jal 0x800656a8
 		addiu $a0, $sp, 0x18
 	lui $s1, 0x8008
@@ -48107,7 +48532,8 @@ func_322:
 	addiu $v0, 0x1fff
 .1:
 	sra $v0, 0xd
-	sh $v0, 0x52($sp);sh  $zr, 0x54($sp);
+	sh $v0, 0x52($sp)
+	sh $zr, 0x54($sp)
 	lw $v1, 0x30($s0)
 	nop
 	sll $v0, $v1, 0x2
@@ -48130,7 +48556,8 @@ func_322:
 	addiu $v0, 0x1fff
 .3:
 	sra $v0, 0xd
-	sh $v0, 0x5a($sp);sh  $zr, 0x5c($sp);
+	sh $v0, 0x5a($sp)
+	sh $zr, 0x5c($sp)
 	lw $v1, 0x30($s0)
 	nop
 	sll $v0, $v1, 0x2
@@ -48153,7 +48580,8 @@ func_322:
 	addiu $v0, 0x1fff
 .5:
 	sra $v0, 0xd
-	sh $v0, 0x62($sp);sh  $zr, 0x64($sp);
+	sh $v0, 0x62($sp)
+	sh $zr, 0x64($sp)
 	lw $v1, 0x30($s0)
 	nop
 	sll $v0, $v1, 0x2
@@ -48175,7 +48603,8 @@ func_322:
 	addiu $v0, 0x1fff
 .7:
 	sra $v0, 0xd
-	sh $v0, 0x6a($sp);sh  $zr, 0x6c($sp);
+	sh $v0, 0x6a($sp)
+	sh $zr, 0x6c($sp)
 	addiu $v0, $sp, 0x70
 	sw $v0, 0x10($sp)
 	addiu $v0, $sp, 0x74
@@ -48291,7 +48720,8 @@ func_323:
 	addiu $v0, 0x1fff
 .1:
 	sra $v0, 0xd
-	sh $v0, 0x52($sp);sh  $zr, 0x54($sp);
+	sh $v0, 0x52($sp)
+	sh $zr, 0x54($sp)
 	lw $v1, 0x30($s6)
 	nop
 	sll $v0, $v1, 0x2
@@ -48314,7 +48744,8 @@ func_323:
 	addiu $v0, 0x1fff
 .3:
 	sra $v0, 0xd
-	sh $v0, 0x5a($sp);sh  $zr, 0x5c($sp);
+	sh $v0, 0x5a($sp)
+	sh $zr, 0x5c($sp)
 	lw $v1, 0x30($s6)
 	nop
 	sll $v0, $v1, 0x2
@@ -48337,7 +48768,8 @@ func_323:
 	addiu $v0, 0x1fff
 .5:
 	sra $v0, 0xd
-	sh $v0, 0x62($sp);sh  $zr, 0x64($sp);
+	sh $v0, 0x62($sp)
+	sh $zr, 0x64($sp)
 	lw $v1, 0x30($s6)
 	nop
 	sll $v0, $v1, 0x2
@@ -48359,7 +48791,8 @@ func_323:
 	addiu $v0, 0x1fff
 .7:
 	sra $v0, 0xd
-	sh $v0, 0x6a($sp);sh  $zr, 0x6c($sp);
+	sh $v0, 0x6a($sp)
+	sh $zr, 0x6c($sp)
 	sw $s6, 0xb0($sp)
 	addiu $v0, $s6, 0x4
 	sw $v0, 0xb4($sp)
@@ -48395,9 +48828,15 @@ func_323:
 		move_ $a3, $fp
 	bgtz $v0, .8
 		sw $v0, 0xac($sp)
-	sw $s5, 0x10($sp);sw  $s4, 0x14($sp);sw  $s3, 0x18($sp);sw  $s2, 0x1c($sp);sw  $s1, 0x20($sp);sw  $s0, 0x24($sp);
+	sw $s5, 0x10($sp)
+	sw $s4, 0x14($sp)
+	sw $s3, 0x18($sp)
+	sw $s2, 0x1c($sp)
+	sw $s1, 0x20($sp)
+	sw $s0, 0x24($sp)
 	move_ $a0, $s7
-	lw $a1, 0xc4($sp);lw  $a3, 0xc8($sp);
+	lw $a1, 0xc4($sp)
+	lw $a3, 0xc8($sp)
 	jal 0x8005c5f4
 		move_ $a2, $fp
 	sw $v0, 0xa4($sp)
@@ -48738,7 +49177,8 @@ func_323:
 	addiu $v0, 0xfff
 .19:
 	sra $v0, 0xc
-	sh $v0, 0x72($sp);sh  $zr, 0x74($sp);
+	sh $v0, 0x72($sp)
+	sh $zr, 0x74($sp)
 	lw $v1, 0x30($s6)
 	nop
 	sll $v0, $v1, 0x3
@@ -48761,7 +49201,8 @@ func_323:
 	addiu $v0, 0xfff
 .21:
 	sra $v0, 0xc
-	sh $v0, 0x7a($sp);sh  $zr, 0x7c($sp);
+	sh $v0, 0x7a($sp)
+	sh $zr, 0x7c($sp)
 	lw $v1, 0x30($s6)
 	nop
 	sll $v0, $v1, 0x3
@@ -48783,7 +49224,8 @@ func_323:
 	addiu $v0, 0xfff
 .23:
 	sra $v0, 0xc
-	sh $v0, 0x82($sp);sh  $zr, 0x84($sp);
+	sh $v0, 0x82($sp)
+	sh $zr, 0x84($sp)
 	lw $v1, 0x30($s6)
 	nop
 	sll $v0, $v1, 0x3
@@ -48804,7 +49246,8 @@ func_323:
 	addiu $v0, 0xfff
 .25:
 	sra $v0, 0xc
-	sh $v0, 0x8a($sp);sh  $zr, 0x8c($sp);
+	sh $v0, 0x8a($sp)
+	sh $zr, 0x8c($sp)
 	lbu $v1, 0x16($s6)
 	nop
 	addiu $a1, $v1, 0x2
@@ -48908,7 +49351,12 @@ func_323:
 	and $v0, $a2
 	or $v0, $a0
 	sw $v0, 0x70($v1)
-	sw $s5, 0x10($sp);sw  $s4, 0x14($sp);sw  $s3, 0x18($sp);sw  $s2, 0x1c($sp);sw  $s1, 0x20($sp);sw  $s0, 0x24($sp);
+	sw $s5, 0x10($sp)
+	sw $s4, 0x14($sp)
+	sw $s3, 0x18($sp)
+	sw $s2, 0x1c($sp)
+	sw $s1, 0x20($sp)
+	sw $s0, 0x24($sp)
 	addiu $a0, $sp, 0x50
 	addiu $a1, $sp, 0x58
 	addiu $a2, $sp, 0x60
@@ -48928,7 +49376,8 @@ func_323:
 	li $s7, 0xcc
 .26:
 	li $t4, 0x9f
-	sw $t2, 0xbc($sp);sw  $t4, 0xc0($sp);
+	sw $t2, 0xbc($sp)
+	sw $t4, 0xc0($sp)
 	lhu $v0, 0x90($sp)
 	nop
 	sh $v0, 0x34($s6)
@@ -49033,21 +49482,25 @@ func_324:
 	sh $zr, 0x30($sp)
 	lhu $v0, 0x2($s2)
 	nop
-	sh $v0, 0x32($sp);sh  $zr, 0x34($sp);
+	sh $v0, 0x32($sp)
+	sh $zr, 0x34($sp)
 	addiu $s1, $sp, 0x30
 	move_ $a0, $s1
 	jal 0x8005c934
 		move_ $a1, $s0
 	lhu $v0, ($s2)
 	nop
-	sh $v0, 0x30($sp);sh  $zr, 0x32($sp);sh  $zr, 0x34($sp);
+	sh $v0, 0x30($sp)
+	sh $zr, 0x32($sp)
+	sh $zr, 0x34($sp)
 	move_ $a0, $s1
 	jal 0x8005c934
 		addiu $a1, $sp, 0x10
 	move_ $a0, $s0
 	jal 0x8005bff4
 		addiu $a1, $sp, 0x10
-	sh $zr, 0x30($sp);sh  $zr, 0x32($sp);
+	sh $zr, 0x30($sp)
+	sh $zr, 0x32($sp)
 	lhu $v0, 0x4($s2)
 	nop
 	sh $v0, 0x34($sp)
@@ -49088,7 +49541,8 @@ func_325:
 	la_ $v1, 0x8001b248
 	sw $v1, 0x10($sp)
 	la_ $v1, S_0x80011958
-	sw $v1, 0x14($sp);sw  $v0, 0x18($sp);
+	sw $v1, 0x14($sp)
+	sw $v0, 0x18($sp)
 	li $v0, -0x2
 	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
@@ -53596,7 +54050,8 @@ func_347:
 	andi $v0, 0xfffe
 	sh $v0, 0x1e($sp)
 	li $v0, 0x28
-	sh $v0, 0x18($sp);sh  $v0, 0x1a($sp);
+	sh $v0, 0x18($sp)
+	sh $v0, 0x1a($sp)
 	lui $a0, 0x801e
 	j 0x80049c7c
 		addiu $a0, -0x7b50
@@ -53905,7 +54360,9 @@ func_347:
 	sh $v0, 0x26($sp)
 	sw $zr, 0x10($sp)
 	li $s5, 0x77
-	sw $s5, 0x14($sp);sw  $s6, 0x18($sp);sw  $s4, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s6, 0x18($sp)
+	sw $s4, 0x1c($sp)
 	lui $s0, 0x801e
 	addiu $a0, $s0, -0x7b50
 	addiu $a1, $sp, 0x20
@@ -53934,7 +54391,10 @@ func_347:
 	addu $v0, $v1
 	andi $v0, 0xfffe
 	sh $v0, 0x26($sp)
-	sw $zr, 0x10($sp);sw  $s5, 0x14($sp);sw  $s6, 0x18($sp);sw  $s4, 0x1c($sp);
+	sw $zr, 0x10($sp)
+	sw $s5, 0x14($sp)
+	sw $s6, 0x18($sp)
+	sw $s4, 0x1c($sp)
 	addiu $a0, $s0, 0x44
 	addiu $a1, $sp, 0x20
 	li $a2, -0x1
@@ -53976,7 +54436,9 @@ func_347:
 	sh $v0, 0x22($sp)
 	sw $s7, 0x10($sp)
 	li $v0, 0x15
-	sw $v0, 0x14($sp);sw  $s6, 0x18($sp);sw  $s7, 0x1c($sp);
+	sw $v0, 0x14($sp)
+	sw $s6, 0x18($sp)
+	sw $s7, 0x1c($sp)
 	lui $s0, 0x801e
 	addiu $a0, $s0, -0x7ba0
 	addiu $a1, $sp, 0x20
@@ -54083,7 +54545,8 @@ func_347:
 	la_ $v0, 0x8002b3ec
 	sw $v0, 0x10($sp)
 	li $v0, 0x1
-	sw $v0, 0x14($sp);sw  $s2, 0x18($sp);
+	sw $v0, 0x14($sp)
+	sw $s2, 0x18($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -54097,7 +54560,11 @@ func_347:
 	jal 0x8001b90c
 		move_ $a2, $zr
 	la_ $v0, 0x80015328
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);sw  $zr, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $zr, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	li $a0, 0x1f
 	move_ $a1, $zr
 	move_ $a2, $zr
@@ -54110,7 +54577,10 @@ func_347:
 .0x8004a3fc:
 	sw $s1, 0x10($sp)
 	li $v0, 0x8
-	sw $v0, 0x14($sp);sw  $s2, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x14($sp)
+	sw $s2, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -54171,7 +54641,8 @@ func_347:
 	lui $s1, 0x8001
 	lw $v1, 0xc9c($s1)
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -54183,7 +54654,11 @@ func_347:
 	jal 0x80014c08
 		li $a0, 0x2
 	la_ $v0, 0x801df47c
-	sw $v0, 0x10($sp);sw  $s2, 0x14($sp);sw  $s3, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $s2, 0x14($sp)
+	sw $s3, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -54203,7 +54678,8 @@ func_347:
 	sw $v1, 0x14($sp)
 	lw $v1, 0xc9c($s1)
 	nop
-	sw $v1, 0x18($sp);sw  $v0, 0x1c($sp);
+	sw $v1, 0x18($sp)
+	sw $v0, 0x1c($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -54215,7 +54691,11 @@ func_347:
 	jal 0x80014c08
 		li $a0, 0x2
 	la_ $v0, 0x801e4d80
-	sw $v0, 0x10($sp);sw  $zr, 0x14($sp);sw  $s2, 0x18($sp);sw  $zr, 0x1c($sp);sw  $zr, 0x20($sp);
+	sw $v0, 0x10($sp)
+	sw $zr, 0x14($sp)
+	sw $s2, 0x18($sp)
+	sw $zr, 0x1c($sp)
+	sw $zr, 0x20($sp)
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
@@ -54273,7 +54753,9 @@ func_348:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_349:
 	move_ $a2, $zr
 	bnez $a0, .0
@@ -54332,7 +54814,8 @@ func_349:
 .9:
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_350:
 	addiu $sp, -0x18
 	li $v0, 0x21
@@ -54361,7 +54844,9 @@ func_350:
 	move_ $v0, $zr
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_351:
 	addiu $sp, -0x38
 	sw $s0, 0x18($sp)
@@ -54462,7 +54947,9 @@ func_351:
 	lw $s0, 0x18($sp)
 	jr $ra
 		addiu $sp, 0x38
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_352:
 	addiu $sp, -0x20
 	sw $s0, 0x10($sp)
@@ -54804,7 +55291,10 @@ func_353:
 	jr $ra
 		addiu $sp, 0x20
 func_354:
-	sw $a0, 0x0($sp);sw  $a1, 0x4($sp);sw  $a2, 0x8($sp);sw  $a3, 0xc($sp);
+	sw $a0, 0x0($sp)
+	sw $a1, 0x4($sp)
+	sw $a2, 0x8($sp)
+	sw $a3, 0xc($sp)
 	addiu $sp, -0x18
 	sw $s0, 0x10($sp)
 	addiu $s0, $sp, 0x1c
@@ -55149,10 +55639,13 @@ func_360:
 		nop
 	jr $ra
 		addiu $sp, 0x8
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_361:
 	addiu $sp, -0x18
-	sw $s0, 0x10($sp);sw  $ra, 0x14($sp);
+	sw $s0, 0x10($sp)
+	sw $ra, 0x14($sp)
 	jal 0x800565f4
 		move_ $s0, $a0
 	jal 0x8004a9a0
@@ -55223,7 +55716,8 @@ func_362:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_363:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -55234,7 +55728,9 @@ func_363:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	lwi $v0, 0x8006f00c
 	nop
 	bnez $v0, .0x8004b68c
@@ -55733,7 +56229,8 @@ func_365:
 	lw $s0, 0x18($sp)
 	jr $ra
 		addiu $sp, 0x38
-	nop; nop
+	nop
+	nop
 func_366:
 	addu $a3, $a1
 	li $a1, 0x2aaaaaab
@@ -56230,7 +56727,9 @@ func_369:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_370:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -56284,7 +56783,8 @@ func_371:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_372:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -56452,7 +56952,9 @@ func_373:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0xa0
 	move_ $a3, $a0
 	move_ $t0, $a1
@@ -56625,7 +57127,8 @@ func_373:
 	andi $v0, $s4, 0xff
 	sw $v0, 0x30($sp)
 	sw $v1, 0x2c($sp)
-	lhu $t3, 0x48($sp);lhu  $a3, 0x4a($sp);
+	lhu $t3, 0x48($sp)
+	lhu $a3, 0x4a($sp)
 	lwl $v0, 0x4f($sp)
 	lwr $v0, 0x4c($sp)
 	lwl $t0, 0x53($sp)
@@ -56850,7 +57353,9 @@ func_373:
 	lw $s0, 0x18($sp)
 	jr $ra
 		addiu $sp, 0x38
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x20
 	sw $s1, 0x14($sp)
 	move_ $s1, $a0
@@ -56893,7 +57398,9 @@ func_373:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x20
 	andi $a2, 0xff
 	sw $s2, 0x18($sp)
@@ -56927,7 +57434,9 @@ func_373:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x28
 	sw $s2, 0x18($sp)
 	move_ $s2, $a0
@@ -57077,7 +57586,9 @@ func_373:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x18
 	sll $a0, 0x10
 	sra $a0, 0x10
@@ -57180,7 +57691,8 @@ func_373:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x28
 	sw $s2, 0x18($sp)
 	sll $s2, $a0, 0x10
@@ -57265,7 +57777,8 @@ func_373:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x28
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x28
 	sw $s2, 0x18($sp)
 	sll $s2, $a0, 0x10
@@ -57359,7 +57872,8 @@ func_373:
 	sw $ra, 0x3c($sp)
 	jal 0x80050a00
 		move_ $a3, $s4
-	lhu $a0, 0x5c($sp);lhu  $a1, 0x5e($sp);
+	lhu $a0, 0x5c($sp)
+	lhu $a1, 0x5e($sp)
 	jal 0x8004d730
 		addiu $a2, $sp, 0x10
 	addiu $a0, $sp, 0x10
@@ -57470,7 +57984,8 @@ func_375:
 	sw $ra, 0x3c($sp)
 	jal 0x80050a00
 		move_ $a3, $s4
-	lhu $a0, 0x5c($sp);lhu  $a1, 0x5e($sp);
+	lhu $a0, 0x5c($sp)
+	lhu $a1, 0x5e($sp)
 	jal 0x8004d730
 		addiu $a2, $sp, 0x10
 	addiu $a0, $sp, 0x10
@@ -57493,7 +58008,9 @@ func_375:
 	lw $s0, 0x28($sp)
 	jr $ra
 		addiu $sp, 0x40
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x40
 	sw $s2, 0x30($sp)
 	sll $s2, $a0, 0x10
@@ -57515,7 +58032,8 @@ func_375:
 	sw $ra, 0x3c($sp)
 	jal 0x80050a00
 		move_ $a3, $s4
-	lhu $a0, 0x5c($sp);lhu  $a1, 0x5e($sp);
+	lhu $a0, 0x5c($sp)
+	lhu $a1, 0x5e($sp)
 	jal 0x8004d730
 		addiu $a2, $sp, 0x10
 	addiu $a0, $sp, 0x10
@@ -57558,7 +58076,8 @@ func_375:
 	sw $ra, 0x3c($sp)
 	jal 0x80050a00
 		move_ $a3, $s4
-	lhu $a0, 0x5c($sp);lhu  $a1, 0x5e($sp);
+	lhu $a0, 0x5c($sp)
+	lhu $a1, 0x5e($sp)
 	jal 0x8004d730
 		addiu $a2, $sp, 0x10
 	addiu $a0, $sp, 0x10
@@ -57601,7 +58120,8 @@ func_375:
 	sw $ra, 0x3c($sp)
 	jal 0x80050a00
 		move_ $a3, $s4
-	lhu $a0, 0x5c($sp);lhu  $a1, 0x5e($sp);
+	lhu $a0, 0x5c($sp)
+	lhu $a1, 0x5e($sp)
 	jal 0x8004d730
 		addiu $a2, $sp, 0x10
 	addiu $a0, $sp, 0x10
@@ -57644,7 +58164,8 @@ func_375:
 	sw $ra, 0x3c($sp)
 	jal 0x80050a00
 		move_ $a3, $s4
-	lhu $a0, 0x5c($sp);lhu  $a1, 0x5e($sp);
+	lhu $a0, 0x5c($sp)
+	lhu $a1, 0x5e($sp)
 	jal 0x8004d730
 		addiu $a2, $sp, 0x10
 	addiu $a0, $sp, 0x10
@@ -57667,7 +58188,9 @@ func_375:
 	lw $s0, 0x28($sp)
 	jr $ra
 		addiu $sp, 0x40
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x40
 	sw $s2, 0x30($sp)
 	sll $s2, $a0, 0x10
@@ -57689,7 +58212,8 @@ func_375:
 	sw $ra, 0x3c($sp)
 	jal 0x80050a00
 		move_ $a3, $s4
-	lhu $a0, 0x5c($sp);lhu  $a1, 0x5e($sp);
+	lhu $a0, 0x5c($sp)
+	lhu $a1, 0x5e($sp)
 	jal 0x8004d730
 		addiu $a2, $sp, 0x10
 	addiu $a0, $sp, 0x10
@@ -57752,7 +58276,9 @@ func_375:
 	lw $s0, 0x28($sp)
 	jr $ra
 		addiu $sp, 0x40
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x40
 	move_ $v0, $a0
 	move_ $v1, $a1
@@ -57771,7 +58297,8 @@ func_375:
 	move_ $s1, $v0
 	sw $s2, 0x30($sp)
 	move_ $s2, $v1
-	sw $s3, 0x34($sp);sw  $ra, 0x38($sp);
+	sw $s3, 0x34($sp)
+	sw $ra, 0x38($sp)
 	jal 0x80050a00
 		move_ $s3, $t0
 	addiu $v0, $s0, -0x1
@@ -57808,7 +58335,8 @@ func_375:
 	lw $s0, 0x28($sp)
 	jr $ra
 		addiu $sp, 0x40
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x40
 	sw $s2, 0x30($sp)
 	sll $s2, $a0, 0x10
@@ -57898,7 +58426,9 @@ func_375:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x18
 	lbu $a0, 0x48($sp)
 	sw $ra, 0x10($sp)
@@ -57909,7 +58439,8 @@ func_375:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x18
 	lbu $a0, 0x48($sp)
 	sw $ra, 0x10($sp)
@@ -57919,7 +58450,9 @@ func_375:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x18
 	lbu $a0, 0x48($sp)
 	sw $ra, 0x10($sp)
@@ -57929,7 +58462,9 @@ func_375:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x18
 	lbu $a0, 0x48($sp)
 	sw $ra, 0x10($sp)
@@ -57939,7 +58474,9 @@ func_375:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x20
 	sw $s2, 0x18($sp)
 	move_ $s2, $a0
@@ -58248,7 +58785,8 @@ func_375:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x20
 	move_ $t0, $a0
 	move_ $t3, $a2
@@ -58304,7 +58842,9 @@ func_375:
 	addiu $sp, 0x20
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x18
 	sll $a0, 0x10
 	sra $a0, 0x10
@@ -58378,7 +58918,9 @@ func_376:
 .2:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_377:
 	addiu $sp, -0x18
 	move_ $a3, $a2
@@ -58603,7 +59145,9 @@ func_377:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_378:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -58619,7 +59163,8 @@ func_378:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_379:
 	addiu $sp, -0x18
 	move_ $t3, $a0
@@ -58692,7 +59237,8 @@ func_379:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x40
 	sw $ra, 0x38($sp)
 	move_ $a3, $a0
@@ -58971,7 +59517,9 @@ func_382:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x38
 	lwi $v0, 0x801d860c
 	li $v1, 0x1
@@ -59169,7 +59717,8 @@ func_383:
 	nop
 	mult $v0, $a2
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	div $zr, $v0, $v1
 	bnez $v1, .1
 		nop
@@ -59273,7 +59822,8 @@ func_383:
 	lw $s0, 0x18($sp)
 	jr $ra
 		addiu $sp, 0x38
-	nop; nop
+	nop
+	nop
 func_384:
 	addiu $sp, -0x20
 	sw $s2, 0x18($sp)
@@ -59312,7 +59862,8 @@ func_384:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop
+	nop
+	nop
 func_385:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -60007,7 +60558,9 @@ func_392:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x40
 	sw $ra, 0x38($sp)
 	move_ $a3, $a1
@@ -60079,7 +60632,9 @@ func_392:
 	addiu $sp, 0x40
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_393:
 	move_ $t1, $a1
 	shi $a1, 0x801d8e98
@@ -60213,10 +60768,12 @@ func_393:
 .7:
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_394:
 	addiu $sp, -0x18
-	sw $s0, 0x10($sp);sw  $ra, 0x14($sp);
+	sw $s0, 0x10($sp)
+	sw $ra, 0x14($sp)
 	jal 0x80057088
 		move_ $s0, $a0
 	move_ $a0, $v0
@@ -60299,7 +60856,8 @@ func_394:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x18
 	move_ $t0, $a0
 	move_ $t1, $a2
@@ -60403,7 +60961,8 @@ func_395:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_396:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -60418,7 +60977,9 @@ func_396:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_397:
 	sll $v0, $a0, 0x10
 	la_ $v1, 0x801d8618
@@ -60585,7 +61146,8 @@ func_398:
 	sw $s3, 0x5c($sp)
 	sw $s2, 0x58($sp)
 	sw $s1, 0x54($sp)
-	sh $zr, 0x18($sp);sh  $zr, 0x1a($sp);
+	sh $zr, 0x18($sp)
+	sh $zr, 0x1a($sp)
 	blez $v1, .2
 		sh $v0, 0x4c($sp)
 	li $s3, 0x1
@@ -60646,7 +61208,9 @@ func_398:
 	lw $s0, 0x50($sp)
 	jr $ra
 		addiu $sp, 0x68
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_399:
 	addiu $sp, -0x20
 	sw $s1, 0x14($sp)
@@ -60709,7 +61273,9 @@ func_399:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_400:
 	addiu $sp, -0x20
 	sw $s1, 0x14($sp)
@@ -60839,7 +61405,8 @@ func_400:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop
+	nop
+	nop
 func_401:
 	addiu $sp, -0x40
 	sw $s0, 0x18($sp)
@@ -61427,7 +61994,9 @@ func_404:
 	lw $s0, 0x60($sp)
 	jr $ra
 		addiu $sp, 0x88
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_405:
 	lw $a1, ($a0)
 	nop
@@ -61904,7 +62473,8 @@ func_408:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop
+	nop
+	nop
 func_409:
 	addiu $sp, -0x18
 	la_ $v1, 0x801d95e0
@@ -62039,7 +62609,9 @@ func_412:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_413:
 	move_ $a1, $zr
 	la_ $v0, 0x801d96f8
@@ -62150,7 +62722,8 @@ func_413:
 	addu $at, $v1
 	jr $ra
 		sb $v0, -0x6c10($at)
-	nop; nop
+	nop
+	nop
 func_414:
 	lui $at, 0x801e
 	jr $ra
@@ -62448,7 +63021,9 @@ func_416:
 	lw $s0, 0x50($sp)
 	jr $ra
 		addiu $sp, 0x78
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_417:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -62459,7 +63034,9 @@ func_417:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_418:
 	move_ $t1, $a0
 	lwi $v0, 0x8006eff0
@@ -62641,7 +63218,9 @@ func_419:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_420:
 	sll $a1, 0x1
 	lwi $v1, 0x8006ef24
@@ -62664,7 +63243,9 @@ func_421:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_422:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -62675,7 +63256,9 @@ func_422:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_423:
 	li $v0, 0xffffff
 	and $a1, $v0
@@ -62860,7 +63443,8 @@ func_425:
 	li $v0, 0x80ff
 	sh $v0, 0x4a($sp)
 	li $v0, 0x4000
-	sh $zr, 0x18($sp);sh  $zr, 0x1a($sp);
+	sh $zr, 0x18($sp)
+	sh $zr, 0x1a($sp)
 	blez $v1, .6
 		sh $v0, 0x4c($sp)
 	li $s5, 0x18
@@ -63005,7 +63589,9 @@ func_426:
 .1:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_427:
 	li $v0, 0x1
 	bne $a0, $v0, .0
@@ -63447,7 +64033,8 @@ func_430:
 		addiu $sp, 0x30
 	addiu $sp, -0x20
 	move_ $a3, $a2
-	lw $a2, 0x30($sp);lw  $t0, 0x34($sp);
+	lw $a2, 0x30($sp)
+	lw $t0, 0x34($sp)
 	move_ $t1, $a1
 	andi $a1, $a2, 0xffff
 	andi $v1, $t0, 0xffff
@@ -63808,7 +64395,9 @@ func_434:
 .5:
 	jr $ra
 		andi $v0, $a1, 0xffff
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_435:
 	addiu $sp, -0x28
 	sw $s3, 0x1c($sp)
@@ -63877,7 +64466,8 @@ func_435:
 	li $a0, 0x2040811
 	multu $v0, $a0
 	mfhi $a1
-	nop; nop
+	nop
+	nop
 	multu $v1, $a0
 	subu $v0, $a1
 	srl $v0, 0x1
@@ -63989,13 +64579,15 @@ func_435:
 	beq $v1, $v0, .9
 		mult $s2, $s2
 	mflo $a0
-	nop; nop
+	nop
+	nop
 	mult $s1, $s1
 	mflo $a1
 	li $v0, 0x40011
 	multu $a0, $v0
 	mfhi $v1
-	nop; nop
+	nop
+	nop
 	multu $a1, $v0
 	subu $a0, $v1
 	srl $a0, 0x1
@@ -64133,7 +64725,8 @@ func_435:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x28
-	nop; nop
+	nop
+	nop
 func_436:
 	move_ $v0, $a0
 	bltz $v0, .0
@@ -64153,7 +64746,8 @@ func_436:
 	move_ $v0, $a1
 	jr $ra
 		sh $v1, 0x1aa($a0)
-	nop; nop
+	nop
+	nop
 func_437:
 	andi $a0, 0xff
 	sll $v0, $a0, 0x3
@@ -64169,7 +64763,8 @@ func_437:
 	addu $at, $v0
 	jr $ra
 		sh $zr, -0x714c($at)
-	nop; nop
+	nop
+	nop
 func_438:
 	lhui $a0, 0x801d96f8
 	nop
@@ -64277,7 +64872,8 @@ func_439:
 	li $a0, 0x2040811
 	multu $v0, $a0
 	mfhi $a1
-	nop; nop
+	nop
+	nop
 	multu $v1, $a0
 	subu $v0, $a1
 	srl $v0, 0x1
@@ -64389,13 +64985,15 @@ func_439:
 	beq $v1, $v0, .9
 		mult $a0, $a0
 	mflo $a0
-	nop; nop
+	nop
+	nop
 	mult $a1, $a1
 	mflo $a1
 	li $v0, 0x40011
 	multu $a0, $v0
 	mfhi $v1
-	nop; nop
+	nop
+	nop
 	multu $a1, $v0
 	subu $a0, $v1
 	srl $a0, 0x1
@@ -64495,7 +65093,8 @@ func_439:
 	lui $at, 0x801e
 	jr $ra
 		sh $v0, -0x6a26($at)
-	nop; nop
+	nop
+	nop
 func_440:
 	addiu $sp, -0x18
 	move_ $t1, $a0
@@ -64675,7 +65274,8 @@ func_441:
 	lw $s0, 0x18($sp)
 	jr $ra
 		addiu $sp, 0x38
-	nop; nop
+	nop
+	nop
 func_442:
 	addiu $sp, -0x20
 	sw $s1, 0x14($sp)
@@ -64855,10 +65455,12 @@ func_443:
 	nop
 	mult $a1, $v1
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	multu $v0, $s5
 	mfhi $a0
-	nop; nop
+	nop
+	nop
 	multu $v1, $s5
 	subu $v0, $a0
 	srl $v0, 0x1
@@ -64913,7 +65515,8 @@ func_443:
 		andi $v0, $a1, 0xffff
 	mult $v0, $v1
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $s3
 	mfhi $t0
 	addu $v0, $t0, $v0
@@ -64924,7 +65527,8 @@ func_443:
 	subu $v1, $s7, $v1
 	mult $v0, $v1
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $s3
 	mfhi $t0
 	addu $v1, $t0, $v0
@@ -64946,7 +65550,8 @@ func_443:
 		andi $v0, $a1, 0xffff
 	mult $v0, $v1
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $s3
 	mfhi $t0
 	addu $v0, $t0, $v0
@@ -64957,7 +65562,8 @@ func_443:
 	subu $v1, $s7, $v1
 	mult $v0, $v1
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $s3
 	mfhi $t0
 	addu $v1, $t0, $v0
@@ -64986,10 +65592,12 @@ func_443:
 	nop
 	mult $v1, $v1
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v0, $s4
 	mfhi $t1
-	nop; nop
+	nop
+	nop
 	mult $v1, $s4
 	sll $a2, $s2, 0x10
 	sra $a2, 0x10
@@ -65160,7 +65768,9 @@ func_446:
 .2:
 	jr $ra
 		andi $v0, $a3, 0xff
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_447:
 	addiu $sp, -0x40
 	sw $s0, 0x18($sp)
@@ -65279,7 +65889,8 @@ func_447:
 	nop
 	mult $v0, $a3
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $v0, $s5
 	lwi $a0, 0x801d96cc
 	nop
@@ -65293,7 +65904,8 @@ func_447:
 	subu $v0, $a0
 	mult $v1, $v0
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	mult $v1, $s2
 	lwi $v0, 0x801d96c4
 	nop
@@ -65335,10 +65947,12 @@ func_447:
 	nop
 	mult $a0, $v1
 	mflo $v1
-	nop; nop
+	nop
+	nop
 	multu $v0, $t4
 	mfhi $a0
-	nop; nop
+	nop
+	nop
 	multu $v1, $t4
 	subu $v0, $a0
 	srl $v0, 0x1
@@ -65355,7 +65969,8 @@ func_447:
 		srl $a0, $a1, 0x6
 	mult $a0, $v1
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	multu $v0, $t2
 	move_ $a2, $t0
 	mfhi $v1
@@ -65368,7 +65983,8 @@ func_447:
 	subu $v0, $t6, $v1
 	mult $t0, $v0
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	multu $v0, $t2
 	move_ $a1, $a0
 	mfhi $v1
@@ -65394,7 +66010,8 @@ func_447:
 	beqz $v0, .6
 		mult $a1, $v1
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	multu $v0, $t2
 	mfhi $v1
 	subu $v0, $v1
@@ -65406,7 +66023,8 @@ func_447:
 	subu $v0, $t6, $v1
 	mult $a2, $v0
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	multu $v0, $t2
 	mfhi $v1
 	subu $v0, $v1
@@ -65419,7 +66037,8 @@ func_447:
 	beqz $v0, .8
 		mult $a1, $v1
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	multu $v0, $t2
 	mfhi $v1
 	subu $v0, $v1
@@ -65431,7 +66050,8 @@ func_447:
 	subu $v0, $t6, $v1
 	mult $a2, $v0
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	multu $v0, $t2
 	mfhi $v1
 	subu $v0, $v1
@@ -65454,13 +66074,16 @@ func_447:
 	mult $a2, $a2
 .12:
 	mflo $v0
-	nop; nop
+	nop
+	nop
 	mult $a1, $a1
 	mflo $a0
-	nop; nop
+	nop
+	nop
 	multu $v0, $t3
 	mfhi $v1
-	nop; nop
+	nop
+	nop
 	multu $a0, $t3
 	subu $v0, $v1
 	srl $v0, 0x1
@@ -65606,7 +66229,9 @@ func_450:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_451:
 	addiu $sp, -0x18
 	lwi $v1, 0x8006f004
@@ -66251,7 +66876,8 @@ func_459:
 	sra $v0, 0x10
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop
+	nop
+	nop
 func_460:
 	lwi $v0, 0x8006ef94
 	addiu $sp, -0x20
@@ -66295,7 +66921,9 @@ func_460:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop; nop
+	nop
+	nop
+	nop
 start:
 	la_ $v0, 0x80077a08
 	la_ $v1, 0x801ddf38
@@ -66337,7 +66965,9 @@ start:
 func_461:
 	lwi $t0, 0x8006f984
 	addiu $sp, -0x20
-	sw $s0, 0x14($sp);sw  $s1, 0x18($sp);sw  $ra, 0x1c($sp);
+	sw $s0, 0x14($sp)
+	sw $s1, 0x18($sp)
+	sw $ra, 0x1c($sp)
 	bnez $t0, .0
 		li $t0, 0x1
 	swi $t0, 0x8006f984
@@ -66995,7 +67625,9 @@ func_474:
 .1:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_475:
 	addiu $sp, -0x18
 	la_ $a0, 0x80070afc
@@ -67170,7 +67802,9 @@ func_477:
 	lwi $v0, 0x80070b28
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
 	swi $a0, 0x801d98f0
@@ -67261,7 +67895,9 @@ func_479:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_480:
 	lbu $v1, ($a0)
 	lbu $a2, 0x1($a0)
@@ -67905,7 +68541,9 @@ func_486:
 	lw $s0, 0x18($sp)
 	jr $ra
 		addiu $sp, 0x28
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x20
 	sw $s0, 0x18($sp)
 	move_ $s0, $a0
@@ -67948,7 +68586,9 @@ func_486:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_487:
 	addiu $sp, -0x18
 	lwi $a1, 0x801d98f4
@@ -68047,7 +68687,9 @@ func_488:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x20
 	sw $s0, 0x10($sp)
 	move_ $s0, $a0
@@ -68073,7 +68715,9 @@ func_488:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop; nop
+	nop
+	nop
+	nop
 	li $a1, 0x82082083
 	lwi $v0, 0x801d98f4
 	lwi $v1, 0x801d98f0
@@ -68131,7 +68775,9 @@ func_489:
 .1:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	move_ $a3, $a0
 	lwi $v0, 0x801d98dc
 	lwi $v1, 0x801d98f0
@@ -68173,7 +68819,8 @@ func_489:
 .0x800580c4:
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_490:
 	swi $a0, 0x801d98e8
 	swi $a1, 0x801d98c4
@@ -68216,8 +68863,10 @@ func_491:
 	li $v1, 0x5
 	beq $v0, $v1, .39
 		nop
-	lbu $v0, 0x30($sp);lbu  $v1, 0x31($sp);
-	sh $v0, 0x22($sp);sh  $v1, 0x24($sp);
+	lbu $v0, 0x30($sp)
+	lbu $v1, 0x31($sp)
+	sh $v0, 0x22($sp)
+	sh $v1, 0x24($sp)
 	lhu $v0, 0x22($sp)
 	nop
 	andi $v0, 0x4
@@ -68310,7 +68959,8 @@ func_491:
 	move_ $a2, $zr
 	lwi $a1, 0x801dbd10
 	li $a3, 0x8
-	sw $t0, 0x10($sp);sw  $zr, 0x14($sp);
+	sw $t0, 0x10($sp)
+	sw $zr, 0x14($sp)
 	jal 0x80058a3c
 		sw $zr, 0x18($sp)
 .9:
@@ -68621,7 +69271,8 @@ func_491:
 	move_ $a2, $zr
 	lwi $a1, 0x801d98ec
 	li $a3, 0x1f8
-	sw $t0, 0x10($sp);sw  $v1, 0x14($sp);
+	sw $t0, 0x10($sp)
+	sw $v1, 0x14($sp)
 	jal 0x80058a3c
 		sw $zr, 0x18($sp)
 .35:
@@ -68654,7 +69305,8 @@ func_491:
 	move_ $a2, $zr
 	lwi $a1, 0x801d98ec
 	li $a3, 0x1f8
-	sw $t0, 0x10($sp);sw  $zr, 0x14($sp);
+	sw $t0, 0x10($sp)
+	sw $zr, 0x14($sp)
 	jal 0x80058a3c
 		sw $zr, 0x18($sp)
 .38:
@@ -68903,7 +69555,8 @@ func_494:
 	addiu $v0, 0x1
 	swi $v0, 0x80070c54
 .7:
-	lbu $v0, 0x18($sp);lbu  $v1, 0x19($sp);
+	lbu $v0, 0x18($sp)
+	lbu $v1, 0x19($sp)
 	andi $v0, 0xff
 	andi $s1, $v0, 0x1d
 	swi $v0, 0x80070c4c
@@ -70174,7 +70827,9 @@ func_502:
 		sll $v1, $a2, 0x5
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_503:
 	li $v1, 0x1b4e81b5
 	addiu $a0, 0x96
@@ -70238,13 +70893,17 @@ func_503:
 	addu $a1, $t0
 	jr $ra
 		sb $a1, ($v0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_504:
 	lwi $v0, 0x80070c48
 	lui $at, 0x8007
 	jr $ra
 		sw $a0, 0xc48($at)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_505:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -70268,7 +70927,9 @@ func_507:
 	lui $at, 0x8007
 	jr $ra
 		sw $a0, 0xc44($at)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_508:
 	addiu $sp, -0x38
 	sw $s1, 0x14($sp)
@@ -70531,7 +71192,9 @@ func_511:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x18
 	sw $s0, 0x10($sp)
 	la_ $s0, 0x80071000
@@ -71192,7 +71855,9 @@ func_519:
 	lui $at, 0x8007
 	jr $ra
 		sw $a0, 0xc40($at)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_520:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -71658,10 +72323,12 @@ func_530:
 	nop
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_531:
 	mtc2 $a0, $30
-	nop; nop
+	nop
+	nop
 	mfc2 $v0, $31
 	li $at, 0x20
 	beq $v0, $at, .0x8005b970
@@ -71695,9 +72362,12 @@ func_531:
 .0x8005b970:
 	jr $ra
 		li $v0, 0x0
-	nop; nop; nop
+	nop
+	nop
+	nop
 	mtc2 $a0, $30
-	nop; nop
+	nop
+	nop
 	mfc2 $v0, $31
 	li $at, 0x20
 	beq $v0, $at, .0x8005ba08
@@ -71775,7 +72445,8 @@ func_533:
 	add $t3, $t4
 	add $v0, $t3, $t5
 	mtc2 $v0, $30
-	nop; nop
+	nop
+	nop
 	mfc2 $v1, $31
 	li $at, -0x2
 	and $v1, $at
@@ -71802,7 +72473,8 @@ func_533:
 	mtc2 $t0, $9
 	mtc2 $t1, $10
 	mtc2 $t2, $11
-	nop; nop
+	nop
+	nop
 	cop2 0x190003d
 	mfc2 $t0, $25
 	mfc2 $t1, $26
@@ -71871,7 +72543,8 @@ func_534:
 	move_ $ra, $a3
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	lw $t0, ($a0)
 	lw $t1, 0x4($a0)
 	lw $t2, 0x8($a0)
@@ -72105,7 +72778,8 @@ func_537:
 	ctc2 $t2, $7
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_538:
 	lw $t0, ($a0)
 	lw $t1, 0x4($a0)
@@ -72278,7 +72952,9 @@ func_540:
 	move_ $v0, $a0
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_541:
 	lw $t3, ($a1)
 	lw $t4, 0x4($a1)
@@ -72358,7 +73034,8 @@ func_541:
 	sw $t1, 0x10($a0)
 	jr $ra
 		move_ $v0, $a0
-	nop; nop
+	nop
+	nop
 func_542:
 	lw $t0, ($a0)
 	lw $t1, 0x4($a0)
@@ -72410,7 +73087,8 @@ func_546:
 	ctc2 $a1, $25
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_547:
 	ctc2 $a0, $26
 	jr $ra
@@ -72438,7 +73116,10 @@ func_549:
 	lwc2 $5, 0x4($a2)
 	nop
 	cop2 0x280030
-	lw $t0, 0x10($sp);lw  $t1, 0x14($sp);lw  $t2, 0x18($sp);lw  $t3, 0x1c($sp);
+	lw $t0, 0x10($sp)
+	lw $t1, 0x14($sp)
+	lw $t2, 0x18($sp)
+	lw $t3, 0x1c($sp)
 	swc2 $12, ($a3)
 	swc2 $13, ($t0)
 	swc2 $14, ($t1)
@@ -72448,7 +73129,9 @@ func_549:
 	sw $v1, ($t3)
 	jr $ra
 		sra $v0, 0x2
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_550:
 	lwc2 $0, ($a0)
 	lwc2 $1, 0x4($a0)
@@ -72460,7 +73143,8 @@ func_550:
 	cfc2 $v0, $31
 	jr $ra
 		sw $v0, ($a2)
-	nop; nop
+	nop
+	nop
 func_551:
 	lwc2 $0, ($a0)
 	lwc2 $1, 0x4($a0)
@@ -72470,7 +73154,9 @@ func_551:
 	lwc2 $5, 0x4($a2)
 	nop
 	cop2 0x280030
-	lw $t0, 0x10($sp);lw  $t1, 0x14($sp);lw  $t2, 0x18($sp);
+	lw $t0, 0x10($sp)
+	lw $t1, 0x14($sp)
+	lw $t2, 0x18($sp)
 	swc2 $12, ($t0)
 	swc2 $13, ($t1)
 	swc2 $14, ($t2)
@@ -72479,7 +73165,9 @@ func_551:
 	lwc2 $1, 0x4($a3)
 	nop
 	cop2 0x180001
-	lw $t0, 0x1c($sp);lw  $t1, 0x20($sp);lw  $t2, 0x24($sp);
+	lw $t0, 0x1c($sp)
+	lw $t1, 0x20($sp)
+	lw $t2, 0x24($sp)
 	swc2 $14, ($t0)
 	swc2 $8, ($t1)
 	cfc2 $t0, $31
@@ -72488,7 +73176,8 @@ func_551:
 	sw $t0, ($t2)
 	jr $ra
 		sra $v0, 0x2
-	nop; nop
+	nop
+	nop
 func_552:
 	lwc2 $0, ($a0)
 	lwc2 $1, 0x4($a0)
@@ -72498,7 +73187,9 @@ func_552:
 	lwc2 $5, 0x4($a2)
 	nop
 	cop2 0x280030
-	lw $t0, 0x10($sp);lw  $t1, 0x14($sp);lw  $t2, 0x18($sp);
+	lw $t0, 0x10($sp)
+	lw $t1, 0x14($sp)
+	lw $t2, 0x18($sp)
 	swc2 $12, ($t0)
 	swc2 $13, ($t1)
 	swc2 $14, ($t2)
@@ -72507,7 +73198,9 @@ func_552:
 	lwc2 $1, 0x4($a3)
 	nop
 	cop2 0x180001
-	lw $t0, 0x1c($sp);lw  $t1, 0x20($sp);lw  $t2, 0x24($sp);
+	lw $t0, 0x1c($sp)
+	lw $t1, 0x20($sp)
+	lw $t2, 0x24($sp)
 	swc2 $14, ($t0)
 	cfc2 $t0, $31
 	swc2 $8, ($t1)
@@ -72532,7 +73225,9 @@ func_552:
 	cop2 0x1400006
 	sw $v0, ($t0)
 	nop
-	lw $t0, 0x10($sp);lw  $t1, 0x14($sp);lw  $t2, 0x18($sp);
+	lw $t0, 0x10($sp)
+	lw $t1, 0x14($sp)
+	lw $t2, 0x18($sp)
 	mfc2 $v0, $24
 	nop
 	bgtz $v0, .0x8005c6d0
@@ -72551,7 +73246,9 @@ func_552:
 .0x8005c6f0:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	lwc2 $0, ($a0)
 	lwc2 $1, 0x4($a0)
 	lwc2 $2, ($a1)
@@ -72566,7 +73263,9 @@ func_552:
 	cop2 0x1400006
 	sw $v1, ($t0)
 	nop
-	lw $t0, 0x10($sp);lw  $t1, 0x14($sp);lw  $t2, 0x18($sp);
+	lw $t0, 0x10($sp)
+	lw $t1, 0x14($sp)
+	lw $t2, 0x18($sp)
 	mfc2 $v0, $24
 	nop
 	bgtz $v0, .0x8005c760
@@ -72581,7 +73280,10 @@ func_552:
 	lwc2 $1, 0x4($a3)
 	nop
 	cop2 0x180001
-	lw $t0, 0x1c($sp);lw  $t1, 0x20($sp);lw  $t2, 0x24($sp);lw  $t3, 0x28($sp);
+	lw $t0, 0x1c($sp)
+	lw $t1, 0x20($sp)
+	lw $t2, 0x24($sp)
+	lw $t3, 0x28($sp)
 	swc2 $14, ($t0)
 	mfc2 $t4, $19
 	swc2 $8, ($t1)
@@ -72607,7 +73309,9 @@ func_553:
 	nop
 	sw $t1, ($t0)
 	cop2 0x1400006
-	lw $t0, 0x10($sp);lw  $t1, 0x14($sp);lw  $t2, 0x18($sp);
+	lw $t0, 0x10($sp)
+	lw $t1, 0x14($sp)
+	lw $t2, 0x18($sp)
 	mfc2 $v0, $24
 	nop
 	bgtz $v0, .0
@@ -72628,7 +73332,8 @@ func_553:
 .1:
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_554:
 	lwc2 $0, ($a0)
 	lwc2 $1, 0x4($a0)
@@ -72643,7 +73348,9 @@ func_554:
 	nop
 	sw $v1, ($t0)
 	cop2 0x1400006
-	lw $t0, 0x10($sp);lw  $t1, 0x14($sp);lw  $t2, 0x18($sp);
+	lw $t0, 0x10($sp)
+	lw $t1, 0x14($sp)
+	lw $t2, 0x18($sp)
 	mfc2 $v0, $24
 	nop
 	bgtz $v0, .0
@@ -72658,7 +73365,8 @@ func_554:
 	lwc2 $1, 0x4($a3)
 	nop
 	cop2 0x180001
-	lw $t0, 0x1c($sp);lw  $t1, 0x20($sp);
+	lw $t0, 0x1c($sp)
+	lw $t1, 0x20($sp)
 	lw $t2, 0x28($sp)
 	swc2 $14, ($t0)
 	cfc2 $t3, $31
@@ -72789,12 +73497,14 @@ func_556:
 	sra $t2, $t9, 0x10
 .8:
 	multu $t2, $t1
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t6, $t7, 0xc
 	sh $t6, ($a1)
 	multu $t5, $t1
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	subu $t6, $zr, $t7
 	sra $t7, $t6, 0xc
@@ -72805,12 +73515,14 @@ func_556:
 	sra $t8, $t7, 0xc
 	nop
 	multu $t8, $t3
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t6, $t7, 0xc
 	nop
 	multu $t5, $t0
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t9, $t7, 0xc
 	subu $t7, $t9, $t6
@@ -72821,7 +73533,8 @@ func_556:
 	sra $t7, $t6, 0xc
 	nop
 	multu $t5, $t3
-	nop; nop
+	nop
+	nop
 	mflo $t6
 	sra $t9, $t6, 0xc
 	addu $t6, $t9, $t7
@@ -72832,12 +73545,14 @@ func_556:
 	sra $t8, $t7, 0xc
 	nop
 	multu $t8, $t3
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t6, $t7, 0xc
 	nop
 	multu $t2, $t0
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t9, $t7, 0xc
 	addu $t7, $t9, $t6
@@ -72848,7 +73563,8 @@ func_556:
 	sra $t7, $t6, 0xc
 	nop
 	multu $t2, $t3
-	nop; nop
+	nop
+	nop
 	mflo $t6
 	sra $t9, $t6, 0xc
 	subu $t6, $t9, $t7
@@ -72955,12 +73671,14 @@ func_557:
 	sra $t2, $t9, 0x10
 .8:
 	multu $t5, $t0
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t6, $t7, 0xc
 	sh $t6, 0x6($a1)
 	multu $t2, $t0
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t6, $t7, 0xc
 	nop
@@ -72971,12 +73689,14 @@ func_557:
 	sra $t8, $t7, 0xc
 	nop
 	multu $t8, $t5
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t6, $t7, 0xc
 	nop
 	multu $t1, $t2
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t9, $t7, 0xc
 	addu $t7, $t9, $t6
@@ -72987,7 +73707,8 @@ func_557:
 	sra $t9, $t6, 0xc
 	subu $t7, $zr, $t9
 	multu $t8, $t2
-	nop; nop
+	nop
+	nop
 	mflo $t6
 	sra $t9, $t6, 0xc
 	addu $t6, $t7, $t9
@@ -72998,12 +73719,14 @@ func_557:
 	sra $t8, $t7, 0xc
 	nop
 	multu $t8, $t2
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t6, $t7, 0xc
 	nop
 	multu $t4, $t5
-	nop; nop
+	nop
+	nop
 	mflo $t7
 	sra $t9, $t7, 0xc
 	addu $t7, $t9, $t6
@@ -73014,7 +73737,8 @@ func_557:
 	sra $t9, $t6, 0xc
 	subu $t7, $zr, $t9
 	multu $t8, $t5
-	nop; nop
+	nop
+	nop
 	mflo $t6
 	sra $t9, $t6, 0xc
 	addu $t6, $t7, $t9
@@ -73195,14 +73919,17 @@ func_557:
 	lw $s0, 0x50($sp)
 	jr $ra
 		addiu $sp, 0x78
-	nop; nop
+	nop
+	nop
 func_558:
 	swc2 $17, ($a0)
 	swc2 $18, ($a1)
 	swc2 $19, ($a2)
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_559:
 	lwc2 $0, ($a0)
 	lwc2 $1, 0x4($a0)
@@ -73212,7 +73939,10 @@ func_559:
 	lwc2 $5, 0x4($a2)
 	nop
 	cop2 0x280030
-	lw $t0, 0x10($sp);lw  $t1, 0x14($sp);lw  $t2, 0x18($sp);lw  $t3, 0x1c($sp);
+	lw $t0, 0x10($sp)
+	lw $t1, 0x14($sp)
+	lw $t2, 0x18($sp)
+	lw $t3, 0x1c($sp)
 	swc2 $12, ($a3)
 	swc2 $13, ($t0)
 	swc2 $14, ($t1)
@@ -73223,7 +73953,8 @@ func_559:
 	mfc2 $v0, $7
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x78
 	sw $s1, 0x54($sp)
 	lw $s1, 0x90($sp)
@@ -73397,7 +74128,8 @@ func_559:
 	lw $s0, 0x50($sp)
 	jr $ra
 		addiu $sp, 0x78
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x60
 	sw $s7, 0x54($sp)
 	move_ $s7, $a1
@@ -73684,7 +74416,8 @@ func_559:
 	lw $s0, 0x38($sp)
 	jr $ra
 		addiu $sp, 0x60
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x70
 	sw $s6, 0x60($sp)
 	move_ $s6, $a1
@@ -73853,7 +74586,8 @@ func_559:
 	lw $s0, 0x48($sp)
 	jr $ra
 		addiu $sp, 0x70
-	nop; nop
+	nop
+	nop
 func_560:
 	swc2 $16, ($a0)
 	swc2 $17, ($a1)
@@ -73861,7 +74595,8 @@ func_560:
 	swc2 $19, ($a3)
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x70
 	sw $s6, 0x60($sp)
 	move_ $s6, $a1
@@ -74349,7 +75084,9 @@ func_560:
 	lw $s0, 0x48($sp)
 	jr $ra
 		addiu $sp, 0x70
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x70
 	sw $s5, 0x5c($sp)
 	lw $s5, 0x88($sp)
@@ -74521,7 +75258,9 @@ func_560:
 	lw $s0, 0x48($sp)
 	jr $ra
 		addiu $sp, 0x70
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addi $a3, $a1, 0x60
 	li $a2, 0x0
 func_561:
@@ -74785,7 +75524,8 @@ func_562:
 	addiu $a0, 0x20
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	addi $a3, $a1, 0x60
 	li $a2, 0x0
 func_563:
@@ -75827,7 +76567,8 @@ func_568:
 	addiu $a0, 0x34
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	move_ $a2, $zr
 	bgez $a1, .0x8005f998
 		move_ $a3, $zr
@@ -75937,12 +76678,17 @@ func_568:
 .0x8005faf0:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_569:
 	swi $ra, 0x801dbd58
 	jal 0x8006a804
 		nop
-	addiu $t1, $zr, 0x56; addiu $t2, $zr, 0xb0; jalr $t2; nop
+	addiu $t1, $zr, 0x56
+	addiu $t2, $zr, 0xb0
+	jalr $t2
+	nop
 	lw $v0, 0x18($v0)
 	nop
 	addiu $v0, 0x28
@@ -76007,20 +76753,26 @@ func_570:
 	lwc2 $6, ($a3)
 	nop
 	cop2 0x118043f
-	lw $t0, 0x10($sp);lw  $t1, 0x14($sp);lw  $t2, 0x18($sp);
+	lw $t0, 0x10($sp)
+	lw $t1, 0x14($sp)
+	lw $t2, 0x18($sp)
 	swc2 $20, ($t0)
 	swc2 $21, ($t1)
 	swc2 $22, ($t2)
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_571:
 	mtc2 $a0, $30
-	nop; nop
+	nop
+	nop
 	mfc2 $v0, $31
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	lw $t8, 0x10($sp)
 	lw $t9, 0x18($sp)
 	lw $t7, 0x14($sp)
@@ -76105,7 +76857,8 @@ func_571:
 	move_ $v0, $a3
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	lw $t9, 0x14($sp)
 	lw $t7, 0x10($sp)
 	beqz $a3, .0x8005ff20
@@ -76198,7 +76951,8 @@ func_571:
 	move_ $v0, $a2
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	lw $t8, 0x10($sp)
 	lw $t9, 0x18($sp)
 	lw $t7, 0x14($sp)
@@ -76389,7 +77143,8 @@ func_571:
 	move_ $v0, $a3
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	lw $t8, 0x10($sp)
 	lw $t9, 0x18($sp)
 	lw $t7, 0x14($sp)
@@ -76800,7 +77555,9 @@ func_571:
 	move_ $v0, $a3
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	lw $t8, 0x10($sp)
 	lw $t9, 0x18($sp)
 	lw $t7, 0x14($sp)
@@ -77310,7 +78067,8 @@ func_571:
 	move_ $v0, $a2
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	lw $t8, 0x10($sp)
 	lw $t9, 0x18($sp)
 	lw $t7, 0x14($sp)
@@ -77511,7 +78269,9 @@ func_571:
 	move_ $v0, $a3
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 	lw $t9, 0x14($sp)
 	lw $t7, 0x10($sp)
 	beqz $a3, .0x80061524
@@ -77729,7 +78489,8 @@ func_571:
 	move_ $v0, $a3
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	lw $t8, 0x10($sp)
 	lw $t9, 0x18($sp)
 	lw $t7, 0x14($sp)
@@ -78237,7 +78998,8 @@ func_575:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop
+	nop
+	nop
 func_576:
 	addiu $sp, -0x18
 	lhi $v0, 0x801dbe24
@@ -78266,7 +79028,8 @@ func_576:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_577:
 	lhi $v0, 0x801dbe24
 	addiu $sp, -0x18
@@ -78305,7 +79068,9 @@ func_577:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_578:
 	move_ $a3, $a1
 	la_ $a2, 0x801dbec0
@@ -78336,7 +79101,8 @@ func_578:
 	jr $ra
 		nop
 	addiu $sp, -0x18
-	sw $s0, 0x10($sp);sw  $ra, 0x14($sp);
+	sw $s0, 0x10($sp)
+	sw $ra, 0x14($sp)
 	jal 0x8005c3e4
 		move_ $s0, $a0
 	jal 0x8005c444
@@ -78355,11 +79121,15 @@ func_578:
 	lw $v0, ($a1)
 	lw $v1, 0x4($a1)
 	lw $a0, 0x8($a1)
-	sw $v0, 0x10($sp);sw  $v1, 0x14($sp);sw  $a0, 0x18($sp);
+	sw $v0, 0x10($sp)
+	sw $v1, 0x14($sp)
+	sw $a0, 0x18($sp)
 	lw $v0, 0xc($a1)
 	lw $v1, 0x10($a1)
 	lw $a0, 0x14($a1)
-	sw $v0, 0x1c($sp);sw  $v1, 0x20($sp);sw  $a0, 0x24($sp);
+	sw $v0, 0x1c($sp)
+	sw $v1, 0x20($sp)
+	sw $a0, 0x24($sp)
 	lw $v0, 0x18($a1)
 	lw $v1, 0x1c($a1)
 	sw $v0, 0x28($sp)
@@ -78378,7 +79148,9 @@ func_578:
 	lw $s0, 0x30($sp)
 	jr $ra
 		addiu $sp, 0x40
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_579:
 	addiu $sp, -0x30
 	sw $s0, 0x20($sp)
@@ -78537,7 +79309,9 @@ func_581:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_582:
 	lw $v1, ($a0)
 	nop
@@ -78594,14 +79368,19 @@ func_583:
 	lw $v0, ($a1)
 	lw $v1, 0x4($a1)
 	lw $a0, 0x8($a1)
-	sw $v0, 0x10($sp);sw  $v1, 0x14($sp);sw  $a0, 0x18($sp);
+	sw $v0, 0x10($sp)
+	sw $v1, 0x14($sp)
+	sw $a0, 0x18($sp)
 	lw $v0, 0xc($a1)
 	lw $v1, 0x10($a1)
 	lw $a0, 0x14($a1)
-	sw $v0, 0x1c($sp);sw  $v1, 0x20($sp);sw  $a0, 0x24($sp);
+	sw $v0, 0x1c($sp)
+	sw $v1, 0x20($sp)
+	sw $a0, 0x24($sp)
 	lw $v0, 0x18($a1)
 	lw $v1, 0x1c($a1)
-	sw $v0, 0x28($sp);sw  $v1, 0x2c($sp);
+	sw $v0, 0x28($sp)
+	sw $v1, 0x2c($sp)
 	jal 0x800629c0
 		addiu $a0, $sp, 0x30
 	lw $v0, ($s0)
@@ -78867,15 +79646,20 @@ func_583:
 	sh $a0, 0x40($sp)
 	sh $a2, 0x20($sp)
 	la_ $a1, 0x801dbe40
-	lw $v0, 0x10($sp);lw  $v1, 0x14($sp);lw  $a0, 0x18($sp);
+	lw $v0, 0x10($sp)
+	lw $v1, 0x14($sp)
+	lw $a0, 0x18($sp)
 	sw $v0, ($a1)
 	sw $v1, 0x4($a1)
 	sw $a0, 0x8($a1)
-	lw $v0, 0x1c($sp);lw  $v1, 0x20($sp);lw  $a0, 0x24($sp);
+	lw $v0, 0x1c($sp)
+	lw $v1, 0x20($sp)
+	lw $a0, 0x24($sp)
 	sw $v0, 0xc($a1)
 	sw $v1, 0x10($a1)
 	sw $a0, 0x14($a1)
-	lw $v0, 0x28($sp);lw  $v1, 0x2c($sp);
+	lw $v0, 0x28($sp)
+	lw $v1, 0x2c($sp)
 	sw $v0, 0x18($a1)
 	sw $v1, 0x1c($a1)
 	jal 0x8006295c
@@ -78934,7 +79718,8 @@ func_585:
 	sw $v0, 0x18($a0)
 	jr $ra
 		sw $v1, 0x1c($a0)
-	nop; nop
+	nop
+	nop
 func_586:
 	lw $t0, ($a0)
 	lw $t1, 0x4($a0)
@@ -78997,7 +79782,8 @@ func_588:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_589:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -79077,7 +79863,8 @@ func_591:
 .0:
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	lui $at, 0x801e
 	jr $ra
 		sw $a0, -0x4068($at)
@@ -79293,12 +80080,18 @@ func_592:
 	subu $v0, $zr, $v0
 	jal 0x800631f4
 		sw $v0, 0x68($sp)
-	lw $v0, 0x50($sp);lw  $v1, 0x54($sp);lw  $a0, 0x58($sp);lw  $a1, 0x5c($sp);
+	lw $v0, 0x50($sp)
+	lw $v1, 0x54($sp)
+	lw $a0, 0x58($sp)
+	lw $a1, 0x5c($sp)
 	sw $v0, ($s5)
 	sw $v1, 0x4($s5)
 	sw $a0, 0x8($s5)
 	sw $a1, 0xc($s5)
-	lw $v0, 0x60($sp);lw  $v1, 0x64($sp);lw  $a0, 0x68($sp);lw  $a1, 0x6c($sp);
+	lw $v0, 0x60($sp)
+	lw $v1, 0x64($sp)
+	lw $a0, 0x68($sp)
+	lw $a1, 0x6c($sp)
 	sw $v0, 0x10($s5)
 	sw $v1, 0x14($s5)
 	sw $a0, 0x18($s5)
@@ -79336,7 +80129,8 @@ func_593:
 	addiu $sp, -0x20
 	sw $s0, 0x10($sp)
 	move_ $s0, $a0
-	sw $s1, 0x14($sp);sw  $ra, 0x18($sp);
+	sw $s1, 0x14($sp)
+	sw $ra, 0x18($sp)
 	jal 0x80063110
 		move_ $s1, $a1
 	jal 0x800631d8
@@ -79526,8 +80320,15 @@ func_597:
 	li $v0, 0x1000
 	addiu $a1, $sp, 0x10
 	sh $s0, 0x10($sp)
-	sh $zr, 0x14($sp);sh  $v1, 0x16($sp);sh  $s0, 0x18($sp);sh  $zr, 0x1a($sp);sh  $zr, 0x1c($sp);sh  $zr, 0x1e($sp);sh  $v0, 0x20($sp);
-	sw $zr, 0x24($sp);sw  $zr, 0x28($sp);
+	sh $zr, 0x14($sp)
+	sh $v1, 0x16($sp)
+	sh $s0, 0x18($sp)
+	sh $zr, 0x1a($sp)
+	sh $zr, 0x1c($sp)
+	sh $zr, 0x1e($sp)
+	sh $v0, 0x20($sp)
+	sw $zr, 0x24($sp)
+	sw $zr, 0x28($sp)
 	jal 0x8005bff4
 		sw $zr, 0x2c($sp)
 .0:
@@ -79537,7 +80338,9 @@ func_597:
 	lw $s0, 0x30($sp)
 	jr $ra
 		addiu $sp, 0x40
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_598:
 	addiu $sp, -0x20
 	sw $s2, 0x18($sp)
@@ -79716,7 +80519,8 @@ func_598:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop
+	nop
+	nop
 	addiu $sp, -0x20
 	sw $s2, 0x18($sp)
 	move_ $s2, $a1
@@ -79895,7 +80699,8 @@ func_598:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop
+	nop
+	nop
 func_599:
 	addiu $sp, -0x28
 	sw $s2, 0x18($sp)
@@ -80096,7 +80901,9 @@ func_599:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x28
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_600:
 	addiu $sp, -0x38
 	sw $s3, 0x1c($sp)
@@ -80203,7 +81010,9 @@ func_600:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x38
-	nop; nop; nop
+	nop
+	nop
+	nop
 	addiu $sp, -0x58
 	sw $s4, 0x40($sp)
 	move_ $s4, $a1
@@ -80296,7 +81105,10 @@ func_600:
 	addiu $a0, 0xc
 	addu $a0, $s7, $a0
 	sll $fp, $a2, 0x2
-	sw $t0, 0x20($sp);sw  $v0, 0x24($sp);sw  $v1, 0x28($sp);sw  $a0, 0x2c($sp);
+	sw $t0, 0x20($sp)
+	sw $v0, 0x24($sp)
+	sw $v1, 0x28($sp)
+	sw $a0, 0x2c($sp)
 .0x80063f18:
 	lbu $v0, 0x3($s0)
 	nop
@@ -80320,7 +81132,9 @@ func_600:
 	lwi $a3, 0x801dbf98
 	lw $t0, 0x20($sp)
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	lw $v0, ($t0)
 	j 0x800643e0
@@ -80330,7 +81144,9 @@ func_600:
 	lwi $a3, 0x801dbf98
 	lw $t0, 0x28($sp)
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	lw $v0, ($t0)
 	j 0x8006438c
@@ -80340,7 +81156,9 @@ func_600:
 	lw $t0, 0x24($sp)
 	lwi $a3, 0x801dbf98
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	la_ $v0, 0x801dbff0
 	addu $v0, $t0, $v0
@@ -80357,7 +81175,9 @@ func_600:
 	lwi $a3, 0x801dbf98
 	lw $t0, 0x2c($sp)
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	lw $v0, ($t0)
 	nop
@@ -80374,7 +81194,9 @@ func_600:
 	lw $t0, 0x24($sp)
 	lwi $a3, 0x801dbf98
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	la_ $v0, 0x801dbfd0
 	addu $v0, $t0, $v0
@@ -80395,7 +81217,9 @@ func_600:
 	lw $t0, 0x24($sp)
 	lwi $a3, 0x801dbf98
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	la_ $v0, 0x801dc010
 	addu $v0, $t0, $v0
@@ -80418,7 +81242,9 @@ func_600:
 	lhu $v0, ($s0)
 	lwi $a3, 0x801dbf98
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	lui $v0, 0x801e
 	addu $v0, $s7
@@ -80430,7 +81256,9 @@ func_600:
 	lw $t0, 0x24($sp)
 	lwi $a3, 0x801dbf98
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	la_ $v0, 0x801dc030
 	addu $v0, $t0, $v0
@@ -80451,7 +81279,9 @@ func_600:
 	lw $t0, 0x24($sp)
 	lwi $a3, 0x801dbf98
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	la_ $v0, 0x801dc070
 	addu $v0, $t0, $v0
@@ -80467,7 +81297,9 @@ func_600:
 	lhu $v0, ($s0)
 	lwi $a3, 0x801dbf98
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	lui $v0, 0x801e
 	addu $v0, $s7
@@ -80487,7 +81319,9 @@ func_600:
 	lw $t0, 0x24($sp)
 	lwi $a3, 0x801dbf98
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	la_ $v0, 0x801dc050
 	addu $v0, $t0, $v0
@@ -80500,7 +81334,9 @@ func_600:
 	lw $t0, 0x24($sp)
 	lwi $a3, 0x801dbf98
 	move_ $a1, $s2
-	sw $s5, 0x14($sp);sw  $s4, 0x18($sp);sw  $s3, 0x1c($sp);
+	sw $s5, 0x14($sp)
+	sw $s4, 0x18($sp)
+	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	la_ $v0, 0x801dc090
 	addu $v0, $t0, $v0
@@ -80518,7 +81354,9 @@ func_600:
 		addu $v0, $v1
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
-	sw $s5, 0x10($sp);sw  $s4, 0x14($sp);sw  $s3, 0x18($sp);
+	sw $s5, 0x10($sp)
+	sw $s4, 0x14($sp)
+	sw $s3, 0x18($sp)
 	lui $v0, 0x801e
 	addu $v0, $fp
 	lw $v0, -0x4038($v0)
@@ -80527,7 +81365,9 @@ func_600:
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
 	move_ $a0, $s0
-	sw $s5, 0x10($sp);sw  $s4, 0x14($sp);sw  $s3, 0x18($sp);
+	sw $s5, 0x10($sp)
+	sw $s4, 0x14($sp)
+	sw $s3, 0x18($sp)
 	lui $v0, 0x801e
 	addu $v0, $fp
 	lw $v0, -0x3fb8($v0)
@@ -80544,7 +81384,9 @@ func_600:
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
 	move_ $a0, $s0
-	sw $s5, 0x10($sp);sw  $s4, 0x14($sp);sw  $s3, 0x18($sp);
+	sw $s5, 0x10($sp)
+	sw $s4, 0x14($sp)
+	sw $s3, 0x18($sp)
 	lui $v0, 0x801e
 	addu $v0, $fp
 	lw $v0, -0x4018($v0)
@@ -80563,7 +81405,9 @@ func_600:
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
 	move_ $a0, $s0
-	sw $s5, 0x10($sp);sw  $s4, 0x14($sp);sw  $s3, 0x18($sp);
+	sw $s5, 0x10($sp)
+	sw $s4, 0x14($sp)
+	sw $s3, 0x18($sp)
 	lui $v0, 0x801e
 	addu $v0, $fp
 	lw $v0, -0x3ff8($v0)
@@ -80579,7 +81423,9 @@ func_600:
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
 	move_ $a0, $s0
-	sw $s5, 0x10($sp);sw  $s4, 0x14($sp);sw  $s3, 0x18($sp);
+	sw $s5, 0x10($sp)
+	sw $s4, 0x14($sp)
+	sw $s3, 0x18($sp)
 	lui $v0, 0x801e
 	addu $v0, $fp
 	lw $v0, -0x3fd8($v0)
@@ -80596,7 +81442,9 @@ func_600:
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
 	move_ $a0, $s0
-	sw $s5, 0x10($sp);sw  $s4, 0x14($sp);sw  $s3, 0x18($sp);
+	sw $s5, 0x10($sp)
+	sw $s4, 0x14($sp)
+	sw $s3, 0x18($sp)
 	lui $v0, 0x801e
 	addu $v0, $fp
 	lw $v0, -0x3f98($v0)
@@ -80612,7 +81460,9 @@ func_600:
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
 	move_ $a0, $s0
-	sw $s5, 0x10($sp);sw  $s4, 0x14($sp);sw  $s3, 0x18($sp);
+	sw $s5, 0x10($sp)
+	sw $s4, 0x14($sp)
+	sw $s3, 0x18($sp)
 	lui $v0, 0x801e
 	addu $v0, $fp
 	lw $v0, -0x3f78($v0)
@@ -80629,7 +81479,9 @@ func_600:
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
 	move_ $a0, $s0
-	sw $s5, 0x10($sp);sw  $s4, 0x14($sp);sw  $s3, 0x18($sp);
+	sw $s5, 0x10($sp)
+	sw $s4, 0x14($sp)
+	sw $s3, 0x18($sp)
 	lui $v0, 0x801e
 	addu $v0, $fp
 	lw $v0, -0x3f58($v0)
@@ -80782,7 +81634,8 @@ func_602:
 	jr $ra
 		addiu $sp, 0x18
 	addiu $sp, -0x20
-	sw $s0, 0x10($sp);sw  $s1, 0x14($sp);
+	sw $s0, 0x10($sp)
+	sw $s1, 0x14($sp)
 	la_ $s1, 0x80076759
 	sw $ra, 0x1c($sp)
 	sw $s2, 0x18($sp)
@@ -83630,7 +84483,9 @@ func_633:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x28
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_634:
 	lw $v1, 0x10($sp)
 	move_ $v0, $a0
@@ -83671,7 +84526,8 @@ func_635:
 	or $v0, $a0
 	jr $ra
 		andi $v0, 0xffff
-	nop; nop
+	nop
+	nop
 func_636:
 	li $a2, 0xffffff
 	lui $a3, 0xff00
@@ -83701,7 +84557,8 @@ func_637:
 .1:
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop
+	nop
+	nop
 func_638:
 	beqz $a1, .0
 		nop
@@ -83715,119 +84572,154 @@ func_638:
 .1:
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop
+	nop
+	nop
 func_639:
 	li $v0, 0x4
 	sb $v0, 0x3($a0)
 	li $v0, 0x20
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_640:
 	li $v0, 0x7
 	sb $v0, 0x3($a0)
 	li $v0, 0x24
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_641:
 	li $v0, 0x6
 	sb $v0, 0x3($a0)
 	li $v0, 0x30
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_642:
 	li $v0, 0x9
 	sb $v0, 0x3($a0)
 	li $v0, 0x34
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_643:
 	li $v0, 0x5
 	sb $v0, 0x3($a0)
 	li $v0, 0x28
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_644:
 	li $v0, 0x9
 	sb $v0, 0x3($a0)
 	li $v0, 0x2c
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_645:
 	li $v0, 0x8
 	sb $v0, 0x3($a0)
 	li $v0, 0x38
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_646:
 	li $v0, 0xc
 	sb $v0, 0x3($a0)
 	li $v0, 0x3c
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 	li $v0, 0x3
 	sb $v0, 0x3($a0)
 	li $v0, 0x74
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 	li $v0, 0x3
 	sb $v0, 0x3($a0)
 	li $v0, 0x7c
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 	li $v0, 0x4
 	sb $v0, 0x3($a0)
 	li $v0, 0x64
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 	li $v0, 0x2
 	sb $v0, 0x3($a0)
 	li $v0, 0x68
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 	li $v0, 0x2
 	sb $v0, 0x3($a0)
 	li $v0, 0x70
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 	li $v0, 0x2
 	sb $v0, 0x3($a0)
 	li $v0, 0x78
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 	li $v0, 0x3
 	sb $v0, 0x3($a0)
 	li $v0, 0x60
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_647:
 	li $v0, 0x3
 	sb $v0, 0x3($a0)
 	li $v0, 0x40
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_648:
 	li $v0, 0x4
 	sb $v0, 0x3($a0)
 	li $v0, 0x50
 	jr $ra
 		sb $v0, 0x7($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 	li $v1, 0x55555555
 	li $v0, 0x5
 	sb $v0, 0x3($a0)
@@ -83843,7 +84735,9 @@ func_648:
 	sw $v1, 0x1c($a0)
 	jr $ra
 		sb $zr, 0x17($a0)
-	nop; nop; nop
+	nop
+	nop
+	nop
 	li $v1, 0x55555555
 	li $v0, 0x6
 	sb $v0, 0x3($a0)
@@ -83860,7 +84754,8 @@ func_648:
 	sb $zr, 0x17($a0)
 	jr $ra
 		sb $zr, 0x1f($a0)
-	nop; nop
+	nop
+	nop
 func_649:
 	li $v0, 0x1
 	sb $v0, 0x3($a0)
@@ -83893,7 +84788,8 @@ func_650:
 .1:
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_651:
 	move_ $a2, $a0
 	li $v0, 0x2
@@ -83938,7 +84834,8 @@ func_652:
 	sw $v0, 0x4($a0)
 	jr $ra
 		sw $zr, 0x8($a0)
-	nop; nop
+	nop
+	nop
 func_653:
 	move_ $t0, $a0
 	lui $v1, 0xe100
@@ -83981,7 +84878,9 @@ func_653:
 .3:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_654:
 	swi $a0, 0x801dd930
 	jr $ra
@@ -84493,7 +85392,8 @@ func_663:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 	la_ $t0, 0x800769f8
 	addi $at, $a0, -0x1
 	blez $at, .0x800683b4
@@ -84797,7 +85697,9 @@ func_663:
 		addiu $a0, 0x2
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_664:
 	li $t2, 0xa0
 	jr $t2
@@ -84815,7 +85717,8 @@ func_666:
 	nop
 func_667:
 	addiu $sp, -0x18
-	sw $s0, 0x10($sp);sw  $ra, 0x14($sp);
+	sw $s0, 0x10($sp)
+	sw $ra, 0x14($sp)
 	jal 0x80068884
 		move_ $s0, $a0
 	move_ $a0, $s0
@@ -84826,7 +85729,9 @@ func_667:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_668:
 	li $t2, 0xb0
 	jr $t2
@@ -84923,7 +85828,10 @@ func_674:
 	nop
 func_675:
 	swi $ra, 0x801dd940
-	addiu $t1, $zr, 0x57; addiu $t2, $zr, 0xb0; jalr $t2; nop
+	addiu $t1, $zr, 0x57
+	addiu $t2, $zr, 0xb0
+	jalr $t2
+	nop
 	li $t2, 0x9
 	lw $v0, 0x16c($v0)
 	nop
@@ -84976,7 +85884,10 @@ func_676:
 	swi $ra, 0x801dd940
 	jal 0x8006a804
 		nop
-	addiu $t1, $zr, 0x56; addiu $t2, $zr, 0xb0; jalr $t2; nop
+	addiu $t1, $zr, 0x56
+	addiu $t2, $zr, 0xb0
+	jalr $t2
+	nop
 	lw $v0, 0x18($v0)
 	nop
 	lw $v1, 0x70($v0)
@@ -85008,7 +85919,10 @@ func_677:
 	swi $ra, 0x801dd940
 	jal 0x8006a804
 		nop
-	addiu $t1, $zr, 0x57; addiu $t2, $zr, 0xb0; jalr $t2; nop
+	addiu $t1, $zr, 0x57
+	addiu $t2, $zr, 0xb0
+	jalr $t2
+	nop
 	lw $v0, 0x16c($v0)
 	nop
 	lw $v1, 0x9c8($v0)
@@ -85040,12 +85954,17 @@ func_678:
 		addiu $v0, 0x4
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_679:
 	swi $ra, 0x801dd950
 	jal 0x8006a804
 		nop
-	addiu $t1, $zr, 0x56; addiu $t2, $zr, 0xb0; jalr $t2; nop
+	addiu $t1, $zr, 0x56
+	addiu $t2, $zr, 0xb0
+	jalr $t2
+	nop
 	lw $v0, 0x18($v0)
 	la_ $t2, 0x80068c54
 	la_ $t1, 0x80068c60
@@ -85064,7 +85983,10 @@ func_679:
 	nop
 	jr $ra
 		nop
-	nop; nop; nop; nop
+	nop
+	nop
+	nop
+	nop
 func_680:
 	addiu $sp, -0xb0
 	sw $s0, 0x90($sp)
@@ -85345,7 +86267,9 @@ func_684:
 .2:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_685:
 	beqz $a0, .1
 		move_ $v0, $zr
@@ -85378,7 +86302,9 @@ func_686:
 .2:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_687:
 	beqz $a0, .1
 		move_ $v0, $zr
@@ -85455,7 +86381,9 @@ func_688:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_689:
 	beqz $a0, .0
 		nop
@@ -85487,7 +86415,9 @@ func_689:
 .4:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_690:
 	beqz $a0, .2
 		move_ $v0, $zr
@@ -85509,7 +86439,9 @@ func_690:
 .2:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_691:
 	move_ $v1, $zr
 	beqz $a0, .2
@@ -85527,7 +86459,9 @@ func_691:
 .2:
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_692:
 	beqz $a0, .0
 		nop
@@ -85614,7 +86548,9 @@ func_694:
 		move_ $s3, $zr
 	li $s4, -0x1
 	move_ $fp, $zr
-	sw $zr, 0x3c($sp);sw  $zr, 0x40($sp);sw  $zr, 0x44($sp);
+	sw $zr, 0x3c($sp)
+	sw $zr, 0x40($sp)
+	sw $zr, 0x44($sp)
 .2:
 	addiu $s7, 0x1
 	lbu $v1, ($s7)
@@ -86050,7 +86986,9 @@ func_694:
 	lw $s0, 0x50($sp)
 	jr $ra
 		addiu $sp, 0x78
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_695:
 	beqz $a0, .3
 		move_ $v0, $zr
@@ -86222,7 +87160,9 @@ func_697:
 	jr $ra
 		addiu $sp, 0x18
 func_698:
-	sw $a1, 0x4($sp);sw  $a2, 0x8($sp);sw  $a3, 0xc($sp);
+	sw $a1, 0x4($sp)
+	sw $a2, 0x8($sp)
+	sw $a3, 0xc($sp)
 	addiu $sp, -0x248
 	sw $s3, 0x234($sp)
 	move_ $s3, $a0
@@ -86251,7 +87191,9 @@ func_698:
 	lw $v0, ($a1)
 	lw $v1, 0x4($a1)
 	lw $a0, 0x8($a1)
-	sw $v0, 0x210($sp);sw  $v1, 0x214($sp);sw  $a0, 0x218($sp);
+	sw $v0, 0x210($sp)
+	sw $v1, 0x214($sp)
+	sw $a0, 0x218($sp)
 	li $a0, 0x23
 	li $v1, 0x30
 .1:
@@ -86872,7 +87814,9 @@ func_700:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x18
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_701:
 	sw $ra, ($a0)
 	sw $gp, 0x2c($a0)
@@ -86904,7 +87848,8 @@ func_701:
 	move_ $v0, $a1
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_702:
 	move_ $v1, $a0
 	andi $v0, $v1, 0xff
@@ -86920,7 +87865,9 @@ func_702:
 	sll $v0, $v1, 0x18
 	jr $ra
 		sra $v0, 0x18
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_703:
 	li $t2, 0xa0
 	jr $t2
@@ -86942,7 +87889,9 @@ func_706:
 	li $t2, 0xa0
 	jr $t2
 	li $t1, 0x72
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_707:
 	li $t2, 0xb0
 	jr $t2
@@ -87311,7 +88260,9 @@ func_728:
 		addiu $sp, 0x30
 	nop
 func_729:
-	addiu $t2, $zr, 0xb0; jr $t2; addiu $t1, $zr, 0x42
+	addiu $t2, $zr, 0xb0
+	jr $t2
+	addiu $t1, $zr, 0x42
 	nop
 	lui $at, 0x8007
 	jr $ra
@@ -87327,7 +88278,8 @@ func_730:
 	move_ $s1, $a1
 	sw $s2, 0x18($sp)
 	move_ $s2, $a2
-	sw $s3, 0x1c($sp);sw  $ra, 0x20($sp);
+	sw $s3, 0x1c($sp)
+	sw $ra, 0x20($sp)
 	jal 0x8006b044
 		move_ $s3, $a3
 	jal 0x8006a804
@@ -87361,7 +88313,8 @@ func_730:
 	move_ $s1, $a1
 	sw $s2, 0x18($sp)
 	move_ $s2, $a2
-	sw $s3, 0x1c($sp);sw  $ra, 0x20($sp);
+	sw $s3, 0x1c($sp)
+	sw $ra, 0x20($sp)
 	jal 0x8006b044
 		move_ $s3, $a3
 	jal 0x8006a804
@@ -87508,7 +88461,10 @@ func_738:
 	swi $ra, 0x801ddc80
 	jal 0x8006a804
 		nop
-	addiu $t1, $zr, 0x57; addiu $t2, $zr, 0xb0; jalr $t2; nop
+	addiu $t1, $zr, 0x57
+	addiu $t2, $zr, 0xb0
+	jalr $t2
+	nop
 	lw $v0, 0x16c($v0)
 	li $t1, 0xb
 	addi $v1, $v0, 0x884
@@ -87527,12 +88483,16 @@ func_738:
 	nop
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_739:
 	swi $ra, 0x801ddc90
 	jal 0x8006a804
 		nop
-	addiu $t1, $zr, 0x57; addiu $t2, $zr, 0xb0; jalr $t2; nop
+	addiu $t1, $zr, 0x57
+	addiu $t2, $zr, 0xb0
+	jalr $t2
+	nop
 	li $t2, 0x9
 	lw $v0, 0x16c($v0)
 	nop
@@ -87551,13 +88511,16 @@ func_739:
 	nop
 	jr $ra
 		nop
-	nop; nop
+	nop
+	nop
 func_740:
 	la_ $v1, 0x801ddca4
 	lw $v0, ($v1)
 	jr $ra
 		sw $a0, ($v1)
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_741:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
@@ -87568,7 +88531,9 @@ func_741:
 	addiu $sp, 0x18
 	jr $ra
 		nop
-	nop; nop; nop
+	nop
+	nop
+	nop
 func_742:
 	lwi $v0, 0x80077974
 	addiu $sp, -0x18
@@ -87632,7 +88597,8 @@ func_743:
 	addiu $sp, -0x20
 	sw $s0, 0x10($sp)
 	move_ $s0, $a1
-	sw $s1, 0x14($sp);sw  $ra, 0x18($sp);
+	sw $s1, 0x14($sp)
+	sw $ra, 0x18($sp)
 	jalr $v0
 		move_ $s1, $a2
 	move_ $v1, $v0
@@ -87697,7 +88663,8 @@ func_743:
 	lw $s0, 0x10($sp)
 	jr $ra
 		addiu $sp, 0x20
-	nop; nop
+	nop
+	nop
 func_744:
 	addiu $sp, -0x18
 	sw $ra, 0x14($sp)
@@ -87762,7 +88729,8 @@ func_745:
 	addiu $sp, -0x20
 	sw $s0, 0x10($sp)
 	move_ $s0, $a0
-	sw $s1, 0x14($sp);sw  $ra, 0x18($sp);
+	sw $s1, 0x14($sp)
+	sw $ra, 0x18($sp)
 	swi $zr, 0x80077998
 	swi $zr, 0x800779ac
 	jal 0x8006b494
