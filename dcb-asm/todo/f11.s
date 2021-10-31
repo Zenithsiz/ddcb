@@ -1,4 +1,3 @@
-	.section ".text.f11"
 f11:
 	mfc0 $t0, $12
 	nop

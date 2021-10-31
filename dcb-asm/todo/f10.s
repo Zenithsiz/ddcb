@@ -1,4 +1,3 @@
-	.section ".text.f10"
 f10:
 	sll $v0, $a0, 0x1
 	addu $v0, $a0

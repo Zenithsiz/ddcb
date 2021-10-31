@@ -3,6 +3,7 @@
 # Import
 import os
 import re
+import yaml
 import pathlib
 
 # Line processing regex
@@ -10,6 +11,10 @@ import pathlib
 line_non_dot_label_def_regex = re.compile("^\s*([^#.\s]*):")
 line_dot_label_def_regex = re.compile("^\s*\.([^#.\s]*):")
 line_dot_label_use_regex = re.compile(".+\.([^:\"\s.]*)$")
+
+# Get all symbols
+symbol_addrs = yaml.safe_load(open("symbols.yaml"))
+symbols = set(symbol_addrs[addr] for addr in symbol_addrs)
 
 
 # Preprocesses an assembly file
@@ -29,7 +34,12 @@ def main(input_path, output_path):
 			# If this is a non-dot label definition, set it as the lastest
 			non_dot_def_matches = line_non_dot_label_def_regex.search(line)
 			if non_dot_def_matches is not None:
-				latest_non_dot_label_def = non_dot_def_matches.group(1)
+				label = non_dot_def_matches.group(1)
+				latest_non_dot_label_def = label
+
+				# And add it's section if it's in the symbols
+				if label in symbols:
+					line = f"\t.section \".text.{label}\"\n" + line
 
 			# If this is a dot label definition, add the latest non-dot definition
 			dot_def_matches = line_dot_label_def_regex.search(line)

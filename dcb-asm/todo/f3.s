@@ -1,4 +1,3 @@
-	.section ".text.f3"
 f3:
 	lw $a1, 0xc($a0)
 	nop

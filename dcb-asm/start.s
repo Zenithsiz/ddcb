@@ -1,4 +1,3 @@
-	.section ".text.start"
 start:
 	la_ $v0, 0x80077a08
 	la_ $v1, 0x801ddf38

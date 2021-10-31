@@ -1,4 +1,3 @@
-	.section ".text.f2"
 f2:
 	addiu $sp, -0x18
 	sw $ra, 0x14($sp)

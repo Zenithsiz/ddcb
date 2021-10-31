@@ -1,4 +1,3 @@
-	.section ".text.main_loop"
 main_loop:
 	addiu $sp, -0x30
 	sw $ra, 0x28($sp)
