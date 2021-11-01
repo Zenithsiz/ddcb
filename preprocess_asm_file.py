@@ -13,8 +13,7 @@ line_dot_label_def_regex = re.compile("^\s*\.([^#.\s]*):")
 line_dot_label_use_regex = re.compile(".+\.([^:\"\s.]*)$")
 
 # Get all symbols
-symbol_addrs = yaml.safe_load(open("symbols.yaml"))
-symbols = set(symbol_addrs[addr] for addr in symbol_addrs)
+symbols = yaml.safe_load(open("symbols.yaml"))
 
 
 # Preprocesses an assembly file

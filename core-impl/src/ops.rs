@@ -70,6 +70,15 @@ pub trait MulAssign<Rhs = Self> {
 	fn mul_assign(self, other: Rhs);
 }
 
+
+#[lang = "rem"]
+pub trait Rem<Rhs = Self> {
+	type Output;
+
+	fn rem(self, other: Rhs) -> Self::Output;
+}
+
+
 #[lang = "neg"]
 pub trait Neg {
 	type Output;
@@ -99,6 +108,36 @@ impl Not for bool {
 	type Output = bool;
 
 	fn not(self) -> Self::Output {
+		// Note: This gets replaced with the actual implementation
+		unsafe {
+			crate::intrinsics::unreachable();
+		}
+	}
+}
+
+#[lang = "index"]
+pub trait Index<Idx: ?Sized> {
+	type Output: ?Sized;
+
+	#[track_caller]
+	fn index(&self, index: Idx) -> &Self::Output;
+}
+
+impl<const N: usize> Index<usize> for [u8; N] {
+	type Output = u8;
+
+	fn index(&self, _index: usize) -> &Self::Output {
+		// Note: This gets replaced with the actual implementation
+		unsafe {
+			crate::intrinsics::unreachable();
+		}
+	}
+}
+
+impl Index<usize> for [u8] {
+	type Output = u8;
+
+	fn index(&self, _index: usize) -> &Self::Output {
 		// Note: This gets replaced with the actual implementation
 		unsafe {
 			crate::intrinsics::unreachable();
@@ -151,6 +190,9 @@ impl_bi_output!(BitAnd, bitand, i8, i16, i32, isize);
 
 impl_bi_output!(Mul, mul, u8, u16, u32, usize);
 impl_bi_output!(Mul, mul, i8, i16, i32, isize);
+
+impl_bi_output!(Rem, rem, u8, u16, u32, usize);
+impl_bi_output!(Rem, rem, i8, i16, i32, isize);
 
 impl_bi!(AddAssign, add_assign, u8, u16, u32, usize);
 impl_bi!(AddAssign, add_assign, i8, i16, i32, isize);

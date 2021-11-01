@@ -9,7 +9,9 @@
 	naked_functions,
 	auto_traits,
 	negative_impls,
-	intrinsics
+	intrinsics,
+	untagged_unions,
+	const_raw_ptr_deref
 )]
 // Core / Std
 #![no_std]
@@ -23,7 +25,10 @@ pub mod intrinsics;
 pub mod marker;
 pub mod ops;
 pub mod option;
+pub mod panic;
 pub mod ptr;
+pub mod slice;
+pub mod str;
 
 // Exports
 pub use marker::{Copy, DiscriminantKind, Sized, Sync};
@@ -32,19 +37,6 @@ pub use option::{
 	Option::{None, Some},
 };
 
-#[lang = "panic_location"]
-pub struct PanicLocation<'a> {
-	pub file: &'a str,
-	pub line: u32,
-	pub col:  u32,
-}
-
-#[lang = "panic"]
-#[allow(clippy::empty_loop)] // It's the only proper way to panic
-#[inline(always)]
-fn panic(_location: PanicLocation<'_>) -> ! {
-	loop {}
-}
 
 #[rustc_builtin_macro]
 #[macro_export]
@@ -76,4 +68,12 @@ macro_rules! include {
 #[macro_export]
 macro_rules! include_str {
 	($file:expr $(,)?) => {{ /* compiler built-in */ }};
+}
+
+#[macro_export]
+#[rustc_builtin_macro(core_panic)]
+macro_rules! panic {
+	($($arg:tt)*) => {
+		/* compiler built-in */
+	};
 }

@@ -1,7 +1,7 @@
 //! Intrinsics
 
 // Imports
-use crate::{Copy, DiscriminantKind, PanicLocation, Sized};
+use crate::{Copy, DiscriminantKind, Sized};
 
 
 extern "rust-intrinsic" {
@@ -37,7 +37,7 @@ extern "rust-intrinsic" {
 
 	pub fn assert_uninit_valid<T>();
 
-	pub fn caller_location() -> &'static PanicLocation<'static>;
+	pub fn caller_location() -> &'static crate::panic::Location<'static>;
 
 	pub fn forget<T: ?Sized>(_: T);
 
