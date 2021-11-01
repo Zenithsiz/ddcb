@@ -17,24 +17,6 @@ macro decl_static($( $NAME:ident @ $addr:literal: $T:ty = $value:expr; )*) {
 	)*
 }
 
-// Helper macro to declare all functions
-#[allow(unused_macros)] // We might use it eventually
-macro decl_fn {
-	($(
-		fn $name:ident( $($arg_name:ident: $arg_ty:ty),* $(,)? ) $(-> $ret_ty:ty)? {
-			$($body:tt)*
-		}
-	)*) => {
-		$(
-			#[no_mangle]
-			#[link_section = concat!(".text.", stringify!($name))]
-			pub unsafe extern "C" fn $name( $($arg_name: $arg_ty),* ) $(-> $ret_ty)? {
-				$($body)*
-			}
-		)*
-	}
-}
-
 decl_static! {
 	// File extension and version for iso9660 filesystem drv files
 	cd_drv_extension_version @ 0x80010000: [u8; 6] = *b".DRV;1";
@@ -14202,130 +14184,186 @@ decl_static! {
 	];
 }
 
-decl_fn! {
-	fn f41() -> u32 {
-		const SRC: u32 = 0x800793a0;
-		const DST: u32 = 0x800897e8;
+#[no_mangle]
+#[link_section = ".text.f41"]
+unsafe extern "C" fn f41() -> u32 {
+	const SRC: u32 = 0x800793a0;
+	const DST: u32 = 0x800897e8;
 
-		// Setup the destination pointer
-		let dst_ptr: u32;
-		asm_exact!(
-			"lui $v1, %hi({ptr})",
-			ptr = const DST,
-			out("$v1") dst_ptr
-		);
+	// Setup the destination pointer
+	let dst_ptr: u32;
+	asm_exact!(
+		"lui $v1, %hi({ptr})",
+		ptr = const DST,
+		out("$v1") dst_ptr
+	);
 
-		// Read the src pointer
-		let src_ptr: u32;
-		asm_exact!(
-			"lui $v0, %hi({ptr})",
-			"lw $v0, %lo({ptr})($v0)",
-			ptr = const SRC,
-			out("$v0") src_ptr,
-		);
+	// Read the src pointer
+	let src_ptr: u32;
+	asm_exact!(
+		"lui $v0, %hi({ptr})",
+		"lw $v0, %lo({ptr})($v0)",
+		ptr = const SRC,
+		out("$v0") src_ptr,
+	);
 
-		// Then read the value
-		let value: u32;
-		asm_exact!(
-			".set noat",
-			"lw $v0, {offset}({src})",
-			src = in(reg) src_ptr,
-			offset = const 0x40bc,
-			lateout("$v0") value,
+	// Then read the value
+	let value: u32;
+	asm_exact!(
+		".set noat",
+		"lw $v0, {offset}({src})",
+		src = in(reg) src_ptr,
+		offset = const 0x40bc,
+		lateout("$v0") value,
 
-		);
+	);
 
-		// Store it and return
-		asm_exact!(
-			"jr $ra",
-			"sw {value}, %lo({ptr})({dst_ptr})",
-			ptr = const DST,
-			value = in(reg) value,
-			dst_ptr = in(reg) dst_ptr,
-			options(noreturn)
-		);
-	}
-
-	fn f44(a0: u32, a1: u32, a2: u32) {
-		// `if a0[0x3e] < 6 { a0[0x3e] = 0; }`
-		let mut a0 = a0;
-		asm_exact!(
-			"lb $v0, 0x3e($a0)",
-			"nop",
-			"slti $v0, $v0, 0x6",
-			"bnez $v0, 0f",
-			"nop",
-			"sb $zero, 0x3e($a0)",
-			"0:",
-			inout("$a0") a0,
-			out("$v0") _,
-		);
-
-		let mut arg1: u32;
-		asm_exact!(
-			"lh $v0, 0x8($a0)",
-			"lh $v1, 0x10($a0)",
-			"nop",
-			"subu $v1, $v0, $v1",
-			"slt $v0, $v1, $a1",
-			"beqz $v0, 0f",
-			"nop",
-			"addu $a1, $v1, $zero",
-			"0:",
-			inout("$a0") a0,
-			inlateout("$a1") a1 => arg1,
-			out("$v0") _,
-			out("$v1") _,
-		);
-
-		let mut arg2: u32;
-		asm_exact!(
-			"lh $v0, 0xa($a0)",
-			"lh $v1, 0x12($a0)",
-			"nop",
-			"subu $v1, $v0, $v1",
-			"slt $v0, $v1, $a2",
-			"beqz $v0, 0f",
-			"nop",
-			"addu $a2, $v1, $zero",
-			"0:",
-			inout("$a0") a0,
-			inlateout("$a2") a2 => arg2,
-			out("$v0") _,
-			out("$v1") _,
-		);
-
-		// If either arg1 or arg2 are < 0, set them to 0.
-		asm_exact!(
-			"bgez $a1, 0f",
-			"nop",
-			"addu $a1, $zero, $zero",
-			"0:",
-
-			"bgez $a2, 1f",
-			"nop",
-			"addu $a2, $zero, $zero",
-			"1:",
-			inlateout("$a1") arg1,
-			inlateout("$a2") arg2,
-		);
-
-		asm_exact!(
-			"lhu $v0, 0x4($a0)",
-			"nop",
-			"sh $v0, 0x30($a0)",
-
-			"lhu $v0, 0x6($a0)",
-			"nop",
-			"sh $v0, 0x32($a0)",
-
-			"sh $a1, 0x34($a0)",
-			"jr $ra",
-			"sh $a2, 0x36($a0)",
-			in("$a0") a0,
-			in("$a1") arg1,
-			in("$a2") arg2,
-			options(noreturn)
-		);
-	}
+	// Store it and return
+	asm_exact!(
+		"jr $ra",
+		"sw {value}, %lo({ptr})({dst_ptr})",
+		ptr = const DST,
+		value = in(reg) value,
+		dst_ptr = in(reg) dst_ptr,
+		options(noreturn)
+	);
 }
+
+#[no_mangle]
+#[link_section = ".text.f44"]
+#[dcb_macros::asm_labels]
+unsafe extern "C" fn f44(a0: u32, a1: u32, a2: u32) {
+	// `if a0[0x3e] < 6 { a0[0x3e] = 0; }`
+	let mut a0 = a0;
+	asm_exact!(
+		"lb $v0, 0x3e($a0)",
+		"nop",
+		"slti $v0, $v0, 0x6",
+		"bnez $v0, .label0",
+		"	nop",
+		"sb $zero, 0x3e($a0)",
+		inout("$a0") a0,
+		out("$v0") _,
+	);
+
+	#[label]
+	label0;
+
+	let mut arg1: u32;
+	asm_exact!(
+		"lh $v0, 0x8($a0)",
+		"lh $v1, 0x10($a0)",
+		"nop",
+		"subu $v1, $v0, $v1",
+		"slt $v0, $v1, $a1",
+		"beqz $v0, .label1",
+		"	nop",
+		"addu $a1, $v1, $zero",
+		inout("$a0") a0,
+		inlateout("$a1") a1 => arg1,
+		out("$v0") _,
+		out("$v1") _,
+	);
+
+	#[label]
+	label1;
+
+	let mut arg2: u32;
+	asm_exact!(
+		"lh $v0, 0xa($a0)",
+		"lh $v1, 0x12($a0)",
+		"nop",
+		"subu $v1, $v0, $v1",
+		"slt $v0, $v1, $a2",
+		"beqz $v0, .label2",
+		"	nop",
+		"addu $a2, $v1, $zero",
+		inout("$a0") a0,
+		inlateout("$a2") a2 => arg2,
+		out("$v0") _,
+		out("$v1") _,
+	);
+
+	#[label]
+	label2;
+
+	// If either arg1 or arg2 are < 0, set them to 0.
+	asm_exact!(
+		"bgez $a1, .label3",
+		"	nop",
+		"addu $a1, $zero, $zero",
+		inlateout("$a1") arg1,
+	);
+
+	#[label]
+	label3;
+
+	asm_exact!(
+		"bgez $a2, .label4",
+		"	nop",
+		"addu $a2, $zero, $zero",
+		inlateout("$a2") arg2,
+	);
+
+	#[label]
+	label4;
+
+	asm_exact!(
+		"lhu $v0, 0x4($a0)",
+		"nop",
+		"sh $v0, 0x30($a0)",
+
+		"lhu $v0, 0x6($a0)",
+		"nop",
+		"sh $v0, 0x32($a0)",
+
+		"sh $a1, 0x34($a0)",
+		"jr $ra",
+		"	sh $a2, 0x36($a0)",
+		in("$a0") a0,
+		in("$a1") arg1,
+		in("$a2") arg2,
+		options(noreturn)
+	);
+}
+
+/*
+fn f46_(a0: u32, a1: u32) {
+	let mut a0_hu: u32;
+	let mut a0_h: u32;
+	let mut a1_hu: u32;
+	let mut a1_h: u32;
+	asm_exact!(
+		"addu $a2, $a0",
+		"lhu $a3, ($a2)",
+		"lh $v0, ($a2)",
+		"lhu $a0, ($a1)",
+		"lh $v1, ($a1)",
+		"nop",
+		inlateout("$a0") a0 => a1_hu,
+		in("$a1") a1,
+		out("$a2") _,
+		out("$a3") a0_hu,
+		out("$v0") a0_h,
+		out("$v1") a1_h,
+	);
+
+	asm_exact!(
+		"slt {a0_h}, $v1",
+		"beqz $v0, 0f",
+		"	subu $v0, $a0, $a3",
+		"lhu $v1, 0x4($a2)",
+		"nop",
+		"subu $v1, $v0",
+		"sh $v1, 0x4($a2)",
+		"lhu $v0, ($a1)",
+		"nop",
+		"sh $v0, ($a2)",
+		"0:",
+		a0_h = inout(reg) a0_h => _,
+		a0_hu = in(reg) a0_hu,
+		a1_h = inout(reg) a1_h,
+		a1_hu = in(reg) a1_hu,
+	);
+}
+*/

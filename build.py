@@ -12,26 +12,23 @@ import generate_linker_fns
 import preprocess_asm_file
 
 # Create the build folders if they don't exist
-for path in ["build", "build/llvm", "build/asm"]:
+for path in ["build", "build/llvm", "build/asm", "build/rust"]:
 	os.makedirs(path, exist_ok=True)
+
+# Compile `dcb-macros` onto a `so`
+# Note: Not `--release` because it takes a bit
+with scoping():
+	args = ["cargo", "build", "-p", "dcb-macros", "-Z", "unstable-options", "--out-dir", "build/rust"]
+	print(" !Compiling `dcb-macros`")
+	subprocess.run(args, check=True)
 
 # Compile `core-impl` onto a `rlib`
 with scoping():
 	args = [
-	    "rustc", "--crate-name", "core_impl", "--edition=2021", "core-impl/src/lib.rs", "--crate-type", "rlib",
-	    "--emit=link", "-C", "opt-level=3", "-C", "embed-bitcode=no", "--target=mipsel-sony-psx.json", "--out-dir",
-	    "build/"
+	    "cargo", "build", "--release", "-p", "core-impl", "-Z", "unstable-options", "--out-dir", "build/rust",
+	    "--target=mipsel-sony-psx.json"
 	]
 	print(" !Compiling `core-impl`")
-	subprocess.run(args, check=True)
-
-# Compile `dcb-macros` onto a `rlib`
-with scoping():
-	args = [
-	    "rustc", "--crate-name", "dcb_macros", "--edition=2021", "dcb-macros/src/lib.rs", "--crate-type", "proc-macro",
-	    "--emit=link", "-C", "opt-level=3", "-C", "embed-bitcode=no", "--out-dir", "build/"
-	]
-	print(" !Compiling `dcb-macros`")
 	subprocess.run(args, check=True)
 
 # Compile `dcb-rs` onto `llvm-ir`
@@ -39,7 +36,7 @@ with scoping():
 	args = [
 	    "rustc", "--crate-name", "dcb", "--edition=2021", "dcb-rs/src/lib.rs", "--emit=llvm-ir", "-C", "opt-level=3",
 	    "-C", "embed-bitcode=no", "-C", "extra-filename=-rs", "--target=mipsel-sony-psx.json", "--out-dir", "build/llvm/",
-	    "--extern", "core_impl=build/libcore_impl.rlib", "--extern", "dcb_macros=build/libdcb_macros.so"
+	    "--extern", "core_impl=build/rust/libcore_impl.rlib", "--extern", "dcb_macros=build/rust/libdcb_macros.so"
 	]
 	print(" !Compiling `dcb-rs`")
 	subprocess.run(args, check=True)
