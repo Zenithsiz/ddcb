@@ -835,3 +835,16 @@ f158:
 	lwi $v0, 0x801d69e0
 	jr $ra
 		nop
+
+f159:
+	lui $v0, 0x801d
+	sw $a0, 0x69e8($v0)
+	lui $v0, 0x801d
+	sw $a1, 0x69ec($v0)
+	lui $v0, 0x801d
+	sw $a2, 0x69f0($v0)
+	lui $v1, 0x801d
+	sll $v0, $a0, 0x8
+	subu $v0, $a0
+	jr $ra
+		sw $v0, 0x69e4($v1)
