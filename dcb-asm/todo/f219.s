@@ -111,9 +111,9 @@ f221:
 		nop
 	jal 0x8006a814
 		nop
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x8001010c)
 	addiu $v1, $sp, 0x10
-	addiu $v0, 0x10c
+	addiu $v0, %lo(S_0x8001010c)
 	addiu $a0, $v0, 0x40
 .2:
 	lw $a1, ($v0)
@@ -127,9 +127,9 @@ f221:
 	addiu $v0, 0x10
 	bne $v0, $a0, .2
 		addiu $v1, 0x10
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x8001014c)
 	addiu $v1, $sp, 0x50
-	addiu $v0, 0x14c
+	addiu $v0, %lo(S_0x8001014c)
 	addiu $a0, $v0, 0x40
 .3:
 	lw $a1, ($v0)

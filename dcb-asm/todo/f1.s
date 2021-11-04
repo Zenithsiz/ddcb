@@ -100,9 +100,9 @@ f1:
 	li $a0, 0xf2000003
 	li $a1, 0x2
 	li $a2, 0x1000
-	lui $a3, 0x8001
+	lui $a3, %hi(f2)
 	jal 0x8006a794
-		addiu $a3, 0x41b8
+		addiu $a3, %lo(f2)
 	move_ $s0, $v0
 	jal 0x8006a7c4
 		move_ $a0, $s0

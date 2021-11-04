@@ -15,10 +15,17 @@
 - unknown_cd_path3
 - unknown_cd_path4
 - S_0x8001010c
+- S_0x8001014c
 - unknown_cd_drive
 - unknown_data0
 - system_tiles_path
 - S_0x800101d0
+- S_0x800101e8
+- S_0x80010290
+- S_0x800102a8
+- S_0x800102c0
+- S_0x80010320
+- S_0x80010380
 - S_0x80010544
 - S_0x80010548
 - S_0x8001054c
@@ -37,6 +44,7 @@
 - open_segment_path
 - opening_mv_cd_path
 - S_0x800105b8
+- S_0x800105d0
 - S_0x800105e4
 - S_0x800105f0
 - S_0x80010794

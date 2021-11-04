@@ -876,8 +876,8 @@ f24:
 		nop
 	lui $v0, 0x8003
 	addiu $s3, $v0, -0x4c14
-	lui $v0, 0x8001
-	addiu $s2, $v0, 0x5328
+	lui $v0, %hi(f24)
+	addiu $s2, $v0, %lo(f24)
 	lui $v0, 0x8003
 	addiu $s1, $v0, -0xb0c
 	jal f7
@@ -1239,9 +1239,9 @@ f29:
 		addiu $s1, 0x2
 	sb $v0, 0x21($sp)
 	addiu $a0, $sp, 0x22
-	lui $a1, 0x8001
+	lui $a1, %hi(cd_drv_extension_version)
 	jal 0x8002a5b4
-		addiu $a1, 0x0
+		addiu $a1, %lo(cd_drv_extension_version)
 	addiu $a0, $s3, 0x4
 	jal 0x800572a4
 		addiu $a1, $sp, 0x20

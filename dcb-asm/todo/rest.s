@@ -1854,8 +1854,8 @@ func_189:
 	addiu $v1, $v0, -0x61
 	sltiu $v0, $v1, 0x5
 	beqz $v0, .6
-		lui $v0, 0x8001
-	addiu $v0, 0x1d0
+		lui $v0, %hi(S_0x800101d0)
+	addiu $v0, %lo(S_0x800101d0)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -2120,8 +2120,8 @@ func_191:
 		addiu $v1, $v0, -0x1
 	sltiu $v0, $v1, 0x2a
 	beqz $v0, .5
-		lui $v0, 0x8001
-	addiu $v0, 0x1e8
+		lui $v0, %hi(S_0x800101e8)
+	addiu $v0, %lo(S_0x800101e8)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -2144,8 +2144,8 @@ func_191:
 	addiu $v1, $v0, -0x61
 	sltiu $v0, $v1, 0x5
 	beqz $v0, .2
-		lui $v0, 0x8001
-	addiu $v0, 0x290
+		lui $v0, %hi(S_0x80010290)
+	addiu $v0, %lo(S_0x80010290)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -2634,8 +2634,8 @@ func_195:
 	addiu $v1, $v0, -0x61
 	sltiu $v0, $v1, 0x5
 	beqz $v0, .2
-		lui $v0, 0x8001
-	addiu $v0, 0x2a8
+		lui $v0, %hi(S_0x800102a8)
+	addiu $v0, %lo(S_0x800102a8)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -3141,8 +3141,8 @@ func_198:
 	addiu $v1, $v0, -0x61
 	sltiu $v0, $v1, 0x17
 	beqz $v0, .7
-		lui $v0, 0x8001
-	addiu $v0, 0x2c0
+		lui $v0, %hi(S_0x800102c0)
+	addiu $v0, %lo(S_0x800102c0)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -3548,8 +3548,8 @@ func_199:
 	addiu $v1, $v0, -0x61
 	sltiu $v0, $v1, 0x17
 	beqz $v0, .4
-		lui $v0, 0x8001
-	addiu $v0, 0x320
+		lui $v0, %hi(S_0x80010320)
+	addiu $v0, %lo(S_0x80010320)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -4297,8 +4297,8 @@ func_204:
 	addiu $v1, $v0, -0xa
 	sltiu $v0, $v1, 0x71
 	beqz $v0, .7
-		lui $v0, 0x8001
-	addiu $v0, 0x380
+		lui $v0, %hi(S_0x80010380)
+	addiu $v0, %lo(S_0x80010380)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -4880,25 +4880,25 @@ func_206:
 	j 0x8002a888
 		nop
 .0x8002a864:
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x80010544)
 	j 0x8002a8bc
-		addiu $a1, $v0, 0x544
+		addiu $a1, $v0, %lo(S_0x80010544)
 .0x8002a870:
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x80010548)
 	j 0x8002a8bc
-		addiu $a1, $v0, 0x548
+		addiu $a1, $v0, %lo(S_0x80010548)
 .0x8002a87c:
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x8001054c)
 	j 0x8002a8bc
-		addiu $a1, $v0, 0x54c
+		addiu $a1, $v0, %lo(S_0x8001054c)
 	beqz $v0, .0x8002a8a8
 		li $a1, 0x20
 	jal 0x8002a710
 		li $a3, 0x1
 	move_ $a0, $v0
-	lui $a1, 0x8001
+	lui $a1, %hi(S_0x80010550)
 	j 0x8002a8bc
-		addiu $a1, 0x550
+		addiu $a1, %lo(S_0x80010550)
 .0x8002a8a8:
 	jal 0x8002a710
 		li $a3, 0x2
@@ -5207,17 +5207,17 @@ func_208:
 	j 0x8002ad2c
 		nop
 .0x8002ad08:
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x80010558)
 	j 0x8002ad40
-		addiu $a1, $v0, 0x558
+		addiu $a1, $v0, %lo(S_0x80010558)
 .0x8002ad14:
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x8001055c)
 	j 0x8002ad40
-		addiu $a1, $v0, 0x55c
+		addiu $a1, $v0, %lo(S_0x8001055c)
 .0x8002ad20:
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x80010560)
 	j 0x8002ad40
-		addiu $a1, $v0, 0x560
+		addiu $a1, $v0, %lo(S_0x80010560)
 	jal 0x8002abac
 		li $a3, 0x1
 	move_ $a0, $v0
@@ -5247,17 +5247,17 @@ func_208:
 	j 0x8002adc0
 		nop
 .0x8002ad9c:
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x80010568)
 	j 0x8002add4
-		addiu $a1, $v0, 0x568
+		addiu $a1, $v0, %lo(S_0x80010568)
 .0x8002ada8:
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x8001056c)
 	j 0x8002add4
-		addiu $a1, $v0, 0x56c
+		addiu $a1, $v0, %lo(S_0x8001056c)
 .0x8002adb4:
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x80010570)
 	j 0x8002add4
-		addiu $a1, $v0, 0x570
+		addiu $a1, $v0, %lo(S_0x80010570)
 	jal 0x8002a710
 		li $a3, 0x1
 	move_ $a0, $v0
@@ -5699,9 +5699,9 @@ func_215:
 		ori $a0, 0xffff
 	jal f19
 		li $a0, 0x2
-	lui $a0, 0x8001
+	lui $a0, %hi(opening_mv_cd_path)
 	jal 0x801dfbac
-		addiu $a0, 0x5a8
+		addiu $a0, %lo(opening_mv_cd_path)
 	jal 0x801e055c
 		move_ $a0, $s0
 	jal f16
@@ -6164,8 +6164,8 @@ func_222:
 		move_ $a0, $zr
 	sltiu $v0, $v1, 0x5
 	beqz $v0, .1
-		lui $v0, 0x8001
-	addiu $v0, 0x5b8
+		lui $v0, %hi(S_0x800105b8)
+	addiu $v0, %lo(S_0x800105b8)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -6185,8 +6185,8 @@ func_222:
 .0:
 	sltiu $v0, $v1, 0x5
 	beqz $v0, .1
-		lui $v0, 0x8001
-	addiu $v0, 0x5d0
+		lui $v0, %hi(S_0x800105d0)
+	addiu $v0, %lo(S_0x800105d0)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)

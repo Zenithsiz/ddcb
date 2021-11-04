@@ -19,9 +19,9 @@ f51:
 	nop
 	bne $v1, $v0, .0
 		move_ $v0, $zr
-	lui $a0, 0x8001
+	lui $a0, %hi(S_0x80010008)
 	jal 0x80069394
-		addiu $a0, 0x8
+		addiu $a0, %lo(S_0x80010008)
 	li $v0, -0x1
 .0:
 	lw $ra, 0x10($sp)

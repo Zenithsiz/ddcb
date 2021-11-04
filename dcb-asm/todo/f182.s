@@ -112,8 +112,8 @@ f186:
 	addiu $v1, $a1, -0x5
 	sltiu $v0, $v1, 0xa
 	beqz $v0, .35
-		lui $v0, 0x8001
-	addiu $v0, 0x60
+		lui $v0, %hi(unknown_fn_ptrs4)
+	addiu $v0, %lo(unknown_fn_ptrs4)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)

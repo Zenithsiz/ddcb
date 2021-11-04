@@ -53,8 +53,8 @@ f59:
 	lbu $v1, 0xa4($s0)
 	li $v0, 0x2
 	beq $v1, $v0, .2
-		lui $v0, 0x8001
-	addiu $v0, 0x28
+		lui $v0, %hi(S_0x80010028)
+	addiu $v0, %lo(S_0x80010028)
 	sw $v0, 0x98($s0)
 	la_ $v0, no_str
 	sw $v0, 0x9c($s0)
