@@ -84,7 +84,7 @@ f202:
 	move_ $a2, $s1
 .1:
 	move_ $a0, $s2
-	jal 0x8001bb44
+	jal f89
 		li $a1, 0x1
 	move_ $t0, $v0
 	bnez $t0, .4
@@ -93,7 +93,7 @@ f202:
 		nop
 	addiu $a0, $sp, 0x18
 	move_ $a1, $v0
-	jal 0x8001b248
+	jal f80
 		addiu $a2, $s3, 0x5a
 	move_ $t0, $v0
 	bnez $t0, .3
@@ -497,7 +497,7 @@ f211:
 	sll $v1, $a0, 0x2
 	addu $v0, $v1
 	sw $zr, 0x13c($v0)
-	jal 0x8001aff0
+	jal f76
 		addiu $a0, 0x40
 	lw $ra, 0x10($sp)
 	nop
@@ -537,10 +537,10 @@ f212:
 	bnez $v0, .0
 		lui $v0, 0x8008
 	lw $a0, -0x6b10($v0)
-	jal 0x80014c08
+	jal f19
 		li $s0, 0x40
 .2:
-	jal 0x8001aff0
+	jal f76
 		move_ $a0, $s0
 	addiu $s0, 0x1
 	slti $v0, $s0, 0x7f
@@ -703,10 +703,10 @@ f215:
 	lui $v0, 0x8008
 .0:
 	lw $a0, -0x6b10($v0)
-	jal 0x80014c08
+	jal f19
 		move_ $s4, $zr
 	li $a0, 0x28f8
-	jal 0x8001abcc
+	jal f71
 		addiu $a1, $s0, 0x40
 	lwi $v1, 0x801d6a4c
 	sll $a0, $s0, 0x2
@@ -798,7 +798,7 @@ f215:
 	move_ $a0, $s6
 .5:
 	move_ $a1, $zr
-	jal 0x8001bb44
+	jal f89
 		move_ $a2, $s5
 	move_ $s2, $v0
 	bnez $s2, .8
@@ -807,7 +807,7 @@ f215:
 		nop
 	addiu $a0, $sp, 0x10
 	move_ $a1, $v0
-	jal 0x8001b248
+	jal f80
 		addiu $a2, $s0, 0x40
 	move_ $s2, $v0
 	bnez $s2, .7
@@ -829,7 +829,7 @@ f215:
 	move_ $s4, $zr
 	move_ $a0, $s6
 	li $a1, 0x5
-	jal 0x8001bb44
+	jal f89
 		move_ $a2, $s5
 	move_ $s5, $v0
 	bnez $s5, .10
@@ -844,7 +844,7 @@ f215:
 	jal f8
 		li $s4, 0x1
 	addiu $a0, $sp, 0x10
-	jal 0x8001b144
+	jal f79
 		move_ $a1, $v0
 	move_ $s5, $v0
 	beqz $s5, .11
@@ -855,7 +855,7 @@ f215:
 	sll $s1, 0x4
 	move_ $a0, $s5
 	addiu $a1, $s0, -0x140
-	jal 0x8001b634
+	jal f84
 		move_ $a2, $s1
 	jal 0x80067b74
 		move_ $a0, $s5
@@ -900,7 +900,7 @@ f215:
 	addu $v0, $s1
 	beqz $s4, .11
 		sh $v0, 0x26e6($s3)
-	jal 0x8001ae90
+	jal f75
 		move_ $a0, $s5
 .11:
 	addiu $a0, $s3, 0x26ec
@@ -1384,7 +1384,7 @@ f218:
 		addiu $a1, $s6, 0x4
 	lw $a0, 0x14($v1)
 	move_ $a2, $s5
-	jal 0x80020370
+	jal f175
 		move_ $a3, $fp
 	j 0x80024350
 		move_ $s5, $v0
@@ -1393,7 +1393,7 @@ f218:
 	nop
 	lw $a0, 0x14($v0)
 	move_ $a2, $s5
-	jal 0x800202d8
+	jal f174
 		move_ $a3, $fp
 	move_ $s5, $v0
 .7:

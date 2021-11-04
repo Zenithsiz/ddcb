@@ -87,7 +87,7 @@ f1:
 	sw $zr, 0x14($s0)
 	sw $zr, 0x18($s0)
 	move_ $a0, $s1
-	jal 0x8001abcc
+	jal f71
 		li $a1, -0x3
 	move_ $v1, $v0
 	beqz $v1, .3

@@ -56,7 +56,7 @@ f56:
 	move_ $a0, $s1
 	addiu $a1, $s0, 0x8
 	li $a2, -0x1
-	jal 0x80016c08
+	jal f42
 		addiu $a3, $sp, 0x20
 	lbu $v0, 0x22($s0)
 	lhu $v1, ($s1)
@@ -82,7 +82,7 @@ f56:
 	sh $v0, 0x26($sp)
 	move_ $a0, $s2
 	addiu $a1, $sp, 0x20
-	jal 0x800190f4
+	jal f52
 		move_ $a2, $s3
 	lw $ra, 0x38($sp)
 	lw $s3, 0x34($sp)

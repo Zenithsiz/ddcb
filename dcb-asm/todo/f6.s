@@ -52,13 +52,13 @@ f6:
 	sh $v0, 0x7a1c($a1)
 .3:
 	lw $a0, 0x14($s0)
-	jal 0x8001aff0
+	jal f76
 		nop
 	lw $a0, 0x1c($s0)
-	jal 0x8001ae90
+	jal f75
 		nop
 	sw $zr, ($s0)
-	jal 0x800142d0
+	jal f3
 		move_ $a0, $s0
 	lw $ra, 0x14($sp)
 	lw $s0, 0x10($sp)

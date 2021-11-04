@@ -118,7 +118,7 @@ f49:
 	addiu $a0, 0x174
 	move_ $a1, $s0
 	sra $a2, 0x10
-	jal 0x8001ea64
+	jal f141
 		li $a3, 0x8
 	lw $a0, -0x6818($s1)
 	addiu $a2, $s4, 0x8
@@ -129,7 +129,7 @@ f49:
 	addiu $a0, 0x19c
 	move_ $a1, $s0
 	sra $a2, 0x10
-	jal 0x8001ea64
+	jal f141
 		li $a3, 0x8
 	move_ $s2, $zr
 	move_ $t0, $s1
@@ -258,7 +258,7 @@ f49:
 	lbu $v0, ($v0)
 	nop
 	sw $v0, 0x10($sp)
-	jal 0x8001ec3c
+	jal f146
 		addu $a0, $s1, $a0
 	lw $v0, -0x6818($s4)
 	nop

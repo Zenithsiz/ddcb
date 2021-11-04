@@ -451,7 +451,7 @@ f226:
 	sw $v0, 0x94($v1)
 	lui $v0, 0x8008
 	lw $a0, -0x6b10($v0)
-	jal 0x80014c08
+	jal f19
 		nop
 	j 0x80025250
 		sw $zr, 0x1c($s3)

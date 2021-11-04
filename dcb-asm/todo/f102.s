@@ -22,7 +22,7 @@ f102:
 	beqz $s3, .8
 		nop
 	sh $s1, 0x10($sp)
-	jal 0x8001ab64
+	jal f70
 		sh $s0, 0x14($sp)
 	sll $v1, $s3, 0x2
 	mult $s0, $v1
@@ -30,7 +30,7 @@ f102:
 	slt $v0, $v0, $v1
 	beqz $v0, .1
 		sll $v0, $s3, 0x2
-	jal 0x8001ab64
+	jal f70
 		nop
 	j 0x8001c3e4
 		move_ $s1, $v0
@@ -51,7 +51,7 @@ f102:
 	blez $v0, .8
 		mult $v0, $v1
 	mflo $a0
-	jal 0x8001ad0c
+	jal f73
 		nop
 	move_ $s2, $v0
 	beqz $s2, .8
@@ -94,7 +94,7 @@ f102:
 .7:
 	jal 0x80064980
 		move_ $a0, $zr
-	jal 0x8001ae90
+	jal f75
 		move_ $a0, $s2
 .8:
 	lw $ra, 0x30($sp)

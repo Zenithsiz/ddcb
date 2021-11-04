@@ -67,10 +67,10 @@ f5:
 	sh $v0, 0x7a1c($a1)
 .4:
 	lw $a0, 0x14($s0)
-	jal 0x8001aff0
+	jal f76
 		nop
 	lw $a0, 0x1c($s0)
-	jal 0x8001ae90
+	jal f75
 		nop
 	sw $zr, ($s0)
 	move_ $v0, $zr

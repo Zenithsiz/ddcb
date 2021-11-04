@@ -77,7 +77,7 @@ f87:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
 	lui $v0, 0x8008
-	jal 0x8001b930
+	jal f88
 		sw $zr, -0x6b00($v0)
 	lw $ra, 0x10($sp)
 	nop
@@ -275,7 +275,7 @@ f90:
 .1:
 	sh $a0, ($v1)
 	move_ $a0, $t0
-	jal 0x8001ad3c
+	jal f74
 		subu $a1, $a3, $t0
 	j .3
 		nop
@@ -293,7 +293,7 @@ f91:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
 	li $a1, 0x5
-	jal 0x8001bb94
+	jal f90
 		li $a2, -0x1
 	lw $ra, 0x10($sp)
 	nop

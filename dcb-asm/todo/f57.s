@@ -18,7 +18,7 @@ f57:
 	sra $a2, 0x1
 	move_ $a0, $s1
 	move_ $a1, $zr
-	jal 0x8001705c
+	jal f44
 		subu $a2, $v1, $a2
 	lhu $v0, 0xc($s1)
 	lhu $v1, 0x34($s1)
@@ -55,7 +55,7 @@ f57:
 	nop
 	sh $v0, 0x16($sp)
 	lw $a0, 0x4($s0)
-	jal 0x80019280
+	jal f54
 		addiu $a1, $sp, 0x10
 	lw $ra, 0x20($sp)
 	lw $s1, 0x1c($sp)

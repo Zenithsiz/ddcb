@@ -23,14 +23,14 @@ f125:
 		move_ $a0, $s0
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x8001e75c
+	jal f128
 		move_ $a3, $zr
 	j 0x8001e570
 		move_ $a0, $s0
 .0:
 	li $a1, 0x80
 	li $a2, 0x80
-	jal 0x8001e75c
+	jal f128
 		li $a3, 0x80
 	move_ $a0, $s0
 	jal 0x800676a4
@@ -41,14 +41,14 @@ f125:
 		move_ $a0, $s0
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x8001e75c
+	jal f128
 		move_ $a3, $zr
 	j 0x8001e5b4
 		move_ $a0, $s0
 .1:
 	li $a1, 0x80
 	li $a2, 0x80
-	jal 0x8001e75c
+	jal f128
 		li $a3, 0x80
 	move_ $a0, $s0
 	jal 0x800676a4
@@ -70,7 +70,7 @@ f125:
 	move_ $a0, $s0
 	li $a1, 0x80
 	li $a2, 0x80
-	jal 0x8001e75c
+	jal f128
 		li $a3, 0x80
 	j 0x8001e68c
 		li $v0, 0x3
@@ -85,14 +85,14 @@ f125:
 	move_ $a0, $s0
 	li $a1, 0x80
 	li $a2, 0x80
-	jal 0x8001e75c
+	jal f128
 		li $a3, 0x80
 	j 0x8001e68c
 		li $v0, 0x3
 .3:
 	move_ $a0, $s0
 	move_ $a1, $a3
-	jal 0x8001e75c
+	jal f128
 		move_ $a2, $a3
 	j 0x8001e690
 		nop
@@ -102,7 +102,7 @@ f125:
 	move_ $a0, $s0
 	li $a1, 0x80
 	li $a2, 0x80
-	jal 0x8001e75c
+	jal f128
 		li $a3, 0x80
 	j 0x8001e68c
 		li $v0, 0x4
@@ -181,12 +181,12 @@ f129:
 	andi $v0, 0x4
 	beqz $v0, .0
 		andi $a3, 0xff
-	jal 0x8001e8a4
+	jal f134
 		nop
 	j .1
 		nop
 .0:
-	jal 0x8001e894
+	jal f133
 		nop
 .1:
 	lw $ra, 0x10($sp)
@@ -204,12 +204,12 @@ f130:
 	andi $v0, 0x4
 	beqz $v0, .0
 		andi $a3, 0xff
-	jal 0x8001e8c4
+	jal f136
 		nop
 	j .1
 		nop
 .0:
-	jal 0x8001e8b4
+	jal f135
 		nop
 .1:
 	lw $ra, 0x10($sp)
@@ -228,12 +228,12 @@ f131:
 	andi $v0, 0x4
 	beqz $v0, .0
 		andi $a3, 0xff
-	jal 0x8001e8e4
+	jal f138
 		nop
 	j .1
 		nop
 .0:
-	jal 0x8001e8d4
+	jal f137
 		nop
 .1:
 	lw $ra, 0x10($sp)
@@ -249,12 +249,12 @@ f132:
 	andi $v0, 0x4
 	beqz $v0, .0
 		nop
-	jal 0x8001e9ac
+	jal f140
 		nop
 	j 0x8001e884
 		nop
 .0:
-	jal 0x8001e8f4
+	jal f139
 		nop
 	lw $ra, 0x10($sp)
 	nop
@@ -424,22 +424,22 @@ f141:
 	j .5
 		nop
 .1:
-	jal 0x8001eb1c
+	jal f142
 		sw $t0, 0x10($sp)
 	j .5
 		nop
 .2:
-	jal 0x8001ebac
+	jal f144
 		sw $t0, 0x10($sp)
 	j .5
 		nop
 .3:
-	jal 0x8001eb64
+	jal f143
 		sw $t0, 0x10($sp)
 	j .5
 		nop
 .4:
-	jal 0x8001ebf4
+	jal f145
 		sw $t0, 0x10($sp)
 .5:
 	lw $ra, 0x18($sp)
@@ -539,12 +539,12 @@ f146:
 	andi $v0, 0x10
 	beqz $v0, .0
 		andi $a3, 0xff
-	jal 0x8001ecc8
+	jal f148
 		sw $v1, 0x10($sp)
 	j .1
 		nop
 .0:
-	jal 0x8001ec8c
+	jal f147
 		sw $v1, 0x10($sp)
 .1:
 	lw $ra, 0x18($sp)
@@ -609,7 +609,7 @@ f150:
 	andi $s0, $a0, 0xff
 	beqz $s0, .6
 		move_ $s2, $a2
-	jal 0x8001ed04
+	jal f149
 		move_ $a0, $s2
 	li $v0, 0x2
 	beq $s0, $v0, .2
@@ -670,7 +670,7 @@ f151:
 		move_ $a1, $s4
 	move_ $a0, $s1
 	move_ $a1, $s0
-	jal 0x8001ed30
+	jal f150
 		move_ $a2, $s4
 	move_ $a0, $s4
 	jal 0x8005c274
@@ -694,7 +694,7 @@ f151:
 	jal 0x8005c2a4
 		move_ $a1, $s3
 .1:
-	jal 0x8001efb0
+	jal f153
 		move_ $a0, $s4
 	lw $ra, 0x24($sp)
 	lw $s4, 0x20($sp)
@@ -720,13 +720,13 @@ f152:
 	addiu $a0, $s1, 0x30
 	addiu $a1, $s1, 0x20
 	addiu $a2, $s1, 0x38
-	jal 0x8001ede0
+	jal f151
 		move_ $a3, $s1
 	j .3
 		nop
 .0:
 	lw $a0, 0x48($s1)
-	jal 0x8001efb0
+	jal f153
 		addiu $s0, $s1, 0x30
 	move_ $a0, $s0
 	jal 0x8005c934
@@ -736,7 +736,7 @@ f152:
 		move_ $a1, $s1
 	move_ $a0, $s2
 	move_ $a1, $s0
-	jal 0x8001ed30
+	jal f150
 		move_ $a2, $s1
 	lhu $v0, 0x20($s1)
 	nop
@@ -769,7 +769,7 @@ f152:
 	jal 0x8005c2a4
 		addiu $a1, $s1, 0x38
 .2:
-	jal 0x8001efb0
+	jal f153
 		move_ $a0, $s1
 .3:
 	lw $ra, 0x34($sp)

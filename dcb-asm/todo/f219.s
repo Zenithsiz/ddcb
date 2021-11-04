@@ -64,7 +64,7 @@ f221:
 .0:
 	beqz $s1, .1
 		li $a0, 0xbb80
-	jal 0x8001abcc
+	jal f71
 		li $a1, 0x7f
 	sll $v1, $s0, 0x6
 	addu $v1, $s0
@@ -198,10 +198,10 @@ f221:
 	jal f8
 		nop
 	la_ $a0, unknown_cd_drive
-	jal 0x8001b10c
+	jal f78
 		move_ $a1, $v0
 	lui $a0, 0x8002
-	jal 0x8001683c
+	jal f37
 		addiu $a0, 0x3df0
 .4:
 	lw $ra, 0xa0($sp)
@@ -535,7 +535,7 @@ f223:
 	addiu $s7, $v0, 0x6a58
 .0:
 	lh $a0, 0x6a00($s6)
-	jal 0x8001ad0c
+	jal f73
 		sll $a0, 0x4
 	sll $v1, $s5, 0x2
 	addu $v1, $s7
@@ -572,7 +572,7 @@ f223:
 	sll $a0, 0x3
 	mult $v0, $a0
 	mflo $a0
-	jal 0x8001ad0c
+	jal f73
 		lui $s1, 0x801d
 	move_ $s3, $v0
 	sw $s3, 0x6a50($s1)
@@ -582,7 +582,7 @@ f223:
 	sll $a0, 0x2
 	mult $v0, $a0
 	mflo $a0
-	jal 0x8001ad0c
+	jal f73
 		lui $s1, 0x801d
 	sw $v0, 0x6a48($s1)
 	lh $v0, 0x69fe($s0)
@@ -665,7 +665,7 @@ f223:
 		nop
 .11:
 	lui $a0, 0x8002
-	jal 0x8001683c
+	jal f37
 		addiu $a0, 0x46e0
 	lw $ra, 0x34($sp)
 	lw $fp, 0x30($sp)
@@ -692,18 +692,18 @@ f224:
 .0:
 	addu $v0, $s1
 	lw $a0, ($v0)
-	jal 0x8001ae90
+	jal f75
 		addiu $s0, 0x1
 	slti $v0, $s0, 0x2
 	bnez $v0, .0
 		sll $v0, $s0, 0x2
 	lui $v0, 0x801d
 	lw $a0, 0x6a50($v0)
-	jal 0x8001ae90
+	jal f75
 		nop
 	lui $v0, 0x801d
 	lw $a0, 0x6a48($v0)
-	jal 0x8001ae90
+	jal f75
 		nop
 	lw $ra, 0x18($sp)
 	lw $s1, 0x14($sp)

@@ -4,7 +4,7 @@ f2:
 	sw $s0, 0x10($sp)
 	lui $v0, 0x8007
 	lw $s0, 0x7a0c($v0)
-	jal 0x80014cf0
+	jal f20
 		nop
 	lwi $v0, 0x80077adc
 	nop

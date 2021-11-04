@@ -39,7 +39,7 @@ f104:
 	lbu $a1, ($s5)
 	lbu $a2, 0x1($s5)
 	lbu $a3, 0x2($s5)
-	jal 0x8001e75c
+	jal f128
 		move_ $a0, $s4
 .1:
 	beqz $s6, .2
@@ -50,7 +50,7 @@ f104:
 	lbu $v0, 0x6($s6)
 	nop
 	sw $v0, 0x10($sp)
-	jal 0x8001ec3c
+	jal f146
 		move_ $a0, $s4
 .2:
 	beqz $s7, .3
@@ -61,7 +61,7 @@ f104:
 	lh $v0, 0x6($s7)
 	nop
 	sw $v0, 0x10($sp)
-	jal 0x8001ea64
+	jal f141
 		move_ $a0, $s4
 .3:
 	move_ $a1, $fp

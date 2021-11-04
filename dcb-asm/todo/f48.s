@@ -33,7 +33,7 @@ f48:
 	andi $v0, 0x3f
 	or $a0, $v0
 	andi $a0, 0xffff
-	jal 0x80019084
+	jal f51
 		sw $a0, 0x5c($sp)
 	bnez $v0, .5
 		nop
@@ -118,7 +118,7 @@ f48:
 	lw $a0, -0x6818($t0)
 	sra $a1, 0x10
 	sra $a2, 0x10
-	jal 0x8001ea64
+	jal f141
 		sra $a3, 0x10
 	lui $v0, 0x8009
 	lw $a0, -0x6818($v0)
@@ -166,7 +166,7 @@ f48:
 	addiu $a0, 0x28
 	sra $a1, 0x10
 	sra $a2, 0x10
-	jal 0x8001ea64
+	jal f141
 		sra $a3, 0x10
 	lui $t0, 0x8009
 	lw $a0, -0x6818($t0)
@@ -212,7 +212,7 @@ f48:
 	sw $v0, 0x10($sp)
 	addiu $a0, 0x50
 	sra $a1, 0x10
-	jal 0x8001ea64
+	jal f141
 		sra $a2, 0x10
 	lui $v0, 0x8009
 	lw $a0, -0x6818($v0)
@@ -259,7 +259,7 @@ f48:
 	sw $v0, 0x10($sp)
 	addiu $a0, 0x78
 	sra $a1, 0x10
-	jal 0x8001ea64
+	jal f141
 		sra $a2, 0x10
 	lui $v0, 0x8009
 	lw $a0, -0x6818($v0)
@@ -467,7 +467,7 @@ f48:
 	lbu $v0, 0x1e($v0)
 	nop
 	sw $v0, 0x10($sp)
-	jal 0x8001ec3c
+	jal f146
 		addu $a0, $s0, $a0
 	lw $v0, -0x6818($s3)
 	nop

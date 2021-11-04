@@ -29,7 +29,7 @@ f40:
 	addu $a0, $v0
 	sll $v0, $a0, 0x5
 	addu $a0, $v0
-	jal 0x8001acec
+	jal f72
 		sll $a0, 0x3
 	move_ $fp, $v0
 	move_ $a0, $zr
@@ -74,7 +74,7 @@ f40:
 	li $a0, 0xc
 	move_ $a1, $s0
 	move_ $a2, $zr
-	jal 0x8001e6ec
+	jal f127
 		move_ $a3, $zr
 	sh $s4, 0x16($s0)
 	sll $s1, 0x2
@@ -82,19 +82,19 @@ f40:
 	li $a0, 0xe
 	addu $a1, $s2, $a1
 	move_ $a2, $zr
-	jal 0x8001e6ec
+	jal f127
 		move_ $a3, $zr
 	addiu $a1, $s1, 0x124
 	li $a0, 0xe
 	addu $a1, $s2, $a1
 	move_ $a2, $zr
-	jal 0x8001e6ec
+	jal f127
 		move_ $a3, $zr
 	addiu $s1, 0x1c4
 	li $a0, 0xe
 	addu $a1, $s2, $s1
 	move_ $a2, $zr
-	jal 0x8001e6ec
+	jal f127
 		move_ $a3, $zr
 	addiu $s3, 0x1
 	slti $v0, $s3, 0x4
@@ -109,7 +109,7 @@ f40:
 	li $a0, 0xc
 	addu $a1, $s2, $a1
 	move_ $a2, $zr
-	jal 0x8001e6ec
+	jal f127
 		move_ $a3, $zr
 	addu $s1, $s2, $s0
 	sh $s4, 0x18a($s1)
@@ -117,7 +117,7 @@ f40:
 	li $a0, 0xc
 	addu $a1, $s2, $s0
 	move_ $a2, $zr
-	jal 0x8001e6ec
+	jal f127
 		move_ $a3, $zr
 	addiu $s3, 0x1
 	slti $v0, $s3, 0x2
@@ -126,7 +126,7 @@ f40:
 	li $a0, 0xe
 	addiu $a1, $s2, 0xf0
 	move_ $a2, $zr
-	jal 0x8001e6ec
+	jal f127
 		move_ $a3, $zr
 	sb $zr, 0xfc($s2)
 	sb $zr, 0xfd($s2)

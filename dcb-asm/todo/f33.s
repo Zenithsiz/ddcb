@@ -34,7 +34,7 @@ f33:
 	j .3
 		nop
 .2:
-	jal 0x80014c08
+	jal f19
 		li $a0, 0x1
 	li $a0, 0x1
 .3:

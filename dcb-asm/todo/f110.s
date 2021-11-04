@@ -30,7 +30,7 @@ f110:
 	lbu $a1, ($s2)
 	lbu $a2, 0x1($s2)
 	lbu $a3, 0x2($s2)
-	jal 0x8001e75c
+	jal f128
 		move_ $a0, $s1
 .1:
 	beqz $s4, .2
@@ -38,7 +38,7 @@ f110:
 	lbu $a1, ($s4)
 	lbu $a2, 0x1($s4)
 	lbu $a3, 0x2($s4)
-	jal 0x8001e76c
+	jal f129
 		move_ $a0, $s1
 .2:
 	beqz $s5, .3
@@ -46,7 +46,7 @@ f110:
 	lbu $a1, ($s5)
 	lbu $a2, 0x1($s5)
 	lbu $a3, 0x2($s5)
-	jal 0x8001e7b8
+	jal f130
 		move_ $a0, $s1
 .3:
 	lw $v0, ($s1)

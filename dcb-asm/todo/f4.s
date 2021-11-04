@@ -149,7 +149,7 @@ f4:
 	lw $v0, 0x44($sp)
 	nop
 	sw $v0, 0x3c($s0)
-	la_ $v0, 0x80014a90
+	la_ $v0, f17
 	sw $v0, 0x9c($s0)
 	lwi $v0, 0x80077c30
 	nop
@@ -157,7 +157,7 @@ f4:
 	sw $a0, 0x14($s0)
 	sw $zr, 0x18($s0)
 	move_ $a0, $s2
-	jal 0x8001abcc
+	jal f71
 		li $a1, -0x3
 	move_ $v1, $v0
 	beqz $v1, .12

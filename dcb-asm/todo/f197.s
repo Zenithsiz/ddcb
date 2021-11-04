@@ -65,7 +65,7 @@ f198:
 	lui $v0, 0x3f80
 	sw $v0, 0x1c($v1)
 	move_ $a1, $zr
-	jal 0x80022100
+	jal f194
 		li $a2, -0x1
 	lw $ra, 0x10($sp)
 	nop
@@ -82,7 +82,7 @@ f199:
 	lw $v0, 0x13c($v0)
 	nop
 	lh $s0, 0x6($v0)
-	jal 0x8001aff0
+	jal f76
 		addiu $a0, 0x5a
 	sll $s0, 0x8
 	lui $v0, 0x1000
@@ -138,7 +138,7 @@ f200:
 	slti $v0, $a1, 0x20
 	bnez $v0, .0
 		sll $a0, $a1, 0x3
-	jal 0x8001aff0
+	jal f76
 		li $a0, 0x82
 	lw $ra, 0x10($sp)
 	nop

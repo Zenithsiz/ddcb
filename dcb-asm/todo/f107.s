@@ -38,7 +38,7 @@ f107:
 	lbu $a1, ($s4)
 	lbu $a2, 0x1($s4)
 	lbu $a3, 0x2($s4)
-	jal 0x8001e75c
+	jal f128
 		move_ $a0, $s3
 .1:
 	beqz $s5, .2
@@ -46,7 +46,7 @@ f107:
 	lbu $a1, ($s5)
 	lbu $a2, 0x1($s5)
 	lbu $a3, 0x2($s5)
-	jal 0x8001e76c
+	jal f129
 		move_ $a0, $s3
 .2:
 	beqz $s6, .3
@@ -54,7 +54,7 @@ f107:
 	lbu $a1, ($s6)
 	lbu $a2, 0x1($s6)
 	lbu $a3, 0x2($s6)
-	jal 0x8001e7b8
+	jal f130
 		move_ $a0, $s3
 .3:
 	beqz $fp, .4
@@ -62,7 +62,7 @@ f107:
 	lbu $a1, ($fp)
 	lbu $a2, 0x1($fp)
 	lbu $a3, 0x2($fp)
-	jal 0x8001e804
+	jal f131
 		move_ $a0, $s3
 .4:
 	beqz $s7, .5
@@ -73,7 +73,7 @@ f107:
 	lbu $v0, 0x6($s7)
 	nop
 	sw $v0, 0x10($sp)
-	jal 0x8001ec3c
+	jal f146
 		move_ $a0, $s3
 .5:
 	lw $v0, 0x64($sp)
@@ -86,7 +86,7 @@ f107:
 	lh $v0, 0x6($v0)
 	nop
 	sw $v0, 0x10($sp)
-	jal 0x8001ea64
+	jal f141
 		move_ $a0, $s3
 .6:
 	lw $a1, 0x44($sp)

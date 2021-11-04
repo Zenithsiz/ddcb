@@ -13,7 +13,7 @@ f45:
 	move_ $s5, $a0
 	move_ $fp, $a1
 	move_ $s6, $a2
-	jal 0x800177e8
+	jal f47
 		sh $s6, 0x3a($s5)
 	move_ $s7, $v0
 	lh $v0, 0x1c($s5)
@@ -67,7 +67,7 @@ f45:
 	addiu $v0, 0x2
 	sh $v0, 0x36($sp)
 	addiu $a0, $sp, 0x30
-	jal 0x800176e4
+	jal f46
 		addiu $a1, $sp, 0x18
 	lhu $v0, ($s5)
 	lhu $v1, 0x4($s5)
@@ -112,7 +112,7 @@ f45:
 	addiu $v0, -0x8
 	sh $v0, 0x3e($sp)
 .1:
-	jal 0x800176e4
+	jal f46
 		addiu $a1, $sp, 0x30
 	lui $s0, 0x8009
 	lw $a0, -0x6818($s0)
@@ -275,7 +275,7 @@ f45:
 .8:
 	move_ $a0, $s1
 .9:
-	jal 0x800176e4
+	jal f46
 		addiu $a1, $sp, 0x18
 	lui $s0, 0x8009
 	lw $a0, -0x6818($s0)
@@ -305,10 +305,10 @@ f45:
 .10:
 	move_ $a0, $s5
 .11:
-	jal 0x80018694
+	jal f49
 		move_ $a1, $s6
 	move_ $a0, $s5
-	jal 0x80018b8c
+	jal f50
 		move_ $a1, $s6
 	lui $s3, 0x8009
 	lw $a0, -0x6818($s3)
@@ -372,7 +372,7 @@ f45:
 	sw $v0, 0x10($sp)
 	sw $s6, 0x14($sp)
 	addiu $a0, $s5, 0x1c
-	jal 0x80017b88
+	jal f48
 		andi $a2, 0x1
 	move_ $v0, $s7
 .12:

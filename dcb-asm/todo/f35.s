@@ -62,7 +62,7 @@ f35:
 	j 0x800165f4
 		nop
 .4:
-	jal 0x80014c08
+	jal f19
 		li $a0, 0x1
 	li $a0, 0x1
 	jal 0x8005b070

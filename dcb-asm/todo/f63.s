@@ -65,7 +65,7 @@ f63:
 	li $v0, 0xc
 	sh $v0, 0x1e($sp)
 	addiu $a0, $s0, 0x44
-	jal 0x80019280
+	jal f54
 		addiu $a1, $sp, 0x18
 	jal 0x8002bb58
 		li $a0, 0x2
@@ -97,7 +97,7 @@ f63:
 	li $v0, 0xc
 	sh $v0, 0x1e($sp)
 	addiu $a0, $s0, 0x44
-	jal 0x80019280
+	jal f54
 		addiu $a1, $sp, 0x18
 	jal 0x8002bb58
 		li $a0, 0x2
@@ -119,7 +119,7 @@ f63:
 	jal 0x80028d18
 		li $a3, 0x7
 	lh $a1, 0x3a($s0)
-	jal 0x800192fc
+	jal f55
 		addiu $a0, $s0, 0x44
 .3:
 	lw $ra, 0x28($sp)
@@ -134,7 +134,7 @@ f64:
 	lui $v0, 0x8009
 	li $v1, 0x1
 	sw $v1, -0x67c4($v0)
-	jal 0x8001acec
+	jal f72
 		li $a0, 0x3c
 	move_ $a1, $v0
 	move_ $a0, $zr
@@ -152,7 +152,7 @@ f64:
 	slti $v0, $a0, 0x2
 	bnez $v0, .0
 		sll $v0, $a0, 0x2
-	jal 0x8001a6b0
+	jal f66
 		nop
 	la_ $a0, 0x800897f8
 	jal 0x8006b3e4
@@ -227,7 +227,7 @@ f66:
 	sh $zr, 0xa($v0)
 	move_ $a0, $s0
 	li $a1, 0x1e
-	jal 0x8001a688
+	jal f65
 		li $a2, 0x2
 	addiu $s0, 0x1
 	slti $v0, $s0, 0x2
@@ -399,7 +399,7 @@ f68:
 	addu $a2, $a0, $s1
 	sll $a2, 0x1
 	move_ $a1, $s0
-	jal 0x8001a7a4
+	jal f67
 		addu $a2, $s2
 	lwi $v0, 0x8008983c
 	nop
@@ -477,7 +477,7 @@ f69:
 	nop
 	bltz $v0, .3
 		nop
-	jal 0x8001ae90
+	jal f75
 		nop
 	beqz $v0, .2
 		nop
@@ -584,7 +584,7 @@ f71:
 	li $v0, -0x1
 	sw $v0, 0x8($v1)
 .3:
-	jal 0x800149a0
+	jal f12
 		nop
 	j .7
 		move_ $v0, $s1
@@ -597,7 +597,7 @@ f71:
 	bnez $a0, .0
 		nop
 .5:
-	jal 0x800149a0
+	jal f12
 		nop
 .6:
 	move_ $v0, $zr
@@ -612,7 +612,7 @@ f71:
 f72:
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
-	jal 0x8001abcc
+	jal f71
 		li $a1, -0x2
 	lw $ra, 0x10($sp)
 	nop
@@ -626,7 +626,7 @@ f73:
 	jal f8
 		move_ $s0, $a0
 	move_ $a0, $s0
-	jal 0x8001abcc
+	jal f71
 		move_ $a1, $v0
 	lw $ra, 0x14($sp)
 	lw $s0, 0x10($sp)
@@ -696,7 +696,7 @@ f74:
 	li $v0, -0x1
 	sw $v0, 0x8($v1)
 .4:
-	jal 0x800149a0
+	jal f12
 		nop
 	j .7
 		move_ $v0, $s1
@@ -709,7 +709,7 @@ f74:
 	bnez $a1, .0
 		nop
 .6:
-	jal 0x800149a0
+	jal f12
 		nop
 	move_ $v0, $zr
 .7:
@@ -720,7 +720,7 @@ f74:
 		addiu $sp, 0x20
 	addiu $sp, -0x18
 	sw $ra, 0x10($sp)
-	jal 0x8001ae90
+	jal f75
 		nop
 	lw $ra, 0x10($sp)
 	nop
@@ -818,7 +818,7 @@ f75:
 	bnez $a1, .0
 		nop
 .8:
-	jal 0x800149a0
+	jal f12
 		nop
 	move_ $v0, $zr
 .9:
@@ -849,7 +849,7 @@ f76:
 	nop
 	bne $v0, $s2, .1
 		nop
-	jal 0x8001ae90
+	jal f75
 		nop
 	beqz $v0, .0
 		nop

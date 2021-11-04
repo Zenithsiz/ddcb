@@ -12,7 +12,7 @@ f7:
 .0:
 	beq $s0, $s2, .1
 		nop
-	jal 0x80014a00
+	jal f15
 		move_ $a0, $s0
 	bnez $v0, .1
 		nop

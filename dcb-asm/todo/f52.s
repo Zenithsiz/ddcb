@@ -31,7 +31,7 @@ f52:
 	li $a0, 0x11
 	addu $a1, $s2, $a1
 	li $a2, 0x1
-	jal 0x8001e6ec
+	jal f127
 		move_ $a3, $zr
 	addiu $s1, 0x1
 	slti $v0, $s1, 0x2
@@ -39,7 +39,7 @@ f52:
 		sll $s0, $s1, 0x3
 	move_ $a0, $s2
 	move_ $a1, $s5
-	jal 0x800191c0
+	jal f53
 		move_ $a2, $s6
 	lw $ra, 0x2c($sp)
 	lw $s6, 0x28($sp)

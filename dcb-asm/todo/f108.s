@@ -28,7 +28,7 @@ f108:
 	lbu $a1, ($s2)
 	lbu $a2, 0x1($s2)
 	lbu $a3, 0x2($s2)
-	jal 0x8001e75c
+	jal f128
 		move_ $a0, $s1
 .1:
 	beqz $s3, .2
@@ -39,7 +39,7 @@ f108:
 	lh $v0, 0x6($s3)
 	nop
 	sw $v0, 0x10($sp)
-	jal 0x8001ea64
+	jal f141
 		move_ $a0, $s1
 .2:
 	lw $v0, ($s1)

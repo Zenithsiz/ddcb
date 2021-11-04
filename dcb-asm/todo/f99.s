@@ -26,7 +26,7 @@ f99:
 	blez $v0, .6
 		move_ $a0, $s4
 	move_ $a1, $s2
-	jal 0x8001c1e0
+	jal f100
 		move_ $a2, $s5
 	j 0x8001c1b0
 		nop
@@ -55,7 +55,7 @@ f99:
 	mflo $a0
 	addu $a0, $fp, $a0
 	move_ $a1, $s2
-	jal 0x8001c1e0
+	jal f100
 		move_ $a2, $s5
 	addiu $s0, 0x1
 	sltu $v0, $s1, $s0

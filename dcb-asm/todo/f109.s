@@ -31,7 +31,7 @@ f109:
 	lbu $a1, ($s1)
 	lbu $a2, 0x1($s1)
 	lbu $a3, 0x2($s1)
-	jal 0x8001e75c
+	jal f128
 		move_ $a0, $s2
 .1:
 	beqz $s3, .2
@@ -39,7 +39,7 @@ f109:
 	lbu $a1, ($s3)
 	lbu $a2, 0x1($s3)
 	lbu $a3, 0x2($s3)
-	jal 0x8001e76c
+	jal f129
 		move_ $a0, $s2
 .2:
 	beqz $s4, .3
@@ -47,7 +47,7 @@ f109:
 	lbu $a1, ($s4)
 	lbu $a2, 0x1($s4)
 	lbu $a3, 0x2($s4)
-	jal 0x8001e7b8
+	jal f130
 		move_ $a0, $s2
 .3:
 	beqz $s5, .4
@@ -55,7 +55,7 @@ f109:
 	lbu $a1, ($s5)
 	lbu $a2, 0x1($s5)
 	lbu $a3, 0x2($s5)
-	jal 0x8001e804
+	jal f131
 		move_ $a0, $s2
 .4:
 	beqz $s6, .5
@@ -66,7 +66,7 @@ f109:
 	lh $v0, 0x6($s6)
 	nop
 	sw $v0, 0x10($sp)
-	jal 0x8001ea64
+	jal f141
 		move_ $a0, $s2
 .5:
 	lw $a1, 0x44($sp)

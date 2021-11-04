@@ -82,7 +82,7 @@ f94:
 	addiu $sp, -0x20
 	sw $ra, 0x18($sp)
 	sw $s1, 0x14($sp)
-	jal 0x8001bc38
+	jal f92
 		sw $s0, 0x10($sp)
 	beqz $v0, .0
 		lui $v0, 0x801d
@@ -93,18 +93,18 @@ f94:
 	slti $v0, $s1, 0x21f
 	beqz $v0, .2
 		li $v0, -0x1
-	jal 0x8001bd60
+	jal f94
 		sll $s0, $s1, 0x2
 	la_ $v1, 0x801d4888
 	addu $v1, $s0, $v1
-	jal 0x8001bd60
+	jal f94
 		sw $v0, ($v1)
 	la_ $v1, 0x801d5108
 	addu $s0, $v1
 	j .1
 		sw $v0, ($s0)
 .0:
-	jal 0x8001bca4
+	jal f93
 		li $a0, 0x9
 	move_ $s1, $v0
 .1:
@@ -156,7 +156,7 @@ f95:
 		move_ $s0, $s7
 	lui $v1, 0x801d
 	li $v0, 0x110
-	jal 0x8001bd60
+	jal f94
 		sw $v0, 0x4878($v1)
 	move_ $s7, $v0
 	sw $zr, 0x487c($s5)
@@ -169,7 +169,7 @@ f95:
 	lui $v0, 0x801d
 	addiu $s2, $v0, 0x4888
 .3:
-	jal 0x8001bc38
+	jal f92
 		nop
 	beqz $v0, .4
 		sll $v0, $s0, 0x2
@@ -205,7 +205,7 @@ f95:
 		addiu $s4, 0x1
 .7:
 	addiu $s0, -0xfd
-	jal 0x8001bca4
+	jal f93
 		li $a0, 0xc
 	move_ $a3, $v0
 	blez $s0, .9
@@ -256,7 +256,7 @@ f96:
 	sll $a1, 0x2
 	addu $a1, $a0
 	lw $v0, ($a1)
-	jal 0x8001c078
+	jal f98
 		addu $a0, $v0
 	lw $ra, 0x10($sp)
 	nop
@@ -275,20 +275,20 @@ f97:
 	sw $zr, 0x486c($v0)
 	lui $v0, 0x801d
 	sw $a0, 0x4870($v0)
-	jal 0x8001bca4
+	jal f93
 		li $a0, 0x10
 	move_ $s0, $v0
-	jal 0x8001bca4
+	jal f93
 		li $a0, 0x10
 	sll $s0, 0x10
 	or $s0, $v0
 	move_ $a0, $s0
-	jal 0x8001abcc
+	jal f71
 		move_ $a1, $s1
 	move_ $s1, $v0
 	lui $v0, 0x801d
 	sw $s1, 0x4874($v0)
-	jal 0x8001bdec
+	jal f95
 		move_ $a0, $s0
 	move_ $v0, $s1
 	lw $ra, 0x18($sp)
@@ -304,7 +304,7 @@ f98:
 	jal f8
 		move_ $s0, $a0
 	move_ $a0, $s0
-	jal 0x8001bff8
+	jal f97
 		move_ $a1, $v0
 	lw $ra, 0x14($sp)
 	lw $s0, 0x10($sp)

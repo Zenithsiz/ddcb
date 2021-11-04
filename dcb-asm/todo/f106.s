@@ -38,7 +38,7 @@ f106:
 	lbu $a1, ($s5)
 	lbu $a2, 0x1($s5)
 	lbu $a3, 0x2($s5)
-	jal 0x8001e75c
+	jal f128
 		move_ $a0, $s3
 .1:
 	beqz $s7, .2
@@ -46,7 +46,7 @@ f106:
 	lbu $a1, ($s7)
 	lbu $a2, 0x1($s7)
 	lbu $a3, 0x2($s7)
-	jal 0x8001e76c
+	jal f129
 		move_ $a0, $s3
 .2:
 	beqz $fp, .3
@@ -54,7 +54,7 @@ f106:
 	lbu $a1, ($fp)
 	lbu $a2, 0x1($fp)
 	lbu $a3, 0x2($fp)
-	jal 0x8001e7b8
+	jal f130
 		move_ $a0, $s3
 .3:
 	beqz $s4, .4

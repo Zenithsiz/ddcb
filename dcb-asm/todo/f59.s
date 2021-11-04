@@ -131,7 +131,7 @@ f59:
 	move_ $a0, $s0
 	addiu $a1, $sp, 0x20
 	li $a2, -0x1
-	jal 0x80016c08
+	jal f42
 		li $a3, -0x1
 	li $v0, 0x4
 	sb $v0, 0x38($s0)
@@ -140,7 +140,7 @@ f59:
 	beqz $v0, .5
 		addiu $a0, $s0, 0x44
 	li $a1, -0x1
-	jal 0x800190f4
+	jal f52
 		li $a2, -0x1
 .5:
 	li $v0, 0x2
@@ -170,10 +170,10 @@ f60:
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
-	jal 0x800149b8
+	jal f14
 		li $a3, 0x400
 	lui $a0, 0x7fff
-	jal 0x80014c08
+	jal f19
 		ori $a0, 0xffff
 	lb $v0, 0xa5($s0)
 	lw $ra, 0x2c($sp)
@@ -199,10 +199,10 @@ f61:
 	move_ $a0, $zr
 	li $a1, -0x1
 	move_ $a2, $zr
-	jal 0x800149b8
+	jal f14
 		li $a3, 0x400
 	lui $a0, 0x7fff
-	jal 0x80014c08
+	jal f19
 		ori $a0, 0xffff
 	lb $v0, 0xa5($s1)
 	lw $ra, 0x30($sp)

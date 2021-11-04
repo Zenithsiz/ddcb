@@ -68,7 +68,7 @@ f58:
 	slt $v0, $a2, $v0
 	beqz $v0, .19
 		move_ $a0, $s1
-	jal 0x8001705c
+	jal f44
 		move_ $a1, $zr
 	j .18
 		nop
@@ -131,7 +131,7 @@ f58:
 	mflo $a2
 	move_ $a0, $s1
 	move_ $a1, $zr
-	jal 0x8001705c
+	jal f44
 		subu $a2, $a3
 	j .18
 		nop
@@ -186,7 +186,7 @@ f58:
 	move_ $a0, $s1
 .6:
 	move_ $a1, $zr
-	jal 0x8001705c
+	jal f44
 		move_ $a2, $zr
 	j .18
 		sh $zr, 0x14($s0)
@@ -220,7 +220,7 @@ f58:
 	mflo $a2
 	move_ $a0, $s1
 	move_ $a1, $zr
-	jal 0x8001705c
+	jal f44
 		subu $a2, $v0, $a2
 	j .18
 		nop
@@ -283,7 +283,7 @@ f58:
 	lh $a2, 0x12($s1)
 	move_ $a0, $s1
 	move_ $a1, $zr
-	jal 0x8001705c
+	jal f44
 		subu $a2, $v0, $a2
 	lhu $v0, 0x20($s0)
 	nop
@@ -322,7 +322,7 @@ f58:
 	mflo $a2
 	move_ $a0, $s1
 	move_ $a1, $zr
-	jal 0x8001705c
+	jal f44
 		addu $a2, $v0, $a2
 	j .18
 		nop
@@ -385,11 +385,11 @@ f58:
 	nop
 	sh $v0, 0x16($sp)
 	lw $a0, 0x4($s0)
-	jal 0x80019280
+	jal f54
 		addiu $a1, $sp, 0x10
 .21:
 	lh $a1, 0x3a($s1)
-	jal 0x800192fc
+	jal f55
 		move_ $a0, $s2
 	lh $v1, 0x10($s0)
 	lh $v0, 0x14($s0)

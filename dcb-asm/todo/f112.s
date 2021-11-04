@@ -28,7 +28,7 @@ f112:
 	lbu $a1, ($s2)
 	lbu $a2, 0x1($s2)
 	lbu $a3, 0x2($s2)
-	jal 0x8001e75c
+	jal f128
 		move_ $a0, $s1
 .1:
 	beqz $s3, .2
@@ -36,7 +36,7 @@ f112:
 	lbu $a1, ($s3)
 	lbu $a2, 0x1($s3)
 	lbu $a3, 0x2($s3)
-	jal 0x8001e76c
+	jal f129
 		move_ $a0, $s1
 .2:
 	lw $v0, ($s1)

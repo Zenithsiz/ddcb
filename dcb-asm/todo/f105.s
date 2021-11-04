@@ -39,7 +39,7 @@ f105:
 	lbu $a1, ($s7)
 	lbu $a2, 0x1($s7)
 	lbu $a3, 0x2($s7)
-	jal 0x8001e75c
+	jal f128
 		move_ $a0, $s4
 .1:
 	beqz $s5, .2

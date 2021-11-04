@@ -30,7 +30,7 @@ main_loop:
 		move_ $a0, $zr
 	jal 0x8004c570
 		nop
-	jal 0x8001aa80
+	jal f69
 		li $a0, 1
 	sw $zr, 0x10($sp)
 	sw $zr, 0x14($sp)
@@ -38,7 +38,7 @@ main_loop:
 	li $a0, 0x1
 	li $a1, 0x400
 	la_ $a2, 0x800155f4
-	jal 0x800149a8
+	jal f13
 		move_ $a3, $zr
 .0:
 	jal 0x80069124
