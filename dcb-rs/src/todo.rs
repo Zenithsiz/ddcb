@@ -9,7 +9,7 @@ use crate::asm_exact;
 use core_impl::{concat, panic, stringify};
 
 // Helper macro to declare all statics
-macro decl_static($( $NAME:ident @ $addr:literal: $T:ty = $value:expr; )*) {
+macro decl_static($( $NAME:ident: $T:ty = $value:expr; )*) {
 	$(
 		#[no_mangle]
 		#[link_section = concat!(".text.", stringify!($NAME))]
@@ -59,45 +59,49 @@ macro psx_str($s:literal) {
 
 decl_static! {
 	// File extension and version for iso9660 filesystem drv files
-	cd_drv_extension_version @ 0x80010000: PsxStr<8> = psx_str!(".DRV;1");
+	cd_drv_extension_version: PsxStr<8> = psx_str!(".DRV;1");
 
 	// ?
-	S_0x80010008 @ 0x80010008: [u32; 7] = [
+	S_0x80010008: [u32; 7] = [
 		0x43834583, 0x68839383, 0x5c954583, 0x9490a68e, 0xbd91aa82, 0xac82b782, 0xb782dc82,
 	];
 
 	// Generic strings
-	S_0x80010024 @ 0x80010024: PsxStr<4> = psx_str!("\n");
-	S_0x80010028 @ 0x80010028: PsxStr<4> = psx_str!("Yes");
-	no_str @ 0x8001002c: PsxStr<4> = psx_str!("No");
+	S_0x80010024: PsxStr<4> = psx_str!("\n");
+	S_0x80010028: PsxStr<4> = psx_str!("Yes");
+	no_str: PsxStr<4> = psx_str!("No");
 
 
-	unknown_fn_ptrs0 @ 0x80010030: [u32; 7] = [
+	unknown_fn_ptrs0: [u32; 7] = [
 		0x8001a870, 0x8001a874, 0x8001a870,
 		0x8001a874, 0x8001a874, 0x8001a870, 0x8001a874
 	];
-	unknown_fn_ptrs1 @ 0x8001004c: [u32; 15] = [
+
+	unknown_fn_ptrs1: [u32; 5] = [
 		0x8001e53c, 0x8001e580, 0x8001e5c4, 0x8001e660, 0x8001e688,
+	];
+
+	unknown_fn_ptrs4: [u32; 10] = [
 		0x8002100c, 0x80020fe4, 0x80021058, 0x80021024, 0x800213ec,
 		0x800216d8, 0x800216fc, 0x80021770, 0x800217e8, 0x80021860,
 	];
 
-	unknown_fn_ptrs2 @ 0x80010088: [u32; 8] = [
+	unknown_fn_ptrs2: [u32; 8] = [
 		0x80021094, 0x800210ec, 0x8002115c,
 		0x800211cc, 0x80021244, 0x800212bc, 0x8002134c, 0x00000000,
 	];
 
-	unknown_fn_ptrs3 @ 0x800100a8: [u32; 6] = [0x80021428, 0x800214a0, 0x80021510, 0x80021590, 0x80021608, 0x80021668];
+	unknown_fn_ptrs3: [u32; 6] = [0x80021428, 0x800214a0, 0x80021510, 0x80021590, 0x80021608, 0x80021668];
 
 	// Cd strings?
-	unknown_cd_path0 @ 0x800100c0: PsxStr<20> = psx_str!("M:\\HDF%d\\%d_%d.hdf");
-	unknown_cd_path1 @ 0x800100d4: PsxStr<20> = psx_str!("M:\\HDF%03d\\%c.hdf");
-	unknown_cd_path2 @ 0x800100e8: PsxStr<16> = psx_str!("M:\\%d_%d.omd");
-	unknown_cd_path3 @ 0x800100f8: PsxStr<12> = psx_str!("M:\\%03d.omd");
-	unknown_cd_path4 @ 0x80010104: PsxStr< 8> = psx_str!("M:\\%s");
+	unknown_cd_path0: PsxStr<20> = psx_str!("M:\\HDF%d\\%d_%d.hdf");
+	unknown_cd_path1: PsxStr<20> = psx_str!("M:\\HDF%03d\\%c.hdf");
+	unknown_cd_path2: PsxStr<16> = psx_str!("M:\\%d_%d.omd");
+	unknown_cd_path3: PsxStr<12> = psx_str!("M:\\%03d.omd");
+	unknown_cd_path4: PsxStr< 8> = psx_str!("M:\\%s");
 
 	// ?
-	S_0x8001010c @ 0x8001010c: [u32; 32] = [
+	S_0x8001010c: [u32; 32] = [
 		0x18000000,
 		0xe800,
 		0x0,
@@ -132,17 +136,17 @@ decl_static! {
 		0x0,
 	];
 
-	unknown_cd_drive @ 0x8001018c: PsxStr<4> = psx_str!("M:");
-	unknown_data0 @ 0x80010190: [u32; 12] = [
+	unknown_cd_drive: PsxStr<4> = psx_str!("M:");
+	unknown_data0: [u32; 12] = [
 		0x400ffff, 0x1500a00, 0x0,
 		0x190ffff, 0x200    , 0x0,
 		0x190ffff, 0xbb8    , 0x0,
 		0x190ffff, 0x200    , 0x0,
 	];
 
-	system_tiles_path @ 0x800101c0: PsxStr<16> = psx_str!("B:\\SYSTEM.TIM");
+	system_tiles_path: PsxStr<16> = psx_str!("B:\\SYSTEM.TIM");
 
-	S_0x800101d0 @ 0x800101d0: [u32; 221] = [
+	S_0x800101d0: [u32; 221] = [
 		0x80027a9c,
 		0x80027acc,
 		0x80027afc,
@@ -366,25 +370,25 @@ decl_static! {
 		0x8002a180,
 	];
 
-	S_0x80010544 @ 0x80010544: PsxStr<4> = psx_str!("1ab");
-	S_0x80010548 @ 0x80010548: PsxStr<4> = psx_str!("2cd");
-	S_0x8001054c @ 0x8001054c: PsxStr<4> = psx_str!("3ef");
-	S_0x80010550 @ 0x80010550: PsxStr<4> = psx_str!("gh");
-	i_str @ 0x80010554: PsxStr<4> = psx_str!("i");
-	S_0x80010558 @ 0x80010558: PsxStr<4> = psx_str!("1st");
-	S_0x8001055c @ 0x8001055c: PsxStr<4> = psx_str!("2nd");
-	S_0x80010560 @ 0x80010560: PsxStr<4> = psx_str!("3rd");
-	lowercase_th_str @ 0x80010564: PsxStr<4> = psx_str!("th");
-	S_0x80010568 @ 0x80010568: PsxStr<4> = psx_str!("1ST");
-	S_0x8001056c @ 0x8001056c: PsxStr<4> = psx_str!("2ND");
-	S_0x80010570 @ 0x80010570: PsxStr<4> = psx_str!("3RD");
-	uppercase_th_str @ 0x80010574: PsxStr<4> = psx_str!("TH");
-	sound_effect_path @ 0x80010578: PsxStr<12> = psx_str!("A:\\SE%d.PAK");
-	bgm_path @ 0x80010584: PsxStr<20> = psx_str!("A:\\BGM\\BGM%02d.PAK");
-	open_segment_path @ 0x80010598: PsxStr<16> = psx_str!("P:\\openseg.bin");
-	opening_mv_cd_path @ 0x800105a8: PsxStr<16> = psx_str!("\\DIGIMON.MOV;1");
+	S_0x80010544: PsxStr<4> = psx_str!("1ab");
+	S_0x80010548: PsxStr<4> = psx_str!("2cd");
+	S_0x8001054c: PsxStr<4> = psx_str!("3ef");
+	S_0x80010550: PsxStr<4> = psx_str!("gh");
+	i_str: PsxStr<4> = psx_str!("i");
+	S_0x80010558: PsxStr<4> = psx_str!("1st");
+	S_0x8001055c: PsxStr<4> = psx_str!("2nd");
+	S_0x80010560: PsxStr<4> = psx_str!("3rd");
+	lowercase_th_str: PsxStr<4> = psx_str!("th");
+	S_0x80010568: PsxStr<4> = psx_str!("1ST");
+	S_0x8001056c: PsxStr<4> = psx_str!("2ND");
+	S_0x80010570: PsxStr<4> = psx_str!("3RD");
+	uppercase_th_str: PsxStr<4> = psx_str!("TH");
+	sound_effect_path: PsxStr<12> = psx_str!("A:\\SE%d.PAK");
+	bgm_path: PsxStr<20> = psx_str!("A:\\BGM\\BGM%02d.PAK");
+	open_segment_path: PsxStr<16> = psx_str!("P:\\openseg.bin");
+	opening_mv_cd_path: PsxStr<16> = psx_str!("\\DIGIMON.MOV;1");
 
-	S_0x800105b8 @ 0x800105b8: [u32; 11] = [
+	S_0x800105b8: [u32; 11] = [
 		0x8002bba0,
 		0x8002bba8,
 		0x8002bbb0,
@@ -398,13 +402,13 @@ decl_static! {
 		0x8002bc10,
 	];
 
-	S_0x800105e4 @ 0x800105e4: [u32; 3] = [
+	S_0x800105e4: [u32; 3] = [
 		0x31257562,
 		0x253a3064,
 		0x00000073,
 	];
 
-	S_0x800105f0 @ 0x800105f0: [u32; 105] = [
+	S_0x800105f0: [u32; 105] = [
 		0x31257562,
 		0x2a3a3064,
 		0x00000000,
@@ -513,7 +517,7 @@ decl_static! {
 	];
 
 	// Why is the last not null terminated?
-	S_0x80010794 @ 0x80010794: [u32; 23] = [
+	S_0x80010794: [u32; 23] = [
 		0x8002cca8,
 		0x8002cce8,
 		0x8002cd28,
@@ -541,21 +545,21 @@ decl_static! {
 		0x8002d378,
 	];
 
-	S_0x800107f0 @ 0x800107f0: PsxStr<8> = psx_str!("Player");
-	S_0x800107f8 @ 0x800107f8: PsxStr<24> = psx_str!("E:\\SKILL\\SKILL%d.MSD");
-	S_0x80010810 @ 0x80010810: PsxStr<12> = psx_str!("G:\\%03d.PAK");
-	S_0x8001081c @ 0x8001081c: PsxStr<12> = psx_str!("F:\\%03d.PAK");
-	S_0x80010828 @ 0x80010828: PsxStr<16> = psx_str!("A:\\BATTLE.PAK");
-	S_0x80010838 @ 0x80010838: PsxStr<16> = psx_str!("P:\\sugseg.bin");
-	S_0x80010848 @ 0x80010848: PsxStr<16> = psx_str!("P:\\kawseg.bin");
-	S_0x80010858 @ 0x80010858: PsxStr<12> = psx_str!("F:\\bg%d.pak");
-	S_0x80010864 @ 0x80010864: PsxStr<16> = psx_str!("P:\\openseg.bin");
-	S_0x80010874 @ 0x80010874: PsxStr<16> = psx_str!("P:\\saiseg.bin");
-	S_0x80010884 @ 0x80010884: PsxStr<16> = psx_str!("P:\\evoseg.bin");
-	S_0x80010894 @ 0x80010894: PsxStr<16> = psx_str!("P:\\subseg.bin");
-	S_0x800108a4 @ 0x800108a4: PsxStr<12> = psx_str!("B:\\BG.ARC");
+	S_0x800107f0: PsxStr<8> = psx_str!("Player");
+	S_0x800107f8: PsxStr<24> = psx_str!("E:\\SKILL\\SKILL%d.MSD");
+	S_0x80010810: PsxStr<12> = psx_str!("G:\\%03d.PAK");
+	S_0x8001081c: PsxStr<12> = psx_str!("F:\\%03d.PAK");
+	S_0x80010828: PsxStr<16> = psx_str!("A:\\BATTLE.PAK");
+	S_0x80010838: PsxStr<16> = psx_str!("P:\\sugseg.bin");
+	S_0x80010848: PsxStr<16> = psx_str!("P:\\kawseg.bin");
+	S_0x80010858: PsxStr<12> = psx_str!("F:\\bg%d.pak");
+	S_0x80010864: PsxStr<16> = psx_str!("P:\\openseg.bin");
+	S_0x80010874: PsxStr<16> = psx_str!("P:\\saiseg.bin");
+	S_0x80010884: PsxStr<16> = psx_str!("P:\\evoseg.bin");
+	S_0x80010894: PsxStr<16> = psx_str!("P:\\subseg.bin");
+	S_0x800108a4: PsxStr<12> = psx_str!("B:\\BG.ARC");
 
-	S_0x800108b0 @ 0x800108b0: [u32; 184] = [
+	S_0x800108b0: [u32; 184] = [
 		0x80031280,
 		0x800312a4,
 		0x800312b4,
@@ -742,7 +746,7 @@ decl_static! {
 		0x00000000,
 	];
 
-	S_0x80010b90 @ 0x80010b90: [u32; 62] = [
+	S_0x80010b90: [u32; 62] = [
 		0x8003162c,
 		0x80031634,
 		0x8003168c,
@@ -807,7 +811,7 @@ decl_static! {
 		0x00000000,
 	];
 
-	S_0x80010c88 @ 0x80010c88: [u32; 5] = [
+	S_0x80010c88: [u32; 5] = [
 		0x800317e4,
 		0x80031830,
 		0x80031848,
@@ -815,29 +819,29 @@ decl_static! {
 		0x800318f0,
 	];
 
-	S_0x80010c9c @ 0x80010c9c: u32 = 0x801ddf38;
+	S_0x80010c9c: u32 = 0x801ddf38;
 
-	S_0x80010ca0 @ 0x80010ca0: PsxStr<40> = psx_str!("There are no more Cards, so %s loses!");
-	S_0x80010cc8 @ 0x80010cc8: PsxStr<52> = psx_str!("Redrawing Cards because there are\nno Digimon Cards.");
-	S_0x80010cfc @ 0x80010cfc: PsxStr<44> = psx_str!("This will discard all Cards.\nIs this OK?");
-	S_0x80010d28 @ 0x80010d28: PsxStr<20> = psx_str!("Please press \"Yes\"!");
-	S_0x80010d3c @ 0x80010d3c: PsxStr<32> = psx_str!("Do you want to Armor Digivolve?");
-	S_0x80010d5c @ 0x80010d5c: PsxStr<40> = psx_str!("Is it OK to end the Preparation Phase?");
-	S_0x80010d84 @ 0x80010d84: PsxStr<40> = psx_str!("Press \"Yes\" to go to the next Phase!");
-	S_0x80010dac @ 0x80010dac: PsxStr<68> = psx_str!("This Digivolve Option has no Effect.\nDo you still want to use it?");
-	S_0x80010df0 @ 0x80010df0: PsxStr<72> = psx_str!("Current Digimon will be discarded,\ndo you still want to \"Digi-devolve\"?");
-	S_0x80010e38 @ 0x80010e38: PsxStr<84> = psx_str!("Your Digimon\'s Level will become *e3,\ndo you still want to \"Armor Digi-devolve\"?");
-	S_0x80010e8c @ 0x80010e8c: PsxStr<40> = psx_str!("Is it OK to end the Digivolve Phase?");
-	S_0x80010eb4 @ 0x80010eb4: PsxStr<36> = psx_str!("Choose \"Yes\" to go to next Phase!");
-	S_0x80010ed8 @ 0x80010ed8: PsxStr<52> = psx_str!("Since %s has no Digimon,\nthere is no Battle Phase.");
-	S_0x80010f0c @ 0x80010f0c: PsxStr<60> = psx_str!("You have no Cards left, so\nyou can\'t use any Support Cards!");
-	S_0x80010f48 @ 0x80010f48: PsxStr<40> = psx_str!("Do you want to use this Support Card?");
-	S_0x80010f70 @ 0x80010f70: PsxStr<48> = psx_str!("You\'re not using any Support Card.\nIs this OK?");
-	S_0x80010fa0 @ 0x80010fa0: PsxStr<24> = psx_str!("Please choose \"Yes\"!");
-	S_0x80010fb8 @ 0x80010fb8: PsxStr<28> = psx_str!("%d Wins, %d Losses-%s WINS!");
-	S_0x80010fd4 @ 0x80010fd4: PsxStr<48> = psx_str!("Since %s has no more Digimon,\nthe winner is %s!");
+	S_0x80010ca0: PsxStr<40> = psx_str!("There are no more Cards, so %s loses!");
+	S_0x80010cc8: PsxStr<52> = psx_str!("Redrawing Cards because there are\nno Digimon Cards.");
+	S_0x80010cfc: PsxStr<44> = psx_str!("This will discard all Cards.\nIs this OK?");
+	S_0x80010d28: PsxStr<20> = psx_str!("Please press \"Yes\"!");
+	S_0x80010d3c: PsxStr<32> = psx_str!("Do you want to Armor Digivolve?");
+	S_0x80010d5c: PsxStr<40> = psx_str!("Is it OK to end the Preparation Phase?");
+	S_0x80010d84: PsxStr<40> = psx_str!("Press \"Yes\" to go to the next Phase!");
+	S_0x80010dac: PsxStr<68> = psx_str!("This Digivolve Option has no Effect.\nDo you still want to use it?");
+	S_0x80010df0: PsxStr<72> = psx_str!("Current Digimon will be discarded,\ndo you still want to \"Digi-devolve\"?");
+	S_0x80010e38: PsxStr<84> = psx_str!("Your Digimon\'s Level will become *e3,\ndo you still want to \"Armor Digi-devolve\"?");
+	S_0x80010e8c: PsxStr<40> = psx_str!("Is it OK to end the Digivolve Phase?");
+	S_0x80010eb4: PsxStr<36> = psx_str!("Choose \"Yes\" to go to next Phase!");
+	S_0x80010ed8: PsxStr<52> = psx_str!("Since %s has no Digimon,\nthere is no Battle Phase.");
+	S_0x80010f0c: PsxStr<60> = psx_str!("You have no Cards left, so\nyou can\'t use any Support Cards!");
+	S_0x80010f48: PsxStr<40> = psx_str!("Do you want to use this Support Card?");
+	S_0x80010f70: PsxStr<48> = psx_str!("You\'re not using any Support Card.\nIs this OK?");
+	S_0x80010fa0: PsxStr<24> = psx_str!("Please choose \"Yes\"!");
+	S_0x80010fb8: PsxStr<28> = psx_str!("%d Wins, %d Losses-%s WINS!");
+	S_0x80010fd4: PsxStr<48> = psx_str!("Since %s has no more Digimon,\nthe winner is %s!");
 
-	S_0x80011004 @ 0x80011004: [u32; 56] = [
+	S_0x80011004: [u32; 56] = [
 		0x00000000,
 		0x80034320,
 		0x800344dc,
@@ -896,20 +900,20 @@ decl_static! {
 		0x80039100,
 	];
 
-	S_0x800110e4 @ 0x800110e4: PsxStr<4> = psx_str!("=");
-	S_0x800110e8 @ 0x800110e8: PsxStr<4> = psx_str!("+");
-	S_0x800110ec @ 0x800110ec: PsxStr<4> = psx_str!("-");
-	S_0x800110f0 @ 0x800110f0: PsxStr<8> = psx_str!("%s%d");
-	S_0x800110f8 @ 0x800110f8: u32 = 0x808080;
-	S_0x800110fc @ 0x800110fc: PsxStr<4> = psx_str!("@@@");
-	S_0x80011100 @ 0x80011100: PsxStr<8> = psx_str!("*s0%4d");
-	S_0x80011108 @ 0x80011108: PsxStr<8> = psx_str!("*s0%2d");
-	S_0x80011110 @ 0x80011110: PsxStr<8> = psx_str!("%s Deck");
-	S_0x80011118 @ 0x80011118: PsxStr<28> = psx_str!("*h-1All-or-Nothing\nGamble!");
-	S_0x80011134 @ 0x80011134: PsxStr<68> = psx_str!("*h-1All-or-Nothing\nGamble!\nCards left in the\nOnline Deck are %d.");
-	S_0x80011178 @ 0x80011178: PsxStr<44> = psx_str!("*h-1Cards left in the\nOnline Deck is %d.");
+	S_0x800110e4: PsxStr<4> = psx_str!("=");
+	S_0x800110e8: PsxStr<4> = psx_str!("+");
+	S_0x800110ec: PsxStr<4> = psx_str!("-");
+	S_0x800110f0: PsxStr<8> = psx_str!("%s%d");
+	S_0x800110f8: u32 = 0x808080;
+	S_0x800110fc: PsxStr<4> = psx_str!("@@@");
+	S_0x80011100: PsxStr<8> = psx_str!("*s0%4d");
+	S_0x80011108: PsxStr<8> = psx_str!("*s0%2d");
+	S_0x80011110: PsxStr<8> = psx_str!("%s Deck");
+	S_0x80011118: PsxStr<28> = psx_str!("*h-1All-or-Nothing\nGamble!");
+	S_0x80011134: PsxStr<68> = psx_str!("*h-1All-or-Nothing\nGamble!\nCards left in the\nOnline Deck are %d.");
+	S_0x80011178: PsxStr<44> = psx_str!("*h-1Cards left in the\nOnline Deck is %d.");
 
-	S_0x800111a4 @ 0x800111a4: [u32; 135] = [
+	S_0x800111a4: [u32; 135] = [
 		0x80039e48,
 		0x8003ae30,
 		0x800397e4,
@@ -1047,35 +1051,35 @@ decl_static! {
 		0x8003f168,
 	];
 
-	S_0x800113c0 @ 0x800113c0: [u32; 4] = [
+	S_0x800113c0: [u32; 4] = [
 		0x6b5c3a50,
 		0x65737761,
 		0x69622e67,
 		0x0000006e,
 	];
 
-	S_0x800113d0 @ 0x800113d0: [u32; 4] = [
+	S_0x800113d0: [u32; 4] = [
 		0x445c3a42,
 		0x324b4345,
 		0x4b45442e,
 		0x00000000,
 	];
 
-	S_0x800113e0 @ 0x800113e0: [u32; 4] = [
+	S_0x800113e0: [u32; 4] = [
 		0x735c3a50,
 		0x65736961,
 		0x69622e67,
 		0x0000006e,
 	];
 
-	S_0x800113f0 @ 0x800113f0: [u32; 4] = [
+	S_0x800113f0: [u32; 4] = [
 		0x6f5c3a50,
 		0x736e6570,
 		0x622e6765,
 		0x00006e69,
 	];
 
-	S_0x80011400 @ 0x80011400: [u32; 8] = [
+	S_0x80011400: [u32; 8] = [
 		0x465c3a42,
 		0x2e544e4f,
 		0x00435241,
@@ -1086,14 +1090,14 @@ decl_static! {
 		0x004d4954,
 	];
 
-	S_0x80011420 @ 0x80011420: [u32; 4] = [
+	S_0x80011420: [u32; 4] = [
 		0x435c3a42,
 		0x5f4c5442,
 		0x2e535953,
 		0x00435241,
 	];
 
-	S_0x80011430 @ 0x80011430: [u32; 199] = [
+	S_0x80011430: [u32; 199] = [
 		0x4d5c3a42,
 		0x5241435f,
 		0x52412e44,
@@ -1295,7 +1299,7 @@ decl_static! {
 		0x800436b4,
 	];
 
-	S_0x8001174c @ 0x8001174c: [u32; 131] = [
+	S_0x8001174c: [u32; 131] = [
 		0x6e696854,
 		0x676e696b,
 		0x2e2e2e2e,
@@ -1429,7 +1433,7 @@ decl_static! {
 		0x00000000,
 	];
 
-	S_0x80011958 @ 0x80011958: [u32; 1284] = [
+	S_0x80011958: [u32; 1284] = [
 		0x435c3a42,
 		0x32445241,
 		0x4444432e,
@@ -2716,7 +2720,7 @@ decl_static! {
 		0x00000000,
 	];
 
-	S_0x80012d68 @ 0x80012d68: [u32; 20] = [
+	S_0x80012d68: [u32; 20] = [
 		0x20202020,
 		0x20202020,
 		0x36632a20,
@@ -2739,7 +2743,7 @@ decl_static! {
 		0x0000002e,
 	];
 
-	S_0x80012db8 @ 0x80012db8: [u32; 1061] = [
+	S_0x80012db8: [u32; 1061] = [
 		0x79616c50,
 		0x73277265,
 		0x72615020,
@@ -3803,7 +3807,7 @@ decl_static! {
 		0x00000000,
 	];
 
-	S_0x8006dd3c @ 0x8006dd3c: [u32; 10417] = [
+	S_0x8006dd3c: [u32; 10417] = [
 		0x00000000,
 		0x00000000,
 		0x00200000,
