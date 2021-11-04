@@ -14255,7 +14255,6 @@ unsafe extern "C" fn f41() -> u32 {
 		src = in(reg) src_ptr,
 		offset = const 0x40bc,
 		lateout("$v0") value,
-
 	);
 
 	// Store it and return
@@ -14272,9 +14271,8 @@ unsafe extern "C" fn f41() -> u32 {
 #[no_mangle]
 #[link_section = ".text.f44"]
 #[dcb_macros::asm_labels]
-unsafe extern "C" fn f44(a0: u32, a1: u32, a2: u32) {
+unsafe extern "C" fn f44(mut a0: u32, a1: u32, a2: u32) {
 	// `if a0[0x3e] < 6 { a0[0x3e] = 0; }`
-	let mut a0 = a0;
 	asm_exact!(
 		"lb $v0, 0x3e($a0)",
 		"nop",
