@@ -587,7 +587,7 @@ decl_static! {
 	S_0x80010894: PsxStr<16> = psx_str!("P:\\subseg.bin");
 	S_0x800108a4: PsxStr<12> = psx_str!("B:\\BG.ARC");
 
-	S_0x800108b0: [u32; 184] = [
+	S_0x800108b0: [u32; 92] = [
 		0x80031280,
 		0x800312a4,
 		0x800312b4,
@@ -680,6 +680,9 @@ decl_static! {
 		0x80031304,
 		0x80031280,
 		0x00000000,
+	];
+
+	S_0x80010a20: [u32; 72] = [
 		0x800313cc,
 		0x800313d4,
 		0x80031468,
@@ -752,6 +755,9 @@ decl_static! {
 		0x80031484,
 		0x80031484,
 		0x00000000,
+	];
+
+	S_0x80010b40: [u32; 20] = [
 		0x80031578,
 		0x80031580,
 		0x80031580,
@@ -869,8 +875,9 @@ decl_static! {
 	S_0x80010fb8: PsxStr<28> = psx_str!("%d Wins, %d Losses-%s WINS!");
 	S_0x80010fd4: PsxStr<48> = psx_str!("Since %s has no more Digimon,\nthe winner is %s!");
 
-	S_0x80011004: [u32; 56] = [
-		0x00000000,
+	S_0x80011004: u32 = 0x00000000;
+
+	S_0x80011008: [u32; 40] = [
 		0x80034320,
 		0x800344dc,
 		0x800345ac,
@@ -911,6 +918,9 @@ decl_static! {
 		0x80038de4,
 		0x80038f30,
 		0x80038f58,
+	];
+
+	S_0x800110a8: [u32; 7] = [
 		0x800366b4,
 		0x800366d4,
 		0x800366f4,
@@ -918,6 +928,9 @@ decl_static! {
 		0x80036a48,
 		0x800367c0,
 		0x80036920,
+	];
+
+	S_0x800110c4: [u32; 8] = [
 		0x80039120,
 		0x80038fc0,
 		0x80038fe0,
@@ -941,7 +954,7 @@ decl_static! {
 	S_0x80011134: PsxStr<68> = psx_str!("*h-1All-or-Nothing\nGamble!\nCards left in the\nOnline Deck are %d.");
 	S_0x80011178: PsxStr<44> = psx_str!("*h-1Cards left in the\nOnline Deck is %d.");
 
-	S_0x800111a4: [u32; 135] = [
+	S_0x800111a4: [u32; 12] = [
 		0x80039e48,
 		0x8003ae30,
 		0x800397e4,
@@ -954,6 +967,9 @@ decl_static! {
 		0x8003b1e0,
 		0x80039c0c,
 		0x80039ac8,
+	];
+
+	S_0x800111d4: [u32; 123] = [
 		0x8003a230,
 		0x8003a248,
 		0x8003a27c,

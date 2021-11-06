@@ -11827,8 +11827,8 @@ func_265:
 	nop
 	sltiu $v0, $v1, 0x5b
 	beqz $v0, .17
-		lui $v0, 0x8001
-	addiu $v0, 0x8b0
+		lui $v0, %hi(S_0x800108b0)
+	addiu $v0, %lo(S_0x800108b0)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -11913,8 +11913,8 @@ func_265:
 	sra $v1, $v0, 0x10
 	sltiu $v0, $v1, 0x47
 	beqz $v0, .20
-		lui $v0, 0x8001
-	addiu $v0, 0xa20
+		lui $v0, %hi(S_0x80010a20)
+	addiu $v0, %lo(S_0x80010a20)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -12027,8 +12027,8 @@ func_265:
 	sra $v1, $v0, 0x10
 	sltiu $v0, $v1, 0x13
 	beqz $v0, .25
-		lui $v0, 0x8001
-	addiu $v0, 0xb40
+		lui $v0, %hi(S_0x80010b40)
+	addiu $v0, %lo(S_0x80010b40)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -15091,8 +15091,8 @@ func_271:
 	nop
 	sltiu $v0, $v1, 0x28
 	beqz $v0, .0x800342d4
-		lui $v0, 0x8001
-	addiu $v0, 0x1008
+		lui $v0, %hi(S_0x80011008)
+	addiu $v0, %lo(S_0x80011008)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -15500,10 +15500,10 @@ func_271:
 	lui $s0, 0x801e
 	lui $v0, 0x801e
 	addiu $s2, $v0, -0x7cb8
-	lui $a1, 0x8001
+	lui $a1, %hi(S_0x80010cfc)
 .0x8003495c:
 	move_ $a0, $s1
-	addiu $a1, 0xcfc
+	addiu $a1, %lo(S_0x80010cfc)
 	jal f59
 		li $a2, 0x1
 	jal 0x800341ec
@@ -15527,10 +15527,10 @@ func_271:
 	lb $v0, 0x81f($v0)
 	nop
 	beqz $v0, .0x800349d0
-		lui $a1, 0x8001
+		lui $a1, %hi(S_0x80010d28)
 	li $a0, 0x78
 	jal 0x801ea8b4
-		addiu $a1, 0xd28
+		addiu $a1, %lo(S_0x80010d28)
 	j 0x80034a20
 		nop
 .0x800349d0:
@@ -15561,7 +15561,7 @@ func_271:
 	lb $v1, 0x818($v0)
 	li $v0, 0x5
 	beq $v1, $v0, .0x8003495c
-		lui $a1, 0x8001
+		lui $a1, %hi(S_0x80010cfc)
 	j 0x800342d4
 		nop
 .0x80034a40:
@@ -16255,9 +16255,9 @@ func_271:
 	nop
 	beqz $v0, .0x800354e4
 		li $a0, 0x78
-	lui $a1, 0x8001
+	lui $a1, %hi(S_0x80010d84)
 	jal 0x801ea8b4
-		addiu $a1, 0xd84
+		addiu $a1, %lo(S_0x80010d84)
 	j 0x800342d4
 		nop
 .0x800354e4:
@@ -17409,8 +17409,8 @@ func_271:
 	nop
 	sltiu $v0, $v1, 0x7
 	beqz $v0, .0x80036a48
-		lui $v0, 0x8001
-	addiu $v0, 0x10a8
+		lui $v0, %hi(S_0x800110a8)
+	addiu $v0, %lo(S_0x800110a8)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -17988,9 +17988,9 @@ func_271:
 	nop
 	beqz $v0, .0x80036fc0
 		li $a0, 0x78
-	lui $a1, 0x8001
+	lui $a1, %hi(S_0x80010eb4)
 	jal 0x801ea8b4
-		addiu $a1, 0xeb4
+		addiu $a1, %lo(S_0x80010eb4)
 	j 0x800342d4
 		nop
 .0x80036fc0:
@@ -18944,10 +18944,10 @@ func_271:
 	jal 0x80040220
 		nop
 	bnez $v0, .0x80037edc
-		lui $a1, 0x8001
+		lui $a1, %hi(S_0x80010f0c)
 	lui $s0, 0x801e
 	addiu $a0, $s0, -0x7d88
-	addiu $a1, 0xf0c
+	addiu $a1, %lo(S_0x80010f0c)
 	jal f59
 		move_ $a2, $zr
 	la_ $v1, 0x801d8348
@@ -19123,9 +19123,9 @@ func_271:
 	beqz $v0, .0x80038174
 		li $a0, 0x78
 .0x80038148:
-	lui $a1, 0x8001
+	lui $a1, %hi(S_0x80010fa0)
 	jal 0x801ea8b4
-		addiu $a1, 0xfa0
+		addiu $a1, %lo(S_0x80010fa0)
 	la_ $a0, 0x801d8278
 	la_ $a1, S_0x80010f48
 	jal f59
@@ -19894,9 +19894,9 @@ func_271:
 	addiu $v1, 0x1ce
 	sw $v1, 0x10($sp)
 	addiu $a0, $sp, 0x28
-	lui $a1, 0x8001
+	lui $a1, %hi(S_0x80010fb8)
 	jal 0x80069d24
-		addiu $a1, 0xfb8
+		addiu $a1, %lo(S_0x80010fb8)
 	j 0x80038dbc
 		lui $a0, 0x801e
 .0x80038d10:
@@ -20063,8 +20063,8 @@ func_271:
 	nop
 	sltiu $v0, $v1, 0x8
 	beqz $v0, .0x80039120
-		lui $v0, 0x8001
-	addiu $v0, 0x10c4
+		lui $v0, %hi(S_0x800110c4)
+	addiu $v0, %lo(S_0x800110c4)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -20488,9 +20488,9 @@ func_275:
 	li $v0, 0x7
 	bne $v1, $v0, .2
 		sll $v1, $s3, 0x3
-	lui $v0, 0x8001
+	lui $v0, %hi(S_0x800110e4)
 	j .4
-		addiu $a2, $v0, 0x10e4
+		addiu $a2, $v0, %lo(S_0x800110e4)
 .2:
 	lw $v0, ($s2)
 	nop
@@ -20498,12 +20498,12 @@ func_275:
 	lbu $v1, 0x132($v0)
 	li $v0, 0x5
 	bne $v1, $v0, .3
-		lui $v0, 0x8001
-	lui $v0, 0x8001
+		lui $v0, %hi(S_0x800110ec)
+	lui $v0, %hi(S_0x800110e8)
 	j .4
-		addiu $a2, $v0, 0x10e8
+		addiu $a2, $v0, %lo(S_0x800110e8)
 .3:
-	addiu $a2, $v0, 0x10ec
+	addiu $a2, $v0, %lo(S_0x800110ec)
 .4:
 	lw $v0, ($s2)
 	sll $v1, $s3, 0x3
@@ -20519,10 +20519,10 @@ func_275:
 	sll $s0, $s3, 0x3
 	addu $v0, $s0
 	addiu $a0, $sp, 0x18
-	lui $a1, 0x8001
+	lui $a1, %hi(S_0x800110f0)
 	lh $a3, 0x130($v0)
 	jal 0x80069d24
-		addiu $a1, 0x10f0
+		addiu $a1, %lo(S_0x800110f0)
 	lw $v1, ($s2)
 	nop
 	addu $v0, $v1, $s0
@@ -20586,8 +20586,8 @@ func_276:
 	lw $v1, -0x7c14($v1)
 	nop
 	addu $s4, $v0, $v1
-	lui $v0, 0x8001
-	addiu $a3, $v0, 0x10f8
+	lui $v0, %hi(S_0x800110f8)
+	addiu $a3, $v0, %lo(S_0x800110f8)
 	lwl $v1, 0x3($a3)
 	lwr $v1, ($a3)
 	lwl $a1, 0x7($a3)
@@ -20598,8 +20598,8 @@ func_276:
 	swr $a1, 0x64($sp)
 	sltiu $v0, $a0, 0xc
 	beqz $v0, .57
-		lui $v0, 0x8001
-	addiu $v0, 0x11a4
+		lui $v0, %hi(S_0x800111a4)
+	addiu $v0, %lo(S_0x800111a4)
 	sll $v1, $a0, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -20656,10 +20656,10 @@ func_276:
 		li $a3, 0x7
 	lw $v0, ($s3)
 	addiu $a0, $sp, 0x18
-	lui $s2, 0x8001
+	lui $s2, %hi(S_0x80011100)
 	lh $a2, 0x128($v0)
 	jal 0x80069d24
-		addiu $a1, $s2, 0x1100
+		addiu $a1, $s2, %lo(S_0x80011100)
 	lh $a0, 0x10($s4)
 	sll $s1, $s5, 0x1
 	addu $s1, $s5
@@ -20720,10 +20720,10 @@ func_276:
 	addu $v0, $v1
 	lw $v0, ($v0)
 	addiu $a0, $sp, 0x18
-	lui $a1, 0x8001
+	lui $a1, %hi(S_0x80011108)
 	lh $a2, 0x12e($v0)
 	jal 0x80069d24
-		addiu $a1, 0x1108
+		addiu $a1, %lo(S_0x80011108)
 	lh $v0, 0x10($s4)
 	sll $s0, $s5, 0x1
 	addu $s0, $s5
@@ -20927,8 +20927,8 @@ func_276:
 	jal 0x80040220
 		move_ $a0, $s5
 	addiu $a0, $sp, 0x18
-	lui $s2, 0x8001
-	addiu $a1, $s2, 0x1108
+	lui $s2, %hi(S_0x80011108)
+	addiu $a1, $s2, %lo(S_0x80011108)
 	jal 0x80069d24
 		move_ $a2, $v0
 	lh $a0, 0x10($s4)
@@ -21191,9 +21191,9 @@ func_276:
 	sw $fp, 0x10($sp)
 	addiu $a0, 0x8e
 	addiu $a1, 0x10
-	lui $a2, 0x8001
+	lui $a2, %hi(S_0x80011118)
 	j .13
-		addiu $a2, 0x1118
+		addiu $a2, %lo(S_0x80011118)
 .10:
 	lw $v1, -0x7cc0($v0)
 	nop
@@ -21256,8 +21256,8 @@ func_276:
 	sra $v1, $v0, 0x18
 	sltiu $v0, $v1, 0x6
 	beqz $v0, .20
-		lui $v0, 0x8001
-	addiu $v0, 0x11d4
+		lui $v0, %hi(S_0x800111d4)
+	addiu $v0, %lo(S_0x800111d4)
 	sll $v1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
