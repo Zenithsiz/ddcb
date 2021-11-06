@@ -417,7 +417,7 @@ decl_static! {
 		0x8002bbc0,
 		0x00000000,
 	];
-	
+
 	S_0x800105d0: [u32; 5] = [
 		0x8002bbf0,
 		0x8002bbf8,
@@ -540,8 +540,7 @@ decl_static! {
 		0x0072656e,
 	];
 
-	// Why is the last not null terminated?
-	S_0x80010794: [u32; 23] = [
+	S_0x80010794: [u32; 8] = [
 		0x8002cca8,
 		0x8002cce8,
 		0x8002cd28,
@@ -550,7 +549,9 @@ decl_static! {
 		0x8002cde8,
 		0x8002ce28,
 		0x00000000,
+	];
 
+	S_0x800107b4: [u32; 8] = [
 		0x8002d0e4,
 		0x8002d0f4,
 		0x8002d104,
@@ -559,7 +560,10 @@ decl_static! {
 		0x8002d130,
 		0x8002d140,
 		0x00000000,
+	];
 
+	// Why is this not null terminated?
+	S_0x800107d4: [u32; 7] = [
 		0x8002d1f8,
 		0x8002d238,
 		0x8002d278,

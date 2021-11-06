@@ -7587,8 +7587,8 @@ func_230:
 	andi $a1, 0x7
 	sltiu $v0, $a1, 0x7
 	beqz $v0, .11
-		lui $v0, 0x8001
-	addiu $v0, 0x7b4
+		lui $v0, %hi(S_0x800107b4)
+	addiu $v0, %lo(S_0x800107b4)
 	sll $v1, $a1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -7658,8 +7658,8 @@ func_230:
 	andi $a1, 0x7
 	sltiu $v0, $a1, 0x7
 	beqz $v0, .13
-		lui $v0, 0x8001
-	addiu $v0, 0x7d4
+		lui $v0, %hi(S_0x800107d4)
+	addiu $v0, %lo(S_0x800107d4)
 	sll $v1, $a1, 0x2
 	addu $v1, $v0
 	lw $v0, ($v1)
@@ -8091,9 +8091,9 @@ func_233:
 		addiu $s2, 0x2774
 	lui $v0, 0x8007
 	lw $v1, -0x1fb0($v0)
-	lui $v0, 0x8001
-	addiu $a0, $v0, 0x7f0
-	lw $v0, 0x7f0($v0)
+	lui $v0, %hi(S_0x800107f0)
+	addiu $a0, $v0, %lo(S_0x800107f0)
+	lw $v0, %lo(S_0x800107f0)($v0)
 	nop
 	sw $v0, ($v1)
 	lhu $v0, 0x4($a0)
@@ -8793,8 +8793,8 @@ func_238:
 	sw $s0, 0x10($sp)
 	la_ $v1, S_0x80010838
 	sw $v1, 0x14($sp)
-	lui $s1, 0x8001
-	lw $v1, 0xc9c($s1)
+	lui $s1, %hi(S_0x80010c9c)
+	lw $v1, %lo(S_0x80010c9c)($s1)
 	nop
 	sw $v1, 0x18($sp)
 	sw $v0, 0x1c($sp)
@@ -8833,7 +8833,7 @@ func_238:
 	sw $s0, 0x10($sp)
 	la_ $v1, S_0x80010848
 	sw $v1, 0x14($sp)
-	lw $v1, 0xc9c($s1)
+	lw $v1, %lo(S_0x80010c9c)($s1)
 	nop
 	sw $v1, 0x18($sp)
 	sw $v0, 0x1c($sp)
@@ -9755,8 +9755,8 @@ func_242:
 	sw $s0, 0x10($sp)
 	la_ $v1, S_0x80010894
 	sw $v1, 0x14($sp)
-	lui $s1, 0x8001
-	lw $v1, 0xc9c($s1)
+	lui $s1, %hi(S_0x80010c9c)
+	lw $v1, %lo(S_0x80010c9c)($s1)
 	nop
 	sw $v1, 0x18($sp)
 	sw $v0, 0x1c($sp)
@@ -9793,7 +9793,7 @@ func_242:
 	sw $s0, 0x10($sp)
 	la_ $v1, S_0x80010864
 	sw $v1, 0x14($sp)
-	lw $v1, 0xc9c($s1)
+	lw $v1, %lo(S_0x80010c9c)($s1)
 	nop
 	sw $v1, 0x18($sp)
 	sw $v0, 0x1c($sp)
@@ -9827,8 +9827,8 @@ func_242:
 	sw $s0, 0x10($sp)
 	la_ $v1, S_0x80010894
 	sw $v1, 0x14($sp)
-	lui $s1, 0x8001
-	lw $v1, 0xc9c($s1)
+	lui $s1, %hi(S_0x80010c9c)
+	lw $v1, %lo(S_0x80010c9c)($s1)
 	nop
 	sw $v1, 0x18($sp)
 	sw $v0, 0x1c($sp)
@@ -9866,7 +9866,7 @@ func_242:
 	sw $s0, 0x10($sp)
 	la_ $v1, S_0x80010864
 	sw $v1, 0x14($sp)
-	lw $v1, 0xc9c($s1)
+	lw $v1, %lo(S_0x80010c9c)($s1)
 	nop
 	sw $v1, 0x18($sp)
 	sw $v0, 0x1c($sp)
@@ -38292,8 +38292,8 @@ func_347:
 	sw $s0, 0x10($sp)
 	la_ $v1, 0x80012f9c
 	sw $v1, 0x14($sp)
-	lui $s1, 0x8001
-	lw $v1, 0xc9c($s1)
+	lui $s1, %hi(S_0x80010c9c)
+	lw $v1, %lo(S_0x80010c9c)($s1)
 	nop
 	sw $v1, 0x18($sp)
 	sw $v0, 0x1c($sp)
@@ -38330,7 +38330,7 @@ func_347:
 	sw $s0, 0x10($sp)
 	la_ $v1, 0x80012fac
 	sw $v1, 0x14($sp)
-	lw $v1, 0xc9c($s1)
+	lw $v1, %lo(S_0x80010c9c)($s1)
 	nop
 	sw $v1, 0x18($sp)
 	sw $v0, 0x1c($sp)
