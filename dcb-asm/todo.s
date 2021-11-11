@@ -77,4 +77,5 @@
 .include "dcb-asm/todo/f227.s"
 .include "dcb-asm/todo/f228.s"
 .include "dcb-asm/todo/f232.s"
+.include "dcb-asm/todo/f233.s"
 .include "dcb-asm/todo/rest.s"
