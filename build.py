@@ -147,13 +147,13 @@ with scoping():
 	    "elf2psexe",
 	    "NA",
 	    "build/dcb.bin",
-	    "build/dcb.psexe",
+	    "build/SLUS_013.28",
 	]
 	print(" !Converting elf to psexe")
 	subprocess.run(args, check=True)
 
 # Then make sure they're equal
 with scoping():
-	args = ["diff", "build/dcb.psexe", "build/SLUS_013.28"]
+	args = ["diff", "build/SLUS_013.28", "build/original/SLUS_013.28"]
 	print(" !Comparing psexe")
 	subprocess.run(args, check=True)
