@@ -12,8 +12,14 @@ import generate_linker_fns
 import preprocess_asm_file
 
 # Create the build folders if they don't exist
-for path in ["build", "build/llvm", "build/asm", "build/rust"]:
+for path in ["build", "build/llvm", "build/asm", "build/rust", "build/bin"]:
 	os.makedirs(path, exist_ok=True)
+
+# Compile all binaries for the rest of the build process
+for bin_name in ["dcb-mkdrv"]:
+	args = ["cargo", "build", "--release", "-p", f"{bin_name}", "-Z", "unstable-options", "--out-dir", "build/bin"]
+	print(f" !Compiling tool `{bin_name}`")
+	subprocess.run(args, check=True)
 
 # Compile `dcb-macros` onto a `so`
 # Note: Not `--release` because it takes a bit

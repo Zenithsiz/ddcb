@@ -1,9 +1,5 @@
 {
 	"rust-analyzer.checkOnSave.allTargets": false,
-	"rust-analyzer.checkOnSave.extraArgs": [
-		"--target",
-		"mipsel-sony-psx.json",
-	],
 	"cSpell.words": [
 		"addiu",
 		"addrs",
@@ -25,6 +21,7 @@
 		"mcpu",
 		"mflo",
 		"mipsel",
+		"mkdrv",
 		"nmagic",
 		"noat",
 		"noreorder",
@@ -42,7 +39,8 @@
 		"stmts",
 		"subseg",
 		"subu",
-		"sugseg"
+		"sugseg",
+		"thiserror"
 	],
 	"editor.insertSpaces": false,
 }
