@@ -1,0 +1,11 @@
+# Manage some `/dcb` files with lfs
+/dcb/**/*.MOV filter=lfs diff=lfs merge=lfs -text
+/dcb/**/*.PAK filter=lfs diff=lfs merge=lfs -text
+/dcb/**/*.TIM filter=lfs diff=lfs merge=lfs -text
+/dcb/**/*.TIS filter=lfs diff=lfs merge=lfs -text
+/dcb/**/*.ARC filter=lfs diff=lfs merge=lfs -text
+/dcb/**/*.BIN filter=lfs diff=lfs merge=lfs -text
+/dcb/**/*.MSD filter=lfs diff=lfs merge=lfs -text
+
+# Keep crlfs in all files in `/dcb`
+/dcb/**/* -crlf
