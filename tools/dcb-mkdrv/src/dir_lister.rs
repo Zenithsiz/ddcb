@@ -26,6 +26,9 @@ pub struct DirLister {
 
 	/// Depth
 	depth: usize,
+
+	/// Quiet
+	quiet: bool,
 }
 
 /// Directory entry
@@ -40,7 +43,7 @@ pub struct DirEntry {
 
 impl DirLister {
 	/// Creates a new iterator from a path
-	pub fn new(path: &Path, depth: usize) -> Result<Self, NewError> {
+	pub fn new(path: &Path, depth: usize, quiet: bool) -> Result<Self, NewError> {
 		// Read the directory entries
 		let mut entries = fs::read_dir(path)
 			.map_err(|err| NewError::ReadDir(path.to_path_buf(), err))?
@@ -71,7 +74,7 @@ impl DirLister {
 			lhs.path.file_name().cmp(&rhs.path.file_name())
 		});
 
-		Ok(Self { entries, depth })
+		Ok(Self { entries, depth, quiet })
 	}
 }
 
@@ -86,7 +89,6 @@ impl IntoIterator for DirLister {
 	type IntoIter = impl Iterator<Item = Self::Item> + ExactSizeIterator;
 
 	fn into_iter(self) -> Self::IntoIter {
-		let depth = self.depth;
 		self.entries.into_iter().with_position().map(move |entry| {
 			let (entry, is_last) = {
 				match entry {
@@ -126,36 +128,41 @@ impl IntoIterator for DirLister {
 						.map_err(NextError::InvalidFileExtension)?;
 					let size = reader.stream_len().ok();
 
-					let prefix = zutil::DisplayWrapper::new(|f| {
-						match depth {
-							0 => (),
-							_ => {
-								for _ in 0..(depth - 1) {
-									write!(f, "│   ")?;
-								}
-								match is_last {
-									true => write!(f, "└──")?,
-									false => write!(f, "├──")?,
-								};
-							},
-						}
 
-						Ok(())
-					});
+					if !self.quiet {
+						let prefix = zutil::DisplayWrapper::new(|f| {
+							match self.depth {
+								0 => (),
+								_ => {
+									for _ in 0..(self.depth - 1) {
+										write!(f, "│   ")?;
+									}
+									match is_last {
+										true => write!(f, "└──")?,
+										false => write!(f, "├──")?,
+									};
+								},
+							}
 
-					let size = zutil::DisplayWrapper::new(|f| match size {
-						Some(size) => write!(f, "{}B", size_format::SizeFormatterSI::new(size)),
-						None => write!(f, "Unknown Size"),
-					});
+							Ok(())
+						});
 
-					println!("{}{} ({})", prefix, name, size,);
+						let size = zutil::DisplayWrapper::new(|f| match size {
+							Some(size) => write!(f, "{}B", size_format::SizeFormatterSI::new(size)),
+							None => write!(f, "Unknown Size"),
+						});
+
+						println!("{}{} ({})", prefix, name, size,);
+					}
 
 					DirEntryWriterKind::File { extension, reader }
 				},
 				true => {
-					let entries = Self::new(&entry.path, depth + 1).map_err(NextError::OpenDir)?;
+					let entries = Self::new(&entry.path, self.depth + 1, self.quiet).map_err(NextError::OpenDir)?;
 
-					println!("{} ({} entries)", entry.path.display(), entries.entries.len());
+					if !self.quiet {
+						println!("{} ({} entries)", entry.path.display(), entries.entries.len());
+					}
 
 					let dir = DirWriter::new(entries);
 					DirEntryWriterKind::Dir(dir)

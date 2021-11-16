@@ -12,7 +12,7 @@ import generate_linker_fns
 import preprocess_asm_file
 
 # Create the build folders if they don't exist
-for path in ["build", "build/llvm", "build/asm", "build/rust", "build/bin"]:
+for path in ["build", "build/llvm", "build/asm", "build/rust", "build/iso", "build/bin"]:
 	os.makedirs(path, exist_ok=True)
 
 # Compile all binaries for the rest of the build process
@@ -156,4 +156,14 @@ with scoping():
 with scoping():
 	args = ["diff", "build/SLUS_013.28", "build/original/SLUS_013.28"]
 	print(" !Comparing psexe")
+	subprocess.run(args, check=True)
+
+# Copy all files in `dcb` to make the ISO, packing any directories into `DRV`s
+for entry in os.scandir("dcb/"):
+	if not entry.is_dir():
+		shutil.copyfile(entry.path, f"build/iso/{entry.name}")
+		continue
+
+	args = ["build/bin/dcb-mkdrv", "--quiet", f"{entry.path}", "-o", f"build/iso/{entry.name}.DRV"]
+	print(f" !Packing drv: `{entry.name}`")
 	subprocess.run(args, check=True)

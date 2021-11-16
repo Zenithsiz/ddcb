@@ -23,22 +23,26 @@ fn main() -> Result<(), anyhow::Error> {
 	.expect("Unable to initialize logger");
 
 	// Get all data from cli
-	let args::Args { input_dir, output_file } = args::get();
+	let args::Args {
+		input_dir,
+		output_file,
+		quiet,
+	} = args::get();
 
 	// Try to pack the filesystem
-	self::write_fs(&input_dir, &output_file).context("Unable to pack `drv` file")?;
+	self::write_fs(&input_dir, &output_file, quiet).context("Unable to pack `drv` file")?;
 
 	Ok(())
 }
 
 /// Writes a `.drv` filesystem to `output_file`.
-pub fn write_fs(input_dir: &Path, output_file: &Path) -> Result<(), anyhow::Error> {
+pub fn write_fs(input_dir: &Path, output_file: &Path, quiet: bool) -> Result<(), anyhow::Error> {
 	// Create the output file
 	let mut output_file = fs::File::create(output_file).context("Unable to create output file")?;
 
 	// Create the filesystem writer
-	let root_entries =
-		dir_lister::DirLister::new(input_dir, 0).context("Unable to create new dir lister for root directory")?;
+	let root_entries = dir_lister::DirLister::new(input_dir, 0, quiet)
+		.context("Unable to create new dir lister for root directory")?;
 	DirWriter::new(root_entries)
 		.write(DirPtr::root(), &mut output_file)
 		.context("Unable to write filesystem")?;
