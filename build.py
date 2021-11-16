@@ -8,8 +8,8 @@ from scoping import scoping
 import shutil
 import glob
 import pathlib
-import generate_linker_fns
-import preprocess_asm_file
+from tools import generate_linker_fns
+from tools import preprocess_asm_file
 
 # Create the build folders if they don't exist
 for path in ["build", "build/llvm", "build/asm", "build/rust", "build/iso", "build/bin"]:
@@ -167,3 +167,12 @@ for entry in os.scandir("dcb/"):
 	args = ["build/bin/dcb-mkdrv", "--quiet", f"{entry.path}", "-o", f"build/iso/{entry.name}.DRV"]
 	print(f" !Packing drv: `{entry.name}`")
 	subprocess.run(args, check=True)
+
+# Make sure they're equal
+# TODO: This
+"""
+for entry in os.scandir("build/iso"):
+	args = ["diff", f"{entry.path}", f"build/original/iso/{entry.name}"]
+	print(f" !Comparing `{entry.name}`")
+	subprocess.run(args, check=True)
+"""
