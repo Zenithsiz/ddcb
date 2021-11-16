@@ -37,41 +37,19 @@ def build(verify_equal: bool = True):
 	with scoping():
 		args = [
 		    "rustc", "--crate-name", "dcb", "--edition=2021", "dcb-rs/src/lib.rs", "--emit=llvm-ir", "-C", "opt-level=3",
-		    "-C", "embed-bitcode=no", "-C", "extra-filename=-rs", "--target=mipsel-sony-psx.json", "--out-dir",
-		    "build/llvm/", "--extern", "core_impl=build/rust/libcore_impl.rlib", "--extern",
-		    "dcb_macros=build/rust/libdcb_macros.so"
+		    "-C", "embed-bitcode=no", "--target=mipsel-sony-psx.json", "--out-dir", "build/llvm/", "--extern",
+		    "core_impl=build/rust/libcore_impl.rlib", "--extern", "dcb_macros=build/rust/libdcb_macros.so"
 		]
 		subprocess.run(args, check=True)
 
 	# Compile all `llvm-ir`
-	# TODO: Remove part of, we don't need an llvm manual step
 	util.log("Compiling llvm")
 	with util.log_scope():
-		# Run the C preprocessor on the llvm input
-		# TODO: Check if this is actually a good idea, doesn't feel like it
-		# TODO: Maybe don't ignore ALL warnings
-		util.log("Preprocessing llvm")
-		with scoping():
-			args = ["cpp", "-E", "-P", "-w", "dcb-llvm/dcb.ll", "-o", "build/llvm/dcb-llvm.ll"]
-			subprocess.run(args, check=True)
-
 		# Replace any `mips2` with `mips1` in the rust output
 		# TODO: Do this properly somehow
 		util.log("Replacing `mips2` with `mips1` in dcb-rs")
 		with scoping():
-			args = ["sed", "-i", "-e", "s/mips2/mips1/g", "build/llvm/dcb-rs.ll"]
-			subprocess.run(args, check=True)
-
-		# Then link both together
-		util.log("Linking llvm")
-		with scoping():
-			args = [
-			    "/opt/llvm-mips1/bin/llvm-link",
-			    "-S",
-			    "-o=build/llvm/dcb.ll",
-			    "build/llvm/dcb-rs.ll",
-			    "build/llvm/dcb-llvm.ll",
-			]
+			args = ["sed", "-i", "-e", "s/mips2/mips1/g", "build/llvm/dcb.ll"]
 			subprocess.run(args, check=True)
 
 		# Then compile them
@@ -89,7 +67,7 @@ def build(verify_equal: bool = True):
 			subprocess.run(args, check=True)
 
 	# Preprocss all assembly files onto `build/asm/dcb-asm`
-		util.log("Preprocessing asm")
+	util.log("Preprocessing asm")
 	with scoping():
 		for path, _, files in os.walk("dcb-asm"):
 			for file in files:
@@ -101,7 +79,7 @@ def build(verify_equal: bool = True):
 				preprocess_asm_file.main(file_path, output_path)
 
 	# Now compile all `asm` into object files
-		util.log("Compiling asm")
+	util.log("Compiling asm")
 	with scoping():
 		args = [
 		    "mips-linux-gnu-as", "-o", "build/dcb.o", "-EL", "-mips1", "-march=r3000", "-O2", "build/asm/dcb-llvm.s",
