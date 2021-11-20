@@ -35,14 +35,14 @@ ISO_FILES := $(DRV_FILES) $(ISO_NON_DRV_FILES) build/iso/SLUS_013.28 build/iso/M
 all: pack_bin compare
 
 # Builds the bin
-pack_bin: build_exe build/dcb.bin
+pack_bin: build/dcb.bin
 
 # Builds the executable
 build_exe: build/dcb.psexe
 
 # Compare the bin and exe
 # TODO: Compare the bin once it's properly built
-compare: pack_bin build_exe
+compare: build_exe
 	$(sha256sum) --check checksums.sha256
 
 # Compiles all tols
