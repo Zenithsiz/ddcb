@@ -5,7 +5,8 @@ llc                    = /opt/llvm-mips1/bin/llc
 rustc                  = rustc
 cargo                  = cargo
 elf2psexe              = elf2psexe
-generate_linker_script = tools/generate_linker_fns.py
+generate_linker_script = tools/generate_linker_symbols_script.py
+preprocess_asm_file    = tools/preprocess_asm_file.py
 sed                    = sed
 diff                   = diff
 sha256sum              = sha256sum
@@ -21,15 +22,14 @@ ASM_PROCESSED_FILES := $(subst dcb-asm/, build/asm/, $(ASM_FILES))
 # All `DRV` files
 DRV_FILES := $(patsubst dcb/%/,build/iso/%.DRV,$(wildcard dcb/*/))
 
-# All ISO files, exclusing DRVs
+# All ISO files, excluding DRVs
 ISO_NON_DRV_FILES := $(patsubst dcb/%,build/iso/%,$(wildcard dcb/*.*))
 
 # All ISO files
 ISO_FILES := $(DRV_FILES) $(ISO_NON_DRV_FILES) build/iso/SLUS_013.28 build/iso/MMM.DAT
 
 # Commands
-# TODO: Maybe don't always recompile tools?
-.PHONY: build compare all clean build/bin/%
+.PHONY: build compare all clean
 
 # Default target, pack iso
 all: pack_bin compare
@@ -52,14 +52,15 @@ tools: $(TOOLS)
 clean:
 	rm -r build/
 
-
 # Tools
-# TODO: Dependencies don't seem to be working, check why
-$(mkdrv) $(mkdrv).d:
-	$(cargo) build --release -p dcb-mkdrv -Z unstable-options --out-dir build/bin/
-	sed -e "s,target/release/dcb-mkdrv,$(mkdrv),g" target/release/dcb-mkdrv.d > $(mkdrv).d
-
-
+# Note: Given that `cargo` doesn't adjust the binary being copied, and also emits absolute
+#       paths, which don't seem to work for some reason (TODO: Check why), we convert both of those.
+build/bin/% build/bin/%.d:
+	$(cargo) build --release -p $* -Z unstable-options --out-dir build/bin/
+	$(sed) \
+		-e "s,target/release/,build/bin/,g" \
+		-e "s,$(shell pwd)/,,g" target/release/$*.d \
+		> build/bin/$*.d
 
 # Files
 
@@ -67,13 +68,10 @@ $(mkdrv) $(mkdrv).d:
 build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
 	mkpsxiso dcb-iso.xml -q -y
 
-# Iso directory
-build/iso/:
-	mkdir -p $@
-
 # `DRV`s
 .SECONDEXPANSION:
-build/iso/%.DRV: $$(shell find dcb/$$*/) | build/iso/ $(mkdrv)
+build/iso/%.DRV: $$(shell find dcb/$$*/) $(mkdrv)
+	@mkdir -p $(@D)
 	$(mkdrv) --quiet $< -o $@
 
 # Other files
@@ -109,19 +107,19 @@ build/symbols.ld: symbols.yaml $(generate_linker_script)
 	$(generate_linker_script)
 
 # Object files
-build/dcb.o build/dcb.d: build/asm/dcb.s build/rs/dcb.s | $(ASM_PROCESSED_FILES)
+build/dcb.o build/dcb.d: build/asm/dcb.s build/rs/dcb.s $(ASM_PROCESSED_FILES)
 	$(as) -MD build/dcb.d -o build/dcb.o -EL -mips1 -march=r3000 -O2 build/rs/dcb.s build/asm/dcb.s
 	$(sed) -i -e "s/dcb.*-cgu.0//g" build/dcb.d
 
 # Rust assembly
 # Note: Replace any `mips2` with `mips1` before assembling
 build/rs/dcb.s: build/rs/dcb.ll
-	$(sed) -i -e "s/mips2/mips1/g" $^
-	$(llc) -O0 -march=mips -mcpu=mips1 -mattr=+soft-float -o $@ $^
+	$(sed) -i -e "s/mips2/mips1/g" $<
+	$(llc) -O0 -march=mips -mcpu=mips1 -mattr=+soft-float -o $@ $<
 
 # Rust llvm-ir
-build/rs/dcb.ll: dcb-rs/src/lib.rs | build/rs/libcore_impl.rlib build/rs/libdcb_macros.so
-	$(rustc) $^ \
+build/rs/dcb.ll: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib build/rs/libdcb_macros.so
+	$(rustc) $< \
 		--crate-name dcb \
 		--edition 2021 \
 		--emit llvm-ir \
@@ -150,8 +148,8 @@ build/rs/libdcb_macros.so:
 		--out-dir $(@D)
 
 # Processed assembly files
-build/asm/%.s: dcb-asm/%.s
-	tools/preprocess_asm_file.py $< -o $@
+build/asm/%.s: dcb-asm/%.s $(preprocess_asm_file)
+	$(preprocess_asm_file) $< -o $@
 
 # Dependencies
 include build/dcb.d
