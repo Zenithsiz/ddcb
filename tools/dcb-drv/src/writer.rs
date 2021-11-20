@@ -99,7 +99,7 @@ impl<L: DirWriterLister> DirWriter<L> {
 							.map_err(|_| WriteDirError::FileTooLarge)?;
 						let sector_size = (size + 2047) / 2048;
 
-						let ptr = FilePtr::new(cur_sector_pos, sector_size);
+						let ptr = FilePtr::new(cur_sector_pos, size);
 						(DirEntryKind::file(extension, ptr), sector_size)
 					},
 					DirEntryWriterKind::Dir(dir) => {
