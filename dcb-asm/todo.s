@@ -78,4 +78,6 @@
 .include "dcb-asm/todo/f228.s"
 .include "dcb-asm/todo/f232.s"
 .include "dcb-asm/todo/f233.s"
+.include "dcb-asm/todo/f236.s"
+.include "dcb-asm/todo/f237.s"
 .include "dcb-asm/todo/rest.s"
