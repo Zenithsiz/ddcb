@@ -1,0 +1,21 @@
+[package]
+authors = ["Filipe Rodrigues <filipejacintorodrigues1@gmail.com>"]
+edition = "2018"
+name = "dcb-cdrom-xa"
+version = "0.1.0"
+
+[dependencies]
+
+# Dcb
+dcb-bytes = {path = "../dcb-bytes"}
+zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f"}
+
+# Log
+bitflags = "1.2.1"
+log = "0.4.13"
+
+# Util
+byteorder = "1.4.2"
+
+# Derives
+thiserror = "1.0.23"

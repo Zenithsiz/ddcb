@@ -111,6 +111,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "dcb-cdrom-xa"
+version = "0.1.0"
+dependencies = [
+ "bitflags",
+ "byteorder",
+ "dcb-bytes",
+ "log",
+ "thiserror",
+ "zutil",
+]
+
+[[package]]
 name = "dcb-drv"
 version = "0.1.0"
 dependencies = [
@@ -147,6 +159,17 @@ dependencies = [
  "size_format",
  "thiserror",
  "zutil",
+]
+
+[[package]]
+name = "dcb-unbin"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "dcb-cdrom-xa",
+ "log",
+ "simplelog",
 ]
 
 [[package]]
