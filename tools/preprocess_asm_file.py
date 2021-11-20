@@ -3,8 +3,10 @@
 # Import
 import os
 import re
+import sys
 import yaml
 import pathlib
+import argparse
 
 # Line processing regex
 # TODO: Maybe support dots in labels?
@@ -28,7 +30,8 @@ def main(input_path, output_path):
 
 		for line in input_file:
 			# Replace any includes
-			line = line.replace(".include \"", ".include \"build/asm/")
+			# TODO: Use the proper paths for this depending on inputs
+			line = line.replace(".include \"dcb-asm/", ".include \"build/asm/")
 
 			# If this is a non-dot label definition, set it as the lastest
 			non_dot_def_matches = line_non_dot_label_def_regex.search(line)
@@ -54,3 +57,12 @@ def main(input_path, output_path):
 
 			output_file.write(line)
 			pass
+
+
+if __name__ == "__main__":
+	parser = argparse.ArgumentParser(description="Processes an assembly file")
+	parser.add_argument("input", type=str)
+	parser.add_argument("-o", dest="output", type=str, required=True)
+
+	args = parser.parse_args()
+	main(args.input, args.output)

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<iso_project image_name="build/dcb.bin" cue_sheet="build/dcb.cue" no_xa="0">
+	<track type="data">
+		<identifiers system="PLAYSTATION" application="PLAYSTATION" volume="DIGIMON_DIGITAL_CARD_BATTLE" volume_set="MYDISC" publisher="BANDAI" data_preparer="" copyright="BANDAI" />
+
+		<license file="license.dat" />
+
+		<directory_tree>
+			<file name="SYSTEM.CNF" type="data" source="build/iso/SYSTEM.CNF" />
+
+			<file name="P.DRV" type="data" source="build/iso/P.DRV" />
+
+
+			<file name="A.DRV" type="data" source="build/iso/A.DRV" />
+			<file name="B.DRV" type="data" source="build/iso/B.DRV" />
+			<file name="C.DRV" type="data" source="build/iso/C.DRV" />
+			<file name="E.DRV" type="data" source="build/iso/E.DRV" />
+			<file name="F.DRV" type="data" source="build/iso/F.DRV" />
+			<file name="G.DRV" type="data" source="build/iso/G.DRV" />
+
+			<file name="MMM.DAT" type="data" source="build/iso/MMM.DAT" />
+
+			<file name="SLUS_013.28" type="data" source="build/iso/SLUS_013.28" />
+			<file name="DIGIMON.MOV" type="data" source="build/iso/DIGIMON.MOV" />
+		</directory_tree>
+
+	</track>
+</iso_project>

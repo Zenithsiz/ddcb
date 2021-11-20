@@ -4,11 +4,11 @@
 # Build
 /build
 
-# Auto generated linker symbols
-/symbols.ld
-
 # Python
 __pycache__
 
 # Old
 /.old
+
+# License
+license.dat

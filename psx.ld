@@ -5,7 +5,7 @@ MEMORY {
 }
 
 /* Include all symbol definitions */
-INCLUDE symbols.ld
+INCLUDE build/symbols.ld
 
 /* Put anything else from `.text` into a `.error` section */
 SECTIONS {

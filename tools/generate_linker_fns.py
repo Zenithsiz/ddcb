@@ -5,12 +5,12 @@ import os
 import yaml
 
 
-def main():
+def main(in_path="symbols.yaml", out_path="build/symbols.ld"):
 	# Get all of the symbol addresses
-	symbols = yaml.safe_load(open("symbols.yaml"))
+	symbols = yaml.safe_load(open(in_path, "r"))
 
 	# Then write them all
-	with open("symbols.ld", "w") as symbols_file:
+	with open(out_path, "w") as symbols_file:
 		symbols_file.write("/* This is an automatically generated file, DO NOT MODIFY */\n\n")
 		symbols_file.write("SECTIONS {\n")
 		symbols_file.write("\t.text : {\n")
