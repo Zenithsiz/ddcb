@@ -94,8 +94,8 @@ build/dcb.psexe: build/dcb.elf
 	$(elf2psexe) "NA" $< $@
 
 # Final executable in elf format
-build/dcb.elf: build/rs/dcb.o build/asm/dcb.o psx.ld
-	$(ld) $(filter %.o, $^) \
+build/dcb.elf: build/dcb.o build/symbols.ld
+	$(ld) $< \
 		-o $@ \
 		--whole-archive \
 		-EL \
@@ -105,16 +105,13 @@ build/dcb.elf: build/rs/dcb.o build/asm/dcb.o psx.ld
 
 
 # Symbols for ordering
-psx.ld: build/symbols.ld
-build/symbols.ld: | $(generate_linker_script)
+build/symbols.ld: symbols.yaml $(generate_linker_script)
 	$(generate_linker_script)
 
-# Object files for assembly and rust, respectively
-build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s | $(ASM_PROCESSED_FILES)
-	$(as) -MD build/asm/dcb.d -o build/asm/dcb.o -EL -mips1 -march=r3000 -O2 $<
-
-build/rs/dcb.o: build/rs/dcb.s
-	$(as) -o $@ -EL -mips1 -march=r3000 -O2 $<
+# Object files
+build/dcb.o build/dcb.d: build/asm/dcb.s build/rs/dcb.s | $(ASM_PROCESSED_FILES)
+	$(as) -MD build/dcb.d -o build/dcb.o -EL -mips1 -march=r3000 -O2 build/rs/dcb.s build/asm/dcb.s
+	$(sed) -i -e "s/dcb.*-cgu.0//g" build/dcb.d
 
 # Rust assembly
 # Note: Replace any `mips2` with `mips1` before assembling
@@ -157,5 +154,5 @@ build/asm/%.s: dcb-asm/%.s
 	tools/preprocess_asm_file.py $< -o $@
 
 # Dependencies
-include build/asm/dcb.d
+include build/dcb.d
 include $(patsubst %,%.d,$(TOOLS))
