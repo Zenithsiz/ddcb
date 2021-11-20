@@ -131,21 +131,29 @@ build/rs/dcb.ll: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib build/rs/libdcb_ma
 		--extern dcb_macros=build/rs/libdcb_macros.so
 
 # `core-impl` library
-build/rs/libcore_impl.rlib: mipsel-sony-psx.json
+build/rs/libcore_impl.rlib build/rs/libcore_impl.d: mipsel-sony-psx.json
 	$(cargo) build \
 		--release \
 		-p "core-impl" \
 		-Z unstable-options \
 		--out-dir $(@D) \
 		--target mipsel-sony-psx.json
+	$(sed) \
+		-e "s,target/mipsel-sony-psx/release/,$(@D)/,g" \
+		-e "s,$(shell pwd)/,,g" target/mipsel-sony-psx/release/libcore_impl.d \
+		> build/rs/libcore_impl.d
 
 # `dcb-macros` library
-build/rs/libdcb_macros.so:
+build/rs/libdcb_macros.so build/rs/libdcb_macros.d:
 	$(cargo) build \
 		--release \
 		-p "dcb-macros" \
 		-Z unstable-options \
 		--out-dir $(@D)
+	$(sed) \
+		-e "s,target/release/,$(@D)/,g" \
+		-e "s,$(shell pwd)/,,g" target/release/libdcb_macros.d \
+		> build/rs/libdcb_macros.d
 
 # Processed assembly files
 build/asm/%.s: dcb-asm/%.s $(preprocess_asm_file)
@@ -153,4 +161,6 @@ build/asm/%.s: dcb-asm/%.s $(preprocess_asm_file)
 
 # Dependencies
 include build/dcb.d
+include build/rs/libcore_impl.d
+include build/rs/libdcb_macros.d
 include $(patsubst %,%.d,$(TOOLS))

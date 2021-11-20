@@ -6,11 +6,10 @@
 // Extern crates
 extern crate proc_macro;
 
-use std::{collections::HashMap, mem};
-
 // Imports
 use proc_macro::{Group, Literal, TokenStream, TokenTree};
 use quote::ToTokens;
+use std::{collections::HashMap, mem};
 
 /// Attribute for functions to allow usage of asm labels
 #[proc_macro_attribute]
