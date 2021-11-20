@@ -383,3 +383,179 @@ f241:
 	lui $a0, 0x7f80
 	b .3
 		or $a0, $t4
+
+f242:
+	xor $t4, $a1, $a0
+	lui $t6, 0x100
+	srl $t4, 0x1f
+	sll $a2, $a0, 0x1
+	addu $t7, $t6, $a2
+	sltu $at, $t6, $t7
+	sll $t4, 0x1f
+	beqz $at, .3
+		sll $t0, $a1, 0x1
+	addu $t7, $t6, $t0
+	sltu $at, $t6, $t7
+	beqz $at, .3
+		nop
+	srl $a2, 0x18
+	lui $at, 0x8000
+	sll $a3, $a0, 0x8
+	or $a3, $at
+	sll $t1, $a1, 0x8
+	or $t1, $at
+	multu $a3, $t1
+	srl $t0, 0x18
+	mfhi $t7
+	srl $t6, $t7, 0x1f
+	addu $a2, $t6
+	addu $a2, $t0
+	srlv $t7, $t7, $t6
+	addiu $a2, -0x7f
+	li $t6, 0xfe
+	sltu $at, $t6, $a2
+	bnez $at, .2
+		nop
+.0:
+	sll $t7, 0x2
+	srl $t7, 0x2
+	addiu $t7, 0x40
+	srl $t7, 0x7
+	sll $a2, 0x17
+	addu $a0, $a2, $t7
+	or $a0, $t4
+.1:
+	jr $ra
+		move_ $v0, $a0
+.2:
+	slti $at, $a2, 0x0
+	bnez $at, .6
+		nop
+	addiu $sp, -0xc
+	sw $ra, 0x8($sp)
+	move_ $a1, $ra
+	jal 0x80026c70
+		li $a0, 0x280
+	lw $ra, 0x8($sp)
+	bgtz $v0, .1
+		addiu $sp, 0xc
+	addiu $a2, $t6, 0x1
+	b .0
+		li $t7, 0x0
+	li $a2, 0x0
+	b .0
+		li $t7, 0x0
+.3:
+	lui $t6, 0xff00
+	beq $t6, $a2, .4
+		sltu $at, $t6, $a2
+	bnez $at, .6
+		nop
+	beq $t6, $t0, .7
+		sltu $at, $t6, $t0
+	bnez $at, .6
+		nop
+	b .1
+		move_ $a0, $t4
+.4:
+	sltu $at, $t6, $t0
+	bnez $at, .6
+		li $at, 0x0
+	bne $t0, $at, .8
+		nop
+.5:
+	addiu $sp, -0xc
+	sw $ra, 0x8($sp)
+	move_ $a1, $ra
+	jal 0x80026c70
+		li $a0, 0x800
+	lw $ra, 0x8($sp)
+	bgtz $v0, .1
+		addiu $sp, 0xc
+	b .1
+		li $a0, -0x1
+.6:
+	addiu $sp, -0xc
+	sw $ra, 0x8($sp)
+	move_ $a0, $ra
+	jal 0x80026d30
+		nop
+	lw $ra, 0x8($sp)
+	b .1
+		addiu $sp, 0xc
+.7:
+	li $at, 0x0
+	beq $a2, $at, .5
+		nop
+.8:
+	lui $a0, 0x7f80
+	b .1
+		or $a0, $t4
+
+
+f243:
+	sll $a2, $a0, 0x1
+	lui $t6, 0xff00
+	sltu $at, $a2, $t6
+	beqz $at, .1
+		sll $t0, $a1, 0x1
+	sltu $at, $t0, $t6
+	beqz $at, .7
+		nop
+	sra $t6, $a0, 0x1f
+	srl $a3, $a2, 0x1
+	xor $a3, $t6, $a3
+	srl $t1, $t0, 0x1
+	subu $a3, $t6
+	sra $t6, $a1, 0x1f
+	xor $t1, $t6, $t1
+	subu $t1, $t6
+	slt $at, $a3, $t1
+	bnez $at, .0
+		li $a0, -0x1
+	bne $a3, $t1, .0
+		li $a0, 0x1
+	li $a0, 0x0
+.0:
+	jr $ra
+		move_ $v0, $a0
+.1:
+	beq $t6, $a2, .6
+		nop
+.2:
+	b .0
+		li $a0, 0x3
+.3:
+	b .0
+		li $a0, 0x1
+.4:
+	b .0
+		li $a0, -0x1
+.5:
+	slti $at, $a0, 0x0
+	bnez $at, .4
+		nop
+	b .3
+		nop
+.6:
+	sltu $at, $t6, $t0
+	bnez $at, .2
+		sltu $at, $t0, $t6
+	bnez $at, .5
+		nop
+	xor $t6, $a1, $a0
+	slti $at, $t6, 0x0
+	beqz $at, .2
+		slti $at, $a0, 0x0
+	beqz $at, .3
+		nop
+	b .4
+		nop
+.7:
+	sltu $at, $t6, $t0
+	bnez $at, .2
+		slti $at, $a1, 0x0
+	bnez $at, .3
+		nop
+	b .4
+		nop

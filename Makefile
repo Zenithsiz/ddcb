@@ -108,7 +108,7 @@ build/symbols.ld: symbols.yaml $(generate_linker_script)
 
 # Object files
 build/dcb.o build/dcb.d: build/asm/dcb.s build/rs/dcb.s $(ASM_PROCESSED_FILES)
-	$(as) -MD build/dcb.d -o build/dcb.o -EL -mips1 -march=r3000 -O2 build/rs/dcb.s build/asm/dcb.s
+	$(as) -MD build/dcb.d -o build/dcb.o -EL -mips1 -march=r3000 -O2 build/rs/dcb.s build/asm/dcb.s 2>&1 | sed -e "s,build/asm/,dcb-asm/,g" 1>&2
 	$(sed) -i -e "s/dcb.*-cgu.0//g" build/dcb.d
 
 # Rust assembly
