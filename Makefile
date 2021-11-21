@@ -118,11 +118,12 @@ build/rs/dcb.s: build/rs/dcb.ll
 	$(llc) -O0 -march=mips -mcpu=mips1 -mattr=+soft-float -o $@ $<
 
 # Rust llvm-ir
-build/rs/dcb.ll: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib build/rs/libdcb_macros.so
+build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib build/rs/libdcb_macros.so
 	$(rustc) $< \
 		--crate-name dcb \
 		--edition 2021 \
 		--emit llvm-ir \
+		--emit dep-info \
 		-C opt-level=3 \
 		-C embed-bitcode=no \
 		--target=mipsel-sony-psx.json \
@@ -164,6 +165,7 @@ build/asm/%.s: dcb-asm/%.s $(preprocess_asm_file) symbols.yaml
 
 # Dependencies
 include build/dcb.d
+include build/rs/dcb.d
 include build/rs/libcore_impl.d
 include build/rs/libdcb_macros.d
 include $(patsubst %,%.d,$(TOOLS))
