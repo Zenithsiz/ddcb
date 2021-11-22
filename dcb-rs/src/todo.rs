@@ -5,7 +5,7 @@
 #![allow(non_upper_case_globals)]
 
 // Imports
-use crate::asm_exact;
+use crate::{asm_exact, force_reg, force_reg_bool};
 use core_impl::{concat, panic, stringify};
 
 // Helper macro to declare all statics
@@ -14319,26 +14319,11 @@ unsafe extern "C" fn f41() -> u32 {
 #[no_mangle]
 #[link_section = ".text.f44"]
 #[dcb_macros::asm_labels]
-unsafe extern "C" fn f44(mut a0: u32, a1: u32, a2: u32) {
-	// `if a0[0x3e] < 6 { a0[0x3e] = 0; }`
-	let a0_0x3e: u32; // TODO: Make `u8` once issues are resolved.
-	asm_exact!(
-		"lb $v0, 0x3e($a0)",
-		"nop",
-		inout("$a0") a0,
-		out("$v0") a0_0x3e,
-	);
-	asm_exact!(
-		"slti $v0, $v0, 0x6",
-		"bnez $v0, .label0",
-		"	nop",
-		"sb $zero, 0x3e($a0)",
-		inout("$a0") a0,
-		inout("$v0") a0_0x3e => _,
-	);
-
-	#[label]
-	label0;
+unsafe extern "C" fn f44(mut a0: *mut i8, a1: u32, a2: u32) {
+	let a0_0x3e = force_reg!("$v0", *a0.add(0x3e) as i32);
+	if force_reg_bool!("$v0", a0_0x3e < 6) {
+		*a0.add(0x3e) = 0;
+	}
 
 	let mut arg1: u32;
 	asm_exact!(

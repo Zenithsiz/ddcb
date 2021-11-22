@@ -115,7 +115,7 @@ build/dcb.o build/dcb.d: build/asm/dcb.s build/rs/dcb.s $(ASM_PROCESSED_FILES)
 # Note: Replace any `mips2` with `mips1` before assembling
 build/rs/dcb.s: build/rs/dcb.ll
 	$(sed) -i -e "s/mips2/mips1/g" $<
-	$(llc) -O0 -march=mips -mcpu=mips1 -mattr=+soft-float -o $@ $<
+	$(llc) -O3 -march=mips -mcpu=mips1 -mattr=+soft-float -o $@ $<
 
 # Rust llvm-ir
 build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib build/rs/libdcb_macros.so

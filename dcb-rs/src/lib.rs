@@ -19,7 +19,7 @@ mod todo;
 pub const PRNG_VALUE_PTR: u32 = 0x801ddc10;
 
 /// Assembly macro that appends `.set noat` and `.set noreorder`
-pub macro asm_exact($($args:tt)*) {{
+macro asm_exact($($args:tt)*) {{
 	#[dcb_macros::asm_use_mips_operands]
 	::core_impl::asm!(
 		".set noat",
@@ -27,6 +27,21 @@ pub macro asm_exact($($args:tt)*) {{
 		$($args)*
 	)
 }}
+
+/// Forces a variable to be in a specific register
+macro force_reg($reg:literal, $e:expr) {
+	match $e {
+		e => {
+			asm_exact!(in($reg) e);
+			e
+		}
+	}
+}
+
+/// Forces a boolean to be in a specific register
+macro force_reg_bool($reg:literal, $e:expr) {
+	force_reg!($reg, $e as u32) == 0
+}
 
 /*
 #[no_mangle]

@@ -67,4 +67,18 @@ impl<T: ?Sized> *mut T {
 	{
 		intrinsics::offset(self, count) as Self
 	}
+
+	#[inline(always)]
+	pub unsafe fn write(self, val: T)
+	where
+		T: Sized,
+	{
+		self::write(self, val)
+	}
+}
+
+#[inline(always)]
+pub unsafe fn write<T>(dst: *mut T, src: T) {
+	intrinsics::copy_nonoverlapping(&src as *const T, dst, 1);
+	intrinsics::forget(src);
 }

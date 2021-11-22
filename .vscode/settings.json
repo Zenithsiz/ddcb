@@ -24,6 +24,7 @@
 		"mkdrv",
 		"nmagic",
 		"noat",
+		"nonoverlapping",
 		"noreorder",
 		"noreturn",
 		"openseg",
