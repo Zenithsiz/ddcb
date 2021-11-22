@@ -113,9 +113,12 @@ build/dcb.o build/dcb.d: build/asm/dcb.s build/rs/dcb.s $(ASM_PROCESSED_FILES)
 
 # Rust assembly
 # Note: Replace any `mips2` with `mips1` before assembling
-build/rs/dcb.s: build/rs/dcb.ll
+# Note: Also lightly preprocess asm by replacing `move $lhs, $rhs` with `addu $lhs, $zero, $rhs`
+# TODO: Do this second step better
+build/rs/dcb.s: build/rs/dcb.ll $(llc)
 	$(sed) -i -e "s/mips2/mips1/g" $<
 	$(llc) -O3 -march=mips -mcpu=mips1 -mattr=+soft-float -o $@ $<
+	$(sed) -i -E "s/move\t(.[0-9]*), (.[0-9]*)/addu\t\1, \2, \$$zero/g" $@
 
 # Rust llvm-ir
 build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib build/rs/libdcb_macros.so
@@ -161,7 +164,7 @@ build/rs/libdcb_macros.so build/rs/libdcb_macros.d:
 #       which takes a sec, but is technically the correct way.
 #       Any way to speed it up?
 build/asm/%.s: dcb-asm/%.s $(preprocess_asm_file) symbols.yaml
-	$(preprocess_asm_file) $< -o $@
+	$(preprocess_asm_file) $< -o $@ --replace-includes --replace-local-labels --add-label-section
 
 # Dependencies
 include build/dcb.d

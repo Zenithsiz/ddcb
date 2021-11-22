@@ -5,7 +5,7 @@
 #![allow(non_upper_case_globals)]
 
 // Imports
-use crate::{asm_exact, force_reg, force_reg_bool};
+use crate::{asm_exact, force_reg, force_reg_bool, force_regs};
 use core_impl::{concat, panic, stringify};
 
 // Helper macro to declare all statics
@@ -14319,30 +14319,23 @@ unsafe extern "C" fn f41() -> u32 {
 #[no_mangle]
 #[link_section = ".text.f44"]
 #[dcb_macros::asm_labels]
-unsafe extern "C" fn f44(mut a0: *mut i8, a1: u32, a2: u32) {
-	let a0_0x3e = force_reg!("$v0", *a0.add(0x3e) as i32);
-	if force_reg_bool!("$v0", a0_0x3e < 6) {
+// TODO: `a0` is likely a pointer to a struct, due to the different size of access, reverse it
+unsafe extern "C" fn f44(mut a0: *mut i8, mut a1: i32, a2: u32) {
+	let a0_0x3e = force_reg!("$v0": *a0.add(0x3e) as i32);
+	if !force_reg_bool!("$v0": a0_0x3e < 6) {
 		*a0.add(0x3e) = 0;
 	}
 
-	let mut arg1: u32;
-	asm_exact!(
-		"lh $v0, 0x8($a0)",
-		"lh $v1, 0x10($a0)",
-		"nop",
-		"subu $v1, $v0, $v1",
-		"slt $v0, $v1, $a1",
-		"beqz $v0, .label1",
-		"	nop",
-		"addu $a1, $v1, $zero",
-		inout("$a0") a0,
-		inlateout("$a1") a1 => arg1,
-		out("$v0") _,
-		out("$v1") _,
+	let (a0_0x10, a0_0x8) = force_regs!(
+		v1 @ "$v1": *a0.cast::<i16>().add(0x8) as i32,
+		v0 @ "$v0": *a0.cast::<i16>().add(0x4) as i32,
 	);
 
-	#[label]
-	label1;
+	let diff = force_reg!("$v1": a0_0x8 - a0_0x10);
+	if force_reg_bool!("$v0": diff < a1) {
+		a1 = diff;
+		force_reg!("$a1": a1);
+	}
 
 	let mut arg2: u32;
 	asm_exact!(
@@ -14368,7 +14361,7 @@ unsafe extern "C" fn f44(mut a0: *mut i8, a1: u32, a2: u32) {
 		"bgez $a1, .label3",
 		"	nop",
 		"addu $a1, $zero, $zero",
-		inlateout("$a1") arg1,
+		inlateout("$a1") a1,
 	);
 
 	#[label]
@@ -14397,7 +14390,7 @@ unsafe extern "C" fn f44(mut a0: *mut i8, a1: u32, a2: u32) {
 		"jr $ra",
 		"	sh $a2, 0x36($a0)",
 		in("$a0") a0,
-		in("$a1") arg1,
+		in("$a1") a1,
 		in("$a2") arg2,
 		options(noreturn)
 	);

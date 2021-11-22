@@ -27,6 +27,11 @@ pub struct PtrComponents<T: ?Sized> {
 
 #[lang = "const_ptr"]
 impl<T: ?Sized> *const T {
+	#[inline(always)]
+	pub const fn cast<U>(self) -> *mut U {
+		self as _
+	}
+
 	#[must_use = "returns a new pointer rather than modifying its argument"]
 	#[inline(always)]
 	pub unsafe fn add(self, count: usize) -> Self
@@ -49,6 +54,11 @@ impl<T: ?Sized> *const T {
 
 #[lang = "mut_ptr"]
 impl<T: ?Sized> *mut T {
+	#[inline(always)]
+	pub const fn cast<U>(self) -> *mut U {
+		self as _
+	}
+
 	#[must_use = "returns a new pointer rather than modifying its argument"]
 	#[inline(always)]
 	pub unsafe fn add(self, count: usize) -> Self
