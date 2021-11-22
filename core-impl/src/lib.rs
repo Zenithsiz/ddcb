@@ -18,11 +18,13 @@
 #![no_core]
 // Lints
 #![allow(clippy::match_like_matches_macro)] // We don't have `matches!` yet. TODO: impl it
+#![allow(clippy::missing_safety_doc)] // Most of the stuff here is a builtin
 
 // Modules
 pub mod cmp;
 pub mod intrinsics;
 pub mod marker;
+pub mod mem;
 pub mod ops;
 pub mod option;
 pub mod panic;
@@ -36,7 +38,6 @@ pub use option::{
 	Option,
 	Option::{None, Some},
 };
-
 
 #[rustc_builtin_macro]
 #[macro_export]

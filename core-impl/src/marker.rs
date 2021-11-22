@@ -20,7 +20,6 @@ impl<T> Copy for *mut T {}
 
 
 #[lang = "sync"]
-#[allow(clippy::missing_safety_doc)] // It's a builtin
 pub unsafe auto trait Sync {}
 
 impl<T: ?Sized> !Sync for *const T {}
@@ -30,7 +29,6 @@ impl<T: ?Sized> !Sync for *mut T {}
 pub struct PhantomData<T: ?Sized>;
 
 #[lang = "freeze"]
-#[allow(clippy::missing_safety_doc)] // It's a builtin
 pub(crate) unsafe auto trait Freeze {}
 
 unsafe impl<T: ?Sized> Freeze for PhantomData<T> {}

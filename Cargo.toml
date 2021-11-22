@@ -1,6 +1,16 @@
 [workspace]
 
-members = ["core-impl", "dcb-macros", "tools/dcb-bytes", "tools/dcb-drv", "tools/dcb-mkdrv", "tools/dcb-undrv", "tools/dcb-cdrom-xa", "tools/dcb-unbin"]
+members = [
+  "dcb-rs",
+  "core-impl",
+  "dcb-macros",
+  "tools/dcb-bytes",
+  "tools/dcb-drv",
+  "tools/dcb-mkdrv",
+  "tools/dcb-undrv",
+  "tools/dcb-cdrom-xa",
+  "tools/dcb-unbin",
+]
 
 [patch."https://github.com/Zenithsiz/zutil"]
 zutil = {path = "../zutil"}

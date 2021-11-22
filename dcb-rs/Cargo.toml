@@ -1,0 +1,11 @@
+# Note: This file is for IDE completion only, we don't build using it.
+
+[package]
+edition = "2021"
+name = "dcb"
+version = "0.1.0"
+
+[dependencies]
+
+core-impl = {path = "../core-impl"}
+dcb-macros = {path = "../dcb-macros"}

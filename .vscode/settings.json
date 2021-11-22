@@ -1,5 +1,4 @@
 {
-	"rust-analyzer.checkOnSave.allTargets": false,
 	"cSpell.words": [
 		"addiu",
 		"addrs",
@@ -43,5 +42,6 @@
 		"sugseg",
 		"thiserror"
 	],
-	"editor.insertSpaces": false,
+	"rust-analyzer.checkOnSave.allTargets": false,
+	"rust-analyzer.checkOnSave.target": "mipsel-sony-psx.json",
 }
