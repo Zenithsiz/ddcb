@@ -58,6 +58,28 @@ macro with_barrier($s:stmt; $($rest:stmt);* $(;)?) {
 	)*
 }
 
+/// Returns the top-part of a pointer
+const fn ptr_hi(ptr: u32) -> u32 {
+	let lo = ptr & 0x0000_FFFF;
+	let hi = ptr & 0xFFFF_0000;
+
+	if lo <= 0x7fff {
+		hi
+	} else {
+		hi + 0x1000
+	}
+}
+
+/// Returns the bottom-part of a pointer
+const fn ptr_lo(ptr: u32) -> u32 {
+	let lo = ptr & 0x0000_FFFF;
+	if lo <= 0x7fff {
+		lo
+	} else {
+		0x10000 - lo
+	}
+}
+
 /*
 #[no_mangle]
 #[link_section = ".text.prng_next"]
