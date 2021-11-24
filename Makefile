@@ -113,12 +113,14 @@ build/dcb.o build/dcb.d: build/asm/dcb.s build/rs/dcb.s $(ASM_PROCESSED_FILES)
 
 # Rust assembly
 # Note: Replace any `mips2` with `mips1` before assembling
-# Note: Also lightly preprocess asm by replacing `move $lhs, $rhs` with `addu $lhs, $zero, $rhs`
-# TODO: Do this second step better
+# Note: Also lightly preprocess asm. TODO: Do this step better
 build/rs/dcb.s: build/rs/dcb.ll $(llc)
 	$(sed) -i -e "s/mips2/mips1/g" $<
 	$(llc) -O3 -march=mips -mcpu=mips1 -mattr=+soft-float -o $@ $<
-	$(sed) -i -E "s/move\t(.[0-9]*), (.[0-9]*)/addu\t\1, \2, \$$zero/g" $@
+# "addiu $reg, 0" -> "move $reg, $zero"
+	$(sed) -i -E "s/addiu\t(\\\$$([0-9]+|zero)), \\\$$zero, 0/move\t\1, \$$zero/g" $@
+# "move $lhs, $rhs" -> "addu $lhs, $rhs, $zero"
+	$(sed) -i -E "s/move\t(\\\$$([0-9]+|zero)), (\\\$$([0-9]+|zero))/addu\t\1, \3, \$$zero/g" $@
 
 # Rust llvm-ir
 build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib build/rs/libdcb_macros.so
@@ -127,7 +129,7 @@ build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib bui
 		--edition 2021 \
 		--emit llvm-ir \
 		--emit dep-info \
-		-C opt-level=3 \
+		-C opt-level=s \
 		-C embed-bitcode=no \
 		--target=mipsel-sony-psx.json \
 		--out-dir $(@D) \

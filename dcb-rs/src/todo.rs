@@ -5,7 +5,7 @@
 #![allow(non_upper_case_globals)]
 
 // Imports
-use crate::{asm_exact, force_reg, force_reg_bool, force_regs};
+use crate::{asm_exact, force_reg, force_reg_bool, with_barrier};
 use core_impl::{concat, panic, stringify};
 
 // Helper macro to declare all statics
@@ -14316,20 +14316,36 @@ unsafe extern "C" fn f41() -> u32 {
 	);
 }
 
+#[repr(C)]
+struct Struct0 {
+	_pad0:   [u8; 0x4],
+	field0:  i16,
+	field1:  i16,
+	field2:  i16,
+	field3:  i16,
+	_pad1:   [u8; 0x4],
+	field4:  i16,
+	field5:  i16,
+	_pad6:   [u8; 0x1c],
+	field6:  i16,
+	field7:  i16,
+	field8:  i16,
+	field9:  i16,
+	_pad2:   [u8; 0x6],
+	field10: i8,
+}
+
 #[no_mangle]
 #[link_section = ".text.f44"]
 #[dcb_macros::asm_labels]
-// TODO: `a0` is likely a pointer to a struct, due to the different size of access, reverse it
-unsafe extern "C" fn f44(mut a0: *mut i8, mut a1: i32, a2: u32) {
-	let a0_0x3e = force_reg!("$v0": *a0.add(0x3e) as i32);
+unsafe extern "C" fn f44(mut a0: *mut Struct0, mut a1: i32, mut a2: i32) {
+	let a0_0x3e = force_reg!("$v0": (*a0).field10 as i32);
 	if !force_reg_bool!("$v0": a0_0x3e < 6) {
-		*a0.add(0x3e) = 0;
+		(*a0).field10 = 0;
 	}
 
-	let (a0_0x10, a0_0x8) = force_regs!(
-		v1 @ "$v1": *a0.cast::<i16>().add(0x8) as i32,
-		v0 @ "$v0": *a0.cast::<i16>().add(0x4) as i32,
-	);
+	let a0_0x8 = force_reg!("$v0": (*a0).field2 as i32);
+	let a0_0x10 = force_reg!("$v1": (*a0).field4 as i32);
 
 	let diff = force_reg!("$v1": a0_0x8 - a0_0x10);
 	if force_reg_bool!("$v0": diff < a1) {
@@ -14337,63 +14353,32 @@ unsafe extern "C" fn f44(mut a0: *mut i8, mut a1: i32, a2: u32) {
 		force_reg!("$a1": a1);
 	}
 
-	let mut arg2: u32;
-	asm_exact!(
-		"lh $v0, 0xa($a0)",
-		"lh $v1, 0x12($a0)",
-		"nop",
-		"subu $v1, $v0, $v1",
-		"slt $v0, $v1, $a2",
-		"beqz $v0, .label2",
-		"	nop",
-		"addu $a2, $v1, $zero",
-		inout("$a0") a0,
-		inlateout("$a2") a2 => arg2,
-		out("$v0") _,
-		out("$v1") _,
-	);
+	let a0_0xa = force_reg!("$v0": (*a0).field3 as i32);
+	let a0_0x12 = force_reg!("$v1": (*a0).field5 as i32);
 
-	#[label]
-	label2;
+	let diff = force_reg!("$v1": a0_0xa - a0_0x12);
+	if force_reg_bool!("$v0": diff < a2) {
+		a2 = diff;
+		force_reg!("$a2": a2);
+	}
 
-	// If either arg1 or arg2 are < 0, set them to 0.
-	asm_exact!(
-		"bgez $a1, .label3",
-		"	nop",
-		"addu $a1, $zero, $zero",
-		inlateout("$a1") a1,
-	);
+	with_barrier! {
+		if a1 < 0 {
+			crate::barrier!();
+			a1 = 0;
+		};
+		if a2 < 0 {
+			crate::barrier!();
+			a2 = 0;
+		};
+	}
 
-	#[label]
-	label3;
-
-	asm_exact!(
-		"bgez $a2, .label4",
-		"	nop",
-		"addu $a2, $zero, $zero",
-		inlateout("$a2") arg2,
-	);
-
-	#[label]
-	label4;
-
-	asm_exact!(
-		"lhu $v0, 0x4($a0)",
-		"nop",
-		"sh $v0, 0x30($a0)",
-
-		"lhu $v0, 0x6($a0)",
-		"nop",
-		"sh $v0, 0x32($a0)",
-
-		"sh $a1, 0x34($a0)",
-		"jr $ra",
-		"	sh $a2, 0x36($a0)",
-		in("$a0") a0,
-		in("$a1") a1,
-		in("$a2") arg2,
-		options(noreturn)
-	);
+	with_barrier! {
+		(*a0).field6 = force_reg!("$v0": (*a0).field0);
+		(*a0).field7 = force_reg!("$v0": (*a0).field1);
+		(*a0).field8 = a1 as i16;
+		(*a0).field9 = a2 as i16;
+	}
 }
 
 /*

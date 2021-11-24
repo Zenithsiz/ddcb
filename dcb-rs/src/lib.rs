@@ -39,22 +39,23 @@ macro force_reg($reg:literal: $e:expr) {
 	}
 }
 
-/// Forces several variables to be in specific registers
-macro force_regs( $($name:ident @ $reg:literal: $e:expr),* $(,)? ) {
-	match ($($e,)*) {
-		($($name,)*) => {
-			$(
-				#[::dcb_macros::asm_use_mips_operands]
-				::core_impl::asm!("", in($reg) $name);
-			)*
-			($($name,)*)
-		}
-	}
-}
-
 /// Forces a boolean to be in a specific register
 macro force_reg_bool($reg:literal : $e:expr) {
 	$crate::force_reg!($reg: $e as u32) != 0
+}
+
+/// Inserts an optimization barrier
+macro barrier() {
+	::core_impl::asm!("");
+}
+
+/// Runs a series of statements, with an optimization barrier in between each
+macro with_barrier($s:stmt; $($rest:stmt);* $(;)?) {
+	$s
+	$(
+		$crate::barrier!();
+		$rest
+	)*
 }
 
 /*
