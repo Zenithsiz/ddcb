@@ -86,17 +86,6 @@ pub trait Neg {
 	fn neg(self) -> Self::Output;
 }
 
-impl Neg for isize {
-	type Output = bool;
-
-	fn neg(self) -> Self::Output {
-		// Note: This gets replaced with the actual implementation
-		unsafe {
-			crate::intrinsics::unreachable();
-		}
-	}
-}
-
 #[lang = "not"]
 pub trait Not {
 	type Output;
@@ -145,7 +134,22 @@ impl Index<usize> for [u8] {
 	}
 }
 
-/// Implements a trait with the form `trait $Trait { type Output; fn $trait_name() }`
+/// Implements a trait with the form `trait $Trait { type Output; fn $trait_name(self) -> Self::Output; }`
+macro impl_uni_output($Trait:ty, $trait_name:ident, $($T:ty),* $(,)?) {
+	$(
+		impl $Trait for $T {
+			type Output = $T;
+
+			#[inline(always)]
+			fn $trait_name(self) -> Self::Output {
+				// Note: This gets replaced with the actual implementation
+				unsafe { crate::intrinsics::unreachable(); }
+			}
+		}
+	)*
+}
+
+/// Implements a trait with the form `trait $Trait { type Output; fn $trait_name() -> Self::Output; }`
 macro impl_bi_output($Trait:ty, $trait_name:ident, $($T:ty),* $(,)?) {
 	$(
 		impl $Trait for $T {
@@ -160,7 +164,7 @@ macro impl_bi_output($Trait:ty, $trait_name:ident, $($T:ty),* $(,)?) {
 	)*
 }
 
-/// Implements a trait with the form `trait $Trait { fn $trait_name() }`
+/// Implements a trait with the form `trait $Trait { fn $trait_name(self, other: Self); }`
 macro impl_bi($Trait:ty, $trait_name:ident, $($T:ty),* $(,)?) {
 	$(
 		impl $Trait for $T {
@@ -193,6 +197,9 @@ impl_bi_output!(Mul, mul, i8, i16, i32, isize);
 
 impl_bi_output!(Rem, rem, u8, u16, u32, usize);
 impl_bi_output!(Rem, rem, i8, i16, i32, isize);
+
+impl_uni_output!(Neg, neg, u8, u16, u32, usize);
+impl_uni_output!(Neg, neg, i8, i16, i32, isize);
 
 impl_bi!(AddAssign, add_assign, u8, u16, u32, usize);
 impl_bi!(AddAssign, add_assign, i8, i16, i32, isize);

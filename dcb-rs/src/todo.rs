@@ -5,7 +5,7 @@
 #![allow(non_upper_case_globals)]
 
 // Imports
-use crate::{asm_exact, force_reg, force_reg_bool, with_barrier};
+use crate::util::{self, U32Ptr};
 use core_impl::{concat, panic, stringify};
 
 // Helper macro to declare all statics
@@ -14279,41 +14279,20 @@ unsafe extern "C" fn f41() -> u32 {
 	const DST: u32 = 0x800897e8;
 
 	// Setup the destination pointer
-	let dst_ptr: u32;
-	asm_exact!(
-		"lui $v1, %hi({ptr})",
-		ptr = const DST,
-		out("$v1") dst_ptr
-	);
+	let dst_ptr_hi = util::load_hi!("$v1": DST.ptr_hi());
 
-	// Read the src pointer
-	let src_ptr: u32;
-	asm_exact!(
-		"lui $v0, %hi({ptr})",
-		"lw $v0, %lo({ptr})($v0)",
-		ptr = const SRC,
-		out("$v0") src_ptr,
-	);
+	// Read the pointer from the source
+	let src_ptr = util::read_word!("$v0": SRC);
+	util::nop!();
 
-	// Then read the value
-	let value: u32;
-	asm_exact!(
-		".set noat",
-		"lw $v0, {offset}({src})",
-		src = in(reg) src_ptr,
-		offset = const 0x40bc,
-		lateout("$v0") value,
-	);
+	// Then read the value from the pointer
+	util::optimization!("remove-load-delay-slot-nop");
+	let value = util::force_reg!("$v0": *src_ptr.as_ptr::<u32>().add(0x102f));
 
-	// Store it and return
-	asm_exact!(
-		"jr $ra",
-		"sw {value}, %lo({ptr})({dst_ptr})",
-		ptr = const DST,
-		value = in(reg) value,
-		dst_ptr = in(reg) dst_ptr,
-		options(noreturn)
-	);
+	// Finally save it in the destination
+	*dst_ptr_hi.ptr_offset(DST.ptr_lo()).as_mut_ptr() = value;
+
+	return value;
 }
 
 #[repr(C)]
@@ -14339,43 +14318,43 @@ struct Struct0 {
 #[link_section = ".text.f44"]
 #[dcb_macros::asm_labels]
 unsafe extern "C" fn f44(mut a0: *mut Struct0, mut a1: i32, mut a2: i32) {
-	let a0_0x3e = force_reg!("$v0": (*a0).field10 as i32);
-	if !force_reg_bool!("$v0": a0_0x3e < 6) {
+	let a0_0x3e = util::force_reg!("$v0": (*a0).field10 as i32);
+	if !util::force_reg_bool!("$v0": a0_0x3e < 6) {
 		(*a0).field10 = 0;
 	}
 
-	let a0_0x8 = force_reg!("$v0": (*a0).field2 as i32);
-	let a0_0x10 = force_reg!("$v1": (*a0).field4 as i32);
+	let a0_0x8 = util::force_reg!("$v0": (*a0).field2 as i32);
+	let a0_0x10 = util::force_reg!("$v1": (*a0).field4 as i32);
 
-	let diff = force_reg!("$v1": a0_0x8 - a0_0x10);
-	if force_reg_bool!("$v0": diff < a1) {
+	let diff = util::force_reg!("$v1": a0_0x8 - a0_0x10);
+	if util::force_reg_bool!("$v0": diff < a1) {
 		a1 = diff;
-		force_reg!("$a1": a1);
+		util::force_reg!("$a1": a1);
 	}
 
-	let a0_0xa = force_reg!("$v0": (*a0).field3 as i32);
-	let a0_0x12 = force_reg!("$v1": (*a0).field5 as i32);
+	let a0_0xa = util::force_reg!("$v0": (*a0).field3 as i32);
+	let a0_0x12 = util::force_reg!("$v1": (*a0).field5 as i32);
 
-	let diff = force_reg!("$v1": a0_0xa - a0_0x12);
-	if force_reg_bool!("$v0": diff < a2) {
+	let diff = util::force_reg!("$v1": a0_0xa - a0_0x12);
+	if util::force_reg_bool!("$v0": diff < a2) {
 		a2 = diff;
-		force_reg!("$a2": a2);
+		util::force_reg!("$a2": a2);
 	}
 
-	with_barrier! {
+	util::with_barrier! {
 		if a1 < 0 {
-			crate::barrier!();
+			util::barrier!();
 			a1 = 0;
 		};
 		if a2 < 0 {
-			crate::barrier!();
+			util::barrier!();
 			a2 = 0;
 		};
 	}
 
-	with_barrier! {
-		(*a0).field6 = force_reg!("$v0": (*a0).field0);
-		(*a0).field7 = force_reg!("$v0": (*a0).field1);
+	util::with_barrier! {
+		(*a0).field6 = util::force_reg!("$v0": (*a0).field0);
+		(*a0).field7 = util::force_reg!("$v0": (*a0).field1);
 		(*a0).field8 = a1 as i16;
 		(*a0).field9 = a2 as i16;
 	}

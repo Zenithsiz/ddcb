@@ -1,12 +1,22 @@
 //! `dcb` implementation
 
 // Features
-#![feature(no_core, naked_functions, decl_macro, proc_macro_hygiene, stmt_expr_attributes)]
+#![feature(
+	no_core,
+	naked_functions,
+	decl_macro,
+	proc_macro_hygiene,
+	stmt_expr_attributes,
+	const_trait_impl,
+	const_fn_trait_bound
+)]
 #![no_std]
 #![no_core]
 // Lints
 // Most functions are inherently unsafe
 #![allow(clippy::missing_safety_doc)]
+// We're still experimenting a lot, so stuff might be left unused for a while
+#![allow(dead_code)]
 
 // Extern crates
 extern crate core_impl;
@@ -14,71 +24,10 @@ extern crate dcb_macros;
 
 // Modules
 mod todo;
+mod util;
 
 /// Prng value pointer
 pub const PRNG_VALUE_PTR: u32 = 0x801ddc10;
-
-/// Assembly macro that appends `.set noat` and `.set noreorder`
-macro asm_exact($($args:tt)*) {{
-	#[::dcb_macros::asm_use_mips_operands]
-	::core_impl::asm!(
-		".set noat",
-		".set noreorder",
-		$($args)*
-	)
-}}
-
-/// Forces a variable to be in a specific register
-macro force_reg($reg:literal: $e:expr) {
-	match $e {
-		e => {
-			#[::dcb_macros::asm_use_mips_operands]
-			::core_impl::asm!("", in($reg) e);
-			e
-		}
-	}
-}
-
-/// Forces a boolean to be in a specific register
-macro force_reg_bool($reg:literal : $e:expr) {
-	$crate::force_reg!($reg: $e as u32) != 0
-}
-
-/// Inserts an optimization barrier
-macro barrier() {
-	::core_impl::asm!("");
-}
-
-/// Runs a series of statements, with an optimization barrier in between each
-macro with_barrier($s:stmt; $($rest:stmt);* $(;)?) {
-	$s
-	$(
-		$crate::barrier!();
-		$rest
-	)*
-}
-
-/// Returns the top-part of a pointer
-const fn ptr_hi(ptr: u32) -> u32 {
-	let lo = ptr & 0x0000_FFFF;
-	let hi = ptr & 0xFFFF_0000;
-
-	if lo <= 0x7fff {
-		hi
-	} else {
-		hi + 0x1000
-	}
-}
-
-/// Returns the bottom-part of a pointer
-const fn ptr_lo(ptr: u32) -> u32 {
-	let lo = ptr & 0x0000_FFFF;
-	if lo <= 0x7fff {
-		lo
-	} else {
-		0x10000 - lo
-	}
-}
 
 /*
 #[no_mangle]

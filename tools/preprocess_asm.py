@@ -58,7 +58,6 @@ def main(args):
 					line = line.replace(f".{label}", f".L{latest_non_dot_label_def}_{label}")
 
 			output_file.write(line)
-			pass
 
 
 if __name__ == "__main__":

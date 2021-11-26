@@ -6,7 +6,8 @@ rustc                  = rustc
 cargo                  = cargo
 elf2psexe              = elf2psexe
 generate_linker_script = tools/generate_linker_symbols_script.py
-preprocess_asm_file    = tools/preprocess_asm_file.py
+preprocess_asm         = tools/preprocess_asm.py
+postprocess_asm        = tools/postprocess_asm.py
 sed                    = sed
 diff                   = diff
 sha256sum              = sha256sum
@@ -111,16 +112,15 @@ build/dcb.o build/dcb.d: build/asm/dcb.s build/rs/dcb.s $(ASM_PROCESSED_FILES)
 	$(as) -MD build/dcb.d -o build/dcb.o -EL -mips1 -march=r3000 -O2 build/rs/dcb.s build/asm/dcb.s 2>&1 | sed -e "s,build/asm/,dcb-asm/,g" 1>&2
 	$(sed) -i -e "s/dcb.*-cgu.0//g" build/dcb.d
 
-# Rust assembly
+# Rust assembly post-processed
 # Note: Replace any `mips2` with `mips1` before assembling
-# Note: Also lightly preprocess asm. TODO: Do this step better
-build/rs/dcb.s: build/rs/dcb.ll $(llc)
+build/rs/dcb.s: build/rs/dcb-ll.s $(postprocess_asm)
+	$(postprocess_asm) $< -o $@
+
+# Rust assembly
+build/rs/dcb-ll.s: build/rs/dcb.ll $(llc)
 	$(sed) -i -e "s/mips2/mips1/g" $<
-	$(llc) -O3 -march=mips -mcpu=mips1 -mattr=+soft-float -o $@ $<
-# "addiu $reg, 0" -> "move $reg, $zero"
-	$(sed) -i -E "s/addiu\t(\\\$$([0-9]+|zero)), \\\$$zero, 0/move\t\1, \$$zero/g" $@
-# "move $lhs, $rhs" -> "addu $lhs, $rhs, $zero"
-	$(sed) -i -E "s/move\t(\\\$$([0-9]+|zero)), (\\\$$([0-9]+|zero))/addu\t\1, \3, \$$zero/g" $@
+	$(llc) -O3 -march=mips -mcpu=mips1 -mattr=+soft-float $< -o $@
 
 # Rust llvm-ir
 build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib build/rs/libdcb_macros.so
@@ -165,8 +165,8 @@ build/rs/libdcb_macros.so build/rs/libdcb_macros.d:
 # TODO: Requiring `symbols.yaml` requires copying all files
 #       which takes a sec, but is technically the correct way.
 #       Any way to speed it up?
-build/asm/%.s: dcb-asm/%.s $(preprocess_asm_file) symbols.yaml
-	$(preprocess_asm_file) $< -o $@ --replace-includes --replace-local-labels --add-label-section
+build/asm/%.s: dcb-asm/%.s $(preprocess_asm) symbols.yaml
+	$(preprocess_asm) $< -o $@ --replace-includes --replace-local-labels --add-label-section
 
 # Dependencies
 include build/dcb.d
