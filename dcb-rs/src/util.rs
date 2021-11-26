@@ -1,12 +1,12 @@
 //! Utilities
 
 // Modules
-mod asm;
-mod ptr;
-mod u32_ptr;
+pub mod asm;
+pub mod ptr;
+pub mod u32_ptr;
 
 // Exports
-pub use asm::{load_hi, nop, read_word};
+pub use asm::{load_hi, nop, read, read_from};
 pub use ptr::{ptr_hi, ptr_lo};
 pub use u32_ptr::U32Ptr;
 
@@ -37,8 +37,14 @@ pub macro force_reg_bool($reg:literal : $e:expr) {
 }
 
 /// Inserts an optimization barrier
-pub macro barrier() {
-	::core_impl::asm!("")
+pub macro barrier( $($reg:literal: $var:ident),* $(,)? ) {
+	$(
+		let mut $var = $var;
+	)*
+	$crate::util::asm_exact!("", $(inout($reg) $var,)*);
+	$(
+		let $var = $var;
+	)*
 }
 
 /// Runs a series of statements, with an optimization barrier in between each
@@ -51,6 +57,15 @@ pub macro with_barrier($s:stmt; $($rest:stmt);* $(;)?) {
 }
 
 /// Adds an optimization to run
-pub macro optimization($opt:literal) {
-	::core_impl::asm!(::core_impl::concat!("#optimizer: ", $opt))
-}
+//pub macro optimization($opt:literal $(, $in_reg:literal: $in_var:ident )* => $(, $out_reg:literal: $out_var:ident )*,
+// $e:expr) {{
+pub macro optimization($opt:literal $(, $in_reg:literal: $in_var:ident )*) {{
+	$crate::util::asm_exact!(::core_impl::concat!("#optimizer: ", $opt) $(, in($in_reg) $in_var )*);
+
+	/*
+	$crate::util::asm_exact!(::core_impl::concat!("#optimizer: ", $opt), $(, in($in_reg) $in_var )*);
+	match $e {
+		$crate::util::asm_exact!(::core_impl::concat!("#optimizer: ", $opt), $(, in($in_reg) $in_var )*);
+	}
+	*/
+}}

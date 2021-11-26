@@ -28,7 +28,7 @@ symbols = yaml.safe_load(open("symbols.yaml"))
 
 
 # Removes nops in load delay slots
-def optimize_func_remove_load_delay_slot_nop(lines, insts, idxs):
+def optimize_func_remove_load_delay_slot_nop(lines, insts, idxs, args):
 	# Make sure all indices are valid
 	if any(idx + 2 >= len(insts) for idx in idxs):
 		print("Cannot use `remove-load-delay-slot-nop` without at least 3 following instructions")
@@ -62,7 +62,7 @@ def optimize_func_remove_load_delay_slot_nop(lines, insts, idxs):
 
 
 # Optimizes a function by moving instruction to after a return if there's a nop
-def optimize_func_move_inst_after_return(lines, insts, idxs):
+def optimize_func_move_inst_after_return(lines, insts, idxs, args):
 	# Make sure all indices are valid
 	if any(idx + 2 >= len(insts) for idx in idxs):
 		print("Cannot use `move-inst-after-return` without at least 3 following instructions")
@@ -87,6 +87,32 @@ def optimize_func_move_inst_after_return(lines, insts, idxs):
 	return lines
 
 
+# Swaps two arguments of an instruction
+def optimize_func_swap_args(lines, insts, idxs, args):
+	# Make sure we got an instruction
+	if any(idx >= len(insts) for idx in idxs):
+		print("Cannot use `swap-args` without at least 3 following instructions")
+		return lines
+
+	# Got through all instructions
+	for inst_idx in idxs:
+		# Get the instruction
+		line_inst_matches = line_inst.search(insts[inst_idx][1])
+		if line_inst_matches is None or line_inst_matches.group(1) is None:
+			continue
+
+		# Then get the args and swap them
+		inst_args = line_inst_matches.group(1).split(", ")
+		lhs_idx = int(args[0])
+		rhs_idx = int(args[1])
+		inst_args[lhs_idx], inst_args[rhs_idx] = inst_args[rhs_idx], inst_args[lhs_idx]
+
+		# And write the instruction back
+		lines[insts[inst_idx][0]] = lines[insts[inst_idx][0]].replace(line_inst_matches.group(1), ", ".join(inst_args))
+
+	return lines
+
+
 # Optimizes a function
 def optimize_func(lines):
 	# Applies an optimization
@@ -96,6 +122,7 @@ def optimize_func(lines):
 
 		insts = []
 		idxs = defaultdict(list)
+		all_args = defaultdict(list)
 		for idx, line in enumerate(lines):
 			if line_inst.match(line):
 				insts.append((idx, line))
@@ -103,16 +130,25 @@ def optimize_func(lines):
 			header_str = "#optimizer:"
 			line_idx = line.find(header_str)
 			if line_idx != -1:
-				opts = map(str.strip, line[line_idx + len(header_str):].split(","))
-				for opt in opts:
-					idxs[opt].append(len(insts))
+				opt = line[line_idx + len(header_str):].strip()
+				args = []
 
-		return f(lines, insts, idxs[name])
+				args_start_idx = opt.find("(")
+				args_end_idx = opt.find(")")
+				if args_start_idx != -1 and args_end_idx != -1:
+					args = list(map(str.strip, opt[args_start_idx + 1:args_end_idx].split(",")))
+					opt = opt[:args_start_idx].strip()
+
+				idxs[opt].append(len(insts))
+				all_args[opt] = args
+
+		return f(lines, insts, idxs[name], all_args[name])
 
 	# Perform all optimizations sequentially
 	# TODO: Order matters, so check what to do
 	lines = apply_opt(lines, "move-inst-after-return", optimize_func_move_inst_after_return)
 	lines = apply_opt(lines, "remove-load-delay-slot-nop", optimize_func_remove_load_delay_slot_nop)
+	lines = apply_opt(lines, "swap-args", optimize_func_swap_args)
 
 	return lines
 

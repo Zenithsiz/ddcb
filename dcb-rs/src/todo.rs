@@ -14282,7 +14282,7 @@ unsafe extern "C" fn f41() -> u32 {
 	let dst_ptr_hi = util::load_hi!("$v1": DST.ptr_hi());
 
 	// Read the pointer from the source
-	let src_ptr = util::read_word!("$v0": SRC);
+	let src_ptr = util::read!("$v0": SRC => u32);
 	util::nop!();
 
 	// Then read the value from the pointer
@@ -14358,6 +14358,70 @@ unsafe extern "C" fn f44(mut a0: *mut Struct0, mut a1: i32, mut a2: i32) {
 		(*a0).field8 = a1 as i16;
 		(*a0).field9 = a2 as i16;
 	}
+}
+
+#[no_mangle]
+#[link_section = ".text.f51"]
+#[dcb_macros::asm_labels]
+unsafe extern "C" fn f51() {
+	util::asm_exact!("addiu $sp, -0x18", "sw $ra, 0x10($sp)",);
+
+	let a1 = util::load_hi!("$a1": 0x8009);
+	let a0 = util::read_from!("$v0" => "$a0": 0x800793a0 => u32);
+	let v1 = util::read_from!("$v0" => "$v1": 0x800897ec => u16);
+	util::nop!();
+
+	util::barrier!("$a1": a1, "$a0": a0, "$v1": v1);
+	let v1 = v1;
+
+	let v0 = util::force_reg!("$v0": v1 << 0x2);
+	util::barrier!("$v0": v0);
+
+	let v0 = v1 + v0;
+	util::barrier!("$v0": v0);
+	let v1 = v0 << 0x5;
+	util::barrier!("$v1": v1);
+	util::optimization!("swap-args(1, 2)", "$v0": v0, "$v1": v1);
+	let v0 = v0 + v1;
+	util::barrier!("$v0": v0);
+	let v0 = v0 << 0x2;
+	util::barrier!("$v0": v0);
+
+	util::asm_exact!(
+		/*
+		"addiu $sp, -0x18",
+		"sw $ra, 0x10($sp)",
+		"lui $a1, 0x8009",
+		"lui $v0, 0x8008",
+		"lw $a0, -0x6c60($v0)",
+		"lui $v0, 0x8009",
+		"lhu $v1, -0x6814($v0)",
+		"nop",
+
+		"sll $v0, $v1, 0x2",
+		"addu $v0, $v1",
+		"sll $v1, $v0, 0x5",
+		"addu $v0, $v1",
+		"sll $v0, 0x2",
+		*/
+		"lw $v1, 0x40bc($a0)",
+		"nop",
+		"addu $v0, $v1",
+		"lw $v1, -0x6818($a1)",
+		"nop",
+		"bne $v1, $v0, 0f",
+		"	addu $v0, $zero, $zero",
+		"lui $a0, %hi(S_0x80010008)",
+		"jal 0x80069394",
+		"	addiu $a0, %lo(S_0x80010008)",
+		"li $v0, -0x1",
+		"0:",
+		"lw $ra, 0x10($sp)",
+		"nop",
+		"jr $ra",
+		"	addiu $sp, 0x18",
+		options(noreturn)
+	);
 }
 
 /*

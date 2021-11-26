@@ -134,7 +134,8 @@ build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib bui
 		--target=mipsel-sony-psx.json \
 		--out-dir $(@D) \
 		--extern core_impl=build/rs/libcore_impl.rlib \
-		--extern dcb_macros=build/rs/libdcb_macros.so
+		--extern dcb_macros=build/rs/libdcb_macros.so \
+		-Z macro-backtrace
 
 # `core-impl` library
 build/rs/libcore_impl.rlib build/rs/libcore_impl.d: mipsel-sony-psx.json
