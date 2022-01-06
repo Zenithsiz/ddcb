@@ -1,8 +1,8 @@
 [workspace]
 
 members = [
-  "dcb-rs",
   "core-impl",
+  "dcb-rs",
   "dcb-macros",
   "tools/dcb-bytes",
   "tools/dcb-drv",

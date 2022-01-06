@@ -1,7 +1,7 @@
 //! `dcb` macros
 
 // Features
-#![feature(format_args_capture, drain_filter)]
+#![feature(drain_filter)]
 
 // Extern crates
 extern crate proc_macro;

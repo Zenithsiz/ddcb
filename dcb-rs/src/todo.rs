@@ -14378,6 +14378,9 @@ unsafe extern "C" fn f51() {
 	util::nop!();
 
 	util::barrier!("$a1": a1, "$a0": a0, "$v1": v1);
+	let _a1 = a1;
+	let _a0 = a0;
+	let _v1 = v1;
 	let v1 = v1;
 
 	let v0 = util::force_reg!("$v0": v1 << 0x2);
@@ -14392,6 +14395,7 @@ unsafe extern "C" fn f51() {
 	util::barrier!("$v0": v0);
 	let v0 = v0 << 0x2;
 	util::barrier!("$v0": v0);
+	let _v0 = v0;
 
 	util::asm_exact!(
 		/*

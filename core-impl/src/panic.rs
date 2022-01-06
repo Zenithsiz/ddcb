@@ -13,12 +13,10 @@ pub struct Location<'a> {
 #[lang = "panic"]
 #[inline(always)]
 #[rustc_do_not_const_check] // Const-eval will replace it
-pub const unsafe fn panic(expr: &'static str) -> ! {
+pub const unsafe fn panic(_expr: &'static str) -> ! {
 	// Note: We don't want any panic handling code to occur (yet),
 	//       so for now all panics are undefined behavior
-	unsafe {
-		intrinsics::unreachable();
-	}
+	intrinsics::unreachable();
 }
 
 

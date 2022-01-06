@@ -6,7 +6,6 @@
 	associated_type_bounds,
 	never_type,
 	unwrap_infallible,
-	format_args_capture,
 	str_internals,
 	destructuring_assignment
 )]
