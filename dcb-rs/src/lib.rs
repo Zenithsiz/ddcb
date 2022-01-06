@@ -8,7 +8,9 @@
 	proc_macro_hygiene,
 	stmt_expr_attributes,
 	const_trait_impl,
-	const_fn_trait_bound
+	const_fn_trait_bound,
+	asm_experimental_arch,
+	asm_const
 )]
 #![no_std]
 #![no_core]

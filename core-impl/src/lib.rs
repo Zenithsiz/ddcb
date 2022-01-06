@@ -10,8 +10,7 @@
 	auto_traits,
 	negative_impls,
 	intrinsics,
-	untagged_unions,
-	const_raw_ptr_deref
+	untagged_unions
 )]
 // Core / Std
 #![no_std]
