@@ -1,5 +1,6 @@
 {
 	"cSpell.words": [
+		"acqrel",
 		"addiu",
 		"addrs",
 		"addu",
@@ -36,6 +37,7 @@
 		"regs",
 		"rlib",
 		"saiseg",
+		"singlethreadfence",
 		"slti",
 		"SLUS",
 		"stmts",

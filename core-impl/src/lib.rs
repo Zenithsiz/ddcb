@@ -30,6 +30,7 @@ pub mod panic;
 pub mod ptr;
 pub mod slice;
 pub mod str;
+pub mod sync;
 
 // Exports
 pub use marker::{Copy, DiscriminantKind, Sized, Sync};

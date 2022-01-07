@@ -3,7 +3,7 @@
 /// Wrapper around `lui`
 pub macro load_hi($reg:literal: $e:expr) {{
 	let value: u32;
-	$crate::util::asm_exact!(
+	$crate::util::asm!(
 		::core_impl::concat!("lui ", $reg ,", {VALUE}"),
 		VALUE = const $e,
 		out($reg) value,
@@ -19,7 +19,7 @@ pub macro read($reg:literal : $ptr:expr => $T:ty) {
 /// Wrapper around `lui $reg, ptr_hi / lw $out, ptr_lo($reg)`
 pub macro read_from($reg:literal => $out:literal: $ptr:expr => $T:ty) {{
 	let value: u32;
-	$crate::util::asm_exact!(
+	$crate::util::asm!(
 		::core_impl::concat!("lui ", $reg, ", %hi({PTR})"),
 		::core_impl::concat!(
 			$crate::util::asm::read_from_impl_opcode!($T), " ", $out, ", %lo({PTR})(", $reg, ")"
@@ -43,5 +43,5 @@ pub macro read_from_impl_opcode {
 
 /// Wrapper around `nop`
 pub macro nop() {
-	$crate::util::asm_exact!("nop");
+	$crate::util::asm!("nop");
 }

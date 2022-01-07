@@ -5,6 +5,11 @@ use crate::{Copy, DiscriminantKind, Sized};
 
 
 extern "rust-intrinsic" {
+	pub fn atomic_singlethreadfence();
+	pub fn atomic_singlethreadfence_acq();
+	pub fn atomic_singlethreadfence_rel();
+	pub fn atomic_singlethreadfence_acqrel();
+
 	pub fn rustc_peek<T>(_: T) -> T;
 
 	pub fn abort() -> !;

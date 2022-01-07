@@ -14347,18 +14347,16 @@ unsafe extern "C" fn f44(mut a0: *mut Struct0, mut a1: i32, mut a2: i32) {
 		util::force_reg!("$a2": a2);
 	}
 
-	util::with_barrier! {
-		if a1 < 0 {
-			util::barrier!();
+	util::with_compiler_fence! {
+		util::inline_if! { if a1 < 0 =>
 			a1 = 0;
 		};
-		if a2 < 0 {
-			util::barrier!();
+		util::inline_if! { if a2 < 0 =>
 			a2 = 0;
 		};
 	}
 
-	util::with_barrier! {
+	util::with_compiler_fence! {
 		(*a0).field6 = util::force_reg!("$v0": (*a0).field0);
 		(*a0).field7 = util::force_reg!("$v0": (*a0).field1);
 		(*a0).field8 = a1 as i16;
@@ -14370,34 +14368,34 @@ unsafe extern "C" fn f44(mut a0: *mut Struct0, mut a1: i32, mut a2: i32) {
 #[link_section = ".text.f51"]
 #[dcb_macros::asm_labels]
 unsafe extern "C" fn f51() {
-	util::asm_exact!("addiu $sp, -0x18", "sw $ra, 0x10($sp)",);
+	util::asm!("addiu $sp, -0x18", "sw $ra, 0x10($sp)",);
 
 	let a1 = util::load_hi!("$a1": 0x8009);
 	let a0 = util::read_from!("$v0" => "$a0": 0x800793a0 => u32);
 	let v1 = util::read_from!("$v0" => "$v1": 0x800897ec => u16);
 	util::nop!();
 
-	util::barrier!("$a1": a1, "$a0": a0, "$v1": v1);
+	util::compiler_fence!("$a1": a1, "$a0": a0, "$v1": v1);
 	let _a1 = a1;
 	let _a0 = a0;
 	let _v1 = v1;
 	let v1 = v1;
 
 	let v0 = util::force_reg!("$v0": v1 << 0x2);
-	util::barrier!("$v0": v0);
+	util::compiler_fence!("$v0": v0);
 
 	let v0 = v1 + v0;
-	util::barrier!("$v0": v0);
+	util::compiler_fence!("$v0": v0);
 	let v1 = v0 << 0x5;
-	util::barrier!("$v1": v1);
+	util::compiler_fence!("$v1": v1);
 	util::optimization!("swap-args(1, 2)", "$v0": v0, "$v1": v1);
 	let v0 = v0 + v1;
-	util::barrier!("$v0": v0);
+	util::compiler_fence!("$v0": v0);
 	let v0 = v0 << 0x2;
-	util::barrier!("$v0": v0);
+	util::compiler_fence!("$v0": v0);
 	let _v0 = v0;
 
-	util::asm_exact!(
+	util::asm!(
 		/*
 		"addiu $sp, -0x18",
 		"sw $ra, 0x10($sp)",
@@ -14440,7 +14438,7 @@ fn f46_(a0: u32, a1: u32) {
 	let mut a0_h: u32;
 	let mut a1_hu: u32;
 	let mut a1_h: u32;
-	asm_exact!(
+	asm!(
 		"addu $a2, $a0",
 		"lhu $a3, ($a2)",
 		"lh $v0, ($a2)",
@@ -14455,7 +14453,7 @@ fn f46_(a0: u32, a1: u32) {
 		out("$v1") a1_h,
 	);
 
-	asm_exact!(
+	asm!(
 		"slt {a0_h}, $v1",
 		"beqz $v0, 0f",
 		"	subu $v0, $a0, $a3",
