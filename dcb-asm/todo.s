@@ -83,4 +83,5 @@
 .include "dcb-asm/todo/f244.s"
 .include "dcb-asm/todo/f245.s"
 .include "dcb-asm/todo/f279.s"
+.include "dcb-asm/todo/f350.s"
 .include "dcb-asm/todo/rest.s"
