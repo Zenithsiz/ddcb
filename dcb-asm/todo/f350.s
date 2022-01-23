@@ -5575,609 +5575,378 @@ f392:
 		addiu $sp, 0x40
 
 f393:
+	addiu $sp, -0x18
+	sw $ra, 0x14($sp)
+	sw $s0, 0x10($sp)
+	move_ $s0, $a0
+	lw $a0, 0x140($s0)
+	jal f75
+		nop
+	jal f75
+		move_ $a0, $s0
+	lw $ra, 0x14($sp)
+	lw $s0, 0x10($sp)
+	jr $ra
+		addiu $sp, 0x18
+
 f394:
+	addiu $sp, -0x20
+	sw $ra, 0x1c($sp)
+	sw $s2, 0x18($sp)
+	sw $s1, 0x14($sp)
+	sw $s0, 0x10($sp)
+	move_ $s0, $a0
+	blez $s0, .3
+		lui $s2, 0x8008
+	lui $s1, 0x801e
+.0:
+	lw $a0, -0x6b10($s2)
+	jal f19
+		nop
+	lw $v0, -0x7cc0($s1)
+	nop
+	lb $v0, 0x823($v0)
+	nop
+	bnez $v0, .1
+		nop
+	addiu $s0, -0x1
+.1:
+	lw $v1, -0x7cc0($s1)
+	nop
+	lb $v0, 0x815($v1)
+	nop
+	beqz $v0, .2
+		nop
+	jal f17
+		sb $zr, 0x815($v1)
+	j .3
+		nop
+.2:
+	bgtz $s0, .0
+		nop
+.3:
+	lw $ra, 0x1c($sp)
+	lw $s2, 0x18($sp)
+	lw $s1, 0x14($sp)
+	lw $s0, 0x10($sp)
+	jr $ra
+		addiu $sp, 0x20
+
 f395:
+	addiu $sp, -0x18
+	sw $ra, 0x10($sp)
+	lui $v0, 0x801e
+	lw $v1, -0x7cc0($v0)
+	nop
+	lb $v0, 0x815($v1)
+	nop
+	beqz $v0, .0
+		lui $v0, 0x801e
+	jal f17
+		sb $zr, 0x815($v1)
+	j 0x80033e6c
+		li $v0, -0x1
+.0:
+	la_ $v1, 0x801d8348
+	lw $v0, -0x7cc0($v0)
+	nop
+	lb $v0, 0x817($v0)
+	nop
+	sll $v0, 0x2
+	addu $v0, $v1
+	lw $v0, ($v0)
+	nop
+	lw $v0, 0x178($v0)
+	nop
+	srl $v0, 0x11
+	andi $v0, 0x3
+	li $v1, 0x1
+	bne $v0, $v1, .1
+		lui $v1, 0x8009
+	lwi $v0, 0x80089840
+	j 0x80033e48
+		nop
+.1:
+	addiu $v1, -0x67c0
+	lwi $v0, 0x801d8340
+	nop
+	lb $v0, 0x817($v0)
+	nop
+	sll $v0, 0x2
+	addu $v0, $v1
+	lw $v0, ($v0)
+	nop
+	lhu $v0, 0xa($v0)
+	nop
+	andi $v0, 0x40
+	beqz $v0, .2
+		move_ $v0, $zr
+	jal 0x8002b498
+		li $a0, 0xa0
+	li $v0, 0x1
+.2:
+	lw $ra, 0x10($sp)
+	nop
+	jr $ra
+		addiu $sp, 0x18
+
 f396:
+	addiu $sp, -0x18
+	sw $ra, 0x14($sp)
+	sw $s0, 0x10($sp)
+	lwi $v0, 0x801d8340
+	nop
+	sw $zr, 0x7fc($v0)
+	lui $s0, 0x801e
+.0:
+	lw $v1, -0x7cc0($s0)
+	nop
+	lb $v0, 0x815($v1)
+	nop
+	beqz $v0, .1
+		lui $v0, 0x8008
+	jal f17
+		sb $zr, 0x815($v1)
+	j .3
+		nop
+.1:
+	lw $a0, -0x6b10($v0)
+	jal f19
+		nop
+	lw $v1, -0x7cc0($s0)
+	nop
+	lb $v0, 0x81f($v1)
+	nop
+	beqz $v0, .2
+		nop
+	j .3
+		sb $zr, 0x816($v1)
+.2:
+	lw $a0, -0x7cc0($s0)
+	nop
+	lb $v0, 0x816($a0)
+	nop
+	beqz $v0, .3
+		nop
+	lw $v0, 0x7fc($a0)
+	nop
+	move_ $v1, $v0
+	addiu $v0, 0x1
+	slti $v1, $v1, 0xf1
+	bnez $v1, .0
+		sw $v0, 0x7fc($a0)
+.3:
+	lw $ra, 0x14($sp)
+	lw $s0, 0x10($sp)
+	jr $ra
+		addiu $sp, 0x18
+
 f397:
+	addiu $sp, -0x38
+	sw $ra, 0x34($sp)
+	sw $fp, 0x30($sp)
+	sw $s7, 0x2c($sp)
+	sw $s6, 0x28($sp)
+	sw $s5, 0x24($sp)
+	sw $s4, 0x20($sp)
+	sw $s3, 0x1c($sp)
+	sw $s2, 0x18($sp)
+	sw $s1, 0x14($sp)
+	sw $s0, 0x10($sp)
+	lui $v1, 0x801e
+	lw $v0, -0x7cd0($v1)
+	nop
+	beqz $v0, .0
+		addiu $v0, -0x1
+	sw $v0, -0x7cd0($v1)
+.0:
+	move_ $s2, $zr
+	li $s3, 0x80
+	lui $s7, 0x801e
+	lui $s0, 0x801d
+	lui $v0, 0x8007
+	addiu $fp, $v0, -0x1d78
+	li $s6, 0xffffff
+	lui $s5, 0xff00
+	sll $v0, $s2, 0x5
+.1:
+	subu $v0, $s2
+	sll $v0, 0x2
+	addu $v0, $s2
+	subu $v0, $zr, $v0
+	addiu $s4, $v0, 0x99
+	move_ $s1, $zr
+.2:
+	jal 0x80029990
+		nop
+	bnez $v0, .7
+		nop
+	lw $v0, -0x7cd0($s7)
+	nop
+	bnez $v0, .3
+		sll $v0, $s2, 0x2
+	la_ $v1, 0x801d8348
+	addu $v0, $v1
+	lw $v0, ($v0)
+	nop
+	lw $v0, 0x178($v0)
+	nop
+	srl $v0, 0x2
+	andi $v0, 0x3
+	bne $v0, $s1, .6
+		nop
+.3:
+	lw $a0, 0x6b24($s0)
+	la_ $v1, 0x8006e280
+	sll $v0, $s1, 0x1
+	addu $v0, $v1
+	lh $v0, ($v0)
+	nop
+	subu $v0, $s3, $v0
+	lw $v1, -0x7cd0($s7)
+	nop
+	mult $v0, $v1
+	mflo $v0
+	bgez $v0, .4
+		nop
+	addiu $v0, 0x1f
+.4:
+	sra $v0, 0x5
+	addu $v0, $s3, $v0
+	sh $v0, 0x10($a0)
+	lw $a0, 0x6b24($s0)
+	sll $v0, $s2, 0x1
+	addu $v0, $s2
+	addu $v0, $s1
+	sll $v0, 0x1
+	addu $v0, $fp
+	lh $v0, ($v0)
+	nop
+	subu $v0, $s4, $v0
+	lw $v1, -0x7cd0($s7)
+	nop
+	mult $v0, $v1
+	mflo $v0
+	bgez $v0, .5
+		nop
+	addiu $v0, 0x1f
+.5:
+	sra $v0, 0x5
+	addu $v0, $s4, $v0
+	sh $v0, 0x12($a0)
+	lw $v1, 0x6b24($s0)
+	sll $v0, $s1, 0x6
+	addiu $v0, 0x40
+	sb $v0, 0x14($v1)
+	lw $v1, 0x6b24($s0)
+	li $v0, 0xba
+	sb $v0, 0x15($v1)
+	lw $v1, 0x6b24($s0)
+	li $v0, 0x7ff0
+	sh $v0, 0x16($v1)
+	li $v0, 0x40
+	sh $v0, 0x18($v1)
+	sh $v0, 0x1a($v1)
+	lbu $v0, 0xf($v1)
+	nop
+	andi $v0, 0xfd
+	sb $v0, 0xf($v1)
+	lw $v0, 0x6b24($s0)
+	nop
+	sb $s3, 0xc($v0)
+	lw $v0, 0x6b24($s0)
+	nop
+	sb $s3, 0xd($v0)
+	lw $v0, 0x6b24($s0)
+	nop
+	sb $s3, 0xe($v0)
+	lw $v1, 0x6b24($s0)
+	li $v0, 0x1
+	sb $v0, 0x3($v1)
+	lw $a0, 0x6b24($s0)
+	li $v0, 0xe100001d
+	sw $v0, 0x4($a0)
+	lui $v0, 0x8008
+	lw $a1, -0x6c60($v0)
+	nop
+	lw $v1, 0x70($a1)
+	nop
+	and $v1, $s6
+	lw $v0, 0x8($a0)
+	nop
+	and $v0, $s5
+	or $v0, $v1
+	sw $v0, 0x8($a0)
+	addiu $v0, $a0, 0x8
+	and $v0, $s6
+	lw $v1, 0x70($a1)
+	nop
+	and $v1, $s5
+	or $v1, $v0
+	sw $v1, 0x70($a1)
+	and $v1, $s6
+	lw $v0, ($a0)
+	nop
+	and $v0, $s5
+	or $v0, $v1
+	sw $v0, ($a0)
+	and $v1, $a0, $s6
+	lw $v0, 0x70($a1)
+	nop
+	and $v0, $s5
+	or $v0, $v1
+	sw $v0, 0x70($a1)
+	addiu $a0, 0x1c
+	sw $a0, 0x6b24($s0)
+.6:
+	addiu $s1, 0x1
+	slti $v0, $s1, 0x3
+	bnez $v0, .2
+		nop
+	addiu $s2, 0x1
+	slti $v0, $s2, 0x2
+	bnez $v0, .1
+		sll $v0, $s2, 0x5
+.7:
+	lw $ra, 0x34($sp)
+	lw $fp, 0x30($sp)
+	lw $s7, 0x2c($sp)
+	lw $s6, 0x28($sp)
+	lw $s5, 0x24($sp)
+	lw $s4, 0x20($sp)
+	lw $s3, 0x1c($sp)
+	lw $s2, 0x18($sp)
+	lw $s1, 0x14($sp)
+	lw $s0, 0x10($sp)
+	jr $ra
+		addiu $sp, 0x38
+
 f398:
-f399:
-f400:
-f401:
-f402:
-f403:
-f404:
-f405:
-f406:
-f407:
-f408:
-f409:
-f410:
-f411:
-f412:
-f413:
-f414:
-f415:
-f416:
-f417:
-f418:
-f419:
-f420:
-f421:
-f422:
-f423:
-f424:
-f425:
-f426:
-f427:
-f428:
-f429:
-f430:
-f431:
-f432:
-f433:
-f434:
-f435:
-f436:
-f437:
-f438:
-f439:
-f440:
-f441:
-f442:
-f443:
-f444:
-f445:
-f446:
-f447:
-f448:
-f449:
-f450:
-f451:
-f452:
-f453:
-f454:
-f455:
-f456:
-f457:
-f458:
-f459:
-f460:
-f461:
-f462:
-f463:
-f464:
-f465:
-f466:
-f467:
-f468:
-f469:
-f470:
-f471:
-f472:
-f473:
-f474:
-f475:
-f476:
-f477:
-f478:
-f479:
-f480:
-f481:
-f482:
-f483:
-f484:
-f485:
-f486:
-f487:
-f488:
-f489:
-f490:
-f491:
-f492:
-f493:
-f494:
-f495:
-f496:
-f497:
-f498:
-f499:
-f500:
-f501:
-f502:
-f503:
-f504:
-f505:
-f506:
-f507:
-f508:
-f509:
-f510:
-f511:
-f512:
-f513:
-f514:
-f515:
-f516:
-f517:
-f518:
-f519:
-f520:
-f521:
-f522:
-f523:
-f524:
-f525:
-f526:
-f527:
-f528:
-f529:
-f530:
-f531:
-f532:
-f533:
-f534:
-f535:
-f536:
-f537:
-f538:
-f539:
-f540:
-f541:
-f542:
-f543:
-f544:
-f545:
-f546:
-f547:
-f548:
-f549:
-f550:
-f551:
-f552:
-f553:
-f554:
-f555:
-f556:
-f557:
-f558:
-f559:
-f560:
-f561:
-f562:
-f563:
-f564:
-f565:
-f566:
-f567:
-f568:
-f569:
-f570:
-f571:
-f572:
-f573:
-f574:
-f575:
-f576:
-f577:
-f578:
-f579:
-f580:
-f581:
-f582:
-f583:
-f584:
-f585:
-f586:
-f587:
-f588:
-f589:
-f590:
-f591:
-f592:
-f593:
-f594:
-f595:
-f596:
-f597:
-f598:
-f599:
-f600:
-f601:
-f602:
-f603:
-f604:
-f605:
-f606:
-f607:
-f608:
-f609:
-f610:
-f611:
-f612:
-f613:
-f614:
-f615:
-f616:
-f617:
-f618:
-f619:
-f620:
-f621:
-f622:
-f623:
-f624:
-f625:
-f626:
-f627:
-f628:
-f629:
-f630:
-f631:
-f632:
-f633:
-f634:
-f635:
-f636:
-f637:
-f638:
-f639:
-f640:
-f641:
-f642:
-f643:
-f644:
-f645:
-f646:
-f647:
-f648:
-f649:
-f650:
-f651:
-f652:
-f653:
-f654:
-f655:
-f656:
-f657:
-f658:
-f659:
-f660:
-f661:
-f662:
-f663:
-f664:
-f665:
-f666:
-f667:
-f668:
-f669:
-f670:
-f671:
-f672:
-f673:
-f674:
-f675:
-f676:
-f677:
-f678:
-f679:
-f680:
-f681:
-f682:
-f683:
-f684:
-f685:
-f686:
-f687:
-f688:
-f689:
-f690:
-f691:
-f692:
-f693:
-f694:
-f695:
-f696:
-f697:
-f698:
-f699:
-f700:
-f701:
-f702:
-f703:
-f704:
-f705:
-f706:
-f707:
-f708:
-f709:
-f710:
-f711:
-f712:
-f713:
-f714:
-f715:
-f716:
-f717:
-f718:
-f719:
-f720:
-f721:
-f722:
-f723:
-f724:
-f725:
-f726:
-f727:
-f728:
-f729:
-f730:
-f731:
-f732:
-f733:
-f734:
-f735:
-f736:
-f737:
-f738:
-f739:
-f740:
-f741:
-f742:
-f743:
-f744:
-f745:
-f746:
-f747:
-f748:
-f749:
-f750:
-f751:
-f752:
-f753:
-f754:
-f755:
-f756:
-f757:
-f758:
-f759:
-f760:
-f761:
-f762:
-f763:
-f764:
-f765:
-f766:
-f767:
-f768:
-f769:
-f770:
-f771:
-f772:
-f773:
-f774:
-f775:
-f776:
-f777:
-f778:
-f779:
-f780:
-f781:
-f782:
-f783:
-f784:
-f785:
-f786:
-f787:
-f788:
-f789:
-f790:
-f791:
-f792:
-f793:
-f794:
-f795:
-f796:
-f797:
-f798:
-f799:
-f800:
-f801:
-f802:
-f803:
-f804:
-f805:
-f806:
-f807:
-f808:
-f809:
-f810:
-f811:
-f812:
-f813:
-f814:
-f815:
-f816:
-f817:
-f818:
-f819:
-f820:
-f821:
-f822:
-f823:
-f824:
-f825:
-f826:
-f827:
-f828:
-f829:
-f830:
-f831:
-f832:
-f833:
-f834:
-f835:
-f836:
-f837:
-f838:
-f839:
-f840:
-f841:
-f842:
-f843:
-f844:
-f845:
-f846:
-f847:
-f848:
-f849:
-f850:
-f851:
-f852:
-f853:
-f854:
-f855:
-f856:
-f857:
-f858:
-f859:
-f860:
-f861:
-f862:
-f863:
-f864:
-f865:
-f866:
-f867:
-f868:
-f869:
-f870:
-f871:
-f872:
-f873:
-f874:
-f875:
-f876:
-f877:
-f878:
-f879:
-f880:
-f881:
-f882:
-f883:
-f884:
-f885:
-f886:
-f887:
-f888:
-f889:
-f890:
-f891:
-f892:
-f893:
-f894:
-f895:
-f896:
-f897:
-f898:
-f899:
-f900:
-f901:
-f902:
-f903:
-f904:
-f905:
-f906:
-f907:
-f908:
-f909:
-f910:
-f911:
-f912:
-f913:
-f914:
-f915:
-f916:
-f917:
-f918:
-f919:
-f920:
-f921:
-f922:
-f923:
-f924:
-f925:
-f926:
-f927:
-f928:
-f929:
-f930:
-f931:
-f932:
-f933:
-f934:
-f935:
-f936:
-f937:
-f938:
-f939:
-f940:
-f941:
-f942:
-f943:
-f944:
-f945:
-f946:
-f947:
-f948:
-f949:
-f950:
-f951:
-f952:
-f953:
-f954:
-f955:
-f956:
-f957:
-f958:
-f959:
-f960:
-f961:
-f962:
-f963:
-f964:
-f965:
-f966:
-f967:
-f968:
-f969:
-f970:
-f971:
-f972:
-f973:
-f974:
-f975:
-f976:
-f977:
-f978:
-f979:
-f980:
-f981:
-f982:
-f983:
-f984:
-f985:
-f986:
-f987:
-f988:
-f989:
-f990:
-f991:
-f992:
-f993:
-f994:
-f995:
-f996:
-f997:
-f998:
-f999:
+	addiu $sp, -0x18
+	sw $ra, 0x10($sp)
+	la_ $v1, 0x801d8348
+	lwi $v0, 0x801d8340
+	nop
+	lb $v0, 0x817($v0)
+	nop
+	sll $v0, 0x2
+	addu $v0, $v1
+	lw $v0, ($v0)
+	nop
+	lw $v0, 0x178($v0)
+	nop
+	srl $a1, $v0, 0x11
+	srl $v0, 0x11
+	andi $v0, 0x3
+	li $v1, 0x1
+	bne $v0, $v1, .0
+		andi $a1, 0x1
+	move_ $a1, $zr
+.0:
+	lui $a0, 0x801e
+	jal f61
+		addiu $a0, -0x7d88
+	lw $ra, 0x10($sp)
+	nop
+	jr $ra
+		addiu $sp, 0x18
