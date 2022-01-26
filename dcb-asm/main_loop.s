@@ -37,7 +37,7 @@ main_loop:
 	sw $zr, 0x18($sp)
 	li $a0, 0x1
 	li $a1, 0x400
-	la_ $a2, 0x800155f4
+	la_ $a2, f24_2
 	jal f13
 		move_ $a3, $zr
 .0:

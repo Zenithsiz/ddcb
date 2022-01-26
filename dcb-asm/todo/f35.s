@@ -59,12 +59,13 @@ f35:
 		li $a2, 0x80
 	beqz $v0, .3
 		li $a0, 0x1
-	j 0x800165f4
+	j .10
 		nop
 .4:
 	jal f19
 		li $a0, 0x1
 	li $a0, 0x1
+.10:
 	jal f779
 		move_ $a1, $zr
 	bgtz $v0, .4
@@ -91,7 +92,7 @@ f35:
 	bnez $v0, .9
 		li $v0, -0x1
 	lw $v0, 0x28($s1)
-	j 0x80016690
+	j .11
 		move_ $a1, $v0
 .6:
 	lw $a0, 0x2c($s1)
@@ -106,6 +107,7 @@ f35:
 	addiu $v0, $a1, -0x1
 	sw $v0, 0x28($s1)
 	move_ $a1, $v0
+.11:
 	beqz $v0, .7
 		move_ $v1, $s2
 	addiu $v0, $s2, 0x1
@@ -114,7 +116,7 @@ f35:
 	bnez $v1, .6
 		sra $s2, $v0, 0x10
 .7:
-	j 0x80016708
+	j .9
 		move_ $v0, $s3
 .8:
 	lw $v0, 0x28($s1)

@@ -49,13 +49,13 @@ def main(args):
 				dot_def_matches = line_dot_label_def_regex.search(line)
 				if dot_def_matches is not None:
 					label = dot_def_matches.group(1)
-					line = line.replace(f".{label}", f".L{latest_non_dot_label_def}_{label}")
+					line = line.replace(f".{label}", f"{latest_non_dot_label_def}.{label}")
 
 				# If this is a dot label usage, add the latest non-dot definition
 				dot_use_matches = line_dot_label_use_regex.search(line)
 				if dot_use_matches is not None:
 					label = dot_use_matches.group(1)
-					line = line.replace(f".{label}", f".L{latest_non_dot_label_def}_{label}")
+					line = line.replace(f".{label}", f"{latest_non_dot_label_def}.{label}")
 
 			output_file.write(line)
 

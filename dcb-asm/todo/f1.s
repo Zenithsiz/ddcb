@@ -39,11 +39,12 @@ f1:
 	nop
 	beqz $v0, .1
 		lui $v1, 0x8007
-	j 0x80014064
+	j .4
 		sw $a1, 0xc($a1)
 .1:
 	la_ $v0, 0x80077ba0
 	sw $v0, 0x7aec($v1)
+.4:
 	lui $v1, 0x8007
 	li $v0, -0x1
 	sw $v0, 0x7af4($v1)
@@ -116,10 +117,11 @@ f1:
 	lui $v0, 0x8007
 	jal f1083
 		sw $s0, 0x7ad8($v0)
-	j 0x8001419c
+	j .5
 		move_ $v0, $zr
 .3:
 	li $v0, -0x6
+.5:
 	lw $ra, 0x20($sp)
 	lw $s3, 0x1c($sp)
 	lw $s2, 0x18($sp)

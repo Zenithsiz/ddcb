@@ -1,3 +1,4 @@
+f62:
 	addiu $sp, -0x30
 	sw $ra, 0x28($sp)
 	sw $s3, 0x24($sp)
