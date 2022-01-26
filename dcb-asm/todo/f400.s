@@ -10244,7 +10244,6 @@ f464:
 	sb $s7, 0x25($fp)
 	sh $zr, 0x8($fp)
 	li $s5, 0xe8
-func_313:
 	sh $s5, 0xa($fp)
 	sh $s1, 0x10($fp)
 	sh $s5, 0x12($fp)
@@ -15677,7 +15676,6 @@ f506:
 		li $v0, -0x1
 
 f507:
-func_339:
 	move_ $a3, $a0
 	move_ $v1, $zr
 	lui $v0, 0x8007
@@ -25056,7 +25054,8 @@ f628:
 	jr $ra
 		nop
 	nop
-func_398:
+
+f628_2:
 	addiu $sp, -0x68
 	lui $v0, 0x6
 	lbi $v1, 0x801d96d4
