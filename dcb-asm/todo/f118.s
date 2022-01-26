@@ -30,7 +30,7 @@ f118:
 	addiu $v0, $sp, 0x34
 	jal f820
 		sw $v0, 0x24($sp)
-	j 0x8001dc70
+	j .3
 		sw $v0, 0x38($sp)
 .0:
 	sw $v0, 0x10($sp)
@@ -49,6 +49,7 @@ f118:
 		sw $v0, 0x28($sp)
 	blez $v0, .2
 		nop
+.3:
 	lw $a0, 0x38($sp)
 	nop
 	addiu $v0, $a0, -0x2

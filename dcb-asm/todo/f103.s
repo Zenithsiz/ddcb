@@ -50,7 +50,7 @@ f103:
 	lw $v1, 0x6b24($a0)
 	nop
 	lbu $v0, 0xf($v1)
-	j 0x8001c5c8
+	j .2
 		ori $v0, 0x2
 .0:
 	lui $v0, 0x801d
@@ -59,6 +59,7 @@ f103:
 	lbu $v0, 0xf($v1)
 	nop
 	andi $v0, 0xfd
+.2:
 	sb $v0, 0xf($v1)
 	lui $t0, 0x801d
 	lw $v1, 0x6b24($t0)

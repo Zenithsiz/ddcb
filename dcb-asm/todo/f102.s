@@ -32,11 +32,12 @@ f102:
 		sll $v0, $s3, 0x2
 	jal f70
 		nop
-	j 0x8001c3e4
+	j .9
 		move_ $s1, $v0
 .1:
 	mult $s0, $v0
 	mflo $s1
+.9:
 	sll $v1, $s0, 0x2
 	nop
 	divu $zr, $s1, $v1

@@ -29,11 +29,12 @@ f105:
 		move_ $a0, $s4
 	jal f974
 		li $a1, 0x1
-	j 0x8001c898
+	j .4
 		nop
 .0:
 	jal f974
 		move_ $a1, $zr
+.4:
 	beqz $s7, .1
 		nop
 	lbu $a1, ($s7)

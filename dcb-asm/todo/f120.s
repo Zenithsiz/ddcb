@@ -26,7 +26,7 @@ f120:
 	sw $v0, 0x1c($sp)
 	jal f818
 		addiu $a3, $s1, 0x8
-	j 0x8001df04
+	j .3
 		sw $v0, 0x30($sp)
 .0:
 	addiu $v0, $s1, 0x10
@@ -43,6 +43,7 @@ f120:
 		addiu $a3, $s1, 0x8
 	blez $v0, .2
 		nop
+.3:
 	lw $a0, 0x30($sp)
 	nop
 	addiu $v0, $a0, -0x2

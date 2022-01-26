@@ -27,12 +27,13 @@ f107:
 	move_ $a0, $s3
 	jal f974
 		li $a1, 0x1
-	j 0x8001cd38
+	j .8
 		nop
 .0:
 	move_ $a0, $s3
 	jal f974
 		move_ $a1, $zr
+.8:
 	beqz $s4, .1
 		nop
 	lbu $a1, ($s4)

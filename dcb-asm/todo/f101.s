@@ -26,7 +26,7 @@ f101:
 	sra $v0, 0x6
 	sll $v0, 0x6
 	subu $v0, $t0, $v0
-	j 0x8001c2ac
+	j .4
 		sll $v0, 0x1
 .1:
 	bgez $t0, .2
@@ -37,6 +37,7 @@ f101:
 	sll $v0, 0x6
 	subu $v0, $t0, $v0
 	sll $v0, 0x2
+.4:
 	sb $v0, 0x18($s0)
 	sb $t1, 0x19($s0)
 	li $v0, 0x80
@@ -48,10 +49,11 @@ f101:
 	nop
 	ori $v0, 0x2
 	sb $v0, 0x13($s0)
-	j 0x8001c2e4
+	j .5
 		move_ $v0, $t2
 .3:
 	move_ $v0, $zr
+.5:
 	andi $a3, $t3, 0x3
 	sll $a3, 0x7
 	andi $v0, 0x3

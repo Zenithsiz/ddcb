@@ -14,12 +14,13 @@ f62:
 		move_ $s3, $a1
 	lh $v0, 0xac($s0)
 	lh $a1, 0xae($s0)
-	j 0x8001a228
+	j .9
 		sh $v0, 0x10($sp)
 .0:
 	lh $v0, 0xb0($s0)
 	lh $a1, 0xb2($s0)
 	sh $v0, 0x10($sp)
+.9:
 	lhu $a0, 0xaa($s0)
 	lh $v1, 0xaa($s0)
 	li $v0, 0xf0
@@ -87,7 +88,7 @@ f62:
 	nop
 	beqz $v0, .5
 		li $v0, 0x3
-	j 0x8001a37c
+	j .10
 		sb $v0, 0xa5($s0)
 .5:
 	lbu $v0, 0xa6($s0)
@@ -105,13 +106,15 @@ f62:
 	sb $s2, 0xb4($s0)
 	jal f313
 		move_ $a0, $zr
-	j 0x8001a380
+	j .11
 		move_ $a0, $s0
 .6:
 	sb $s2, 0xb4($s0)
 	jal f313
 		li $a0, 0x1
+.10:
 	move_ $a0, $s0
+.11:
 	jal f43
 		li $a1, -0x1
 	lui $s2, 0x8008
