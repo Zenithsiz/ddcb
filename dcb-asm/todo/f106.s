@@ -19,19 +19,19 @@ f106:
 	lw $s4, 0x54($sp)
 	lw $s6, 0x58($sp)
 	lbu $s1, 0x5c($sp)
-	jal 0x80067764
+	jal f979
 		move_ $s7, $a3
 	sh $s0, 0x1a($s3)
 	beqz $s1, .0
 		sh $s2, 0xe($s3)
 	move_ $a0, $s3
-	jal 0x800676a4
+	jal f974
 		li $a1, 0x1
 	j 0x8001cad8
 		nop
 .0:
 	move_ $a0, $s3
-	jal 0x800676a4
+	jal f974
 		move_ $a1, $zr
 	beqz $s5, .1
 		nop

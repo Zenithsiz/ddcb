@@ -23,7 +23,7 @@ f116:
 	addiu $v0, $sp, 0x30
 	sw $v0, 0x20($sp)
 	addiu $v0, $sp, 0x34
-	jal 0x8005c574
+	jal f820
 		sw $v0, 0x24($sp)
 	j .1
 		sw $v0, 0x38($sp)
@@ -40,7 +40,7 @@ f116:
 	addiu $v0, $sp, 0x38
 	sw $v0, 0x24($sp)
 	addiu $v0, $sp, 0x34
-	jal 0x8005c844
+	jal f825
 		sw $v0, 0x28($sp)
 	blez $v0, .3
 		nop
@@ -58,7 +58,7 @@ f116:
 	lw $v0, -0x6c60($v0)
 	nop
 	addu $a0, $v0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s0
 	j .3
 		nop
@@ -68,7 +68,7 @@ f116:
 	lw $v0, -0x6c60($v0)
 	nop
 	addu $a0, $v0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s0
 .3:
 	lw $ra, 0x48($sp)

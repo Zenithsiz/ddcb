@@ -19,7 +19,7 @@ f114:
 	sw $v0, 0x18($sp)
 	addiu $v0, $sp, 0x2c
 	sw $v0, 0x1c($sp)
-	jal 0x8005c4e4
+	jal f818
 		addiu $a3, $s0, 0x8
 	j 0x8001d768
 		sw $v0, 0x30($sp)
@@ -34,7 +34,7 @@ f114:
 	sw $v0, 0x1c($sp)
 	addiu $v0, $sp, 0x2c
 	sw $v0, 0x20($sp)
-	jal 0x8005c7b4
+	jal f824
 		addiu $a3, $s0, 0x8
 	blez $v0, .2
 		nop
@@ -51,7 +51,7 @@ f114:
 	lw $v0, -0x6c60($v0)
 	nop
 	addu $a0, $v0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s0
 	j 0x8001d7c8
 		nop
@@ -61,7 +61,7 @@ f114:
 	lw $v0, -0x6c60($v0)
 	nop
 	addu $a0, $v0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s0
 .2:
 	lw $ra, 0x40($sp)

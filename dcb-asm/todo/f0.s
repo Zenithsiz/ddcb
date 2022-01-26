@@ -2,7 +2,7 @@ f0:
 	addiu $sp, -0x18
 	sw $ra, 0x14($sp)
 	sw $s0, 0x10($sp)
-	jal 0x8006a804
+	jal f1082
 		move_ $s0, $a0
 	beqz $s0, .2
 		lui $v1, 0x8007
@@ -37,7 +37,7 @@ f0:
 	addiu $v0, 0x7ba0
 	sw $v0, 0x7aec($v1)
 .3:
-	jal 0x8006a814
+	jal f1083
 		nop
 	lw $ra, 0x14($sp)
 	lw $s0, 0x10($sp)

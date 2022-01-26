@@ -10,7 +10,7 @@ f59:
 	andi $a2, 0x80
 	sb $a2, 0xb6($s0)
 	sw $s1, 0x94($s0)
-	jal 0x800293fc
+	jal f270
 		move_ $a0, $s1
 	lui $a0, 0x801d
 	lw $v0, 0x6b18($a0)
@@ -60,14 +60,14 @@ f59:
 	sw $v0, 0x9c($s0)
 .2:
 	lw $a0, 0x98($s0)
-	jal 0x800692d4
+	jal f1056
 		nop
 	sll $v1, $v0, 0x1
 	addu $v1, $v0
 	sll $v0, $v1, 0x1
 	sh $v0, 0xae($s0)
 	lw $a0, 0x9c($s0)
-	jal 0x800692d4
+	jal f1056
 		nop
 	sll $v1, $v0, 0x1
 	addu $v1, $v0

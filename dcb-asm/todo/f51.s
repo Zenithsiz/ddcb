@@ -20,7 +20,7 @@ f51:
 	bne $v1, $v0, .0
 		move_ $v0, $zr
 	lui $a0, %hi(S_0x80010008)
-	jal 0x80069394
+	jal f1058
 		addiu $a0, %lo(S_0x80010008)
 	li $v0, -0x1
 .0:

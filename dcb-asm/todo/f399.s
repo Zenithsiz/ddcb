@@ -30,7 +30,7 @@ f399:
 	nop
 	sb $zr, 0x815($v0)
 .2:
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x1
 	jal 0x801eab4c
 		nop
@@ -84,7 +84,7 @@ f399:
 	sll $v1, $s1, 0x3
 	addu $v0, $v1
 	lh $a1, 0x16($v0)
-	jal 0x80047b84
+	jal f507
 		move_ $a0, $zr
 	sltiu $v0, $v0, 0x3
 	beqz $v0, .4
@@ -95,7 +95,7 @@ f399:
 	sll $v1, $s1, 0x3
 	addu $v0, $v1
 	lh $a1, 0x16($v0)
-	jal 0x80048150
+	jal f512
 		move_ $a0, $zr
 	sltiu $v0, $v0, 0x3
 	beqz $v0, .5
@@ -134,7 +134,7 @@ f399:
 	slti $v0, $s1, 0x3
 	beqz $v0, .8
 		nop
-	jal 0x800402cc
+	jal f433
 		move_ $a0, $zr
 	move_ $a1, $v0
 	bne $a1, $s3, .6
@@ -142,7 +142,7 @@ f399:
 .8:
 	jal f8
 		nop
-	la_ $v1, 0x80049ef8
+	la_ $v1, f527
 	sw $v1, 0x10($sp)
 	li $v1, 0x2
 	sw $v1, 0x14($sp)
@@ -238,7 +238,7 @@ f399:
 	sb $v0, 0x1($a0)
 	sb $zr, 0x4($a0)
 	sb $zr, 0x7($a0)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x3c
 	lui $s2, 0x801e
 	li $s1, 0x4
@@ -279,7 +279,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	bltz $v0, .14
 		li $v0, 0x4
@@ -290,14 +290,14 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040570
+	jal f438
 		nop
 	beqz $v0, .51
 		lui $v0, 0x801e
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040220
+	jal f431
 		nop
 	bnez $v0, .15
 		lui $v1, 0x801e
@@ -313,13 +313,13 @@ f399:
 	lw $a2, ($v0)
 	addiu $a0, $sp, 0x28
 	la_ $a1, S_0x80010ca0
-	jal 0x80069d24
+	jal f1064
 		addiu $a2, 0x1ce
 	la_ $a0, 0x801d8278
 	addiu $a1, $sp, 0x28
 	jal f59
 		move_ $a2, $zr
-	jal 0x800341ec
+	jal f398
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -351,7 +351,7 @@ f399:
 	la_ $a1, S_0x80010cc8
 	jal f59
 		move_ $a2, $zr
-	jal 0x800341ec
+	jal f398
 		nop
 .16:
 	lui $v0, 0x801e
@@ -368,7 +368,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040220
+	jal f431
 		nop
 	bnez $v0, .17
 		lui $v1, 0x801e
@@ -396,7 +396,7 @@ f399:
 		lui $v0, 0x801e
 	sb $a1, 0x827($a0)
 	lw $v0, -0x7cc0($s0)
-	jal 0x80033e7c
+	jal f396
 		sb $v1, 0x816($v0)
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -404,7 +404,7 @@ f399:
 	nop
 	beqz $v0, .18
 		lui $v0, 0x801e
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x1e
 	lw $v1, -0x7cc0($s0)
 	li $v0, 0x6
@@ -439,7 +439,7 @@ f399:
 	andi $v0, 0x10
 	beqz $v0, .26
 		lui $v1, 0x8009
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	li $v0, 0x3
 	sb $v0, 0x4($s0)
@@ -455,7 +455,7 @@ f399:
 	addiu $a1, %lo(S_0x80010cfc)
 	jal f59
 		li $a2, 0x1
-	jal 0x800341ec
+	jal f398
 		nop
 	lb $v1, 0xa5($s1)
 	li $v0, 0x1
@@ -529,7 +529,7 @@ f399:
 	andi $v0, 0x40
 	beqz $v0, .27
 		lui $v1, 0x8009
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $v1, -0x7cc0($s0)
 	j 0x80035314
@@ -550,7 +550,7 @@ f399:
 	andi $v0, 0x80
 	beqz $v0, .2
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $v1, -0x7cc0($s0)
 	li $v0, 0x7
@@ -602,14 +602,14 @@ f399:
 	lb $a0, 0x81a($v0)
 	jal 0x801ebacc
 		move_ $a1, $zr
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x14
 	lui $s0, 0x801e
 	lui $v0, 0x8009
 	addiu $s2, $v0, -0x67c0
 	lui $s1, 0x801e
 .29:
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x1
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -629,7 +629,7 @@ f399:
 	andi $v0, 0x10
 	beqz $v0, .29
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa1
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -657,7 +657,7 @@ f399:
 	lbu $v1, 0x819($v0)
 	nop
 	sb $v1, 0x818($v0)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x14
 	j .2
 		nop
@@ -668,7 +668,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	bltz $v0, .33
 		lui $v1, 0x801e
@@ -723,7 +723,7 @@ f399:
 		li $v0, 0x2
 	sb $a1, 0x827($a0)
 	lw $v1, -0x7cc0($s0)
-	jal 0x80033e7c
+	jal f396
 		sb $v0, 0x816($v1)
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -824,7 +824,7 @@ f399:
 	sra $a1, 0xd
 	addu $a2, $a1
 	lh $a1, 0x16($a2)
-	jal 0x80047b84
+	jal f507
 		li $s4, -0x1
 	move_ $s1, $v0
 	beq $s1, $s4, .37
@@ -856,16 +856,16 @@ f399:
 	sra $a0, 0xd
 	addu $a1, $a0
 	lh $a0, 0x16($a1)
-	jal 0x80047a58
+	jal f505
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v1)
-	jal 0x80048014
+	jal f511
 		move_ $a1, $v0
 	beq $v0, $s4, .37
 		nop
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x3c
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -875,10 +875,10 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040a48
+	jal f444
 		move_ $a1, $s1
 .37:
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x78
 	lui $v0, 0x801e
 	lw $v1, -0x7cc0($v0)
@@ -906,7 +906,7 @@ f399:
 	lw $v0, -0x7cc0($a0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040220
+	jal f431
 		nop
 	beqz $v0, .39
 		lui $v1, 0x801e
@@ -956,7 +956,7 @@ f399:
 	nop
 	bnez $v0, .2
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -1007,7 +1007,7 @@ f399:
 	sra $a1, 0xd
 	addu $a2, $a1
 	lh $a1, 0x16($a2)
-	jal 0x80047b84
+	jal f507
 		nop
 	move_ $s1, $v0
 	beq $s1, $s2, .46
@@ -1039,12 +1039,12 @@ f399:
 	sra $a0, 0xd
 	addu $a1, $a0
 	lh $a0, 0x16($a1)
-	jal 0x80047a58
+	jal f505
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v1)
-	jal 0x80048014
+	jal f511
 		move_ $a1, $v0
 	beq $v0, $s2, .45
 		lui $v1, 0x801e
@@ -1055,7 +1055,7 @@ f399:
 	la_ $a1, S_0x80010d3c
 	jal f59
 		li $a2, 0x1
-	jal 0x800341ec
+	jal f398
 		addiu $s0, -0x7d88
 	lb $v1, 0xa5($s0)
 	li $v0, 0x1
@@ -1106,7 +1106,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040a48
+	jal f444
 		move_ $a1, $s1
 	la_ $v1, 0x801d8348
 	lw $a0, -0x7cc0($s0)
@@ -1156,11 +1156,11 @@ f399:
 	andi $v0, 0x10
 	beqz $v0, .2
 		nop
-	jal 0x80040220
+	jal f431
 		nop
 	beqz $v0, .2
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa1
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -1182,7 +1182,7 @@ f399:
 	la_ $a1, S_0x80010d5c
 	jal f59
 		li $a2, 0x1
-	jal 0x800341ec
+	jal f398
 		addiu $s0, -0x7d88
 	lb $v1, 0xa5($s0)
 	li $v0, 0x1
@@ -1277,7 +1277,7 @@ f399:
 	sb $a1, 0x827($a0)
 	lw $v1, -0x7cc0($s0)
 	li $v0, 0x3
-	jal 0x80033e7c
+	jal f396
 		sb $v0, 0x816($v1)
 	lw $a0, -0x7cc0($s0)
 	nop
@@ -1306,7 +1306,7 @@ f399:
 	lw $v1, -0x7cc0($s0)
 	nop
 	sh $v0, 0x80a($v1)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x78
 	lw $v1, -0x7cc0($s0)
 	j 0x80035704
@@ -1326,7 +1326,7 @@ f399:
 	sh $v0, 0x80e($v1)
 	sh $v0, 0x80c($v1)
 	lb $a0, 0x817($v1)
-	jal 0x80040570
+	jal f438
 		nop
 	beqz $v0, .55
 		li $v0, 0xe
@@ -1337,7 +1337,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80041214
+	jal f449
 		nop
 	beqz $v0, .56
 		lui $v0, 0x801e
@@ -1401,7 +1401,7 @@ f399:
 	nop
 	bnez $v0, .58
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -1430,7 +1430,7 @@ f399:
 	andi $v0, 0x20
 	beqz $v0, .58
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -1468,7 +1468,7 @@ f399:
 		li $v0, 0x4
 	sb $a1, 0x827($a0)
 	lw $v1, -0x7cc0($s0)
-	jal 0x80033e7c
+	jal f396
 		sb $v0, 0x816($v1)
 	lw $a0, -0x7cc0($s0)
 	nop
@@ -1499,7 +1499,7 @@ f399:
 	addu $v0, $a0
 	li $v1, 0x6
 	sb $v1, 0x55($v0)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x1e
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -1516,7 +1516,7 @@ f399:
 	lw $v1, -0x7cc0($s0)
 	nop
 	sh $v0, 0x80a($v1)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x1e
 	lw $v1, -0x7cc0($s0)
 	li $v0, 0x10
@@ -1526,7 +1526,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x800406bc
+	jal f440
 		nop
 	beqz $v0, .61
 		li $v1, -0x1
@@ -1568,7 +1568,7 @@ f399:
 	li $v0, 0x8
 	sb $v0, 0x4($v1)
 	sb $a0, 0x7($v1)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x1e
 	j .2
 		nop
@@ -1615,7 +1615,7 @@ f399:
 	li $v0, 0x2
 	bne $v1, $v0, .2
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -1637,7 +1637,7 @@ f399:
 	la_ $a1, S_0x80010dac
 	jal f59
 		li $a2, 0x1
-	jal 0x800341ec
+	jal f398
 		addiu $s0, -0x7d88
 	lb $v1, 0xa5($s0)
 	li $v0, 0x1
@@ -1708,7 +1708,7 @@ f399:
 	andi $v0, 0x20
 	beqz $v0, .67
 		lui $v1, 0x8009
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -1748,7 +1748,7 @@ f399:
 	andi $v0, 0x10
 	beqz $v0, .2
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa1
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -1757,7 +1757,7 @@ f399:
 	bltz $v0, .68
 		lui $a1, 0x801e
 	lb $a0, 0x817($v1)
-	jal 0x800411c4
+	jal f448
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -1809,7 +1809,7 @@ f399:
 	sll $v0, $a0, 0x2
 	addu $v0, $v1
 	lw $s0, ($v0)
-	jal 0x80041340
+	jal f452
 		nop
 	li $v1, 0x88888889
 	mult $v0, $v1
@@ -1855,7 +1855,7 @@ f399:
 	li $v1, 0x1
 	beq $v0, $v1, .70
 		lui $v1, 0x801e
-	jal 0x800341ec
+	jal f398
 		nop
 	j 0x80035f00
 		lui $v0, 0x801e
@@ -1882,7 +1882,7 @@ f399:
 	lw $v0, -0x7cc0($s1)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040764
+	jal f441
 		lui $s0, 0x801e
 	lw $v1, -0x7cc0($s1)
 	nop
@@ -1903,12 +1903,12 @@ f399:
 	and $v0, $v1
 	sw $v0, 0x178($a0)
 	lb $a0, 0x817($a1)
-	jal 0x80040764
+	jal f441
 		nop
 	lw $v1, -0x7cc0($s1)
 	nop
 	lb $a1, 0x817($v1)
-	jal 0x8004080c
+	jal f443
 		move_ $a0, $v0
 	lw $v0, -0x7cc0($s1)
 	nop
@@ -1922,7 +1922,7 @@ f399:
 	nop
 	sll $v0, 0x1
 	sh $v0, 0x11c($v1)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x14
 	j 0x800361a4
 		nop
@@ -1947,7 +1947,7 @@ f399:
 	li $v1, 0x1
 	beq $v0, $v1, .73
 		lui $v1, 0x801e
-	jal 0x800341ec
+	jal f398
 		nop
 	j 0x80036074
 		lui $v0, 0x801e
@@ -2007,7 +2007,7 @@ f399:
 	sll $v0, $a0, 0x2
 	addu $v0, $v1
 	lw $s0, ($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	li $v1, 0x88888889
 	mult $v0, $v1
@@ -2026,12 +2026,12 @@ f399:
 	nop
 	lb $a0, 0x817($v0)
 	lh $a1, 0x16($s0)
-	jal 0x80048150
+	jal f512
 		nop
 	lw $v1, -0x7cc0($s1)
 	nop
 	lb $a0, 0x817($v1)
-	jal 0x80040d88
+	jal f445
 		move_ $a1, $v0
 .78:
 	beqz $s2, .79
@@ -2046,7 +2046,7 @@ f399:
 	nop
 	sh $v1, 0x80c($v0)
 	lb $a0, 0x817($v0)
-	jal 0x80041408
+	jal f455
 		nop
 	move_ $s1, $v0
 	lui $v0, 0x801e
@@ -2060,7 +2060,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x800400b4
+	jal f427
 		move_ $a0, $s1
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -2148,7 +2148,7 @@ f399:
 	li $v1, 0x1
 	bne $v0, $v1, .2
 		nop
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x3c
 	j .2
 		nop
@@ -2184,7 +2184,7 @@ f399:
 	sb $a1, 0x827($a0)
 	lw $v1, -0x7cc0($s0)
 	li $v0, 0x5
-	jal 0x80033e7c
+	jal f396
 		sb $v0, 0x816($v1)
 	lw $a0, -0x7cc0($s0)
 	nop
@@ -2201,7 +2201,7 @@ f399:
 	j 0x800365d0
 		nop
 .86:
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x3c
 	lwi $v0, 0x801d8340
 	nop
@@ -2237,7 +2237,7 @@ f399:
 	andi $v0, 0x20
 	beqz $v0, .89
 		lui $v1, 0x8009
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -2272,7 +2272,7 @@ f399:
 	andi $v0, 0x10
 	beqz $v0, .91
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa1
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -2337,7 +2337,7 @@ f399:
 	sll $v0, $a0, 0x2
 	addu $v0, $v1
 	lw $s0, ($v0)
-	jal 0x80041340
+	jal f452
 		nop
 	li $v1, 0x88888889
 	mult $v0, $v1
@@ -2400,7 +2400,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -2445,7 +2445,7 @@ f399:
 	sll $v0, $a0, 0x2
 	addu $v0, $v1
 	lw $s0, ($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	li $v1, 0x88888889
 	mult $v0, $v1
@@ -2464,12 +2464,12 @@ f399:
 	nop
 	lb $a0, 0x817($v0)
 	lh $a1, 0x16($s0)
-	jal 0x80048150
+	jal f512
 		move_ $s0, $s1
 	lw $v1, -0x7cc0($s1)
 	nop
 	lb $a0, 0x817($v1)
-	jal 0x80040d88
+	jal f445
 		move_ $a1, $v0
 	j 0x800368a0
 		nop
@@ -2477,19 +2477,19 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v1)
 	jal 0x801ec608
 		move_ $a0, $v0
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x14
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	li $v1, -0x1
 	bne $v0, $v1, .93
@@ -2531,7 +2531,7 @@ f399:
 	sll $v0, $a0, 0x2
 	addu $v0, $s2
 	lw $s0, ($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	li $v1, 0x88888889
 	mult $v0, $v1
@@ -2550,17 +2550,17 @@ f399:
 	nop
 	lb $a0, 0x817($v0)
 	lh $a1, 0x16($s0)
-	jal 0x80048150
+	jal f512
 		nop
 	lw $v1, -0x7cc0($s1)
 	nop
 	lb $a0, 0x817($v1)
-	jal 0x80040d88
+	jal f445
 		move_ $a1, $v0
 	lw $v0, -0x7cc0($s1)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	lw $v1, -0x7cc0($s1)
 	nop
@@ -2622,7 +2622,7 @@ f399:
 	beq $v1, $v0, .2
 		nop
 	lb $a0, 0x817($a0)
-	jal 0x80041408
+	jal f455
 		nop
 	move_ $s1, $v0
 	lui $v0, 0x801e
@@ -2636,7 +2636,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x800400b4
+	jal f427
 		move_ $a0, $s1
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -2651,7 +2651,7 @@ f399:
 	addu $v0, $a0
 	li $v1, 0x1
 	sb $v1, 0x55($v0)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x14
 	la_ $v1, 0x801d8348
 	lw $v0, -0x7cc0($s0)
@@ -2690,7 +2690,7 @@ f399:
 		li $v0, 0x5
 	sb $a1, 0x827($a0)
 	lw $v1, -0x7cc0($s0)
-	jal 0x80033e7c
+	jal f396
 		sb $v0, 0x816($v1)
 	lw $a0, -0x7cc0($s0)
 	nop
@@ -2734,7 +2734,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040570
+	jal f438
 		nop
 	bnez $v0, .98
 		nop
@@ -2852,7 +2852,7 @@ f399:
 	andi $v0, 0x20
 	beqz $v0, .101
 		lui $v1, 0x8009
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -2877,7 +2877,7 @@ f399:
 	andi $v0, 0x10
 	beqz $v0, .2
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa1
 	jal 0x801ecd68
 		nop
@@ -2915,7 +2915,7 @@ f399:
 	la_ $a1, S_0x80010e8c
 	jal f59
 		li $a2, 0x1
-	jal 0x800341ec
+	jal f398
 		addiu $s0, -0x7d88
 	lb $v1, 0xa5($s0)
 	li $v0, 0x1
@@ -2983,7 +2983,7 @@ f399:
 	or $v0, $v1
 	sw $v0, 0x178($a0)
 	lb $a0, 0x817($a1)
-	jal 0x80040764
+	jal f441
 		nop
 	lw $a2, -0x7cc0($s0)
 	nop
@@ -3012,7 +3012,7 @@ f399:
 	nop
 	xori $a0, 0x1
 	sll $a0, 0x18
-	jal 0x80040764
+	jal f441
 		sra $a0, 0x18
 	li $v1, -0x1
 	bne $v0, $v1, .108
@@ -3046,13 +3046,13 @@ f399:
 	lw $a2, ($v0)
 	addiu $a0, $sp, 0x28
 	la_ $a1, S_0x80010ed8
-	jal 0x80069d24
+	jal f1064
 		addiu $a2, 0x1ce
 	la_ $a0, 0x801d8278
 	addiu $a1, $sp, 0x28
 	jal f59
 		move_ $a2, $zr
-	jal 0x800341ec
+	jal f398
 		nop
 	j 0x800389f4
 		lui $v0, 0x801e
@@ -3156,7 +3156,7 @@ f399:
 	li $v1, 0x3
 	bne $v0, $v1, .117
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $a0, ($s0)
 	lw $v0, -0x7cc0($s2)
@@ -3189,7 +3189,7 @@ f399:
 	andi $v0, 0x20
 	beqz $v0, .114
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	lw $v1, ($s0)
 	nop
@@ -3206,7 +3206,7 @@ f399:
 	andi $v0, 0x10
 	beqz $v0, .115
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	addu $v0, $s0, $s4
 	lw $v1, ($v0)
@@ -3228,7 +3228,7 @@ f399:
 		andi $v0, $v1, 0x80
 	beqz $v0, .117
 		nop
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	jal 0x801ec4cc
 		move_ $a0, $s1
@@ -3250,7 +3250,7 @@ f399:
 	j 0x800374ac
 		sb $s1, 0x81a($v0)
 .116:
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	sll $v0, $s1, 0x2
 	addu $v0, $s4
@@ -3285,7 +3285,7 @@ f399:
 	andi $v0, 0x3
 	beq $v0, $v1, .2
 		nop
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x78
 	lui $a0, 0x801e
 	lw $v0, -0x7c14($a0)
@@ -3342,7 +3342,7 @@ f399:
 	slti $v0, $s1, 0x2
 	bnez $v0, .118
 		sll $a1, $s1, 0x2
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x78
 	lui $v0, 0x801e
 	lw $v1, -0x7cc0($v0)
@@ -3387,7 +3387,7 @@ f399:
 	addu $v0, $a0
 	li $v1, 0x6
 	sb $v1, 0x55($v0)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x1e
 	lw $a0, -0x7cc0($s1)
 	nop
@@ -3413,7 +3413,7 @@ f399:
 	sb $v0, 0x827($a0)
 	lw $v1, -0x7cc0($s1)
 	li $v0, 0x7
-	jal 0x80033e7c
+	jal f396
 		sb $v0, 0x816($v1)
 	lw $v0, -0x7cc0($s1)
 	nop
@@ -3421,7 +3421,7 @@ f399:
 	li $v0, -0x2
 	bne $v1, $v0, .120
 		lui $s0, 0x801e
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x3c
 	lw $v0, -0x7cc0($s1)
 	nop
@@ -3431,7 +3431,7 @@ f399:
 	sll $a0, 0x18
 	jal 0x801ecac4
 		sra $a0, 0x18
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x78
 	j 0x800381a0
 		lui $v0, 0x801e
@@ -3470,7 +3470,7 @@ f399:
 	slti $v0, $v0, 0x2
 	beqz $v0, .143
 		lui $v0, 0x801e
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x3c
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -3484,7 +3484,7 @@ f399:
 	lw $v1, -0x7cc0($s0)
 	nop
 	sh $v0, 0x80a($v1)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x78
 	j 0x800381a0
 		lui $v0, 0x801e
@@ -3497,7 +3497,7 @@ f399:
 	nop
 	xori $a0, 0x1
 	sll $a0, 0x18
-	jal 0x80040468
+	jal f435
 		sra $a0, 0x18
 	li $v1, 0x4
 	bne $v0, $v1, .122
@@ -3508,7 +3508,7 @@ f399:
 	nop
 	xori $a0, 0x1
 	sll $a0, 0x18
-	jal 0x80040220
+	jal f431
 		sra $a0, 0x18
 	bnez $v0, .122
 		lui $s0, 0x801e
@@ -3625,7 +3625,7 @@ f399:
 	lw $v1, -0x7cc0($s0)
 	nop
 	sh $v0, 0x80a($v1)
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	la_ $a0, 0x801d8278
 	la_ $a1, S_0x80010f48
@@ -3653,7 +3653,7 @@ f399:
 	andi $v0, 0x20
 	beqz $v0, .125
 		lui $v0, 0x801e
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	la_ $a0, 0x801d8278
 	la_ $a1, S_0x80010f70
@@ -3782,7 +3782,7 @@ f399:
 	addu $v0, $a0
 	li $v1, 0x6
 	sb $v1, 0x55($v0)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x1e
 	lw $a0, -0x7cc0($s1)
 	nop
@@ -3805,7 +3805,7 @@ f399:
 	sb $v0, 0x827($a0)
 	lw $v1, -0x7cc0($s1)
 	li $v0, 0x7
-	jal 0x80033e7c
+	jal f396
 		sb $v0, 0x816($v1)
 	lw $v0, -0x7cc0($s1)
 	nop
@@ -3813,14 +3813,14 @@ f399:
 	li $v0, -0x2
 	bne $v1, $v0, .130
 		lui $s0, 0x801e
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x3c
 	lw $v0, -0x7cc0($s1)
 	nop
 	lb $a0, 0x817($v0)
 	jal 0x801ecac4
 		nop
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x78
 	j 0x80037e28
 		lui $v0, 0x801e
@@ -3857,7 +3857,7 @@ f399:
 	slti $v0, $v0, 0x2
 	beqz $v0, .132
 		lui $v0, 0x801e
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x3c
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -3868,7 +3868,7 @@ f399:
 	lw $v1, -0x7cc0($s0)
 	nop
 	sh $v0, 0x80a($v1)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x78
 .131:
 	lui $v0, 0x801e
@@ -3882,7 +3882,7 @@ f399:
 	nop
 	sh $v1, 0x80a($v0)
 	lb $a0, 0x817($v0)
-	jal 0x80040468
+	jal f435
 		nop
 	li $v1, 0x4
 	bne $v0, $v1, .134
@@ -3890,7 +3890,7 @@ f399:
 	lw $v0, -0x7cc0($s1)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x80040220
+	jal f431
 		nop
 	bnez $v0, .134
 		lui $a1, %hi(S_0x80010f0c)
@@ -3993,7 +3993,7 @@ f399:
 	lw $v1, -0x7cc0($s0)
 	nop
 	sh $v0, 0x80a($v1)
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	la_ $a0, 0x801d8278
 	la_ $a1, S_0x80010f48
@@ -4019,7 +4019,7 @@ f399:
 	andi $v0, 0x20
 	beqz $v0, .137
 		lui $v0, 0x801e
-	jal 0x8002b498
+	jal f300
 		li $a0, 0xa0
 	la_ $a0, 0x801d8278
 	la_ $a1, S_0x80010f70
@@ -4048,7 +4048,7 @@ f399:
 	nop
 	sb $zr, 0x822($v0)
 	lui $v0, 0x801e
-	jal 0x800341ec
+	jal f398
 		sb $zr, -0x7c29($v0)
 	lui $v0, 0x801e
 	lb $v1, -0x7ce3($v0)
@@ -4110,7 +4110,7 @@ f399:
 	sb $zr, 0x7($v1)
 	li $v0, 0xf
 	sb $v0, 0x4($v1)
-	jal 0x80033d08
+	jal f394
 		li $a0, 0x3c
 	lwi $v0, 0x8006e050
 	nop
@@ -4181,7 +4181,7 @@ f399:
 		li $a0, 0x2
 	lw $v0, -0x7cc0($s1)
 	li $s0, 0x1
-	jal 0x8002e26c
+	jal f345
 		sw $s0, 0x83c($v0)
 	lw $v0, -0x7cc0($s1)
 	nop
@@ -4275,7 +4275,7 @@ f399:
 	addu $s1, $v0
 	move_ $a0, $s2
 	move_ $a1, $s1
-	jal 0x80039354
+	jal f403
 		move_ $a2, $zr
 	slti $v0, $s1, 0x2707
 	bnez $v0, .151
@@ -4321,7 +4321,7 @@ f399:
 		subu $s1, $v0
 	xori $a0, $s2, 0x1
 	move_ $a1, $s1
-	jal 0x80039354
+	jal f403
 		move_ $a2, $zr
 	lhu $v0, 0x162($s3)
 	nop
@@ -4388,7 +4388,7 @@ f399:
 	jal 0x801fb444
 		li $a1, 0x1a
 .157:
-	jal 0x8003917c
+	jal f401
 		nop
 	jal 0x801ecf0c
 		xori $a0, $s2, 0x1
@@ -4454,7 +4454,7 @@ f399:
 	addu $s1, $v0
 	move_ $a0, $s0
 	move_ $a1, $s1
-	jal 0x80039354
+	jal f403
 		move_ $a2, $zr
 	slti $v0, $s1, 0x2707
 	bnez $v0, .163
@@ -4500,7 +4500,7 @@ f399:
 		subu $s1, $v0
 	move_ $a0, $s2
 	move_ $a1, $s1
-	jal 0x80039354
+	jal f403
 		move_ $a2, $zr
 	lhu $v0, 0x162($s4)
 	nop
@@ -4567,7 +4567,7 @@ f399:
 	jal 0x801fb444
 		li $a1, 0x1a
 .169:
-	jal 0x8003917c
+	jal f401
 		nop
 	jal 0x801ecf0c
 		move_ $a0, $s2
@@ -4712,7 +4712,7 @@ f399:
 	sll $v0, $a0, 0x2
 	addu $v0, $s2
 	lw $s0, ($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	li $v1, 0x88888889
 	mult $v0, $v1
@@ -4731,7 +4731,7 @@ f399:
 	nop
 	lbu $a0, 0x81e($v0)
 	lh $a1, 0x16($s0)
-	jal 0x80048150
+	jal f512
 		nop
 	bgez $v0, .176
 		lui $v0, 0x801e
@@ -4744,7 +4744,7 @@ f399:
 	sll $v0, $a0, 0x2
 	addu $v0, $s2
 	lw $s0, ($v0)
-	jal 0x80040764
+	jal f441
 		nop
 	li $v1, 0x88888889
 	mult $v0, $v1
@@ -4763,7 +4763,7 @@ f399:
 	nop
 	lbu $a0, 0x81e($v0)
 	lh $a1, 0x16($s0)
-	jal 0x80047b84
+	jal f507
 		nop
 	bltz $v0, .177
 		lui $v0, 0x801e
@@ -4844,7 +4844,7 @@ f399:
 	sw $v1, 0x10($sp)
 	addiu $a0, $sp, 0x28
 	lui $a1, %hi(S_0x80010fb8)
-	jal 0x80069d24
+	jal f1064
 		addiu $a1, %lo(S_0x80010fb8)
 	j 0x80038dbc
 		lui $a0, 0x801e
@@ -4852,7 +4852,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lbu $a0, 0x81e($v0)
-	jal 0x80040764
+	jal f441
 		xori $a0, 0x1
 	li $v1, -0x1
 	bne $v0, $v1, .2
@@ -4860,14 +4860,14 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lbu $a0, 0x81e($v0)
-	jal 0x80040570
+	jal f438
 		xori $a0, 0x1
 	beqz $v0, .2
 		nop
 	lw $v0, -0x7cc0($s0)
 	nop
 	lbu $a0, 0x81e($v0)
-	jal 0x80040220
+	jal f431
 		xori $a0, 0x1
 	bnez $v0, .2
 		lui $v1, 0x801e
@@ -4888,13 +4888,13 @@ f399:
 	addiu $a0, $sp, 0x28
 	la_ $a1, S_0x80010fd4
 	addiu $a2, 0x1ce
-	jal 0x80069d24
+	jal f1064
 		addiu $a3, 0x1ce
 	la_ $a0, 0x801d8278
 	addiu $a1, $sp, 0x28
 	jal f59
 		move_ $a2, $zr
-	jal 0x800341ec
+	jal f398
 		nop
 	lw $v1, -0x7cc0($s0)
 	li $v0, 0x26
@@ -4946,7 +4946,7 @@ f399:
 	lhu $v1, 0x160($v0)
 	nop
 	sh $v1, 0x122($v0)
-	jal 0x80041408
+	jal f455
 		move_ $a0, $s1
 	move_ $s2, $v0
 	li $v0, -0x1
@@ -4960,7 +4960,7 @@ f399:
 	li $v1, 0x8
 	sb $v1, 0x22($v0)
 	move_ $a0, $s2
-	jal 0x800400b4
+	jal f427
 		move_ $a1, $s1
 .181:
 	lw $v0, -0x7c14($s3)

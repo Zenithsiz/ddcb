@@ -15,12 +15,12 @@ f123:
 	move_ $a0, $a2
 	addiu $a1, $s2, 0x8
 	addiu $a2, $sp, 0x10
-	jal 0x8005c4b4
+	jal f817
 		addiu $a3, $sp, 0x14
 	move_ $a0, $s0
 	addiu $a1, $s2, 0x10
 	addiu $a2, $sp, 0x10
-	jal 0x8005c4b4
+	jal f817
 		addiu $a3, $sp, 0x14
 	move_ $v1, $v0
 	addiu $v0, $v1, -0x2
@@ -34,7 +34,7 @@ f123:
 	lw $a0, -0x6c60($s1)
 	nop
 	addu $a0, $s0, $a0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s2
 	beqz $s4, .1
 		nop
@@ -43,7 +43,7 @@ f123:
 	lw $a0, -0x6c60($s1)
 	nop
 	addu $a0, $s0, $a0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s3
 	j 0x8001e3a4
 		nop
@@ -53,7 +53,7 @@ f123:
 	lw $a0, -0x6c60($s1)
 	nop
 	addu $a0, $s0, $a0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s2
 	beqz $s4, .1
 		nop
@@ -62,7 +62,7 @@ f123:
 	lw $a0, -0x6c60($s1)
 	nop
 	addu $a0, $s0, $a0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s3
 .1:
 	lw $ra, 0x30($sp)

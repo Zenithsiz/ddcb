@@ -12,7 +12,7 @@ f103:
 	move_ $s1, $a2
 	lbu $s0, 0x48($sp)
 	lb $s3, 0x4c($sp)
-	jal 0x80029990
+	jal f272
 		andi $s2, $a3, 0xffff
 	bnez $v0, .1
 		lui $a0, 0x801d

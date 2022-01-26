@@ -641,7 +641,7 @@ f48:
 	sll $v0, $a1, 0x3
 	la_ $a1, 0x8006dde8
 	addiu $a0, 0x10c
-	jal 0x80067a34
+	jal f999
 		addu $a1, $v0, $a1
 	lw $v1, -0x6818($s0)
 	lw $a0, ($fp)

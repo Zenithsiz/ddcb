@@ -21,7 +21,7 @@ f52:
 	move_ $a0, $zr
 	li $a1, 0x1
 	move_ $a2, $zr
-	jal 0x80067604
+	jal f972
 		move_ $a3, $zr
 	andi $v0, 0x9ff
 	or $v0, $s3

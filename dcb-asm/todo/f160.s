@@ -62,7 +62,7 @@ f160:
 	move_ $a0, $zr
 	lw $a1, 0x69ec($v0)
 	move_ $a2, $zr
-	jal 0x80067604
+	jal f972
 		move_ $a3, $zr
 	lbu $a0, -0x6b0c($s1)
 	nop
@@ -70,7 +70,7 @@ f160:
 	addu $a0, $s4
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x800679c4
+	jal f997
 		move_ $a3, $v0
 	lbu $v0, -0x6b0c($s1)
 	nop
@@ -99,7 +99,7 @@ f160:
 	addu $a0, $v0
 	sll $a0, 0x3
 	addu $a0, $s2
-	jal 0x800676a4
+	jal f974
 		li $a1, 0x1
 	lbu $v1, -0x6b0c($s1)
 	nop
@@ -166,14 +166,14 @@ f160:
 	addu $a1, $v0
 	sll $a1, 0x3
 	addiu $a0, 0x70
-	jal 0x80067664
+	jal f973
 		addu $a1, $s2
 	lw $a0, -0x6c60($s0)
 	lbu $a1, -0x6b0c($s1)
 	nop
 	sll $a1, 0x3
 	addiu $a0, 0x70
-	jal 0x80067664
+	jal f973
 		addu $a1, $s4
 	lwi $v0, 0x801d69e0
 	nop

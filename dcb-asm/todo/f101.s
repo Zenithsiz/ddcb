@@ -70,10 +70,10 @@ f101:
 	move_ $a0, $s0
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x80067ad4
+	jal f1001
 		or $a3, $v1
 	move_ $a0, $s0
-	jal 0x800679f4
+	jal f998
 		addiu $a1, $s0, 0xc
 	lw $ra, 0x1c($sp)
 	lw $s0, 0x18($sp)

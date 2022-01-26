@@ -38,7 +38,7 @@ f86:
 	addu $v0, $s4
 	sh $v0, 0x6($s0)
 	addiu $a0, $s0, 0x4
-	jal 0x80064c2c
+	jal f925
 		addiu $a1, $s0, 0xc
 	lw $v0, ($s0)
 	nop
@@ -55,9 +55,9 @@ f86:
 	addu $v0, $s4
 	sh $v0, 0x6($s0)
 	addiu $a0, $s0, 0x4
-	jal 0x80064c2c
+	jal f925
 		addiu $a1, $s0, 0xc
-	jal 0x80064980
+	jal f921
 		move_ $a0, $zr
 	addiu $s1, -0x1
 	bgtz $s1, .0
@@ -120,13 +120,13 @@ f88:
 	addu $a0, $s0, $s5
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x80067504
+	jal f970
 		move_ $a3, $s4
 	sw $s3, 0x10($sp)
 	addu $a0, $s0, $fp
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x800675c4
+	jal f971
 		move_ $a3, $s4
 	addu $s0, $s7
 	li $v0, 0x1
@@ -145,14 +145,14 @@ f88:
 	addu $a0, $s0, $s5
 	move_ $a1, $zr
 	move_ $a2, $s1
-	jal 0x80067504
+	jal f970
 		move_ $a3, $s4
 	li $a2, 0x100
 	sw $s3, 0x10($sp)
 	addu $a0, $s0, $fp
 	move_ $a1, $zr
 	subu $a2, $s1
-	jal 0x800675c4
+	jal f971
 		move_ $a3, $s4
 	j .3
 		sll $v0, $s2, 0x6
@@ -167,14 +167,14 @@ f88:
 	addu $a0, $s0, $s5
 	move_ $a1, $zr
 	move_ $a2, $s1
-	jal 0x80067504
+	jal f970
 		move_ $a3, $s4
 	li $a2, 0xf0
 	sw $s3, 0x10($sp)
 	addu $a0, $s0, $fp
 	move_ $a1, $zr
 	subu $a2, $s1
-	jal 0x800675c4
+	jal f971
 		move_ $a3, $s4
 	sll $v0, $s2, 0x6
 .3:
@@ -198,7 +198,7 @@ f88:
 	move_ $a0, $zr
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x80067604
+	jal f972
 		move_ $a3, $zr
 	sh $v0, 0xac($s1)
 	addu $s0, $s5

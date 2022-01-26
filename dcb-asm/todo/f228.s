@@ -1,7 +1,7 @@
 f228:
 	addiu $sp, -0x18
 	sw $ra, 0x4($sp)
-	jal 0x80025c00
+	jal f229
 		nop
 	lw $ra, 0x4($sp)
 	addiu $sp, 0x18
@@ -134,7 +134,7 @@ f229:
 		nop
 	sw $ra, 0xc($sp)
 	lw $a1, 0x4($sp)
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x280
 	lw $ra, 0xc($sp)
 	bgtz $v0, .4
@@ -168,7 +168,7 @@ f229:
 	sw $t9, 0x8($sp)
 	sw $ra, 0xc($sp)
 	lw $a1, 0x4($sp)
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x400
 	lw $ra, 0xc($sp)
 	bgtz $v0, .4
@@ -195,7 +195,7 @@ f229:
 .11:
 	sw $ra, 0xc($sp)
 	lw $a1, 0x4($sp)
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x800
 	lw $ra, 0xc($sp)
 	bgtz $v0, .4
@@ -204,7 +204,7 @@ f229:
 .12:
 	sw $ra, 0xc($sp)
 	lw $a0, 0x4($sp)
-	jal 0x80026d30
+	jal f246
 		nop
 	lw $ra, 0xc($sp)
 	nop
@@ -212,7 +212,7 @@ f229:
 f230:
 	addiu $sp, -0x18
 	sw $ra, 0x4($sp)
-	jal 0x80025f08
+	jal f232
 		nop
 	lw $ra, 0x4($sp)
 	addiu $sp, 0x18

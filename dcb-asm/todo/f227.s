@@ -104,7 +104,7 @@ f227:
 	sw $ra, 0x4($sp)
 	li $a0, 0x280
 	move_ $a1, $t8
-	jal 0x80026c70
+	jal f245
 		sw $t8, 0x8($sp)
 	lw $t8, 0x8($sp)
 	lw $ra, 0x4($sp)
@@ -226,7 +226,7 @@ f227:
 	sw $ra, 0x4($sp)
 	li $a0, 0x800
 	move_ $a1, $t8
-	jal 0x80026c70
+	jal f245
 		sw $t8, 0x8($sp)
 	lw $t8, 0x8($sp)
 	lw $ra, 0x4($sp)
@@ -238,7 +238,7 @@ f227:
 	addiu $sp, -0xc
 	sw $ra, 0x4($sp)
 	move_ $a0, $t8
-	jal 0x80026d30
+	jal f246
 		sw $t8, 0x8($sp)
 	lw $t8, 0x8($sp)
 	lw $ra, 0x4($sp)

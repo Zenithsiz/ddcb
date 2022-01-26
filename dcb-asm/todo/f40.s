@@ -35,7 +35,7 @@ f40:
 	move_ $a0, $zr
 	lhu $a2, -0x6812($s1)
 	lhu $a3, -0x6810($s0)
-	jal 0x80067604
+	jal f972
 		move_ $a1, $zr
 	move_ $s4, $v0
 	move_ $s6, $zr
@@ -133,14 +133,14 @@ f40:
 	addiu $a0, $s2, 0x104
 	move_ $a1, $zr
 	li $a2, 0x1
-	jal 0x800679c4
+	jal f997
 		move_ $a3, $s4
 	sh $zr, 0x10($sp)
 	sh $zr, 0x12($sp)
 	sh $zr, 0x14($sp)
 	sh $zr, 0x16($sp)
 	addiu $a0, $s2, 0x118
-	jal 0x80067a34
+	jal f999
 		addiu $a1, $sp, 0x10
 	addiu $s5, 0x1
 	lhu $v0, -0x6814($s7)

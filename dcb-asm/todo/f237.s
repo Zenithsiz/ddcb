@@ -153,7 +153,7 @@ f240:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a1, $ra
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x280
 	lw $ra, 0x8($sp)
 	bgtz $v0, .7
@@ -230,7 +230,7 @@ f240:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a1, $ra
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x800
 	lw $ra, 0x8($sp)
 	bgtz $v0, .7
@@ -241,7 +241,7 @@ f240:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a0, $ra
-	jal 0x80026d30
+	jal f246
 		nop
 	lw $ra, 0x8($sp)
 	b .7
@@ -319,7 +319,7 @@ f241:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a1, $ra
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x280
 	lw $ra, 0x8($sp)
 	bgtz $v0, .3
@@ -355,7 +355,7 @@ f241:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a1, $ra
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x800
 	lw $ra, 0x8($sp)
 	bgtz $v0, .3
@@ -366,7 +366,7 @@ f241:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a0, $ra
-	jal 0x80026d30
+	jal f246
 		nop
 	lw $ra, 0x8($sp)
 	b .3
@@ -375,7 +375,7 @@ f241:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a1, $ra
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x400
 	lw $ra, 0x8($sp)
 	bgtz $v0, .3
@@ -434,7 +434,7 @@ f242:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a1, $ra
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x280
 	lw $ra, 0x8($sp)
 	bgtz $v0, .1
@@ -467,7 +467,7 @@ f242:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a1, $ra
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x800
 	lw $ra, 0x8($sp)
 	bgtz $v0, .1
@@ -478,7 +478,7 @@ f242:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a0, $ra
-	jal 0x80026d30
+	jal f246
 		nop
 	lw $ra, 0x8($sp)
 	b .1

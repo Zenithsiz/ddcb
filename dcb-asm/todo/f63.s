@@ -23,7 +23,7 @@ f63:
 	nop
 	sw $v0, 0x10($sp)
 	move_ $a1, $s1
-	jal 0x80028d18
+	jal f268
 		li $a3, 0x7
 .0:
 	lh $s1, 0x2($s0)
@@ -67,7 +67,7 @@ f63:
 	addiu $a0, $s0, 0x44
 	jal f54
 		addiu $a1, $sp, 0x18
-	jal 0x8002bb58
+	jal f313
 		li $a0, 0x2
 .1:
 	la_ $v1, 0x80089840
@@ -99,7 +99,7 @@ f63:
 	addiu $a0, $s0, 0x44
 	jal f54
 		addiu $a1, $sp, 0x18
-	jal 0x8002bb58
+	jal f313
 		li $a0, 0x2
 .2:
 	lh $a0, 0xac($s0)
@@ -108,7 +108,7 @@ f63:
 	sw $v0, 0x10($sp)
 	move_ $a1, $s1
 	lw $a2, 0x98($s0)
-	jal 0x80028d18
+	jal f268
 		li $a3, 0x7
 	lh $a0, 0xb0($s0)
 	lh $v0, 0x3a($s0)
@@ -116,7 +116,7 @@ f63:
 	sw $v0, 0x10($sp)
 	move_ $a1, $s1
 	lw $a2, 0x9c($s0)
-	jal 0x80028d18
+	jal f268
 		li $a3, 0x7
 	lh $a1, 0x3a($s0)
 	jal f55
@@ -155,9 +155,9 @@ f64:
 	jal f66
 		nop
 	la_ $a0, 0x800897f8
-	jal 0x8006b3e4
+	jal f1121
 		addiu $a1, $a0, 0x22
-	jal 0x8006b2d4
+	jal f1119
 		nop
 	lw $ra, 0x10($sp)
 	nop
@@ -258,17 +258,17 @@ f67:
 	j .6
 		sh $zr, 0x2($s0)
 .1:
-	jal 0x8006b104
+	jal f1117
 		move_ $a0, $s1
 	sb $v0, 0x1a($s0)
 	move_ $a0, $s1
 	li $a1, 0x1
-	jal 0x8006b1d4
+	jal f1118
 		move_ $a2, $zr
 	sb $v0, 0x1b($s0)
 	move_ $a0, $s1
 	li $a1, 0x2
-	jal 0x8006b1d4
+	jal f1118
 		move_ $a2, $zr
 	sh $v0, 0x1c($s0)
 	lbu $v0, 0x1a($s0)

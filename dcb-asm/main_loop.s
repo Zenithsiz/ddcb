@@ -1,19 +1,19 @@
 main_loop:
 	addiu $sp, -0x30
 	sw $ra, 0x28($sp)
-	jal 0x80056330
+	jal f696
 		nop
-	jal 0x800565f4
+	jal f700
 		nop
-	jal 0x800563e4
+	jal f698
 		move_ $a0, $zr
-	jal 0x800648e8
+	jal f920
 		move_ $a0, $zr
 	sw $zr, 0x10($sp)
 	li $a0, 0x140
 	li $a1, 0xf0
 	move_ $a2, $zr
-	jal 0x800618e4
+	jal f877
 		move_ $a3, $zr
 	sh $zr, 0x20($sp)
 	sh $zr, 0x22($sp)
@@ -24,11 +24,11 @@ main_loop:
 	addiu $a0, $sp, 0x20
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x80064b04
+	jal f923
 		move_ $a3, $zr
-	jal 0x80064980
+	jal f921
 		move_ $a0, $zr
-	jal 0x8004c570
+	jal f556
 		nop
 	jal f69
 		li $a0, 1
@@ -41,9 +41,7 @@ main_loop:
 	jal f13
 		move_ $a3, $zr
 .0:
-	jal 0x80069124
+	jal f1053
 		nop
 	j .0
 		nop
-.1:
-	

@@ -102,13 +102,13 @@
 		nop
 	sb $zr, 0xa5($s0)
 	sb $s2, 0xb4($s0)
-	jal 0x8002bb58
+	jal f313
 		move_ $a0, $zr
 	j 0x8001a380
 		move_ $a0, $s0
 .6:
 	sb $s2, 0xb4($s0)
-	jal 0x8002bb58
+	jal f313
 		li $a0, 0x1
 	move_ $a0, $s0
 	jal f43

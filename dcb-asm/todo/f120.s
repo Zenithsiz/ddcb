@@ -24,7 +24,7 @@ f120:
 	sw $v0, 0x18($sp)
 	addiu $v0, $sp, 0x2c
 	sw $v0, 0x1c($sp)
-	jal 0x8005c4e4
+	jal f818
 		addiu $a3, $s1, 0x8
 	j 0x8001df04
 		sw $v0, 0x30($sp)
@@ -39,7 +39,7 @@ f120:
 	sw $v0, 0x1c($sp)
 	addiu $v0, $sp, 0x2c
 	sw $v0, 0x20($sp)
-	jal 0x8005c7b4
+	jal f824
 		addiu $a3, $s1, 0x8
 	blez $v0, .2
 		nop
@@ -57,7 +57,7 @@ f120:
 	lw $v0, -0x6c60($s0)
 	nop
 	addu $a0, $v0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s1
 	beqz $s4, .2
 		nop
@@ -70,7 +70,7 @@ f120:
 	lw $v0, -0x6c60($s0)
 	nop
 	addu $a0, $v0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s3
 	j 0x8001dfc0
 		nop
@@ -80,7 +80,7 @@ f120:
 	lw $a0, -0x6c60($s2)
 	nop
 	addu $a0, $s0, $a0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s1
 	beqz $s4, .2
 		nop
@@ -89,7 +89,7 @@ f120:
 	lw $a0, -0x6c60($s2)
 	nop
 	addu $a0, $s0, $a0
-	jal 0x80067664
+	jal f973
 		move_ $a1, $s3
 .2:
 	lw $ra, 0x4c($sp)

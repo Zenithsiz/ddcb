@@ -26,7 +26,7 @@ f85:
 	beqz $v0, .1
 		addiu $s0, 0x4
 	addiu $a0, $s0, 0x4
-	jal 0x80064c2c
+	jal f925
 		addiu $a1, $s0, 0xc
 	lw $v0, ($s0)
 	nop
@@ -35,9 +35,9 @@ f85:
 	addu $s0, $v0
 .1:
 	addiu $a0, $s0, 0x4
-	jal 0x80064c2c
+	jal f925
 		addiu $a1, $s0, 0xc
-	jal 0x80064980
+	jal f921
 		move_ $a0, $zr
 	addiu $s1, -0x1
 	bgtz $s1, .0

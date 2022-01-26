@@ -18,21 +18,21 @@ f105:
 	lw $s6, 0x50($sp)
 	lbu $s3, 0x54($sp)
 	lbu $s0, 0x58($sp)
-	jal 0x80067724
+	jal f977
 		move_ $s1, $a3
 	sh $s1, 0x16($s4)
 	sh $s2, 0xe($s4)
 	move_ $a0, $s4
-	jal 0x800676d4
+	jal f975
 		xori $a1, $s0, 0x1
 	beqz $s3, .0
 		move_ $a0, $s4
-	jal 0x800676a4
+	jal f974
 		li $a1, 0x1
 	j 0x8001c898
 		nop
 .0:
-	jal 0x800676a4
+	jal f974
 		move_ $a1, $zr
 	beqz $s7, .1
 		nop

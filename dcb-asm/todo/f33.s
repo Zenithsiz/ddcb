@@ -13,12 +13,12 @@ f33:
 	blez $v0, .6
 		li $v0, -0x1
 	lw $a0, 0x1c($s1)
-	jal 0x8005a234
+	jal f763
 		addiu $a1, $s1, 0x4
 	li $a0, 0x2
 .0:
 	addiu $a1, $s1, 0x4
-	jal 0x8005a634
+	jal f770
 		addiu $a2, $sp, 0x10
 	beqz $v0, .0
 		li $a0, 0x2
@@ -27,7 +27,7 @@ f33:
 	sw $s0, 0x2c($s1)
 	li $a0, 0x2
 	move_ $a1, $s0
-	jal 0x8005aed4
+	jal f778
 		li $a2, 0x80
 	beqz $v0, .1
 		li $a0, 0x1
@@ -38,7 +38,7 @@ f33:
 		li $a0, 0x1
 	li $a0, 0x1
 .3:
-	jal 0x8005b070
+	jal f779
 		move_ $a1, $zr
 	bgtz $v0, .2
 		nop

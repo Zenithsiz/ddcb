@@ -78,7 +78,7 @@ f102:
 .6:
 	sh $v1, 0x16($sp)
 	addiu $a0, $sp, 0x10
-	jal 0x80064c2c
+	jal f925
 		move_ $a1, $s2
 	lhu $v1, 0x16($sp)
 	lh $v0, 0x16($sp)
@@ -92,7 +92,7 @@ f102:
 	bnez $v0, .5
 		subu $a0, $s3, $s0
 .7:
-	jal 0x80064980
+	jal f921
 		move_ $a0, $zr
 	jal f75
 		move_ $a0, $s2

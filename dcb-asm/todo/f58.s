@@ -34,7 +34,7 @@ f58:
 	andi $v0, 0x1000
 	beqz $v0, .1
 		lui $v1, 0x8009
-	jal 0x8002bb58
+	jal f313
 		li $a0, 0x2
 	li $v0, 0x1
 	sb $v0, 0x27($s0)
@@ -85,7 +85,7 @@ f58:
 	andi $v0, 0x4000
 	beqz $v0, .3
 		lui $v1, 0x8009
-	jal 0x8002bb58
+	jal f313
 		li $a0, 0x2
 	li $v0, 0x1
 	sb $v0, 0x27($s0)
@@ -152,7 +152,7 @@ f58:
 	nop
 	beqz $v0, .4
 		li $v0, 0x1
-	jal 0x8002bb58
+	jal f313
 		li $a0, 0x2
 	li $v0, 0x1
 .4:
@@ -243,7 +243,7 @@ f58:
 	addiu $v0, -0x1
 	beq $v1, $v0, .11
 		li $v0, 0x1
-	jal 0x8002bb58
+	jal f313
 		li $a0, 0x2
 	li $v0, 0x1
 .11:

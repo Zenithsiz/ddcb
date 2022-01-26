@@ -8,7 +8,7 @@ f1:
 	move_ $s0, $a0
 	move_ $s1, $a1
 	move_ $s2, $a2
-	jal 0x8006a804
+	jal f1082
 		move_ $s3, $a3
 	lui $v0, 0x8007
 	sw $s0, 0x7a08($v0)
@@ -101,20 +101,20 @@ f1:
 	li $a1, 0x2
 	li $a2, 0x1000
 	lui $a3, %hi(f2)
-	jal 0x8006a794
+	jal f1075
 		addiu $a3, %lo(f2)
 	move_ $s0, $v0
-	jal 0x8006a7c4
+	jal f1078
 		move_ $a0, $s0
 	li $a0, 0xf2000003
 	li $a1, 0x1
-	jal 0x8006a8a4
+	jal f1092
 		li $a2, 0x1000
 	lui $a0, 0xf200
-	jal 0x8006a978
+	jal f1094
 		ori $a0, 0x3
 	lui $v0, 0x8007
-	jal 0x8006a814
+	jal f1083
 		sw $s0, 0x7ad8($v0)
 	j 0x8001419c
 		move_ $v0, $zr

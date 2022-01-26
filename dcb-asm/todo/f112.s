@@ -16,11 +16,11 @@ f112:
 	lw $s5, 0x4c($sp)
 	lw $s7, 0x50($sp)
 	lbu $s0, 0x54($sp)
-	jal 0x80067904
+	jal f992
 		move_ $s3, $a3
 	beqz $s0, .0
 		move_ $a0, $s1
-	jal 0x800676a4
+	jal f974
 		li $a1, 0x1
 .0:
 	beqz $s2, .1
@@ -57,24 +57,24 @@ f112:
 	move_ $a0, $zr
 	move_ $a1, $s6
 	move_ $a2, $zr
-	jal 0x80067604
+	jal f972
 		move_ $a3, $zr
 	move_ $a0, $s5
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x800679c4
+	jal f997
 		move_ $a3, $v0
 .3:
 	beqz $s7, .4
 		move_ $a0, $zr
 	move_ $a1, $s6
 	move_ $a2, $zr
-	jal 0x80067604
+	jal f972
 		move_ $a3, $zr
 	move_ $a0, $s7
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x800679c4
+	jal f997
 		move_ $a3, $v0
 .4:
 	lw $ra, 0x30($sp)

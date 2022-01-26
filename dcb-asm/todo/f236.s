@@ -42,7 +42,7 @@ f236:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a1, $ra
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x800
 	lw $ra, 0x8($sp)
 	bgtz $v0, .0
@@ -52,7 +52,7 @@ f236:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a1, $ra
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x800
 	lw $ra, 0x8($sp)
 	bgtz $v0, .0
@@ -63,7 +63,7 @@ f236:
 	addiu $sp, -0xc
 	sw $ra, 0x8($sp)
 	move_ $a1, $ra
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x800
 	lw $ra, 0x8($sp)
 	bgtz $v0, .0

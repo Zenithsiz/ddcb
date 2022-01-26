@@ -77,7 +77,7 @@ f232:
 		nop
 	sw $ra, 0xc($sp)
 	lw $a1, 0x4($sp)
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x280
 	lw $ra, 0xc($sp)
 	bgtz $v0, .3
@@ -121,7 +121,7 @@ f232:
 .8:
 	sw $ra, 0xc($sp)
 	lw $a1, 0x4($sp)
-	jal 0x80026c70
+	jal f245
 		li $a0, 0x800
 	lw $ra, 0xc($sp)
 	bgtz $v0, .3
@@ -132,7 +132,7 @@ f232:
 .9:
 	sw $ra, 0xc($sp)
 	lw $a0, 0x4($sp)
-	jal 0x80026d30
+	jal f246
 		nop
 	lw $ra, 0xc($sp)
 	b .3

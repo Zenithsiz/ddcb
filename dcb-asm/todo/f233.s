@@ -88,7 +88,7 @@ f233:
 
 f234:
 	move_ $t8, $ra
-	jal 0x8002627c
+	jal f235
 		nop
 	move_ $v1, $a1
 	jr $t8

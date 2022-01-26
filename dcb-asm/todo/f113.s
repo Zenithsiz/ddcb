@@ -14,11 +14,11 @@ f113:
 	lw $s4, 0x40($sp)
 	lw $s6, 0x44($sp)
 	lbu $s0, 0x48($sp)
-	jal 0x800678e4
+	jal f991
 		move_ $s5, $a3
 	beqz $s0, .0
 		move_ $a0, $s1
-	jal 0x800676a4
+	jal f974
 		li $a1, 0x1
 .0:
 	beqz $s2, .1
@@ -44,24 +44,24 @@ f113:
 	move_ $a0, $zr
 	move_ $a1, $s5
 	move_ $a2, $zr
-	jal 0x80067604
+	jal f972
 		move_ $a3, $zr
 	move_ $a0, $s4
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x800679c4
+	jal f997
 		move_ $a3, $v0
 .2:
 	beqz $s6, .3
 		move_ $a0, $zr
 	move_ $a1, $s5
 	move_ $a2, $zr
-	jal 0x80067604
+	jal f972
 		move_ $a3, $zr
 	move_ $a0, $s6
 	move_ $a1, $zr
 	move_ $a2, $zr
-	jal 0x800679c4
+	jal f997
 		move_ $a3, $v0
 .3:
 	lw $ra, 0x2c($sp)
