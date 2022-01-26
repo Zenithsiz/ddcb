@@ -13,14 +13,13 @@ f227:
 	sll $v0, $a1, 0x1
 	addu $t7, $t6, $v0
 	sltu $at, $t6, $t7
-	beqz $at, .0x80025af4
+	beqz $at, .15
 		sll $v1, $a3, 0x1
 	addu $t7, $t6, $v1
 	sltu $at, $t6, $t7
-	beqz $at, .0x80025af4
+	beqz $at, .15
 		nop
 .0:
-.0x8002589c:
 	sll $t1, $a1, 0xb
 	srl $t6, $a0, 0x16
 	sll $t3, $a3, 0xb
@@ -138,7 +137,7 @@ f227:
 	bnez $at, .9
 		li $t6, 0x1f
 	li $at, 0x0
-	beq $t0, $at, .0x80025adc
+	beq $t0, $at, .14
 		nop
 .8:
 	sll $t0, 0x1
@@ -160,7 +159,7 @@ f227:
 .11:
 	subu $v0, $t6
 	slti $at, $v0, 0x0
-	bnez $at, .0x80025bac
+	bnez $at, .19
 		nop
 .12:
 	sll $t1, 0x1
@@ -176,53 +175,52 @@ f227:
 	or $a0, $t7
 	or $a1, $t4
 .13:
-.0x80025ad4:
 	jr $ra
 		nop
-.0x80025adc:
+.14:
 	li $a0, 0x0
-	b .0x80025ad4
+	b .13
 		li $a1, 0x0
 	li $a0, 0x0
-	b .0x80025ad4
+	b .13
 		move_ $a1, $t4
-.0x80025af4:
+.15:
 	lui $t6, 0xffe0
-	beq $t6, $v0, .0x80025b58
+	beq $t6, $v0, .18
 		sltu $at, $t6, $v0
-	bnez $at, .0x80025bac
+	bnez $at, .19
 		nop
-	beq $t6, $v1, .0x80025b4c
+	beq $t6, $v1, .17
 		sltu $at, $t6, $v1
-	bnez $at, .0x80025bac
+	bnez $at, .19
 		nop
 	or $t7, $a0, $v0
 	li $at, 0x0
-	beq $t7, $at, .0x80025b3c
+	beq $t7, $at, .16
 		nop
 	or $t7, $a2, $v1
-	bne $t7, $at, .0x8002589c
+	bne $t7, $at, .0
 		nop
-	b .0x80025ad4
+	b .13
 		nop
-.0x80025b3c:
+.16:
 	or $t7, $a2, $v1
 	li $at, 0x0
-	beq $t7, $at, .0x80025bd0
+	beq $t7, $at, .20
 		nop
-.0x80025b4c:
+.17:
 	move_ $a0, $a2
-	b .0x80025ad4
+	b .13
 		move_ $a1, $a3
-.0x80025b58:
+.18:
 	sltu $at, $t6, $v1
-	bnez $at, .0x80025bac
+	bnez $at, .19
 		sltu $at, $v1, $t6
-	bnez $at, .0x80025ad4
+	bnez $at, .13
 		nop
 	xor $t6, $a3, $a1
 	slti $at, $t6, 0x0
-	beqz $at, .0x80025ad4
+	beqz $at, .13
 		nop
 	addiu $sp, -0xc
 	sw $ra, 0x4($sp)
@@ -232,11 +230,11 @@ f227:
 		sw $t8, 0x8($sp)
 	lw $t8, 0x8($sp)
 	lw $ra, 0x4($sp)
-	bgtz $v0, .0x80025ad4
+	bgtz $v0, .13
 		addiu $sp, 0xc
-	b .0x80025ad4
+	b .13
 		li $a0, -0x1
-.0x80025bac:
+.19:
 	addiu $sp, -0xc
 	sw $ra, 0x4($sp)
 	move_ $a0, $t8
@@ -244,9 +242,9 @@ f227:
 		sw $t8, 0x8($sp)
 	lw $t8, 0x8($sp)
 	lw $ra, 0x4($sp)
-	b .0x80025ad4
+	b .13
 		addiu $sp, 0xc
-.0x80025bd0:
+.20:
 	and $a1, $a3, $a1
-	b .0x80025ad4
+	b .13
 		li $a0, 0x0
