@@ -94,7 +94,7 @@ f125:
 	move_ $a1, $a3
 	jal f128
 		move_ $a2, $a3
-	j 0x8001e690
+	j f125.4
 		nop
 	move_ $a0, $s0
 	jal f974

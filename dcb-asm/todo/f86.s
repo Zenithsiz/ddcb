@@ -245,7 +245,7 @@ f89:
 		move_ $v0, $a0
 .3:
 	lw $v0, 0x4($v1)
-	j 0x8001bb4c
+	j f89.0
 		addu $a0, $v0
 .4:
 	jr $ra

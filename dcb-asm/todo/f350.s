@@ -3987,7 +3987,7 @@ f389:
 		li $v0, 0xd
 	beq $v1, $v0, .16
 		nop
-	j 0x80032a68
+	j f389.21
 		nop
 .12:
 	lui $a1, 0x8008
@@ -4149,7 +4149,7 @@ f389:
 	slt $v0, $s5, $v0
 	bnez $v0, .13
 		addiu $s3, 0x30
-	j 0x80032a68
+	j f389.21
 		nop
 .16:
 	lb $v0, 0x1ad($s1)
@@ -4767,12 +4767,12 @@ f391:
 		li $v0, 0x2
 	beqz $v1, .19
 		sll $v1, $s4, 0xc
-	j 0x80033184
+	j f391.26
 		sh $s7, 0x34($s1)
 .18:
 	beq $v1, $v0, .23
 		nop
-	j 0x80033184
+	j f391.26
 		sh $s7, 0x34($s1)
 .19:
 	lhu $v0, 0x152($s2)
@@ -5080,7 +5080,7 @@ f392:
 	slt $v0, $s7, $v0
 	bnez $v0, .3
 		addiu $s3, 0x88
-	j 0x80033c90
+	j f392.34
 		nop
 .9:
 	lhu $v0, 0x152($s5)
@@ -5266,7 +5266,7 @@ f392:
 	slt $v0, $s7, $v0
 	bnez $v0, .10
 		addiu $s3, 0x88
-	j 0x80033c90
+	j f392.34
 		nop
 .18:
 	lbu $v0, 0x147($s5)
@@ -5393,7 +5393,7 @@ f392:
 	slt $v0, $s7, $v0
 	bnez $v0, .19
 		addiu $s3, 0x88
-	j 0x80033c90
+	j f392.34
 		nop
 .25:
 	lhu $v0, 0x152($s5)
@@ -5644,7 +5644,7 @@ f395:
 		lui $v0, 0x801e
 	jal f17
 		sb $zr, 0x815($v1)
-	j 0x80033e6c
+	j f395.2
 		li $v0, -0x1
 .0:
 	la_ $v1, 0x801d8348

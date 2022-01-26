@@ -778,13 +778,13 @@ f225:
 	move_ $t0, $v0
 	bnez $t0, .5
 		lui $v0, 0x1
-	j 0x80024f68
+	j f225.7
 		move_ $t0, $v1
 .5:
 	slt $v0, $v0, $t0
 	beqz $v0, .6
 		lui $v0, 0xffff
-	j 0x80024f68
+	j f225.7
 		li $t0, 0x8000
 .6:
 	slt $v0, $t0, $v0
@@ -814,13 +814,13 @@ f225:
 	move_ $t0, $v0
 	bnez $t0, .10
 		lui $v0, 0x1
-	j 0x80024fe4
+	j f225.12
 		move_ $t0, $v1
 .10:
 	slt $v0, $v0, $t0
 	beqz $v0, .11
 		lui $v0, 0xffff
-	j 0x80024fe4
+	j f225.12
 		li $t0, 0x8000
 .11:
 	slt $v0, $t0, $v0
@@ -852,13 +852,13 @@ f225:
 		lui $v0, 0x1
 	blez $v1, .17
 		li $t0, -0x1
-	j 0x80025068
+	j f225.17
 		li $t0, 0x1
 .15:
 	slt $v0, $v0, $t0
 	beqz $v0, .16
 		lui $v0, 0xffff
-	j 0x80025068
+	j f225.17
 		li $t0, 0x8000
 .16:
 	slt $v0, $t0, $v0

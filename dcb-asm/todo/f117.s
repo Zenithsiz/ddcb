@@ -72,7 +72,7 @@ f117:
 	addu $a0, $v0
 	jal f973
 		move_ $a1, $s3
-	j 0x8001db8c
+	j f117.2
 		nop
 .1:
 	sll $v0, $s0, 0x2

@@ -17,7 +17,7 @@ f124:
 	beqz $v0, .2
 		sll $v0, $t1, 0x10
 	sra $a2, $v0, 0x10
-	j 0x8001e440
+	j f124.2
 		li $t0, 0x1
 .0:
 	slt $v0, $t1, $a2

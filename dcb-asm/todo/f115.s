@@ -59,7 +59,7 @@ f115:
 	addu $a0, $v0
 	jal f973
 		move_ $a1, $s0
-	j 0x8001d8ec
+	j f115.2
 		nop
 .1:
 	sll $a0, $s1, 0x2

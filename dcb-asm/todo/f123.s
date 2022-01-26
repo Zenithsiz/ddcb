@@ -45,7 +45,7 @@ f123:
 	addu $a0, $s0, $a0
 	jal f973
 		move_ $a1, $s3
-	j 0x8001e3a4
+	j f123.1
 		nop
 .0:
 	sll $v0, $s5, 0x2

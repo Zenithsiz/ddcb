@@ -1386,7 +1386,7 @@ f218:
 	move_ $a2, $s5
 	jal f175
 		move_ $a3, $fp
-	j 0x80024350
+	j f218.7
 		move_ $s5, $v0
 .6:
 	lw $v0, 0x8($s0)

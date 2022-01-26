@@ -10,7 +10,7 @@ f77:
 		li $v0, 0x400
 	bltz $s1, .3
 		li $v0, -0x400
-	j 0x8001b0f8
+	j f77.3
 		move_ $v0, $zr
 .0:
 	sll $a0, $s1, 0xc
@@ -26,7 +26,7 @@ f77:
 		nop
 	bgtz $s1, .2
 		nop
-	j 0x8001b0f8
+	j f77.3
 		addiu $v0, -0x800
 .2:
 	addiu $v0, 0x800

@@ -28,7 +28,7 @@ f99:
 	move_ $a1, $s2
 	jal f100
 		move_ $a2, $s5
-	j 0x8001c1b0
+	j f99.6
 		nop
 .0:
 	beqz $s7, .6

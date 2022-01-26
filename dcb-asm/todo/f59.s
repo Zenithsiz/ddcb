@@ -161,7 +161,7 @@ f60:
 	sw $s0, 0x28($sp)
 	jal f8
 		move_ $s0, $a0
-	la_ $v1, 0x8001a1d8
+	la_ $v1, f62
 	sw $v1, 0x10($sp)
 	sw $s0, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -190,7 +190,7 @@ f61:
 	jal f8
 		move_ $s0, $a1
 	sb $s0, 0xa6($s1)
-	la_ $v1, 0x8001a1d8
+	la_ $v1, f62
 	sw $v1, 0x10($sp)
 	sw $s1, 0x14($sp)
 	sw $v0, 0x18($sp)
