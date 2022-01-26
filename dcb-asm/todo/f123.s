@@ -25,9 +25,9 @@ f123:
 	move_ $v1, $v0
 	addiu $v0, $v1, -0x2
 	sltiu $v0, $v0, 0xfff
-	beqz $v0, .0x8001e3a4
+	beqz $v0, .1
 		nop
-	bnez $s5, .0x8001e364
+	bnez $s5, .0
 		lui $s1, 0x8008
 	sll $v0, $v1, 0x2
 	addiu $s0, $v0, 0x70
@@ -36,9 +36,9 @@ f123:
 	addu $a0, $s0, $a0
 	jal 0x80067664
 		move_ $a1, $s2
-	beqz $s4, .0x8001e3a4
+	beqz $s4, .1
 		nop
-	beqz $s3, .0x8001e3a4
+	beqz $s3, .1
 		nop
 	lw $a0, -0x6c60($s1)
 	nop
@@ -47,7 +47,7 @@ f123:
 		move_ $a1, $s3
 	j 0x8001e3a4
 		nop
-.0x8001e364:
+.0:
 	sll $v0, $s5, 0x2
 	addiu $s0, $v0, 0x70
 	lw $a0, -0x6c60($s1)
@@ -55,16 +55,16 @@ f123:
 	addu $a0, $s0, $a0
 	jal 0x80067664
 		move_ $a1, $s2
-	beqz $s4, .0x8001e3a4
+	beqz $s4, .1
 		nop
-	beqz $s3, .0x8001e3a4
+	beqz $s3, .1
 		nop
 	lw $a0, -0x6c60($s1)
 	nop
 	addu $a0, $s0, $a0
 	jal 0x80067664
 		move_ $a1, $s3
-.0x8001e3a4:
+.1:
 	lw $ra, 0x30($sp)
 	lw $s5, 0x2c($sp)
 	lw $s4, 0x28($sp)

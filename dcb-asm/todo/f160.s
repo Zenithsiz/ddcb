@@ -11,19 +11,19 @@ f160:
 	move_ $s3, $a1
 	lwi $v0, 0x801d69e0
 	nop
-	beqz $v0, .0x8001f0f4
+	beqz $v0, .1
 		move_ $s4, $a2
 	lui $s1, 0x8008
 	lui $s0, 0x801d
-.0x8001f0d8:
+.0:
 	lw $a0, -0x6b10($s1)
 	jal f19
 		nop
 	lw $v0, 0x69e0($s0)
 	nop
-	bnez $v0, .0x8001f0d8
+	bnez $v0, .0
 		nop
-.0x8001f0f4:
+.1:
 	lui $v0, 0x801d
 	sw $s2, 0x69e8($v0)
 	lui $v0, 0x801d
@@ -45,20 +45,20 @@ f160:
 	addiu $s2, $v0, 0x69a0
 	j 0x8001f344
 		li $s3, 0x140
-.0x8001f148:
+.2:
 	lw $v0, 0x69e4($a0)
 	lw $v1, 0x69f0($s5)
 	nop
 	addu $v0, $v1
 	sw $v0, 0x69e4($a0)
 	slti $v0, $v0, 0x100
-	bnez $v0, .0x8001f174
+	bnez $v0, .4
 		lui $v0, 0x801d
 	li $v0, 0xff
 	sw $v0, 0x69e4($a0)
-.0x8001f170:
+.3:
 	lui $v0, 0x801d
-.0x8001f174:
+.4:
 	move_ $a0, $zr
 	lw $a1, 0x69ec($v0)
 	move_ $a2, $zr
@@ -177,23 +177,23 @@ f160:
 		addu $a1, $s4
 	lwi $v0, 0x801d69e0
 	nop
-	beqz $v0, .0x8001f394
+	beqz $v0, .5
 		lui $v0, 0x8008
 	lw $a0, -0x6b10($v0)
 	jal f19
 		nop
 	lwi $v0, 0x801d69e8
 	nop
-	beqz $v0, .0x8001f148
+	beqz $v0, .2
 		lui $a0, 0x801d
 	lw $v1, 0x69e4($a0)
 	lw $v0, 0x69f0($s5)
 	nop
 	subu $v1, $v0
-	bgez $v1, .0x8001f170
+	bgez $v1, .3
 		sw $v1, 0x69e4($a0)
 	sw $zr, 0x69e4($a0)
-.0x8001f394:
+.5:
 	lui $v0, 0x801d
 	sw $zr, 0x69e0($v0)
 	lw $ra, 0x28($sp)
