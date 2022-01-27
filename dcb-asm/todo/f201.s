@@ -1181,7 +1181,7 @@ f218:
 	cfc2 $t5, $31
 	nop
 	sw $t5, ($t4)
-	j 0x8002403c
+	j .11
 		lui $s0, 0x801d
 .1:
 	sw $zr, 0x2c($sp)
@@ -1195,6 +1195,7 @@ f218:
 	jal f349
 		move_ $a0, $s1
 	lui $s0, 0x801d
+.11:
 	lw $a1, 0x6a4c($s0)
 	nop
 	addu $v0, $a1, $s4
@@ -1225,7 +1226,7 @@ f218:
 	move_ $a0, $s0
 	jal f810
 		addiu $a1, $s1, 0x18
-	j 0x80024210
+	j .12
 		lui $v1, 0x1f80
 .2:
 	lw $v0, 0x6a4c($a0)
@@ -1237,7 +1238,7 @@ f218:
 		addiu $a0, $sp, 0x98
 	jal f805
 		addiu $s4, 0x1
-	j 0x80024378
+	j .13
 		slti $v0, $s4, 0x18
 .3:
 	lw $s0, 0x26e0($s1)
@@ -1314,6 +1315,7 @@ f218:
 	li $v1, 0x2
 	sb $v1, 0x114($v0)
 	lui $v1, 0x1f80
+.12:
 	lw $v0, 0x26d4($s1)
 	nop
 	sw $v0, 0x30($v1)
@@ -1409,6 +1411,7 @@ f218:
 .9:
 	addiu $s4, 0x1
 	slti $v0, $s4, 0x18
+.13:
 	bnez $v0, .0
 		lui $v1, 0x801d
 .10:

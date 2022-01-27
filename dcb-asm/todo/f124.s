@@ -37,7 +37,7 @@ f124:
 		addu $v0, $v1, $t3
 	sll $v0, 0x10
 	sra $v1, $v0, 0x10
-	j 0x8001e474
+	j .9
 		slt $v0, $t2, $v1
 .3:
 	slt $v0, $t2, $v1
@@ -46,6 +46,7 @@ f124:
 	sll $v0, 0x10
 	sra $v1, $v0, 0x10
 	slt $v0, $v1, $t2
+.9:
 	beqz $v0, .5
 		sll $v0, $t2, 0x10
 	sra $v1, $v0, 0x10
@@ -57,7 +58,7 @@ f124:
 		addu $v0, $a0, $t3
 	sll $v0, 0x10
 	sra $a0, $v0, 0x10
-	j 0x8001e4bc
+	j .10
 		slt $v0, $t4, $a0
 .6:
 	slt $v0, $t4, $a0
@@ -67,6 +68,7 @@ f124:
 	sll $v0, 0x10
 	sra $a0, $v0, 0x10
 	slt $v0, $a0, $t4
+.10:
 	beqz $v0, .8
 		nop
 	sll $v0, $t4, 0x10

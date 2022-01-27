@@ -25,7 +25,7 @@ f125:
 	move_ $a2, $zr
 	jal f128
 		move_ $a3, $zr
-	j 0x8001e570
+	j .5
 		move_ $a0, $s0
 .0:
 	li $a1, 0x80
@@ -33,9 +33,10 @@ f125:
 	jal f128
 		li $a3, 0x80
 	move_ $a0, $s0
+.5:
 	jal f974
 		li $a1, 0x1
-	j 0x8001e68c
+	j .6
 		li $v0, 0x1
 	bnez $a0, .1
 		move_ $a0, $s0
@@ -43,7 +44,7 @@ f125:
 	move_ $a2, $zr
 	jal f128
 		move_ $a3, $zr
-	j 0x8001e5b4
+	j .7
 		move_ $a0, $s0
 .1:
 	li $a1, 0x80
@@ -51,9 +52,10 @@ f125:
 	jal f128
 		li $a3, 0x80
 	move_ $a0, $s0
+.7:
 	jal f974
 		li $a1, 0x1
-	j 0x8001e68c
+	j .6
 		li $v0, 0x2
 	lbu $a1, 0x4($s0)
 	bnez $a0, .2
@@ -72,7 +74,7 @@ f125:
 	li $a2, 0x80
 	jal f128
 		li $a3, 0x80
-	j 0x8001e68c
+	j .6
 		li $v0, 0x3
 .2:
 	sll $v0, 0x10
@@ -87,7 +89,7 @@ f125:
 	li $a2, 0x80
 	jal f128
 		li $a3, 0x80
-	j 0x8001e68c
+	j .6
 		li $v0, 0x3
 .3:
 	move_ $a0, $s0
@@ -104,9 +106,10 @@ f125:
 	li $a2, 0x80
 	jal f128
 		li $a3, 0x80
-	j 0x8001e68c
+	j .6
 		li $v0, 0x4
 	li $v0, 0x5
+.6:
 	sb $v0, ($s1)
 .4:
 	lw $ra, 0x18($sp)
@@ -251,11 +254,12 @@ f132:
 		nop
 	jal f140
 		nop
-	j 0x8001e884
+	j .1
 		nop
 .0:
 	jal f139
 		nop
+.1:
 	lw $ra, 0x10($sp)
 	nop
 	jr $ra

@@ -81,6 +81,7 @@ f226:
 	li $s3, 0x1f800014
 	li $s7, 0x1f80003c
 	sw $zr, 0x1c($s3)
+.14:
 	sw $zr, 0x18($s3)
 	sw $zr, 0x14($s3)
 	move_ $t4, $s3
@@ -214,7 +215,7 @@ f226:
 	lw $t7, 0x1c($t4)
 	ctc2 $t6, $6
 	ctc2 $t7, $7
-	j 0x800257c0
+	j .12
 		lui $v0, 0x801d
 .5:
 	lw $v1, 0x6a4c($v0)
@@ -244,7 +245,7 @@ f226:
 	li $s5, 0x1
 .6:
 	lw $a3, 0x10($s1)
-	j 0x80025578
+	j .13
 		sw $a3, 0x14($sp)
 .7:
 	lui $v0, 0x801d
@@ -278,6 +279,7 @@ f226:
 	nop
 	addu $v0, $v1
 	sw $v0, 0x14($sp)
+.13:
 	lui $v0, 0x801d
 	addiu $a1, $v0, 0x6a78
 	lw $v0, ($s2)
@@ -424,6 +426,7 @@ f226:
 	ctc2 $t6, $6
 	ctc2 $t7, $7
 	lui $v0, 0x801d
+.12:
 	lw $v1, 0x6a4c($v0)
 	lw $v0, ($s3)
 	nop
@@ -453,7 +456,7 @@ f226:
 	lw $a0, -0x6b10($v0)
 	jal f19
 		nop
-	j 0x80025250
+	j .14
 		sw $zr, 0x1c($s3)
 	lui $at, 0x8000
 	xor $v1, $a1, $at

@@ -43,7 +43,7 @@ f160:
 	addiu $s4, $v0, 0x69d0
 	lui $v0, 0x801d
 	addiu $s2, $v0, 0x69a0
-	j 0x8001f344
+	j .6
 		li $s3, 0x140
 .2:
 	lw $v0, 0x69e4($a0)
@@ -175,6 +175,7 @@ f160:
 	addiu $a0, 0x70
 	jal f973
 		addu $a1, $s4
+.6:
 	lwi $v0, 0x801d69e0
 	nop
 	beqz $v0, .5

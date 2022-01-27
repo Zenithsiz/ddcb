@@ -1,14 +1,16 @@
 f227:
 	lui $at, 0x8000
 	xor $a3, $at
+.22:
 	move_ $t8, $ra
-	jal 0x80025874
+	jal .21
 		nop
 	move_ $v1, $a1
 	jr $t8
 		move_ $v0, $a0
 	lui $at, 0x8000
 	xor $a3, $at
+.21:
 	lui $t6, 0x20
 	sll $v0, $a1, 0x1
 	addu $t7, $t6, $v0

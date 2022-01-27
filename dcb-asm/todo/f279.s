@@ -61,13 +61,14 @@ f280:
 		move_ $a3, $a2
 	li $v0, 0x2b
 	sb $v0, ($a0)
-	j 0x8002a800
+	j .1
 		addiu $a0, 0x1
 .0:
 	li $v0, 0x2d
 	sb $v0, ($a0)
 	addiu $a0, 0x1
 	subu $v1, $zr, $v1
+.1:
 	li $a1, 0x30
 	move_ $a2, $v1
 	jal f279
@@ -88,39 +89,42 @@ f281:
 		li $v0, 0x1
 	beq $a2, $v0, .1
 		slti $v0, $a2, 0xa
-	j 0x8002a888
+	j .6
 		nop
 .0:
 	li $v0, 0x3
 	beq $a2, $v0, .3
 		slti $v0, $a2, 0xa
-	j 0x8002a888
+	j .6
 		nop
 .1:
 	lui $v0, %hi(S_0x80010544)
-	j 0x8002a8bc
+	j .7
 		addiu $a1, $v0, %lo(S_0x80010544)
 .2:
 	lui $v0, %hi(S_0x80010548)
-	j 0x8002a8bc
+	j .7
 		addiu $a1, $v0, %lo(S_0x80010548)
 .3:
 	lui $v0, %hi(S_0x8001054c)
-	j 0x8002a8bc
+	j .7
 		addiu $a1, $v0, %lo(S_0x8001054c)
+.6:
 	beqz $v0, .4
 		li $a1, 0x20
+.5:
 	jal f279
 		li $a3, 0x1
 	move_ $a0, $v0
 	lui $a1, %hi(S_0x80010550)
-	j 0x8002a8bc
+	j .7
 		addiu $a1, %lo(S_0x80010550)
 .4:
 	jal f279
 		li $a3, 0x2
 	move_ $a0, $v0
 	la_ $a1, i_str
+.7:
 	jal f277
 		nop
 	lw $ra, 0x10($sp)
@@ -152,7 +156,7 @@ f282:
 	slt $v0, $v1, $s0
 	bnez $v0, .0
 		addiu $a0, 0x1
-	j 0x8002a9b8
+	j .7
 		sb $zr, ($a0)
 .1:
 	addu $v0, $v1, $v0
@@ -193,6 +197,7 @@ f282:
 		addiu $s0, -0x1
 .6:
 	sb $zr, ($a0)
+.7:
 	move_ $v0, $a0
 	lw $ra, 0x1c($sp)
 	lw $s2, 0x18($sp)
@@ -293,6 +298,7 @@ f283:
 		nop
 	move_ $a1, $a0
 	move_ $v0, $zr
+.8:
 	addiu $a1, 0x2
 	lh $v1, ($a1)
 	nop
@@ -300,10 +306,10 @@ f283:
 		nop
 	bgez $v1, .6
 		nop
-	j 0x8002ab28
+	j .8
 		addiu $v0, 0x1
 .6:
-	j 0x8002ab28
+	j .8
 		addiu $v0, 0x2
 .7:
 	jr $ra
@@ -400,13 +406,14 @@ f287:
 		move_ $a3, $a2
 	li $v0, -0x2b
 	sh $v0, ($a0)
-	j 0x8002aca4
+	j .1
 		addiu $a0, 0x2
 .0:
 	li $v0, -0x2d
 	sh $v0, ($a0)
 	addiu $a0, 0x2
 	subu $v1, $zr, $v1
+.1:
 	li $a1, 0x30
 	move_ $a2, $v1
 	jal f286
@@ -427,30 +434,32 @@ f288:
 		li $v0, 0x1
 	beq $a2, $v0, .1
 		li $a1, 0x20
-	j 0x8002ad2c
+	j .4
 		nop
 .0:
 	li $v0, 0x3
 	beq $a2, $v0, .3
 		li $a1, 0x20
-	j 0x8002ad2c
+	j .4
 		nop
 .1:
 	lui $v0, %hi(S_0x80010558)
-	j 0x8002ad40
+	j .5
 		addiu $a1, $v0, %lo(S_0x80010558)
 .2:
 	lui $v0, %hi(S_0x8001055c)
-	j 0x8002ad40
+	j .5
 		addiu $a1, $v0, %lo(S_0x8001055c)
 .3:
 	lui $v0, %hi(S_0x80010560)
-	j 0x8002ad40
+	j .5
 		addiu $a1, $v0, %lo(S_0x80010560)
+.4:
 	jal f286
 		li $a3, 0x1
 	move_ $a0, $v0
 	la_ $a1, lowercase_th_str
+.5:
 	jal f284
 		nop
 	lw $ra, 0x10($sp)
@@ -469,30 +478,32 @@ f289:
 		li $v0, 0x1
 	beq $a2, $v0, .1
 		li $a1, 0x20
-	j 0x8002adc0
+	j .4
 		nop
 .0:
 	li $v0, 0x3
 	beq $a2, $v0, .3
 		li $a1, 0x20
-	j 0x8002adc0
+	j .4
 		nop
 .1:
 	lui $v0, %hi(S_0x80010568)
-	j 0x8002add4
+	j .5
 		addiu $a1, $v0, %lo(S_0x80010568)
 .2:
 	lui $v0, %hi(S_0x8001056c)
-	j 0x8002add4
+	j .5
 		addiu $a1, $v0, %lo(S_0x8001056c)
 .3:
 	lui $v0, %hi(S_0x80010570)
-	j 0x8002add4
+	j .5
 		addiu $a1, $v0, %lo(S_0x80010570)
+.4:
 	jal f279
 		li $a3, 0x1
 	move_ $a0, $v0
 	la_ $a1, uppercase_th_str
+.5:
 	jal f277
 		nop
 	lw $ra, 0x10($sp)
@@ -1135,6 +1146,7 @@ f306:
 	addiu $s3, $v0, -0x7ed4
 	addu $s5, $s2, $s3
 	lui $v0, 0x8008
+.3:
 	lw $a0, -0x6b10($v0)
 	jal f19
 		nop
@@ -1177,9 +1189,9 @@ f306:
 	lh $a0, ($s5)
 	jal f625
 		move_ $a1, $a2
-	j 0x8002b738
+	j .3
 		lui $v0, 0x8008
-	# No adjusting stack, doesn't return?
+	# Note: No return, so no adjusting `$sp`.
 
 f307:
 	addiu $sp, -0x30
@@ -1866,6 +1878,7 @@ f322:
 	move_ $s2, $a0
 	move_ $s1, $zr
 	move_ $s0, $zr
+.7:
 	jal f318
 		nop
 	jal f1025
@@ -1927,7 +1940,7 @@ f322:
 .4:
 	jal f19
 		li $a0, 0x4
-	j 0x8002c1e0
+	j .7
 		nop
 .5:
 	move_ $v0, $zr
@@ -2001,7 +2014,7 @@ f324:
 	addiu $s0, 0x10
 	bne $s0, $v0, .0
 		addiu $v1, 0x10
-	j 0x8002c408
+	j .11
 		lui $s0, 0x801e
 .1:
 	lw $a0, ($s0)
@@ -2016,6 +2029,7 @@ f324:
 	bne $s0, $v0, .1
 		addiu $v1, 0x10
 	lui $s0, 0x801e
+.11:
 	addiu $a0, $sp, 0x10
 	jal f1084
 		li $a1, 0x8002
@@ -2464,13 +2478,14 @@ f328:
 		nop
 	jal f1088
 		move_ $a0, $s0
-	j 0x8002cab4
+	j .2
 		move_ $v0, $zr
 .0:
 	jal f1088
 		move_ $a0, $s0
 .1:
 	li $v0, 0x1
+.2:
 	lw $ra, 0x38($sp)
 	lw $s1, 0x34($sp)
 	lw $s0, 0x30($sp)

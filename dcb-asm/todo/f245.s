@@ -92,7 +92,7 @@ f248:
 		move_ $a0, $s4
 	move_ $v0, $zr
 	move_ $v1, $zr
-	j 0x80026e6c
+	j .3
 		nop
 .0:
 	li $a2, 0x0
@@ -117,7 +117,7 @@ f248:
 	move_ $a0, $v0
 	move_ $a1, $v1
 	move_ $a2, $s0
-	jal 0x80025854
+	jal f227.22
 		move_ $a3, $s1
 	move_ $a0, $v0
 	li $a2, 0x0
@@ -134,6 +134,7 @@ f248:
 	bltz $v0, .1
 		move_ $v0, $s0
 	move_ $v1, $s1
+.3:
 	lw $ra, 0x28($sp)
 	lw $s5, 0x24($sp)
 	lw $s4, 0x20($sp)
@@ -3865,12 +3866,13 @@ f278:
 	bnez $a2, .0
 		addiu $t0, -0x1
 	addiu $t0, 0x1
-	j 0x8002a700
+	j .9
 		addiu $a3, -0x1
 .7:
 	sb $a1, ($t0)
 .8:
 	addiu $a3, -0x1
+.9:
 	bgez $a3, .7
 		addiu $t0, -0x1
 	jr $ra
