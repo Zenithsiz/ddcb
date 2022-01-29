@@ -5,7 +5,7 @@ f400:
 	sw $s0, 0x10($sp)
 	lui $v0, 0x801e
 	lw $v1, -0x7cc0($v0)
-	j 0x80039124
+	j .3
 		sb $zr, 0x814($v1)
 .0:
 	lw $v0, -0x7cc0($v0)
@@ -111,7 +111,9 @@ f400:
 	jal 0x801e5710
 		nop
 .2:
-	lwi $v0, 0x801d8340
+	lui $v0, %hi(0x801d8340)
+.3:
+	lw $v0, %lo(0x801d8340)($v0)
 	nop
 	sb $zr, 0x816($v0)
 	lui $v0, 0x8008
