@@ -3,37 +3,36 @@ start:
 	la_ $v1, 0x801ddf38
 .zero_loop:
 	sw $zr, ($v0)
-	addiu $v0, 0x04
+	addiu $v0, 0x4
 	sltu $at, $v0, $v1
 	bnez $at, .zero_loop
 		nop
 	lwi $v0, S_0x8006dd44
 	nop
-	addi $v0, -0x010
+	addi $v0, -0x10
 	lui $t0, 0x8000
 	or $sp, $v0, $t0
-	lui $a0, 0x801e
-	addiu $a0, 0xdf38
-	sll $a0, 0x03
-	srl $a0, 0x03
+	la_ $a0, 0x801ddf38
+	sll $a0, 0x3
+	srl $a0, 0x3
 	lwi $v1, S_0x8006dd48
 	nop
 	subu $a1, $v0, $v1
 	subu $a1, $a0
 	swi $a1, S_0x8006f98c
-	or $a0, $a0, $t0
+	or $a0, $t0
 	swi $a0, S_0x8006f988
 	swi $ra, S_0x80077a20
 	la_ $gp, S_0x80077a08
-	addu $fp, $sp, $zr
-	jal 0x06a734
-		addi $a0, 0x04
+	move_ $fp, $sp
+	jal f1070
+		addi $a0, 0x4
 	lwi $ra, S_0x80077a20
 	nop
-	jal 0x013e4c
-	nop
-	la_ $a0, S_0x80010000
-	la_ $a1, S_0x80010000
-	jal 0x56388
-	nop
-	break 0x01
+	jal main_loop
+		nop
+	la_ $a0, cd_drv_extension_version
+	la_ $a1, cd_drv_extension_version
+	jal f697
+		nop
+	break 0x0, 0x1
