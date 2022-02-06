@@ -103,14 +103,6 @@ name = "core-impl"
 version = "0.1.0"
 
 [[package]]
-name = "dcb"
-version = "0.1.0"
-dependencies = [
- "core-impl",
- "dcb-macros",
-]
-
-[[package]]
 name = "dcb-bytes"
 version = "0.1.0"
 dependencies = [
