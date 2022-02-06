@@ -14146,14 +14146,14 @@ f489:
 	sll $v1, $s0, 0x3
 	addu $v1, $s0
 	sll $v1, 0x1
-	la_ $v0, 0x8006e36b
+	la_ $v0, S_0x8006e36b
 	addu $t5, $v1, $v0
 	la_ $v0, S_0x8006e36c
 	addu $t4, $v1, $v0
 	sll $v1, $s0, 0x3
 	addu $v1, $s0
 	sll $v1, 0x1
-	la_ $v0, 0x8006e36d
+	la_ $v0, S_0x8006e36d
 	addu $t3, $v1, $v0
 .5:
 	move_ $a0, $zr

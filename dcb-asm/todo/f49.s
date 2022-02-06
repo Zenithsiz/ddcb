@@ -253,7 +253,7 @@ f49:
 	addu $v1, $s5, $v0
 	lbu $a2, 0x2($v1)
 	lbu $a3, 0x4($v1)
-	la_ $v1, 0x8006de2e
+	la_ $v1, S_0x8006de2e
 	addu $v0, $v1
 	lbu $v0, ($v0)
 	nop

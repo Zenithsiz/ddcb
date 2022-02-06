@@ -163,10 +163,8 @@ build/rs/libdcb_macros.so build/rs/libdcb_macros.d:
 		> build/rs/libdcb_macros.d
 
 # Processed assembly files
-# TODO: Requiring `symbols.yaml` requires copying all files
-#       which takes a sec, but is technically the correct way.
-#       Any way to speed it up?
-build/asm/%.s: dcb-asm/%.s $(preprocess_asm) symbols.yaml
+# TODO: Require `symbols.yaml` here once it isn't so slow
+build/asm/%.s: dcb-asm/%.s $(preprocess_asm)
 	$(preprocess_asm) $< -o $@ --replace-includes --replace-local-labels --add-label-section
 
 # Dependencies
