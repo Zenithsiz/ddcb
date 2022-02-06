@@ -3852,8 +3852,13 @@ decl_static! {
 
 	S_0x8006dd3c: u32 = 0x00000000;
 	S_0x8006dd40: u32 = 0x00000000;
+
+	// Physical memory size (in bytes)
 	S_0x8006dd44: u32 = 0x00200000;
+
+	// Stack size (in bytes)
 	S_0x8006dd48: u32 = 0x00008000;
+
 	S_0x8006dd4c: u32 = 0x00000001;
 	S_0x8006dd50: u32 = 0x00000000;
 	S_0x8006dd54: u32 = 0x00000000;
@@ -5666,8 +5671,13 @@ decl_static! {
 	S_0x8006f97c: u32 = 0x00000000;
 	S_0x8006f980: u32 = 0x00000000;
 	S_0x8006f984: u32 = 0x00000000;
+
+	// Heap start address (minus 4)
 	S_0x8006f988: u32 = 0x00000000;
+
+	// Heap size
 	S_0x8006f98c: u32 = 0x00000000;
+
 	S_0x8006f990: u32 = 0x80013e4c;
 	S_0x8006f994: u32 = 0x00059ef8;
 	S_0x8006f998: u32 = 0x8006dd44;
@@ -13891,13 +13901,16 @@ decl_static! {
 	S_0x80077a00: u32 = 0x00000000;
 	S_0x80077a04: u32 = 0x00000000;
 
-	// Start of zero memory
+	// Start of zero memory.
+	// Also global pointer
 	S_0x80077a08: u32 = 0x00000000;
 	S_0x80077a0c: u32 = 0x00000000;
 	S_0x80077a10: u32 = 0x00000000;
 	S_0x80077a14: u32 = 0x00000000;
 	S_0x80077a18: u32 = 0x00000000;
 	S_0x80077a1c: u32 = 0x00000000;
+
+	// Return address of `start`'s caller
 	S_0x80077a20: u32 = 0x00000000;
 	S_0x80077a24: u32 = 0x00000000;
 	S_0x80077a28: u32 = 0x00000000;
