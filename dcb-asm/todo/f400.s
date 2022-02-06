@@ -43249,13 +43249,14 @@ f881:
 	sra $v1, 0x1
 	lui $at, 0x801e
 	addu $at, $a1
-	j 0x80061e04
+	j .1
 		sh $v1, -0x428c($at)
 .0:
 	lhui $v0, 0x801dbe28
 	lui $at, 0x801e
 	addu $at, $a1
 	sh $v0, -0x428c($at)
+.1:
 	la_ $v0, 0x801dbd68
 	lhi $a1, 0x801dbe24
 	lw $a0, 0x10($a3)
@@ -43750,12 +43751,12 @@ f893:
 		li $v0, 0x2
 	beqz $s1, .1
 		lui $a1, 0x8080
-	j 0x800628e8
+	j .23
 		nop
 .0:
 	beq $s1, $v0, .15
 		lui $a1, 0x8080
-	j 0x800628e8
+	j .23
 		nop
 .1:
 	lw $v0, ($s0)
@@ -43832,7 +43833,7 @@ f893:
 	addu $a0, $a1, $a0
 	sra $a0, 0x7
 	sh $a0, 0x3c($sp)
-	j 0x800628e8
+	j .23
 		sh $a2, 0x14($sp)
 .8:
 	lw $v0, ($s0)
@@ -43909,7 +43910,7 @@ f893:
 	addu $a0, $a1, $a0
 	sra $a0, 0x7
 	sh $a0, 0x3e($sp)
-	j 0x800628e8
+	j .23
 		sh $a2, 0x1a($sp)
 .15:
 	lw $v0, ($s0)
@@ -43987,6 +43988,7 @@ f893:
 	sra $a0, 0x7
 	sh $a0, 0x40($sp)
 	sh $a2, 0x20($sp)
+.23:
 	la_ $a1, 0x801dbe40
 	lw $v0, 0x10($sp)
 	lw $v1, 0x14($sp)
@@ -44895,6 +44897,7 @@ f911:
 	li $t0, 0x64
 	sw $ra, 0x1c($sp)
 	sw $s0, 0x10($sp)
+.9:
 	sll $v0, $s1, 0x2
 	addu $v0, $a2
 	sw $a3, ($v0)
@@ -44943,7 +44946,7 @@ f911:
 	sw $a0, 0x14($s2)
 	sw $a1, 0x18($s2)
 	sw $a2, 0x1c($s2)
-	j 0x80063810
+	j .8
 		sw $v0, ($a3)
 .1:
 	bne $a1, $t0, .2
@@ -44966,7 +44969,7 @@ f911:
 	sw $a0, 0x14($s2)
 	sw $a1, 0x18($s2)
 	sw $a2, 0x1c($s2)
-	j 0x80063810
+	j .8
 		move_ $s1, $zr
 .2:
 	sll $v0, $s1, 0x2
@@ -44988,7 +44991,7 @@ f911:
 	sw $v1, 0x10($s2)
 	sw $a0, 0x14($s2)
 	sw $a1, 0x18($s2)
-	j 0x80063810
+	j .8
 		sw $a2, 0x1c($s2)
 .3:
 	lw $v1, ($a3)
@@ -45011,15 +45014,16 @@ f911:
 	sw $v0, 0x10($s2)
 	sw $v1, 0x14($s2)
 	sw $a0, 0x18($s2)
-	j 0x80063810
+	j .8
 		sw $a1, 0x1c($s2)
 .4:
 	bnez $v1, .5
 		move_ $a3, $a0
 	move_ $a1, $s1
 .5:
-	j 0x80063624
+	j .9
 		addiu $s1, 0x1
+.8:
 	blez $s1, .7
 		sll $v0, $s1, 0x2
 	la_ $v1, 0x801dbefc
@@ -45425,10 +45429,11 @@ f914:
 	lwi $v1, 0x801dbe2c
 	sw $a1, ($s3)
 	sw $v0, 0x4($s3)
-	j 0x80063e54
+	j .11
 		sw $v1, 0x8($s3)
 .0:
 	move_ $a2, $zr
+.11:
 	lwi $v0, 0x801dbf84
 	li $a1, 0x1
 	beq $v0, $a1, .3
@@ -45504,7 +45509,7 @@ f914:
 	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	lw $v0, ($t0)
-	j 0x800643e0
+	j .12
 		move_ $a2, $s6
 .5:
 	lhu $v0, ($s0)
@@ -45516,7 +45521,7 @@ f914:
 	sw $s3, 0x1c($sp)
 	sw $v0, 0x10($sp)
 	lw $v0, ($t0)
-	j 0x8006438c
+	j .13
 		move_ $a2, $s6
 	move_ $a0, $s0
 	lhu $v0, ($s0)
@@ -45531,7 +45536,7 @@ f914:
 	addu $v0, $t0, $v0
 	addu $v0, $s7, $v0
 	lw $v0, ($v0)
-	j 0x800643e0
+	j .12
 		move_ $a2, $s6
 	lhu $v0, 0x2($s0)
 	nop
@@ -45554,7 +45559,7 @@ f914:
 	lhu $v1, ($s0)
 	nop
 	subu $s1, $v1
-	j 0x800645ac
+	j .14
 		sll $v0, $v1, 0x3
 .6:
 	lhu $v0, ($s0)
@@ -45577,7 +45582,7 @@ f914:
 	nop
 	subu $s1, $v1
 	sll $v0, $v1, 0x2
-	j 0x800645b0
+	j .15
 		addu $v0, $v1
 	move_ $a0, $s0
 	lhu $v0, ($s0)
@@ -45599,7 +45604,7 @@ f914:
 	lhu $v1, ($s0)
 	nop
 	subu $s1, $v1
-	j 0x800645ac
+	j .14
 		sll $v0, $v1, 0x3
 	lhu $v0, 0x2($s0)
 	nop
@@ -45616,7 +45621,7 @@ f914:
 	lui $v0, 0x801e
 	addu $v0, $s7
 	lw $v0, -0x3f38($v0)
-	j 0x80064530
+	j .16
 		move_ $a2, $s6
 .7:
 	lhu $v0, ($s0)
@@ -45639,7 +45644,7 @@ f914:
 	nop
 	subu $s1, $v1
 	sll $v0, $v1, 0x2
-	j 0x800645b0
+	j .15
 		addu $v0, $v1
 	move_ $a0, $s0
 	lhu $v0, ($s0)
@@ -45654,7 +45659,7 @@ f914:
 	addu $v0, $t0, $v0
 	addu $v0, $s7, $v0
 	lw $v0, ($v0)
-	j 0x80064530
+	j .16
 		move_ $a2, $s6
 	lhu $v0, 0x2($s0)
 	nop
@@ -45679,7 +45684,7 @@ f914:
 	nop
 	subu $s1, $v1
 	sll $v0, $v1, 0x3
-	j 0x800645b0
+	j .15
 		addu $v0, $v1
 .8:
 	lhu $v0, ($s0)
@@ -45694,7 +45699,7 @@ f914:
 	addu $v0, $t0, $v0
 	addu $v0, $s7, $v0
 	lw $v0, ($v0)
-	j 0x800643e0
+	j .12
 		move_ $a2, $s6
 	move_ $a0, $s0
 	lhu $v0, ($s0)
@@ -45717,7 +45722,7 @@ f914:
 	nop
 	subu $s1, $v1
 	sll $v0, $v1, 0x3
-	j 0x800645b0
+	j .15
 		addu $v0, $v1
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
@@ -45727,7 +45732,7 @@ f914:
 	lui $v0, 0x801e
 	addu $v0, $fp
 	lw $v0, -0x4038($v0)
-	j 0x80064388
+	j .17
 		move_ $a0, $s0
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
@@ -45738,7 +45743,9 @@ f914:
 	lui $v0, 0x801e
 	addu $v0, $fp
 	lw $v0, -0x3fb8($v0)
+.17:
 	move_ $a1, $s2
+.13:
 	jalr $v0
 		nop
 	swi $v0, 0x801dbf98
@@ -45746,7 +45753,7 @@ f914:
 	nop
 	subu $s1, $v0
 	sll $v0, 0x4
-	j 0x800645cc
+	j .18
 		addu $s0, $v0
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
@@ -45758,6 +45765,7 @@ f914:
 	addu $v0, $fp
 	lw $v0, -0x4018($v0)
 	move_ $a1, $s2
+.12:
 	jalr $v0
 		nop
 	swi $v0, 0x801dbf98
@@ -45767,7 +45775,7 @@ f914:
 	sll $v0, $v1, 0x1
 	addu $v0, $v1
 	sll $v0, 0x3
-	j 0x800645cc
+	j .18
 		addu $s0, $v0
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
@@ -45785,7 +45793,7 @@ f914:
 	lhu $v1, ($s0)
 	nop
 	subu $s1, $v1
-	j 0x800645ac
+	j .14
 		sll $v0, $v1, 0x3
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
@@ -45804,7 +45812,7 @@ f914:
 	nop
 	subu $s1, $v1
 	sll $v0, $v1, 0x3
-	j 0x800645b0
+	j .15
 		addu $v0, $v1
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
@@ -45822,7 +45830,7 @@ f914:
 	lhu $v1, ($s0)
 	nop
 	subu $s1, $v1
-	j 0x800645ac
+	j .14
 		sll $v0, $v1, 0x3
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
@@ -45834,6 +45842,7 @@ f914:
 	addu $v0, $fp
 	lw $v0, -0x3f78($v0)
 	move_ $a1, $s2
+.16:
 	jalr $v0
 		nop
 	swi $v0, 0x801dbf98
@@ -45841,7 +45850,7 @@ f914:
 	nop
 	subu $s1, $v0
 	sll $v0, 0x5
-	j 0x800645cc
+	j .18
 		addu $s0, $v0
 	lwi $a2, 0x801dbf98
 	lhu $a3, ($s0)
@@ -45862,14 +45871,17 @@ f914:
 	sll $v0, $v1, 0x1
 	addu $v0, $v1
 	sll $v0, 0x2
+.14:
 	subu $v0, $v1
+.15:
 	sll $v0, 0x2
-	j 0x800645cc
+	j .18
 		addu $s0, $v0
 .9:
 	la_ $a0, 0x800137fc
 	jal f1058
 		move_ $a2, $s0
+.18:
 	bnez $s1, .4
 		nop
 .10:
@@ -47632,7 +47644,7 @@ f949:
 	jal f956
 		sw $v0, 0x8($s0)
 	or $v0, $s2
-	j 0x80066120
+	j .6
 		sw $v0, 0xc($s0)
 .5:
 	ori $v0, 0xffff
@@ -47660,6 +47672,7 @@ f949:
 	lw $v0, 0x4($t0)
 	nop
 	sw $v0, 0x14($a2)
+.6:
 	lui $a0, 0x801e
 	jal f955
 		addiu $a0, -0x3f20
@@ -47708,10 +47721,11 @@ f950:
 	slt $v0, $v0, $a1
 	beqz $v0, .3
 		sll $v0, $a0, 0x10
-	j 0x800661ec
+	j .12
 		move_ $a0, $v1
 .2:
 	move_ $a0, $zr
+.12:
 	sll $v0, $a0, 0x10
 .3:
 	lh $v1, 0x4($s1)
@@ -47847,10 +47861,11 @@ f951:
 	slt $v0, $v0, $a1
 	beqz $v0, .3
 		sll $v0, $a0, 0x10
-	j 0x80066420
+	j .13
 		move_ $a0, $v1
 .2:
 	move_ $a0, $zr
+.13:
 	sll $v0, $a0, 0x10
 .3:
 	lh $v1, 0x4($s1)
@@ -48415,20 +48430,22 @@ f960:
 		sw $s0, 0x10($sp)
 	jal f961
 		nop
-	j 0x80066d80
+	j .6
 		nop
+.7:
 	jal f958
 		nop
 	jal f962
 		nop
 	bnez $v0, .5
 		li $v0, -0x1
+.6:
 	lwi $v1, 0x80076880
 	lwi $v0, 0x80076884
 	nop
 	beq $v1, $v0, .1
 		nop
-	j 0x80066d68
+	j .7
 		nop
 .0:
 	jal f962
@@ -48626,7 +48643,7 @@ f964:
 	swi $v0, 0x80076894
 	swi $zr, 0x80076898
 	lw $v0, ($v1)
-	j 0x80067118
+	j .2
 		lui $v1, 0x100
 .0:
 	jal f962
@@ -48637,6 +48654,7 @@ f964:
 	nop
 	lw $v0, ($v0)
 	lui $v1, 0x100
+.2:
 	and $v0, $v1
 	bnez $v0, .0
 		nop
@@ -48819,7 +48837,7 @@ f967:
 	swi $v0, 0x80076894
 	swi $zr, 0x80076898
 	lw $v0, ($v1)
-	j 0x80067448
+	j .3
 		lui $v1, 0x100
 .1:
 	jal f962
@@ -48830,6 +48848,7 @@ f967:
 	nop
 	lw $v0, ($v0)
 	lui $v1, 0x100
+.3:
 	and $v0, $v1
 	bnez $v0, .1
 		nop
@@ -49579,24 +49598,26 @@ f1008:
 	lui $v1, 0xf7ff
 	lw $v0, ($a0)
 	ori $v1, 0xffff
-	j 0x80067e8c
+	j .2
 		and $v0, $v1
 .0:
 	lw $v0, ($a0)
 	lui $v1, 0x800
 	or $v0, $v1
+.2:
 	sw $v0, ($a0)
 	andi $v0, $a1, 0x2
 	beqz $v0, .1
 		lui $v1, 0x200
 	lw $v0, ($a0)
-	j 0x80067eb8
+	j .3
 		or $v0, $v1
 .1:
 	lui $v1, 0xfdff
 	lw $v0, ($a0)
 	ori $v1, 0xffff
 	and $v0, $v1
+.3:
 	sw $v0, ($a0)
 	lhu $a1, ($a0)
 	jal f1015
@@ -49622,13 +49643,14 @@ f1010:
 		sw $ra, 0x10($sp)
 	jal f1017
 		nop
-	j 0x80067f24
+	j .1
 		nop
 .0:
 	jal f1019
 		nop
 	srl $v0, 0x1d
 	andi $v0, 0x1
+.1:
 	lw $ra, 0x10($sp)
 	addiu $sp, 0x18
 	jr $ra
@@ -49640,7 +49662,7 @@ f1011:
 		sw $ra, 0x10($sp)
 	jal f1018
 		nop
-	j 0x80067f6c
+	j .1
 		nop
 .0:
 	lwi $v0, 0x800769cc
@@ -49649,6 +49671,7 @@ f1011:
 	nop
 	srl $v0, 0x18
 	andi $v0, 0x1
+.1:
 	lw $ra, 0x10($sp)
 	addiu $sp, 0x18
 	jr $ra
@@ -52636,10 +52659,11 @@ f1093:
 	nop
 	addu $v1, $v0
 	lhu $v0, ($v1)
-	j 0x8006a970
+	j .1
 		nop
 .0:
 	move_ $v0, $zr
+.1:
 	jr $ra
 		nop
 
@@ -52842,13 +52866,14 @@ f1097:
 		addiu $a1, -0x23b8
 	bnez $v0, .2
 		nop
-	j 0x8006ac70
+	j .4
 		sw $s3, 0x34($s0)
 .2:
 	addiu $s0, 0x50
 	sltu $v0, $s0, $s1
 	bnez $v0, .1
 		nop
+.4:
 	move_ $a0, $s2
 .3:
 	move_ $a1, $s4
@@ -53522,10 +53547,11 @@ f1124:
 	sll $a0, 0x4
 	jal f1134
 		addu $a0, $s1
-	j 0x8006b6bc
+	j .4
 		li $a1, 0xffff
 .3:
 	li $a1, 0xffff
+.4:
 	beqz $v0, .0
 		nop
 	lw $ra, 0x20($sp)
@@ -53549,7 +53575,7 @@ f1125:
 	li $v0, 0x4d
 	beq $a1, $v0, .2
 		nop
-	j 0x8006b780
+	j .4
 		nop
 .0:
 	slti $v0, $v1, 0x6
@@ -53568,6 +53594,7 @@ f1125:
 	lw $v0, 0x28($a0)
 	nop
 	addu $v0, $v1
+.5:
 	lbu $v0, ($v0)
 	j f1125.3
 		nop
@@ -53578,8 +53605,9 @@ f1125:
 	beqz $v0, .3
 		li $v0, 0xff
 	lw $v0, 0x2c($a0)
-	j 0x8006b754
+	j .5
 		addu $v0, $v1
+.4:
 	lbu $v0, 0x36($a0)
 	nop
 	slt $v0, $v1, $v0
@@ -53666,13 +53694,14 @@ f1126:
 	beqz $v0, .7
 		nop
 	lui $at, 0x8007
-	j 0x8006b8cc
+	j .17
 		sw $v1, 0x79a8($at)
 .6:
 	j f1126.5
 		li $a2, 0x1
 .7:
 	move_ $a2, $zr
+.17:
 	beqz $a2, .10
 		nop
 	addiu $a1, $s0, 0x5d
@@ -53814,14 +53843,14 @@ f1128:
 		li $v0, 0xfe
 	beqz $v1, .6
 		move_ $v0, $zr
-	j 0x8006bb1c
+	j .7
 		nop
 .1:
 	beq $v1, $v0, .3
 		li $v0, 0xff
 	beq $v1, $v0, .6
 		move_ $v0, $zr
-	j 0x8006bb1c
+	j .7
 		nop
 .2:
 	move_ $a0, $s0
@@ -53836,6 +53865,7 @@ f1128:
 		move_ $a1, $zr
 	j f1128.6
 		move_ $v0, $zr
+.7:
 	lw $v0, 0x14($s0)
 	nop
 	beqz $v0, .5
@@ -53983,37 +54013,40 @@ f1129:
 		li $v0, 0xfe
 	beqz $v1, .11
 		nop
-	j 0x8006bd7c
+	j .16
 		nop
 .10:
 	beq $v1, $v0, .13
 		li $v0, 0xff
-	j 0x8006bd7c
+	j .16
 		nop
 .11:
 	lbu $v0, 0x46($s0)
-	j 0x8006bd68
+	j .17
 		sb $a0, 0x49($s0)
 .12:
 	lbu $v0, 0x46($s0)
 	sb $zr, 0x47($s0)
+.17:
 	addiu $v0, 0x1
 	j f1129.15
 		sb $v0, 0x46($s0)
 .13:
 	j f1129.15
 		sb $v0, 0x46($s0)
+.16:
 	lw $v0, 0x18($s0)
 	nop
 	beqz $v0, .14
 		nop
 	jalr $v0
 		move_ $a0, $s0
-	j 0x8006bda4
+	j .18
 		nop
 .14:
 	jal f1141
 		move_ $a0, $s0
+.18:
 	lbu $v1, 0x46($s0)
 	nop
 	addu $v1, $v0
@@ -55126,25 +55159,25 @@ f1144:
 		li $v0, 0x2
 	beq $v1, $v0, .1
 		nop
-	j 0x8006cef0
+	j .5
 		nop
 .0:
 	li $v0, 0x4
 	beq $v1, $v0, .3
 		nop
-	j 0x8006cef0
+	j .5
 		nop
 .1:
 	lbu $a1, 0x47($a0)
 	jal f1148
 		nop
-	j 0x8006cef0
+	j .5
 		nop
 .2:
 	lbu $a1, 0x47($a0)
 	jal f1149
 		nop
-	j 0x8006cef0
+	j .5
 		nop
 .3:
 	lbu $v0, 0x48($a0)
@@ -55154,11 +55187,12 @@ f1144:
 	lbu $a1, 0x47($a0)
 	jal f1150
 		nop
-	j 0x8006cef0
+	j .5
 		nop
 .4:
 	jal f1151
 		nop
+.5:
 	lw $ra, 0x10($sp)
 	addiu $sp, 0x18
 	jr $ra
@@ -55212,6 +55246,7 @@ f1145:
 	beq $v0, $v1, .2
 		nop
 	sh $v1, 0xee($a1)
+.19:
 	j f1145.16
 		move_ $v0, $zr
 .2:
@@ -55225,7 +55260,7 @@ f1145:
 	sltu $v0, $v0, $v1
 	bnez $v0, .16
 		move_ $v0, $zr
-	j 0x8006d2ec
+	j .17
 		sb $zr, 0x47($a1)
 .3:
 	lw $a2, 0x3c($a1)
@@ -55268,10 +55303,11 @@ f1145:
 	sra $v0, 0x7
 	bne $v1, $v0, .4
 		li $v0, 0xffff
-	j 0x8006d098
+	j .18
 		sh $zr, 0xee($a1)
 .4:
 	sh $v0, 0xee($a1)
+.18:
 	lw $v0, 0x3c($a1)
 	nop
 	lbu $v0, 0x4($v0)
@@ -55313,7 +55349,7 @@ f1145:
 	bnez $v0, .16
 		move_ $v0, $zr
 	sb $zr, 0x47($a1)
-	j 0x8006d2ec
+	j .17
 		sb $zr, 0x48($a1)
 .5:
 	lw $a2, 0x3c($a1)
@@ -55322,7 +55358,7 @@ f1145:
 	nop
 	beqz $v0, .6
 		nop
-	j 0x8006cfb4
+	j .19
 		sb $zr, 0x48($a1)
 .6:
 	lbu $v0, 0x47($a1)
@@ -55342,22 +55378,24 @@ f1145:
 		addiu $a0, $v0, 0x5
 	lbu $v0, 0xea($a1)
 	lw $v1, 0x8($a1)
-	j 0x8006d1c0
+	j .20
 		sll $v0, 0x3
 .7:
 	lbu $v0, -0x8($t0)
 	lw $v1, -0x4($t0)
 	addiu $v0, 0x3
 	andi $v0, 0x1fc
+.20:
 	addu $v1, $v0
 	sw $v1, 0x4($t0)
 	swi $v1, 0x801ddf20
-	j 0x8006d1e4
+	j .21
 		addiu $a3, -0x1
 .8:
 	li $a3, 0x5
 	addiu $a0, $a2, 0x3
 	addiu $a3, -0x1
+.21:
 	li $v0, -0x1
 	beq $a3, $v0, .11
 		nop
@@ -55429,6 +55467,7 @@ f1145:
 	sb $zr, 0x47($a1)
 	j f1145.16
 		sb $zr, 0x48($a1)
+.17:
 	li $v0, 0x1
 .16:
 	jr $ra
@@ -55593,10 +55632,11 @@ f1155:
 	nop
 	bnez $v0, .2
 		move_ $a0, $s0
-	j 0x8006d568
+	j .3
 		li $a1, 0x42
 .2:
 	lbu $a1, 0x37($s0)
+.3:
 	jal f1137
 		nop
 	lw $ra, 0x14($sp)
@@ -55900,7 +55940,7 @@ f1158:
 		move_ $a0, $s1
 	bltz $v1, .14
 		nop
-	j 0x8006da68
+	j .28
 		nop
 .12:
 	li $v0, 0x4
@@ -55913,8 +55953,9 @@ f1158:
 	nop
 	jalr $v0
 		addiu $a0, $s0, -0xf0
-	j 0x8006daa4
+	j .29
 		li $v0, 0x1
+.28:
 	lwi $v0, 0x80077994
 	nop
 	addu $s0, $v0, $s3
@@ -55927,6 +55968,7 @@ f1158:
 	jalr $v0
 		move_ $a0, $s0
 	li $v0, -0x1
+.29:
 	sw $v0, ($s2)
 	move_ $a0, $s1
 .14:
