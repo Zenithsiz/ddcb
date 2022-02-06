@@ -8,7 +8,7 @@ f4:
 	sll $v1, $a0, 0x1
 	addu $v1, $a0
 	sll $v1, 0x6
-	la_ $v0, 0x80077ba0
+	la_ $v0, S_0x80077ba0
 	beqz $a0, .1
 		addu $s0, $v1, $v0
 	lw $v0, ($s0)
@@ -60,7 +60,7 @@ f4:
 	sll $v0, $a1, 0x1
 	addu $v0, $a1
 	sll $v0, 0x6
-	la_ $v1, 0x80077ba0
+	la_ $v1, S_0x80077ba0
 	addu $a1, $v0, $v1
 	lw $v0, ($a1)
 	nop
@@ -81,7 +81,7 @@ f4:
 .7:
 	addu $v0, $a1
 	sll $v0, 0x6
-	la_ $v1, 0x80077ba0
+	la_ $v1, S_0x80077ba0
 	addu $v1, $v0, $v1
 	lw $v0, ($v1)
 	nop
@@ -102,7 +102,7 @@ f4:
 	sw $s0, 0x8($a1)
 	sw $v1, 0x8($s0)
 	sw $a1, 0xc($s0)
-	lwi $v0, 0x80077a08
+	lwi $v0, S_0x80077a08
 	nop
 	beqz $v0, .10
 		lui $v0, 0x8007
@@ -151,7 +151,7 @@ f4:
 	sw $v0, 0x3c($s0)
 	la_ $v0, f17
 	sw $v0, 0x9c($s0)
-	lwi $v0, 0x80077c30
+	lwi $v0, S_0x80077c30
 	nop
 	sw $v0, 0x90($s0)
 	sw $a0, 0x14($s0)

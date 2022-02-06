@@ -6,7 +6,7 @@ f2:
 	lw $s0, 0x7a0c($v0)
 	jal f20
 		nop
-	lwi $v0, 0x80077adc
+	lwi $v0, S_0x80077adc
 	nop
 	addiu $a0, $v0, 0x8
 	addiu $v1, $s0, 0x20
@@ -24,18 +24,18 @@ f2:
 	or $v0, $v1
 	sw $v0, ($s0)
 	lui $v1, 0x8007
-	lhui $v0, 0x80077a18
+	lhui $v0, S_0x80077a18
 	nop
 	sh $v0, 0x7a1a($v1)
 	sll $v0, 0x10
 	bnez $v0, .1
 		lui $v0, 0x8007
-	lwi $v0, 0x80077a08
+	lwi $v0, S_0x80077a08
 	nop
 	bnez $v0, .3
 		nop
 	lui $v0, 0x8007
-	la_ $v1, 0x80077ba0
+	la_ $v1, S_0x80077ba0
 	sw $v1, 0x7a14($v0)
 	lui $v0, 0x8007
 	j .3
@@ -50,7 +50,7 @@ f2:
 	lhu $v0, 0x7ba0($a0)
 	nop
 	sh $v0, 0x7a18($v1)
-	lwi $v0, 0x80077adc
+	lwi $v0, S_0x80077adc
 	nop
 	addiu $a0, $v0, 0x8
 	addiu $v1, $s0, 0x20

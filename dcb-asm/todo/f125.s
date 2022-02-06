@@ -148,7 +148,7 @@ f127:
 	move_ $s0, $a1
 	move_ $s1, $a2
 	move_ $s2, $a3
-	la_ $v0, 0x8006df0c
+	la_ $v0, S_0x8006df0c
 	sll $a0, 0x2
 	addu $a0, $v0
 	lw $v0, ($a0)

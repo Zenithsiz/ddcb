@@ -514,7 +514,7 @@ f254:
 	sw $v0, 0x10($sp)
 	sw $v1, 0x14($sp)
 	sw $t0, 0x18($sp)
-	la_ $v0, 0x8006df98
+	la_ $v0, S_0x8006df98
 	sw $v0, 0x1c($sp)
 	jal f255
 		sw $t1, 0x20($sp)
@@ -665,7 +665,7 @@ f256:
 	lw $t1, 0x48($sp)
 	lw $t2, 0x4c($sp)
 	lw $t3, 0x50($sp)
-	la_ $v0, 0x8006df98
+	la_ $v0, S_0x8006df98
 	sw $v0, 0x10($sp)
 	sw $v1, 0x14($sp)
 	sw $t0, 0x18($sp)
@@ -827,7 +827,7 @@ f258:
 	addiu $sp, -0x20
 	sw $ra, 0x18($sp)
 	lw $v1, 0x30($sp)
-	la_ $v0, 0x8006df98
+	la_ $v0, S_0x8006df98
 	sw $v0, 0x10($sp)
 	jal f259
 		sw $v1, 0x14($sp)
@@ -1136,7 +1136,7 @@ f260:
 	addiu $sp, -0x20
 	sw $ra, 0x18($sp)
 	lw $v1, 0x30($sp)
-	la_ $v0, 0x8006df98
+	la_ $v0, S_0x8006df98
 	sw $v0, 0x10($sp)
 	jal f261
 		sw $v1, 0x14($sp)
@@ -1426,7 +1426,7 @@ f262:
 	addiu $sp, -0x20
 	sw $ra, 0x18($sp)
 	lw $v1, 0x30($sp)
-	la_ $v0, 0x8006df98
+	la_ $v0, S_0x8006df98
 	sw $v0, 0x10($sp)
 	jal f263
 		sw $v1, 0x14($sp)
@@ -1634,7 +1634,7 @@ f264:
 	addiu $sp, -0x20
 	sw $ra, 0x18($sp)
 	lw $v1, 0x30($sp)
-	la_ $v0, 0x8006df98
+	la_ $v0, S_0x8006df98
 	sw $v0, 0x10($sp)
 	jal f265
 		sw $v1, 0x14($sp)
@@ -1918,7 +1918,7 @@ f266:
 	addiu $sp, -0x20
 	sw $ra, 0x18($sp)
 	lw $v1, 0x30($sp)
-	la_ $v0, 0x8006df98
+	la_ $v0, S_0x8006df98
 	sw $v0, 0x10($sp)
 	jal f267
 		sw $v1, 0x14($sp)
@@ -2446,7 +2446,7 @@ f269:
 		nop
 	lui $v0, 0x801d
 	lw $a0, 0x6b24($v0)
-	la_ $v0, 0x8006df9c
+	la_ $v0, S_0x8006df9c
 	addu $v0, $s1, $v0
 	lbu $v1, ($v0)
 	nop
@@ -2723,7 +2723,7 @@ f270:
 	addiu $a0, 0x1
 	beqz $t1, .9
 		addu $a1, $a3
-	la_ $v0, 0x8006df9c
+	la_ $v0, S_0x8006df9c
 	addu $v0, $v1, $v0
 	lbu $v0, ($v0)
 	nop
@@ -3009,7 +3009,7 @@ f273:
 	addiu $sp, -0x20
 	sw $ra, 0x18($sp)
 	lw $v1, 0x30($sp)
-	la_ $v0, 0x8006df98
+	la_ $v0, S_0x8006df98
 	sw $v0, 0x10($sp)
 	jal f274
 		sw $v1, 0x14($sp)
@@ -3332,7 +3332,7 @@ f275:
 	sw $ra, 0x20($sp)
 	lw $v0, 0x38($sp)
 	lw $t0, 0x3c($sp)
-	la_ $v1, 0x8006df98
+	la_ $v1, S_0x8006df98
 	sw $v1, 0x10($sp)
 	sw $v0, 0x14($sp)
 	jal f276

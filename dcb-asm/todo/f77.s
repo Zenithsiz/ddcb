@@ -64,7 +64,7 @@ f79:
 	sw $s0, 0x10($sp)
 	move_ $s3, $a0
 	move_ $s4, $a1
-	lwi $v0, 0x8006def0
+	lwi $v0, S_0x8006def0
 	nop
 	beqz $v0, .1
 		move_ $s2, $zr
@@ -137,7 +137,7 @@ f80:
 	move_ $s3, $a0
 	move_ $s5, $a1
 	move_ $s4, $a2
-	lwi $v0, 0x8006def0
+	lwi $v0, S_0x8006def0
 	nop
 	beqz $v0, .1
 		move_ $s2, $zr
@@ -211,7 +211,7 @@ f81:
 	move_ $s3, $a0
 	move_ $s4, $a1
 	move_ $s5, $a2
-	lwi $v0, 0x8006def0
+	lwi $v0, S_0x8006def0
 	nop
 	beqz $v0, .1
 		move_ $s2, $zr

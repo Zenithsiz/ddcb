@@ -229,7 +229,7 @@ f222:
 	sll $a1, 0x2
 	addu $a1, $v0
 	lw $s1, ($a1)
-	lwi $v0, 0x8006df84
+	lwi $v0, S_0x8006df84
 	nop
 	beqz $v0, .17
 		lui $v0, 0x801d

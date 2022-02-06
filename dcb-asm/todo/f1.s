@@ -12,7 +12,7 @@ f1:
 		move_ $s3, $a3
 	lui $v0, 0x8007
 	sw $s0, 0x7a08($v0)
-	la_ $v0, 0x80077ba0
+	la_ $v0, S_0x80077ba0
 	li $v1, 0x1f
 .0:
 	sw $zr, ($v0)
@@ -27,7 +27,7 @@ f1:
 	sh $v0, 0x7a1a($a0)
 	sh $v0, 0x7a18($a1)
 	lui $v0, 0x8007
-	la_ $v1, 0x80077ae0
+	la_ $v1, S_0x80077ae0
 	sw $v1, 0x7a0c($v0)
 	lui $a0, 0x8007
 	addiu $a1, $a0, 0x7ae0
@@ -35,14 +35,14 @@ f1:
 	sw $v0, 0x7ae0($a0)
 	addiu $v1, 0xc0
 	sw $v1, 0x8($a1)
-	lwi $v0, 0x80077a08
+	lwi $v0, S_0x80077a08
 	nop
 	beqz $v0, .1
 		lui $v1, 0x8007
 	j .4
 		sw $a1, 0xc($a1)
 .1:
-	la_ $v0, 0x80077ba0
+	la_ $v0, S_0x80077ba0
 	sw $v0, 0x7aec($v1)
 .4:
 	lui $v1, 0x8007
@@ -82,7 +82,7 @@ f1:
 	lw $v0, 0x40($sp)
 	nop
 	sw $v0, 0x3c($s0)
-	la_ $v0, 0x80077ae0
+	la_ $v0, S_0x80077ae0
 	sw $v0, 0x8($s0)
 	sw $v0, 0xc($s0)
 	sw $zr, 0x14($s0)

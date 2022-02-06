@@ -4,7 +4,7 @@ f7:
 	sw $s2, 0x18($sp)
 	sw $s1, 0x14($sp)
 	sw $s0, 0x10($sp)
-	lwi $v0, 0x80077a0c
+	lwi $v0, S_0x80077a0c
 	nop
 	lw $s2, 0x14($v0)
 	move_ $s1, $zr

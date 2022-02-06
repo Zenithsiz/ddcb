@@ -17,7 +17,7 @@ f12:
 		cop0 0x10
 
 f13:
-	swi $gp, 0x80077c30
+	swi $gp, S_0x80077c30
 	j f1
 		nop
 
@@ -108,7 +108,7 @@ f18:
 	or $t0, $t1
 	mtc0 $t0, $12
 	nop
-	lwi $a0, 0x80077a0c
+	lwi $a0, S_0x80077a0c
 	nop
 	sw $t0, 0xac($a0)
 	sw $s0, 0x60($a0)
@@ -194,7 +194,7 @@ f19:
 	nop
 	li $at, -0x5
 	and $t0, $at
-	lwi $k1, 0x80077a0c
+	lwi $k1, S_0x80077a0c
 	nop
 	sw $t0, 0xac($k1)
 	sw $s0, 0x60($k1)
@@ -219,7 +219,7 @@ f19:
 	j .0
 		nop
 .3:
-	lwi $k1, 0x80077a0c
+	lwi $k1, S_0x80077a0c
 	nop
 	lw $a0, 0x4($k1)
 	nop
@@ -243,7 +243,7 @@ f19:
 		nop
 
 f20:
-	lwi $v0, 0x8006e050
+	lwi $v0, S_0x8006e050
 	nop
 	beqz $v0, .1
 		move_ $a0, $zr
@@ -786,7 +786,7 @@ f24:
 		nop
 	jal f41
 		nop
-	lwi $v0, 0x8006dd4c
+	lwi $v0, S_0x8006dd4c
 	nop
 	beqz $v0, .5
 		nop

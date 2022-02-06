@@ -10,7 +10,7 @@ f6:
 	nop
 	sw $v1, 0xc($v0)
 	sw $v0, 0x8($v1)
-	lwi $v0, 0x80077a08
+	lwi $v0, S_0x80077a08
 	nop
 	beqz $v0, .0
 		lui $v0, 0x8007

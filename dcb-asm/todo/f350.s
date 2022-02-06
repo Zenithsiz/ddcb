@@ -193,7 +193,7 @@ f351:
 		ori $a0, 0xffff
 	jal f19
 		li $a0, 0x2
-	lwi $v0, 0x8006e050
+	lwi $v0, S_0x8006e050
 	nop
 	lbu $v0, 0xf($v0)
 	nop
@@ -874,7 +874,7 @@ f358:
 	move_ $a2, $zr
 	jal f362
 		li $a3, 0x380
-	lwi $v0, 0x8006e054
+	lwi $v0, S_0x8006e054
 	jal 0x801ebd34
 		sb $zr, 0x1028($v0)
 	move_ $s0, $v0
@@ -3769,7 +3769,7 @@ f388:
 	sw $zr, ($v0)
 .8:
 	lbu $v0, 0x184($s7)
-	la_ $t0, 0x8006def4
+	la_ $t0, S_0x8006def4
 	addu $v0, $t0
 	lbu $a0, ($v0)
 	lw $v0, 0x180($s7)
@@ -5819,7 +5819,7 @@ f397:
 		nop
 .3:
 	lw $a0, 0x6b24($s0)
-	la_ $v1, 0x8006e280
+	la_ $v1, S_0x8006e280
 	sll $v0, $s1, 0x1
 	addu $v0, $v1
 	lh $v0, ($v0)

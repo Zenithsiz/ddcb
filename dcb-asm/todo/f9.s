@@ -2,7 +2,7 @@ f9:
 	sll $v0, $a0, 0x1
 	addu $v0, $a0
 	sll $v0, 0x6
-	la_ $v1, 0x80077ba0
+	la_ $v1, S_0x80077ba0
 	addu $v1, $v0, $v1
 	lw $v0, ($v1)
 	nop

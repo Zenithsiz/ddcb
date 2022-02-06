@@ -70,7 +70,7 @@ f399:
 	li $v1, 0x1
 	bne $v0, $v1, .10
 		lui $v0, 0x801e
-	lwi $v0, 0x8006e054
+	lwi $v0, S_0x8006e054
 	nop
 	lbu $v1, 0x4($v0)
 	li $v0, 0x8c
@@ -4143,7 +4143,7 @@ f399:
 	sb $v0, 0x4($v1)
 	jal f394
 		li $a0, 0x3c
-	lwi $v0, 0x8006e050
+	lwi $v0, S_0x8006e050
 	nop
 	lw $v0, 0x20($v0)
 	nop
@@ -4195,7 +4195,7 @@ f399:
 	lw $v1, -0x7cc0($s1)
 	li $v0, -0x1
 	sb $v0, 0x81c($v1)
-	lwi $v0, 0x8006e050
+	lwi $v0, S_0x8006e050
 	nop
 	lw $v0, 0x20($v0)
 	nop
@@ -4248,7 +4248,7 @@ f399:
 	lw $v0, -0x7cc0($v1)
 	nop
 	sb $zr, 0x822($v0)
-	lwi $v0, 0x8006e050
+	lwi $v0, S_0x8006e050
 	nop
 	lw $v0, 0x20($v0)
 	nop

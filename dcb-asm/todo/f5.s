@@ -5,13 +5,13 @@ f5:
 	sll $v0, $a0, 0x1
 	addu $v0, $a0
 	sll $v0, 0x6
-	la_ $v1, 0x80077ba0
+	la_ $v1, S_0x80077ba0
 	addu $s0, $v0, $v1
 	lw $v0, ($s0)
 	nop
 	bgez $v0, .5
 		li $v0, -0x83
-	lwi $v0, 0x80077a0c
+	lwi $v0, S_0x80077a0c
 	nop
 	bne $s0, $v0, .0
 		lui $v0, 0x8007
@@ -26,7 +26,7 @@ f5:
 	nop
 	sw $v1, 0xc($v0)
 	sw $v0, 0x8($v1)
-	lwi $v0, 0x80077a08
+	lwi $v0, S_0x80077a08
 	nop
 	beqz $v0, .1
 		lui $v0, 0x8007

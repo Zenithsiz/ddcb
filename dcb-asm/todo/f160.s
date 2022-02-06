@@ -1618,7 +1618,7 @@ f181:
 	swi $v0, 0x1f80002c
 	sra $v1, $a0, 0x18
 	sll $v1, 0x3
-	la_ $a0, 0x8006df60
+	la_ $a0, S_0x8006df60
 	addu $v0, $a0, $v1
 	lw $v0, 0x4($v0)
 	swi $v0, 0x1f800034

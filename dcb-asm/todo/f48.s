@@ -77,7 +77,7 @@ f48:
 	beqz $v0, .1
 		srl $a1, $a3, 0x4
 	addiu $a1, -0x1
-	la_ $s0, 0x8006dd70
+	la_ $s0, S_0x8006dd70
 	sll $s1, $a1, 0x4
 	subu $s1, $a1
 	addiu $s6, $s0, 0xa
@@ -639,7 +639,7 @@ f48:
 	nop
 	sh $v0, 0xfe($a0)
 	sll $v0, $a1, 0x3
-	la_ $a1, 0x8006dde8
+	la_ $a1, S_0x8006dde8
 	addiu $a0, 0x10c
 	jal f999
 		addu $a1, $v0, $a1
