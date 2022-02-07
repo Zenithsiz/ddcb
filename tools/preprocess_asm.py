@@ -41,8 +41,9 @@ def main(args):
 				latest_non_dot_label_def = label
 
 				# And add it's section if it's in the symbols
-				if args.add_label_section and label in symbols:
-					line = f"\t.section \".text.{label}\"\n" + line
+				for section in symbols:
+					if args.add_label_section and label in symbols[section]:
+						line = f"\t.section \"{section}.{label}\"\n" + line
 
 			if args.replace_local_labels:
 				# If this is a dot label definition, add the latest non-dot definition

@@ -15,8 +15,9 @@ def main(in_path="symbols.yaml", out_path="build/symbols.ld"):
 		symbols_file.write("SECTIONS {\n")
 		symbols_file.write("\t.text : {\n")
 
-		for symbol in symbols:
-			symbols_file.write(f"\t\t*(.text.{symbol})\n")
+		for section in symbols:
+			for symbol in symbols[section]:
+				symbols_file.write(f"\t\t*({section}.{symbol})\n")
 
 		symbols_file.write("\t} > RAM\n")
 		symbols_file.write("}\n")
