@@ -1,5 +1,5 @@
 dylib_saiseg:
-.0x801ddf38: srlv $zr, $zr
+.0x801ddf38: srlv $zr, $zr, $zr
 .0x801ddf3c: .asciiz "*w1These are Partners & Digi-Eggs you own.\nVeemon alone has 3 Digi-Eggs."
 .0x801ddf88: .asciiz "*w1This is the third Deck you have."
 .0x801ddfac: .asciiz "*w1This is the second Deck you have."
@@ -50,7 +50,7 @@ dylib_saiseg_string_0:
 .0x801de32c: .word 0x6040005
 .0x801de330: sll $zr, $a2, 0x1c
 .0x801de334: jr $t0
-.0x801de338: 	srav $zr, $zr
+.0x801de338: 	srav $zr, $zr, $zr
 .0x801de33c: .asciiz "Deck"
 .0x801de344: .asciiz "Losses"
 .0x801de34c: .asciiz "Wins"
@@ -260,7 +260,7 @@ dylib_saiseg_string_0:
 .0x801de870: and $zr, $a3, $a0
 .0x801de874: .word 0x8e00cf
 .0x801de878: .word 0x4b0054
-.0x801de87c: sys 0x13001
+.0x801de87c: .word 0xc + 0x100 * 0x13001
 .0x801de880: .word 0x4b0030
 .0x801de884: sltu $zr, $a0, $fp
 .0x801de888: mfhi $zr
@@ -1812,7 +1812,7 @@ dylib_saiseg_func_12:
 .0x801e0bac:	addu $v1, $v0
 .0x801e0bb0:	lw $v0, 0x0($a2)
 .0x801e0bb4:	nop
-.0x801e0bb8:	srlv $v0, $a0
+.0x801e0bb8:	srlv $v0, $v0, $a0
 .0x801e0bbc:	andi $v0, 0x1
 .0x801e0bc0:	sw $v0, 0x0($v1)
 .0x801e0bc4:	addiu $a0, 0x1
@@ -3070,7 +3070,7 @@ dylib_saiseg_func_25:
 .0x801e1d80:	mflo $v0
 .0x801e1d84:	bnez $v1, .6
 .0x801e1d88:		nop
-.0x801e1d8c:	break 0x7
+.0x801e1d8c:	.word 0xd + 0x100 * 0x7
 	.6:
 .0x801e1d90:	lhu $v1, 0x14($s0)
 .0x801e1d94:	nop
@@ -3117,7 +3117,7 @@ dylib_saiseg_func_25:
 .0x801e1e2c:	mflo $a2
 .0x801e1e30:	bnez $v1, .10
 .0x801e1e34:		nop
-.0x801e1e38:	break 0x7
+.0x801e1e38:	.word 0xd + 0x100 * 0x7
 	.10:
 .0x801e1e3c:	mult $a2, $v1
 .0x801e1e40:	mflo $a2
@@ -3151,7 +3151,7 @@ dylib_saiseg_func_25:
 .0x801e1eac:	mflo $v1
 .0x801e1eb0:	bnez $v0, .12
 .0x801e1eb4:		nop
-.0x801e1eb8:	break 0x7
+.0x801e1eb8:	.word 0xd + 0x100 * 0x7
 	.12:
 .0x801e1ebc:	lhu $v0, 0x14($s0)
 .0x801e1ec0:	nop
@@ -3204,7 +3204,7 @@ dylib_saiseg_func_25:
 .0x801e1f74:	mflo $a2
 .0x801e1f78:	bnez $v0, .15
 .0x801e1f7c:		nop
-.0x801e1f80:	break 0x7
+.0x801e1f80:	.word 0xd + 0x100 * 0x7
 	.15:
 .0x801e1f84:	mult $a2, $v0
 .0x801e1f88:	mflo $a2
@@ -9753,7 +9753,7 @@ dylib_saiseg_func_56:
 .0x801e8034:	nop
 .0x801e8038:	lw $v1, 0x8($v0)
 .0x801e803c:	addiu $v0, $zr, 0x10
-.0x801e8040:	srav $v0, $s0
+.0x801e8040:	srav $v0, $v0, $s0
 .0x801e8044:	lw $v1, 0x14($v1)
 .0x801e8048:	nop
 .0x801e804c:	and $v0, $v1
@@ -11295,7 +11295,7 @@ dylib_saiseg_func_67:
 .0x801e9684:	mflo $v1
 .0x801e9688:	bnez $t0, .2
 .0x801e968c:		nop
-.0x801e9690:	break 0x7
+.0x801e9690:	.word 0xd + 0x100 * 0x7
 	.2:
 .0x801e9694:	andi $v1, 0xff
 .0x801e9698:	addu $a0, $zr, $zr
@@ -12705,7 +12705,7 @@ dylib_saiseg_func_77:
 .0x801eaaf0: mflo $v1
 .0x801eaaf4: bnez $v0, .0x801eab00
 .0x801eaaf8: 	nop
-.0x801eaafc: break 0x7
+.0x801eaafc: .word 0xd + 0x100 * 0x7
 .0x801eab00: addu $v1, $sp, $v1
 .0x801eab04: addiu $v0, $zr, 0x5
 .0x801eab08: sb $v0, 0x58($v1)
@@ -14210,7 +14210,7 @@ dylib_saiseg_func_89:
 .0x801ec11c:	sll $v1, 0x2
 .0x801ec120:	addu $a1, $v1
 .0x801ec124:	addiu $v0, $zr, 0x1
-.0x801ec128:	sllv $v0, $a0
+.0x801ec128:	sllv $v0, $v0, $a0
 .0x801ec12c:	lw $v1, 0x23fc($a1)
 .0x801ec130:	nop
 .0x801ec134:	and $v0, $v1
@@ -15306,7 +15306,7 @@ dylib_saiseg_func_96:
 .0x801ed13c:	mflo $v0
 .0x801ed140:	bnez $v1, .6
 .0x801ed144:		nop
-.0x801ed148:	break 0x7
+.0x801ed148:	.word 0xd + 0x100 * 0x7
 	.6:
 .0x801ed14c:	andi $a1, $v0, 0xff
 .0x801ed150:	addiu $v0, $zr, 0x4
@@ -15479,7 +15479,7 @@ dylib_saiseg_func_97:
 .0x801ed3c8:	mflo $v0
 .0x801ed3cc:	bnez $v1, .1
 .0x801ed3d0:		nop
-.0x801ed3d4:	break 0x7
+.0x801ed3d4:	.word 0xd + 0x100 * 0x7
 	.1:
 .0x801ed3d8:	andi $v0, 0xff
 .0x801ed3dc:	beqz $v0, .2
@@ -15593,7 +15593,7 @@ dylib_saiseg_func_98:
 .0x801ed55c:	mflo $v0
 .0x801ed560:	bnez $v1, .5
 .0x801ed564:		nop
-.0x801ed568:	break 0x7
+.0x801ed568:	.word 0xd + 0x100 * 0x7
 	.5:
 .0x801ed56c:	andi $v0, 0xff
 .0x801ed570:	beqz $v0, .6
@@ -21864,7 +21864,7 @@ dylib_saiseg_func_123:
 .0x801f339c: sll $v0, 0x3
 .0x801f33a0: subu $v0, $s1, $v0
 .0x801f33a4: addiu $v1, $zr, 0x1
-.0x801f33a8: sllv $v1, $v0
+.0x801f33a8: sllv $v1, $v1, $v0
 .0x801f33ac: lbu $v0, 0x0($a0)
 .0x801f33b0: nop
 .0x801f33b4: or $v0, $v1
@@ -21991,7 +21991,7 @@ dylib_saiseg_string_4:
 .0x801f3548: .word 0xffff0000
 .0x801f354c: .word 0xffff0000
 .0x801f3550: .asciiz "\n\u{16}H"
-.0x801f3554: sys 0x0
+.0x801f3554: .word 0xc + 0x100 * 0x0
 .0x801f3558: .word 0x100000f
 .0x801f355c: sll $at, $zr, 0x18
 .0x801f3560: nop
@@ -22493,7 +22493,7 @@ dylib_saiseg_data_w21:
 .0x801f3c24: mfhi $zr
 .0x801f3c28: .word 0xf2
 .0x801f3c2c: mult $zr, $zr
-.0x801f3c30: jalr $zr, $zr
+.0x801f3c30: .word 0x09
 .0x801f3c34: 	.word 0x1040cff
 .0x801f3c38: .word 0x100001
 .0x801f3c3c: .word 0x3ffef
@@ -22507,7 +22507,7 @@ dylib_saiseg_data_w21:
 .0x801f3c5c: sll $ra, 0x1c
 .0x801f3c60: .word 0xffea0001
 .0x801f3c64: .word 0x7ff0019
-.0x801f3c68: break 0x434
+.0x801f3c68: .word 0xd + 0x100 * 0x434
 .0x801f3c6c: .word 0x43003d
 .0x801f3c70: .word 0xffff0707
 .0x801f3c74: .word 0x430001
@@ -22669,7 +22669,7 @@ dylib_saiseg_data_w25:
 .0x801f3ea4: .asciiz "W\\\'E\u{1f}2"
 .0x801f3eac: lb $sp, -0x8c8($zr)
 .0x801f3eb0: slti $ra, $s7, 0x6119
-.0x801f3eb4: break 0x125
+.0x801f3eb4: .word 0xd + 0x100 * 0x125
 .0x801f3eb8: lb $sp, -0x8f0($zr)
 .0x801f3ebc: .word 0xff42ff25
 .0x801f3ec0: mtlo $zr
@@ -22774,7 +22774,7 @@ dylib_saiseg_data_w25:
 .0x801f404c: .word 0xff0f
 .0x801f4050: lb $sp, -0xd10($zr)
 .0x801f4054: .word 0xff1842ff
-.0x801f4058: break 0xb4
+.0x801f4058: .word 0xd + 0x100 * 0xb4
 .0x801f405c: lb $sp, -0xd30($zr)
 .0x801f4060: .word 0xff21ff07
 .0x801f4064: .asciiz "/\u{e}"
@@ -22820,13 +22820,13 @@ dylib_saiseg_data_w25:
 .0x801f410c: .word 0xff3a
 .0x801f4110: lb $sp, -0xf60($zr)
 .0x801f4114: j 0x80a40d84
-.0x801f4118: 	sys 0x178
+.0x801f4118: 	.word 0xc + 0x100 * 0x178
 .0x801f411c: lb $sp, -0xf80($zr)
 .0x801f4120: .word 0x6244ff1e
 .0x801f4124: mthi $zr
 .0x801f4128: lb $sp, -0xfa0($zr)
 .0x801f412c: ori $t6, $zr, 0x525f
-.0x801f4130: sys 0x18d
+.0x801f4130: .word 0xc + 0x100 * 0x18d
 .0x801f4134: lb $sp, -0xfc4($zr)
 .0x801f4138: .word 0xffffffff
 .0x801f413c: .word 0xffff

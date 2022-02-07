@@ -2295,7 +2295,7 @@ dylib_openseg_func_13:
 .0x801e14d8: mflo $v0
 .0x801e14dc: bnez $v1, .0x801e14e8
 .0x801e14e0: 	nop
-.0x801e14e4: break 0x7
+.0x801e14e4: .word 0xd + 0x100 * 0x7
 .0x801e14e8: slt $v0, $s1, $v0
 .0x801e14ec: bnez $v0, .0x801e154c
 .0x801e14f0: 	nop
@@ -2306,7 +2306,7 @@ dylib_openseg_func_13:
 .0x801e1504: mflo $v0
 .0x801e1508: bnez $v1, .0x801e1514
 .0x801e150c: 	nop
-.0x801e1510: break 0x7
+.0x801e1510: .word 0xd + 0x100 * 0x7
 .0x801e1514: slt $v0, $v0, $s1
 .0x801e1518: bnez $v0, .0x801e157c
 .0x801e151c: 	mult $s1, $v1
@@ -4381,7 +4381,7 @@ dylib_openseg_func_20:
 .0x801e341c: mflo $v0
 .0x801e3420: bnez $v1, .0x801e342c
 .0x801e3424: 	nop
-.0x801e3428: break 0x7
+.0x801e3428: .word 0xd + 0x100 * 0x7
 .0x801e342c: slt $v0, $s2, $v0
 .0x801e3430: bnez $v0, .0x801e367c
 .0x801e3434: 	nop
@@ -4392,7 +4392,7 @@ dylib_openseg_func_20:
 .0x801e3448: mflo $v0
 .0x801e344c: bnez $v1, .0x801e3458
 .0x801e3450: 	nop
-.0x801e3454: break 0x7
+.0x801e3454: .word 0xd + 0x100 * 0x7
 .0x801e3458: slt $v0, $v0, $s2
 .0x801e345c: bnez $v0, .0x801e36b4
 .0x801e3460: 	mult $s2, $v1
@@ -8782,7 +8782,7 @@ dylib_openseg_func_27:
 .0x801e7778: mflo $v1
 .0x801e777c: bnez $v0, .0x801e7788
 .0x801e7780: 	nop
-.0x801e7784: break 0x7
+.0x801e7784: .word 0xd + 0x100 * 0x7
 .0x801e7788: addu $v1, $sp, $v1
 .0x801e778c: addiu $v0, $zr, 0x5
 .0x801e7790: sb $v0, 0x58($v1)
@@ -10859,7 +10859,7 @@ dylib_openseg_func_31:
 .0x801e9748:	sll $v0, 0x6
 .0x801e974c:	subu $v0, $s1, $v0
 .0x801e9750:	addiu $v1, $zr, 0x4
-.0x801e9754:	srav $v1, $s6
+.0x801e9754:	srav $v1, $v1, $s6
 .0x801e9758:	mult $v0, $v1
 .0x801e975c:	mflo $v0
 .0x801e9760:	sb $v0, 0x14($a0)
@@ -13177,7 +13177,7 @@ dylib_openseg_func_35:
 .0x801ebad0:	addiu $a0, 0x23fc
 .0x801ebad4:	addu $a0, $v0
 .0x801ebad8:	addiu $v0, $zr, 0x1
-.0x801ebadc:	sllv $v0, $a1
+.0x801ebadc:	sllv $v0, $v0, $a1
 .0x801ebae0:	lw $v1, 0x0($a0)
 .0x801ebae4:	nop
 .0x801ebae8:	or $v1, $v0, $v1
@@ -17875,7 +17875,7 @@ dylib_openseg_string_16:
 .0x801eff48:	.asciiz "\n&x"
 ##########
 
-.0x801eff4c: sys 0x400
+.0x801eff4c: .word 0xc + 0x100 * 0x400
 
 ##########
 dylib_openseg_data_w17:
@@ -17896,7 +17896,7 @@ dylib_openseg_data_w18:
 ##########
 
 .0x801eff74: .asciiz "\n&x"
-.0x801eff78: sys 0x400
+.0x801eff78: .word 0xc + 0x100 * 0x400
 .0x801eff7c: .word 0x112012d
 .0x801eff80: sll $at, $zr, 0x18
 .0x801eff84: .asciiz "\u{1}"
@@ -17918,7 +17918,7 @@ dylib_openseg_data_w18:
 .0x801effc4: .word 0xffff0000
 .0x801effc8: .word 0xffff0000
 .0x801effcc: .word 0xd8160a
-.0x801effd0: sys 0x400
+.0x801effd0: .word 0xc + 0x100 * 0x400
 .0x801effd4: .word 0x100000b
 .0x801effd8: sll $at, $zr, 0x18
 .0x801effdc: nop
@@ -17929,7 +17929,7 @@ dylib_openseg_data_w18:
 .0x801efff0: .word 0xffff0000
 .0x801efff4: .word 0xffff0000
 .0x801efff8: .asciiz "\n\u{16}H"
-.0x801efffc: sys 0x400
+.0x801efffc: .word 0xc + 0x100 * 0x400
 
 ##########
 dylib_openseg_data_w19:
@@ -18080,7 +18080,7 @@ dylib_openseg_data_w25:
 .0x801f01c0: addu $zr, $v1, $a0
 .0x801f01c4: .word 0x66ffff
 .0x801f01c8: sub $zr, $v1, $t4
-.0x801f01cc: break 0x1bc02
+.0x801f01cc: .word 0xd + 0x100 * 0x1bc02
 .0x801f01d0: .word 0x740071
 .0x801f01d4: .word 0x730070
 .0x801f01d8: .word 0x7a0078
@@ -18107,7 +18107,7 @@ dylib_openseg_data_w25:
 .0x801f022c: .word 0xee00ed
 .0x801f0230: subu $zr, $a3, $a0
 .0x801f0234: or $zr, $a2, $t4
-.0x801f0238: break 0x39803
+.0x801f0238: .word 0xd + 0x100 * 0x39803
 .0x801f023c: .word 0xf000ef
 .0x801f0240: .word 0xf600f5
 .0x801f0244: srav $zr, $gp, $a3
@@ -18119,7 +18119,7 @@ dylib_openseg_data_w26:
 
 .0x801f024c: .word 0x10000ff
 .0x801f0250: jr $t0
-.0x801f0254: 	sys 0x43404
+.0x801f0254: 	.word 0xc + 0x100 * 0x43404
 .0x801f0258: .word 0x10f010e
 .0x801f025c: mfhi $zr
 .0x801f0260: .word 0xffff010a
@@ -18133,7 +18133,7 @@ dylib_openseg_data_w26:
 .0x801f0280: sll $zr, 0xd
 .0x801f0284: .word 0x2e006c
 .0x801f0288: add $zr, $a2, $s1
-.0x801f028c: jalr $zr, $zr
+.0x801f028c: .word 0x09
 .0x801f0290: 	.word 0x2e006c
 .0x801f0294: .word 0x3400001
 .0x801f0298: nop
@@ -18199,7 +18199,7 @@ dylib_openseg_data_w29:
 .0x801f034c: jalr $k0, $zr
 .0x801f0350: 	.word 0x400d4
 .0x801f0354: mfhi $zr
-.0x801f0358: jalr $zr, $zr
+.0x801f0358: .word 0x09
 .0x801f035c: 	.asciiz "n\u{3}o"
 .0x801f0360: mfhi $zr
 .0x801f0364: mfhi $zr
@@ -18210,7 +18210,7 @@ dylib_openseg_data_w29:
 .0x801f0378: jr $k0
 .0x801f037c: 	mtlo $zr
 .0x801f0380: sll $zr, $a0, 0x0
-.0x801f0384: srav $zr, $zr
+.0x801f0384: srav $zr, $zr, $zr
 .0x801f0388: .asciiz "s\u{3}o"
 .0x801f038c: mfhi $zr
 .0x801f0390: add $zr, $a2, $t7
@@ -18223,7 +18223,7 @@ dylib_openseg_data_w29:
 .0x801f03ac: mfhi $zr
 .0x801f03b0: .word 0xf0
 .0x801f03b4: .asciiz "n\u{3}\u{7f}"
-.0x801f03b8: jalr $zr, $zr
+.0x801f03b8: .word 0x09
 .0x801f03bc: 	mfhi $zr
 .0x801f03c0: and $zr, $s0
 .0x801f03c4: .word 0xf0fff8
@@ -18245,10 +18245,10 @@ dylib_openseg_data_w29:
 .0x801f0404: sllv $zr, $t8, $zr
 .0x801f0408: mult $s0, $at
 .0x801f040c: .asciiz "o\u{3}n"
-.0x801f0410: break 0x400
+.0x801f0410: .word 0xd + 0x100 * 0x400
 .0x801f0414: add $zr, $a2, $t6
 .0x801f0418: sllv $zr, $gp, $zr
-.0x801f041c: sys 0x3c000
+.0x801f041c: .word 0xc + 0x100 * 0x3c000
 
 ##########
 dylib_openseg_data_w30:
@@ -18331,11 +18331,11 @@ dylib_openseg_data_w32:
 .0x801f0520: nop
 .0x801f0524: add $zr, $v0, $s4
 .0x801f0528: add $zr, $at, $zr
-.0x801f052c: srlv $zr, $zr
+.0x801f052c: srlv $zr, $zr, $zr
 .0x801f0530: nop
 .0x801f0534: sll $zr, $s4, 0x1
 .0x801f0538: add $zr, $at, $zr
-.0x801f053c: srlv $zr, $zr
+.0x801f053c: srlv $zr, $zr, $zr
 .0x801f0540: nop
 .0x801f0544: sll $zr, $s4, 0x0
 .0x801f0548: add $zr, $at, $zr
@@ -18343,11 +18343,11 @@ dylib_openseg_data_w32:
 .0x801f0550: nop
 .0x801f0554: add $zr, $v1, $s4
 .0x801f0558: add $zr, $at, $zr
-.0x801f055c: srlv $zr, $zr
+.0x801f055c: srlv $zr, $zr, $zr
 .0x801f0560: nop
 .0x801f0564: sll $zr, $s4, 0x1
 .0x801f0568: add $zr, $at, $zr
-.0x801f056c: srlv $zr, $zr
+.0x801f056c: srlv $zr, $zr, $zr
 .0x801f0570: nop
 .0x801f0574: sll $zr, $s4, 0x0
 .0x801f0578: add $zr, $at, $zr
@@ -18355,7 +18355,7 @@ dylib_openseg_data_w32:
 .0x801f0580: nop
 .0x801f0584: add $zr, $a0, $s4
 .0x801f0588: add $zr, $at, $zr
-.0x801f058c: srav $zr, $zr
+.0x801f058c: srav $zr, $zr, $zr
 .0x801f0590: nop
 .0x801f0594: sll $zr, $s4, 0x1
 .0x801f0598: add $zr, $at, $zr
@@ -18375,11 +18375,11 @@ dylib_openseg_data_w32:
 .0x801f05d0: .word 0xffff0000
 .0x801f05d4: add $zr, $a1, $s4
 .0x801f05d8: add $zr, $at, $zr
-.0x801f05dc: sllv $zr, $zr
+.0x801f05dc: sllv $zr, $zr, $zr
 .0x801f05e0: .word 0xfffd0000
 .0x801f05e4: add $zr, $a1, $s4
 .0x801f05e8: add $zr, $at, $zr
-.0x801f05ec: srlv $zr, $zr
+.0x801f05ec: srlv $zr, $zr, $zr
 .0x801f05f0: .word 0xfffb0000
 .0x801f05f4: add $zr, $a1, $s4
 .0x801f05f8: add $zr, $at, $zr
@@ -18391,11 +18391,11 @@ dylib_openseg_data_w32:
 .0x801f0610: .word 0xffff0000
 .0x801f0614: sll $zr, $s4, 0x0
 .0x801f0618: add $zr, $at, $zr
-.0x801f061c: sys 0x0
+.0x801f061c: .word 0xc + 0x100 * 0x0
 .0x801f0620: nop
 .0x801f0624: sll $zr, $s4, 0x0
 .0x801f0628: add $zr, $at, $zr
-.0x801f062c: sllv $zr, $zr
+.0x801f062c: sllv $zr, $zr, $zr
 .0x801f0630: nop
 .0x801f0634: sll $zr, $s4, 0x1
 .0x801f0638: add $zr, $at, $zr
@@ -18407,7 +18407,7 @@ dylib_openseg_data_w32:
 .0x801f0650: nop
 .0x801f0654: add $zr, $a2, $s4
 .0x801f0658: add $zr, $at, $zr
-.0x801f065c: break 0x0
+.0x801f065c: .word 0xd + 0x100 * 0x0
 .0x801f0660: nop
 .0x801f0664: sll $zr, $s4, 0x1
 .0x801f0668: add $zr, $at, $zr
@@ -18420,7 +18420,7 @@ dylib_openseg_string_33:
 .0x801f0670: nop
 .0x801f0674: sll $zr, $s4, 0x0
 .0x801f0678: add $zr, $at, $zr
-.0x801f067c: sllv $zr, $zr
+.0x801f067c: sllv $zr, $zr, $zr
 .0x801f0680: nop
 .0x801f0684: lb $sp, -0x121c($zr)
 .0x801f0688: lb $sp, -0x1228($zr)
