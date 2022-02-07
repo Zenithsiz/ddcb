@@ -29,7 +29,7 @@
 .include "dcb-asm/todo/f48.s"
 .include "dcb-asm/todo/f49.s"
 .include "dcb-asm/todo/f50.s"
-#.include "dcb-asm/todo/f51.s"
+.include "dcb-asm/todo/f51.s"
 .include "dcb-asm/todo/f52.s"
 .include "dcb-asm/todo/f53.s"
 .include "dcb-asm/todo/f55.s"

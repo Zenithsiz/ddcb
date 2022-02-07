@@ -75,3 +75,47 @@ f43:
 .2:
 	jr $ra
 		sb $zr, 0x41($a3)
+
+f44:
+	lb $v0, 0x3e($a0)
+	nop
+	slti $v0, 0x6
+	bnez $v0, .0
+		nop
+	sb $zr, 0x3e($a0)
+.0:
+	lh $v0, 0x8 ($a0)
+	lh $v1, 0x10($a0)
+	nop
+	subu $v1, $v0, $v1
+	slt $v0, $v1, $a1
+	beqz $v0, .1
+		nop
+	move_ $a1, $v1
+.1:
+	lh $v0, 0xa ($a0)
+	lh $v1, 0x12($a0)
+	nop
+	subu $v1, $v0, $v1
+	slt $v0, $v1, $a2
+	beqz $v0, .2
+		nop
+	move_ $a2, $v1
+.2:
+	bgez $a1, .3
+		nop
+	move_ $a1, $zr
+.3:
+	bgez $a2, .4
+		nop
+	move_ $a2, $zr
+.4:
+	lhu $v0, 0x4($a0)
+	nop
+	sh $v0, 0x30($a0)
+	lhu $v0, 0x6($a0)
+	nop
+	sh $v0, 0x32($a0)
+	sh $a1, 0x34($a0)
+	jr $ra
+		sh $a2, 0x36($a0)

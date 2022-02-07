@@ -1,12 +1,9 @@
 //! Unknown statics / functions
 
-// Lints
-// They are uppercase, they just have a hex number with lowercase digits
-#![allow(non_upper_case_globals)]
-
 // Modules
 mod data;
 
+/*
 // Imports
 use crate::util::{self, U32Ptr};
 
@@ -163,6 +160,7 @@ unsafe extern "C" fn f51() {
 		options(noreturn)
 	);
 }
+*/
 
 /*
 fn f46_(a0: u32, a1: u32) {

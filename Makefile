@@ -7,14 +7,16 @@ cargo                  = cargo
 elf2psexe              = elf2psexe
 generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
-postprocess_asm        = tools/postprocess_asm.py
 sed                    = sed
 diff                   = diff
 sha256sum              = sha256sum
-mkdrv                  = build/bin/dcb-mkdrv
+mkdrv                  = target/release/dcb-mkdrv
 
 # All tools
 TOOLS := $(mkdrv)
+
+# Tool dep files
+TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All assembly files
 ASM_FILES := $(shell find "dcb-asm/" -type f -iname "*.s")
@@ -29,11 +31,14 @@ ISO_NON_DRV_FILES := $(patsubst dcb/%,build/iso/%,$(wildcard dcb/*.*))
 # All ISO files
 ISO_FILES := $(DRV_FILES) $(ISO_NON_DRV_FILES) build/iso/SLUS_013.28 build/iso/MMM.DAT
 
+
+
 # Commands
+
 .PHONY: build compare all clean
 
 # Default target, pack iso
-all: pack_bin compare
+all: pack_bin
 
 # Builds the bin
 pack_bin: build/dcb.bin
@@ -41,7 +46,7 @@ pack_bin: build/dcb.bin
 # Builds the executable
 build_exe: build/dcb.psexe
 
-# Compare the bin and exe
+# Compare files to original
 # TODO: Compare the bin once it's properly built
 compare: build_exe
 	$(sha256sum) --check checksums.sha256
@@ -53,15 +58,19 @@ tools: $(TOOLS)
 clean:
 	rm -r build/
 
+
+
 # Tools
-# Note: Given that `cargo` doesn't adjust the binary being copied, and also emits absolute
-#       paths, which don't seem to work for some reason (TODO: Check why), we convert both of those.
-build/bin/% build/bin/%.d:
-	$(cargo) build --release -p $* -Z unstable-options --out-dir build/bin/
-	$(sed) \
-		-e "s,target/release/,build/bin/,g" \
-		-e "s,$(shell pwd)/,,g" target/release/$*.d \
-		> build/bin/$*.d
+
+# Cargo tools
+# Note: Make doesn't seem to understand dependencies on full-paths properly, so we make them
+#       relative after compiling
+target/release/% target/release/%.d:
+	$(cargo) build --release -p $*
+	$(sed) -i \
+		-e "s,$(shell pwd)/,,g" target/release/$*.d
+
+
 
 # Files
 
@@ -69,13 +78,13 @@ build/bin/% build/bin/%.d:
 build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
 	mkpsxiso dcb-iso.xml -q -y
 
-# `DRV`s
+# Copy directories in `dcb/` as `DRV`s to `build/iso`.
 .SECONDEXPANSION:
 build/iso/%.DRV: $$(shell find dcb/$$*/) $(mkdrv)
 	@mkdir -p $(@D)
 	$(mkdrv) --quiet $< -o $@
 
-# Other files
+# Copy files in `dcb/` as they are to `build/iso`.
 build/iso/%: dcb/%
 	cp $< $@
 
@@ -84,7 +93,7 @@ build/iso/MMM.DAT:
 	touch $@
 	truncate --size=24240128 $@
 
-# Executable inside the iso folder
+# Copy the executable from `dcb.psexe`
 build/iso/SLUS_013.28: build/dcb.psexe
 	cp $< $@
 
@@ -103,22 +112,28 @@ build/dcb.elf: build/dcb.o build/symbols.ld
 		--warn-section-align
 
 
-# Symbols for ordering
+# Linker script symbol ordering.
 build/symbols.ld: symbols.yaml $(generate_linker_script)
 	$(generate_linker_script)
 
-# Object files
+# Assembly object files
 build/dcb.o build/dcb.d: build/asm/dcb.s build/rs/dcb.s $(ASM_PROCESSED_FILES)
-	$(as) -MD build/dcb.d -o build/dcb.o -EL -mips1 -march=r3000 -O2 build/rs/dcb.s build/asm/dcb.s 2>&1 | sed -e "s,build/asm/,dcb-asm/,g" 1>&2
+	$(as) \
+		-MD \
+		build/dcb.d \
+		-o build/dcb.o \
+		-EL \
+		-mips1 \
+		-march=r3000 \
+		-O2 \
+		build/rs/dcb.s \
+		build/asm/dcb.s \
+		2>&1 | sed -e "s,build/asm/,dcb-asm/,g" 1>&2
 	$(sed) -i -e "s/dcb.*-cgu.0//g" build/dcb.d
 
-# Rust assembly post-processed
-# Note: Replace any `mips2` with `mips1` before assembling
-build/rs/dcb.s: build/rs/dcb-ll.s $(postprocess_asm)
-	$(postprocess_asm) $< -o $@
-
 # Rust assembly
-build/rs/dcb-ll.s: build/rs/dcb.ll $(llc)
+# Note: Replace any `mips2` with `mips1` before assembling
+build/rs/dcb.s: build/rs/dcb.ll $(llc)
 	$(sed) -i -e "s/mips2/mips1/g" $<
 	$(llc) -O3 -march=mips -mcpu=mips1 -mattr=+soft-float $< -o $@
 
@@ -172,4 +187,4 @@ include build/dcb.d
 include build/rs/dcb.d
 include build/rs/libcore_impl.d
 include build/rs/libdcb_macros.d
-include $(patsubst %,%.d,$(TOOLS))
+include $(TOOLS_DEP)

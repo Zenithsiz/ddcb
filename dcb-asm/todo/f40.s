@@ -171,3 +171,12 @@ f40:
 	lw $s0, 0x18($sp)
 	jr $ra
 		addiu $sp, 0x40
+
+f41:
+	lui $v1, 0x8009
+	lui $v0, 0x8008
+	lw $v0, -0x6c60($v0)
+	nop
+	lw $v0, 0x40bc($v0)
+	jr $ra
+		sw $v0, -0x6818($v1)

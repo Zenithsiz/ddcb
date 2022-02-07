@@ -1,5 +1,9 @@
 //! Data
 
+// Lints
+// They are uppercase, they just have a hex number with lowercase digits
+#![allow(non_upper_case_globals)]
+
 // Imports
 use core_impl::{concat, panic, stringify};
 
