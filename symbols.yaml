@@ -17703,5 +17703,17 @@
   - S_0x80077ff4
   - S_0x80077ff8
   - S_0x80077ffc
-".dylib.openseg":
-  - openseg_data
+"dylib.endseg":
+  - dylib_endseg
+"dylib.evoseg":
+  - dylib_evoseg
+"dylib.kawseg":
+  - dylib_kawseg
+"dylib.openseg":
+  - dylib_openseg
+"dylib.saiseg":
+  - dylib_saiseg
+"dylib.subseg":
+  - dylib_subseg
+"dylib.sugseg":
+  - dylib_sugseg
