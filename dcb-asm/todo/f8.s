@@ -1,3 +1,4 @@
+# Returns something from the register exception storage?
 f8:
 	lwi $v0, S_0x80077a0c
 	nop

@@ -13904,6 +13904,9 @@ decl_static! {
 	// Start of zero memory.
 	// Also global pointer
 	S_0x80077a08: u32 = 0x00000000;
+
+	// Pointer to where to store registers when
+	// entering exception?
 	S_0x80077a0c: u32 = 0x00000000;
 	S_0x80077a10: u32 = 0x00000000;
 	S_0x80077a14: u32 = 0x00000000;
