@@ -831,7 +831,7 @@ dylib_saiseg_string_0:
 .0x801dfb38: sb $zr, 0x46a9($v0)
 .0x801dfb3c: addu $a0, $s0, $zr
 .0x801dfb40: addu $a1, $s2, $zr
-.0x801dfb44: jal func_4
+.0x801dfb44: jal dylib_saiseg_func_4
 .0x801dfb48: 	addu $a2, $s1, $zr
 .0x801dfb4c: lui $v1, 0x801f
 .0x801dfb50: sb $v0, 0x46a7($v1)
@@ -888,7 +888,7 @@ dylib_saiseg_func_1:
 ##########
 
 .0x801dfbec: slti $v0, $v1, 0x3
-.0x801dfbf0: bnez $v0, func_1.0
+.0x801dfbf0: bnez $v0, dylib_saiseg_func_1.0
 .0x801dfbf4: 	addiu $a0, 0x40
 .0x801dfbf8: jr $ra
 .0x801dfbfc: 	addu $v0, $zr, $zr
@@ -904,7 +904,7 @@ dylib_saiseg_func_2:
 .0x801dfc14:	lui $v0, 0x8007
 .0x801dfc18:	lw $s1, -0x1fb0($v0)
 .0x801dfc1c:	lui $a0, 0x801f
-.0x801dfc20:	jal func_1
+.0x801dfc20:	jal dylib_saiseg_func_1
 .0x801dfc24:		addiu $a0, 0x4840
 .0x801dfc28:	addu $a2, $v0, $zr
 .0x801dfc2c:	bnez $a2, .0
@@ -1240,7 +1240,7 @@ dylib_saiseg_func_4:
 .0x801e00b4:	addiu $a0, $s4, 0x4
 .0x801e00b8:	addu $a1, $s3, $a1
 .0x801e00bc:	addu $a2, $s1, $zr
-.0x801e00c0:	jal func_3
+.0x801e00c0:	jal dylib_saiseg_func_3
 .0x801e00c4:		addu $a3, $s7, $zr
 .0x801e00c8:	bne $v0, $s5, .1
 .0x801e00cc:		addiu $s0, 0x1
@@ -1319,7 +1319,7 @@ dylib_saiseg_func_5:
 .0x801e01d0:	addiu $v0, $zr, 0x1
 .0x801e01d4:	bne $a0, $v0, .2
 .0x801e01d8:		nop
-.0x801e01dc:	jal func_79
+.0x801e01dc:	jal dylib_saiseg_func_79
 .0x801e01e0:		addiu $a0, $zr, 0x15
 .0x801e01e4:	lui $v1, 0x801f
 .0x801e01e8:	addiu $v1, 0x5260
@@ -1333,7 +1333,7 @@ dylib_saiseg_func_5:
 .0x801e0208:	lui $v0, 0x801f
 .0x801e020c:	addiu $s2, $v0, 0x5260
 	.1:
-.0x801e0210:	jal func_79
+.0x801e0210:	jal dylib_saiseg_func_79
 .0x801e0214:		addiu $a0, $zr, 0x14
 .0x801e0218:	addiu $s0, $s1, 0x1a
 .0x801e021c:	sll $s0, 0x2
@@ -1358,10 +1358,10 @@ dylib_saiseg_func_5:
 .0x801e0268:	addiu $v0, 0x1
 .0x801e026c:	sh $v0, 0x82($v1)
 .0x801e0270:	lw $a0, 0x0($s0)
-.0x801e0274:	jal func_83
+.0x801e0274:	jal dylib_saiseg_func_83
 .0x801e0278:		addiu $a1, $zr, 0x21
 .0x801e027c:	lw $a0, 0x0($s0)
-.0x801e0280:	jal func_86
+.0x801e0280:	jal dylib_saiseg_func_86
 .0x801e0284:		addu $a1, $zr, $zr
 .0x801e0288:	addiu $s1, 0x1
 .0x801e028c:	slti $v0, $s1, 0x5
@@ -1370,7 +1370,7 @@ dylib_saiseg_func_5:
 .0x801e0298:	j .4
 .0x801e029c:		addiu $s0, 0x5260
 	.2:
-.0x801e02a0:	jal func_79
+.0x801e02a0:	jal dylib_saiseg_func_79
 .0x801e02a4:		addiu $a0, $zr, 0x16
 .0x801e02a8:	lui $v1, 0x801f
 .0x801e02ac:	addiu $v1, 0x5260
@@ -1384,7 +1384,7 @@ dylib_saiseg_func_5:
 .0x801e02cc:	lui $v0, 0x801f
 .0x801e02d0:	addiu $s2, $v0, 0x5260
 	.3:
-.0x801e02d4:	jal func_79
+.0x801e02d4:	jal dylib_saiseg_func_79
 .0x801e02d8:		addiu $a0, $zr, 0x3d
 .0x801e02dc:	addiu $s0, $s1, 0x1a
 .0x801e02e0:	sll $s0, 0x2
@@ -1409,10 +1409,10 @@ dylib_saiseg_func_5:
 .0x801e032c:	addiu $v0, 0x1
 .0x801e0330:	sh $v0, 0x82($v1)
 .0x801e0334:	lw $a0, 0x0($s0)
-.0x801e0338:	jal func_83
+.0x801e0338:	jal dylib_saiseg_func_83
 .0x801e033c:		addiu $a1, $zr, 0x21
 .0x801e0340:	lw $a0, 0x0($s0)
-.0x801e0344:	jal func_86
+.0x801e0344:	jal dylib_saiseg_func_86
 .0x801e0348:		addu $a1, $zr, $zr
 .0x801e034c:	addiu $s1, 0x1
 .0x801e0350:	slti $v0, $s1, 0x3
@@ -1421,10 +1421,10 @@ dylib_saiseg_func_5:
 .0x801e035c:	addiu $s0, 0x5260
 	.4:
 .0x801e0360:	lw $a0, 0x64($s0)
-.0x801e0364:	jal func_83
+.0x801e0364:	jal dylib_saiseg_func_83
 .0x801e0368:		addiu $a1, $zr, 0x20
 .0x801e036c:	lw $a0, 0x64($s0)
-.0x801e0370:	jal func_86
+.0x801e0370:	jal dylib_saiseg_func_86
 .0x801e0374:		addiu $a1, $zr, 0x1
 .0x801e0378:	lw $ra, 0x1c($sp)
 .0x801e037c:	lw $s2, 0x18($sp)
@@ -1492,7 +1492,7 @@ dylib_saiseg_func_6:
 .0x801e044c:	sll $v0, 0x2
 .0x801e0450:	addu $v0, $v1
 .0x801e0454:	lw $a0, 0x0($v0)
-.0x801e0458:	jal func_103
+.0x801e0458:	jal dylib_saiseg_func_103
 .0x801e045c:		addiu $a1, $sp, 0x10
 .0x801e0460:	lbu $v0, 0x84($s0)
 .0x801e0464:	nop
@@ -1648,7 +1648,7 @@ dylib_saiseg_func_6:
 .0x801e06b4: sll $v0, 0x2
 .0x801e06b8: addu $v0, $s1
 .0x801e06bc: lw $a0, 0x0($v0)
-.0x801e06c0: jal func_80
+.0x801e06c0: jal dylib_saiseg_func_80
 .0x801e06c4: 	addiu $s0, 0x1
 .0x801e06c8: slti $v0, $s0, 0x4
 .0x801e06cc: bnez $v0, .0x801e06b4
@@ -1661,7 +1661,7 @@ dylib_saiseg_func_6:
 .0x801e06e8: sll $v0, 0x2
 .0x801e06ec: addu $v0, $s1
 .0x801e06f0: lw $a0, 0x0($v0)
-.0x801e06f4: jal func_80
+.0x801e06f4: jal dylib_saiseg_func_80
 .0x801e06f8: 	addiu $s0, 0x1
 .0x801e06fc: slti $v0, $s0, 0x6
 .0x801e0700: bnez $v0, .0x801e06e8
@@ -1823,7 +1823,7 @@ dylib_saiseg_func_8:
 .0x801e0924:	sll $v0, 0x2
 .0x801e0928:	addu $v0, $s1
 .0x801e092c:	lw $a0, 0x0($v0)
-.0x801e0930:	jal func_81
+.0x801e0930:	jal dylib_saiseg_func_81
 .0x801e0934:		addiu $s0, 0x1
 .0x801e0938:	slt $v0, $s0, $s4
 .0x801e093c:	bnez $v0, .1
@@ -1835,7 +1835,7 @@ dylib_saiseg_func_8:
 .0x801e0950:	nop
 .0x801e0954:	sw $s2, 0x50($v1)
 .0x801e0958:	lw $a0, 0x64($v0)
-.0x801e095c:	jal func_81
+.0x801e095c:	jal dylib_saiseg_func_81
 .0x801e0960:		nop
 	.9:
 .0x801e0964:	lw $ra, 0x28($sp)
@@ -2398,7 +2398,7 @@ dylib_saiseg_func_17:
 .0x801e10dc:	lui $s0, 0x801f
 .0x801e10e0:	lw $a1, 0x20($sp)
 .0x801e10e4:	lw $a2, 0x24($sp)
-.0x801e10e8:	jal func_16
+.0x801e10e8:	jal dylib_saiseg_func_16
 .0x801e10ec:		addiu $a0, $s0, 0x4b44
 .0x801e10f0:	addiu $a0, $s0, 0x4b44
 .0x801e10f4:	jal 0x80016f38
@@ -2509,7 +2509,7 @@ dylib_saiseg_func_19:
 .0x801e1254:	addiu $sp, -0x20
 .0x801e1258:	sw $ra, 0x1c($sp)
 .0x801e125c:	sw $s0, 0x18($sp)
-.0x801e1260:	jal func_79
+.0x801e1260:	jal dylib_saiseg_func_79
 .0x801e1264:		addiu $a0, $zr, 0x1e
 .0x801e1268:	lui $s0, 0x801f
 .0x801e126c:	addiu $s0, 0x5260
@@ -2520,9 +2520,9 @@ dylib_saiseg_func_19:
 .0x801e1280:	addiu $v0, $zr, -0xbc
 .0x801e1284:	sw $v0, 0x54($v1)
 .0x801e1288:	lw $a0, 0x54($s0)
-.0x801e128c:	jal func_83
+.0x801e128c:	jal dylib_saiseg_func_83
 .0x801e1290:		addiu $a1, $zr, 0x21
-.0x801e1294:	jal func_79
+.0x801e1294:	jal dylib_saiseg_func_79
 .0x801e1298:		addiu $a0, $zr, 0x1f
 .0x801e129c:	sw $v0, 0x58($s0)
 .0x801e12a0:	addiu $v1, $zr, 0x34
@@ -2531,7 +2531,7 @@ dylib_saiseg_func_19:
 .0x801e12ac:	addiu $v0, $zr, -0xbb
 .0x801e12b0:	sw $v0, 0x54($v1)
 .0x801e12b4:	lw $a0, 0x58($s0)
-.0x801e12b8:	jal func_83
+.0x801e12b8:	jal dylib_saiseg_func_83
 .0x801e12bc:		addiu $a1, $zr, 0x21
 .0x801e12c0:	lui $v0, 0x8007
 .0x801e12c4:	lw $a1, -0x1fb0($v0)
@@ -2567,7 +2567,7 @@ dylib_saiseg_func_19:
 .0x801e133c:	addiu $v0, $zr, 0x14
 .0x801e1340:	sh $v0, 0x16($sp)
 .0x801e1344:	lw $a0, 0x58($s0)
-.0x801e1348:	jal func_103
+.0x801e1348:	jal dylib_saiseg_func_103
 .0x801e134c:		addiu $a1, $sp, 0x10
 .0x801e1350:	lw $ra, 0x1c($sp)
 .0x801e1354:	lw $s0, 0x18($sp)
@@ -2589,7 +2589,7 @@ dylib_saiseg_func_20:
 .0x801e137c:	addiu $v0, $zr, -0x1
 .0x801e1380:	sb $v0, 0x11a($s1)
 .0x801e1384:	sb $v0, 0x11b($s1)
-.0x801e1388:	jal func_79
+.0x801e1388:	jal dylib_saiseg_func_79
 .0x801e138c:		addiu $a0, $zr, 0x6
 .0x801e1390:	lui $s0, 0x801f
 .0x801e1394:	addiu $s0, 0x5260
@@ -2600,9 +2600,9 @@ dylib_saiseg_func_20:
 .0x801e13a8:	addiu $v0, $zr, -0x98
 .0x801e13ac:	sw $v0, 0x54($v1)
 .0x801e13b0:	lw $a0, 0x5c($s0)
-.0x801e13b4:	jal func_83
+.0x801e13b4:	jal dylib_saiseg_func_83
 .0x801e13b8:		addiu $a1, $zr, 0x21
-.0x801e13bc:	jal func_79
+.0x801e13bc:	jal dylib_saiseg_func_79
 .0x801e13c0:		addiu $a0, $zr, 0x7
 .0x801e13c4:	sw $v0, 0x60($s0)
 .0x801e13c8:	sw $s2, 0x50($v0)
@@ -2613,7 +2613,7 @@ dylib_saiseg_func_20:
 .0x801e13dc:	addiu $v0, $zr, -0x97
 .0x801e13e0:	sw $v0, 0x54($v1)
 .0x801e13e4:	lw $a0, 0x60($s0)
-.0x801e13e8:	jal func_83
+.0x801e13e8:	jal dylib_saiseg_func_83
 .0x801e13ec:		addiu $a1, $zr, 0x22
 .0x801e13f0:	sw $zr, 0xf4($s1)
 .0x801e13f4:	lw $ra, 0x24($sp)
@@ -2634,10 +2634,10 @@ dylib_saiseg_func_21:
 .0x801e1418:	lui $s0, 0x801f
 .0x801e141c:	addiu $s0, 0x5260
 .0x801e1420:	lw $a0, 0x58($s0)
-.0x801e1424:	jal func_81
+.0x801e1424:	jal dylib_saiseg_func_81
 .0x801e1428:		nop
 .0x801e142c:	lw $a0, 0x54($s0)
-.0x801e1430:	jal func_81
+.0x801e1430:	jal dylib_saiseg_func_81
 .0x801e1434:		nop
 .0x801e1438:	lw $ra, 0x14($sp)
 .0x801e143c:	lw $s0, 0x10($sp)
@@ -2691,7 +2691,7 @@ dylib_saiseg_func_22:
 .0x801e14dc:	sb $a1, 0x11b($a0)
 .0x801e14e0:	lui $v0, 0x801f
 .0x801e14e4:	lw $a0, 0x52c0($v0)
-.0x801e14e8:	jal func_103
+.0x801e14e8:	jal dylib_saiseg_func_103
 .0x801e14ec:		addiu $a1, $sp, 0x10
 .0x801e14f0:	j .5
 .0x801e14f4:		lui $s0, 0x801f
@@ -2751,10 +2751,10 @@ dylib_saiseg_func_22:
 .0x801e15bc:	addiu $v0, 0x2
 .0x801e15c0:	sw $v0, 0x54($v1)
 .0x801e15c4:	lw $a0, 0x60($s0)
-.0x801e15c8:	jal func_81
+.0x801e15c8:	jal dylib_saiseg_func_81
 .0x801e15cc:		nop
 .0x801e15d0:	lw $a0, 0x5c($s0)
-.0x801e15d4:	jal func_81
+.0x801e15d4:	jal dylib_saiseg_func_81
 .0x801e15d8:		nop
 .0x801e15dc:	lw $ra, 0x1c($sp)
 .0x801e15e0:	lw $s0, 0x18($sp)
@@ -2945,7 +2945,7 @@ dylib_saiseg_func_24:
 .0x801e186c: addiu $sp, -0x20
 .0x801e1870: sw $ra, 0x18($sp)
 .0x801e1874: sw $s1, 0x14($sp)
-.0x801e1878: jal func_24
+.0x801e1878: jal dylib_saiseg_func_24
 .0x801e187c: 	sw $s0, 0x10($sp)
 .0x801e1880: lui $v0, 0x801f
 .0x801e1884: lw $v0, 0x4838($v0)
@@ -2959,7 +2959,7 @@ dylib_saiseg_func_24:
 .0x801e18a4: addiu $a0, 0x4338
 .0x801e18a8: lui $a1, 0x801f
 .0x801e18ac: addiu $a1, 0x351c
-.0x801e18b0: jal func_23
+.0x801e18b0: jal dylib_saiseg_func_23
 .0x801e18b4: 	addiu $a2, $zr, 0x1
 .0x801e18b8: lui $a0, 0x801f
 .0x801e18bc: addiu $a0, 0x3538
@@ -3993,7 +3993,7 @@ dylib_saiseg_func_25:
 .0x801e285c: jal 0x8001c4dc
 .0x801e2860: 	addiu $a3, $zr, 0x8b
 .0x801e2864: lui $a0, 0x801f
-.0x801e2868: jal func_25
+.0x801e2868: jal dylib_saiseg_func_25
 .0x801e286c: 	addiu $a0, 0x3538
 .0x801e2870: lw $ra, 0xac($sp)
 .0x801e2874: lw $fp, 0xa8($sp)
@@ -4354,7 +4354,7 @@ dylib_saiseg_func_27:
 .0x801e2dc8: nop
 .0x801e2dcc: beqz $v0, .0x801e2e04
 .0x801e2dd0: 	lui $v0, 0x801f
-.0x801e2dd4: jal func_79
+.0x801e2dd4: jal dylib_saiseg_func_79
 .0x801e2dd8: 	addiu $a0, $zr, 0x4
 .0x801e2ddc: lui $v1, 0x801f
 .0x801e2de0: sw $v0, 0x5260($v1)
@@ -4362,7 +4362,7 @@ dylib_saiseg_func_27:
 .0x801e2de8: sb $v0, 0x116($s0)
 .0x801e2dec: jal 0x80014c08
 .0x801e2df0: 	addiu $a0, $zr, 0x14
-.0x801e2df4: jal func_17
+.0x801e2df4: jal dylib_saiseg_func_17
 .0x801e2df8: 	addiu $a0, $zr, 0x1
 .0x801e2dfc: j 0x801e2e54
 .0x801e2e00: 	nop
@@ -4370,14 +4370,14 @@ dylib_saiseg_func_27:
 .0x801e2e08: nop
 .0x801e2e0c: bnez $v0, .0x801e2e28
 .0x801e2e10: 	lui $s0, 0x801f
-.0x801e2e14: jal func_79
+.0x801e2e14: jal dylib_saiseg_func_79
 .0x801e2e18: 	addiu $a0, $zr, 0x3
 .0x801e2e1c: lui $v1, 0x801f
 .0x801e2e20: j 0x801e2e48
 .0x801e2e24: 	sw $v0, 0x5260($v1)
 .0x801e2e28: lw $a0, 0x5260($s0)
 .0x801e2e2c: addiu $a1, $sp, 0x10
-.0x801e2e30: jal func_102
+.0x801e2e30: jal dylib_saiseg_func_102
 .0x801e2e34: 	addu $a2, $zr, $zr
 .0x801e2e38: lw $v1, 0x5260($s0)
 .0x801e2e3c: addiu $v0, $zr, 0x7e28
@@ -4490,7 +4490,7 @@ dylib_saiseg_func_30:
 .0x801e2f98:	sll $v0, 0x6
 .0x801e2f9c:	ori $s1, $v0, 0x21
 	.2:
-.0x801e2fa0:	jal func_79
+.0x801e2fa0:	jal dylib_saiseg_func_79
 .0x801e2fa4:		addu $a0, $s0, $zr
 .0x801e2fa8:	sll $v1, $s2, 0x2
 .0x801e2fac:	addu $v1, $s3
@@ -4653,7 +4653,7 @@ dylib_saiseg_func_31:
 .0x801e31f8:	addiu $s3, $v0, 0x5260
 .0x801e31fc:	addiu $s2, $zr, 0x38a0
 	.0:
-.0x801e3200:	jal func_79
+.0x801e3200:	jal dylib_saiseg_func_79
 .0x801e3204:		addu $a0, $s0, $zr
 .0x801e3208:	sll $v1, $s1, 0x2
 .0x801e320c:	addu $v1, $s3
@@ -4795,7 +4795,7 @@ dylib_saiseg_func_32:
 .0x801e3400:	sll $v0, $s0, 0x2
 .0x801e3404:	addu $v0, $s2
 .0x801e3408:	lw $a0, 0x0($v0)
-.0x801e340c:	jal func_81
+.0x801e340c:	jal dylib_saiseg_func_81
 .0x801e3410:		addiu $s1, 0x1
 .0x801e3414:	slti $v0, $s1, 0x14
 .0x801e3418:	bnez $v0, .0
@@ -4825,7 +4825,7 @@ dylib_saiseg_func_33:
 .0x801e345c:	sll $v0, $s0, 0x2
 .0x801e3460:	addu $v0, $s2
 .0x801e3464:	lw $a0, 0x0($v0)
-.0x801e3468:	jal func_81
+.0x801e3468:	jal dylib_saiseg_func_81
 .0x801e346c:		addiu $s1, 0x1
 .0x801e3470:	slti $v0, $s1, 0x3a
 .0x801e3474:	bnez $v0, .0
@@ -4855,7 +4855,7 @@ dylib_saiseg_func_34:
 .0x801e34b8:	sll $v0, $s0, 0x2
 .0x801e34bc:	addu $v0, $s2
 .0x801e34c0:	lw $a0, 0x0($v0)
-.0x801e34c4:	jal func_80
+.0x801e34c4:	jal dylib_saiseg_func_80
 .0x801e34c8:		addiu $s1, 0x1
 .0x801e34cc:	slti $v0, $s1, 0x14
 .0x801e34d0:	bnez $v0, .0
@@ -4885,7 +4885,7 @@ dylib_saiseg_func_35:
 .0x801e3514:	sll $v0, $s0, 0x2
 .0x801e3518:	addu $v0, $s2
 .0x801e351c:	lw $a0, 0x0($v0)
-.0x801e3520:	jal func_80
+.0x801e3520:	jal dylib_saiseg_func_80
 .0x801e3524:		addiu $s1, 0x1
 .0x801e3528:	slti $v0, $s1, 0x3a
 .0x801e352c:	bnez $v0, .0
@@ -5220,7 +5220,7 @@ dylib_saiseg_func_37:
 .0x801e39e0:	bnez $v0, .3
 .0x801e39e4:		lui $v0, 0x801f
 .0x801e39e8:	addiu $v0, $zr, 0xa
-.0x801e39ec:	jal func_14
+.0x801e39ec:	jal dylib_saiseg_func_14
 .0x801e39f0:		sb $v0, 0x10e($v1)
 .0x801e39f4:	jal 0x800148b0
 .0x801e39f8:		nop
@@ -5245,7 +5245,7 @@ dylib_saiseg_func_37:
 .0x801e3a3c:	bnez $v0, .4
 .0x801e3a40:		lui $v1, 0x801f
 .0x801e3a44:	addiu $v0, $zr, 0xa
-.0x801e3a48:	jal func_14
+.0x801e3a48:	jal dylib_saiseg_func_14
 .0x801e3a4c:		sb $v0, 0x4696($v1)
 .0x801e3a50:	jal 0x800148b0
 .0x801e3a54:		nop
@@ -5258,7 +5258,7 @@ dylib_saiseg_func_37:
 .0x801e3a70:	nop
 .0x801e3a74:	lw $v1, 0x8($v0)
 .0x801e3a78:	lw $v0, 0x4($v0)
-.0x801e3a7c:	jal func_11
+.0x801e3a7c:	jal dylib_saiseg_func_11
 .0x801e3a80:		subu $s2, $v1, $v0
 .0x801e3a84:	lui $v0, 0x801f
 .0x801e3a88:	lb $v0, 0x460c($v0)
@@ -5271,14 +5271,14 @@ dylib_saiseg_func_37:
 .0x801e3aa0:	lw $v0, 0x8($s1)
 .0x801e3aa4:	addiu $s0, 0x1
 .0x801e3aa8:	sw $s0, 0x4($v0)
-.0x801e3aac:	jal func_18
+.0x801e3aac:	jal dylib_saiseg_func_18
 .0x801e3ab0:		addu $a0, $s1, $zr
 .0x801e3ab4:	lw $v1, 0x4($s1)
 .0x801e3ab8:	nop
 .0x801e3abc:	lw $v0, 0x4($v1)
 .0x801e3ac0:	nop
 .0x801e3ac4:	addu $v0, $s2, $v0
-.0x801e3ac8:	jal func_12
+.0x801e3ac8:	jal dylib_saiseg_func_12
 .0x801e3acc:		sw $v0, 0x8($v1)
 .0x801e3ad0:	lb $v0, 0x84($s3)
 .0x801e3ad4:	nop
@@ -5364,7 +5364,7 @@ dylib_saiseg_func_37:
 .0x801e3c04:	lw $v0, 0x8($s1)
 .0x801e3c08:	nop
 .0x801e3c0c:	lw $a0, 0x10($v0)
-.0x801e3c10:	jal func_2
+.0x801e3c10:	jal dylib_saiseg_func_2
 .0x801e3c14:		nop
 .0x801e3c18:	addiu $v1, $zr, -0x1
 .0x801e3c1c:	bne $v0, $v1, .30
@@ -5380,7 +5380,7 @@ dylib_saiseg_func_37:
 .0x801e3c44:	j .31
 .0x801e3c48:		sb $v1, 0x120($v0)
 .0x801e3c4c:	lui $a0, 0x801f
-.0x801e3c50:	jal func_0
+.0x801e3c50:	jal dylib_saiseg_func_0
 .0x801e3c54:		addiu $a0, 0x4840
 .0x801e3c58:	j .30
 .0x801e3c5c:		nop
@@ -5393,7 +5393,7 @@ dylib_saiseg_func_37:
 .0x801e3c78:	lw $v0, 0x4838($v0)
 .0x801e3c7c:	nop
 .0x801e3c80:	lw $a0, 0x8($v0)
-.0x801e3c84:	jal func_15
+.0x801e3c84:	jal dylib_saiseg_func_15
 .0x801e3c88:		nop
 .0x801e3c8c:	addiu $v0, $zr, 0x1
 .0x801e3c90:	jal 0x800148b0
@@ -5489,7 +5489,7 @@ dylib_saiseg_func_37:
 .0x801e3dec:	lb $v1, 0x11a($s0)
 .0x801e3df0:	j .13
 .0x801e3df4:		sw $v1, 0x14($sp)
-.0x801e3df8:	jal func_59
+.0x801e3df8:	jal dylib_saiseg_func_59
 .0x801e3dfc:		nop
 .0x801e3e00:	j .31
 .0x801e3e04:		nop
@@ -5563,7 +5563,7 @@ dylib_saiseg_func_37:
 .0x801e3f10:		addiu $a3, $zr, 0x400
 .0x801e3f14:	j .30
 .0x801e3f18:		nop
-.0x801e3f1c:	jal func_76
+.0x801e3f1c:	jal dylib_saiseg_func_76
 .0x801e3f20:		nop
 .0x801e3f24:	j .30
 .0x801e3f28:		nop
@@ -5600,14 +5600,14 @@ dylib_saiseg_func_37:
 .0x801e3fa0:	lh $a0, 0x1c($v0)
 .0x801e3fa4:	nop
 .0x801e3fa8:	xori $a0, 0x78
-.0x801e3fac:	jal func_5
+.0x801e3fac:	jal dylib_saiseg_func_5
 .0x801e3fb0:		sltiu $a0, $a0, 0x1
 .0x801e3fb4:	j .30
 .0x801e3fb8:		nop
 .0x801e3fbc:	lw $v0, 0x4($s1)
 .0x801e3fc0:	nop
 .0x801e3fc4:	lb $a0, 0x1c($v0)
-.0x801e3fc8:	jal func_6
+.0x801e3fc8:	jal dylib_saiseg_func_6
 .0x801e3fcc:		nop
 .0x801e3fd0:	j .30
 .0x801e3fd4:		nop
@@ -5634,11 +5634,11 @@ dylib_saiseg_func_37:
 .0x801e4028:	lw $v0, 0x4($s1)
 .0x801e402c:	nop
 .0x801e4030:	lh $a0, 0x1c($v0)
-.0x801e4034:	jal func_13
+.0x801e4034:	jal dylib_saiseg_func_13
 .0x801e4038:		nop
 .0x801e403c:	j .30
 .0x801e4040:		nop
-.0x801e4044:	jal func_10
+.0x801e4044:	jal dylib_saiseg_func_10
 .0x801e4048:		nop
 .0x801e404c:	lw $v0, 0x8($s1)
 .0x801e4050:	nop
@@ -5652,7 +5652,7 @@ dylib_saiseg_func_37:
 .0x801e4070:	lh $v0, 0x1c($v0)
 .0x801e4074:	j .31
 .0x801e4078:		sw $v0, 0xf0($v1)
-.0x801e407c:	jal func_11
+.0x801e407c:	jal dylib_saiseg_func_11
 .0x801e4080:		nop
 .0x801e4084:	lui $v0, 0x8007
 .0x801e4088:	lw $a0, -0x1fb0($v0)
@@ -6037,7 +6037,7 @@ dylib_saiseg_func_38:
 .0x801e4618:	addu $s0, $a0, $zr
 .0x801e461c:	lw $v1, 0x8($s0)
 .0x801e4620:	addiu $v0, $zr, 0x1
-.0x801e4624:	jal func_37
+.0x801e4624:	jal dylib_saiseg_func_37
 .0x801e4628:		sw $v0, 0x0($v1)
 .0x801e462c:	lw $v0, 0x8($s0)
 .0x801e4630:	nop
@@ -6125,7 +6125,7 @@ dylib_saiseg_func_41:
 .0x801e4728:	lw $v0, 0x100c($v0)
 .0x801e472c:	nop
 .0x801e4730:	lw $a0, 0x190($v0)
-.0x801e4734:	jal func_39
+.0x801e4734:	jal dylib_saiseg_func_39
 .0x801e4738:		sw $a0, 0x0($s0)
 .0x801e473c:	sw $v0, 0x4($s0)
 .0x801e4740:	addu $v0, $s0, $zr
@@ -6230,15 +6230,15 @@ dylib_saiseg_func_42:
 .0x801e48b4:		nop
 .0x801e48b8:	lui $v0, 0x801f
 .0x801e48bc:	lw $a0, 0x4838($v0)
-.0x801e48c0:	jal func_38
+.0x801e48c0:	jal dylib_saiseg_func_38
 .0x801e48c4:		nop
 .0x801e48c8:	j .2
 .0x801e48cc:		nop
-.0x801e48d0:	jal func_7
+.0x801e48d0:	jal dylib_saiseg_func_7
 .0x801e48d4:		nop
 .0x801e48d8:	j .2
 .0x801e48dc:		nop
-.0x801e48e0:	jal func_48
+.0x801e48e0:	jal dylib_saiseg_func_48
 .0x801e48e4:		nop
 .0x801e48e8:	j .2
 .0x801e48ec:		nop
@@ -6258,7 +6258,7 @@ dylib_saiseg_func_42:
 .0x801e4924:	jal 0x8002b498
 .0x801e4928:		addu $a0, $zr, $zr
 .0x801e492c:	lui $a0, 0x801f
-.0x801e4930:	jal func_0
+.0x801e4930:	jal dylib_saiseg_func_0
 .0x801e4934:		addiu $a0, 0x4840
 .0x801e4938:	lb $v1, 0x10e($s0)
 .0x801e493c:	addiu $v0, $zr, 0x3
@@ -6270,7 +6270,7 @@ dylib_saiseg_func_42:
 .0x801e4954:	lw $v0, 0x8($v0)
 .0x801e4958:	nop
 .0x801e495c:	lw $a0, 0x10($v0)
-.0x801e4960:	jal func_2
+.0x801e4960:	jal dylib_saiseg_func_2
 .0x801e4964:		nop
 .0x801e4968:	lui $v0, 0x801f
 	.0:
@@ -6325,7 +6325,7 @@ dylib_saiseg_func_43:
 .0x801e4a0c:		addiu $a2, $zr, 0x64
 .0x801e4a10:	lui $v1, 0x801f
 .0x801e4a14:	addiu $v0, $zr, 0xa
-.0x801e4a18:	jal func_14
+.0x801e4a18:	jal dylib_saiseg_func_14
 .0x801e4a1c:		sb $v0, 0x4696($v1)
 .0x801e4a20:	jal 0x800148b0
 .0x801e4a24:		addiu $s0, $zr, 0xa
@@ -6356,7 +6356,7 @@ dylib_saiseg_func_43:
 .0x801e4a84:	lw $v0, 0x4838($v0)
 .0x801e4a88:	nop
 .0x801e4a8c:	lw $a0, 0x8($v0)
-.0x801e4a90:	jal func_15
+.0x801e4a90:	jal dylib_saiseg_func_15
 .0x801e4a94:		nop
 .0x801e4a98:	lui $v1, 0x801f
 .0x801e4a9c:	addiu $v0, $zr, 0x1
@@ -6604,17 +6604,17 @@ dylib_saiseg_func_44:
 .0x801e4e04: 	nop
 .0x801e4e08: jal 0x8002aea4
 .0x801e4e0c: 	addiu $a0, $zr, 0x1
-.0x801e4e10: jal func_88
+.0x801e4e10: jal dylib_saiseg_func_88
 .0x801e4e14: 	lui $s0, 0x801f
 .0x801e4e18: addiu $s0, 0x4588
-.0x801e4e1c: jal func_41
+.0x801e4e1c: jal dylib_saiseg_func_41
 .0x801e4e20: 	sb $zr, 0x120($s0)
 .0x801e4e24: lui $s2, 0x801f
 .0x801e4e28: sw $v0, 0x4838($s2)
-.0x801e4e2c: jal func_40
+.0x801e4e2c: jal dylib_saiseg_func_40
 .0x801e4e30: 	addiu $a0, $zr, 0x174
 .0x801e4e34: lw $v1, 0x4838($s2)
-.0x801e4e38: jal func_12
+.0x801e4e38: jal dylib_saiseg_func_12
 .0x801e4e3c: 	sw $v0, 0x8($v1)
 .0x801e4e40: lw $v0, 0x4838($s2)
 .0x801e4e44: nop
@@ -6631,9 +6631,9 @@ dylib_saiseg_func_44:
 .0x801e4e70: nop
 .0x801e4e74: sb $zr, 0x1022($v0)
 .0x801e4e78: lui $a0, 0x801f
-.0x801e4e7c: jal func_0
+.0x801e4e7c: jal dylib_saiseg_func_0
 .0x801e4e80: 	addiu $a0, 0x4840
-.0x801e4e84: jal func_17
+.0x801e4e84: jal dylib_saiseg_func_17
 .0x801e4e88: 	addu $a0, $zr, $zr
 .0x801e4e8c: sb $zr, 0x84($s0)
 .0x801e4e90: sb $zr, 0x10a($s0)
@@ -6642,9 +6642,9 @@ dylib_saiseg_func_44:
 .0x801e4e9c: sb $zr, 0x10e($s0)
 .0x801e4ea0: lw $v1, -0x1fac($s1)
 .0x801e4ea4: addiu $v0, $zr, -0x1
-.0x801e4ea8: jal func_19
+.0x801e4ea8: jal dylib_saiseg_func_19
 .0x801e4eac: 	sh $v0, 0x1008($v1)
-.0x801e4eb0: jal func_20
+.0x801e4eb0: jal dylib_saiseg_func_20
 .0x801e4eb4: 	nop
 .0x801e4eb8: lui $a0, 0x801e
 .0x801e4ebc: jal 0x8001683c
@@ -6759,7 +6759,7 @@ dylib_saiseg_func_44:
 .0x801e5070: addiu $v0, $zr, 0x2
 .0x801e5074: bne $v1, $v0, .0x801e5088
 .0x801e5078: 	lui $v0, 0x801f
-.0x801e507c: jal func_43
+.0x801e507c: jal dylib_saiseg_func_43
 .0x801e5080: 	nop
 .0x801e5084: lui $v0, 0x801f
 .0x801e5088: lw $v0, 0x4838($v0)
@@ -6770,14 +6770,14 @@ dylib_saiseg_func_44:
 .0x801e509c: nop
 .0x801e50a0: beqz $v0, .0x801e50bc
 .0x801e50a4: 	lui $s0, 0x801f
-.0x801e50a8: jal func_44
+.0x801e50a8: jal dylib_saiseg_func_44
 .0x801e50ac: 	addu $a0, $zr, $zr
 .0x801e50b0: jal 0x8002fad8
 .0x801e50b4: 	addiu $a0, $zr, 0x1
 .0x801e50b8: lui $s0, 0x801f
 .0x801e50bc: jal 0x80014c08
 .0x801e50c0: 	addiu $a0, $zr, 0x1
-.0x801e50c4: jal func_42
+.0x801e50c4: jal dylib_saiseg_func_42
 .0x801e50c8: 	addiu $s4, 0x1
 .0x801e50cc: lw $v0, 0x4838($s0)
 .0x801e50d0: nop
@@ -6789,7 +6789,7 @@ dylib_saiseg_func_44:
 .0x801e50e8: 	slti $v0, $s4, 0x96
 .0x801e50ec: bnez $v0, .0x801e5104
 .0x801e50f0: 	nop
-.0x801e50f4: jal func_75
+.0x801e50f4: jal dylib_saiseg_func_75
 .0x801e50f8: 	addiu $s4, -0x96
 .0x801e50fc: jal 0x8002b498
 .0x801e5100: 	addiu $a0, $zr, 0x1a
@@ -6820,12 +6820,12 @@ dylib_saiseg_func_44:
 .0x801e5164: 	lui $a0, 0x801e
 .0x801e5168: jal 0x80016878
 .0x801e516c: 	addiu $a0, 0x54c4
-.0x801e5170: jal func_11
+.0x801e5170: jal dylib_saiseg_func_11
 .0x801e5174: 	lui $s0, 0x801f
 .0x801e5178: lw $v0, 0x4838($s0)
 .0x801e517c: nop
 .0x801e5180: lw $a0, 0x8($v0)
-.0x801e5184: jal func_15
+.0x801e5184: jal dylib_saiseg_func_15
 .0x801e5188: 	nop
 .0x801e518c: lw $v0, 0x4838($s0)
 .0x801e5190: nop
@@ -7041,11 +7041,11 @@ dylib_saiseg_func_44:
 .0x801e54d8: addiu $a1, -0x594
 .0x801e54dc: jal 0x800170f0
 .0x801e54e0: 	addiu $a2, $zr, 0x17
-.0x801e54e4: jal func_8
+.0x801e54e4: jal dylib_saiseg_func_8
 .0x801e54e8: 	nop
-.0x801e54ec: jal func_21
+.0x801e54ec: jal dylib_saiseg_func_21
 .0x801e54f0: 	nop
-.0x801e54f4: jal func_22
+.0x801e54f4: jal dylib_saiseg_func_22
 .0x801e54f8: 	nop
 .0x801e54fc: lw $ra, 0x10($sp)
 .0x801e5500: nop
@@ -7057,11 +7057,11 @@ dylib_saiseg_func_45:
 # fn()
 .0x801e550c:	addiu $sp, -0x18
 .0x801e5510:	sw $ra, 0x10($sp)
-.0x801e5514:	jal func_26
+.0x801e5514:	jal dylib_saiseg_func_26
 .0x801e5518:		nop
-.0x801e551c:	jal func_30
+.0x801e551c:	jal dylib_saiseg_func_30
 .0x801e5520:		nop
-.0x801e5524:	jal func_31
+.0x801e5524:	jal dylib_saiseg_func_31
 .0x801e5528:		nop
 .0x801e552c:	lui $a0, 0x801e
 .0x801e5530:	jal 0x8001683c
@@ -7079,11 +7079,11 @@ dylib_saiseg_func_45:
 .0x801e5558: nop
 .0x801e555c: beqz $v0, .0x801e556c
 .0x801e5560: 	nop
-.0x801e5564: jal func_27
+.0x801e5564: jal dylib_saiseg_func_27
 .0x801e5568: 	nop
-.0x801e556c: jal func_32
+.0x801e556c: jal dylib_saiseg_func_32
 .0x801e5570: 	nop
-.0x801e5574: jal func_33
+.0x801e5574: jal dylib_saiseg_func_33
 .0x801e5578: 	nop
 .0x801e557c: lui $v0, 0x801f
 .0x801e5580: lb $v1, 0x4691($v0)
@@ -7091,7 +7091,7 @@ dylib_saiseg_func_45:
 .0x801e5588: beq $v1, $v0, .0x801e559c
 .0x801e558c: 	lui $v0, 0x801f
 .0x801e5590: lw $a0, 0x5260($v0)
-.0x801e5594: jal func_81
+.0x801e5594: jal dylib_saiseg_func_81
 .0x801e5598: 	nop
 .0x801e559c: lw $ra, 0x10($sp)
 .0x801e55a0: nop
@@ -7110,11 +7110,11 @@ dylib_saiseg_func_46:
 .0x801e55c4:		addiu $a0, $zr, 0x1
 .0x801e55c8:	lui $v0, 0x801f
 .0x801e55cc:	lw $a0, 0x5260($v0)
-.0x801e55d0:	jal func_80
+.0x801e55d0:	jal dylib_saiseg_func_80
 .0x801e55d4:		nop
-.0x801e55d8:	jal func_34
+.0x801e55d8:	jal dylib_saiseg_func_34
 .0x801e55dc:		nop
-.0x801e55e0:	jal func_35
+.0x801e55e0:	jal dylib_saiseg_func_35
 .0x801e55e4:		nop
 .0x801e55e8:	lw $ra, 0x10($sp)
 .0x801e55ec:	nop
@@ -7132,31 +7132,31 @@ dylib_saiseg_func_46:
 .0x801e5614: addiu $v1, $zr, -0x1
 .0x801e5618: sb $v1, 0x109($v0)
 .0x801e561c: sb $a0, 0x118($v0)
-.0x801e5620: jal func_45
+.0x801e5620: jal dylib_saiseg_func_45
 .0x801e5624: 	sb $zr, 0x10b($v0)
-.0x801e5628: jal func_79
+.0x801e5628: jal dylib_saiseg_func_79
 .0x801e562c: 	addiu $a0, $zr, 0x3
 .0x801e5630: lui $v1, 0x801f
 .0x801e5634: sw $v0, 0x5260($v1)
 .0x801e5638: addu $a0, $v0, $zr
-.0x801e563c: jal func_83
+.0x801e563c: jal dylib_saiseg_func_83
 .0x801e5640: 	addiu $a1, $zr, 0x24
-.0x801e5644: jal func_36
+.0x801e5644: jal dylib_saiseg_func_36
 .0x801e5648: 	nop
 .0x801e564c: jal 0x8002b498
 .0x801e5650: 	addiu $a0, $zr, 0xa
 .0x801e5654: jal 0x80014c08
 .0x801e5658: 	addiu $a0, $zr, 0x1
-.0x801e565c: jal func_36
+.0x801e565c: jal dylib_saiseg_func_36
 .0x801e5660: 	nop
 .0x801e5664: beqz $v0, .0x801e5654
 .0x801e5668: 	lui $v0, 0x801f
 .0x801e566c: sb $zr, 0x4691($v0)
-.0x801e5670: jal func_17
+.0x801e5670: jal dylib_saiseg_func_17
 .0x801e5674: 	addiu $a0, $zr, 0x1
 .0x801e5678: jal 0x80014c08
 .0x801e567c: 	addiu $a0, $zr, 0x1
-.0x801e5680: jal func_28
+.0x801e5680: jal dylib_saiseg_func_28
 .0x801e5684: 	nop
 .0x801e5688: beqz $v0, .0x801e5678
 .0x801e568c: 	lui $v0, 0x801f
@@ -7171,7 +7171,7 @@ dylib_saiseg_func_46:
 .0x801e56b0: 	nop
 .0x801e56b4: jal 0x80014c08
 .0x801e56b8: 	addiu $a0, $zr, 0x1
-.0x801e56bc: jal func_29
+.0x801e56bc: jal dylib_saiseg_func_29
 .0x801e56c0: 	nop
 .0x801e56c4: beqz $v0, .0x801e56b4
 .0x801e56c8: 	lui $v1, 0x801f
@@ -7181,11 +7181,11 @@ dylib_saiseg_func_46:
 .0x801e56d8: 	addiu $a0, $zr, 0xb
 .0x801e56dc: jal 0x80014c08
 .0x801e56e0: 	addiu $a0, $zr, 0x1
-.0x801e56e4: jal func_36
+.0x801e56e4: jal dylib_saiseg_func_36
 .0x801e56e8: 	nop
 .0x801e56ec: beqz $v0, .0x801e56dc
 .0x801e56f0: 	nop
-.0x801e56f4: jal func_46
+.0x801e56f4: jal dylib_saiseg_func_46
 .0x801e56f8: 	nop
 .0x801e56fc: lui $v0, 0x801f
 .0x801e5700: sb $zr, 0x4692($v0)
@@ -7467,7 +7467,7 @@ dylib_saiseg_func_48:
 .0x801e5af4:	nop
 .0x801e5af8:	sw $v0, 0x54($a1)
 .0x801e5afc:	lw $a0, 0xac($v1)
-.0x801e5b00:	jal func_81
+.0x801e5b00:	jal dylib_saiseg_func_81
 .0x801e5b04:		nop
 .0x801e5b08:	lw $ra, 0x18($sp)
 .0x801e5b0c:	lw $s1, 0x14($sp)
@@ -7531,18 +7531,18 @@ dylib_saiseg_func_50:
 .0x801e5bc0:	lui $v0, 0x801f
 .0x801e5bc4:	addiu $s2, $v0, 0x5260
 	.0:
-.0x801e5bc8:	jal func_79
+.0x801e5bc8:	jal dylib_saiseg_func_79
 .0x801e5bcc:		addiu $a0, $zr, 0x8
 .0x801e5bd0:	addiu $s0, $s1, 0x1f
 .0x801e5bd4:	sll $s0, 0x2
 .0x801e5bd8:	addu $s0, $s2
 .0x801e5bdc:	sw $v0, 0x0($s0)
 .0x801e5be0:	addu $a0, $v0, $zr
-.0x801e5be4:	jal func_83
+.0x801e5be4:	jal dylib_saiseg_func_83
 .0x801e5be8:		addiu $a1, $zr, 0x21
 .0x801e5bec:	lw $a0, 0x0($s0)
 .0x801e5bf0:	addiu $a1, $zr, 0x18
-.0x801e5bf4:	jal func_85
+.0x801e5bf4:	jal dylib_saiseg_func_85
 .0x801e5bf8:		addiu $a2, $zr, 0x16
 .0x801e5bfc:	lw $v1, 0x0($s0)
 .0x801e5c00:	addiu $v0, $zr, 0x86
@@ -7551,7 +7551,7 @@ dylib_saiseg_func_50:
 .0x801e5c0c:	addiu $v0, $zr, -0x57
 .0x801e5c10:	sw $v0, 0x54($v1)
 .0x801e5c14:	lw $a0, 0x0($s0)
-.0x801e5c18:	jal func_86
+.0x801e5c18:	jal dylib_saiseg_func_86
 .0x801e5c1c:		addiu $a1, $zr, 0x1
 .0x801e5c20:	addiu $s1, 0x1
 .0x801e5c24:	slti $v0, $s1, 0x6
@@ -7604,18 +7604,18 @@ dylib_saiseg_func_50:
 .0x801e5cdc:	addu $s1, $zr, $zr
 .0x801e5ce0:	addiu $s2, $v0, 0x5260
 	.2:
-.0x801e5ce4:	jal func_79
+.0x801e5ce4:	jal dylib_saiseg_func_79
 .0x801e5ce8:		addiu $a0, $zr, 0x3a
 .0x801e5cec:	addiu $s0, $s1, 0x25
 .0x801e5cf0:	sll $s0, 0x2
 .0x801e5cf4:	addu $s0, $s2
 .0x801e5cf8:	sw $v0, 0x0($s0)
 .0x801e5cfc:	addu $a0, $v0, $zr
-.0x801e5d00:	jal func_83
+.0x801e5d00:	jal dylib_saiseg_func_83
 .0x801e5d04:		addiu $a1, $zr, 0x21
 .0x801e5d08:	lw $a0, 0x0($s0)
 .0x801e5d0c:	addiu $a1, $zr, 0x12
-.0x801e5d10:	jal func_85
+.0x801e5d10:	jal dylib_saiseg_func_85
 .0x801e5d14:		addiu $a2, $zr, 0x10
 .0x801e5d18:	lw $a0, 0x0($s0)
 .0x801e5d1c:	addiu $v1, $s1, 0x1f
@@ -7637,31 +7637,31 @@ dylib_saiseg_func_50:
 .0x801e5d5c:	slti $v0, $s1, 0x6
 .0x801e5d60:	bnez $v0, .2
 .0x801e5d64:		nop
-.0x801e5d68:	jal func_79
+.0x801e5d68:	jal dylib_saiseg_func_79
 .0x801e5d6c:		addiu $a0, $zr, 0x3c
 .0x801e5d70:	lui $s0, 0x801f
 .0x801e5d74:	addiu $s0, 0x5260
 .0x801e5d78:	sw $v0, 0xac($s0)
 .0x801e5d7c:	addu $a0, $v0, $zr
-.0x801e5d80:	jal func_83
+.0x801e5d80:	jal dylib_saiseg_func_83
 .0x801e5d84:		addiu $a1, $zr, 0x20
 .0x801e5d88:	lw $a0, 0xac($s0)
-.0x801e5d8c:	jal func_86
+.0x801e5d8c:	jal dylib_saiseg_func_86
 .0x801e5d90:		addu $a1, $zr, $zr
-.0x801e5d94:	jal func_79
+.0x801e5d94:	jal dylib_saiseg_func_79
 .0x801e5d98:		addiu $a0, $zr, 0x8
 .0x801e5d9c:	sw $v0, 0xb0($s0)
 .0x801e5da0:	addu $a0, $v0, $zr
-.0x801e5da4:	jal func_83
+.0x801e5da4:	jal dylib_saiseg_func_83
 .0x801e5da8:		addiu $a1, $zr, 0x21
 .0x801e5dac:	lw $a0, 0xb0($s0)
-.0x801e5db0:	jal func_86
+.0x801e5db0:	jal dylib_saiseg_func_86
 .0x801e5db4:		addiu $a1, $zr, 0x1
-.0x801e5db8:	jal func_79
+.0x801e5db8:	jal dylib_saiseg_func_79
 .0x801e5dbc:		addiu $a0, $zr, 0x3b
 .0x801e5dc0:	sw $v0, 0xb4($s0)
 .0x801e5dc4:	addu $a0, $v0, $zr
-.0x801e5dc8:	jal func_83
+.0x801e5dc8:	jal dylib_saiseg_func_83
 .0x801e5dcc:		addiu $a1, $zr, 0x21
 .0x801e5dd0:	lw $a0, 0xb4($s0)
 .0x801e5dd4:	lw $v1, 0xb0($s0)
@@ -7838,7 +7838,7 @@ dylib_saiseg_func_51:
 .0x801e6048:	sll $v0, $s0, 0x2
 .0x801e604c:	addu $v0, $s1
 .0x801e6050:	lw $a0, 0x0($v0)
-.0x801e6054:	jal func_80
+.0x801e6054:	jal dylib_saiseg_func_80
 .0x801e6058:		addiu $s0, 0x1
 .0x801e605c:	slti $v0, $s0, 0x2e
 .0x801e6060:	bnez $v0, .0
@@ -7887,7 +7887,7 @@ dylib_saiseg_func_51:
 .0x801e6104:	addiu $a0, 0x10
 .0x801e6108:	bne $a0, $v0, .2
 .0x801e610c:		addiu $v1, 0x10
-.0x801e6110:	jal func_14
+.0x801e6110:	jal dylib_saiseg_func_14
 .0x801e6114:		nop
 .0x801e6118:	lw $ra, 0x18($sp)
 .0x801e611c:	lw $s1, 0x14($sp)
@@ -7952,7 +7952,7 @@ dylib_saiseg_func_52:
 .0x801e61e8:	sll $s0, 0x2
 .0x801e61ec:	addu $s0, $s2
 .0x801e61f0:	lw $a0, 0x0($s0)
-.0x801e61f4:	jal func_103
+.0x801e61f4:	jal dylib_saiseg_func_103
 .0x801e61f8:		addiu $a1, $sp, 0x10
 .0x801e61fc:	lw $v0, 0x0($s0)
 .0x801e6200:	j .7
@@ -7973,7 +7973,7 @@ dylib_saiseg_func_52:
 .0x801e6238:	sll $s0, 0x2
 .0x801e623c:	addu $s0, $s2
 .0x801e6240:	lw $a0, 0x0($s0)
-.0x801e6244:	jal func_103
+.0x801e6244:	jal dylib_saiseg_func_103
 .0x801e6248:		addiu $a1, $sp, 0x10
 .0x801e624c:	lw $v0, 0x0($s0)
 .0x801e6250:	j .7
@@ -7992,7 +7992,7 @@ dylib_saiseg_func_52:
 .0x801e6280:	sll $s0, 0x2
 .0x801e6284:	addu $s0, $s2
 .0x801e6288:	lw $a0, 0x0($s0)
-.0x801e628c:	jal func_103
+.0x801e628c:	jal dylib_saiseg_func_103
 .0x801e6290:		addiu $a1, $sp, 0x10
 .0x801e6294:	lw $v0, 0x0($s0)
 .0x801e6298:	j .7
@@ -8029,7 +8029,7 @@ dylib_saiseg_func_52:
 .0x801e6308:	addu $s0, $s2
 .0x801e630c:	lw $a0, 0x0($s0)
 .0x801e6310:	addiu $a1, $sp, 0x10
-.0x801e6314:	jal func_102
+.0x801e6314:	jal dylib_saiseg_func_102
 .0x801e6318:		addu $a2, $zr, $zr
 .0x801e631c:	sll $v0, $s1, 0x2
 .0x801e6320:	addu $v0, $s3
@@ -8083,7 +8083,7 @@ dylib_saiseg_func_52:
 .0x801e63d8:	addu $s0, $s2
 .0x801e63dc:	lw $a0, 0x0($s0)
 .0x801e63e0:	sra $a1, 0x10
-.0x801e63e4:	jal func_85
+.0x801e63e4:	jal dylib_saiseg_func_85
 .0x801e63e8:		sra $a2, 0x10
 .0x801e63ec:	lw $a0, 0x0($s0)
 .0x801e63f0:	addiu $v1, $s1, 0x1f
@@ -8281,7 +8281,7 @@ dylib_saiseg_func_53:
 .0x801e66c0:	sll $a2, 0x10
 .0x801e66c4:	lw $a0, 0x0($s1)
 .0x801e66c8:	sra $a1, 0x10
-.0x801e66cc:	jal func_85
+.0x801e66cc:	jal dylib_saiseg_func_85
 .0x801e66d0:		sra $a2, 0x10
 .0x801e66d4:	lw $a2, 0xb8($s4)
 .0x801e66d8:	nop
@@ -8404,7 +8404,7 @@ dylib_saiseg_func_53:
 .0x801e68a8:	sll $a2, 0x10
 .0x801e68ac:	lw $a0, 0x0($s1)
 .0x801e68b0:	sra $a1, 0x10
-.0x801e68b4:	jal func_85
+.0x801e68b4:	jal dylib_saiseg_func_85
 .0x801e68b8:		sra $a2, 0x10
 .0x801e68bc:	lw $a0, 0xb8($s4)
 .0x801e68c0:	nop
@@ -8443,7 +8443,7 @@ dylib_saiseg_func_53:
 .0x801e6940:	addu $s0, $s6
 .0x801e6944:	lw $a0, 0x0($s0)
 .0x801e6948:	sra $a1, 0x10
-.0x801e694c:	jal func_85
+.0x801e694c:	jal dylib_saiseg_func_85
 .0x801e6950:		sra $a2, 0x10
 .0x801e6954:	lw $v1, 0x0($s0)
 .0x801e6958:	lw $v0, 0x0($s1)
@@ -8727,7 +8727,7 @@ dylib_saiseg_func_54:
 .0x801e6d6c:	sll $a2, 0x10
 .0x801e6d70:	lw $a0, 0x0($t0)
 .0x801e6d74:	sra $a1, 0x10
-.0x801e6d78:	jal func_85
+.0x801e6d78:	jal dylib_saiseg_func_85
 .0x801e6d7c:		sra $a2, 0x10
 .0x801e6d80:	addiu $s0, 0x1
 .0x801e6d84:	slti $v0, $s0, 0x6
@@ -8818,7 +8818,7 @@ dylib_saiseg_func_54:
 .0x801e6eb4:	addiu $v1, $zr, 0x2
 .0x801e6eb8:	sb $v1, 0x114($v0)
 	.20:
-.0x801e6ebc:	jal func_52
+.0x801e6ebc:	jal dylib_saiseg_func_52
 .0x801e6ec0:		nop
 .0x801e6ec4:	addu $v0, $s1, $zr
 .0x801e6ec8:	lw $ra, 0x2c($sp)
@@ -8869,7 +8869,7 @@ dylib_saiseg_func_55:
 .0x801e6f60:	lw $v0, 0xbc($v1)
 .0x801e6f64:	nop
 .0x801e6f68:	addiu $v0, -0x1
-.0x801e6f6c:	jal func_52
+.0x801e6f6c:	jal dylib_saiseg_func_52
 .0x801e6f70:		sw $v0, 0xbc($v1)
 .0x801e6f74:	addu $s0, $zr, $zr
 .0x801e6f78:	lui $v0, 0x801f
@@ -8885,14 +8885,14 @@ dylib_saiseg_func_55:
 .0x801e6f9c:	addu $v0, $s1
 .0x801e6fa0:	lw $a0, 0x0($v0)
 .0x801e6fa4:	addiu $a1, $zr, 0x50
-.0x801e6fa8:	jal func_85
+.0x801e6fa8:	jal dylib_saiseg_func_85
 .0x801e6fac:		addiu $a2, $zr, 0x46
 .0x801e6fb0:	addiu $v0, $s0, 0x25
 .0x801e6fb4:	sll $v0, 0x2
 .0x801e6fb8:	addu $v0, $s1
 .0x801e6fbc:	lw $a0, 0x0($v0)
 .0x801e6fc0:	addiu $a1, $zr, 0x40
-.0x801e6fc4:	jal func_85
+.0x801e6fc4:	jal dylib_saiseg_func_85
 .0x801e6fc8:		addiu $a2, $zr, 0x38
 .0x801e6fcc:	j .3
 .0x801e6fd0:		addiu $s0, 0x1
@@ -8901,14 +8901,14 @@ dylib_saiseg_func_55:
 .0x801e6fd8:	addu $v0, $s1
 .0x801e6fdc:	lw $a0, 0x0($v0)
 .0x801e6fe0:	addiu $a1, $zr, 0x18
-.0x801e6fe4:	jal func_85
+.0x801e6fe4:	jal dylib_saiseg_func_85
 .0x801e6fe8:		addiu $a2, $zr, 0x16
 .0x801e6fec:	addiu $v0, $s0, 0x25
 .0x801e6ff0:	sll $v0, 0x2
 .0x801e6ff4:	addu $v0, $s1
 .0x801e6ff8:	lw $a0, 0x0($v0)
 .0x801e6ffc:	addiu $a1, $zr, 0x12
-.0x801e7000:	jal func_85
+.0x801e7000:	jal dylib_saiseg_func_85
 .0x801e7004:		addiu $a2, $zr, 0x10
 .0x801e7008:	addiu $s0, 0x1
 	.3:
@@ -9132,11 +9132,11 @@ dylib_saiseg_func_55:
 .0x801e7358: sra $s0, 0x10
 .0x801e735c: lw $a0, 0xb0($s3)
 .0x801e7360: addu $a1, $s1, $zr
-.0x801e7364: jal func_85
+.0x801e7364: jal dylib_saiseg_func_85
 .0x801e7368: 	addu $a2, $s0, $zr
 .0x801e736c: addu $a0, $s7, $zr
 .0x801e7370: addu $a1, $s1, $zr
-.0x801e7374: jal func_85
+.0x801e7374: jal dylib_saiseg_func_85
 .0x801e7378: 	addu $a2, $s0, $zr
 .0x801e737c: lw $a0, 0xbc($s5)
 .0x801e7380: nop
@@ -9169,12 +9169,12 @@ dylib_saiseg_func_55:
 .0x801e73ec: sra $s0, 0x10
 .0x801e73f0: lw $a0, 0xb4($s3)
 .0x801e73f4: addu $a1, $s1, $zr
-.0x801e73f8: jal func_85
+.0x801e73f8: jal dylib_saiseg_func_85
 .0x801e73fc: 	addu $a2, $s0, $zr
 .0x801e7400: addiu $s6, $s7, 0x360
 .0x801e7404: addu $a0, $s6, $zr
 .0x801e7408: addu $a1, $s1, $zr
-.0x801e740c: jal func_85
+.0x801e740c: jal dylib_saiseg_func_85
 .0x801e7410: 	addu $a2, $s0, $zr
 .0x801e7414: lw $a1, 0xb0($s3)
 .0x801e7418: lw $a0, 0xbc($s5)
@@ -9298,7 +9298,7 @@ dylib_saiseg_func_55:
 .0x801e75f0: sw $s0, 0x18($sp)
 .0x801e75f4: addu $s1, $zr, $zr
 .0x801e75f8: sll $a0, $s1, 0x18
-.0x801e75fc: jal func_47
+.0x801e75fc: jal dylib_saiseg_func_47
 .0x801e7600: 	sra $a0, 0x18
 .0x801e7604: addiu $s1, 0x1
 .0x801e7608: slti $v0, $s1, 0x2
@@ -9319,7 +9319,7 @@ dylib_saiseg_func_55:
 .0x801e7644: addiu $s0, 0x4908
 .0x801e7648: lw $a0, 0xb4($s1)
 .0x801e764c: lbu $a1, 0x102($s0)
-.0x801e7650: jal func_84
+.0x801e7650: jal dylib_saiseg_func_84
 .0x801e7654: 	nop
 .0x801e7658: lui $v0, 0x801f
 .0x801e765c: lb $v0, 0x466d($v0)
@@ -9329,13 +9329,13 @@ dylib_saiseg_func_55:
 .0x801e766c: addu $v0, $s1
 .0x801e7670: lw $a0, 0x0($v0)
 .0x801e7674: lbu $a1, 0x103($s0)
-.0x801e7678: jal func_84
+.0x801e7678: jal dylib_saiseg_func_84
 .0x801e767c: 	nop
 .0x801e7680: lw $a0, 0xb0($s1)
-.0x801e7684: jal func_81
+.0x801e7684: jal dylib_saiseg_func_81
 .0x801e7688: 	nop
 .0x801e768c: lw $a0, 0xb4($s1)
-.0x801e7690: jal func_81
+.0x801e7690: jal dylib_saiseg_func_81
 .0x801e7694: 	addu $s1, $zr, $zr
 .0x801e7698: lui $v0, 0x801f
 .0x801e769c: addiu $s5, $v0, 0x4588
@@ -9376,7 +9376,7 @@ dylib_saiseg_func_55:
 .0x801e7728: sll $s0, 0x2
 .0x801e772c: addu $s0, $s2
 .0x801e7730: lw $a0, 0x0($s0)
-.0x801e7734: jal func_103
+.0x801e7734: jal dylib_saiseg_func_103
 .0x801e7738: 	addiu $a1, $sp, 0x10
 .0x801e773c: lw $v0, 0x0($s0)
 .0x801e7740: addiu $v1, $zr, 0x3ae0
@@ -9396,7 +9396,7 @@ dylib_saiseg_func_55:
 .0x801e7778: sll $v0, 0x2
 .0x801e777c: addu $v0, $s2
 .0x801e7780: lw $a0, 0x0($v0)
-.0x801e7784: jal func_84
+.0x801e7784: jal dylib_saiseg_func_84
 .0x801e7788: 	addiu $a1, $zr, 0x30
 .0x801e778c: addu $v0, $s1, $s3
 .0x801e7790: sb $zr, 0x0($v0)
@@ -9404,13 +9404,13 @@ dylib_saiseg_func_55:
 .0x801e7798: sll $v0, 0x2
 .0x801e779c: addu $v0, $s2
 .0x801e77a0: lw $a0, 0x0($v0)
-.0x801e77a4: jal func_81
+.0x801e77a4: jal dylib_saiseg_func_81
 .0x801e77a8: 	nop
 .0x801e77ac: addiu $v0, $s1, 0x25
 .0x801e77b0: sll $v0, 0x2
 .0x801e77b4: addu $v0, $s2
 .0x801e77b8: lw $a0, 0x0($v0)
-.0x801e77bc: jal func_81
+.0x801e77bc: jal dylib_saiseg_func_81
 .0x801e77c0: 	addiu $s1, 0x1
 .0x801e77c4: slti $v0, $s1, 0x6
 .0x801e77c8: bnez $v0, .0x801e76b8
@@ -9434,36 +9434,36 @@ dylib_saiseg_func_55:
 .0x801e7810: addiu $v0, $zr, -0x1
 .0x801e7814: sb $v0, 0x109($v1)
 .0x801e7818: addiu $v0, $zr, 0x1
-.0x801e781c: jal func_45
+.0x801e781c: jal dylib_saiseg_func_45
 .0x801e7820: 	sb $v0, 0x118($v1)
-.0x801e7824: jal func_79
+.0x801e7824: jal dylib_saiseg_func_79
 .0x801e7828: 	addiu $a0, $zr, 0x5
 .0x801e782c: lui $v1, 0x801f
 .0x801e7830: sw $v0, 0x5260($v1)
 .0x801e7834: addu $a0, $v0, $zr
-.0x801e7838: jal func_83
+.0x801e7838: jal dylib_saiseg_func_83
 .0x801e783c: 	addiu $a1, $zr, 0x24
-.0x801e7840: jal func_50
+.0x801e7840: jal dylib_saiseg_func_50
 .0x801e7844: 	nop
-.0x801e7848: jal func_36
+.0x801e7848: jal dylib_saiseg_func_36
 .0x801e784c: 	nop
 .0x801e7850: jal 0x8002b498
 .0x801e7854: 	addiu $a0, $zr, 0xa
 .0x801e7858: jal 0x80014c08
 .0x801e785c: 	addiu $a0, $zr, 0x1
-.0x801e7860: jal func_36
+.0x801e7860: jal dylib_saiseg_func_36
 .0x801e7864: 	nop
 .0x801e7868: beqz $v0, .0x801e7858
 .0x801e786c: 	lui $v0, 0x801f
 .0x801e7870: sb $zr, 0x4691($v0)
-.0x801e7874: jal func_17
+.0x801e7874: jal dylib_saiseg_func_17
 .0x801e7878: 	addiu $a0, $zr, 0x1
 .0x801e787c: lui $a0, 0x801e
 .0x801e7880: jal 0x8001683c
 .0x801e7884: 	addiu $a0, 0x75d4
 .0x801e7888: jal 0x80014c08
 .0x801e788c: 	addiu $a0, $zr, 0x1
-.0x801e7890: jal func_28
+.0x801e7890: jal dylib_saiseg_func_28
 .0x801e7894: 	nop
 .0x801e7898: beqz $v0, .0x801e7888
 .0x801e789c: 	nop
@@ -9485,15 +9485,15 @@ dylib_saiseg_func_55:
 .0x801e78dc: nop
 .0x801e78e0: jr $v0
 .0x801e78e4: 	nop
-.0x801e78e8: jal func_54
+.0x801e78e8: jal dylib_saiseg_func_54
 .0x801e78ec: 	nop
 .0x801e78f0: j 0x801e7914
 .0x801e78f4: 	lui $v0, 0x801f
-.0x801e78f8: jal func_53
+.0x801e78f8: jal dylib_saiseg_func_53
 .0x801e78fc: 	nop
 .0x801e7900: j 0x801e7914
 .0x801e7904: 	lui $v0, 0x801f
-.0x801e7908: jal func_55
+.0x801e7908: jal dylib_saiseg_func_55
 .0x801e790c: 	nop
 .0x801e7910: lui $v0, 0x801f
 .0x801e7914: lb $v0, 0x4693($v0)
@@ -9513,17 +9513,17 @@ dylib_saiseg_func_55:
 .0x801e794c: 	nop
 .0x801e7950: jal 0x80014c08
 .0x801e7954: 	addiu $a0, $zr, 0x1
-.0x801e7958: jal func_55
+.0x801e7958: jal dylib_saiseg_func_55
 .0x801e795c: 	nop
 .0x801e7960: bnez $v0, .0x801e7950
 .0x801e7964: 	lui $a0, 0x801e
 .0x801e7968: j 0x801e7990
 .0x801e796c: 	nop
-.0x801e7970: jal func_49
+.0x801e7970: jal dylib_saiseg_func_49
 .0x801e7974: 	nop
 .0x801e7978: jal 0x80014c08
 .0x801e797c: 	addiu $a0, $zr, 0x1
-.0x801e7980: jal func_54
+.0x801e7980: jal dylib_saiseg_func_54
 .0x801e7984: 	nop
 .0x801e7988: bnez $v0, .0x801e7978
 .0x801e798c: 	lui $a0, 0x801e
@@ -9531,7 +9531,7 @@ dylib_saiseg_func_55:
 .0x801e7994: 	addiu $a0, 0x75d4
 .0x801e7998: jal 0x80014c08
 .0x801e799c: 	addiu $a0, $zr, 0x1
-.0x801e79a0: jal func_29
+.0x801e79a0: jal dylib_saiseg_func_29
 .0x801e79a4: 	nop
 .0x801e79a8: beqz $v0, .0x801e7998
 .0x801e79ac: 	lui $v1, 0x801f
@@ -9541,13 +9541,13 @@ dylib_saiseg_func_55:
 .0x801e79bc: 	addiu $a0, $zr, 0xb
 .0x801e79c0: jal 0x80014c08
 .0x801e79c4: 	addiu $a0, $zr, 0x1
-.0x801e79c8: jal func_36
+.0x801e79c8: jal dylib_saiseg_func_36
 .0x801e79cc: 	nop
 .0x801e79d0: beqz $v0, .0x801e79c0
 .0x801e79d4: 	nop
-.0x801e79d8: jal func_51
+.0x801e79d8: jal dylib_saiseg_func_51
 .0x801e79dc: 	nop
-.0x801e79e0: jal func_46
+.0x801e79e0: jal dylib_saiseg_func_46
 .0x801e79e4: 	nop
 .0x801e79e8: lui $v0, 0x801f
 .0x801e79ec: sb $zr, 0x4692($v0)
@@ -9566,7 +9566,7 @@ dylib_saiseg_func_55:
 .0x801e7a20: addiu $v0, $zr, 0x1
 .0x801e7a24: bne $v1, $v0, .0x801e7b34
 .0x801e7a28: 	lui $a2, 0x801f
-.0x801e7a2c: jal func_56
+.0x801e7a2c: jal dylib_saiseg_func_56
 .0x801e7a30: 	nop
 .0x801e7a34: lw $t0, 0x4af0($s0)
 .0x801e7a38: lui $t1, 0x8008
@@ -9720,7 +9720,7 @@ dylib_saiseg_func_55:
 .0x801e7c88: sw $v1, 0xf0($a3)
 .0x801e7c8c: addu $s0, $zr, $zr
 .0x801e7c90: sll $a0, $s0, 0x18
-.0x801e7c94: jal func_47
+.0x801e7c94: jal dylib_saiseg_func_47
 .0x801e7c98: 	sra $a0, 0x18
 .0x801e7c9c: addiu $s0, 0x1
 .0x801e7ca0: slti $v0, $s0, 0x2
@@ -9732,11 +9732,11 @@ dylib_saiseg_func_55:
 .0x801e7cb8: addiu $s0, 0x4908
 .0x801e7cbc: lw $a0, 0xac($s1)
 .0x801e7cc0: lbu $a1, 0x103($s0)
-.0x801e7cc4: jal func_84
+.0x801e7cc4: jal dylib_saiseg_func_84
 .0x801e7cc8: 	nop
 .0x801e7ccc: lw $a0, 0xb4($s1)
 .0x801e7cd0: lbu $a1, 0x102($s0)
-.0x801e7cd4: jal func_84
+.0x801e7cd4: jal dylib_saiseg_func_84
 .0x801e7cd8: 	addu $s0, $zr, $zr
 .0x801e7cdc: lui $v0, 0x801f
 .0x801e7ce0: addiu $s1, $v0, 0x5260
@@ -9744,7 +9744,7 @@ dylib_saiseg_func_55:
 .0x801e7ce8: sll $v0, 0x2
 .0x801e7cec: addu $v0, $s1
 .0x801e7cf0: lw $a0, 0x0($v0)
-.0x801e7cf4: jal func_81
+.0x801e7cf4: jal dylib_saiseg_func_81
 .0x801e7cf8: 	addiu $s0, 0x1
 .0x801e7cfc: slti $v0, $s0, 0x4
 .0x801e7d00: bnez $v0, .0x801e7ce4
@@ -10070,7 +10070,7 @@ dylib_saiseg_func_57:
 .0x801e81ac:	sll $v0, 0x2
 .0x801e81b0:	addu $v0, $s1
 .0x801e81b4:	lw $a0, 0x0($v0)
-.0x801e81b8:	jal func_80
+.0x801e81b8:	jal dylib_saiseg_func_80
 .0x801e81bc:		addiu $s0, 0x1
 .0x801e81c0:	slti $v0, $s0, 0x4
 .0x801e81c4:	bnez $v0, .0
@@ -10184,22 +10184,22 @@ dylib_saiseg_func_58:
 .0x801e8348:	slti $v0, $s5, 0x2
 .0x801e834c:	bnez $v0, .0
 .0x801e8350:		addiu $s2, 0x40
-.0x801e8354:	jal func_79
+.0x801e8354:	jal dylib_saiseg_func_79
 .0x801e8358:		addiu $a0, $zr, 0x8
 .0x801e835c:	lui $s0, 0x801f
 .0x801e8360:	addiu $s0, 0x5260
 .0x801e8364:	sw $v0, 0xa8($s0)
 .0x801e8368:	addu $a0, $v0, $zr
-.0x801e836c:	jal func_83
+.0x801e836c:	jal dylib_saiseg_func_83
 .0x801e8370:		addiu $a1, $zr, 0x21
 .0x801e8374:	lw $a0, 0xa8($s0)
-.0x801e8378:	jal func_86
+.0x801e8378:	jal dylib_saiseg_func_86
 .0x801e837c:		addiu $a1, $zr, 0x1
-.0x801e8380:	jal func_79
+.0x801e8380:	jal dylib_saiseg_func_79
 .0x801e8384:		addiu $a0, $zr, 0x3b
 .0x801e8388:	sw $v0, 0xac($s0)
 .0x801e838c:	addu $a0, $v0, $zr
-.0x801e8390:	jal func_83
+.0x801e8390:	jal dylib_saiseg_func_83
 .0x801e8394:		addiu $a1, $zr, 0x21
 .0x801e8398:	lw $v1, 0xa8($s0)
 .0x801e839c:	addiu $v0, $zr, 0xd2
@@ -10217,20 +10217,20 @@ dylib_saiseg_func_58:
 .0x801e83cc:	addiu $v0, $zr, 0x14
 .0x801e83d0:	sw $v0, 0x54($v1)
 .0x801e83d4:	sw $v0, 0x54($a0)
-.0x801e83d8:	jal func_79
+.0x801e83d8:	jal dylib_saiseg_func_79
 .0x801e83dc:		addiu $a0, $zr, 0x8
 .0x801e83e0:	sw $v0, 0xb0($s0)
 .0x801e83e4:	addu $a0, $v0, $zr
-.0x801e83e8:	jal func_83
+.0x801e83e8:	jal dylib_saiseg_func_83
 .0x801e83ec:		addiu $a1, $zr, 0x21
 .0x801e83f0:	lw $a0, 0xb0($s0)
-.0x801e83f4:	jal func_86
+.0x801e83f4:	jal dylib_saiseg_func_86
 .0x801e83f8:		addiu $a1, $zr, 0x1
-.0x801e83fc:	jal func_79
+.0x801e83fc:	jal dylib_saiseg_func_79
 .0x801e8400:		addiu $a0, $zr, 0x3b
 .0x801e8404:	sw $v0, 0xb4($s0)
 .0x801e8408:	addu $a0, $v0, $zr
-.0x801e840c:	jal func_83
+.0x801e840c:	jal dylib_saiseg_func_83
 .0x801e8410:		addiu $a1, $zr, 0x21
 .0x801e8414:	lw $a0, 0xb4($s0)
 .0x801e8418:	lw $v1, 0xb0($s0)
@@ -10313,7 +10313,7 @@ dylib_saiseg_func_59:
 .0x801e8530:	jal 0x80014c08
 .0x801e8534:		addiu $a0, $zr, 0x1
 .0x801e8538:	lw $v0, 0x4af0($s1)
-.0x801e853c:	jal func_62
+.0x801e853c:	jal dylib_saiseg_func_62
 .0x801e8540:		sb $s0, 0xc3($v0)
 .0x801e8544:	bnez $v0, .0
 .0x801e8548:		nop
@@ -10413,7 +10413,7 @@ dylib_saiseg_func_59:
 .0x801e86b8:	addiu $s0, 0x5260
 .0x801e86bc:	lw $a0, 0xac($s0)
 .0x801e86c0:	addiu $a1, $sp, 0x10
-.0x801e86c4:	jal func_102
+.0x801e86c4:	jal dylib_saiseg_func_102
 .0x801e86c8:		addu $a2, $zr, $zr
 .0x801e86cc:	lw $v0, 0xac($s0)
 .0x801e86d0:	addiu $v1, $zr, 0x7ee8
@@ -10928,7 +10928,7 @@ dylib_saiseg_func_63:
 .0x801e8dec: lui $s0, 0x801f
 .0x801e8df0: jal 0x8001ad0c
 .0x801e8df4: 	addiu $a0, $zr, 0xcc
-.0x801e8df8: jal func_58
+.0x801e8df8: jal dylib_saiseg_func_58
 .0x801e8dfc: 	sw $v0, 0x4af0($s0)
 .0x801e8e00: lui $a0, 0x801e
 .0x801e8e04: jal 0x8001683c
@@ -11029,7 +11029,7 @@ dylib_saiseg_func_63:
 .0x801e8f80: addiu $s0, 0x5260
 .0x801e8f84: lw $a0, 0xac($s0)
 .0x801e8f88: addiu $a1, $sp, 0x28
-.0x801e8f8c: jal func_102
+.0x801e8f8c: jal dylib_saiseg_func_102
 .0x801e8f90: 	addu $a2, $zr, $zr
 .0x801e8f94: lw $v0, 0xac($s0)
 .0x801e8f98: addiu $v1, $zr, 0x7ee8
@@ -11067,27 +11067,27 @@ dylib_saiseg_func_63:
 .0x801e9018: addiu $v0, $zr, -0x1
 .0x801e901c: sb $v0, 0x109($v1)
 .0x801e9020: addiu $v0, $zr, 0x1
-.0x801e9024: jal func_45
+.0x801e9024: jal dylib_saiseg_func_45
 .0x801e9028: 	sb $v0, 0x118($v1)
-.0x801e902c: jal func_79
+.0x801e902c: jal dylib_saiseg_func_79
 .0x801e9030: 	addiu $a0, $zr, 0x4
 .0x801e9034: lui $v1, 0x801f
 .0x801e9038: sw $v0, 0x5260($v1)
 .0x801e903c: addu $a0, $v0, $zr
-.0x801e9040: jal func_83
+.0x801e9040: jal dylib_saiseg_func_83
 .0x801e9044: 	addiu $a1, $zr, 0x24
-.0x801e9048: jal func_36
+.0x801e9048: jal dylib_saiseg_func_36
 .0x801e904c: 	nop
 .0x801e9050: jal 0x8002b498
 .0x801e9054: 	addiu $a0, $zr, 0xa
 .0x801e9058: jal 0x80014c08
 .0x801e905c: 	addiu $a0, $zr, 0x1
-.0x801e9060: jal func_36
+.0x801e9060: jal dylib_saiseg_func_36
 .0x801e9064: 	nop
 .0x801e9068: beqz $v0, .0x801e9058
 .0x801e906c: 	lui $v0, 0x801f
 .0x801e9070: sb $zr, 0x4691($v0)
-.0x801e9074: jal func_17
+.0x801e9074: jal dylib_saiseg_func_17
 .0x801e9078: 	addiu $a0, $zr, 0x1
 .0x801e907c: lui $v0, 0x8007
 .0x801e9080: lw $v0, -0x1fac($v0)
@@ -11118,7 +11118,7 @@ dylib_saiseg_func_63:
 .0x801e90e4: 	ori $a0, 0xffff
 .0x801e90e8: jal 0x80014c08
 .0x801e90ec: 	addiu $a0, $zr, 0x1
-.0x801e90f0: jal func_28
+.0x801e90f0: jal dylib_saiseg_func_28
 .0x801e90f4: 	nop
 .0x801e90f8: beqz $v0, .0x801e90e8
 .0x801e90fc: 	lui $v0, 0x8007
@@ -11155,19 +11155,19 @@ dylib_saiseg_func_63:
 .0x801e9178: nop
 .0x801e917c: jr $v0
 .0x801e9180: 	nop
-.0x801e9184: jal func_60
+.0x801e9184: jal dylib_saiseg_func_60
 .0x801e9188: 	nop
 .0x801e918c: j 0x801e91c0
 .0x801e9190: 	lui $v0, 0x801f
-.0x801e9194: jal func_61
+.0x801e9194: jal dylib_saiseg_func_61
 .0x801e9198: 	nop
 .0x801e919c: j 0x801e91c0
 .0x801e91a0: 	lui $v0, 0x801f
-.0x801e91a4: jal func_62
+.0x801e91a4: jal dylib_saiseg_func_62
 .0x801e91a8: 	nop
 .0x801e91ac: j 0x801e91c0
 .0x801e91b0: 	lui $v0, 0x801f
-.0x801e91b4: jal func_63
+.0x801e91b4: jal dylib_saiseg_func_63
 .0x801e91b8: 	nop
 .0x801e91bc: lui $v0, 0x801f
 .0x801e91c0: lb $v0, 0x4693($v0)
@@ -11178,7 +11178,7 @@ dylib_saiseg_func_63:
 .0x801e91d4: jal 0x80014c08
 .0x801e91d8: 	addiu $a0, $zr, 0x1
 .0x801e91dc: lw $v0, 0x4af0($s1)
-.0x801e91e0: jal func_62
+.0x801e91e0: jal dylib_saiseg_func_62
 .0x801e91e4: 	sb $s0, 0xc3($v0)
 .0x801e91e8: bnez $v0, .0x801e91d4
 .0x801e91ec: 	lui $a0, 0x801e
@@ -11186,7 +11186,7 @@ dylib_saiseg_func_63:
 .0x801e91f4: 	addiu $a0, 0x7a00
 .0x801e91f8: jal 0x80014c08
 .0x801e91fc: 	addiu $a0, $zr, 0x1
-.0x801e9200: jal func_29
+.0x801e9200: jal dylib_saiseg_func_29
 .0x801e9204: 	nop
 .0x801e9208: beqz $v0, .0x801e91f8
 .0x801e920c: 	lui $v1, 0x801f
@@ -11196,13 +11196,13 @@ dylib_saiseg_func_63:
 .0x801e921c: 	addiu $a0, $zr, 0xb
 .0x801e9220: jal 0x80014c08
 .0x801e9224: 	addiu $a0, $zr, 0x1
-.0x801e9228: jal func_36
+.0x801e9228: jal dylib_saiseg_func_36
 .0x801e922c: 	nop
 .0x801e9230: beqz $v0, .0x801e9220
 .0x801e9234: 	nop
-.0x801e9238: jal func_46
+.0x801e9238: jal dylib_saiseg_func_46
 .0x801e923c: 	nop
-.0x801e9240: jal func_57
+.0x801e9240: jal dylib_saiseg_func_57
 .0x801e9244: 	nop
 .0x801e9248: lui $v0, 0x801f
 .0x801e924c: sb $zr, 0x4692($v0)
@@ -11662,7 +11662,7 @@ dylib_saiseg_func_70:
 .0x801e988c: sw $v0, 0x4804($s0)
 .0x801e9890: addiu $v1, $zr, 0x1
 .0x801e9894: sb $v1, 0x15b($v0)
-.0x801e9898: jal func_64
+.0x801e9898: jal dylib_saiseg_func_64
 .0x801e989c: 	andi $a0, $s1, 0xff
 .0x801e98a0: jal 0x80014c08
 .0x801e98a4: 	addiu $a0, $zr, 0x1
@@ -11672,9 +11672,9 @@ dylib_saiseg_func_70:
 .0x801e98b4: nop
 .0x801e98b8: bnez $v0, .0x801e98a0
 .0x801e98bc: 	nop
-.0x801e98c0: jal func_66
+.0x801e98c0: jal dylib_saiseg_func_66
 .0x801e98c4: 	lui $s0, 0x801f
-.0x801e98c8: jal func_65
+.0x801e98c8: jal dylib_saiseg_func_65
 .0x801e98cc: 	addiu $s1, $zr, 0x1
 .0x801e98d0: jal 0x80014c08
 .0x801e98d4: 	addiu $a0, $zr, 0x1
@@ -11694,17 +11694,17 @@ dylib_saiseg_func_70:
 .0x801e990c: 	nop
 .0x801e9910: j 0x801e9940
 .0x801e9914: 	nop
-.0x801e9918: jal func_67
+.0x801e9918: jal dylib_saiseg_func_67
 .0x801e991c: 	nop
 .0x801e9920: j 0x801e9940
 .0x801e9924: 	nop
-.0x801e9928: jal func_68
+.0x801e9928: jal dylib_saiseg_func_68
 .0x801e992c: 	nop
 .0x801e9930: j 0x801e9940
 .0x801e9934: 	nop
-.0x801e9938: jal func_69
+.0x801e9938: jal dylib_saiseg_func_69
 .0x801e993c: 	nop
-.0x801e9940: jal func_70
+.0x801e9940: jal dylib_saiseg_func_70
 .0x801e9944: 	nop
 .0x801e9948: lw $v0, 0x4804($s0)
 .0x801e994c: nop
@@ -11956,7 +11956,7 @@ dylib_saiseg_func_72:
 .0x801e9cf8:		addiu $a0, $zr, 0x19
 .0x801e9cfc:	jal 0x80014c08
 .0x801e9d00:		addiu $a0, $zr, 0x78
-.0x801e9d04:	jal func_44
+.0x801e9d04:	jal dylib_saiseg_func_44
 .0x801e9d08:		addiu $a0, $zr, 0x1
 .0x801e9d0c:	jal 0x80016878
 .0x801e9d10:		addiu $a0, $s5, -0x6554
@@ -12058,7 +12058,7 @@ dylib_saiseg_func_74:
 .0x801e9e58: subu $a1, $s0
 .0x801e9e5c: sll $a1, 0x2
 .0x801e9e60: addu $a0, $s3
-.0x801e9e64: jal func_71
+.0x801e9e64: jal dylib_saiseg_func_71
 .0x801e9e68: 	addu $a1, $s2
 .0x801e9e6c: addiu $s0, 0x1
 .0x801e9e70: slti $v0, $s0, 0x5
@@ -12077,15 +12077,15 @@ dylib_saiseg_func_74:
 .0x801e9ea4: 	lui $v0, 0x801f
 .0x801e9ea8: j 0x801e9ee0
 .0x801e9eac: 	sb $zr, 0x4696($v0)
-.0x801e9eb0: jal func_72
+.0x801e9eb0: jal dylib_saiseg_func_72
 .0x801e9eb4: 	nop
 .0x801e9eb8: j 0x801e9edc
 .0x801e9ebc: 	lui $v0, 0x801f
-.0x801e9ec0: jal func_73
+.0x801e9ec0: jal dylib_saiseg_func_73
 .0x801e9ec4: 	nop
 .0x801e9ec8: j 0x801e9edc
 .0x801e9ecc: 	lui $v0, 0x801f
-.0x801e9ed0: jal func_74
+.0x801e9ed0: jal dylib_saiseg_func_74
 .0x801e9ed4: 	nop
 .0x801e9ed8: lui $v0, 0x801f
 .0x801e9edc: sb $zr, 0x4696($v0)
@@ -12937,7 +12937,7 @@ dylib_saiseg_func_77:
 .0x801eab48: addiu $a2, -0x1848
 .0x801eab4c: jal 0x80028d18
 .0x801eab50: 	addiu $a3, $zr, 0x6
-.0x801eab54: jal func_77
+.0x801eab54: jal dylib_saiseg_func_77
 .0x801eab58: 	nop
 .0x801eab5c: lui $a2, 0x801f
 .0x801eab60: addiu $s0, $a2, 0x4568
@@ -13591,7 +13591,7 @@ dylib_saiseg_func_77:
 .0x801eb580: sw $s0, 0x4($v0)
 .0x801eb584: lui $v0, 0x801f
 .0x801eb588: sb $zr, 0x4696($v0)
-.0x801eb58c: jal func_17
+.0x801eb58c: jal dylib_saiseg_func_17
 .0x801eb590: 	addiu $a0, $zr, 0x1
 .0x801eb594: lw $ra, 0x110($sp)
 .0x801eb598: lw $s7, 0x10c($sp)
@@ -13684,7 +13684,7 @@ dylib_saiseg_func_78:
 .0x801eb6d0: lw $v0, 0x100c($a0)
 .0x801eb6d4: nop
 .0x801eb6d8: lw $a0, 0x18c($v0)
-.0x801eb6dc: jal func_78
+.0x801eb6dc: jal dylib_saiseg_func_78
 .0x801eb6e0: 	nop
 .0x801eb6e4: lw $v0, -0x1fac($s0)
 .0x801eb6e8: nop
@@ -14753,7 +14753,7 @@ dylib_saiseg_func_90:
 .0x801ec638:	addiu $s0, 0x3c30
 .0x801ec63c:	addu $v0, $s0
 .0x801ec640:	sw $v0, 0x4($s1)
-.0x801ec644:	jal func_79
+.0x801ec644:	jal dylib_saiseg_func_79
 .0x801ec648:		addu $a0, $zr, $zr
 .0x801ec64c:	lui $a1, 0x801f
 .0x801ec650:	addiu $s2, $a1, 0x5260
@@ -14779,13 +14779,13 @@ dylib_saiseg_func_90:
 .0x801ec6a0:	addiu $v0, -0xf
 .0x801ec6a4:	sw $v0, 0x54($a0)
 .0x801ec6a8:	lw $a0, 0x5260($a1)
-.0x801ec6ac:	jal func_83
+.0x801ec6ac:	jal dylib_saiseg_func_83
 .0x801ec6b0:		addiu $a1, $zr, 0x1e
-.0x801ec6b4:	jal func_79
+.0x801ec6b4:	jal dylib_saiseg_func_79
 .0x801ec6b8:		addiu $a0, $zr, 0x1
 .0x801ec6bc:	sw $v0, 0x4($s2)
 .0x801ec6c0:	addu $a0, $v0, $zr
-.0x801ec6c4:	jal func_83
+.0x801ec6c4:	jal dylib_saiseg_func_83
 .0x801ec6c8:		addiu $a1, $zr, 0x1f
 .0x801ec6cc:	addu $s2, $zr, $zr
 .0x801ec6d0:	lui $v0, 0x801f
@@ -14842,7 +14842,7 @@ dylib_saiseg_func_90:
 .0x801ec794:		addiu $a0, $zr, 0x9
 .0x801ec798:	addiu $a0, $zr, 0x40
 	.2:
-.0x801ec79c:	jal func_79
+.0x801ec79c:	jal dylib_saiseg_func_79
 .0x801ec7a0:		addiu $s0, $s2, 0x15
 .0x801ec7a4:	addiu $v1, $s2, 0x15
 .0x801ec7a8:	sll $v1, 0x2
@@ -14858,10 +14858,10 @@ dylib_saiseg_func_90:
 .0x801ec7d0:	lw $a0, 0x0($s0)
 .0x801ec7d4:	lh $a1, 0x0($v1)
 .0x801ec7d8:	lh $a2, 0x0($v0)
-.0x801ec7dc:	jal func_82
+.0x801ec7dc:	jal dylib_saiseg_func_82
 .0x801ec7e0:		nop
 .0x801ec7e4:	lw $a0, 0x0($s0)
-.0x801ec7e8:	jal func_83
+.0x801ec7e8:	jal dylib_saiseg_func_83
 .0x801ec7ec:		addiu $a1, $zr, 0x20
 .0x801ec7f0:	lbu $v0, 0x3fb($s4)
 .0x801ec7f4:	nop
@@ -14872,7 +14872,7 @@ dylib_saiseg_func_90:
 .0x801ec804:	slti $v0, $s2, 0x7
 .0x801ec808:	bnez $v0, .1
 .0x801ec80c:		nop
-.0x801ec810:	jal func_116
+.0x801ec810:	jal dylib_saiseg_func_116
 .0x801ec814:		nop
 .0x801ec818:	lw $ra, 0x30($sp)
 .0x801ec81c:	lw $s7, 0x2c($sp)
@@ -15135,7 +15135,7 @@ dylib_saiseg_func_90:
 .0x801ecc18: 	sll $v0, $s0, 0x2
 .0x801ecc1c: addu $v0, $s1
 .0x801ecc20: lw $a0, 0x0($v0)
-.0x801ecc24: jal func_81
+.0x801ecc24: jal dylib_saiseg_func_81
 .0x801ecc28: 	addiu $s0, 0x1
 .0x801ecc2c: j 0x801ecc78
 .0x801ecc30: 	slti $v0, $s0, 0x22
@@ -15152,7 +15152,7 @@ dylib_saiseg_func_90:
 .0x801ecc5c: sll $v0, $s0, 0x2
 .0x801ecc60: addu $v0, $s1
 .0x801ecc64: lw $a0, 0x0($v0)
-.0x801ecc68: jal func_80
+.0x801ecc68: jal dylib_saiseg_func_80
 .0x801ecc6c: 	nop
 .0x801ecc70: addiu $s0, 0x1
 .0x801ecc74: slti $v0, $s0, 0x22
@@ -15193,17 +15193,17 @@ dylib_saiseg_func_91:
 .0x801eccec:	j .4
 .0x801eccf0:		nop
 	.1:
-.0x801eccf4:	jal func_92
+.0x801eccf4:	jal dylib_saiseg_func_92
 .0x801eccf8:		nop
 .0x801eccfc:	j .4
 .0x801ecd00:		nop
 	.2:
-.0x801ecd04:	jal func_93
+.0x801ecd04:	jal dylib_saiseg_func_93
 .0x801ecd08:		nop
 .0x801ecd0c:	j .4
 .0x801ecd10:		nop
 	.3:
-.0x801ecd14:	jal func_94
+.0x801ecd14:	jal dylib_saiseg_func_94
 .0x801ecd18:		nop
 	.4:
 .0x801ecd1c:	lw $ra, 0x10($sp)
@@ -15410,17 +15410,17 @@ dylib_saiseg_func_95:
 .0x801ecfd4:	j .4
 .0x801ecfd8:		nop
 	.1:
-.0x801ecfdc:	jal func_96
+.0x801ecfdc:	jal dylib_saiseg_func_96
 .0x801ecfe0:		nop
 .0x801ecfe4:	j .4
 .0x801ecfe8:		nop
 	.2:
-.0x801ecfec:	jal func_97
+.0x801ecfec:	jal dylib_saiseg_func_97
 .0x801ecff0:		nop
 .0x801ecff4:	j .4
 .0x801ecff8:		nop
 	.3:
-.0x801ecffc:	jal func_98
+.0x801ecffc:	jal dylib_saiseg_func_98
 .0x801ed000:		nop
 	.4:
 .0x801ed004:	lw $ra, 0x10($sp)
@@ -15891,7 +15891,7 @@ dylib_saiseg_func_98:
 .0x801ed6ac: lui $s0, 0x801f
 .0x801ed6b0: addiu $s0, 0x4e48
 .0x801ed6b4: addiu $v0, $zr, 0x3
-.0x801ed6b8: jal func_90
+.0x801ed6b8: jal dylib_saiseg_func_90
 .0x801ed6bc: 	sb $v0, 0x403($s0)
 .0x801ed6c0: addiu $v0, $zr, 0x2
 .0x801ed6c4: sb $v0, 0x3fe($s0)
@@ -16406,18 +16406,18 @@ dylib_saiseg_func_100:
 .0x801ede88:	sh $zr, 0x3f0($v0)
 .0x801ede8c:	addiu $v1, $zr, 0x64
 .0x801ede90:	sb $v1, 0x3ff($v0)
-.0x801ede94:	jal func_79
+.0x801ede94:	jal dylib_saiseg_func_79
 .0x801ede98:		addiu $a0, $zr, 0x16
 .0x801ede9c:	lui $v1, 0x801f
 .0x801edea0:	addiu $s0, $v1, 0x5260
 .0x801edea4:	sw $v0, 0x78($s0)
-.0x801edea8:	jal func_79
+.0x801edea8:	jal dylib_saiseg_func_79
 .0x801edeac:		addiu $a0, $zr, 0x18
 .0x801edeb0:	sw $v0, 0x7c($s0)
-.0x801edeb4:	jal func_79
+.0x801edeb4:	jal dylib_saiseg_func_79
 .0x801edeb8:		addiu $a0, $zr, 0x19
 .0x801edebc:	sw $v0, 0x80($s0)
-.0x801edec0:	jal func_79
+.0x801edec0:	jal dylib_saiseg_func_79
 .0x801edec4:		addiu $a0, $zr, 0x17
 .0x801edec8:	addu $a0, $v0, $zr
 .0x801edecc:	sw $a0, 0x84($s0)
@@ -16439,28 +16439,28 @@ dylib_saiseg_func_100:
 .0x801edf08:	addiu $v0, $zr, -0x24
 .0x801edf0c:	sw $v0, 0x54($v1)
 .0x801edf10:	lw $a0, 0x78($s0)
-.0x801edf14:	jal func_83
+.0x801edf14:	jal dylib_saiseg_func_83
 .0x801edf18:		addiu $a1, $zr, 0x1a
 .0x801edf1c:	lw $v1, 0x7c($s0)
 .0x801edf20:	addiu $v0, $zr, -0x39
 .0x801edf24:	sw $v0, 0x54($v1)
 .0x801edf28:	lw $a0, 0x7c($s0)
-.0x801edf2c:	jal func_83
+.0x801edf2c:	jal dylib_saiseg_func_83
 .0x801edf30:		addiu $a1, $zr, 0x1b
 .0x801edf34:	lw $v1, 0x80($s0)
 .0x801edf38:	addiu $v0, $zr, -0x29
 .0x801edf3c:	sw $v0, 0x54($v1)
 .0x801edf40:	lw $a0, 0x80($s0)
-.0x801edf44:	jal func_83
+.0x801edf44:	jal dylib_saiseg_func_83
 .0x801edf48:		addiu $a1, $zr, 0x1b
 .0x801edf4c:	lw $v1, 0x84($s0)
 .0x801edf50:	addiu $v0, $zr, -0x19
 .0x801edf54:	sw $v0, 0x54($v1)
 .0x801edf58:	lw $a0, 0x84($s0)
-.0x801edf5c:	jal func_83
+.0x801edf5c:	jal dylib_saiseg_func_83
 .0x801edf60:		addiu $a1, $zr, 0x1b
 .0x801edf64:	lw $a0, 0x78($s0)
-.0x801edf68:	jal func_86
+.0x801edf68:	jal dylib_saiseg_func_86
 .0x801edf6c:		addiu $a1, $zr, 0x1
 .0x801edf70:	addu $s0, $zr, $zr
 .0x801edf74:	lui $v0, 0x801f
@@ -16470,7 +16470,7 @@ dylib_saiseg_func_100:
 .0x801edf80:	sll $v0, 0x2
 .0x801edf84:	addu $v0, $s1
 .0x801edf88:	lw $a0, 0x0($v0)
-.0x801edf8c:	jal func_86
+.0x801edf8c:	jal dylib_saiseg_func_86
 .0x801edf90:		addu $a1, $zr, $zr
 .0x801edf94:	addiu $s0, 0x1
 .0x801edf98:	slti $v0, $s0, 0x3
@@ -16507,7 +16507,7 @@ dylib_saiseg_func_100:
 .0x801ee00c: j 0x801ee020
 .0x801ee010: 	sb $v1, 0x525c($v0)
 .0x801ee014: lui $v0, 0x801f
-.0x801ee018: jal func_100
+.0x801ee018: jal dylib_saiseg_func_100
 .0x801ee01c: 	sb $zr, 0x5253($v0)
 .0x801ee020: lui $v0, 0x801f
 .0x801ee024: sb $s0, 0x5242($v0)
@@ -16706,7 +16706,7 @@ dylib_saiseg_func_101:
 .0x801ee2f0: andi $v0, 0x40
 .0x801ee2f4: beqz $v0, .0x801ee30c
 .0x801ee2f8: 	lui $v0, 0x8009
-.0x801ee2fc: jal func_101
+.0x801ee2fc: jal dylib_saiseg_func_101
 .0x801ee300: 	nop
 .0x801ee304: j 0x801ee3f4
 .0x801ee308: 	nop
@@ -16719,7 +16719,7 @@ dylib_saiseg_func_101:
 .0x801ee324: 	nop
 .0x801ee328: jal 0x8002b498
 .0x801ee32c: 	addiu $a0, $zr, 0x1
-.0x801ee330: jal func_100
+.0x801ee330: jal dylib_saiseg_func_100
 .0x801ee334: 	nop
 .0x801ee338: j 0x801ee3f4
 .0x801ee33c: 	nop
@@ -17143,7 +17143,7 @@ dylib_saiseg_func_103:
 .0x801ee974: lui $v0, 0x801f
 .0x801ee978: lw $a0, 0x5260($v0)
 .0x801ee97c: addiu $a1, $sp, 0x10
-.0x801ee980: jal func_102
+.0x801ee980: jal dylib_saiseg_func_102
 .0x801ee984: 	addu $a2, $s2, $zr
 .0x801ee988: lw $ra, 0x24($sp)
 .0x801ee98c: lw $s2, 0x20($sp)
@@ -17171,7 +17171,7 @@ dylib_saiseg_func_103:
 .0x801ee9e4: bne $v1, $v0, .0x801eea00
 .0x801ee9e8: 	addiu $s0, $zr, 0xff
 .0x801ee9ec: addiu $v0, $zr, 0x5
-.0x801ee9f0: jal func_115
+.0x801ee9f0: jal dylib_saiseg_func_115
 .0x801ee9f4: 	sb $v0, 0x403($a0)
 .0x801ee9f8: j 0x801eeab4
 .0x801ee9fc: 	lui $a0, 0x801f
@@ -17309,7 +17309,7 @@ dylib_saiseg_func_103:
 .0x801eec0c: sll $v0, 0x2
 .0x801eec10: addu $v0, $s2
 .0x801eec14: lw $a0, 0x0($v0)
-.0x801eec18: jal func_80
+.0x801eec18: jal dylib_saiseg_func_80
 .0x801eec1c: 	addiu $s0, 0x1
 .0x801eec20: lbu $v0, 0x3fc($s1)
 .0x801eec24: nop
@@ -17318,14 +17318,14 @@ dylib_saiseg_func_103:
 .0x801eec30: 	addiu $v0, $s0, 0x15
 .0x801eec34: lui $v0, 0x801f
 .0x801eec38: lw $a0, 0x5260($v0)
-.0x801eec3c: jal func_80
+.0x801eec3c: jal dylib_saiseg_func_80
 .0x801eec40: 	addiu $s0, $v0, 0x5260
 .0x801eec44: lw $a0, 0x4($s0)
-.0x801eec48: jal func_80
+.0x801eec48: jal dylib_saiseg_func_80
 .0x801eec4c: 	nop
 .0x801eec50: lui $v1, 0x801f
 .0x801eec54: addiu $v0, $zr, 0x3
-.0x801eec58: jal func_90
+.0x801eec58: jal dylib_saiseg_func_90
 .0x801eec5c: 	sb $v0, 0x524b($v1)
 .0x801eec60: lw $ra, 0x1c($sp)
 .0x801eec64: lw $s2, 0x18($sp)
@@ -17682,7 +17682,7 @@ dylib_saiseg_func_104:
 .0x801ef1d0:	sb $v1, 0x381($v0)
 .0x801ef1d4:	sb $v1, 0x380($v0)
 .0x801ef1d8:	sh $zr, 0x382($v0)
-.0x801ef1dc:	jal func_79
+.0x801ef1dc:	jal dylib_saiseg_func_79
 .0x801ef1e0:		addiu $a0, $zr, 0x6
 .0x801ef1e4:	lui $s0, 0x801f
 .0x801ef1e8:	addiu $s0, 0x5260
@@ -17693,9 +17693,9 @@ dylib_saiseg_func_104:
 .0x801ef1fc:	addiu $v0, $zr, -0x98
 .0x801ef200:	sw $v0, 0x54($v1)
 .0x801ef204:	lw $a0, 0x10($s0)
-.0x801ef208:	jal func_83
+.0x801ef208:	jal dylib_saiseg_func_83
 .0x801ef20c:		addiu $a1, $zr, 0x18
-.0x801ef210:	jal func_79
+.0x801ef210:	jal dylib_saiseg_func_79
 .0x801ef214:		addiu $a0, $zr, 0x7
 .0x801ef218:	sw $v0, 0xc($s0)
 .0x801ef21c:	sw $s1, 0x50($v0)
@@ -17703,7 +17703,7 @@ dylib_saiseg_func_104:
 .0x801ef224:	addiu $v0, $zr, -0x97
 .0x801ef228:	sw $v0, 0x54($v1)
 .0x801ef22c:	lw $a0, 0xc($s0)
-.0x801ef230:	jal func_83
+.0x801ef230:	jal dylib_saiseg_func_83
 .0x801ef234:		addiu $a1, $zr, 0x19
 .0x801ef238:	lw $v1, 0xc($s0)
 .0x801ef23c:	addiu $v0, $zr, 0x3aa0
@@ -17764,7 +17764,7 @@ dylib_saiseg_func_105:
 .0x801ef2fc:	beq $v0, $v1, .2
 .0x801ef300:		lui $v0, 0x801f
 .0x801ef304:	lw $a0, 0x526c($v0)
-.0x801ef308:	jal func_103
+.0x801ef308:	jal dylib_saiseg_func_103
 .0x801ef30c:		addiu $a1, $sp, 0x10
 .0x801ef310:	j .2
 .0x801ef314:		lui $s0, 0x801f
@@ -17816,10 +17816,10 @@ dylib_saiseg_func_105:
 .0x801ef3c4:	addiu $v0, 0x2
 .0x801ef3c8:	sw $v0, 0x54($v1)
 .0x801ef3cc:	lw $a0, 0xc($s0)
-.0x801ef3d0:	jal func_81
+.0x801ef3d0:	jal dylib_saiseg_func_81
 .0x801ef3d4:		nop
 .0x801ef3d8:	lw $a0, 0x10($s0)
-.0x801ef3dc:	jal func_81
+.0x801ef3dc:	jal dylib_saiseg_func_81
 .0x801ef3e0:		nop
 .0x801ef3e4:	lw $ra, 0x1c($sp)
 .0x801ef3e8:	lw $s0, 0x18($sp)
@@ -17840,15 +17840,15 @@ dylib_saiseg_func_106:
 .0x801ef40c:	nop
 .0x801ef410:	bnez $v0, .1
 .0x801ef414:		lui $v0, 0x801f
-.0x801ef418:	jal func_79
+.0x801ef418:	jal dylib_saiseg_func_79
 .0x801ef41c:		addiu $a0, $zr, 0x1a
 .0x801ef420:	lui $s0, 0x801f
 .0x801ef424:	addiu $s0, 0x5260
 .0x801ef428:	sw $v0, 0x8c($s0)
-.0x801ef42c:	jal func_79
+.0x801ef42c:	jal dylib_saiseg_func_79
 .0x801ef430:		addiu $a0, $zr, 0x1b
 .0x801ef434:	sw $v0, 0x90($s0)
-.0x801ef438:	jal func_79
+.0x801ef438:	jal dylib_saiseg_func_79
 .0x801ef43c:		addiu $a0, $zr, 0x1c
 .0x801ef440:	sw $v0, 0x94($s0)
 .0x801ef444:	addiu $s0, $zr, 0x23
@@ -17858,7 +17858,7 @@ dylib_saiseg_func_106:
 	.0:
 .0x801ef454:	addu $v0, $s1
 .0x801ef458:	lw $a0, 0x0($v0)
-.0x801ef45c:	jal func_83
+.0x801ef45c:	jal dylib_saiseg_func_83
 .0x801ef460:		addiu $a1, $zr, 0x1b
 .0x801ef464:	addiu $s0, 0x1
 .0x801ef468:	slti $v0, $s0, 0x26
@@ -17976,7 +17976,7 @@ dylib_saiseg_func_107:
 .0x801ef604:	lui $v0, 0x801f
 	.2:
 .0x801ef608:	lw $a0, 0x52ec($v0)
-.0x801ef60c:	jal func_81
+.0x801ef60c:	jal dylib_saiseg_func_81
 .0x801ef610:		nop
 .0x801ef614:	lui $v0, 0x801f
 .0x801ef618:	addiu $v1, $v0, 0x4e48
@@ -18012,10 +18012,10 @@ dylib_saiseg_func_107:
 .0x801ef688:	lui $s0, 0x801f
 .0x801ef68c:	addiu $s0, 0x5260
 .0x801ef690:	lw $a0, 0x90($s0)
-.0x801ef694:	jal func_103
+.0x801ef694:	jal dylib_saiseg_func_103
 .0x801ef698:		addiu $a1, $sp, 0x10
 .0x801ef69c:	lw $a0, 0x90($s0)
-.0x801ef6a0:	jal func_81
+.0x801ef6a0:	jal dylib_saiseg_func_81
 .0x801ef6a4:		nop
 .0x801ef6a8:	j .8
 .0x801ef6ac:		nop
@@ -18053,10 +18053,10 @@ dylib_saiseg_func_107:
 .0x801ef720:	addiu $s0, 0x5260
 .0x801ef724:	lw $a0, 0x94($s0)
 .0x801ef728:	addiu $a1, $sp, 0x10
-.0x801ef72c:	jal func_102
+.0x801ef72c:	jal dylib_saiseg_func_102
 .0x801ef730:		addu $a2, $zr, $zr
 .0x801ef734:	lw $a0, 0x94($s0)
-.0x801ef738:	jal func_81
+.0x801ef738:	jal dylib_saiseg_func_81
 .0x801ef73c:		nop
 	.8:
 .0x801ef740:	lw $ra, 0x1c($sp)
@@ -18074,12 +18074,12 @@ dylib_saiseg_func_108:
 .0x801ef758:	sw $s0, 0x10($sp)
 .0x801ef75c:	lui $v0, 0x801f
 .0x801ef760:	sb $zr, 0x5245($v0)
-.0x801ef764:	jal func_79
+.0x801ef764:	jal dylib_saiseg_func_79
 .0x801ef768:		addiu $a0, $zr, 0x1f
 .0x801ef76c:	lui $s0, 0x801f
 .0x801ef770:	addiu $s0, 0x5260
 .0x801ef774:	sw $v0, 0x98($s0)
-.0x801ef778:	jal func_79
+.0x801ef778:	jal dylib_saiseg_func_79
 .0x801ef77c:		addiu $a0, $zr, 0x1e
 .0x801ef780:	sw $v0, 0x9c($s0)
 .0x801ef784:	lw $v1, 0x98($s0)
@@ -18089,10 +18089,10 @@ dylib_saiseg_func_108:
 .0x801ef794:	addiu $v0, $zr, 0x25
 .0x801ef798:	sw $v0, 0x50($v1)
 .0x801ef79c:	lw $a0, 0x98($s0)
-.0x801ef7a0:	jal func_83
+.0x801ef7a0:	jal dylib_saiseg_func_83
 .0x801ef7a4:		addiu $a1, $zr, 0x19
 .0x801ef7a8:	lw $a0, 0x9c($s0)
-.0x801ef7ac:	jal func_83
+.0x801ef7ac:	jal dylib_saiseg_func_83
 .0x801ef7b0:		addiu $a1, $zr, 0x19
 .0x801ef7b4:	lw $ra, 0x14($sp)
 .0x801ef7b8:	lw $s0, 0x10($sp)
@@ -18252,7 +18252,7 @@ dylib_saiseg_func_109:
 .0x801ef9e4:	lui $v0, 0x801f
 	.9:
 .0x801ef9e8:	lw $a0, 0x52f8($v0)
-.0x801ef9ec:	jal func_103
+.0x801ef9ec:	jal dylib_saiseg_func_103
 .0x801ef9f0:		addiu $a1, $sp, 0x10
 .0x801ef9f4:	addiu $s0, $zr, 0x26
 .0x801ef9f8:	lui $v0, 0x801f
@@ -18261,7 +18261,7 @@ dylib_saiseg_func_109:
 .0x801efa00:	sll $v0, $s0, 0x2
 .0x801efa04:	addu $v0, $s1
 .0x801efa08:	lw $a0, 0x0($v0)
-.0x801efa0c:	jal func_81
+.0x801efa0c:	jal dylib_saiseg_func_81
 .0x801efa10:		addiu $s0, 0x1
 .0x801efa14:	slti $v0, $s0, 0x28
 .0x801efa18:	bnez $v0, .10
@@ -18305,13 +18305,13 @@ dylib_saiseg_func_110:
 .0x801efa98:	lui $v0, 0x801f
 .0x801efa9c:	addiu $s1, $v0, 0x5260
 	.0:
-.0x801efaa0:	jal func_79
+.0x801efaa0:	jal dylib_saiseg_func_79
 .0x801efaa4:		addiu $a0, $s0, -0x8
 .0x801efaa8:	sll $v1, $s0, 0x2
 .0x801efaac:	addu $v1, $s1
 .0x801efab0:	sw $v0, 0x0($v1)
 .0x801efab4:	addu $a0, $v0, $zr
-.0x801efab8:	jal func_83
+.0x801efab8:	jal dylib_saiseg_func_83
 .0x801efabc:		addiu $a1, $zr, 0x1a
 .0x801efac0:	addiu $s0, 0x1
 .0x801efac4:	slti $v0, $s0, 0x30
@@ -18451,13 +18451,13 @@ dylib_saiseg_func_111:
 .0x801efcc0:	lui $v0, 0x801f
 .0x801efcc4:	addiu $s2, $v0, 0x5260
 	.0:
-.0x801efcc8:	jal func_79
+.0x801efcc8:	jal dylib_saiseg_func_79
 .0x801efccc:		addu $a0, $s1, $zr
 .0x801efcd0:	sll $v1, $s0, 0x2
 .0x801efcd4:	addu $v1, $s2
 .0x801efcd8:	sw $v0, 0x0($v1)
 .0x801efcdc:	addu $a0, $v0, $zr
-.0x801efce0:	jal func_83
+.0x801efce0:	jal dylib_saiseg_func_83
 .0x801efce4:		addiu $a1, $zr, 0x1c
 .0x801efce8:	addiu $s0, 0x1
 .0x801efcec:	slti $v0, $s0, 0x38
@@ -18580,7 +18580,7 @@ dylib_saiseg_func_112:
 .0x801efea0:	sll $v0, $s0, 0x2
 .0x801efea4:	addu $v0, $s1
 .0x801efea8:	lw $a0, 0x0($v0)
-.0x801efeac:	jal func_81
+.0x801efeac:	jal dylib_saiseg_func_81
 .0x801efeb0:		addiu $s0, 0x1
 .0x801efeb4:	slti $v0, $s0, 0x30
 .0x801efeb8:	bnez $v0, .0
@@ -18607,7 +18607,7 @@ dylib_saiseg_func_113:
 .0x801efef0:	sll $v0, $s0, 0x2
 .0x801efef4:	addu $v0, $s1
 .0x801efef8:	lw $a0, 0x0($v0)
-.0x801efefc:	jal func_81
+.0x801efefc:	jal dylib_saiseg_func_81
 .0x801eff00:		addiu $s0, 0x1
 .0x801eff04:	slti $v0, $s0, 0x38
 .0x801eff08:	bnez $v0, .0
@@ -18662,7 +18662,7 @@ dylib_saiseg_func_114:
 	.0:
 .0x801effb4:	addu $v0, $s1, $v0
 .0x801effb8:	lhu $a0, 0x0($v0)
-.0x801effbc:	jal func_89
+.0x801effbc:	jal dylib_saiseg_func_89
 .0x801effc0:		nop
 .0x801effc4:	sll $v1, $s0, 0x2
 .0x801effc8:	addu $v1, $s0
@@ -18687,7 +18687,7 @@ dylib_saiseg_func_114:
 .0x801f0010:	bnez $v0, .1
 .0x801f0014:		sll $v0, $s0, 0x2
 .0x801f0018:	lhu $a0, 0x1a($sp)
-.0x801f001c:	jal func_89
+.0x801f001c:	jal dylib_saiseg_func_89
 .0x801f0020:		nop
 .0x801f0024:	beqz $v0, .2
 .0x801f0028:		lui $v0, 0x801f
@@ -18697,7 +18697,7 @@ dylib_saiseg_func_114:
 .0x801f0038:	sb $v1, 0x8a($v0)
 	.2:
 .0x801f003c:	lhu $a0, 0x22($sp)
-.0x801f0040:	jal func_89
+.0x801f0040:	jal dylib_saiseg_func_89
 .0x801f0044:		nop
 .0x801f0048:	beqz $v0, .3
 .0x801f004c:		lui $v0, 0x801f
@@ -18733,7 +18733,7 @@ dylib_saiseg_func_115:
 .0x801f00a8:	addiu $a1, 0x3ce8
 .0x801f00ac:	lw $a0, 0x8($s1)
 .0x801f00b0:	addu $a1, $v0, $a1
-.0x801f00b4:	jal func_102
+.0x801f00b4:	jal dylib_saiseg_func_102
 .0x801f00b8:		addu $a2, $zr, $zr
 .0x801f00bc:	lw $v1, 0x8($s1)
 .0x801f00c0:	lbu $v0, 0x405($s0)
@@ -18791,13 +18791,13 @@ dylib_saiseg_func_115:
 .0x801f0188: 	nop
 .0x801f018c: jal 0x8002aea4
 .0x801f0190: 	addiu $a0, $zr, 0x1
-.0x801f0194: jal func_88
+.0x801f0194: jal dylib_saiseg_func_88
 .0x801f0198: 	nop
-.0x801f019c: jal func_87
+.0x801f019c: jal dylib_saiseg_func_87
 .0x801f01a0: 	nop
-.0x801f01a4: jal func_114
+.0x801f01a4: jal dylib_saiseg_func_114
 .0x801f01a8: 	nop
-.0x801f01ac: jal func_117
+.0x801f01ac: jal dylib_saiseg_func_117
 .0x801f01b0: 	addu $a0, $zr, $zr
 .0x801f01b4: lui $v0, 0x801f
 .0x801f01b8: lb $v1, 0x5250($v0)
@@ -18824,11 +18824,11 @@ dylib_saiseg_func_115:
 .0x801f020c: lui $s0, 0x801f
 .0x801f0210: addiu $s0, 0x4e48
 .0x801f0214: lb $a0, 0x405($s0)
-.0x801f0218: jal func_91
+.0x801f0218: jal dylib_saiseg_func_91
 .0x801f021c: 	addu $s2, $zr, $zr
-.0x801f0220: jal func_110
+.0x801f0220: jal dylib_saiseg_func_110
 .0x801f0224: 	nop
-.0x801f0228: jal func_111
+.0x801f0228: jal dylib_saiseg_func_111
 .0x801f022c: 	nop
 .0x801f0230: lui $v0, 0x8007
 .0x801f0234: lw $v0, -0x1fac($v0)
@@ -18885,16 +18885,16 @@ dylib_saiseg_func_115:
 .0x801f0300: lbu $v1, 0x405($v0)
 .0x801f0304: nop
 .0x801f0308: sb $v1, 0x404($v0)
-.0x801f030c: jal func_104
+.0x801f030c: jal dylib_saiseg_func_104
 .0x801f0310: 	sb $s1, 0x40b($v0)
-.0x801f0314: jal func_106
+.0x801f0314: jal dylib_saiseg_func_106
 .0x801f0318: 	addu $s2, $zr, $zr
-.0x801f031c: jal func_108
+.0x801f031c: jal dylib_saiseg_func_108
 .0x801f0320: 	nop
-.0x801f0324: jal func_79
+.0x801f0324: jal dylib_saiseg_func_79
 .0x801f0328: 	addiu $a0, $zr, 0x2
 .0x801f032c: lui $v1, 0x801f
-.0x801f0330: jal func_115
+.0x801f0330: jal dylib_saiseg_func_115
 .0x801f0334: 	sw $v0, 0x5268($v1)
 .0x801f0338: lui $v0, 0x801f
 .0x801f033c: addiu $a0, $v0, 0x5260
@@ -18917,7 +18917,7 @@ dylib_saiseg_func_115:
 .0x801f0380: 	sb $zr, 0x6($v1)
 .0x801f0384: lui $v0, 0x801f
 .0x801f0388: lw $a0, 0x5268($v0)
-.0x801f038c: jal func_83
+.0x801f038c: jal dylib_saiseg_func_83
 .0x801f0390: 	addiu $a1, $zr, 0x23
 .0x801f0394: addu $s2, $zr, $zr
 .0x801f0398: lui $v0, 0x801f
@@ -19012,7 +19012,7 @@ dylib_saiseg_func_115:
 .0x801f04fc: sll $v0, 0x2
 .0x801f0500: addu $v0, $s1
 .0x801f0504: lw $a0, 0x0($v0)
-.0x801f0508: jal func_81
+.0x801f0508: jal dylib_saiseg_func_81
 .0x801f050c: 	nop
 .0x801f0510: addiu $s2, 0x1
 .0x801f0514: lbu $v0, 0x3fb($s0)
@@ -19025,7 +19025,7 @@ dylib_saiseg_func_115:
 .0x801f0530: beqz $v0, .0x801f0584
 .0x801f0534: 	nop
 .0x801f0538: lw $a0, 0x5260($s7)
-.0x801f053c: jal func_81
+.0x801f053c: jal dylib_saiseg_func_81
 .0x801f0540: 	nop
 .0x801f0544: lw $v1, 0x4($s6)
 .0x801f0548: lw $v0, 0x5260($s7)
@@ -19041,13 +19041,13 @@ dylib_saiseg_func_115:
 .0x801f0570: addiu $v0, 0xf
 .0x801f0574: sw $v0, 0x54($v1)
 .0x801f0578: lw $a0, 0x4($s6)
-.0x801f057c: jal func_81
+.0x801f057c: jal dylib_saiseg_func_81
 .0x801f0580: 	nop
-.0x801f0584: jal func_118
+.0x801f0584: jal dylib_saiseg_func_118
 .0x801f0588: 	nop
-.0x801f058c: jal func_112
+.0x801f058c: jal dylib_saiseg_func_112
 .0x801f0590: 	nop
-.0x801f0594: jal func_113
+.0x801f0594: jal dylib_saiseg_func_113
 .0x801f0598: 	nop
 .0x801f059c: addiu $v1, $fp, 0x4e48
 .0x801f05a0: lb $v0, 0x409($v1)
@@ -19055,23 +19055,23 @@ dylib_saiseg_func_115:
 .0x801f05a8: beqz $v0, .0x801f05bc
 .0x801f05ac: 	nop
 .0x801f05b0: lb $a0, 0x40a($v1)
-.0x801f05b4: jal func_95
+.0x801f05b4: jal dylib_saiseg_func_95
 .0x801f05b8: 	nop
 .0x801f05bc: lw $a0, 0x8($s6)
-.0x801f05c0: jal func_81
+.0x801f05c0: jal dylib_saiseg_func_81
 .0x801f05c4: 	nop
-.0x801f05c8: jal func_99
+.0x801f05c8: jal dylib_saiseg_func_99
 .0x801f05cc: 	nop
-.0x801f05d0: jal func_109
+.0x801f05d0: jal dylib_saiseg_func_109
 .0x801f05d4: 	nop
-.0x801f05d8: jal func_105
+.0x801f05d8: jal dylib_saiseg_func_105
 .0x801f05dc: 	nop
 .0x801f05e0: lb $v0, 0x3fe($s3)
 .0x801f05e4: nop
 .0x801f05e8: slti $v0, $v0, 0x2
 .0x801f05ec: bnez $v0, .0x801f05fc
 .0x801f05f0: 	nop
-.0x801f05f4: jal func_107
+.0x801f05f4: jal dylib_saiseg_func_107
 .0x801f05f8: 	nop
 .0x801f05fc: lb $v1, 0x403($s3)
 .0x801f0600: addiu $v0, $zr, 0x8
@@ -19231,7 +19231,7 @@ dylib_saiseg_func_116:
 .0x801f0858:	lui $s0, 0x801f
 .0x801f085c:	addiu $s0, 0x4e48
 .0x801f0860:	lb $a0, 0x405($s0)
-.0x801f0864:	jal func_91
+.0x801f0864:	jal dylib_saiseg_func_91
 .0x801f0868:		addiu $s3, $s0, 0xc
 .0x801f086c:	addiu $v0, $zr, 0x1
 .0x801f0870:	sb $v0, 0x409($s0)
@@ -19554,7 +19554,7 @@ dylib_saiseg_func_117:
 	.0:
 .0x801f0d38:	lui $v0, 0x801f
 .0x801f0d3c:	sw $zr, 0x5258($v0)
-.0x801f0d40:	jal func_79
+.0x801f0d40:	jal dylib_saiseg_func_79
 .0x801f0d44:		addiu $a0, $zr, 0x41
 .0x801f0d48:	lui $a0, 0x801f
 .0x801f0d4c:	addiu $a0, 0x5260
@@ -19565,7 +19565,7 @@ dylib_saiseg_func_117:
 .0x801f0d60:	addiu $v0, $zr, -0x24
 .0x801f0d64:	sw $v0, 0x54($v1)
 .0x801f0d68:	lw $a0, 0x14($a0)
-.0x801f0d6c:	jal func_83
+.0x801f0d6c:	jal dylib_saiseg_func_83
 .0x801f0d70:		addiu $a1, $zr, 0x1a
 .0x801f0d74:	lw $ra, 0x10($sp)
 .0x801f0d78:	nop
@@ -19638,7 +19638,7 @@ dylib_saiseg_func_118:
 .0x801f0e60:	nop
 .0x801f0e64:	sw $v0, 0x50($a0)
 .0x801f0e68:	lw $a0, 0x14($v1)
-.0x801f0e6c:	jal func_81
+.0x801f0e6c:	jal dylib_saiseg_func_81
 .0x801f0e70:		nop
 .0x801f0e74:	lw $ra, 0x58($sp)
 .0x801f0e78:	nop
@@ -19667,7 +19667,7 @@ dylib_saiseg_func_118:
 .0x801f0ecc: addiu $sp, -0x18
 .0x801f0ed0: sw $ra, 0x10($sp)
 .0x801f0ed4: lui $v0, 0x801f
-.0x801f0ed8: jal func_122
+.0x801f0ed8: jal dylib_saiseg_func_122
 .0x801f0edc: 	sb $a0, 0x4aff($v0)
 .0x801f0ee0: jal 0x80014c08
 .0x801f0ee4: 	addiu $a0, $zr, 0x5
@@ -19996,7 +19996,7 @@ dylib_saiseg_func_120:
 .0x801f13ac: addiu $a0, $s5, 0x1
 .0x801f13b0: addiu $a1, $s6, 0xc
 .0x801f13b4: addiu $a2, 0x200
-.0x801f13b8: jal func_120
+.0x801f13b8: jal dylib_saiseg_func_120
 .0x801f13bc: 	addiu $a3, $zr, 0x78
 .0x801f13c0: addiu $v0, $zr, 0x7
 .0x801f13c4: sw $v0, 0x10($sp)
@@ -20594,7 +20594,7 @@ dylib_saiseg_func_122:
 .0x801f1ccc:	j .1
 .0x801f1cd0:		nop
 	.0:
-.0x801f1cd4:	jal func_121
+.0x801f1cd4:	jal dylib_saiseg_func_121
 .0x801f1cd8:		nop
 	.1:
 .0x801f1cdc:	jal 0x800148b0
@@ -20717,7 +20717,7 @@ dylib_saiseg_func_122:
 .0x801f1ea8:		addiu $a0, 0x1a80
 .0x801f1eac:	jal 0x80014c08
 .0x801f1eb0:		addiu $a0, $zr, 0x14
-.0x801f1eb4:	jal func_119
+.0x801f1eb4:	jal dylib_saiseg_func_119
 .0x801f1eb8:		lui $s2, 0x801f
 .0x801f1ebc:	jal 0x8002b498
 .0x801f1ec0:		addu $a0, $zr, $zr
@@ -20781,7 +20781,7 @@ dylib_saiseg_func_122:
 .0x801f1f9c:	slti $v0, $s1, 0x3
 .0x801f1fa0:	bnez $v0, .4
 .0x801f1fa4:		lui $v0, 0x8007
-.0x801f1fa8:	jal func_119
+.0x801f1fa8:	jal dylib_saiseg_func_119
 .0x801f1fac:		addu $s1, $zr, $zr
 .0x801f1fb0:	jal 0x8002b498
 .0x801f1fb4:		addiu $a0, $zr, 0x4
@@ -21123,7 +21123,7 @@ dylib_saiseg_func_123:
 .0x801f24c0: nop
 .0x801f24c4: addiu $a1, $v0, 0x4
 .0x801f24c8: addiu $a2, 0x200
-.0x801f24cc: jal func_123
+.0x801f24cc: jal dylib_saiseg_func_123
 .0x801f24d0: 	addiu $a3, $zr, 0x180
 .0x801f24d4: addiu $s5, $s3, 0x30
 .0x801f24d8: lw $v1, 0x44($sp)
@@ -21765,7 +21765,7 @@ dylib_saiseg_func_123:
 .0x801f2ec8: nop
 .0x801f2ecc: addu $v0, $s1
 .0x801f2ed0: lb $a0, 0x0($v0)
-.0x801f2ed4: jal func_9
+.0x801f2ed4: jal dylib_saiseg_func_9
 .0x801f2ed8: 	nop
 .0x801f2edc: jal 0x80014a48
 .0x801f2ee0: 	addu $a0, $s4, $zr

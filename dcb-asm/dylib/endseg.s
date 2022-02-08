@@ -1239,7 +1239,7 @@ dylib_endseg_func_2:
 .0x801df614: addiu $a1, $zr, 0x32
 .0x801df618: jal 0x8002ba6c
 .0x801df61c: 	addiu $a2, $zr, 0x7f
-.0x801df620: jal func_0
+.0x801df620: jal dylib_endseg_func_0
 .0x801df624: 	addiu $s6, $zr, 0x28
 .0x801df628: sw $v0, 0x31c($sp)
 .0x801df62c: addiu $v0, $zr, 0x1
@@ -1718,7 +1718,7 @@ dylib_endseg_func_2:
 .0x801dfd90: addiu $a0, $zr, 0x14
 .0x801dfd94: addiu $a1, 0xf
 .0x801dfd98: addu $a2, $s7, $zr
-.0x801dfd9c: jal func_1
+.0x801dfd9c: jal dylib_endseg_func_1
 .0x801dfda0: 	addu $a3, $s2, $zr
 .0x801dfda4: j 0x801dfde8
 .0x801dfda8: 	addiu $a0, $sp, 0x20
@@ -1734,7 +1734,7 @@ dylib_endseg_func_2:
 .0x801dfdd0: jal 0x80028d18
 .0x801dfdd4: 	addiu $a3, $zr, 0x6
 .0x801dfdd8: addiu $a0, $zr, 0x14
-.0x801dfddc: jal func_2
+.0x801dfddc: jal dylib_endseg_func_2
 .0x801dfde0: 	addiu $a1, $s0, 0xf
 .0x801dfde4: addiu $a0, $sp, 0x20
 .0x801dfde8: lui $a1, 0x801e
