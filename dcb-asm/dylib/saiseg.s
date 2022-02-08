@@ -22883,7 +22883,7 @@ dylib_saiseg_func_123:
 
 .0x801f3e34: lb $sp, -0x770($zr)
 .0x801f3e38: .word 0x0 # TODO: beq $t8, $s4, .0x801fce88
-.0x801f3e3c: 	divu $zr, $zr
+.0x801f3e3c: 	divu $zr, $zr, $zr
 .0x801f3e40: lb $sp, -0x788($zr)
 .0x801f3e44: addiu $t2, $s1, 0x4523
 .0x801f3e48: .asciiz "5\u{18}"

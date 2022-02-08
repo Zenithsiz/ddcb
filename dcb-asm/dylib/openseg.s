@@ -18225,7 +18225,7 @@ dylib_openseg_func_63:
 .0x801f0158: mfhi $zr
 .0x801f015c: .word 0x1a0016
 .0x801f0160: .word 0x1f001e
-.0x801f0164: divu $zr, $sp
+.0x801f0164: divu $zr, $zr, $sp
 .0x801f0168: slt $zr, $at, $t3
 .0x801f016c: .word 0x2c0029
 .0x801f0170: .word 0x36002d

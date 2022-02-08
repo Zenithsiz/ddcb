@@ -19756,7 +19756,7 @@ dylib_subseg_func_26:
 	.align 2
 .0x801f1a5c: lb $sp, -0x11c8($zr)
 .0x801f1a60: .word 0x0 # TODO: beq $t8, $s4, .0x801faab0
-.0x801f1a64: 	divu $zr, $zr
+.0x801f1a64: 	divu $zr, $zr, $zr
 .0x801f1a68: lb $sp, -0x11e0($zr)
 .0x801f1a6c: addiu $t2, $s1, 0x4523
 .0x801f1a70: .asciiz "5\u{18}"

@@ -9242,7 +9242,7 @@ dylib_sugseg_func_27:
 .0x801e6764:	lh $v0, 0x4($s3)
 .0x801e6768:	addiu $s0, $zr, 0x2
 .0x801e676c:	subu $s0, $s4
-.0x801e6770:	divu $v0, $s0
+.0x801e6770:	divu $zr, $v0, $s0
 .0x801e6774:	mflo $v0
 .0x801e6778:	bnez $s0, .1
 .0x801e677c:		nop
@@ -9257,7 +9257,7 @@ dylib_sugseg_func_27:
 .0x801e679c:	sw $v0, 0x8($s1)
 .0x801e67a0:	lh $a0, 0x4($s3)
 .0x801e67a4:	nop
-.0x801e67a8:	divu $a0, $s0
+.0x801e67a8:	divu $zr, $a0, $s0
 .0x801e67ac:	mflo $a0
 .0x801e67b0:	bnez $s0, .2
 .0x801e67b4:		nop

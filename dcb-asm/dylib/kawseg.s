@@ -30429,7 +30429,7 @@ dylib_kawseg_func_86:
 .0x801fb9a8: sltu $zr, $v1, $s1
 .0x801fb9ac: .word 0x8b0076
 .0x801fb9b0: multu $a0, $k0
-.0x801fb9b4: divu $a0, $gp
+.0x801fb9b4: divu $zr, $a0, $gp
 .0x801fb9b8: .word 0x9e009d
 
 ##########
@@ -30663,7 +30663,7 @@ dylib_kawseg_func_86:
 	.align 2
 .0x801fbc34: lb $sp, -0xdb8($zr)
 .0x801fbc38: .word 0x0 # TODO: beq $t8, $s4, .0x80204c88
-.0x801fbc3c: 	divu $zr, $zr
+.0x801fbc3c: 	divu $zr, $zr, $zr
 .0x801fbc40: lb $sp, -0xdd0($zr)
 .0x801fbc44: addiu $t2, $s1, 0x4523
 .0x801fbc48: .asciiz "5\u{18}"
@@ -31244,7 +31244,7 @@ dylib_kawseg_func_86:
 .0x801fc3cc: lb $sp, -0x3d8($zr)
 .0x801fc3d0: div $zr, $zr, $zr
 .0x801fc3d4: lb $sp, -0x3e4($zr)
-.0x801fc3d8: divu $zr, $zr
+.0x801fc3d8: divu $zr, $zr, $zr
 .0x801fc3dc: lb $sp, -0x3f0($zr)
 .0x801fc3e0: .asciiz "\u{1c}\u{2}"
 	.align 2
