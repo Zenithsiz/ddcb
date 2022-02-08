@@ -6,82 +6,82 @@ dylib_openseg:
 .0x801ddf48: add $zr, $zr
 .0x801ddf4c: .word 0xb0
 .0x801ddf50: .asciiz "Level *e5"
-	.align 4
+	.align 2
 .0x801ddf5c: .asciiz "Level *e4"
-	.align 4
+	.align 2
 .0x801ddf68: .asciiz "Level *e3"
-	.align 4
+	.align 2
 .0x801ddf74: addi $s6, $at, 0x612a
 .0x801ddf78: .asciiz "Option"
-	.align 4
+	.align 2
 .0x801ddf80: addi $s5, $at, 0x612a
 .0x801ddf84: .asciiz "Option"
-	.align 4
+	.align 2
 .0x801ddf8c: addi $s4, $at, 0x612a
 .0x801ddf90: .asciiz "Rare"
-	.align 4
+	.align 2
 .0x801ddf98: addi $s3, $at, 0x612a
 .0x801ddf9c: .asciiz "Darkness"
-	.align 4
+	.align 2
 .0x801ddfa8: addi $s2, $at, 0x612a
 .0x801ddfac: .asciiz "Nature"
-	.align 4
+	.align 2
 .0x801ddfb4: addi $s1, $at, 0x612a
 .0x801ddfb8: jalr $v1, $t4
 .0x801ddfbc: 	addi $s0, $at, 0x612a
 .0x801ddfc0: .asciiz "Fire"
-	.align 4
+	.align 2
 .0x801ddfc8: .asciiz "Number"
-	.align 4
+	.align 2
 .0x801ddfd0: addi $s5, $v1, 0x6f59
 .0x801ddfd4: addiu $t6, $k1, 0x6163
 .0x801ddfd8: .asciiz "t Trade between 0 Cards!"
-	.align 4
+	.align 2
 .0x801ddff4: .asciiz "If these Cards are OK,\npress and hold *b2 Button."
-	.align 4
+	.align 2
 .0x801de028: addi $s5, $v1, 0x6f59
 .0x801de02c: addiu $t6, $k1, 0x6163
 .0x801de030: .asciiz "t trade\nthis Card!"
-	.align 4
+	.align 2
 .0x801de044: addi $s5, $v1, 0x6f59
 .0x801de048: addiu $t6, $k1, 0x6163
 .0x801de04c: .asciiz "t transfer\nany more Cards!"
-	.align 4
+	.align 2
 .0x801de068: .asciiz "This Card is\nunidentified!"
-	.align 4
+	.align 2
 .0x801de084: sltiu $t5, $t1, 0x2d2d
 .0x801de088: sltiu $t5, $t1, 0x2d2d
 .0x801de08c: sltiu $t5, $t1, 0x2d2d
 .0x801de090: sltiu $t5, $t1, 0x2d2d
 .0x801de094: .asciiz "-"
-	.align 4
+	.align 2
 .0x801de098: andi $t6, $t9, 0x3325
 .0x801de09c: and $zr, $zr
 .0x801de0a0: or $t4, $zr, $zr
 .0x801de0a4: .asciiz "in Stock. \u{c}\u{7}%d\u{c}\u{6} Cards"
-	.align 4
+	.align 2
 .0x801de0bc: .asciiz "in a Deck. \u{c}\u{7}%d\u{c}\u{6} Cards"
-	.align 4
+	.align 2
 .0x801de0d4: .asciiz "Unidentified Card"
-	.align 4
+	.align 2
 .0x801de0e8: .asciiz "WARNING"
-	.align 4
+	.align 2
 .0x801de0f0: .asciiz "TRADE OK?"
-	.align 4
+	.align 2
 .0x801de0fc: .asciiz "B:\\TRADE.ARC"
-	.align 4
+	.align 2
 .0x801de10c: .asciiz "B:\\CARD_F.TIM"
-	.align 4
+	.align 2
 .0x801de11c: .asciiz "B:\\M_CARD.ARC"
-	.align 4
+	.align 2
 .0x801de12c: .asciiz "TRADE LIST"
-	.align 4
+	.align 2
 .0x801de138: .asciiz "SORT MENU"
-	.align 4
+	.align 2
 .0x801de144: .asciiz "1P CARD LIST"
-	.align 4
+	.align 2
 .0x801de154: .asciiz "2P CARD LIST"
-	.align 4
+	.align 2
 .0x801de164: .word 0x79206f44
 .0x801de168: .word 0x7720756f
 .0x801de16c: addi $s4, $v1, 0x6e61
@@ -92,107 +92,107 @@ dylib_openseg:
 .0x801de180: sll $v0, 0x0
 .0x801de184: addiu $s4, $k1, 0x654c
 .0x801de188: .asciiz "s save your *c4Registration*c7.\nPlease insert a *c5MEMORY CARD*c7 with at\nleast 2 free blocks into MEMORY CARD slot 1."
-	.align 4
+	.align 2
 .0x801de200: .asciiz "Betamon in Beginner City will teach\nyou the basics. You\'ll learn the rest\nas you go along."
-	.align 4
+	.align 2
 .0x801de25c: .asciiz "A *c5Deck *c7is a group of 30 Cards.\nYou\'ll use this to Battle Opponents."
-	.align 4
+	.align 2
 .0x801de2a8: .asciiz "Collect Cards through battles. Trade and\nFuse them to create your own Decks."
-	.align 4
+	.align 2
 .0x801de2f8: .asciiz "This is a fun world where a Player\ngets to play with Digimon and other\ncharacters, using Digimon Battle Cards."
-	.align 4
+	.align 2
 .0x801de368: .asciiz "Then I\'ll quickly tell you about \n*c2Digital Card Battle*c7."
-	.align 4
+	.align 2
 .0x801de3a8: .asciiz "ERROR! (26)"
-	.align 4
+	.align 2
 .0x801de3b4: .asciiz "Card data conversion had failed.\nDo you want to learn about this game?"
-	.align 4
+	.align 2
 .0x801de3fc: .asciiz "Enjoy *c2Digital Card Battle*c7!"
-	.align 4
+	.align 2
 .0x801de420: .asciiz "Next, select *c4Polygon Battle Settings*c7.\nThis can also be changed during the game."
-	.align 4
+	.align 2
 .0x801de478: .asciiz "First, select the *c4Sound Settings*c7.\nThis can be changed during the game."
-	.align 4
+	.align 2
 .0x801de4c8: .asciiz "ERROR! (21)"
-	.align 4
+	.align 2
 .0x801de4d4: .asciiz "ERROR! (20)"
-	.align 4
+	.align 2
 .0x801de4e0: .asciiz "ERROR! (19)"
-	.align 4
+	.align 2
 .0x801de4ec: .asciiz "ERROR! (18)"
-	.align 4
+	.align 2
 .0x801de4f8: .asciiz "ERROR! (17)"
-	.align 4
+	.align 2
 .0x801de504: .asciiz "Do you want to learn about the game?"
-	.align 4
+	.align 2
 .0x801de52c: .asciiz "ERROR! (15)"
-	.align 4
+	.align 2
 .0x801de538: .asciiz "ERROR! (14)"
-	.align 4
+	.align 2
 .0x801de544: .asciiz "ERROR! (13)"
-	.align 4
+	.align 2
 .0x801de550: .asciiz "ERROR! (12)"
-	.align 4
+	.align 2
 .0x801de55c: .asciiz "In this Cyber World, you play Digimon\nDigital Card Battles. There are\nalways many opponents to play with."
-	.align 4
+	.align 2
 .0x801de5c8: .asciiz "*c4User Registration*c7 is complete.\nWould you like to know more about\nthis world?"
-	.align 4
+	.align 2
 .0x801de61c: .asciiz "Next is how you appear in this world.\nWe only have one character available.\nWe hope you like him."
-	.align 4
+	.align 2
 .0x801de680: .asciiz "An Armadillomon *c5Deck*c7 has the\nstrong support of Rare Digimon.\nIt\'s a defensive *c5Deck*c7."
-	.align 4
+	.align 2
 .0x801de6e0: .asciiz "This is a Hawkmon *c5Deck*c7, with Nature\nand tricky Rare Digimon.\nIt\'s a well-balanced *c5Deck*c7."
-	.align 4
+	.align 2
 .0x801de744: .asciiz "This is a Veemon *c5Deck*c7,\nwith Fire and Darkness Digimon.\nIt\'s a strong offensive *c5Deck*c7."
-	.align 4
+	.align 2
 .0x801de7a8: sltiu $s7, $v1, 0x6f4e
 .0x801de7ac: .asciiz " please choose a Partner.\nUse the directional and *b2 buttons."
-	.align 4
+	.align 2
 
 ##########
 .0x801de7ec:	.asciiz "Your Partner will grow with every battle\nand will become a reliable ally in \nthe battles you\'ll face."
-	.align 4
+	.align 2
 ##########
 
 .0x801de854: .asciiz "Each Partner Card comes with a matching\nStarter *c5Deck*c7, so you can\nbattle right from the start."
-	.align 4
+	.align 2
 .0x801de8b8: .asciiz "Please choose a Partner Card.\nYou can choose Veemon, Hawkmon,\nor Armadillomon."
-	.align 4
+	.align 2
 .0x801de908: .asciiz "Please proceed to *c4User Registration*c7.\nPlease enter your nickname\nfor this World."
-	.align 4
+	.align 2
 .0x801de960: .asciiz "Welcome to *c2Digital Card Battle*c7!"
-	.align 4
+	.align 2
 .0x801de988: .asciiz "B:\\OPENING.ARC"
-	.align 4
+	.align 2
 .0x801de998: .asciiz "IMAGE"
-	.align 4
+	.align 2
 .0x801de9a0: .asciiz "MESSAGE"
-	.align 4
+	.align 2
 
 ##########
 .0x801de9a8:	.asciiz "PLAYER NAME"
-	.align 4
+	.align 2
 ##########
 
 .0x801de9b4: multu $v1, $s3
 .0x801de9b8: .asciiz "No"
-	.align 4
+	.align 2
 .0x801de9bc: .word 0xe982a082
 .0x801de9c0: nop
 .0x801de9c4: sb $v0, -0x377e($s4)
 .0x801de9c8: nop
 .0x801de9cc: .asciiz "Stereo"
-	.align 4
+	.align 2
 .0x801de9d4: .asciiz "Mono"
-	.align 4
+	.align 2
 .0x801de9dc: .asciiz "Sound Settings"
-	.align 4
+	.align 2
 .0x801de9ec: .asciiz "On"
-	.align 4
+	.align 2
 .0x801de9f0: .asciiz "Off"
-	.align 4
+	.align 2
 .0x801de9f4: .asciiz "Polygon Battle"
-	.align 4
+	.align 2
 .0x801dea04: lb $fp, 0x6a48($zr)
 .0x801dea08: lb $fp, 0x6860($zr)
 .0x801dea0c: lb $fp, 0x694c($zr)
@@ -216,45 +216,45 @@ dylib_openseg:
 .0x801dea54: lb $fp, 0x75e8($zr)
 .0x801dea58: or $t4, $zr, $zr
 .0x801dea5c: .asciiz "OK"
-	.align 4
+	.align 2
 .0x801dea60: addiu $s0, $t1, 0x732a
 .0x801dea64: .asciiz "s"
-	.align 4
+	.align 2
 .0x801dea68: addi $s1, $at, 0x622a
 .0x801dea6c: .asciiz "Delete"
-	.align 4
+	.align 2
 .0x801dea74: addi $s2, $at, 0x622a
 .0x801dea78: .asciiz "OK"
-	.align 4
+	.align 2
 .0x801dea7c: addi $s0, $at, 0x622a
 .0x801dea80: .asciiz "Insert"
-	.align 4
+	.align 2
 .0x801dea88: .asciiz "NAME ENTRY"
-	.align 4
+	.align 2
 .0x801dea94: .asciiz "HELP"
-	.align 4
+	.align 2
 .0x801dea9c: .asciiz "PLAYER NAME"
-	.align 4
+	.align 2
 .0x801deaa8: .asciiz "A name has not been entered!"
-	.align 4
+	.align 2
 .0x801deac8: .word 0x74207349
 .0x801deacc: addi $s3, $v1, 0x6968
 .0x801dead0: .word 0x656d616e
 .0x801dead4: lui $t3, 0x4f20
 .0x801dead8: sll $v1, $v0, 0x0
 .0x801deadc: .asciiz "B:\\DECK2.DEK"
-	.align 4
+	.align 2
 .0x801deaec: or $a2, $v1, $a0
 .0x801deaf0: slti $s3, $t3, 0x2528
 .0x801deaf4: nop
 .0x801deaf8: .asciiz "Support Effect"
-	.align 4
+	.align 2
 .0x801deb08: .asciiz "B:\\BCARD.ARC"
-	.align 4
+	.align 2
 .0x801deb18: .asciiz "B:\\P_CARD.ARC"
-	.align 4
+	.align 2
 .0x801deb28: .asciiz "STARTER SELECT"
-	.align 4
+	.align 2
 .0x801deb38: .word 0x74207349
 .0x801deb3c: addi $s3, $v1, 0x6968
 .0x801deb40: .word 0x6b636544
@@ -270,7 +270,7 @@ dylib_openseg:
 .0x801deb68: lb $fp, -0x64c0($zr)
 .0x801deb6c: lb $fp, -0x64e8($zr)
 .0x801deb70: .asciiz "B:\\TITLE.ARC"
-	.align 4
+	.align 2
 .0x801deb80: nop
 .0x801deb84: lb $fp, -0x5ac0($zr)
 .0x801deb88: lb $fp, -0x5ac0($zr)
@@ -282,276 +282,276 @@ dylib_openseg:
 .0x801deba0: lb $fp, -0x5a64($zr)
 .0x801deba4: lb $fp, -0x59cc($zr)
 .0x801deba8: .asciiz "Name"
-	.align 4
+	.align 2
 .0x801debb0: .asciiz "2 Player Battle"
-	.align 4
+	.align 2
 .0x801debc0: addiu $s0, $t1, 0x732a
 .0x801debc4: addi $zr, $at, 0x6433
 .0x801debc8: andi $a1, $t9, 0x2020
 .0x801debcc: and $zr, $zr
 .0x801debd0: .asciiz "WINS"
-	.align 4
+	.align 2
 .0x801debd8: .asciiz "LOSSES"
-	.align 4
+	.align 2
 .0x801debe0: .asciiz "Cards in Stock."
-	.align 4
+	.align 2
 .0x801debf0: addiu $s0, $t1, 0x732a
 .0x801debf4: addiu $t6, $t1, 0x6433
 
 ##########
 .0x801debf8:	.asciiz "1d*w4*c6%%"
-	.align 4
+	.align 2
 ##########
 
 .0x801dec04: .asciiz "Cards in Possession."
-	.align 4
+	.align 2
 .0x801dec1c: addiu $s0, $t1, 0x732a
 .0x801dec20: .asciiz "4d"
-	.align 4
+	.align 2
 .0x801dec24: .asciiz "CARDS"
-	.align 4
+	.align 2
 .0x801dec2c: .asciiz "Deck"
-	.align 4
+	.align 2
 .0x801dec34: .asciiz "Unused Deck"
-	.align 4
+	.align 2
 .0x801dec40: .asciiz "PLAYER 1"
-	.align 4
+	.align 2
 .0x801dec4c: .asciiz "PLAYER 2"
-	.align 4
+	.align 2
 .0x801dec58: .asciiz "B:\\FRIEND.ARC"
-	.align 4
+	.align 2
 .0x801dec68: addi $s5, $v1, 0x6f59
 .0x801dec6c: addiu $t6, $k1, 0x6163
 .0x801dec70: .asciiz "t trade the same Data!"
-	.align 4
+	.align 2
 
 ##########
 .0x801dec88:	.asciiz "Trade is disabled."
-	.align 4
+	.align 2
 ##########
 
 .0x801dec9c: .asciiz "Player 1\'s trade is disabled."
-	.align 4
+	.align 2
 .0x801decbc: .asciiz "Player 2\'s trade is disabled."
-	.align 4
+	.align 2
 .0x801decdc: .asciiz "Save \"Battle with Friend\" game?"
-	.align 4
+	.align 2
 .0x801decfc: .asciiz "Return to the Title Screen?"
-	.align 4
+	.align 2
 .0x801ded18: lb $fp, -0x4b4c($zr)
 .0x801ded1c: lb $fp, -0x4a1c($zr)
 .0x801ded20: lb $fp, -0x49e4($zr)
 .0x801ded24: lb $fp, -0x49ac($zr)
 .0x801ded28: lb $fp, -0x497c($zr)
 .0x801ded2c: .asciiz "Tera Area"
-	.align 4
+	.align 2
 .0x801ded38: .asciiz "Giga Area"
-	.align 4
+	.align 2
 .0x801ded44: .asciiz "Mega Area"
-	.align 4
+	.align 2
 .0x801ded50: .asciiz "Infinity Tower"
-	.align 4
+	.align 2
 .0x801ded60: .asciiz "Wiseman Tower"
-	.align 4
+	.align 2
 .0x801ded70: .asciiz "Steep Road"
-	.align 4
+	.align 2
 .0x801ded7c: addi $t9, $v1, 0x6b53
 .0x801ded80: .asciiz "City"
-	.align 4
+	.align 2
 .0x801ded88: .asciiz "Pyramid City"
-	.align 4
+	.align 2
 
 ##########
 .0x801ded98:	.asciiz "Desert Island"
-	.align 4
+	.align 2
 ##########
 
 .0x801deda8: .asciiz "Dark City"
-	.align 4
+	.align 2
 
 ##########
 .0x801dedb4:	.asciiz "Junk City"
-	.align 4
+	.align 2
 ##########
 
 .0x801dedc0: .asciiz "Igloo City"
-	.align 4
+	.align 2
 .0x801dedcc: .asciiz "Jungle City"
-	.align 4
+	.align 2
 .0x801dedd8: .asciiz "Flame City"
-	.align 4
+	.align 2
 
 ##########
 .0x801dede4:	.asciiz "Beginner City"
-	.align 4
+	.align 2
 ##########
 
 .0x801dedf4: .asciiz "To Tera Area Entrance"
-	.align 4
+	.align 2
 
 ##########
 .0x801dee0c:	.asciiz "To Mega Area Entrance"
-	.align 4
+	.align 2
 ##########
 
 
 ##########
 .0x801dee24:	.asciiz "To Giga Area Entrance"
-	.align 4
+	.align 2
 ##########
 
 
 ##########
 .0x801dee3c:	.asciiz "Infinity Arena"
-	.align 4
+	.align 2
 ##########
 
 .0x801dee4c: .asciiz "Wiseman Arena"
-	.align 4
+	.align 2
 .0x801dee5c: .asciiz "Steep Arena"
-	.align 4
+	.align 2
 .0x801dee68: addi $t9, $v1, 0x6b53
 .0x801dee6c: .asciiz "Arena"
-	.align 4
+	.align 2
 
 ##########
 .0x801dee74:	.asciiz "Pyramid Arena"
-	.align 4
+	.align 2
 ##########
 
 .0x801dee84: .asciiz "Desert Arena"
-	.align 4
+	.align 2
 .0x801dee94: .asciiz "Haunted Arena"
-	.align 4
+	.align 2
 .0x801deea4: .asciiz "Dark Arena"
-	.align 4
+	.align 2
 .0x801deeb0: .asciiz "Junk Arena"
-	.align 4
+	.align 2
 .0x801deebc: .asciiz "Igloo Arena"
-	.align 4
+	.align 2
 .0x801deec8: .asciiz "Beet Arena"
-	.align 4
+	.align 2
 .0x801deed4: .asciiz "Jungle Arena"
-	.align 4
+	.align 2
 .0x801deee4: .asciiz "Extra Arena"
-	.align 4
+	.align 2
 .0x801deef0: .asciiz "Flame Arena"
-	.align 4
+	.align 2
 .0x801deefc: nop
 .0x801def00: .asciiz "Beginner Arena"
-	.align 4
+	.align 2
 .0x801def10: .asciiz "*s0Stop saving?"
-	.align 4
+	.align 2
 .0x801def20: .asciiz "*s0You cannot save your game if you\nbegin the game as is. Is this OK?"
-	.align 4
+	.align 2
 .0x801def68: .asciiz "*s0MEMORY CARD in MEMORY CARD slot 1\ncontains no Digimon\nDigital Card Battle game data."
-	.align 4
+	.align 2
 .0x801defc0: .asciiz "*s0Finished updating data on MEMORY CARD\nin MEMORY CARD slot *S."
-	.align 4
+	.align 2
 .0x801df004: .asciiz "*s0Finished creating data on MEMORY CARD\nin MEMORY CARD slot *S."
-	.align 4
+	.align 2
 .0x801df048: .asciiz "*s0Finished loading data from\nMEMORY CARD slot *S."
-	.align 4
+	.align 2
 .0x801df07c: .asciiz "*s0Failed to load data from MEMORY CARD\nslot *S. Data may be corrupted."
-	.align 4
+	.align 2
 .0x801df0c4: .asciiz "*s0Loading data from MEMORY CARD slot *S.\nDo not insert or remove\nMEMORY CARD or Controller."
-	.align 4
+	.align 2
 .0x801df124: .asciiz "*s0Save to which file?"
-	.align 4
+	.align 2
 .0x801df13c: .asciiz "*s0Load which save data?"
-	.align 4
+	.align 2
 
 ##########
 .0x801df158:	.asciiz "*s0Failed to update data in MEMORY CARD\nslot *S. Data may be corrupted."
-	.align 4
+	.align 2
 ##########
 
 .0x801df1a0: .asciiz "*s0Creating new data in MEMORY CARD\nslot *S... Do not insert or remove\nMEMORY CARD or Controller."
-	.align 4
+	.align 2
 .0x801df204: .asciiz "*s0MEMORY CARD in MEMORY CARD slot *E\ndoes not contain game data\ncurrently in play."
-	.align 4
+	.align 2
 .0x801df258: .asciiz "*s0There is no MEMORY CARD\nin MEMORY CARD slot *E."
-	.align 4
+	.align 2
 .0x801df28c: .asciiz "*s0Updating save data on MEMORY CARD in\nMEMORY CARD slot *S... Do not insert\nor remove MEMORY CARD or Controller."
-	.align 4
+	.align 2
 
 ##########
 .0x801df300:	.asciiz "*s0You cannot save your game if you\nbegin the game without creating\na save data here. Is this OK?"
-	.align 4
+	.align 2
 ##########
 
 .0x801df364: .asciiz "*s0Not enough free blocks. At least\n2 free blocks are required to save."
-	.align 4
+	.align 2
 .0x801df3ac: .asciiz "*s0Do you want to stop Data Conversion?"
-	.align 4
+	.align 2
 .0x801df3d4: .asciiz "*s0Formatting MEMORY CARD in\nMEMORY CARD slot *S... Do not insert\nor remove MEMORY CARD or Controller."
-	.align 4
+	.align 2
 .0x801df43c: .asciiz "*s0Return to title?"
-	.align 4
+	.align 2
 .0x801df450: .asciiz "*s0Failed to create new save data in\nMEMORY CARD slot *S. Data may be\ncorrupted. Try saving again."
-	.align 4
+	.align 2
 .0x801df4b4: .asciiz "*s0There is no MEMORY CARD in\nMEMORY CARD slot *S. If you start now,\nyou won\'t be able to save. Is this OK?"
-	.align 4
+	.align 2
 .0x801df520: .asciiz "*s0MEMORY CARD in MEMORY CARD slot *E\nis not formatted."
-	.align 4
+	.align 2
 .0x801df558: .asciiz "*s0Checking MEMORY CARD in\nMEMORY CARD slot *E. Do not insert\nor remove MEMORY CARD or Controller."
-	.align 4
+	.align 2
 .0x801df5bc: .asciiz "*s0MEMORY CARD in MEMORY CARD slot *E\ncontains no Digimon\nDigital Card Battle data."
-	.align 4
+	.align 2
 .0x801df610: .asciiz "*s0Checking MEMORY CARD in\nMEMORY CARD slot *S. Do not insert\nor remove MEMORY CARD or Controller."
-	.align 4
+	.align 2
 .0x801df674: .asciiz "Quit the game?"
-	.align 4
+	.align 2
 .0x801df684: .asciiz "MESSAGE"
-	.align 4
+	.align 2
 .0x801df68c: .asciiz "C:\\OBJECT\\saveload.TIS"
-	.align 4
+	.align 2
 .0x801df6a4: .asciiz "B:\\SAVE.ARC"
-	.align 4
+	.align 2
 .0x801df6b0: .asciiz "FILE 1"
-	.align 4
+	.align 2
 .0x801df6b8: .asciiz "FILE 2"
-	.align 4
+	.align 2
 .0x801df6c0: .asciiz "FILE 3"
-	.align 4
+	.align 2
 .0x801df6c8: .asciiz "INFO."
-	.align 4
+	.align 2
 .0x801df6d0: .asciiz "OPERATION"
-	.align 4
+	.align 2
 .0x801df6dc: .asciiz "File is corrupted!"
-	.align 4
+	.align 2
 .0x801df6f0: .asciiz "NO DATA"
-	.align 4
+	.align 2
 .0x801df6f8: .asciiz "Player %d : Slot %d"
-	.align 4
+	.align 2
 .0x801df70c: beq $t0, $t1, dylib_openseg_func_13.0x801e0f10
 .0x801df710: 	mtlo $zr
 .0x801df714: addiu $s0, $t1, 0x732a
 .0x801df718: .asciiz "3d*w3%%"
-	.align 4
+	.align 2
 .0x801df720: .asciiz "Name"
-	.align 4
+	.align 2
 .0x801df728: .asciiz "Playing Time"
-	.align 4
+	.align 2
 .0x801df738: xori $a0, $s3, 0x3325
 .0x801df73c: andi $t6, $s1, 0x3225
 .0x801df740: andi $a1, $s1, 0x3a64
 .0x801df744: .asciiz ".2d"
-	.align 4
+	.align 2
 .0x801df748: .asciiz "Game Completion"
-	.align 4
+	.align 2
 .0x801df758: sltiu $a0, $s3, 0x3325
 .0x801df75c: slti $a0, $s3, 0x3125
 .0x801df760: .asciiz "w3*c6%%"
-	.align 4
+	.align 2
 .0x801df768: .asciiz "Card Collection"
-	.align 4
+	.align 2
 .0x801df778: .asciiz "Current Position"
-	.align 4
+	.align 2
 .0x801df78c: .word 0x6e657241
 .0x801df790: addu $zr, $ra, $zr
 .0x801df794: .asciiz "Save the game up to this point?"
-	.align 4
+	.align 2
 .0x801df7b4: lb $fp, -0x1de0($zr)
 .0x801df7b8: lb $fp, -0x1f9c($zr)
 .0x801df7bc: lb $fp, -0x22b0($zr)
@@ -582,30 +582,30 @@ dylib_openseg:
 .0x801df820: lb $fp, -0x20d4($zr)
 .0x801df824: lb $fp, -0x21b4($zr)
 .0x801df828: .asciiz "Will write over File%d.\nIs this OK?"
-	.align 4
+	.align 2
 .0x801df84c: .asciiz "Format the Memory Card in Slot 1?"
-	.align 4
+	.align 2
 .0x801df870: .asciiz "Will write over File %d.\nCreate a New File?"
-	.align 4
+	.align 2
 .0x801df89c: addi $s4, $v1, 0x6f4e
 .0x801df8a0: .asciiz "enough Free Blocks.\nYou need 2 Blocks to save."
-	.align 4
+	.align 2
 .0x801df8d0: .asciiz "Creating a \"Digital Card Battle\" File.\nIs this OK?"
-	.align 4
+	.align 2
 
 ##########
 .0x801df904:	.asciiz "File %d is corrupted!"
-	.align 4
+	.align 2
 ##########
 
 .0x801df91c: .asciiz "Do you want to Load File%d?"
-	.align 4
+	.align 2
 .0x801df938: .asciiz "BASLUS-01328_C"
-	.align 4
+	.align 2
 .0x801df948: .asciiz "BASLUS-01328_B"
-	.align 4
+	.align 2
 .0x801df958: .asciiz "BASLUS-01328_A"
-	.align 4
+	.align 2
 .0x801df968: lb $fp, -0x13cc($zr)
 .0x801df96c: lb $fp, -0xb98($zr)
 .0x801df970: lb $fp, -0xd78($zr)
@@ -18029,12 +18029,12 @@ dylib_openseg_func_63:
 .0x801eff08: nop
 .0x801eff0c: nop
 .0x801eff10: .asciiz "6\u{b}"
-	.align 4
+	.align 2
 .0x801eff14: .asciiz "\u{1}"
-	.align 4
+	.align 2
 .0x801eff18: mult $zr, $zr
 .0x801eff1c: .asciiz "\u{17}\u{7}"
-	.align 4
+	.align 2
 .0x801eff20: srl $zr, 0x0
 .0x801eff24: mfhi $s0
 .0x801eff28: mflo $zr
@@ -18056,7 +18056,7 @@ dylib_openseg_func_63:
 
 ##########
 .0x801eff48:	.asciiz "\n&x"
-	.align 4
+	.align 2
 ##########
 
 .0x801eff4c: .word 0xc + 0x100 * 0x400
@@ -18078,12 +18078,12 @@ dylib_openseg_func_63:
 ##########
 
 .0x801eff74: .asciiz "\n&x"
-	.align 4
+	.align 2
 .0x801eff78: .word 0xc + 0x100 * 0x400
 .0x801eff7c: .word 0x112012d
 .0x801eff80: sll $at, $zr, 0x18
 .0x801eff84: .asciiz "\u{1}"
-	.align 4
+	.align 2
 .0x801eff88: lb $sp, -0x2038($zr)
 .0x801eff8c: lb $sp, -0x2044($zr)
 .0x801eff90: lb $sp, -0x204c($zr)
@@ -18113,7 +18113,7 @@ dylib_openseg_func_63:
 .0x801efff0: .word 0xffff0000
 .0x801efff4: .word 0xffff0000
 .0x801efff8: .asciiz "\n\u{16}H"
-	.align 4
+	.align 2
 .0x801efffc: .word 0xc + 0x100 * 0x400
 
 ##########
@@ -18122,7 +18122,7 @@ dylib_openseg_func_63:
 
 .0x801f0004: sll $at, $zr, 0x18
 .0x801f0008: .asciiz "\u{1}"
-	.align 4
+	.align 2
 .0x801f000c: nop
 .0x801f0010: lb $fp, 0x8d8($zr)
 .0x801f0014: lb $fp, 0xa08($zr)
@@ -18359,7 +18359,7 @@ dylib_openseg_func_63:
 
 ##########
 .0x801f0330:	.asciiz "v\u{3}J"
-	.align 4
+	.align 2
 ##########
 
 .0x801f0334: sllv $zr, $t1, $zr
@@ -18377,7 +18377,7 @@ dylib_openseg_func_63:
 .0x801f0354: mfhi $zr
 .0x801f0358: .word 0x09
 .0x801f035c: 	.asciiz "n\u{3}o"
-	.align 4
+	.align 2
 .0x801f0360: mfhi $zr
 .0x801f0364: mfhi $zr
 .0x801f0368: nop
@@ -18389,11 +18389,11 @@ dylib_openseg_func_63:
 .0x801f0380: sll $zr, $a0, 0x0
 .0x801f0384: srav $zr, $zr, $zr
 .0x801f0388: .asciiz "s\u{3}o"
-	.align 4
+	.align 2
 .0x801f038c: mfhi $zr
 .0x801f0390: add $zr, $a2, $t7
 .0x801f0394: .asciiz "\u{14}\u{1}"
-	.align 4
+	.align 2
 .0x801f0398: mfhi $zr
 .0x801f039c: sll $zr, $t6, 0x0
 .0x801f03a0: .word 0x9007f
@@ -18402,7 +18402,7 @@ dylib_openseg_func_63:
 .0x801f03ac: mfhi $zr
 .0x801f03b0: .word 0xf0
 .0x801f03b4: .asciiz "n\u{3}\u{7f}"
-	.align 4
+	.align 2
 .0x801f03b8: .word 0x09
 .0x801f03bc: 	mfhi $zr
 .0x801f03c0: and $zr, $s0
@@ -18414,7 +18414,7 @@ dylib_openseg_func_63:
 .0x801f03d8: sllv $zr, $t8, $zr
 .0x801f03dc: mult $s0, $at
 .0x801f03e0: .asciiz "u\u{3}V"
-	.align 4
+	.align 2
 .0x801f03e4: sllv $zr, $t5, $zr
 .0x801f03e8: sll $zr, $s4, 0xd
 .0x801f03ec: .word 0x4001c
@@ -18426,7 +18426,7 @@ dylib_openseg_func_63:
 .0x801f0404: sllv $zr, $t8, $zr
 .0x801f0408: mult $s0, $at
 .0x801f040c: .asciiz "o\u{3}n"
-	.align 4
+	.align 2
 .0x801f0410: .word 0xd + 0x100 * 0x400
 .0x801f0414: add $zr, $a2, $t6
 .0x801f0418: sllv $zr, $gp, $zr
@@ -18500,16 +18500,16 @@ dylib_openseg_func_63:
 .0x801f04f8: sllv $zr, $t1, $a1
 .0x801f04fc: .word 0x10300fb
 .0x801f0500: .asciiz "\u{1}"
-	.align 4
+	.align 2
 .0x801f0504: nop
 .0x801f0508: .asciiz "\u{1}"
-	.align 4
+	.align 2
 .0x801f050c: sll $s0, $zr, 0x2
 .0x801f0510: add $a0, $at, $zr
 .0x801f0514: sll $zr, $s4, 0x0
 .0x801f0518: add $zr, $at, $zr
 .0x801f051c: .asciiz "\u{5}"
-	.align 4
+	.align 2
 .0x801f0520: nop
 .0x801f0524: add $zr, $v0, $s4
 .0x801f0528: add $zr, $at, $zr
@@ -18522,7 +18522,7 @@ dylib_openseg_func_63:
 .0x801f0544: sll $zr, $s4, 0x0
 .0x801f0548: add $zr, $at, $zr
 .0x801f054c: .asciiz "\u{5}"
-	.align 4
+	.align 2
 .0x801f0550: nop
 .0x801f0554: add $zr, $v1, $s4
 .0x801f0558: add $zr, $at, $zr
@@ -18535,7 +18535,7 @@ dylib_openseg_func_63:
 .0x801f0574: sll $zr, $s4, 0x0
 .0x801f0578: add $zr, $at, $zr
 .0x801f057c: .asciiz "\n"
-	.align 4
+	.align 2
 .0x801f0580: nop
 .0x801f0584: add $zr, $a0, $s4
 .0x801f0588: add $zr, $at, $zr
@@ -18544,17 +18544,17 @@ dylib_openseg_func_63:
 .0x801f0594: sll $zr, $s4, 0x1
 .0x801f0598: add $zr, $at, $zr
 .0x801f059c: .asciiz "\n"
-	.align 4
+	.align 2
 .0x801f05a0: nop
 .0x801f05a4: sll $zr, $s4, 0x1
 .0x801f05a8: add $zr, $at, $zr
 .0x801f05ac: .asciiz "\n"
-	.align 4
+	.align 2
 .0x801f05b0: nop
 .0x801f05b4: sll $zr, $s4, 0x0
 .0x801f05b8: add $zr, $at, $zr
 .0x801f05bc: .asciiz "\n"
-	.align 4
+	.align 2
 .0x801f05c0: nop
 .0x801f05c4: add $zr, $a1, $s4
 .0x801f05c8: add $zr, $at, $zr
@@ -18571,7 +18571,7 @@ dylib_openseg_func_63:
 .0x801f05f4: add $zr, $a1, $s4
 .0x801f05f8: add $zr, $at, $zr
 .0x801f05fc: .asciiz "\u{5}"
-	.align 4
+	.align 2
 .0x801f0600: .word 0xfffd0000
 .0x801f0604: add $zr, $a1, $s4
 .0x801f0608: add $zr, $at, $zr
@@ -18592,7 +18592,7 @@ dylib_openseg_func_63:
 .0x801f0644: sll $zr, $s4, 0x0
 .0x801f0648: add $zr, $at, $zr
 .0x801f064c: .asciiz "\n"
-	.align 4
+	.align 2
 .0x801f0650: nop
 .0x801f0654: add $zr, $a2, $s4
 .0x801f0658: add $zr, $at, $zr
@@ -18603,7 +18603,7 @@ dylib_openseg_func_63:
 
 ##########
 .0x801f066c:	.asciiz "\n"
-	.align 4
+	.align 2
 ##########
 
 .0x801f0670: nop

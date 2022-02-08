@@ -1,7 +1,11 @@
 MEMORY {
-	RAM(rw):
+	/* TODO: Determine MEM dylib dynamically */
+	MEM_MAIN(rw):
 		ORIGIN = 0x80010000,
-		LENGTH = 0x001f0000
+		LENGTH = 0x001cdf38
+	MEM_DYLIB(rw):
+		ORIGIN = 0x801ddf38,
+		LENGTH = 0x000220c8
 }
 
 /* Include all symbol definitions */

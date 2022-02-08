@@ -4,6 +4,9 @@
 import os
 import yaml
 
+# Get all symbols memories
+symbol_mems = yaml.safe_load(open("symbol_mems.yaml"))
+
 
 def main(in_path="symbols.yaml", out_path="build/symbols.ld"):
 	# Get all of the symbol addresses
@@ -20,7 +23,8 @@ def main(in_path="symbols.yaml", out_path="build/symbols.ld"):
 			for symbol in symbols[section]:
 				symbols_file.write(f"\t\t*({section}.{symbol})\n")
 
-			symbols_file.write("\t} > RAM\n")
+			mem = symbol_mems[section]
+			symbols_file.write(f"\t}} > {mem}\n")
 
 		symbols_file.write("}\n")
 

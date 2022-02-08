@@ -1,0 +1,9 @@
+---
+".text": "MEM_MAIN"
+"dylib.endseg": "MEM_DYLIB"
+"dylib.evoseg": "MEM_DYLIB"
+"dylib.kawseg": "MEM_DYLIB"
+"dylib.openseg": "MEM_DYLIB"
+"dylib.saiseg": "MEM_DYLIB"
+"dylib.subseg": "MEM_DYLIB"
+"dylib.sugseg": "MEM_DYLIB"
