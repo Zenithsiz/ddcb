@@ -1,102 +1,176 @@
 dylib_endseg:
-.0x801ddf38: .asciiz "\n"
-.0x801ddf3c: .asciiz "*c6Jamming King"
-.0x801ddf4c: .asciiz "*c8Shadowy Doom"
-.0x801ddf5c: .asciiz "*c4Prophet of the Wild"
-.0x801ddf74: .asciiz "*c5Blue Guardian"
-.0x801ddf88: .asciiz "*c2Scarlet Magician"
-.0x801ddf9c: .asciiz "*c6Pyramid Mirage"
-.0x801ddfb0: .asciiz "*c8Black Lightning"
-.0x801ddfc4: .asciiz "*c4Emerald Meteor"
-.0x801ddfd8: .asciiz "*c5Blue Ice Lord"
-.0x801ddfec: .asciiz "*c2Red Knight"
-.0x801ddffc: .asciiz "*c6Golden Invincible"
-.0x801de014: .asciiz "*c8Black Assasin"
-.0x801de028: .asciiz "*c4Wild Hunter"
-.0x801de038: .asciiz "*c5Legendary Tsunami"
-.0x801de050: .asciiz "*c2Bomber King"
-.0x801de060: .asciiz "*c6Mysterious Alien"
-.0x801de074: .asciiz "*c8Dark Orion"
-.0x801de084: .asciiz "*c4Clover Prince"
-.0x801de098: .asciiz "*c5King of the Sea"
+.0x801ddf38: .align 4
+	.asciiz "\n"
+.0x801ddf3c: .align 4
+	.asciiz "*c6Jamming King"
+.0x801ddf4c: .align 4
+	.asciiz "*c8Shadowy Doom"
+.0x801ddf5c: .align 4
+	.asciiz "*c4Prophet of the Wild"
+.0x801ddf74: .align 4
+	.asciiz "*c5Blue Guardian"
+.0x801ddf88: .align 4
+	.asciiz "*c2Scarlet Magician"
+.0x801ddf9c: .align 4
+	.asciiz "*c6Pyramid Mirage"
+.0x801ddfb0: .align 4
+	.asciiz "*c8Black Lightning"
+.0x801ddfc4: .align 4
+	.asciiz "*c4Emerald Meteor"
+.0x801ddfd8: .align 4
+	.asciiz "*c5Blue Ice Lord"
+.0x801ddfec: .align 4
+	.asciiz "*c2Red Knight"
+.0x801ddffc: .align 4
+	.asciiz "*c6Golden Invincible"
+.0x801de014: .align 4
+	.asciiz "*c8Black Assasin"
+.0x801de028: .align 4
+	.asciiz "*c4Wild Hunter"
+.0x801de038: .align 4
+	.asciiz "*c5Legendary Tsunami"
+.0x801de050: .align 4
+	.asciiz "*c2Bomber King"
+.0x801de060: .align 4
+	.asciiz "*c6Mysterious Alien"
+.0x801de074: .align 4
+	.asciiz "*c8Dark Orion"
+.0x801de084: .align 4
+	.asciiz "*c4Clover Prince"
+.0x801de098: .align 4
+	.asciiz "*c5King of the Sea"
 .0x801de0ac: andi $s2, $t9, 0x632a
-.0x801de0b0: .asciiz "-headed Dragon"
-.0x801de0c0: .asciiz "*c3Dark Clown"
-.0x801de0d0: .asciiz "*c3Survivor"
-.0x801de0dc: .asciiz "*c3Cheerful Pirate"
-.0x801de0f0: .asciiz "*c3Paradise Machine"
-.0x801de104: .asciiz "*c3Wild Black Lion"
-.0x801de118: .asciiz "*c3Mystic Magician"
-.0x801de12c: .asciiz "*c3Freed Fire Demon"
-.0x801de140: .asciiz "*c3Time Traveler"
-.0x801de154: .asciiz "*c3Lonely Red Wolf"
-.0x801de168: .asciiz "*c3Fire Ocean Master"
-.0x801de180: .asciiz "*c3Sorcerer of Swords"
-.0x801de198: .asciiz "*c3Tricolor Master"
-.0x801de1ac: .asciiz "*c3Illusive Sky Master"
-.0x801de1c4: .asciiz "*c3Guardian of 4 Stars"
-.0x801de1dc: .asciiz "*c3King of 5 Worlds"
-.0x801de1f0: .asciiz "*c3Emperor Cassiopeia"
+.0x801de0b0: .align 4
+	.asciiz "-headed Dragon"
+.0x801de0c0: .align 4
+	.asciiz "*c3Dark Clown"
+.0x801de0d0: .align 4
+	.asciiz "*c3Survivor"
+.0x801de0dc: .align 4
+	.asciiz "*c3Cheerful Pirate"
+.0x801de0f0: .align 4
+	.asciiz "*c3Paradise Machine"
+.0x801de104: .align 4
+	.asciiz "*c3Wild Black Lion"
+.0x801de118: .align 4
+	.asciiz "*c3Mystic Magician"
+.0x801de12c: .align 4
+	.asciiz "*c3Freed Fire Demon"
+.0x801de140: .align 4
+	.asciiz "*c3Time Traveler"
+.0x801de154: .align 4
+	.asciiz "*c3Lonely Red Wolf"
+.0x801de168: .align 4
+	.asciiz "*c3Fire Ocean Master"
+.0x801de180: .align 4
+	.asciiz "*c3Sorcerer of Swords"
+.0x801de198: .align 4
+	.asciiz "*c3Tricolor Master"
+.0x801de1ac: .align 4
+	.asciiz "*c3Illusive Sky Master"
+.0x801de1c4: .align 4
+	.asciiz "*c3Guardian of 4 Stars"
+.0x801de1dc: .align 4
+	.asciiz "*c3King of 5 Worlds"
+.0x801de1f0: .align 4
+	.asciiz "*c3Emperor Cassiopeia"
 .0x801de208: slt $t4, $at, $s4
 .0x801de20c: slt $t4, $at, $s3
 .0x801de210: slt $t4, $at, $s2
 .0x801de214: slt $t4, $at, $s1
 .0x801de218: slt $t4, $at, $s0
-.0x801de21c: .asciiz "5TH"
-.0x801de220: .asciiz "4TH"
-.0x801de224: .asciiz "3RD"
-.0x801de228: .asciiz "2ND"
-.0x801de22c: .asciiz "1ST"
-.0x801de230: .asciiz "Super Bonus"
-.0x801de23c: .asciiz "Lucky Name"
-.0x801de248: .asciiz "Partner Normal Digivolve"
-.0x801de264: .asciiz "3 Partners Plus"
-.0x801de274: .asciiz "3 Partners"
-.0x801de280: .asciiz "HP Fever"
-.0x801de28c: .asciiz "Damage Fever"
-.0x801de29c: .asciiz "Rainbow"
-.0x801de2a4: .asciiz "Total Loss"
-.0x801de2b0: .asciiz "Loss by Gamble"
+.0x801de21c: .align 4
+	.asciiz "5TH"
+.0x801de220: .align 4
+	.asciiz "4TH"
+.0x801de224: .align 4
+	.asciiz "3RD"
+.0x801de228: .align 4
+	.asciiz "2ND"
+.0x801de22c: .align 4
+	.asciiz "1ST"
+.0x801de230: .align 4
+	.asciiz "Super Bonus"
+.0x801de23c: .align 4
+	.asciiz "Lucky Name"
+.0x801de248: .align 4
+	.asciiz "Partner Normal Digivolve"
+.0x801de264: .align 4
+	.asciiz "3 Partners Plus"
+.0x801de274: .align 4
+	.asciiz "3 Partners"
+.0x801de280: .align 4
+	.asciiz "HP Fever"
+.0x801de28c: .align 4
+	.asciiz "Damage Fever"
+.0x801de29c: .align 4
+	.asciiz "Rainbow"
+.0x801de2a4: .align 4
+	.asciiz "Total Loss"
+.0x801de2b0: .align 4
+	.asciiz "Loss by Gamble"
 
 ##########
 dylib_endseg_string_0:
-.0x801de2c0:	.asciiz "Choked Loss"
+.0x801de2c0:	.align 4
+	.asciiz "Choked Loss"
 ##########
 
-.0x801de2cc: .asciiz "12 S-Jewel Cards Win"
-.0x801de2e4: .asciiz "Just Enough Attack Win"
-.0x801de2fc: .asciiz "Lucky Seven Win"
-.0x801de30c: .asciiz "8 DP Cards Win"
-.0x801de31c: .asciiz "Option Maniac Win"
-.0x801de330: .asciiz "Ultimate Level Win"
+.0x801de2cc: .align 4
+	.asciiz "12 S-Jewel Cards Win"
+.0x801de2e4: .align 4
+	.asciiz "Just Enough Attack Win"
+.0x801de2fc: .align 4
+	.asciiz "Lucky Seven Win"
+.0x801de30c: .align 4
+	.asciiz "8 DP Cards Win"
+.0x801de31c: .align 4
+	.asciiz "Option Maniac Win"
+.0x801de330: .align 4
+	.asciiz "Ultimate Level Win"
 .0x801de344: addi $t4, $v1, 0x6c41
-.0x801de348: .asciiz "Gone Win"
-.0x801de354: .asciiz "Desperate Win"
-.0x801de364: .asciiz "Come-Back Win"
-.0x801de374: .asciiz "No Loss Win"
-.0x801de380: .asciiz "Partner Win"
-.0x801de38c: .asciiz "0 Online Card Left win"
-.0x801de3a4: .asciiz "4-of-a-Kind Win"
-.0x801de3b4: .asciiz "No Discard Win"
-.0x801de3c4: .asciiz "No Digivolve Win"
+.0x801de348: .align 4
+	.asciiz "Gone Win"
+.0x801de354: .align 4
+	.asciiz "Desperate Win"
+.0x801de364: .align 4
+	.asciiz "Come-Back Win"
+.0x801de374: .align 4
+	.asciiz "No Loss Win"
+.0x801de380: .align 4
+	.asciiz "Partner Win"
+.0x801de38c: .align 4
+	.asciiz "0 Online Card Left win"
+.0x801de3a4: .align 4
+	.asciiz "4-of-a-Kind Win"
+.0x801de3b4: .align 4
+	.asciiz "No Discard Win"
+.0x801de3c4: .align 4
+	.asciiz "No Digivolve Win"
 
 ##########
 dylib_endseg_string_1:
-.0x801de3d8:	.asciiz "No Support Card Win"
+.0x801de3d8:	.align 4
+	.asciiz "No Support Card Win"
 ##########
 
-.0x801de3ec: .asciiz "Last Chance Gamble Win"
+.0x801de3ec: .align 4
+	.asciiz "Last Chance Gamble Win"
 .0x801de404: addi $t4, $v1, 0x6c41
-.0x801de408: .asciiz "or Nothing Gamble Win"
+.0x801de408: .align 4
+	.asciiz "or Nothing Gamble Win"
 .0x801de420: addi $t4, $v1, 0x6c41
 .0x801de424: addi $s2, $at, 0x622a
-.0x801de428: .asciiz "Attack Win"
+.0x801de428: .align 4
+	.asciiz "Attack Win"
 .0x801de434: addi $t4, $v1, 0x6c41
 .0x801de438: addi $s1, $at, 0x622a
-.0x801de43c: .asciiz "Attack Win"
+.0x801de43c: .align 4
+	.asciiz "Attack Win"
 .0x801de448: addi $t4, $v1, 0x6c41
 .0x801de44c: addi $s0, $at, 0x622a
-.0x801de450: .asciiz "Attack Win"
+.0x801de450: .align 4
+	.asciiz "Attack Win"
 .0x801de45c: lb $sp, -0x11c8($zr)
 .0x801de460: lb $sp, -0x1178($zr)
 .0x801de464: lb $sp, -0x11c0($zr)
@@ -121,66 +195,105 @@ dylib_endseg_string_1:
 .0x801de4b0: lb $sp, -0x1180($zr)
 .0x801de4b4: slti $s0, $s1, 0x732a
 .0x801de4b8: addi $k0, $at, 0x3462
-.0x801de4bc: .asciiz "Scroll L1, R1: Fast Scroll"
-.0x801de4d8: .asciiz "*s0L2: Previous R2: Next *b6: Quit"
-.0x801de4fc: .asciiz "B:\\DECK2.DEK"
-.0x801de50c: .asciiz "B:\\M_CARD.ARC"
-.0x801de51c: .asciiz "B:\\BCARD.ARC"
-.0x801de52c: .asciiz "Cards you own."
+.0x801de4bc: .align 4
+	.asciiz "Scroll L1, R1: Fast Scroll"
+.0x801de4d8: .align 4
+	.asciiz "*s0L2: Previous R2: Next *b6: Quit"
+.0x801de4fc: .align 4
+	.asciiz "B:\\DECK2.DEK"
+.0x801de50c: .align 4
+	.asciiz "B:\\M_CARD.ARC"
+.0x801de51c: .align 4
+	.asciiz "B:\\BCARD.ARC"
+.0x801de52c: .align 4
+	.asciiz "Cards you own."
 .0x801de53c: addiu $s0, $t1, 0x732a
-.0x801de540: .asciiz "3d*s1 *c6Win *c7*s0%3d*s1 *c6Loss"
+.0x801de540: .align 4
+	.asciiz "3d*s1 *c6Win *c7*s0%3d*s1 *c6Loss"
 .0x801de564: addi $t8, $v1, 0x614d
-.0x801de568: .asciiz "*b%d Attack Power *s0%5d"
+.0x801de568: .align 4
+	.asciiz "*b%d Attack Power *s0%5d"
 .0x801de584: addiu $s0, $t1, 0x732a
 .0x801de588: andi $s3, $t3, 0x2a64
 .0x801de58c: ori $v1, $s3, 0x2a20
-.0x801de590: .asciiz "Cards"
-.0x801de598: .asciiz "Received by Trading."
+.0x801de590: .align 4
+	.asciiz "Cards"
+.0x801de598: .align 4
+	.asciiz "Received by Trading."
 .0x801de5b0: lui $ra, 0x3f3f
 .0x801de5b4: lui $ra, 0x3f3f
 .0x801de5b8: lui $ra, 0x3f3f
-.0x801de5bc: .asciiz "?"
+.0x801de5bc: .align 4
+	.asciiz "?"
 .0x801de5c0: addiu $t6, $t1, 0x6f4e
 .0x801de5c4: and $zr, $zr
-.0x801de5c8: .asciiz "Wins & Losses per Event Deck"
-.0x801de5e8: .asciiz "%s Deck"
-.0x801de5f0: .asciiz "Wins & Losses per Com"
-.0x801de608: .asciiz "Number of \"Bonuses\""
+.0x801de5c8: .align 4
+	.asciiz "Wins & Losses per Event Deck"
+.0x801de5e8: .align 4
+	.asciiz "%s Deck"
+.0x801de5f0: .align 4
+	.asciiz "Wins & Losses per Com"
+.0x801de608: .align 4
+	.asciiz "Number of \"Bonuses\""
 .0x801de61c: addiu $s0, $t1, 0x732a
-.0x801de620: .asciiz "3d*s1 *c6Times"
-.0x801de630: .asciiz "Trading Info."
-.0x801de640: .asciiz "Cards given away."
+.0x801de620: .align 4
+	.asciiz "3d*s1 *c6Times"
+.0x801de630: .align 4
+	.asciiz "Trading Info."
+.0x801de640: .align 4
+	.asciiz "Cards given away."
 .0x801de654: addiu $s0, $t1, 0x732a
-.0x801de658: .asciiz "4d*s1 *c6Cards"
-.0x801de668: .asciiz "Received Cards"
-.0x801de678: .asciiz "Fusion Info."
-.0x801de688: .asciiz "Used Cards"
-.0x801de694: .asciiz "Fused Cards"
-.0x801de6a0: .asciiz "Fusion Mutations"
+.0x801de658: .align 4
+	.asciiz "4d*s1 *c6Cards"
+.0x801de668: .align 4
+	.asciiz "Received Cards"
+.0x801de678: .align 4
+	.asciiz "Fusion Info."
+.0x801de688: .align 4
+	.asciiz "Used Cards"
+.0x801de694: .align 4
+	.asciiz "Fused Cards"
+.0x801de6a0: .align 4
+	.asciiz "Fusion Mutations"
 .0x801de6b4: addiu $s0, $t1, 0x732a
-.0x801de6b8: .asciiz "4d*s1 *c6Times"
-.0x801de6c8: .asciiz "Player\'s Attack Rate"
+.0x801de6b8: .align 4
+	.asciiz "4d*s1 *c6Times"
+.0x801de6c8: .align 4
+	.asciiz "Player\'s Attack Rate"
 .0x801de6e0: slti $s0, $s1, 0x732a
 .0x801de6e4: addiu $a0, $t3, 0x2562
 .0x801de6e8: addiu $t6, $t1, 0x6433
-.0x801de6ec: .asciiz "1d*w4*c6%%"
-.0x801de6f8: .asciiz "Speciality Data of Each Card"
-.0x801de718: .asciiz "Rank *s0%s*s1 *c7%s Card"
+.0x801de6ec: .align 4
+	.asciiz "1d*w4*c6%%"
+.0x801de6f8: .align 4
+	.asciiz "Speciality Data of Each Card"
+.0x801de718: .align 4
+	.asciiz "Rank *s0%s*s1 *c7%s Card"
 .0x801de734: addiu $s0, $t1, 0x732a
-.0x801de738: .asciiz "4d*s1 *c6Win *c7*s0%4d*s1 *c6Loss *c7*s0%4d*s1 *c6Cards"
+.0x801de738: .align 4
+	.asciiz "4d*s1 *c6Win *c7*s0%4d*s1 *c6Loss *c7*s0%4d*s1 *c6Cards"
 .0x801de770: addi $t4, $v1, 0x6c41
-.0x801de774: .asciiz "Cards"
+.0x801de774: .align 4
+	.asciiz "Cards"
 .0x801de77c: addi $t5, $v0, 0x4f43
-.0x801de780: .asciiz "Battle Results"
-.0x801de790: .asciiz "2P Battle Results"
-.0x801de7a4: .asciiz "Number of Saves"
-.0x801de7b4: .asciiz "Battle Title"
-.0x801de7c4: .asciiz "Collector Title"
-.0x801de7d4: .asciiz "2P Battle Title"
+.0x801de780: .align 4
+	.asciiz "Battle Results"
+.0x801de790: .align 4
+	.asciiz "2P Battle Results"
+.0x801de7a4: .align 4
+	.asciiz "Number of Saves"
+.0x801de7b4: .align 4
+	.asciiz "Battle Title"
+.0x801de7c4: .align 4
+	.asciiz "Collector Title"
+.0x801de7d4: .align 4
+	.asciiz "2P Battle Title"
 .0x801de7e4: addiu $s5, $k1, 0x6f59
 .0x801de7e8: addi $zr, $s1, 0x6572
-.0x801de7ec: .asciiz "%s*c7\"!"
-.0x801de7f4: .asciiz "Push *b2 Button to Quit"
+.0x801de7ec: .align 4
+	.asciiz "%s*c7\"!"
+.0x801de7f4: .align 4
+	.asciiz "Push *b2 Button to Quit"
 
 ##########
 dylib_endseg_func_0:

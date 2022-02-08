@@ -1,5 +1,6 @@
 dylib_kawseg:
-.0x801ddf38: .asciiz "\u{5}"
+.0x801ddf38: .align 4
+	.asciiz "\u{5}"
 .0x801ddf3c: lb $fp, 0x1ab4($zr)
 .0x801ddf40: lb $fp, 0x1b70($zr)
 .0x801ddf44: lb $fp, 0x1ae0($zr)
@@ -152,8 +153,10 @@ dylib_kawseg:
 .0x801de190: lb $fp, -0x5d7c($zr)
 .0x801de194: lb $fp, -0x5d3c($zr)
 .0x801de198: lb $fp, -0x5d08($zr)
-.0x801de19c: .asciiz "B:\\BETA.MSD"
-.0x801de1a8: .asciiz "TUTORIAL"
+.0x801de19c: .align 4
+	.asciiz "B:\\BETA.MSD"
+.0x801de1a8: .align 4
+	.asciiz "TUTORIAL"
 .0x801de1b4: lb $fp, -0x527c($zr)
 .0x801de1b8: lb $fp, -0x4d00($zr)
 .0x801de1bc: lb $fp, -0x4d28($zr)
@@ -177,21 +180,30 @@ dylib_kawseg:
 .0x801de204: lb $fp, -0x4890($zr)
 .0x801de208: lb $fp, -0x4778($zr)
 .0x801de20c: lb $fp, -0x4904($zr)
-.0x801de210: .asciiz "%s Deck"
+.0x801de210: .align 4
+	.asciiz "%s Deck"
 .0x801de218: addiu $s0, $t1, 0x732a
 .0x801de21c: addi $zr, $at, 0x6434
 .0x801de220: addi $zr, $at, 0x2020
 .0x801de224: andi $a1, $t9, 0x2020
 .0x801de228: addi $zr, $at, 0x2064
 .0x801de22c: addiu $zr, $t1, 0x2020
-.0x801de230: .asciiz "3d"
-.0x801de234: .asciiz "BATTLES"
-.0x801de23c: .asciiz "WINS"
-.0x801de244: .asciiz "LOSSES"
-.0x801de24c: .asciiz "B:\\MATCH\\%3.3d.ARC"
-.0x801de260: .asciiz " Deck"
-.0x801de268: .asciiz "Unused Deck"
-.0x801de274: .asciiz "Choose from List"
+.0x801de230: .align 4
+	.asciiz "3d"
+.0x801de234: .align 4
+	.asciiz "BATTLES"
+.0x801de23c: .align 4
+	.asciiz "WINS"
+.0x801de244: .align 4
+	.asciiz "LOSSES"
+.0x801de24c: .align 4
+	.asciiz "B:\\MATCH\\%3.3d.ARC"
+.0x801de260: .align 4
+	.asciiz " Deck"
+.0x801de268: .align 4
+	.asciiz "Unused Deck"
+.0x801de274: .align 4
+	.asciiz "Choose from List"
 .0x801de288: lb $fp, -0x1cb0($zr)
 .0x801de28c: lb $fp, -0x1c9c($zr)
 .0x801de290: lb $fp, -0x1c88($zr)
@@ -208,160 +220,258 @@ dylib_kawseg:
 .0x801de2bc: lb $fp, -0x1bd8($zr)
 .0x801de2c0: addiu $s0, $t1, 0x732a
 .0x801de2c4: slti $zr, $s1, 0x6433
-.0x801de2c8: .asciiz "c6Wins *c7%3d *c6Losses"
-.0x801de2e0: .asciiz "PLAYER DECK LIST"
-.0x801de2f4: .asciiz "PLAYER DECK INFO."
-.0x801de308: .asciiz "1P DECK LIST"
-.0x801de318: .asciiz "1P DECK INFO."
-.0x801de328: .asciiz "2P DECK LIST"
-.0x801de338: .asciiz "2P DECK INFO."
-.0x801de348: .asciiz "This Deck can\'t be used in this Arena."
-.0x801de370: .asciiz "Base Deck can\'t be used in this Arena."
-.0x801de398: .asciiz "It looks like I go first!"
+.0x801de2c8: .align 4
+	.asciiz "c6Wins *c7%3d *c6Losses"
+.0x801de2e0: .align 4
+	.asciiz "PLAYER DECK LIST"
+.0x801de2f4: .align 4
+	.asciiz "PLAYER DECK INFO."
+.0x801de308: .align 4
+	.asciiz "1P DECK LIST"
+.0x801de318: .align 4
+	.asciiz "1P DECK INFO."
+.0x801de328: .align 4
+	.asciiz "2P DECK LIST"
+.0x801de338: .align 4
+	.asciiz "2P DECK INFO."
+.0x801de348: .align 4
+	.asciiz "This Deck can\'t be used in this Arena."
+.0x801de370: .align 4
+	.asciiz "Base Deck can\'t be used in this Arena."
+.0x801de398: .align 4
+	.asciiz "It looks like I go first!"
 .0x801de3b4: addiu $s4, $k1, 0x654c
-.0x801de3b8: .asciiz "s decide who gets 1st Turn.\nChoose a Card with the directional\nbuttons and press the *b2 button."
+.0x801de3b8: .align 4
+	.asciiz "s decide who gets 1st Turn.\nChoose a Card with the directional\nbuttons and press the *b2 button."
 .0x801de41c: .word 0x575c3a42
 .0x801de420: addiu $gp, $t2, 0x4e49
 .0x801de424: .word 0x64332e33
 .0x801de428: .word 0x4352412e
 .0x801de42c: .word 0x41240200
-.0x801de430: .asciiz "Rare Card even more likely to appear."
-.0x801de458: .asciiz "Rare Card might appear after battle."
-.0x801de480: .asciiz "Boost Battle Experience by 30%."
-.0x801de4a0: .asciiz "Boost Battle Experience by 20%."
-.0x801de4c0: .asciiz "Boost Battle Experience by 10%."
+.0x801de430: .align 4
+	.asciiz "Rare Card even more likely to appear."
+.0x801de458: .align 4
+	.asciiz "Rare Card might appear after battle."
+.0x801de480: .align 4
+	.asciiz "Boost Battle Experience by 30%."
+.0x801de4a0: .align 4
+	.asciiz "Boost Battle Experience by 20%."
+.0x801de4c0: .align 4
+	.asciiz "Boost Battle Experience by 10%."
 .0x801de4e0: slti $zr, $s1, 0x6649
 .0x801de4e4: addi $t4, $at, 0x6165
 .0x801de4e8: slti $zr, $t9, 0x5048
 .0x801de4ec: andi $s0, $at, 0x3220
-.0x801de4f0: .asciiz " & all Attack Powers +100."
+.0x801de4f0: .align 4
+	.asciiz " & all Attack Powers +100."
 .0x801de50c: slti $zr, $s1, 0x6649
 .0x801de510: addi $t4, $at, 0x3365
 .0x801de514: slti $zr, $t9, 0x5048
 .0x801de518: andi $s0, $at, 0x3220
-.0x801de51c: .asciiz " & all Attack Powers +100."
-.0x801de538: .asciiz "Draw Online Partner Card, then Shuffle."
-.0x801de560: .asciiz "Draw until there are 4 Cards."
-.0x801de580: .asciiz "Void Opponent\'s Support Effect."
-.0x801de5a0: .asciiz "Move Offline Top Card to Online Deck."
-.0x801de5c8: .asciiz "Drop 3 Cards in Opponent\'s Online Deck."
-.0x801de5f0: .asciiz "Drop 2 Cards in Opponent\'s Online Deck."
-.0x801de618: .asciiz "Drop Opponent\'s Top 4 DP Cards shown."
-.0x801de640: .asciiz "Drop Opponent\'s Top 3 DP Cards shown."
-.0x801de668: .asciiz "Drop Opponent\'s Top 2 DP Cards shown."
-.0x801de690: .asciiz "Drop 2 Cards in Opponent\'s Hand."
-.0x801de6b4: .asciiz "Drop 1 Card in Opponent\'s Hand."
-.0x801de6d4: .asciiz "If KO\'d in battle, revive w/ HP 1000."
-.0x801de6fc: .asciiz "If KO\'d in battle, revive w/ HP 600."
-.0x801de724: .asciiz "If KO\'d in battle, revive w/ HP 300."
-.0x801de74c: .asciiz "If HP < Opponent\'s HP, add HP +700."
-.0x801de770: .asciiz "If HP < Opponent\'s HP, add HP +500."
-.0x801de794: .asciiz "Halve Attack Power, recover HP +600."
-.0x801de7bc: .asciiz "Halve Attack Power, recover HP +400."
-.0x801de7e4: .asciiz "Recover HP +400."
-.0x801de7f8: .asciiz "Recover HP +300."
-.0x801de80c: .asciiz "Recover HP +200."
-.0x801de820: .asciiz "Opponent uses same Attack."
-.0x801de83c: .asciiz "Opponent uses *b2 Attack."
-.0x801de858: .asciiz "Opponent uses *b1 Attack."
-.0x801de874: .asciiz "Opponent uses *b0 Attack."
+.0x801de51c: .align 4
+	.asciiz " & all Attack Powers +100."
+.0x801de538: .align 4
+	.asciiz "Draw Online Partner Card, then Shuffle."
+.0x801de560: .align 4
+	.asciiz "Draw until there are 4 Cards."
+.0x801de580: .align 4
+	.asciiz "Void Opponent\'s Support Effect."
+.0x801de5a0: .align 4
+	.asciiz "Move Offline Top Card to Online Deck."
+.0x801de5c8: .align 4
+	.asciiz "Drop 3 Cards in Opponent\'s Online Deck."
+.0x801de5f0: .align 4
+	.asciiz "Drop 2 Cards in Opponent\'s Online Deck."
+.0x801de618: .align 4
+	.asciiz "Drop Opponent\'s Top 4 DP Cards shown."
+.0x801de640: .align 4
+	.asciiz "Drop Opponent\'s Top 3 DP Cards shown."
+.0x801de668: .align 4
+	.asciiz "Drop Opponent\'s Top 2 DP Cards shown."
+.0x801de690: .align 4
+	.asciiz "Drop 2 Cards in Opponent\'s Hand."
+.0x801de6b4: .align 4
+	.asciiz "Drop 1 Card in Opponent\'s Hand."
+.0x801de6d4: .align 4
+	.asciiz "If KO\'d in battle, revive w/ HP 1000."
+.0x801de6fc: .align 4
+	.asciiz "If KO\'d in battle, revive w/ HP 600."
+.0x801de724: .align 4
+	.asciiz "If KO\'d in battle, revive w/ HP 300."
+.0x801de74c: .align 4
+	.asciiz "If HP < Opponent\'s HP, add HP +700."
+.0x801de770: .align 4
+	.asciiz "If HP < Opponent\'s HP, add HP +500."
+.0x801de794: .align 4
+	.asciiz "Halve Attack Power, recover HP +600."
+.0x801de7bc: .align 4
+	.asciiz "Halve Attack Power, recover HP +400."
+.0x801de7e4: .align 4
+	.asciiz "Recover HP +400."
+.0x801de7f8: .align 4
+	.asciiz "Recover HP +300."
+.0x801de80c: .align 4
+	.asciiz "Recover HP +200."
+.0x801de820: .align 4
+	.asciiz "Opponent uses same Attack."
+.0x801de83c: .align 4
+	.asciiz "Opponent uses *b2 Attack."
+.0x801de858: .align 4
+	.asciiz "Opponent uses *b1 Attack."
+.0x801de874: .align 4
+	.asciiz "Opponent uses *b0 Attack."
 .0x801de890: slti $zr, $s1, 0x6649
 .0x801de894: addi $t4, $at, 0x3565
-.0x801de898: .asciiz "boost Attack Power +400."
+.0x801de898: .align 4
+	.asciiz "boost Attack Power +400."
 .0x801de8b4: slti $zr, $s1, 0x6649
 .0x801de8b8: addi $t4, $at, 0x3465
-.0x801de8bc: .asciiz "boost Attack Power +300."
+.0x801de8bc: .align 4
+	.asciiz "boost Attack Power +300."
 .0x801de8d8: slti $zr, $s1, 0x6649
 .0x801de8dc: addi $t4, $at, 0x3365
-.0x801de8e0: .asciiz "boost Attack Power +200."
-.0x801de8fc: .asciiz "Reduce both Players\' Atk Pwr to 0."
+.0x801de8e0: .align 4
+	.asciiz "boost Attack Power +200."
+.0x801de8fc: .align 4
+	.asciiz "Reduce both Players\' Atk Pwr to 0."
 .0x801de920: slti $zr, $s1, 0x6649
-.0x801de924: .asciiz "a4 Opponent, lower its AP to 0."
+.0x801de924: .align 4
+	.asciiz "a4 Opponent, lower its AP to 0."
 .0x801de944: slti $zr, $s1, 0x6649
-.0x801de948: .asciiz "a3 Opponent, lower its AP to 0."
+.0x801de948: .align 4
+	.asciiz "a3 Opponent, lower its AP to 0."
 .0x801de968: slti $zr, $s1, 0x6649
-.0x801de96c: .asciiz "a2 Opponent, lower its AP to 0."
+.0x801de96c: .align 4
+	.asciiz "a2 Opponent, lower its AP to 0."
 .0x801de98c: slti $zr, $s1, 0x6649
-.0x801de990: .asciiz "a1 Opponent, lower its AP to 0."
+.0x801de990: .align 4
+	.asciiz "a1 Opponent, lower its AP to 0."
 .0x801de9b0: slti $zr, $s1, 0x6649
-.0x801de9b4: .asciiz "a0 Opponent, lower its AP to 0."
-.0x801de9d4: .asciiz "Swap Specialty with Opponent\'s."
-.0x801de9f4: .asciiz "Switch Opponent\'s Specialty to own."
-.0x801dea18: .asciiz "Change own Specialty to *a4."
-.0x801dea38: .asciiz "Change own Specialty to *a3."
+.0x801de9b4: .align 4
+	.asciiz "a0 Opponent, lower its AP to 0."
+.0x801de9d4: .align 4
+	.asciiz "Swap Specialty with Opponent\'s."
+.0x801de9f4: .align 4
+	.asciiz "Switch Opponent\'s Specialty to own."
+.0x801dea18: .align 4
+	.asciiz "Change own Specialty to *a4."
+.0x801dea38: .align 4
+	.asciiz "Change own Specialty to *a3."
 
 ##########
 dylib_kawseg_string_0:
-.0x801dea58:	.asciiz "Change own Specialty to *a2."
+.0x801dea58:	.align 4
+	.asciiz "Change own Specialty to *a2."
 ##########
 
-.0x801dea78: .asciiz "Change own Specialty to *a1."
-.0x801dea98: .asciiz "Change own Specialty to *a0."
+.0x801dea78: .align 4
+	.asciiz "Change own Specialty to *a1."
+.0x801dea98: .align 4
+	.asciiz "Change own Specialty to *a0."
 .0x801deab8: slti $zr, $s1, 0x6649
-.0x801deabc: .asciiz "a4 Opponent, X3 own Attack Power."
+.0x801deabc: .align 4
+	.asciiz "a4 Opponent, X3 own Attack Power."
 .0x801deae0: slti $zr, $s1, 0x6649
-.0x801deae4: .asciiz "a4 Opponent, X2 own Attack Power."
+.0x801deae4: .align 4
+	.asciiz "a4 Opponent, X2 own Attack Power."
 .0x801deb08: slti $zr, $s1, 0x6649
-.0x801deb0c: .asciiz "a3 Opponent, X3 own Attack Power."
+.0x801deb0c: .align 4
+	.asciiz "a3 Opponent, X3 own Attack Power."
 .0x801deb30: slti $zr, $s1, 0x6649
-.0x801deb34: .asciiz "a3 Opponent, X2 own Attack Power."
+.0x801deb34: .align 4
+	.asciiz "a3 Opponent, X2 own Attack Power."
 .0x801deb58: slti $zr, $s1, 0x6649
-.0x801deb5c: .asciiz "a2 Opponent, X3 own Attack Power."
+.0x801deb5c: .align 4
+	.asciiz "a2 Opponent, X3 own Attack Power."
 .0x801deb80: slti $zr, $s1, 0x6649
-.0x801deb84: .asciiz "a2 Opponent, X2 own Attack Power."
+.0x801deb84: .align 4
+	.asciiz "a2 Opponent, X2 own Attack Power."
 .0x801deba8: slti $zr, $s1, 0x6649
-.0x801debac: .asciiz "a1 Opponent, X3 own Attack Power."
+.0x801debac: .align 4
+	.asciiz "a1 Opponent, X3 own Attack Power."
 .0x801debd0: slti $zr, $s1, 0x6649
-.0x801debd4: .asciiz "a1 Opponent, X2 own Attack Power."
+.0x801debd4: .align 4
+	.asciiz "a1 Opponent, X2 own Attack Power."
 .0x801debf8: slti $zr, $s1, 0x6649
-.0x801debfc: .asciiz "a0 Opponent, X3 own Attack Power."
+.0x801debfc: .align 4
+	.asciiz "a0 Opponent, X3 own Attack Power."
 .0x801dec20: slti $zr, $s1, 0x6649
-.0x801dec24: .asciiz "a0 Opponent, X2 own Attack Power."
+.0x801dec24: .align 4
+	.asciiz "a0 Opponent, X2 own Attack Power."
 .0x801dec48: addi $s2, $at, 0x622a
-.0x801dec4c: .asciiz "Counterattack (Attack 2nd)."
+.0x801dec4c: .align 4
+	.asciiz "Counterattack (Attack 2nd)."
 .0x801dec68: addi $s1, $at, 0x622a
-.0x801dec6c: .asciiz "Counterattack (Attack 2nd)."
+.0x801dec6c: .align 4
+	.asciiz "Counterattack (Attack 2nd)."
 .0x801dec88: addi $s0, $at, 0x622a
-.0x801dec8c: .asciiz "Counterattack (Attack 2nd)."
+.0x801dec8c: .align 4
+	.asciiz "Counterattack (Attack 2nd)."
 
 ##########
 dylib_kawseg_string_1:
-.0x801deca8:	.asciiz "Lower Opponent\'s *b2 Attack Power to 0."
+.0x801deca8:	.align 4
+	.asciiz "Lower Opponent\'s *b2 Attack Power to 0."
 ##########
 
-.0x801decd0: .asciiz "Lower Opponent\'s *b1 Attack Power to 0."
-.0x801decf8: .asciiz "Lower Opponent\'s *b0 Attack Power to 0."
-.0x801ded20: .asciiz "Attack becomes Eat-up HP."
+.0x801decd0: .align 4
+	.asciiz "Lower Opponent\'s *b1 Attack Power to 0."
+.0x801decf8: .align 4
+	.asciiz "Lower Opponent\'s *b0 Attack Power to 0."
+.0x801ded20: .align 4
+	.asciiz "Attack becomes Eat-up HP."
 .0x801ded3c: addi $s4, $v1, 0x6547
 .0x801ded40: addi $s4, $v1, 0x7331
-.0x801ded44: .asciiz "Attack."
-.0x801ded4c: .asciiz "Attack Power becomes same as HP."
+.0x801ded44: .align 4
+	.asciiz "Attack."
+.0x801ded4c: .align 4
+	.asciiz "Attack Power becomes same as HP."
 .0x801ded70: addi $s2, $at, 0x622a
-.0x801ded74: .asciiz "Attack Power is Tripled."
+.0x801ded74: .align 4
+	.asciiz "Attack Power is Tripled."
 .0x801ded90: addi $s2, $at, 0x622a
-.0x801ded94: .asciiz "Attack Power is Doubled."
-.0x801dedb0: .asciiz "Boost *b2 Attack Power +300."
-.0x801dedd0: .asciiz "Boost *b2 Attack Power +200."
-.0x801dedf0: .asciiz "Boost *b2 Attack Power +100."
+.0x801ded94: .align 4
+	.asciiz "Attack Power is Doubled."
+.0x801dedb0: .align 4
+	.asciiz "Boost *b2 Attack Power +300."
+.0x801dedd0: .align 4
+	.asciiz "Boost *b2 Attack Power +200."
+.0x801dedf0: .align 4
+	.asciiz "Boost *b2 Attack Power +100."
 .0x801dee10: addi $s1, $at, 0x622a
-.0x801dee14: .asciiz "Attack Power is Tripled."
+.0x801dee14: .align 4
+	.asciiz "Attack Power is Tripled."
 .0x801dee30: addi $s1, $at, 0x622a
-.0x801dee34: .asciiz "Attack Power is Doubled."
-.0x801dee50: .asciiz "Boost *b1 Attack Power +400."
-.0x801dee70: .asciiz "Boost *b1 Attack Power +300."
-.0x801dee90: .asciiz "Boost *b1 Attack Power +200."
+.0x801dee34: .align 4
+	.asciiz "Attack Power is Doubled."
+.0x801dee50: .align 4
+	.asciiz "Boost *b1 Attack Power +400."
+.0x801dee70: .align 4
+	.asciiz "Boost *b1 Attack Power +300."
+.0x801dee90: .align 4
+	.asciiz "Boost *b1 Attack Power +200."
 .0x801deeb0: addi $s0, $at, 0x622a
-.0x801deeb4: .asciiz "Attack Power is Tripled."
+.0x801deeb4: .align 4
+	.asciiz "Attack Power is Tripled."
 .0x801deed0: addi $s0, $at, 0x622a
-.0x801deed4: .asciiz "Attack Power is Doubled."
-.0x801deef0: .asciiz "Boost *b0 Attack Power +500."
-.0x801def10: .asciiz "Boost *b0 Attack Power +400."
-.0x801def30: .asciiz "Boost *b0 Attack Power +300."
-.0x801def50: .asciiz "Attack Power is Doubled."
-.0x801def6c: .asciiz "Boost Attack Power +300."
-.0x801def88: .asciiz "Boost Attack Power +200."
-.0x801defa4: .asciiz "Boost Attack Power +100."
-.0x801defc0: .asciiz "Boost Attack Power +50."
+.0x801deed4: .align 4
+	.asciiz "Attack Power is Doubled."
+.0x801deef0: .align 4
+	.asciiz "Boost *b0 Attack Power +500."
+.0x801def10: .align 4
+	.asciiz "Boost *b0 Attack Power +400."
+.0x801def30: .align 4
+	.asciiz "Boost *b0 Attack Power +300."
+.0x801def50: .align 4
+	.asciiz "Attack Power is Doubled."
+.0x801def6c: .align 4
+	.asciiz "Boost Attack Power +300."
+.0x801def88: .align 4
+	.asciiz "Boost Attack Power +200."
+.0x801defa4: .align 4
+	.asciiz "Boost Attack Power +100."
+.0x801defc0: .align 4
+	.asciiz "Boost Attack Power +50."
 .0x801defd8: addi $a0, $v1, 0x6441
 .0x801defdc: andi $s3, $at, 0x202b
 .0x801defe0: sltiu $s0, $s2, 0x4420
@@ -375,127 +485,188 @@ dylib_kawseg_string_1:
 .0x801df000: sltiu $s0, $s2, 0x4420
 .0x801df004: nop
 .0x801df008: sltiu $s4, $t3, 0x6145
-.0x801df00c: .asciiz "up HP, *b2 Attack Power -200."
-.0x801df02c: .asciiz "Jamming Support, *b2 Attack Power -100."
+.0x801df00c: .align 4
+	.asciiz "up HP, *b2 Attack Power -200."
+.0x801df02c: .align 4
+	.asciiz "Jamming Support, *b2 Attack Power -100."
 .0x801df054: addi $s4, $v1, 0x7331
-.0x801df058: .asciiz "Attack, *b2 Attack Power -200."
-.0x801df078: .asciiz "Opponent *a4 X3, *b2 Attack Power -200."
-.0x801df0a0: .asciiz "Opponent *a3 X3, *b2 Attack Power -200."
-.0x801df0c8: .asciiz "Opponent *a2 X3, *b2 Attack Power -200."
-.0x801df0f0: .asciiz "Opponent *a1 X3, *b2 Attack Power -200."
-.0x801df118: .asciiz "Opponent *a0 X3, *b2 Attack Power -200."
-.0x801df140: .asciiz "Counter *b2,*b2 Attack Power to 0."
-.0x801df164: .asciiz "Counter *b1,*b2 Attack Power to 0."
-.0x801df188: .asciiz "Counter *b0,*b2 Attack Power to 0."
+.0x801df058: .align 4
+	.asciiz "Attack, *b2 Attack Power -200."
+.0x801df078: .align 4
+	.asciiz "Opponent *a4 X3, *b2 Attack Power -200."
+.0x801df0a0: .align 4
+	.asciiz "Opponent *a3 X3, *b2 Attack Power -200."
+.0x801df0c8: .align 4
+	.asciiz "Opponent *a2 X3, *b2 Attack Power -200."
+.0x801df0f0: .align 4
+	.asciiz "Opponent *a1 X3, *b2 Attack Power -200."
+.0x801df118: .align 4
+	.asciiz "Opponent *a0 X3, *b2 Attack Power -200."
+.0x801df140: .align 4
+	.asciiz "Counter *b2,*b2 Attack Power to 0."
+.0x801df164: .align 4
+	.asciiz "Counter *b1,*b2 Attack Power to 0."
+.0x801df188: .align 4
+	.asciiz "Counter *b0,*b2 Attack Power to 0."
 .0x801df1ac: addi $s2, $at, 0x622a
 .0x801df1b0: andi $zr, $at, 0x6f74
-.0x801df1b4: .asciiz ", *b2 Attack Power -100."
+.0x801df1b4: .align 4
+	.asciiz ", *b2 Attack Power -100."
 .0x801df1d0: addi $s1, $at, 0x622a
 .0x801df1d4: andi $zr, $at, 0x6f74
 
 ##########
 dylib_kawseg_string_2:
-.0x801df1d8:	.asciiz ", *b2 Attack Power -100."
+.0x801df1d8:	.align 4
+	.asciiz ", *b2 Attack Power -100."
 ##########
 
 .0x801df1f4: addi $s0, $at, 0x622a
 .0x801df1f8: andi $zr, $at, 0x6f74
-.0x801df1fc: .asciiz ", *b2 Attack Power -100."
+.0x801df1fc: .align 4
+	.asciiz ", *b2 Attack Power -100."
 .0x801df218: addi $s2, $at, 0x622a
-.0x801df21c: .asciiz "Attack Power +200."
+.0x801df21c: .align 4
+	.asciiz "Attack Power +200."
 .0x801df230: addi $s2, $at, 0x622a
-.0x801df234: .asciiz "Attack Power +150."
+.0x801df234: .align 4
+	.asciiz "Attack Power +150."
 .0x801df248: addi $s2, $at, 0x622a
-.0x801df24c: .asciiz "Attack Power +100."
+.0x801df24c: .align 4
+	.asciiz "Attack Power +100."
 .0x801df260: addi $s2, $at, 0x622a
-.0x801df264: .asciiz "Attack Power +50."
+.0x801df264: .align 4
+	.asciiz "Attack Power +50."
 .0x801df278: addi $s1, $at, 0x622a
-.0x801df27c: .asciiz "Attack Power +250."
+.0x801df27c: .align 4
+	.asciiz "Attack Power +250."
 .0x801df290: addi $s1, $at, 0x622a
-.0x801df294: .asciiz "Attack Power +200."
+.0x801df294: .align 4
+	.asciiz "Attack Power +200."
 .0x801df2a8: addi $s1, $at, 0x622a
-.0x801df2ac: .asciiz "Attack Power +150."
+.0x801df2ac: .align 4
+	.asciiz "Attack Power +150."
 .0x801df2c0: addi $s1, $at, 0x622a
-.0x801df2c4: .asciiz "Attack Power +100."
+.0x801df2c4: .align 4
+	.asciiz "Attack Power +100."
 .0x801df2d8: addi $s1, $at, 0x622a
 
 ##########
 dylib_kawseg_string_3:
-.0x801df2dc:	.asciiz "Attack Power +50."
+.0x801df2dc:	.align 4
+	.asciiz "Attack Power +50."
 ##########
 
 .0x801df2f0: addi $s0, $at, 0x622a
-.0x801df2f4: .asciiz "Attack Power +300."
+.0x801df2f4: .align 4
+	.asciiz "Attack Power +300."
 .0x801df308: addi $s0, $at, 0x622a
-.0x801df30c: .asciiz "Attack Power +250."
+.0x801df30c: .align 4
+	.asciiz "Attack Power +250."
 .0x801df320: addi $s0, $at, 0x622a
-.0x801df324: .asciiz "Attack Power +200."
+.0x801df324: .align 4
+	.asciiz "Attack Power +200."
 .0x801df338: addi $s0, $at, 0x622a
-.0x801df33c: .asciiz "Attack Power +150."
+.0x801df33c: .align 4
+	.asciiz "Attack Power +150."
 .0x801df350: addi $s0, $at, 0x622a
-.0x801df354: .asciiz "Attack Power +100."
+.0x801df354: .align 4
+	.asciiz "Attack Power +100."
 .0x801df368: addi $t4, $v1, 0x6c41
-.0x801df36c: .asciiz "Attack Powers +200."
+.0x801df36c: .align 4
+	.asciiz "Attack Powers +200."
 .0x801df380: addi $t4, $v1, 0x6c41
-.0x801df384: .asciiz "Attack Powers +100."
+.0x801df384: .align 4
+	.asciiz "Attack Powers +100."
 .0x801df398: addi $t4, $v1, 0x6c41
-.0x801df39c: .asciiz "Attack Powers +50."
+.0x801df39c: .align 4
+	.asciiz "Attack Powers +50."
 .0x801df3b0: ori $t3, $t1, 0x5048
-.0x801df3b4: .asciiz "00."
+.0x801df3b4: .align 4
+	.asciiz "00."
 .0x801df3b8: ori $t3, $at, 0x5048
-.0x801df3bc: .asciiz "00."
+.0x801df3bc: .align 4
+	.asciiz "00."
 .0x801df3c0: andi $t3, $t9, 0x5048
-.0x801df3c4: .asciiz "00."
+.0x801df3c4: .align 4
+	.asciiz "00."
 .0x801df3c8: andi $t3, $s1, 0x5048
-.0x801df3cc: .asciiz "00."
+.0x801df3cc: .align 4
+	.asciiz "00."
 .0x801df3d0: andi $t3, $t1, 0x5048
-.0x801df3d4: .asciiz "50."
+.0x801df3d4: .align 4
+	.asciiz "50."
 .0x801df3d8: andi $t3, $t1, 0x5048
-.0x801df3dc: .asciiz "00."
+.0x801df3dc: .align 4
+	.asciiz "00."
 .0x801df3e0: ori $t3, $t1, 0x5048
-.0x801df3e4: .asciiz "0."
-.0x801df3e8: .asciiz "Earned Experience Points"
-.0x801df404: .asciiz "RANK   \u{c}\u{7}%2d"
+.0x801df3e4: .align 4
+	.asciiz "0."
+.0x801df3e8: .align 4
+	.asciiz "Earned Experience Points"
+.0x801df404: .align 4
+	.asciiz "RANK   \u{c}\u{7}%2d"
 .0x801df414: addi $s0, $v0, 0x5845
 .0x801df418: addiu $a3, $t0, 0xc20
-.0x801df41c: .asciiz "4d"
-.0x801df420: .asciiz "NEXT  \u{c}\u{7}%3d"
+.0x801df41c: .align 4
+	.asciiz "4d"
+.0x801df420: .align 4
+	.asciiz "NEXT  \u{c}\u{7}%3d"
 .0x801df42c: addiu $s0, $t1, 0x732a
-.0x801df430: .asciiz "4d"
+.0x801df430: .align 4
+	.asciiz "4d"
 .0x801df434: slti $s0, $t9, 0x732a
 .0x801df438: or $t4, $zr, $zr
-.0x801df43c: .asciiz "Detail of Earned Experience Points"
+.0x801df43c: .align 4
+	.asciiz "Detail of Earned Experience Points"
 
 ##########
 dylib_kawseg_string_4:
-.0x801df460:	.asciiz "Experience Points from Opponent"
+.0x801df460:	.align 4
+	.asciiz "Experience Points from Opponent"
 ##########
 
 .0x801df480: slti $s0, $t9, 0x732a
 .0x801df484: or $a2, $v1, $a0
-.0x801df488: .asciiz "Earned Digi-Parts"
+.0x801df488: .align 4
+	.asciiz "Earned Digi-Parts"
 .0x801df49c: addiu $s0, $t1, 0x732a
-.0x801df4a0: .asciiz "3.3d"
-.0x801df4a8: .asciiz "None"
+.0x801df4a0: .align 4
+	.asciiz "3.3d"
+.0x801df4a8: .align 4
+	.asciiz "None"
 .0x801df4b0: addi $a0, $v1, 0x3225
-.0x801df4b4: .asciiz "RANK UP!"
-.0x801df4c0: .asciiz "BONUS LIST"
-.0x801df4cc: .asciiz "DIGI-PARTS RECEIVED"
-.0x801df4e0: .asciiz "No."
+.0x801df4b4: .align 4
+	.asciiz "RANK UP!"
+.0x801df4c0: .align 4
+	.asciiz "BONUS LIST"
+.0x801df4cc: .align 4
+	.asciiz "DIGI-PARTS RECEIVED"
+.0x801df4e0: .align 4
+	.asciiz "No."
 .0x801df4e4: addiu $s0, $t1, 0x732a
-.0x801df4e8: .asciiz "3d"
+.0x801df4e8: .align 4
+	.asciiz "3d"
 .0x801df4ec: addiu $s0, $t1, 0x732a
-.0x801df4f0: .asciiz "4d"
+.0x801df4f0: .align 4
+	.asciiz "4d"
 .0x801df4f4: slti $s3, $t3, 0x2528
 .0x801df4f8: nop
 .0x801df4fc: addiu $s0, $t1, 0x732a
-.0x801df500: .asciiz "2d"
-.0x801df504: .asciiz "Support Effect"
-.0x801df514: .asciiz "Option Description"
-.0x801df528: .asciiz "FULL SET!"
-.0x801df534: .asciiz "RECEIVED!"
-.0x801df540: .asciiz "Earned a Prize Pack"
-.0x801df554: .asciiz "B:\\CBTL_EFF.ARC"
+.0x801df500: .align 4
+	.asciiz "2d"
+.0x801df504: .align 4
+	.asciiz "Support Effect"
+.0x801df514: .align 4
+	.asciiz "Option Description"
+.0x801df528: .align 4
+	.asciiz "FULL SET!"
+.0x801df534: .align 4
+	.asciiz "RECEIVED!"
+.0x801df540: .align 4
+	.asciiz "Earned a Prize Pack"
+.0x801df554: .align 4
+	.asciiz "B:\\CBTL_EFF.ARC"
 .0x801df564: lb $ra, 0x66f8($zr)
 .0x801df568: lb $ra, 0x6704($zr)
 .0x801df56c: lb $ra, 0x6728($zr)
@@ -536,147 +707,233 @@ dylib_kawseg_string_4:
 .0x801df5f8: lb $ra, 0x6c40($zr)
 .0x801df5fc: lb $ra, 0x6c60($zr)
 .0x801df600: lb $ra, 0x6cb8($zr)
-.0x801df604: .asciiz " Lowers Opponent\'s *b2 Attack Power to 0."
+.0x801df604: .align 4
+	.asciiz " Lowers Opponent\'s *b2 Attack Power to 0."
 .0x801df630: slti $s5, $s1, 0x632a
 .0x801df634: slti $v0, $s1, 0x3164
-.0x801df638: .asciiz "b2 to 0\"*c7"
-.0x801df644: .asciiz " Lowers Opponent\'s *b1 Attack Power to 0."
+.0x801df638: .align 4
+	.asciiz "b2 to 0\"*c7"
+.0x801df644: .align 4
+	.asciiz " Lowers Opponent\'s *b1 Attack Power to 0."
 .0x801df670: slti $s5, $s1, 0x632a
 .0x801df674: slti $v0, $s1, 0x3164
-.0x801df678: .asciiz "b1 to 0\"*c7"
-.0x801df684: .asciiz " Lowers Opponent\'s *b0 Attack Power to 0."
+.0x801df678: .align 4
+	.asciiz "b1 to 0\"*c7"
+.0x801df684: .align 4
+	.asciiz " Lowers Opponent\'s *b0 Attack Power to 0."
 .0x801df6b0: slti $s5, $s1, 0x632a
 .0x801df6b4: slti $v0, $s1, 0x3164
-.0x801df6b8: .asciiz "b0 to 0\"*c7"
+.0x801df6b8: .align 4
+	.asciiz "b0 to 0\"*c7"
 .0x801df6c4: andi $v0, $s3, 0x2a20
-.0x801df6c8: .asciiz " Attack power."
+.0x801df6c8: .align 4
+	.asciiz " Attack power."
 .0x801df6d8: addi $a2, $v1, 0x4920
-.0x801df6dc: .asciiz "Opponent uses *b2 Attack, it will miss."
+.0x801df6dc: .align 4
+	.asciiz "Opponent uses *b2 Attack, it will miss."
 .0x801df704: slti $s5, $s1, 0x632a
 .0x801df708: slti $v0, $s1, 0x3164
-.0x801df70c: .asciiz "b2 Counter Attack\"*c7"
+.0x801df70c: .align 4
+	.asciiz "b2 Counter Attack\"*c7"
 .0x801df724: andi $v0, $t3, 0x2a20
-.0x801df728: .asciiz " Attack power."
+.0x801df728: .align 4
+	.asciiz " Attack power."
 .0x801df738: addi $a2, $v1, 0x4920
-.0x801df73c: .asciiz "Opponent uses *b1 Attack, it will miss."
+.0x801df73c: .align 4
+	.asciiz "Opponent uses *b1 Attack, it will miss."
 .0x801df764: slti $s5, $s1, 0x632a
 .0x801df768: slti $v0, $s1, 0x3164
-.0x801df76c: .asciiz "b1 Counter Attack\"*c7"
+.0x801df76c: .align 4
+	.asciiz "b1 Counter Attack\"*c7"
 .0x801df784: andi $v0, $v1, 0x2a20
-.0x801df788: .asciiz " Attack power."
-.0x801df798: .asciiz " Then you Counter with Opponent\'s "
+.0x801df788: .align 4
+	.asciiz " Attack power."
+.0x801df798: .align 4
+	.asciiz " Then you Counter with Opponent\'s "
 .0x801df7bc: addi $a2, $v1, 0x4920
-.0x801df7c0: .asciiz "Opponent uses *b0 Attack, it will miss."
+.0x801df7c0: .align 4
+	.asciiz "Opponent uses *b0 Attack, it will miss."
 .0x801df7e8: slti $s5, $s1, 0x632a
 .0x801df7ec: slti $v0, $s1, 0x3164
-.0x801df7f0: .asciiz "b0 Counter Attack\"*c7"
+.0x801df7f0: .align 4
+	.asciiz "b0 Counter Attack\"*c7"
 .0x801df808: addi $a2, $v1, 0x4920
-.0x801df80c: .asciiz "Opponent\'s Specialty is *a4,"
+.0x801df80c: .align 4
+	.asciiz "Opponent\'s Specialty is *a4,"
 .0x801df82c: slti $s5, $s1, 0x632a
-.0x801df830: .asciiz "d1\"Opponent *a4 X3\"*c7"
+.0x801df830: .align 4
+	.asciiz "d1\"Opponent *a4 X3\"*c7"
 .0x801df848: addi $a2, $v1, 0x4920
-.0x801df84c: .asciiz "Opponent\'s Specialty is *a3,"
+.0x801df84c: .align 4
+	.asciiz "Opponent\'s Specialty is *a3,"
 .0x801df86c: slti $s5, $s1, 0x632a
-.0x801df870: .asciiz "d1\"Opponent *a3 X3\"*c7"
+.0x801df870: .align 4
+	.asciiz "d1\"Opponent *a3 X3\"*c7"
 .0x801df888: addi $a2, $v1, 0x4920
-.0x801df88c: .asciiz "Opponent\'s Specialty is *a2,"
+.0x801df88c: .align 4
+	.asciiz "Opponent\'s Specialty is *a2,"
 .0x801df8ac: slti $s5, $s1, 0x632a
-.0x801df8b0: .asciiz "d1\"Opponent *a2 X3\"*c7"
+.0x801df8b0: .align 4
+	.asciiz "d1\"Opponent *a2 X3\"*c7"
 .0x801df8c8: addi $a2, $v1, 0x4920
-.0x801df8cc: .asciiz "Opponent\'s Specialty is *a1,"
+.0x801df8cc: .align 4
+	.asciiz "Opponent\'s Specialty is *a1,"
 .0x801df8ec: slti $s5, $s1, 0x632a
-.0x801df8f0: .asciiz "d1\"Opponent *a1 X3\"*c7"
-.0x801df908: .asciiz " own *b2 Attack is Tripled."
+.0x801df8f0: .align 4
+	.asciiz "d1\"Opponent *a1 X3\"*c7"
+.0x801df908: .align 4
+	.asciiz " own *b2 Attack is Tripled."
 .0x801df924: addi $a2, $v1, 0x4920
-.0x801df928: .asciiz "Opponent\'s Specialty is *a0,"
+.0x801df928: .align 4
+	.asciiz "Opponent\'s Specialty is *a0,"
 .0x801df948: slti $s5, $s1, 0x632a
-.0x801df94c: .asciiz "d1\"Opponent *a0 X3\"*c7"
+.0x801df94c: .align 4
+	.asciiz "d1\"Opponent *a0 X3\"*c7"
 .0x801df964: addi $t7, $v1, 0x4e20
-.0x801df968: .asciiz "Effect until just before Attack."
+.0x801df968: .align 4
+	.asciiz "Effect until just before Attack."
 .0x801df98c: addi $s0, $v0, 0x4820
-.0x801df990: .asciiz "becomes 10."
-.0x801df99c: .asciiz " Attack Power becomes same as HP."
+.0x801df990: .align 4
+	.asciiz "becomes 10."
+.0x801df99c: .align 4
+	.asciiz " Attack Power becomes same as HP."
 .0x801df9c0: slti $s5, $s1, 0x632a
-.0x801df9c4: .asciiz "d1\"Crash\"*c7"
-.0x801df9d4: .asciiz " the damage inflicted."
-.0x801df9ec: .asciiz " Recover the same amount of HP as"
+.0x801df9c4: .align 4
+	.asciiz "d1\"Crash\"*c7"
+.0x801df9d4: .align 4
+	.asciiz " the damage inflicted."
+.0x801df9ec: .align 4
+	.asciiz " Recover the same amount of HP as"
 .0x801dfa10: slti $s5, $s1, 0x632a
-.0x801dfa14: .asciiz "d2\"Eat-up HP\" *c7"
+.0x801dfa14: .align 4
+	.asciiz "d2\"Eat-up HP\" *c7"
 .0x801dfa28: addi $a2, $v1, 0x4920
 .0x801dfa2c: addiu $s5, $k1, 0x6f79
 .0x801dfa30: andi $zr, $t1, 0x6572
 .0x801dfa34: addi $t4, $at, 0x7473
-.0x801dfa38: .asciiz "Void Foe\'s \"1st Attack.\""
-.0x801dfa54: .asciiz " Attack first, regardless of Turn."
+.0x801dfa38: .align 4
+	.asciiz "Void Foe\'s \"1st Attack.\""
+.0x801dfa54: .align 4
+	.asciiz " Attack first, regardless of Turn."
 .0x801dfa78: slti $s5, $s1, 0x632a
 .0x801dfa7c: andi $v0, $t1, 0x3264
-.0x801dfa80: .asciiz "st Attack\"*c7"
-.0x801dfa90: .asciiz " Can\'t Void Option Effect."
-.0x801dfaac: .asciiz " Opponent\'s Support Effect is Voided."
+.0x801dfa80: .align 4
+	.asciiz "st Attack\"*c7"
+.0x801dfa90: .align 4
+	.asciiz " Can\'t Void Option Effect."
+.0x801dfaac: .align 4
+	.asciiz " Opponent\'s Support Effect is Voided."
 .0x801dfad4: slti $s5, $s1, 0x632a
-.0x801dfad8: .asciiz "d3\"Jamming Support\" *c7"
+.0x801dfad8: .align 4
+	.asciiz "d3\"Jamming Support\" *c7"
 .0x801dfaf0: nop
 .0x801dfaf4: addi $zr, $at, 0x2020
 .0x801dfaf8: addi $zr, $at, 0x2020
-.0x801dfafc: .asciiz "  *c6*b2 Special Effect Descriptions *h-6*c7*h0"
-.0x801dfb2c: .asciiz "Give Up"
+.0x801dfafc: .align 4
+	.asciiz "  *c6*b2 Special Effect Descriptions *h-6*c7*h0"
+.0x801dfb2c: .align 4
+	.asciiz "Give Up"
 .0x801dfb34: addi $s2, $at, 0x622a
-.0x801dfb38: .asciiz "Special Effect Descriptions"
-.0x801dfb54: .asciiz "Polygon Battle"
-.0x801dfb64: .asciiz "Sound"
-.0x801dfb6c: .asciiz "Quit"
-.0x801dfb74: .asciiz "MENU"
-.0x801dfb7c: .asciiz "Stereo"
-.0x801dfb84: .asciiz "Mono"
-.0x801dfb8c: .asciiz "Sound Settings"
-.0x801dfb9c: .asciiz "On"
-.0x801dfba0: .asciiz "Off"
-.0x801dfba4: .asciiz "HELP"
-.0x801dfbac: .asciiz "Quit Tutorial?"
+.0x801dfb38: .align 4
+	.asciiz "Special Effect Descriptions"
+.0x801dfb54: .align 4
+	.asciiz "Polygon Battle"
+.0x801dfb64: .align 4
+	.asciiz "Sound"
+.0x801dfb6c: .align 4
+	.asciiz "Quit"
+.0x801dfb74: .align 4
+	.asciiz "MENU"
+.0x801dfb7c: .align 4
+	.asciiz "Stereo"
+.0x801dfb84: .align 4
+	.asciiz "Mono"
+.0x801dfb8c: .align 4
+	.asciiz "Sound Settings"
+.0x801dfb9c: .align 4
+	.asciiz "On"
+.0x801dfba0: .align 4
+	.asciiz "Off"
+.0x801dfba4: .align 4
+	.asciiz "HELP"
+.0x801dfbac: .align 4
+	.asciiz "Quit Tutorial?"
 .0x801dfbbc: .word 0x65766947
 .0x801dfbc0: lui $s0, 0x5520
 .0x801dfbc4: slti $s2, $t8, -0x3000
 .0x801dfbc8: sll $s0, $zr, 0x2
-.0x801dfbcc: .asciiz "Super Bonus"
-.0x801dfbd8: .asciiz "Lucky Name"
-.0x801dfbe4: .asciiz "Partner Normal Digivolve"
-.0x801dfc00: .asciiz "3 Partners Plus"
-.0x801dfc10: .asciiz "3 Partners"
-.0x801dfc1c: .asciiz "HP Fever"
-.0x801dfc28: .asciiz "Damage Fever"
-.0x801dfc38: .asciiz "Rainbow"
-.0x801dfc40: .asciiz "Total Loss"
-.0x801dfc4c: .asciiz "Loss by Gamble"
-.0x801dfc5c: .asciiz "Choked Loss"
-.0x801dfc68: .asciiz "12 S-Jewel Cards Win"
-.0x801dfc80: .asciiz "Just Enough Attack Win"
-.0x801dfc98: .asciiz "Lucky Seven Win"
-.0x801dfca8: .asciiz "8 DP Cards Win"
-.0x801dfcb8: .asciiz "Option Maniac Win"
-.0x801dfccc: .asciiz "Ultimate Level Win"
+.0x801dfbcc: .align 4
+	.asciiz "Super Bonus"
+.0x801dfbd8: .align 4
+	.asciiz "Lucky Name"
+.0x801dfbe4: .align 4
+	.asciiz "Partner Normal Digivolve"
+.0x801dfc00: .align 4
+	.asciiz "3 Partners Plus"
+.0x801dfc10: .align 4
+	.asciiz "3 Partners"
+.0x801dfc1c: .align 4
+	.asciiz "HP Fever"
+.0x801dfc28: .align 4
+	.asciiz "Damage Fever"
+.0x801dfc38: .align 4
+	.asciiz "Rainbow"
+.0x801dfc40: .align 4
+	.asciiz "Total Loss"
+.0x801dfc4c: .align 4
+	.asciiz "Loss by Gamble"
+.0x801dfc5c: .align 4
+	.asciiz "Choked Loss"
+.0x801dfc68: .align 4
+	.asciiz "12 S-Jewel Cards Win"
+.0x801dfc80: .align 4
+	.asciiz "Just Enough Attack Win"
+.0x801dfc98: .align 4
+	.asciiz "Lucky Seven Win"
+.0x801dfca8: .align 4
+	.asciiz "8 DP Cards Win"
+.0x801dfcb8: .align 4
+	.asciiz "Option Maniac Win"
+.0x801dfccc: .align 4
+	.asciiz "Ultimate Level Win"
 .0x801dfce0: addi $t4, $v1, 0x6c41
-.0x801dfce4: .asciiz "Gone Win"
-.0x801dfcf0: .asciiz "Desperate Win"
-.0x801dfd00: .asciiz "Come-Back Win"
-.0x801dfd10: .asciiz "No Loss Win"
-.0x801dfd1c: .asciiz "Partner Win"
-.0x801dfd28: .asciiz "0 Online Card Left win"
-.0x801dfd40: .asciiz "4-of-a-Kind Win"
-.0x801dfd50: .asciiz "No Discard Win"
-.0x801dfd60: .asciiz "No Digivolve Win"
-.0x801dfd74: .asciiz "No Support Card Win"
-.0x801dfd88: .asciiz "Last Chance Gamble Win"
+.0x801dfce4: .align 4
+	.asciiz "Gone Win"
+.0x801dfcf0: .align 4
+	.asciiz "Desperate Win"
+.0x801dfd00: .align 4
+	.asciiz "Come-Back Win"
+.0x801dfd10: .align 4
+	.asciiz "No Loss Win"
+.0x801dfd1c: .align 4
+	.asciiz "Partner Win"
+.0x801dfd28: .align 4
+	.asciiz "0 Online Card Left win"
+.0x801dfd40: .align 4
+	.asciiz "4-of-a-Kind Win"
+.0x801dfd50: .align 4
+	.asciiz "No Discard Win"
+.0x801dfd60: .align 4
+	.asciiz "No Digivolve Win"
+.0x801dfd74: .align 4
+	.asciiz "No Support Card Win"
+.0x801dfd88: .align 4
+	.asciiz "Last Chance Gamble Win"
 .0x801dfda0: addi $t4, $v1, 0x6c41
-.0x801dfda4: .asciiz "or Nothing Gamble Win"
+.0x801dfda4: .align 4
+	.asciiz "or Nothing Gamble Win"
 .0x801dfdbc: addi $t4, $v1, 0x6c41
 .0x801dfdc0: addi $s2, $at, 0x622a
-.0x801dfdc4: .asciiz "Attack Win"
+.0x801dfdc4: .align 4
+	.asciiz "Attack Win"
 .0x801dfdd0: addi $t4, $v1, 0x6c41
 .0x801dfdd4: addi $s1, $at, 0x622a
-.0x801dfdd8: .asciiz "Attack Win"
+.0x801dfdd8: .align 4
+	.asciiz "Attack Win"
 .0x801dfde4: addi $t4, $v1, 0x6c41
 .0x801dfde8: addi $s0, $at, 0x622a
-.0x801dfdec: .asciiz "Attack Win"
+.0x801dfdec: .align 4
+	.asciiz "Attack Win"
 .0x801dfdf8: nop
 .0x801dfdfc: lb $ra, -0x5c6c($zr)
 .0x801dfe00: lb $ra, -0x5c48($zr)
@@ -686,9 +943,12 @@ dylib_kawseg_string_4:
 .0x801dfe10: slti $s0, $t9, 0x732a
 .0x801dfe14: slti $a0, $s3, 0x3325
 .0x801dfe18: addiu $t0, $t1, 0x3763
-.0x801dfe1c: .asciiz "3d)"
-.0x801dfe20: .asciiz "-"
-.0x801dfe24: .asciiz "+%3d"
+.0x801dfe1c: .align 4
+	.asciiz "3d)"
+.0x801dfe20: .align 4
+	.asciiz "-"
+.0x801dfe24: .align 4
+	.asciiz "+%3d"
 .0x801dfe2c: lb $ra, -0x4a68($zr)
 .0x801dfe30: lb $ra, -0x4978($zr)
 .0x801dfe34: lb $ra, -0x4ab0($zr)
@@ -724,6 +984,7 @@ dylib_kawseg_string_4:
 .0x801dfeac: lui $t1, 0x8888
 .0x801dfeb0: ori $t1, 0x8889
 .0x801dfeb4: addu $v0, $t0, $a2
+.align 4 # TODO: Check why needed
 .0x801dfeb8: lbu $v0, 0x0($v0)
 .0x801dfebc: nop
 .0x801dfec0: sll $v0, 0x18
@@ -747,6 +1008,7 @@ dylib_kawseg_string_4:
 .0x801dff08: bnez $v0, .0x801dff14
 .0x801dff0c: 	nop
 .0x801dff10: addiu $a3, 0x1
+.align 4 # TODO: Check why needed
 .0x801dff14: addiu $a2, 0x1
 .0x801dff18: slti $v0, $a2, 0x1e
 .0x801dff1c: bnez $v0, .0x801dfeb8
@@ -30219,7 +30481,8 @@ dylib_kawseg_data_w8:
 ##########
 
 .0x801fba1c: .word 0x10300f8
-.0x801fba20: .asciiz "\n\u{1}\u{12}\u{1}\u{1e}\u{1}"
+.0x801fba20: .align 4
+	.asciiz "\n\u{1}\u{12}\u{1}\u{1e}\u{1}"
 .0x801fba28: sra $zr, $t7, 0x0
 .0x801fba2c: .word 0x11300ef
 .0x801fba30: and $zr, $zr
@@ -30230,7 +30493,8 @@ dylib_kawseg_data_w9:
 .0x801fba38:	.word 0xb8
 ##########
 
-.0x801fba3c: .asciiz "y"
+.0x801fba3c: .align 4
+	.asciiz "y"
 .0x801fba40: .word 0xc + 0x100 * 0x1
 .0x801fba44: .word 0xffffff8f
 .0x801fba48: jr $zr
@@ -30254,7 +30518,8 @@ dylib_kawseg_data_w10:
 ##########
 
 .0x801fba84: srl $zr, 0x1
-.0x801fba88: .asciiz "x"
+.0x801fba88: .align 4
+	.asciiz "x"
 .0x801fba8c: srl $zr, 0x1
 .0x801fba90: sll $zr, 0x5
 .0x801fba94: .word 0xb1
@@ -30266,9 +30531,12 @@ dylib_kawseg_data_w11:
 .0x801fbaa0:	.word 0xffffff40
 ##########
 
-.0x801fbaa4: .asciiz "0"
-.0x801fbaa8: .asciiz "x"
-.0x801fbaac: .asciiz "0"
+.0x801fbaa4: .align 4
+	.asciiz "0"
+.0x801fbaa8: .align 4
+	.asciiz "x"
+.0x801fbaac: .align 4
+	.asciiz "0"
 .0x801fbab0: nop
 .0x801fbab4: nop
 .0x801fbab8: mult $at, $t0
@@ -30308,7 +30576,8 @@ dylib_kawseg_data_w14:
 
 ##########
 dylib_kawseg_string_15:
-.0x801fbb04:	.asciiz "\u{1}"
+.0x801fbb04:	.align 4
+	.asciiz "\u{1}"
 ##########
 
 .0x801fbb08: .word 0x1e00bc
@@ -30324,10 +30593,12 @@ dylib_kawseg_string_15:
 .0x801fbb30: jal 0x846c4450
 .0x801fbb34: 	jal 0x88442024
 .0x801fbb38: 	lb $sp, -0xc20($zr)
-.0x801fbb3c: .asciiz "\u{3}\u{5}\u{1}c\u{3}\u{7}"
+.0x801fbb3c: .align 4
+	.asciiz "\u{3}\u{5}\u{1}c\u{3}\u{7}"
 .0x801fbb44: lb $sp, -0xc28($zr)
 .0x801fbb48: jal 0x80204044
-.0x801fbb4c: 	.asciiz "\u{e}\u{13}"
+.0x801fbb4c: 	.align 4
+	.asciiz "\u{e}\u{13}"
 .0x801fbb50: lb $sp, -0xc30($zr)
 .0x801fbb54: blez $t0, .0x80203bcc
 .0x801fbb58: 	add $a0, $zr, $zr
@@ -30336,7 +30607,8 @@ dylib_kawseg_string_15:
 
 ##########
 dylib_kawseg_string_16:
-.0x801fbb64:	.asciiz "4;"
+.0x801fbb64:	.align 4
+	.asciiz "4;"
 ##########
 
 .0x801fbb68: lb $sp, -0xc40($zr)
@@ -30346,7 +30618,8 @@ dylib_kawseg_string_16:
 
 ##########
 dylib_kawseg_string_17:
-.0x801fbb78:	.asciiz "`YGQ[X"
+.0x801fbb78:	.align 4
+	.asciiz "`YGQ[X"
 ##########
 
 .0x801fbb80: lb $sp, -0xc50($zr)
@@ -30354,7 +30627,8 @@ dylib_kawseg_string_17:
 .0x801fbb88: .word 0x5fff
 .0x801fbb8c: lb $sp, -0xc68($zr)
 .0x801fbb90: bgtz $s1, .0x802057dc
-.0x801fbb94: 	.asciiz "9\u{1c}"
+.0x801fbb94: 	.align 4
+	.asciiz "9\u{1c}"
 .0x801fbb98: lb $sp, -0xc80($zr)
 .0x801fbb9c: andi $t0, $s2, 0x5627
 .0x801fbba0: multu $zr, $zr
@@ -30367,7 +30641,8 @@ dylib_kawseg_data_w18:
 ##########
 
 .0x801fbbb0: lb $sp, -0xcb0($zr)
-.0x801fbbb4: .asciiz "\u{1}\t\u{f}\u{5}\u{4}\u{2}"
+.0x801fbbb4: .align 4
+	.asciiz "\u{1}\t\u{f}\u{5}\u{4}\u{2}"
 .0x801fbbbc: lb $sp, -0xcc8($zr)
 .0x801fbbc0: bne $s1, $a2, .0x80200fec
 .0x801fbbc4: 	mfhi $at
@@ -30376,7 +30651,8 @@ dylib_kawseg_data_w18:
 .0x801fbbd0: nor $v1, $zr, $zr
 .0x801fbbd4: lb $sp, -0xcf8($zr)
 .0x801fbbd8: lui $t6, 0xff30
-.0x801fbbdc: .asciiz ">="
+.0x801fbbdc: .align 4
+	.asciiz ">="
 .0x801fbbe0: lb $sp, -0xd10($zr)
 .0x801fbbe4: .word 0x55ffff43
 .0x801fbbe8: mflo $t1
@@ -30388,7 +30664,8 @@ dylib_kawseg_data_w18:
 .0x801fbc00: 	mflo $v1
 .0x801fbc04: lb $sp, -0xd58($zr)
 .0x801fbc08: addiu $t5, $at, 0x1c20
-.0x801fbc0c: .asciiz "-+"
+.0x801fbc0c: .align 4
+	.asciiz "-+"
 .0x801fbc10: lb $sp, -0xd70($zr)
 .0x801fbc14: xori $ra, $a3, 0x2c33
 .0x801fbc18: sra $t0, $zr, 0x9
@@ -30399,15 +30676,18 @@ dylib_kawseg_data_w19:
 .0x801fbc20:	.word 0x4cffff4d
 ##########
 
-.0x801fbc24: .asciiz "V`"
+.0x801fbc24: .align 4
+	.asciiz "V`"
 .0x801fbc28: lb $sp, -0xda0($zr)
-.0x801fbc2c: .asciiz "\u{6}\u{6}\u{2}\u{4}\n\u{1}"
+.0x801fbc2c: .align 4
+	.asciiz "\u{6}\u{6}\u{2}\u{4}\n\u{1}"
 .0x801fbc34: lb $sp, -0xdb8($zr)
 .0x801fbc38: beq $t8, $s4, .0x80204c88
 .0x801fbc3c: 	divu $zr, $zr
 .0x801fbc40: lb $sp, -0xdd0($zr)
 .0x801fbc44: addiu $t2, $s1, 0x4523
-.0x801fbc48: .asciiz "5\u{18}"
+.0x801fbc48: .align 4
+	.asciiz "5\u{18}"
 .0x801fbc4c: lb $sp, -0xde8($zr)
 .0x801fbc50: .word 0x433fff52
 .0x801fbc54: .word 0x30ff
@@ -30422,15 +30702,18 @@ dylib_kawseg_data_w19:
 .0x801fbc78: 	.word 0x47ff
 .0x801fbc7c: lb $sp, -0xe78($zr)
 .0x801fbc80: .word 0xffff1a0b
-.0x801fbc84: .asciiz "(>"
+.0x801fbc84: .align 4
+	.asciiz "(>"
 .0x801fbc88: lb $sp, -0xe9c($zr)
 .0x801fbc8c: .word 0xffff0e24
 .0x801fbc90: mult $zr, $zr
 .0x801fbc94: lb $sp, -0xec0($zr)
 .0x801fbc98: .word 0xffff3928
-.0x801fbc9c: .asciiz "\u{b}\u{15}"
+.0x801fbc9c: .align 4
+	.asciiz "\u{b}\u{15}"
 .0x801fbca0: lb $sp, -0xee8($zr)
-.0x801fbca4: .asciiz "W\\\'E\u{1f}2"
+.0x801fbca4: .align 4
+	.asciiz "W\\\'E\u{1f}2"
 .0x801fbcac: lb $sp, -0xf10($zr)
 .0x801fbcb0: slti $ra, $s7, 0x6119
 .0x801fbcb4: .word 0xd + 0x100 * 0x125
@@ -30439,7 +30722,8 @@ dylib_kawseg_data_w19:
 .0x801fbcc0: mtlo $zr
 .0x801fbcc4: lb $sp, -0xf60($zr)
 .0x801fbcc8: bne $t1, $t6, .0x802041dc
-.0x801fbccc: 	.asciiz "\u{5}a"
+.0x801fbccc: 	.align 4
+	.asciiz "\u{5}a"
 .0x801fbcd0: lb $sp, -0xf88($zr)
 
 ##########
@@ -30453,7 +30737,8 @@ dylib_kawseg_data_w20:
 .0x801fbce4: .word 0xffff
 .0x801fbce8: lb $sp, -0xfd4($zr)
 .0x801fbcec: .word 0xff1b4aff
-.0x801fbcf0: .asciiz "6\n"
+.0x801fbcf0: .align 4
+	.asciiz "6\n"
 .0x801fbcf4: lb $sp, -0xff8($zr)
 .0x801fbcf8: .word 0xff3257ff
 .0x801fbcfc: jalr $zr
@@ -30465,7 +30750,8 @@ dylib_kawseg_data_w20:
 .0x801fbd14: 	.word 0xff15
 .0x801fbd18: lb $sp, -0x1028($zr)
 .0x801fbd1c: lui $at, 0x62ff
-.0x801fbd20: .asciiz "NU"
+.0x801fbd20: .align 4
+	.asciiz "NU"
 .0x801fbd24: lb $sp, -0x1040($zr)
 .0x801fbd28: srl $at, $t5, 0x8
 .0x801fbd2c: srav $at, $zr, $zr
@@ -30474,7 +30760,8 @@ dylib_kawseg_data_w20:
 .0x801fbd38: and $a0, $zr, $zr
 .0x801fbd3c: lb $sp, -0x1078($zr)
 .0x801fbd40: sltiu $t1, $s2, 0x511a
-.0x801fbd44: .asciiz "T,"
+.0x801fbd44: .align 4
+	.asciiz "T,"
 .0x801fbd48: lb $sp, -0x1094($zr)
 .0x801fbd4c: .word 0x5254ff45
 .0x801fbd50: .word 0x50ff
@@ -30486,7 +30773,8 @@ dylib_kawseg_data_w20:
 .0x801fbd68: 	div $zr, $zr, $zr
 .0x801fbd6c: lb $sp, -0x10f0($zr)
 .0x801fbd70: sltiu $t2, $k0, 0x4d22
-.0x801fbd74: .asciiz ".\'"
+.0x801fbd74: .align 4
+	.asciiz ".\'"
 .0x801fbd78: lb $sp, -0x1110($zr)
 .0x801fbd7c: .word 0x5858ff37
 .0x801fbd80: srl $t1, $zr, 0x9
@@ -30503,13 +30791,16 @@ dylib_kawseg_data_w21:
 
 .0x801fbd9c: lb $sp, -0x1170($zr)
 .0x801fbda0: .word 0x7ff020f
-.0x801fbda4: .asciiz "\u{16}\u{12}"
+.0x801fbda4: .align 4
+	.asciiz "\u{16}\u{12}"
 .0x801fbda8: lb $sp, -0x1190($zr)
 .0x801fbdac: bne $ra, $ra, .0x80200a20
-.0x801fbdb0: 	.asciiz ")$"
+.0x801fbdb0: 	.align 4
+	.asciiz ")$"
 .0x801fbdb4: lb $sp, -0x11b0($zr)
 .0x801fbdb8: .word 0x5cff462b
-.0x801fbdbc: .asciiz ";5"
+.0x801fbdbc: .align 4
+	.asciiz ";5"
 .0x801fbdc0: lb $sp, -0x11d0($zr)
 .0x801fbdc4: addi $k1, $s1, 0xd16
 .0x801fbdc8: .word 0x43ff
@@ -30539,10 +30830,12 @@ dylib_kawseg_data_w21:
 .0x801fbe28: .word 0xff55
 .0x801fbe2c: lb $sp, -0x12e0($zr)
 .0x801fbe30: .word 0xff505dff
-.0x801fbe34: .asciiz "=7"
+.0x801fbe34: .align 4
+	.asciiz "=7"
 .0x801fbe38: lb $sp, -0x1308($zr)
 .0x801fbe3c: .word 0xff11ff36
-.0x801fbe40: .asciiz "\u{1c}K"
+.0x801fbe40: .align 4
+	.asciiz "\u{1c}K"
 .0x801fbe44: lb $sp, -0x1330($zr)
 .0x801fbe48: .word 0xff1c1854
 .0x801fbe4c: .word 0xff0f
@@ -30551,7 +30844,8 @@ dylib_kawseg_data_w21:
 .0x801fbe58: .word 0xd + 0x100 * 0xb4
 .0x801fbe5c: lb $sp, -0x1378($zr)
 .0x801fbe60: .word 0xff21ff07
-.0x801fbe64: .asciiz "/\u{e}"
+.0x801fbe64: .align 4
+	.asciiz "/\u{e}"
 .0x801fbe68: lb $sp, -0x1398($zr)
 .0x801fbe6c: .word 0xffff1121
 .0x801fbe70: or $v1, $zr, $zr
@@ -30563,7 +30857,8 @@ dylib_kawseg_data_w21:
 .0x801fbe88: multu $zr, $zr
 .0x801fbe8c: lb $sp, -0x1408($zr)
 .0x801fbe90: .word 0x41ff5bff
-.0x801fbe94: .asciiz "JR"
+.0x801fbe94: .align 4
+	.asciiz "JR"
 .0x801fbe98: lb $sp, -0x1430($zr)
 .0x801fbe9c: blez $s2, .0x80207ab4
 .0x801fbea0: 	mfhi $t1
@@ -30575,14 +30870,17 @@ dylib_kawseg_data_w21:
 .0x801fbeb8: slt $zr, $zr, $zr
 .0x801fbebc: lb $sp, -0x14a8($zr)
 .0x801fbec0: .word 0xff5dff4f
-.0x801fbec4: .asciiz "]F"
+.0x801fbec4: .align 4
+	.asciiz "]F"
 .0x801fbec8: lb $sp, -0x14d0($zr)
-.0x801fbecc: .asciiz "8%,\u{6}\u{13}]"
+.0x801fbecc: .align 4
+	.asciiz "8%,\u{6}\u{13}]"
 .0x801fbed4: lb $sp, -0x14f8($zr)
 .0x801fbed8: .word 0x4f573c5c
 .0x801fbedc: .word 0xff3f
 .0x801fbee0: lb $sp, -0x1520($zr)
-.0x801fbee4: .asciiz "NL\u{1a}HE."
+.0x801fbee4: .align 4
+	.asciiz "NL\u{1a}HE."
 .0x801fbeec: lb $sp, -0x1548($zr)
 .0x801fbef0: .word 0xff376059
 .0x801fbef4: .word 0x44ff
@@ -30627,13 +30925,15 @@ dylib_kawseg_data_w21:
 .0x801fbf90: .word 0xffff
 .0x801fbf94: lb $sp, -0x1728($zr)
 .0x801fbf98: j 0x87fc7c38
-.0x801fbf9c: 	.asciiz "0\u{17}"
+.0x801fbf9c: 	.align 4
+	.asciiz "0\u{17}"
 .0x801fbfa0: lb $sp, -0x174c($zr)
 .0x801fbfa4: bne $a3, $ra, .0x80209424
 .0x801fbfa8: 	xor $a3, $zr, $zr
 .0x801fbfac: lb $sp, -0x1770($zr)
 .0x801fbfb0: .word 0x4651ff39
-.0x801fbfb4: .asciiz "_M"
+.0x801fbfb4: .align 4
+	.asciiz "_M"
 .0x801fbfb8: lb $sp, -0x178c($zr)
 .0x801fbfbc: bgtz $a3, .0x8020b800
 .0x801fbfc0: 	addu $v1, $zr, $zr
@@ -30647,7 +30947,8 @@ dylib_kawseg_data_w22:
 
 .0x801fbfd0: lb $sp, -0x17c4($zr)
 .0x801fbfd4: .word 0xff15085e
-.0x801fbfd8: .asciiz ",:"
+.0x801fbfd8: .align 4
+	.asciiz ",:"
 .0x801fbfdc: lb $sp, -0x17e0($zr)
 .0x801fbfe0: .word 0xffffffff
 
@@ -30661,7 +30962,8 @@ dylib_kawseg_data_w23:
 
 ##########
 dylib_kawseg_string_24:
-.0x801fbff0:	.asciiz "\u{1}Q"
+.0x801fbff0:	.align 4
+	.asciiz "\u{1}Q"
 ##########
 
 .0x801fbff4: lb $sp, -0x1808($zr)
@@ -30694,21 +30996,25 @@ dylib_kawseg_data_w26:
 .0x801fc038: .word 0xff38
 .0x801fc03c: lb $sp, -0x18dc($zr)
 .0x801fc040: blez $a3, .0x80204908
-.0x801fc044: 	.asciiz "\u{1e}*"
+.0x801fc044: 	.align 4
+	.asciiz "\u{1e}*"
 .0x801fc048: lb $sp, -0x1904($zr)
 .0x801fc04c: andi $ra, $t7, 0x3fff
-.0x801fc050: .asciiz "1@"
+.0x801fc050: .align 4
+	.asciiz "1@"
 .0x801fc054: lb $sp, -0x192c($zr)
 .0x801fc058: .word 0x40ff5eff
 
 ##########
 dylib_kawseg_string_27:
-.0x801fc05c:	.asciiz "Ab"
+.0x801fc05c:	.align 4
+	.asciiz "Ab"
 ##########
 
 .0x801fc060: lb $sp, -0x194c($zr)
 .0x801fc064: sltiu $v1, $t0, 0x163f
-.0x801fc068: .asciiz "K\u{1b}"
+.0x801fc068: .align 4
+	.asciiz "K\u{1b}"
 .0x801fc06c: lb $sp, -0x1970($zr)
 
 ##########
@@ -30719,7 +31025,8 @@ dylib_kawseg_data_w28:
 
 ##########
 dylib_kawseg_string_29:
-.0x801fc074:	.asciiz "\\8"
+.0x801fc074:	.align 4
+	.asciiz "\\8"
 ##########
 
 .0x801fc078: lb $sp, -0x1998($zr)
@@ -30757,7 +31064,8 @@ dylib_kawseg_data_w32:
 
 .0x801fc0c0: lb $sp, -0x1a80($zr)
 .0x801fc0c4: .word 0xff4154ff
-.0x801fc0c8: .asciiz "WE"
+.0x801fc0c8: .align 4
+	.asciiz "WE"
 .0x801fc0cc: lb $sp, -0x1aa0($zr)
 .0x801fc0d0: ori $sp, $s0, 0x2d40
 .0x801fc0d4: .word 0xff14
@@ -30771,15 +31079,18 @@ dylib_kawseg_data_w33:
 .0x801fc0e0: jr $zr
 .0x801fc0e4: 	lb $sp, -0x1af4($zr)
 .0x801fc0e8: ori $ra, 0x4949
-.0x801fc0ec: .asciiz "^S"
+.0x801fc0ec: .align 4
+	.asciiz "^S"
 .0x801fc0f0: lb $sp, -0x1b20($zr)
 .0x801fc0f4: .word 0x424cff51
-.0x801fc0f8: .asciiz "OW"
+.0x801fc0f8: .align 4
+	.asciiz "OW"
 .0x801fc0fc: lb $sp, -0x1b40($zr)
 .0x801fc100: addi $t9, $at, 0x3114
 .0x801fc104: srav $a1, $zr, $zr
 .0x801fc108: lb $sp, -0x1b60($zr)
-.0x801fc10c: .asciiz "UAMKX\\"
+.0x801fc10c: .align 4
+	.asciiz "UAMKX\\"
 .0x801fc114: lb $sp, -0x1b80($zr)
 .0x801fc118: .word 0x5a60ff50
 .0x801fc11c: subu $a3, $zr, $zr
@@ -30905,7 +31216,8 @@ dylib_kawseg_data_w33:
 .0x801fc2fc: sll $at, $a0, 0x8
 .0x801fc300: sll $zr, 0xc
 .0x801fc304: lb $sp, -0x21c($zr)
-.0x801fc308: .asciiz "\u{1}\u{3}"
+.0x801fc308: .align 4
+	.asciiz "\u{1}\u{3}"
 .0x801fc30c: lb $sp, -0x230($zr)
 .0x801fc310: srl $zr, 0xc
 .0x801fc314: lb $sp, -0x244($zr)
@@ -30913,7 +31225,8 @@ dylib_kawseg_data_w33:
 .0x801fc31c: lb $sp, -0x260($zr)
 .0x801fc320: sllv $zr, $zr, $zr
 .0x801fc324: lb $sp, -0x278($zr)
-.0x801fc328: .asciiz "\u{5}\u{5}"
+.0x801fc328: .align 4
+	.asciiz "\u{5}\u{5}"
 .0x801fc32c: lb $sp, -0x28c($zr)
 .0x801fc330: srlv $zr, $zr, $zr
 .0x801fc334: lb $sp, -0x2a0($zr)
@@ -30923,17 +31236,21 @@ dylib_kawseg_data_w33:
 .0x801fc344: 	lb $sp, -0x2c0($zr)
 .0x801fc348: .word 0x09
 .0x801fc34c: 	lb $sp, -0x2d8($zr)
-.0x801fc350: .asciiz "\n\u{1}"
+.0x801fc350: .align 4
+	.asciiz "\n\u{1}"
 .0x801fc354: lb $sp, -0x2e4($zr)
-.0x801fc358: .asciiz "\u{b}\u{3}"
+.0x801fc358: .align 4
+	.asciiz "\u{b}\u{3}"
 .0x801fc35c: lb $sp, -0x2f0($zr)
 .0x801fc360: .word 0xc + 0x100 * 0xc
 .0x801fc364: lb $sp, -0x300($zr)
 .0x801fc368: .word 0xd + 0x100 * 0x1c
 .0x801fc36c: lb $sp, -0x310($zr)
-.0x801fc370: .asciiz "\u{e}\u{2}"
+.0x801fc370: .align 4
+	.asciiz "\u{e}\u{2}"
 .0x801fc374: lb $sp, -0x320($zr)
-.0x801fc378: .asciiz "\u{f}\u{3}"
+.0x801fc378: .align 4
+	.asciiz "\u{f}\u{3}"
 .0x801fc37c: lb $sp, -0x334($zr)
 .0x801fc380: mfhi $zr
 .0x801fc384: lb $sp, -0x348($zr)
@@ -30943,13 +31260,17 @@ dylib_kawseg_data_w33:
 .0x801fc394: lb $sp, -0x368($zr)
 .0x801fc398: mtlo $zr
 .0x801fc39c: lb $sp, -0x380($zr)
-.0x801fc3a0: .asciiz "\u{14}\n"
+.0x801fc3a0: .align 4
+	.asciiz "\u{14}\n"
 .0x801fc3a4: lb $sp, -0x398($zr)
-.0x801fc3a8: .asciiz "\u{15}\u{2}"
+.0x801fc3a8: .align 4
+	.asciiz "\u{15}\u{2}"
 .0x801fc3ac: lb $sp, -0x3a4($zr)
-.0x801fc3b0: .asciiz "\u{16}\u{2}"
+.0x801fc3b0: .align 4
+	.asciiz "\u{16}\u{2}"
 .0x801fc3b4: lb $sp, -0x3b4($zr)
-.0x801fc3b8: .asciiz "\u{17}\u{1}"
+.0x801fc3b8: .align 4
+	.asciiz "\u{17}\u{1}"
 .0x801fc3bc: lb $sp, -0x3c0($zr)
 .0x801fc3c0: mult $zr, $zr
 .0x801fc3c4: lb $sp, -0x3c8($zr)
@@ -30959,13 +31280,17 @@ dylib_kawseg_data_w33:
 .0x801fc3d4: lb $sp, -0x3e4($zr)
 .0x801fc3d8: divu $zr, $zr
 .0x801fc3dc: lb $sp, -0x3f0($zr)
-.0x801fc3e0: .asciiz "\u{1c}\u{2}"
+.0x801fc3e0: .align 4
+	.asciiz "\u{1c}\u{2}"
 .0x801fc3e4: lb $sp, -0x400($zr)
-.0x801fc3e8: .asciiz "\u{1d}\u{2}"
+.0x801fc3e8: .align 4
+	.asciiz "\u{1d}\u{2}"
 .0x801fc3ec: lb $sp, -0x41c($zr)
-.0x801fc3f0: .asciiz "\u{1e}\u{1}"
+.0x801fc3f0: .align 4
+	.asciiz "\u{1e}\u{1}"
 .0x801fc3f4: lb $sp, -0x428($zr)
-.0x801fc3f8: .asciiz "\u{1f}\n"
+.0x801fc3f8: .align 4
+	.asciiz "\u{1f}\n"
 .0x801fc3fc: lb $sp, -0x434($zr)
 .0x801fc400: nop
 .0x801fc404: nop

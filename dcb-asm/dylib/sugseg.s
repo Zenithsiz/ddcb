@@ -7,9 +7,12 @@ dylib_sugseg:
 .0x801ddf4c: lb $fp, 0x2724($zr)
 .0x801ddf50: .word 0x700030
 .0x801ddf54: mfhi $zr
-.0x801ddf58: .asciiz "M:\\HDF%d\\%d_%d.tam"
-.0x801ddf6c: .asciiz "M:\\HDF%03d\\%d.tam"
-.0x801ddf80: .asciiz "E:\\ANM\\%d_%d.tam"
+.0x801ddf58: .align 4
+	.asciiz "M:\\HDF%d\\%d_%d.tam"
+.0x801ddf6c: .align 4
+	.asciiz "M:\\HDF%03d\\%d.tam"
+.0x801ddf80: .align 4
+	.asciiz "E:\\ANM\\%d_%d.tam"
 .0x801ddf94: lb $fp, 0x7c28($zr)
 .0x801ddf98: lb $fp, 0x7c8c($zr)
 .0x801ddf9c: lb $fp, 0x7c3c($zr)
@@ -26,10 +29,13 @@ dylib_sugseg:
 .0x801ddfc8: lb $fp, 0x7d20($zr)
 .0x801ddfcc: lb $fp, 0x7d00($zr)
 .0x801ddfd0: lb $fp, 0x7d10($zr)
-.0x801ddfd4: .asciiz "E:\\ANM\\%d_%d.TIM"
-.0x801ddfe8: .asciiz "E:\\TIM\\%04d.TIM"
+.0x801ddfd4: .align 4
+	.asciiz "E:\\ANM\\%d_%d.TIM"
+.0x801ddfe8: .align 4
+	.asciiz "E:\\TIM\\%04d.TIM"
 .0x801ddff8: addiu $gp, $t2, 0x3a45
-.0x801ddffc: .asciiz "d.PAK"
+.0x801ddffc: .align 4
+	.asciiz "d.PAK"
 .0x801de004: lb $fp, -0x78b0($zr)
 .0x801de008: lb $fp, -0x78a4($zr)
 .0x801de00c: lb $fp, -0x7880($zr)
@@ -68,7 +74,8 @@ dylib_sugseg:
 .0x801de090: lb $fp, -0x7024($zr)
 .0x801de094: lb $fp, -0x70a4($zr)
 .0x801de098: lb $fp, -0x70cc($zr)
-.0x801de09c: .asciiz "E:\\SPRITE\\%d.a2d"
+.0x801de09c: .align 4
+	.asciiz "E:\\SPRITE\\%d.a2d"
 .0x801de0b0: .word 0x535c3a45
 .0x801de0b4: .word 0x54495250
 .0x801de0b8: .word 0x73255c45
@@ -18874,10 +18881,14 @@ dylib_sugseg_data_w1:
 .0x801ef374: lb $fp, 0x43a4($zr)
 .0x801ef378: lb $v1, 0x3cd4($zr)
 .0x801ef37c: nop
-.0x801ef380: .asciiz "\u{1}"
-.0x801ef384: .asciiz "\u{1}"
-.0x801ef388: .asciiz "\u{1}"
-.0x801ef38c: .asciiz "\n"
+.0x801ef380: .align 4
+	.asciiz "\u{1}"
+.0x801ef384: .align 4
+	.asciiz "\u{1}"
+.0x801ef388: .align 4
+	.asciiz "\u{1}"
+.0x801ef38c: .align 4
+	.asciiz "\n"
 .0x801ef390: nop
 .0x801ef394: nop
 .0x801ef398: nop
