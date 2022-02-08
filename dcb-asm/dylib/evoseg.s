@@ -18408,7 +18408,7 @@ dylib_evoseg_func_105:
 .0x801ef8e8: 	.asciiz "\u{e}\u{13}"
 	.align 4
 .0x801ef8ec: lb $sp, -0xfdc($zr)
-.0x801ef8f0: blez $t0, .0x801f7968
+.0x801ef8f0: .word 0x0 # TODO: blez $t0, .0x801f7968
 .0x801ef8f4: 	add $a0, $zr, $zr
 .0x801ef8f8: lb $sp, -0xfe4($zr)
 .0x801ef8fc: slti $ra, $zr, 0x302d
@@ -18428,7 +18428,7 @@ dylib_evoseg_func_105:
 
 .0x801ef924: .word 0x5fff
 .0x801ef928: lb $sp, -0x1014($zr)
-.0x801ef92c: bgtz $s1, .0x801f9578
+.0x801ef92c: .word 0x0 # TODO: bgtz $s1, .0x801f95781
 .0x801ef930: 	.asciiz "9\u{1c}"
 	.align 4
 .0x801ef934: lb $sp, -0x102c($zr)
@@ -18474,7 +18474,7 @@ dylib_evoseg_func_105:
 .0x801ef9c8: .asciiz "\u{6}\u{6}\u{2}\u{4}\n\u{1}"
 	.align 4
 .0x801ef9d0: lb $sp, -0x1164($zr)
-.0x801ef9d4: beq $t8, $s4, .0x801f8a24
+.0x801ef9d4: .word 0x0 # TODO: beq $t8, $s4, .0x801f8a24
 .0x801ef9d8: 	divu $zr, $zr
 .0x801ef9dc: lb $sp, -0x117c($zr)
 .0x801ef9e0: addiu $t2, $s1, 0x4523
@@ -18513,7 +18513,7 @@ dylib_evoseg_func_105:
 .0x801efa58: .word 0xff42ff25
 .0x801efa5c: mtlo $zr
 .0x801efa60: lb $sp, -0x130c($zr)
-.0x801efa64: bne $t1, $t6, .0x801f7f78
+.0x801efa64: .word 0x0 # TODO: bne $t1, $t6, .0x801f7f78
 .0x801efa68: 	.asciiz "\u{5}a"
 	.align 4
 .0x801efa6c: lb $sp, -0x1334($zr)
@@ -18533,7 +18533,7 @@ dylib_evoseg_func_105:
 .0x801efaa0: slt $zr, $t1, $sp
 .0x801efaa4: jalr $zr
 .0x801efaa8: 	lb $sp, -0x13c4($zr)
-.0x801efaac: blez $k0, .0x801f701c
+.0x801efaac: .word 0x0 # TODO: blez $k0, .0x801f701c
 .0x801efab0: 	.word 0xff15
 .0x801efab4: lb $sp, -0x13d4($zr)
 .0x801efab8: lui $at, 0x62ff
@@ -18556,7 +18556,7 @@ dylib_evoseg_func_105:
 .0x801efaf4: .word 0xffffffff
 .0x801efaf8: .word 0xffff
 .0x801efafc: lb $sp, -0x147c($zr)
-.0x801efb00: beq $t1, $t7, .0x801f7324
+.0x801efb00: .word 0x0 # TODO: beq $t1, $t7, .0x801f7324
 .0x801efb04: 	div $zr, $zr, $zr
 .0x801efb08: lb $sp, -0x149c($zr)
 .0x801efb0c: sltiu $t2, $k0, 0x4d22
@@ -18590,7 +18590,7 @@ dylib_evoseg_func_105:
 .0x801efb6c: .word 0x5e5bff53
 .0x801efb70: .word 0x59ff
 .0x801efb74: lb $sp, -0x15bc($zr)
-.0x801efb78: beq $s0, $t2, .0x801f9bd8
+.0x801efb78: .word 0x0 # TODO: beq $s0, $t2, .0x801f9bd8
 .0x801efb7c: 	.word 0x8ff
 .0x801efb80: lb $sp, -0x15dc($zr)
 .0x801efb84: slti $t0, $t9, 0x3a26
@@ -18646,7 +18646,7 @@ dylib_evoseg_func_105:
 .0x801efc30: .asciiz "JR"
 	.align 4
 .0x801efc34: lb $sp, -0x17dc($zr)
-.0x801efc38: blez $s2, .0x801fb850
+.0x801efc38: .word 0x0 # TODO: blez $s2, .0x801fb850
 .0x801efc3c: 	mfhi $t1
 .0x801efc40: lb $sp, -0x1804($zr)
 .0x801efc44: .word 0x5359ff3c
@@ -18722,14 +18722,14 @@ dylib_evoseg_func_105:
 .0x801efd38: 	.asciiz "0\u{17}"
 	.align 4
 .0x801efd3c: lb $sp, -0x1af8($zr)
-.0x801efd40: bne $a3, $ra, .0x801fd1c0
+.0x801efd40: .word 0x0 # TODO: bne $a3, $ra, .0x801fd1c0
 .0x801efd44: 	xor $a3, $zr, $zr
 .0x801efd48: lb $sp, -0x1b1c($zr)
 .0x801efd4c: .word 0x4651ff39
 .0x801efd50: .asciiz "_M"
 	.align 4
 .0x801efd54: lb $sp, -0x1b38($zr)
-.0x801efd58: bgtz $a3, .0x801ff59c
+.0x801efd58: .word 0x0 # TODO: bgtz $a3, .0x801ff59c
 .0x801efd5c: 	addu $v1, $zr, $zr
 .0x801efd60: lb $sp, -0x1b54($zr)
 .0x801efd64: addiu $t3, $t8, 0x123e
@@ -18750,7 +18750,7 @@ dylib_evoseg_func_105:
 ##########
 
 .0x801efd90: lb $sp, -0x1bb4($zr)
-.0x801efd94: bgtz $t9, .0x801f9700
+.0x801efd94: .word 0x0 # TODO: bgtz $t9, .0x801f9700
 .0x801efd98: 	mthi $zr
 .0x801efd9c: lb $sp, -0x1bc8($zr)
 .0x801efda0: .word 0x495c44ff
@@ -18768,7 +18768,7 @@ dylib_evoseg_func_105:
 .0x801efdd0: ori $a1, $t2, 0x53ff
 .0x801efdd4: .word 0xff38
 .0x801efdd8: lb $sp, -0x1c88($zr)
-.0x801efddc: blez $a3, .0x801f86a4
+.0x801efddc: .word 0x0 # TODO: blez $a3, .0x801f86a4
 .0x801efde0: 	.asciiz "\u{1e}*"
 	.align 4
 .0x801efde4: lb $sp, -0x1cb0($zr)
@@ -18797,7 +18797,7 @@ dylib_evoseg_func_105:
 .0x801efe30: .word 0xffffffff
 .0x801efe34: .word 0xffff
 .0x801efe38: lb $sp, -0x1dbc($zr)
-.0x801efe3c: bgtz $t0, .0x801fce3c
+.0x801efe3c: .word 0x0 # TODO: bgtz $t0, .0x801fce3c
 .0x801efe40: 	.word 0x10ff
 .0x801efe44: lb $sp, -0x1de4($zr)
 .0x801efe48: .word 0x59235fff
