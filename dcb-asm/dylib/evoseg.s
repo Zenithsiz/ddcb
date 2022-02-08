@@ -12,7 +12,6 @@ dylib_evoseg:
 .0x801ddf60: .word 0x4a70f303
 
 ##########
-dylib_evoseg_data_w0:
 .0x801ddf64:	.word 0xf56f4ef4
 ##########
 
@@ -48,7 +47,6 @@ dylib_evoseg_data_w0:
 .0x801ddfdc: nop
 
 ##########
-dylib_evoseg_data_w1:
 .0x801ddfe0:	.word 0x5dc1000
 ##########
 
@@ -94,7 +92,6 @@ dylib_evoseg_data_w1:
 .0x801de080: lb $fp, 0x4bfc($zr)
 
 ##########
-dylib_evoseg_string_2:
 .0x801de084:	.align 4
 	.asciiz "Rare Card even more likely to appear."
 ##########
@@ -137,7 +134,6 @@ dylib_evoseg_string_2:
 	.asciiz "Drop Opponent\'s Top 3 DP Cards shown."
 
 ##########
-dylib_evoseg_string_3:
 .0x801de2bc:	.align 4
 	.asciiz "Drop Opponent\'s Top 2 DP Cards shown."
 ##########
@@ -18372,7 +18368,6 @@ dylib_evoseg_func_105:
 .0x801ef85c: or $t9, $zr, $s3
 
 ##########
-dylib_evoseg_data_w9:
 .0x801ef860:	.word 0xff0037
 ##########
 
@@ -18428,7 +18423,6 @@ dylib_evoseg_data_w9:
 .0x801ef91c: lb $sp, -0xffc($zr)
 
 ##########
-dylib_evoseg_data_w10:
 .0x801ef920:	.word 0x5b4bff63
 ##########
 
@@ -18605,7 +18599,6 @@ dylib_evoseg_data_w10:
 .0x801efb90: lui $gp, 0xff47
 
 ##########
-dylib_evoseg_data_w11:
 .0x801efb94:	.word 0x5aff
 ##########
 
@@ -18678,7 +18671,6 @@ dylib_evoseg_data_w11:
 .0x801efc8c: .word 0xff376059
 
 ##########
-dylib_evoseg_data_w12:
 .0x801efc90:	.word 0x44ff
 ##########
 
@@ -18718,7 +18710,6 @@ dylib_evoseg_data_w12:
 .0x801efd18: lb $sp, -0x1a8c($zr)
 
 ##########
-dylib_evoseg_data_w13:
 .0x801efd1c:	.word 0xff104bff
 ##########
 
@@ -18754,7 +18745,6 @@ dylib_evoseg_data_w13:
 .0x801efd88: j 0x8c803d20
 
 ##########
-dylib_evoseg_string_14:
 .0x801efd8c:	.align 4
 	.asciiz "\u{1}Q"
 ##########

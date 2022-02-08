@@ -150,7 +150,6 @@ dylib_openseg:
 	.asciiz " please choose a Partner.\nUse the directional and *b2 buttons."
 
 ##########
-dylib_openseg_string_0:
 .0x801de7ec:	.align 4
 	.asciiz "Your Partner will grow with every battle\nand will become a reliable ally in \nthe battles you\'ll face."
 ##########
@@ -171,7 +170,6 @@ dylib_openseg_string_0:
 	.asciiz "MESSAGE"
 
 ##########
-dylib_openseg_string_1:
 .0x801de9a8:	.align 4
 	.asciiz "PLAYER NAME"
 ##########
@@ -301,7 +299,6 @@ dylib_openseg_string_1:
 .0x801debf4: addiu $t6, $t1, 0x6433
 
 ##########
-dylib_openseg_string_2:
 .0x801debf8:	.align 4
 	.asciiz "1d*w4*c6%%"
 ##########
@@ -329,7 +326,6 @@ dylib_openseg_string_2:
 	.asciiz "t trade the same Data!"
 
 ##########
-dylib_openseg_string_3:
 .0x801dec88:	.align 4
 	.asciiz "Trade is disabled."
 ##########
@@ -366,7 +362,6 @@ dylib_openseg_string_3:
 	.asciiz "Pyramid City"
 
 ##########
-dylib_openseg_string_4:
 .0x801ded98:	.align 4
 	.asciiz "Desert Island"
 ##########
@@ -375,7 +370,6 @@ dylib_openseg_string_4:
 	.asciiz "Dark City"
 
 ##########
-dylib_openseg_string_5:
 .0x801dedb4:	.align 4
 	.asciiz "Junk City"
 ##########
@@ -388,7 +382,6 @@ dylib_openseg_string_5:
 	.asciiz "Flame City"
 
 ##########
-dylib_openseg_string_6:
 .0x801dede4:	.align 4
 	.asciiz "Beginner City"
 ##########
@@ -397,21 +390,18 @@ dylib_openseg_string_6:
 	.asciiz "To Tera Area Entrance"
 
 ##########
-dylib_openseg_string_7:
 .0x801dee0c:	.align 4
 	.asciiz "To Mega Area Entrance"
 ##########
 
 
 ##########
-dylib_openseg_string_8:
 .0x801dee24:	.align 4
 	.asciiz "To Giga Area Entrance"
 ##########
 
 
 ##########
-dylib_openseg_string_9:
 .0x801dee3c:	.align 4
 	.asciiz "Infinity Arena"
 ##########
@@ -425,7 +415,6 @@ dylib_openseg_string_9:
 	.asciiz "Arena"
 
 ##########
-dylib_openseg_string_10:
 .0x801dee74:	.align 4
 	.asciiz "Pyramid Arena"
 ##########
@@ -473,7 +462,6 @@ dylib_openseg_string_10:
 	.asciiz "*s0Load which save data?"
 
 ##########
-dylib_openseg_string_11:
 .0x801df158:	.align 4
 	.asciiz "*s0Failed to update data in MEMORY CARD\nslot *S. Data may be corrupted."
 ##########
@@ -488,7 +476,6 @@ dylib_openseg_string_11:
 	.asciiz "*s0Updating save data on MEMORY CARD in\nMEMORY CARD slot *S... Do not insert\nor remove MEMORY CARD or Controller."
 
 ##########
-dylib_openseg_string_12:
 .0x801df300:	.align 4
 	.asciiz "*s0You cannot save your game if you\nbegin the game without creating\na save data here. Is this OK?"
 ##########
@@ -607,7 +594,6 @@ dylib_openseg_string_12:
 	.asciiz "Creating a \"Digital Card Battle\" File.\nIs this OK?"
 
 ##########
-dylib_openseg_string_13:
 .0x801df904:	.align 4
 	.asciiz "File %d is corrupted!"
 ##########
@@ -18057,21 +18043,18 @@ dylib_openseg_func_63:
 .0x801eff34: nop
 
 ##########
-dylib_openseg_data_w14:
 .0x801eff38:	.word 0x30000a
 ##########
 
 .0x801eff3c: mfhi $zr
 
 ##########
-dylib_openseg_data_w15:
 .0x801eff40:	.word 0xffff0000
 ##########
 
 .0x801eff44: .word 0xffff0000
 
 ##########
-dylib_openseg_string_16:
 .0x801eff48:	.align 4
 	.asciiz "\n&x"
 ##########
@@ -18079,7 +18062,6 @@ dylib_openseg_string_16:
 .0x801eff4c: .word 0xc + 0x100 * 0x400
 
 ##########
-dylib_openseg_data_w17:
 .0x801eff50:	.word 0x112012d
 ##########
 
@@ -18092,7 +18074,6 @@ dylib_openseg_data_w17:
 .0x801eff6c: .word 0xffff0000
 
 ##########
-dylib_openseg_data_w18:
 .0x801eff70:	.word 0xffff0000
 ##########
 
@@ -18136,7 +18117,6 @@ dylib_openseg_data_w18:
 .0x801efffc: .word 0xc + 0x100 * 0x400
 
 ##########
-dylib_openseg_data_w19:
 .0x801f0000:	.word 0x100000b
 ##########
 
@@ -18157,7 +18137,6 @@ dylib_openseg_data_w19:
 .0x801f0038: lb $sp, -0x16a0($zr)
 
 ##########
-dylib_openseg_data_w20:
 .0x801f003c:	.word 0xff001600
 ##########
 
@@ -18226,7 +18205,6 @@ dylib_openseg_data_w20:
 .0x801f0138: 	lb $sp, -0x1e7c($zr)
 
 ##########
-dylib_openseg_data_w21:
 .0x801f013c:	.word 0xff00180a
 ##########
 
@@ -18234,7 +18212,6 @@ dylib_openseg_data_w21:
 .0x801f0144: sra $zr, $t1, 0x0
 
 ##########
-dylib_openseg_data_w22:
 .0x801f0148:	.word 0xe000a
 ##########
 
@@ -18242,7 +18219,6 @@ dylib_openseg_data_w22:
 .0x801f0150: .word 0x130014
 
 ##########
-dylib_openseg_data_w23:
 .0x801f0154:	.word 0x170015
 ##########
 
@@ -18260,7 +18236,6 @@ dylib_openseg_data_w23:
 .0x801f0184: .word 0x35003c
 
 ##########
-dylib_openseg_data_w24:
 .0x801f0188:	.word 0x440034
 ##########
 
@@ -18274,7 +18249,6 @@ dylib_openseg_data_w24:
 .0x801f01a8: div $zr, $v0, $k1
 
 ##########
-dylib_openseg_data_w25:
 .0x801f01ac:	.word 0x59005d
 ##########
 
@@ -18318,7 +18292,6 @@ dylib_openseg_data_w25:
 .0x801f0244: srav $zr, $gp, $a3
 
 ##########
-dylib_openseg_data_w26:
 .0x801f0248:	.word 0xfe00fd
 ##########
 
@@ -18371,7 +18344,6 @@ dylib_openseg_data_w26:
 .0x801f0304: mfhi $zr
 
 ##########
-dylib_openseg_data_w27:
 .0x801f0308:	.word 0x140078
 ##########
 
@@ -18386,7 +18358,6 @@ dylib_openseg_data_w27:
 .0x801f032c: multu $s0, $at
 
 ##########
-dylib_openseg_string_28:
 .0x801f0330:	.align 4
 	.asciiz "v\u{3}J"
 ##########
@@ -18398,7 +18369,6 @@ dylib_openseg_string_28:
 .0x801f0344: sll $zr, $s7, 0x0
 
 ##########
-dylib_openseg_data_w29:
 .0x801f0348:	.word 0x4004a
 ##########
 
@@ -18463,7 +18433,6 @@ dylib_openseg_data_w29:
 .0x801f041c: .word 0xc + 0x100 * 0x3c000
 
 ##########
-dylib_openseg_data_w30:
 .0x801f0420:	.word 0x36f0201
 ##########
 
@@ -18471,13 +18440,11 @@ dylib_openseg_data_w30:
 .0x801f0428: .word 0x3600001
 
 ##########
-dylib_openseg_data_w31:
 .0x801f042c:	.word 0x12800ce
 ##########
 
 
 ##########
-dylib_openseg_data_w32:
 .0x801f0430:	.word 0xfff4001c
 ##########
 
@@ -18635,7 +18602,6 @@ dylib_openseg_data_w32:
 .0x801f0668: add $zr, $at, $zr
 
 ##########
-dylib_openseg_string_33:
 .0x801f066c:	.align 4
 	.asciiz "\n"
 ##########

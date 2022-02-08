@@ -359,7 +359,6 @@ dylib_kawseg:
 	.asciiz "Change own Specialty to *a3."
 
 ##########
-dylib_kawseg_string_0:
 .0x801dea58:	.align 4
 	.asciiz "Change own Specialty to *a2."
 ##########
@@ -409,7 +408,6 @@ dylib_kawseg_string_0:
 	.asciiz "Counterattack (Attack 2nd)."
 
 ##########
-dylib_kawseg_string_1:
 .0x801deca8:	.align 4
 	.asciiz "Lower Opponent\'s *b2 Attack Power to 0."
 ##########
@@ -516,7 +514,6 @@ dylib_kawseg_string_1:
 .0x801df1d4: andi $zr, $at, 0x6f74
 
 ##########
-dylib_kawseg_string_2:
 .0x801df1d8:	.align 4
 	.asciiz ", *b2 Attack Power -100."
 ##########
@@ -552,7 +549,6 @@ dylib_kawseg_string_2:
 .0x801df2d8: addi $s1, $at, 0x622a
 
 ##########
-dylib_kawseg_string_3:
 .0x801df2dc:	.align 4
 	.asciiz "Attack Power +50."
 ##########
@@ -621,7 +617,6 @@ dylib_kawseg_string_3:
 	.asciiz "Detail of Earned Experience Points"
 
 ##########
-dylib_kawseg_string_4:
 .0x801df460:	.align 4
 	.asciiz "Experience Points from Opponent"
 ##########
@@ -30438,7 +30433,6 @@ dylib_kawseg_func_86:
 .0x801fb9b8: .word 0x9e009d
 
 ##########
-dylib_kawseg_data_w5:
 .0x801fb9bc:	.word 0xa0009f
 ##########
 
@@ -30448,7 +30442,6 @@ dylib_kawseg_data_w5:
 .0x801fb9cc: addu $zr, $a3, $s7
 
 ##########
-dylib_kawseg_data_w6:
 .0x801fb9d0:	.word 0x10100ff
 ##########
 
@@ -30466,7 +30459,6 @@ dylib_kawseg_data_w6:
 .0x801fba00: .word 0xce00c5
 
 ##########
-dylib_kawseg_data_w7:
 .0x801fba04:	.word 0xd000cf
 ##########
 
@@ -30476,7 +30468,6 @@ dylib_kawseg_data_w7:
 .0x801fba14: .word 0xf300f2
 
 ##########
-dylib_kawseg_data_w8:
 .0x801fba18:	.word 0xf600f4
 ##########
 
@@ -30489,7 +30480,6 @@ dylib_kawseg_data_w8:
 .0x801fba34: .word 0xf1
 
 ##########
-dylib_kawseg_data_w9:
 .0x801fba38:	.word 0xb8
 ##########
 
@@ -30513,7 +30503,6 @@ dylib_kawseg_data_w9:
 .0x801fba7c: 	.word 0x9f
 
 ##########
-dylib_kawseg_data_w10:
 .0x801fba80:	.word 0xffffff40
 ##########
 
@@ -30527,7 +30516,6 @@ dylib_kawseg_data_w10:
 .0x801fba9c: 	.word 0xb1
 
 ##########
-dylib_kawseg_data_w11:
 .0x801fbaa0:	.word 0xffffff40
 ##########
 
@@ -30544,7 +30532,6 @@ dylib_kawseg_data_w11:
 .0x801fbac0: .word 0xffff0000
 
 ##########
-dylib_kawseg_data_w12:
 .0x801fbac4:	.word 0xffff0000
 ##########
 
@@ -30552,7 +30539,6 @@ dylib_kawseg_data_w12:
 .0x801fbacc: .word 0xc + 0x100 * 0x400
 
 ##########
-dylib_kawseg_data_w13:
 .0x801fbad0:	.word 0x1020001
 ##########
 
@@ -30565,7 +30551,6 @@ dylib_kawseg_data_w13:
 .0x801fbaec: .word 0xffff0000
 
 ##########
-dylib_kawseg_data_w14:
 .0x801fbaf0:	.word 0xffff0000
 ##########
 
@@ -30575,7 +30560,6 @@ dylib_kawseg_data_w14:
 .0x801fbb00: sll $at, $zr, 0x18
 
 ##########
-dylib_kawseg_string_15:
 .0x801fbb04:	.align 4
 	.asciiz "\u{1}"
 ##########
@@ -30606,7 +30590,6 @@ dylib_kawseg_string_15:
 .0x801fbb60: slti $ra, $zr, 0x302d
 
 ##########
-dylib_kawseg_string_16:
 .0x801fbb64:	.align 4
 	.asciiz "4;"
 ##########
@@ -30617,7 +30600,6 @@ dylib_kawseg_string_16:
 .0x801fbb74: lb $sp, -0xc48($zr)
 
 ##########
-dylib_kawseg_string_17:
 .0x801fbb78:	.align 4
 	.asciiz "`YGQ[X"
 ##########
@@ -30636,7 +30618,6 @@ dylib_kawseg_string_17:
 .0x801fbba8: .word 0x5d5aff4b
 
 ##########
-dylib_kawseg_data_w18:
 .0x801fbbac:	.word 0x54ff
 ##########
 
@@ -30672,7 +30653,6 @@ dylib_kawseg_data_w18:
 .0x801fbc1c: lb $sp, -0xd88($zr)
 
 ##########
-dylib_kawseg_data_w19:
 .0x801fbc20:	.word 0x4cffff4d
 ##########
 
@@ -30727,7 +30707,6 @@ dylib_kawseg_data_w19:
 .0x801fbcd0: lb $sp, -0xf88($zr)
 
 ##########
-dylib_kawseg_data_w20:
 .0x801fbcd4:	.word 0xff062934
 ##########
 
@@ -30785,7 +30764,6 @@ dylib_kawseg_data_w20:
 .0x801fbd94: .word 0x4a5eff3b
 
 ##########
-dylib_kawseg_data_w21:
 .0x801fbd98:	.word 0x56ff
 ##########
 
@@ -30941,7 +30919,6 @@ dylib_kawseg_data_w21:
 .0x801fbfc8: addiu $t3, $t8, 0x123e
 
 ##########
-dylib_kawseg_data_w22:
 .0x801fbfcc:	.word 0x2fff
 ##########
 
@@ -30953,7 +30930,6 @@ dylib_kawseg_data_w22:
 .0x801fbfe0: .word 0xffffffff
 
 ##########
-dylib_kawseg_data_w23:
 .0x801fbfe4:	.word 0xffff
 ##########
 
@@ -30961,7 +30937,6 @@ dylib_kawseg_data_w23:
 .0x801fbfec: j 0x8c803d20
 
 ##########
-dylib_kawseg_string_24:
 .0x801fbff0:	.align 4
 	.asciiz "\u{1}Q"
 ##########
@@ -30973,7 +30948,6 @@ dylib_kawseg_string_24:
 .0x801fc004: .word 0x495c44ff
 
 ##########
-dylib_kawseg_data_w25:
 .0x801fc008:	.word 0xff37
 ##########
 
@@ -30987,7 +30961,6 @@ dylib_kawseg_data_w25:
 .0x801fc028: addiu $s7, $t0, 0x3b62
 
 ##########
-dylib_kawseg_data_w26:
 .0x801fc02c:	.word 0xff1d
 ##########
 
@@ -31006,7 +30979,6 @@ dylib_kawseg_data_w26:
 .0x801fc058: .word 0x40ff5eff
 
 ##########
-dylib_kawseg_string_27:
 .0x801fc05c:	.align 4
 	.asciiz "Ab"
 ##########
@@ -31018,13 +30990,11 @@ dylib_kawseg_string_27:
 .0x801fc06c: lb $sp, -0x1970($zr)
 
 ##########
-dylib_kawseg_data_w28:
 .0x801fc070:	.word 0xff194eff
 ##########
 
 
 ##########
-dylib_kawseg_string_29:
 .0x801fc074:	.align 4
 	.asciiz "\\8"
 ##########
@@ -31038,7 +31008,6 @@ dylib_kawseg_string_29:
 .0x801fc090: lb $sp, -0x19e8($zr)
 
 ##########
-dylib_kawseg_data_w30:
 .0x801fc094:	.word 0xffffffff
 ##########
 
@@ -31049,7 +31018,6 @@ dylib_kawseg_data_w30:
 .0x801fc0a8: lb $sp, -0x1a38($zr)
 
 ##########
-dylib_kawseg_data_w31:
 .0x801fc0ac:	.word 0x59235fff
 ##########
 
@@ -31058,7 +31026,6 @@ dylib_kawseg_data_w31:
 .0x801fc0b8: .word 0x4e46ff56
 
 ##########
-dylib_kawseg_data_w32:
 .0x801fc0bc:	.word 0xff32
 ##########
 
@@ -31072,7 +31039,6 @@ dylib_kawseg_data_w32:
 .0x801fc0d8: lb $sp, -0x1ac8($zr)
 
 ##########
-dylib_kawseg_data_w33:
 .0x801fc0dc:	.word 0x44525041
 ##########
 

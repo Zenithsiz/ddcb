@@ -24,7 +24,6 @@ dylib_saiseg:
 	.asciiz "*w1Tamer Rank is based on Wins. There are 8 \nRanks. \"Beginner Tamer\" with 0 wins\nto \"Invincible Tamer\" with 500+ Wins."
 
 ##########
-dylib_saiseg_string_0:
 .0x801de27c:	.align 4
 	.asciiz "*w1Player\'s Name."
 ##########
@@ -22133,7 +22132,6 @@ dylib_saiseg_func_123:
 .0x801f3484: sll $zr, 0x2
 
 ##########
-dylib_saiseg_string_1:
 .0x801f3488:	.align 4
 	.asciiz "w"
 ##########
@@ -22175,7 +22173,6 @@ dylib_saiseg_string_1:
 .0x801f3508: add $zr, $at
 
 ##########
-dylib_saiseg_data_w2:
 .0x801f350c:	.word 0xeb0230
 ##########
 
@@ -22194,13 +22191,11 @@ dylib_saiseg_data_w2:
 .0x801f353c: nop
 
 ##########
-dylib_saiseg_data_w3:
 .0x801f3540:	.word 0x30000a
 ##########
 
 
 ##########
-dylib_saiseg_string_4:
 .0x801f3544:	.align 4
 	.asciiz ",\u{1}~"
 ##########
@@ -22240,7 +22235,6 @@ dylib_saiseg_string_4:
 .0x801f35c4: and $zr, $t6
 
 ##########
-dylib_saiseg_data_w5:
 .0x801f35c8:	.word 0xe003c
 ##########
 
@@ -22261,7 +22255,6 @@ dylib_saiseg_data_w5:
 	.asciiz "\u{15}"
 
 ##########
-dylib_saiseg_data_w6:
 .0x801f3600:	.word 0xe0030
 ##########
 
@@ -22274,7 +22267,6 @@ dylib_saiseg_data_w6:
 .0x801f3618: mfhi $zr
 
 ##########
-dylib_saiseg_string_7:
 .0x801f361c:	.align 4
 	.asciiz "\u{15}"
 ##########
@@ -22319,7 +22311,6 @@ dylib_saiseg_string_7:
 .0x801f3708: sll $zr, 0x6
 
 ##########
-dylib_saiseg_data_w8:
 .0x801f370c:	.word 0xa8
 ##########
 
@@ -22336,7 +22327,6 @@ dylib_saiseg_data_w8:
 .0x801f3738: sll $zr, 0x6
 
 ##########
-dylib_saiseg_data_w9:
 .0x801f373c:	.word 0x1a8
 ##########
 
@@ -22347,7 +22337,6 @@ dylib_saiseg_data_w9:
 .0x801f3750: .word 0x1f8
 
 ##########
-dylib_saiseg_data_w10:
 .0x801f3754:	.word 0x180ff
 ##########
 
@@ -22356,13 +22345,11 @@ dylib_saiseg_data_w10:
 .0x801f3760: sll $zr, 0xa
 
 ##########
-dylib_saiseg_data_w11:
 .0x801f3764:	.word 0x1f9
 ##########
 
 
 ##########
-dylib_saiseg_data_w12:
 .0x801f3768:	.word 0x17fff
 ##########
 
@@ -22371,7 +22358,6 @@ dylib_saiseg_data_w12:
 .0x801f3774: sll $zr, 0xa
 
 ##########
-dylib_saiseg_data_w13:
 .0x801f3778:	.word 0x1fa
 ##########
 
@@ -22511,7 +22497,6 @@ dylib_saiseg_data_w13:
 .0x801f3940: sll $zr, 0x8
 
 ##########
-dylib_saiseg_data_w14:
 .0x801f3944:	.word 0xf9
 ##########
 
@@ -22552,7 +22537,6 @@ dylib_saiseg_data_w14:
 .0x801f39c4: sll $zr, 0xa
 
 ##########
-dylib_saiseg_string_15:
 .0x801f39c8:	.align 4
 	.asciiz "0"
 ##########
@@ -22567,7 +22551,6 @@ dylib_saiseg_string_15:
 .0x801f39e8: nor $a2, $zr, $zr
 
 ##########
-dylib_saiseg_data_w16:
 .0x801f39ec:	.word 0x28a
 ##########
 
@@ -22583,7 +22566,6 @@ dylib_saiseg_data_w16:
 .0x801f3a10: subu $s2, $zr, $zr
 
 ##########
-dylib_saiseg_data_w17:
 .0x801f3a14:	.word 0x28a
 ##########
 
@@ -22669,7 +22651,6 @@ dylib_saiseg_data_w17:
 .0x801f3b2c: mult $zr, $zr
 
 ##########
-dylib_saiseg_string_18:
 .0x801f3b30:	.align 4
 	.asciiz "(\u{1}"
 ##########
@@ -22698,7 +22679,6 @@ dylib_saiseg_string_18:
 .0x801f3b84: sll $zr, 0xa
 
 ##########
-dylib_saiseg_data_w19:
 .0x801f3b88:	.word 0x1f6
 ##########
 
@@ -22724,7 +22704,6 @@ dylib_saiseg_data_w19:
 .0x801f3bd4: sll $zr, 0x8
 
 ##########
-dylib_saiseg_data_w20:
 .0x801f3bd8:	.word 0xf1
 ##########
 
@@ -22734,7 +22713,6 @@ dylib_saiseg_data_w20:
 .0x801f3be8: sll $zr, 0x8
 
 ##########
-dylib_saiseg_data_w21:
 .0x801f3bec:	.word 0xee
 ##########
 
@@ -22845,7 +22823,6 @@ dylib_saiseg_data_w21:
 .0x801f3d80: lb $sp, -0x608($zr)
 
 ##########
-dylib_saiseg_data_w22:
 .0x801f3d84:	.word 0x5b4bff63
 ##########
 
@@ -22860,7 +22837,6 @@ dylib_saiseg_data_w22:
 .0x801f3da4: lb $sp, -0x650($zr)
 
 ##########
-dylib_saiseg_data_w23:
 .0x801f3da8:	.word 0x5d5aff4b
 ##########
 
@@ -22901,7 +22877,6 @@ dylib_saiseg_data_w23:
 .0x801f3e28: lb $sp, -0x758($zr)
 
 ##########
-dylib_saiseg_string_24:
 .0x801f3e2c:	.align 4
 	.asciiz "\u{6}\u{6}\u{2}\u{4}\n\u{1}"
 ##########
@@ -22935,7 +22910,6 @@ dylib_saiseg_string_24:
 .0x801f3e94: lb $sp, -0x878($zr)
 
 ##########
-dylib_saiseg_data_w25:
 .0x801f3e98:	.word 0xffff3928
 ##########
 
@@ -23251,7 +23225,6 @@ dylib_saiseg_data_w25:
 .0x801f4308: lb $sp, -0x1518($zr)
 
 ##########
-dylib_saiseg_string_26:
 .0x801f430c:	.align 4
 	.asciiz "UAMKX\\"
 ##########

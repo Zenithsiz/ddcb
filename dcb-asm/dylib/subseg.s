@@ -72,7 +72,6 @@ dylib_subseg:
 .0x801de0dc: andi $s0, $at, 0x3220
 
 ##########
-dylib_subseg_string_0:
 .0x801de0e0:	.align 4
 	.asciiz " & all Attack Powers +100."
 ##########
@@ -83,7 +82,6 @@ dylib_subseg_string_0:
 .0x801de108: andi $s0, $at, 0x3220
 
 ##########
-dylib_subseg_string_1:
 .0x801de10c:	.align 4
 	.asciiz " & all Attack Powers +100."
 ##########
@@ -181,7 +179,6 @@ dylib_subseg_string_1:
 	.asciiz "Change own Specialty to *a1."
 
 ##########
-dylib_subseg_string_2:
 .0x801de688:	.align 4
 	.asciiz "Change own Specialty to *a0."
 ##########
@@ -275,7 +272,6 @@ dylib_subseg_string_2:
 	.asciiz "Boost *b0 Attack Power +400."
 
 ##########
-dylib_subseg_string_3:
 .0x801deb20:	.align 4
 	.asciiz "Boost *b0 Attack Power +300."
 ##########
@@ -307,7 +303,6 @@ dylib_subseg_string_3:
 	.asciiz "up HP, *b2 Attack Power -200."
 
 ##########
-dylib_subseg_string_4:
 .0x801dec1c:	.align 4
 	.asciiz "Jamming Support, *b2 Attack Power -100."
 ##########
@@ -439,7 +434,6 @@ dylib_subseg_string_4:
 .0x801df048: addiu $s0, $t1, 0x732a
 
 ##########
-dylib_subseg_string_5:
 .0x801df04c:	.align 4
 	.asciiz "3.3d"
 ##########
@@ -19634,7 +19628,6 @@ dylib_subseg_func_26:
 .0x801f18e0: .word 0x47466564
 
 ##########
-dylib_subseg_data_w6:
 .0x801f18e4:	.word 0x664a4948
 ##########
 
@@ -19643,13 +19636,11 @@ dylib_subseg_data_w6:
 .0x801f18f0: .word 0x6d6c6b4f
 
 ##########
-dylib_subseg_data_w7:
 .0x801f18f4:	.word 0x51506f6e
 ##########
 
 
 ##########
-dylib_subseg_data_w8:
 .0x801f18f8:	.word 0x70545352
 ##########
 
@@ -19677,7 +19668,6 @@ dylib_subseg_data_w8:
 .0x801f1950: .word 0xc + 0x100 * 0x400
 
 ##########
-dylib_subseg_data_w9:
 .0x801f1954:	.word 0x1020001
 ##########
 
@@ -19697,7 +19687,6 @@ dylib_subseg_data_w9:
 .0x801f1988: slti $ra, $zr, 0x302d
 
 ##########
-dylib_subseg_string_10:
 .0x801f198c:	.align 4
 	.asciiz "4;"
 ##########
@@ -19708,7 +19697,6 @@ dylib_subseg_string_10:
 .0x801f199c: lb $sp, -0x1058($zr)
 
 ##########
-dylib_subseg_string_11:
 .0x801f19a0:	.align 4
 	.asciiz "`YGQ[X"
 ##########
@@ -19727,7 +19715,6 @@ dylib_subseg_string_11:
 .0x801f19d0: .word 0x5d5aff4b
 
 ##########
-dylib_subseg_data_w12:
 .0x801f19d4:	.word 0x54ff
 ##########
 
@@ -19789,7 +19776,6 @@ dylib_subseg_data_w12:
 .0x801f1aa4: lb $sp, -0x1288($zr)
 
 ##########
-dylib_subseg_data_w13:
 .0x801f1aa8:	.word 0xffff1a0b
 ##########
 
@@ -19818,13 +19804,11 @@ dylib_subseg_data_w13:
 .0x801f1af8: lb $sp, -0x1398($zr)
 
 ##########
-dylib_subseg_data_w14:
 .0x801f1afc:	.word 0xff062934
 ##########
 
 
 ##########
-dylib_subseg_data_w15:
 .0x801f1b00:	.word 0x19ff
 ##########
 
@@ -20102,7 +20086,6 @@ dylib_subseg_data_w15:
 .0x801f1eec: .word 0xff4154ff
 
 ##########
-dylib_subseg_string_16:
 .0x801f1ef0:	.align 4
 	.asciiz "WE"
 ##########
@@ -20364,7 +20347,6 @@ dylib_subseg_string_16:
 .0x801f22d0: .word 0x1000001
 
 ##########
-dylib_subseg_data_w17:
 .0x801f22d4:	.word 0x1010001
 ##########
 

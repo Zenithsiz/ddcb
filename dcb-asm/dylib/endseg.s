@@ -111,7 +111,6 @@ dylib_endseg:
 	.asciiz "Loss by Gamble"
 
 ##########
-dylib_endseg_string_0:
 .0x801de2c0:	.align 4
 	.asciiz "Choked Loss"
 ##########
@@ -149,7 +148,6 @@ dylib_endseg_string_0:
 	.asciiz "No Digivolve Win"
 
 ##########
-dylib_endseg_string_1:
 .0x801de3d8:	.align 4
 	.asciiz "No Support Card Win"
 ##########
