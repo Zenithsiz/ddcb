@@ -1,6 +1,6 @@
 dylib_evoseg:
-.0x801ddf38: .word 0x09 # TODO: Check if right
-.0x801ddf3c: 	sll $zr, $s0, 0x5
+.0x801ddf38: .word 0x09
+.0x801ddf3c: .word 0xf00140
 .0x801ddf40: add $zr, $at
 .0x801ddf44: .word 0x4ec0401
 .0x801ddf48: addiu $v0, $t0, -0x13dd
@@ -10,11 +10,7 @@ dylib_evoseg:
 .0x801ddf58: .word 0xf14b4df0
 .0x801ddf5c: .word 0x51f28f4b
 .0x801ddf60: .word 0x4a70f303
-
-##########
-.0x801ddf64:	.word 0xf56f4ef4
-##########
-
+.0x801ddf64:.word 0xf56f4ef4
 .0x801ddf68: .word 0x6df66f6e
 .0x801ddf6c: .word 0x7393f790
 .0x801ddf70: .word 0xf97496f8
@@ -30,7 +26,7 @@ dylib_evoseg:
 .0x801ddf98: nop
 .0x801ddf9c: nop
 .0x801ddfa0: b .0x801ddfa4
-.0x801ddfa4: 	and $ra, $zr, $zr
+.0x801ddfa4: 	.word 0xfa24
 .0x801ddfa8: .word 0xf830f000
 .0x801ddfac: nop
 .0x801ddfb0: nop
@@ -57,7 +53,7 @@ dylib_evoseg:
 .0x801ddff4: nop
 .0x801ddff8: nop
 .0x801ddffc: nop
-.0x801de000: .word 0xd + 0x100 * 0xe9
+.0x801de000: .word 0x3a4d
 .0x801de004: nop
 .0x801de008: lb $fp, 0x4f50($zr)
 .0x801de00c: lb $fp, 0x4fc8($zr)
@@ -471,14 +467,13 @@ dylib_evoseg:
 .0x801df100: addi $s4, $at, 0x612a
 .0x801df104: .asciiz "Rare"
 	.align 2
-.0x801df10c: addi $s3, $at, 0x612a
-.0x801df110: .asciiz "Darkness"
+.0x801df110: .asciiz "*a3 Darkness"
 	.align 2
 .0x801df11c: addi $s2, $at, 0x612a
 .0x801df120: .asciiz "Nature"
 	.align 2
-.0x801df128: addi $s1, $at, 0x612a
-.0x801df12c: jalr $v1, $t4
+.0x801df128: .asciiz "*a1 Ice"
+	.align 2
 .0x801df130: 	addi $s0, $at, 0x612a
 .0x801df134: .asciiz "Fire"
 	.align 2
@@ -495,7 +490,8 @@ dylib_evoseg:
 .0x801df15c: addiu $s0, $t1, 0x732a
 .0x801df160: .asciiz "3.3d"
 	.align 2
-.0x801df168: or $t4, $zr, $zr
+.0x801df168: .asciiz "%d"
+	.align 2
 .0x801df16c: .asciiz "Cards"
 	.align 2
 .0x801df174: .asciiz "Card Fusion"
@@ -664,13 +660,13 @@ dylib_evoseg:
 	.align 2
 .0x801df534: j 0x84100408
 .0x801df538: 	j 0x80202018
-.0x801df53c: 	sltu $a0, $v1, $a0
+.0x801df53c: .word 0x64252b
 .0x801df540: .asciiz "Level"
 	.align 2
 .0x801df548: .word 0x63657053
 .0x801df54c: sh $a1, 0x2e($a0)
 .0x801df550: .word 0x700030
-.0x801df554: mfhi $zr
+.0x801df554: .word 0x100010
 .0x801df558: .asciiz "C:\\EVO_PAK\\%d.PAK"
 	.align 2
 .0x801df56c: .asciiz "C:\\Unit_eff.arc"
