@@ -524,7 +524,7 @@ dylib_openseg:
 	.align 4
 .0x801df6f8: .asciiz "Player %d : Slot %d"
 	.align 4
-.0x801df70c: beq $t0, $t1, .0x801e0f10
+.0x801df70c: beq $t0, $t1, dylib_openseg_func_13.0x801e0f10
 .0x801df710: 	mtlo $zr
 .0x801df714: addiu $s0, $t1, 0x732a
 .0x801df718: .asciiz "3d*w3%%"

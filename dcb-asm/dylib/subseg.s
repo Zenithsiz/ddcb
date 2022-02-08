@@ -19657,7 +19657,7 @@ dylib_subseg_func_26:
 .0x801f1924: addi $zr, $at, 0x2020
 .0x801f1928: andi $s2, $t9, 0x3130
 .0x801f192c: ori $s6, $t9, 0x3534
-.0x801f1930: b .0x801ffe14
+.0x801f1930: .word 0x0 # TODO: b .0x801ffe14
 .0x801f1934: 	nop
 .0x801f1938: nop
 .0x801f193c: .word 0x280032
@@ -19681,7 +19681,7 @@ dylib_subseg_func_26:
 .0x801f1974: 	.asciiz "\u{e}\u{13}"
 	.align 4
 .0x801f1978: lb $sp, -0x1040($zr)
-.0x801f197c: blez $t0, .0x801f99f4
+.0x801f197c: .word 0x0 # TODO: blez $t0, .0x801f99f4
 .0x801f1980: 	add $a0, $zr, $zr
 .0x801f1984: lb $sp, -0x1048($zr)
 .0x801f1988: slti $ra, $zr, 0x302d
@@ -19705,7 +19705,7 @@ dylib_subseg_func_26:
 .0x801f19ac: .word 0x5b4bff63
 .0x801f19b0: .word 0x5fff
 .0x801f19b4: lb $sp, -0x1078($zr)
-.0x801f19b8: bgtz $s1, .0x801fb604
+.0x801f19b8: .word 0x0 # TODO: bgtz $s1, .0x801fb604
 .0x801f19bc: 	.asciiz "9\u{1c}"
 	.align 4
 .0x801f19c0: lb $sp, -0x1090($zr)
@@ -19722,7 +19722,7 @@ dylib_subseg_func_26:
 .0x801f19dc: .asciiz "\u{1}\t\u{f}\u{5}\u{4}\u{2}"
 	.align 4
 .0x801f19e4: lb $sp, -0x10d8($zr)
-.0x801f19e8: bne $s1, $a2, .0x801f6e14
+.0x801f19e8: .word 0x0 # TODO: bne $s1, $a2, .0x801f6e14
 .0x801f19ec: 	mfhi $at
 .0x801f19f0: lb $sp, -0x10f0($zr)
 .0x801f19f4: slti $fp, $t1, 0x361b
@@ -19755,7 +19755,7 @@ dylib_subseg_func_26:
 .0x801f1a54: .asciiz "\u{6}\u{6}\u{2}\u{4}\n\u{1}"
 	.align 4
 .0x801f1a5c: lb $sp, -0x11c8($zr)
-.0x801f1a60: beq $t8, $s4, .0x801faab0
+.0x801f1a60: .word 0x0 # TODO: beq $t8, $s4, .0x801faab0
 .0x801f1a64: 	divu $zr, $zr
 .0x801f1a68: lb $sp, -0x11e0($zr)
 .0x801f1a6c: addiu $t2, $s1, 0x4523
@@ -19798,7 +19798,7 @@ dylib_subseg_func_26:
 .0x801f1ae4: .word 0xff42ff25
 .0x801f1ae8: mtlo $zr
 .0x801f1aec: lb $sp, -0x1370($zr)
-.0x801f1af0: bne $t1, $t6, .0x801fa004
+.0x801f1af0: .word 0x0 # TODO: bne $t1, $t6, .0x801fa004
 .0x801f1af4: 	.asciiz "\u{5}a"
 	.align 4
 .0x801f1af8: lb $sp, -0x1398($zr)
@@ -19826,7 +19826,7 @@ dylib_subseg_func_26:
 .0x801f1b2c: slt $zr, $t1, $sp
 .0x801f1b30: jalr $zr
 .0x801f1b34: 	lb $sp, -0x1428($zr)
-.0x801f1b38: blez $k0, .0x801f90a8
+.0x801f1b38: .word 0x0 # TODO: blez $k0, .0x801f90a8
 .0x801f1b3c: 	.word 0xff15
 .0x801f1b40: lb $sp, -0x1438($zr)
 .0x801f1b44: lui $at, 0x62ff
@@ -19849,7 +19849,7 @@ dylib_subseg_func_26:
 .0x801f1b80: .word 0xffffffff
 .0x801f1b84: .word 0xffff
 .0x801f1b88: lb $sp, -0x14e0($zr)
-.0x801f1b8c: beq $t1, $t7, .0x801f93b0
+.0x801f1b8c: .word 0x0 # TODO: beq $t1, $t7, .0x801f93b0
 .0x801f1b90: 	div $zr, $zr, $zr
 .0x801f1b94: lb $sp, -0x1500($zr)
 .0x801f1b98: sltiu $t2, $k0, 0x4d22
@@ -19869,7 +19869,7 @@ dylib_subseg_func_26:
 .0x801f1bcc: .asciiz "\u{16}\u{12}"
 	.align 4
 .0x801f1bd0: lb $sp, -0x15a0($zr)
-.0x801f1bd4: bne $ra, $ra, .0x801f6848
+.0x801f1bd4: .word 0x0 # TODO: bne $ra, $ra, .0x801f6848
 .0x801f1bd8: 	.asciiz ")$"
 	.align 4
 .0x801f1bdc: lb $sp, -0x15c0($zr)
@@ -19883,7 +19883,7 @@ dylib_subseg_func_26:
 .0x801f1bf8: .word 0x5e5bff53
 .0x801f1bfc: .word 0x59ff
 .0x801f1c00: lb $sp, -0x1620($zr)
-.0x801f1c04: beq $s0, $t2, .0x801fbc64
+.0x801f1c04: .word 0x0 # TODO: beq $s0, $t2, .0x801fbc64
 .0x801f1c08: 	.word 0x8ff
 .0x801f1c0c: lb $sp, -0x1640($zr)
 .0x801f1c10: slti $t0, $t9, 0x3a26
@@ -19935,7 +19935,7 @@ dylib_subseg_func_26:
 .0x801f1cbc: .asciiz "JR"
 	.align 4
 .0x801f1cc0: lb $sp, -0x1840($zr)
-.0x801f1cc4: blez $s2, .0x801fd8dc
+.0x801f1cc4: .word 0x0 # TODO: blez $s2, .0x801fd8dc
 .0x801f1cc8: 	mfhi $t1
 .0x801f1ccc: lb $sp, -0x1868($zr)
 .0x801f1cd0: .word 0x5359ff3c
@@ -20003,14 +20003,14 @@ dylib_subseg_func_26:
 .0x801f1dc4: 	.asciiz "0\u{17}"
 	.align 4
 .0x801f1dc8: lb $sp, -0x1b5c($zr)
-.0x801f1dcc: bne $a3, $ra, .0x801ff24c
+.0x801f1dcc: .word 0x0 # TODO: bne $a3, $ra, .0x801ff24c
 .0x801f1dd0: 	xor $a3, $zr, $zr
 .0x801f1dd4: lb $sp, -0x1b80($zr)
 .0x801f1dd8: .word 0x4651ff39
 .0x801f1ddc: .asciiz "_M"
 	.align 4
 .0x801f1de0: lb $sp, -0x1b9c($zr)
-.0x801f1de4: bgtz $a3, .0x80201628
+.0x801f1de4: .word 0x0 # TODO: bgtz $a3, .0x80201628
 .0x801f1de8: 	addu $v1, $zr, $zr
 .0x801f1dec: lb $sp, -0x1bb8($zr)
 .0x801f1df0: addiu $t3, $t8, 0x123e
@@ -20027,7 +20027,7 @@ dylib_subseg_func_26:
 .0x801f1e18: 	.asciiz "\u{1}Q"
 	.align 4
 .0x801f1e1c: lb $sp, -0x1c18($zr)
-.0x801f1e20: bgtz $t9, .0x801fb78c
+.0x801f1e20: .word 0x0 # TODO: bgtz $t9, .0x801fb78c
 .0x801f1e24: 	mthi $zr
 .0x801f1e28: lb $sp, -0x1c2c($zr)
 .0x801f1e2c: .word 0x495c44ff
@@ -20045,7 +20045,7 @@ dylib_subseg_func_26:
 .0x801f1e5c: ori $a1, $t2, 0x53ff
 .0x801f1e60: .word 0xff38
 .0x801f1e64: lb $sp, -0x1cec($zr)
-.0x801f1e68: blez $a3, .0x801fa730
+.0x801f1e68: .word 0x0 # TODO: blez $a3, .0x801fa730
 .0x801f1e6c: 	.asciiz "\u{1e}*"
 	.align 4
 .0x801f1e70: lb $sp, -0x1d14($zr)
@@ -20074,7 +20074,7 @@ dylib_subseg_func_26:
 .0x801f1ebc: .word 0xffffffff
 .0x801f1ec0: .word 0xffff
 .0x801f1ec4: lb $sp, -0x1e20($zr)
-.0x801f1ec8: bgtz $t0, .0x801feec8
+.0x801f1ec8: .word 0x0 # TODO: bgtz $t0, .0x801feec8
 .0x801f1ecc: 	.word 0x10ff
 .0x801f1ed0: lb $sp, -0x1e48($zr)
 .0x801f1ed4: .word 0x59235fff
