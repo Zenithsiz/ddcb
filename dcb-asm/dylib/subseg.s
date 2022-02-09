@@ -19674,7 +19674,7 @@ dylib_subseg_func_26:
 .0x801f1958: sll $at, $zr, 0x18
 .0x801f195c: nop
 .0x801f1960: lb $sp, -0x1030($zr)
-.0x801f1964: .ascii "\x3\x5\u{1}"
+.0x801f1964: .ascii "\x3\x5\x1"
 	.asciiz "c\x3\x7"
 	.align 2
 .0x801f196c: lb $sp, -0x1038($zr)
@@ -19790,7 +19790,7 @@ dylib_subseg_func_26:
 .0x801f1ac4: .asciiz "\xb\x15"
 	.align 2
 .0x801f1ac8: lb $sp, -0x12f8($zr)
-.0x801f1acc: .ascii "W\\\'E\u{1f}"
+.0x801f1acc: .ascii "W\\\'E\x1f"
 	.asciiz "2"
 	.align 2
 .0x801f1ad4: lb $sp, -0x1320($zr)
@@ -19801,7 +19801,7 @@ dylib_subseg_func_26:
 .0x801f1ae8: mtlo $zr
 .0x801f1aec: lb $sp, -0x1370($zr)
 .0x801f1af0: .word 0x0 # TODO: bne $t1, $t6, .0x801fa004
-.0x801f1af4: .ascii "\u{5}"
+.0x801f1af4: .ascii "\x5"
 	.asciiz "a"
 	.align 2
 .0x801f1af8: lb $sp, -0x1398($zr)

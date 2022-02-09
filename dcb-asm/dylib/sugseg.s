@@ -6,7 +6,7 @@ dylib_sugseg:
 .0x801ddf48: lb $fp, 0x23cc($zr)
 .0x801ddf4c: lb $fp, 0x2724($zr)
 .0x801ddf50: .word 0x700030
-.0x801ddf54: mfhi $zr
+.0x801ddf54: .word 0x100010
 .0x801ddf58: .asciiz "M:\\HDF%d\\%d_%d.tam"
 	.align 2
 .0x801ddf6c: .asciiz "M:\\HDF%03d\\%d.tam"
@@ -18804,7 +18804,7 @@ dylib_sugseg_func_92:
 .0x801ef254: jr $ra
 .0x801ef258: 	addiu $sp, 0x18
 .0x801ef25c: .word 0xf0000000
-.0x801ef260: and $ra, $zr, $zr
+.0x801ef260: .word 0xfa24
 .0x801ef264: .word 0xf8301000
 .0x801ef268: nop
 .0x801ef26c: nop
