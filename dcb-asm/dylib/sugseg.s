@@ -18876,11 +18876,11 @@ dylib_sugseg_func_92:
 .0x801ef374: lb $fp, 0x43a4($zr)
 .0x801ef378: lb $v1, 0x3cd4($zr)
 .0x801ef37c: nop
-.0x801ef380: .asciiz "\u{1}"
+.0x801ef380: .asciiz "\x1"
 	.align 2
-.0x801ef384: .asciiz "\u{1}"
+.0x801ef384: .asciiz "\x1"
 	.align 2
-.0x801ef388: .asciiz "\u{1}"
+.0x801ef388: .asciiz "\x1"
 	.align 2
 .0x801ef38c: .asciiz "\n"
 	.align 2

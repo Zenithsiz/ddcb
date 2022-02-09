@@ -1,9 +1,9 @@
 dylib_openseg:
 .0x801ddf38: jr $zr
-.0x801ddf3c: 	add $zr, $zr
+.0x801ddf3c: 	.word 0xa0
 .0x801ddf40: .word 0xb0
 .0x801ddf44: .word 0xf0
-.0x801ddf48: add $zr, $zr
+.0x801ddf48: .word 0xa0
 .0x801ddf4c: .word 0xb0
 .0x801ddf50: .asciiz "Level *e5"
 	.align 2
@@ -27,8 +27,9 @@ dylib_openseg:
 .0x801ddfac: .asciiz "Nature"
 	.align 2
 .0x801ddfb4: addi $s1, $at, 0x612a
-.0x801ddfb8: jalr $v1, $t4
-.0x801ddfbc: 	addi $s0, $at, 0x612a
+.0x801ddfb8: .asciiz "Ice"
+	.align 2
+.0x801ddfbc: addi $s0, $at, 0x612a
 .0x801ddfc0: .asciiz "Fire"
 	.align 2
 .0x801ddfc8: .asciiz "Number"
@@ -56,11 +57,11 @@ dylib_openseg:
 .0x801de094: .asciiz "-"
 	.align 2
 .0x801de098: andi $t6, $t9, 0x3325
-.0x801de09c: and $zr, $zr
-.0x801de0a0: or $t4, $zr, $zr
-.0x801de0a4: .asciiz "in Stock. \u{c}\u{7}%d\u{c}\u{6} Cards"
+.0x801de09c: .word 0x64
+.0x801de0a0: .word 0x6425
+.0x801de0a4: .asciiz "in Stock. \xc\x7%d\xc\x6 Cards"
 	.align 2
-.0x801de0bc: .asciiz "in a Deck. \u{c}\u{7}%d\u{c}\u{6} Cards"
+.0x801de0bc: .asciiz "in a Deck. \xc\x7%d\xc\x6 Cards"
 	.align 2
 .0x801de0d4: .asciiz "Unidentified Card"
 	.align 2
@@ -88,8 +89,8 @@ dylib_openseg:
 .0x801de170: .word 0x51206f74
 .0x801de174: addi $s4, $v1, 0x6975
 .0x801de178: .word 0x64617254
-.0x801de17c: lui $a3, 0x6e69
-.0x801de180: sll $v0, 0x0
+.0x801de17c: .word 0x3f676e69
+.0x801de180: .word 0x2021000
 .0x801de184: addiu $s4, $k1, 0x654c
 .0x801de188: .asciiz "s save your *c4Registration*c7.\nPlease insert a *c5MEMORY CARD*c7 with at\nleast 2 free blocks into MEMORY CARD slot 1."
 	.align 2
@@ -174,7 +175,8 @@ dylib_openseg:
 	.align 2
 ##########
 
-.0x801de9b4: multu $v1, $s3
+.0x801de9b4: .asciiz "Yes"
+	.align 2
 .0x801de9b8: .asciiz "No"
 	.align 2
 .0x801de9bc: .word 0xe982a082
@@ -214,7 +216,7 @@ dylib_openseg:
 .0x801dea4c: lb $fp, 0x757c($zr)
 .0x801dea50: lb $fp, 0x75c0($zr)
 .0x801dea54: lb $fp, 0x75e8($zr)
-.0x801dea58: or $t4, $zr, $zr
+.0x801dea58: .word 0x6325
 .0x801dea5c: .asciiz "OK"
 	.align 2
 .0x801dea60: addiu $s0, $t1, 0x732a
@@ -237,16 +239,14 @@ dylib_openseg:
 	.align 2
 .0x801deaa8: .asciiz "A name has not been entered!"
 	.align 2
-.0x801deac8: .word 0x74207349
-.0x801deacc: addi $s3, $v1, 0x6968
-.0x801dead0: .word 0x656d616e
-.0x801dead4: lui $t3, 0x4f20
-.0x801dead8: sll $v1, $v0, 0x0
+.0x801deac8: .ascii "Is this name OK?"
+	.word 0x621800
 .0x801deadc: .asciiz "B:\\DECK2.DEK"
 	.align 2
-.0x801deaec: or $a2, $v1, $a0
-.0x801deaf0: slti $s3, $t3, 0x2528
-.0x801deaf4: nop
+.0x801deaec: .asciiz "%4d"
+	.align 2
+	.asciiz "(%s)"
+	.align 2
 .0x801deaf8: .asciiz "Support Effect"
 	.align 2
 .0x801deb08: .asciiz "B:\\BCARD.ARC"
@@ -255,12 +255,9 @@ dylib_openseg:
 	.align 2
 .0x801deb28: .asciiz "STARTER SELECT"
 	.align 2
-.0x801deb38: .word 0x74207349
-.0x801deb3c: addi $s3, $v1, 0x6968
-.0x801deb40: .word 0x6b636544
-.0x801deb44: lui $t3, 0x4f20
-.0x801deb48: jal 0x8005b400
-.0x801deb4c: 	lb $fp, -0x5e18($zr)
+.0x801deb38: .ascii "Is this Deck OK?"
+	.word 0x0c016d00
+.0x801deb4c: lb $fp, -0x5e18($zr)
 .0x801deb50: lb $fp, -0x5e68($zr)
 .0x801deb54: lb $fp, -0x5f38($zr)
 .0x801deb58: lb $fp, -0x5f38($zr)
@@ -285,10 +282,8 @@ dylib_openseg:
 	.align 2
 .0x801debb0: .asciiz "2 Player Battle"
 	.align 2
-.0x801debc0: addiu $s0, $t1, 0x732a
-.0x801debc4: addi $zr, $at, 0x6433
-.0x801debc8: andi $a1, $t9, 0x2020
-.0x801debcc: and $zr, $zr
+.0x801debc0: .asciiz "*s0%3d    %3d"
+	.align 2
 .0x801debd0: .asciiz "WINS"
 	.align 2
 .0x801debd8: .asciiz "LOSSES"
@@ -525,9 +520,8 @@ dylib_openseg:
 .0x801df6f8: .asciiz "Player %d : Slot %d"
 	.align 2
 .0x801df70c: beq $t0, $t1, dylib_openseg_func_13.0x801e0f10
-.0x801df710: 	mtlo $zr
-.0x801df714: addiu $s0, $t1, 0x732a
-.0x801df718: .asciiz "3d*w3%%"
+.0x801df710: 	.word 0x171513
+.0x801df718: .asciiz "*s0%3d*w3%%"
 	.align 2
 .0x801df720: .asciiz "Name"
 	.align 2
@@ -548,8 +542,9 @@ dylib_openseg:
 	.align 2
 .0x801df778: .asciiz "Current Position"
 	.align 2
-.0x801df78c: .word 0x6e657241
-.0x801df790: addu $zr, $ra, $zr
+.0x801df78c: .asciiz "Arena"
+	.byte 0xe0
+	.byte 0x03
 .0x801df794: .asciiz "Save the game up to this point?"
 	.align 2
 .0x801df7b4: lb $fp, -0x1de0($zr)
@@ -645,13 +640,13 @@ dylib_openseg:
 .0x801df9f8: lb $fp, -0x918($zr)
 .0x801df9fc: lb $fp, -0x894($zr)
 .0x801dfa00: lb $fp, -0x964($zr)
-.0x801dfa04: mult $t2, $gp
-.0x801dfa08: add $zr, $zr
+.0x801dfa04: .word 0x15c0158
+.0x801dfa08: .word 0x160
 .0x801dfa0c: .word 0x62826382
 .0x801dfa10: .word 0x6d816182
 .0x801dfa14: .word 0x6e817325
 .0x801dfa18: .word 0x46817325
-.0x801dfa1c: or $t6, $zr, $zr
+.0x801dfa1c: .word 0x7325
 
 ##########
 dylib_openseg_func_0:
@@ -18028,16 +18023,16 @@ dylib_openseg_func_63:
 
 .0x801eff08: nop
 .0x801eff0c: nop
-.0x801eff10: .asciiz "6\u{b}"
+.0x801eff10: .asciiz "6\xb"
 	.align 2
-.0x801eff14: .asciiz "\u{1}"
+.0x801eff14: .asciiz "\x1"
 	.align 2
-.0x801eff18: mult $zr, $zr
-.0x801eff1c: .asciiz "\u{17}\u{7}"
+.0x801eff18: .word 0x3a18
+.0x801eff1c: .asciiz "\x17\x7"
 	.align 2
-.0x801eff20: srl $zr, 0x0
-.0x801eff24: mfhi $s0
-.0x801eff28: mflo $zr
+.0x801eff20: .word 0x2
+.0x801eff24: .word 0x8190
+.0x801eff28: .word 0x52
 .0x801eff2c: .word 0xb0
 .0x801eff30: nop
 .0x801eff34: nop
@@ -18046,7 +18041,7 @@ dylib_openseg_func_63:
 .0x801eff38:	.word 0x30000a
 ##########
 
-.0x801eff3c: mfhi $zr
+.0x801eff3c: .word 0x620090
 
 ##########
 .0x801eff40:	.word 0xffff0000
@@ -18059,7 +18054,7 @@ dylib_openseg_func_63:
 	.align 2
 ##########
 
-.0x801eff4c: .word 0xc + 0x100 * 0x400
+.0x801eff4c: .word 0x1000c
 
 ##########
 .0x801eff50:	.word 0x112012d
@@ -18069,8 +18064,8 @@ dylib_openseg_func_63:
 .0x801eff58: nop
 .0x801eff5c: nop
 .0x801eff60: nop
-.0x801eff64: xor $zr, $at, $s0
-.0x801eff68: mfhi $zr
+.0x801eff64: .word 0x3000a6
+.0x801eff68: .word 0x620090
 .0x801eff6c: .word 0xffff0000
 
 ##########
@@ -18079,10 +18074,10 @@ dylib_openseg_func_63:
 
 .0x801eff74: .asciiz "\n&x"
 	.align 2
-.0x801eff78: .word 0xc + 0x100 * 0x400
+.0x801eff78: .word 0x1000c
 .0x801eff7c: .word 0x112012d
 .0x801eff80: sll $at, $zr, 0x18
-.0x801eff84: .asciiz "\u{1}"
+.0x801eff84: .asciiz "\x1"
 	.align 2
 .0x801eff88: lb $sp, -0x2038($zr)
 .0x801eff8c: lb $sp, -0x2044($zr)
@@ -18098,30 +18093,30 @@ dylib_openseg_func_63:
 .0x801effb4: nop
 .0x801effb8: nop
 .0x801effbc: .word 0x3c0032
-.0x801effc0: mflo $zr
+.0x801effc0: .word 0x540052
 .0x801effc4: .word 0xffff0000
 .0x801effc8: .word 0xffff0000
 .0x801effcc: .word 0xd8160a
-.0x801effd0: .word 0xc + 0x100 * 0x400
+.0x801effd0: .word 0xc + 0x100 * 0x100
 .0x801effd4: .word 0x100000b
 .0x801effd8: sll $at, $zr, 0x18
 .0x801effdc: nop
 .0x801effe0: nop
 .0x801effe4: nop
-.0x801effe8: jr $at
-.0x801effec: 	mflo $zr
+.0x801effe8: .word 0x3c00c8
+.0x801effec: .word 0x540052
 .0x801efff0: .word 0xffff0000
 .0x801efff4: .word 0xffff0000
-.0x801efff8: .asciiz "\n\u{16}H"
+.0x801efff8: .asciiz "\n\x16H"
 	.align 2
-.0x801efffc: .word 0xc + 0x100 * 0x400
+.0x801efffc: .word 0xc + 0x100 * 0x100
 
 ##########
 .0x801f0000:	.word 0x100000b
 ##########
 
 .0x801f0004: sll $at, $zr, 0x18
-.0x801f0008: .asciiz "\u{1}"
+.0x801f0008: .asciiz "\x1"
 	.align 2
 .0x801f000c: nop
 .0x801f0010: lb $fp, 0x8d8($zr)
@@ -18147,7 +18142,7 @@ dylib_openseg_func_63:
 .0x801f0050: lb $sp, -0x17ac($zr)
 .0x801f0054: sll $zr, 0x10
 .0x801f0058: lb $sp, -0x1814($zr)
-.0x801f005c: srl $zr, 0x14
+.0x801f005c: .word 0x1000502
 .0x801f0060: lb $sp, -0x1858($zr)
 .0x801f0064: .word 0xff000600
 .0x801f0068: lb $sp, -0x18bc($zr)
@@ -18161,7 +18156,7 @@ dylib_openseg_func_63:
 .0x801f0088: lb $sp, -0x1a38($zr)
 .0x801f008c: .word 0xff200b04
 .0x801f0090: lb $sp, -0x1aa4($zr)
-.0x801f0094: sll $v0, $zr, 0x0
+.0x801f0094: .word 0x2001000
 .0x801f0098: lb $sp, -0x1ab0($zr)
 .0x801f009c: .word 0x21b1505
 .0x801f00a0: lb $sp, -0x1abc($zr)
@@ -18195,7 +18190,7 @@ dylib_openseg_func_63:
 .0x801f0110: lb $sp, -0x1c98($zr)
 .0x801f0114: .word 0xff001c00
 .0x801f0118: lb $sp, -0x1d08($zr)
-.0x801f011c: sll $v1, $zr, 0x14
+.0x801f011c: .word 0x3001d00
 .0x801f0120: lb $sp, -0x1d58($zr)
 .0x801f0124: bltz $zr, .0x801f7928
 .0x801f0128: 	lb $sp, -0x1da4($zr)
@@ -18215,14 +18210,14 @@ dylib_openseg_func_63:
 .0x801f0148:	.word 0xe000a
 ##########
 
-.0x801f014c: mthi $zr
+.0x801f014c: .word 0x120011
 .0x801f0150: .word 0x130014
 
 ##########
 .0x801f0154:	.word 0x170015
 ##########
 
-.0x801f0158: mfhi $zr
+.0x801f0158: .word 0x180010
 .0x801f015c: .word 0x1a0016
 .0x801f0160: .word 0x1f001e
 .0x801f0164: divu $zr, $zr, $sp
@@ -18239,27 +18234,27 @@ dylib_openseg_func_63:
 .0x801f0188:	.word 0x440034
 ##########
 
-.0x801f018c: srl $zr, $ra, 0x1
+.0x801f018c: .word 0x3f0042
 .0x801f0190: .word 0x40003e
 .0x801f0194: .word 0x8f004a
-.0x801f0198: mfhi $zr
+.0x801f0198: .word 0x960050
 .0x801f019c: .word 0x57000b
 .0x801f01a0: .word 0x520056
-.0x801f01a4: mult $v0, $s5
-.0x801f01a8: div $zr, $v0, $k1
+.0x801f01a4: .word 0x550058
+.0x801f01a8: .word 0x5b005a
 
 ##########
 .0x801f01ac:	.word 0x59005d
 ##########
 
-.0x801f01b0: and $zr, $v1, $zr
+.0x801f01b0: .word 0x6000a4
 .0x801f01b4: .word 0x65005c
-.0x801f01b8: sub $zr, $v0, $ra
-.0x801f01bc: subu $zr, $v0, $fp
-.0x801f01c0: addu $zr, $v1, $a0
+.0x801f01b8: .word 0x5f00a2
+.0x801f01bc: .word 0x5e00a3
+.0x801f01c0: .word 0x640061
 .0x801f01c4: .word 0x66ffff
-.0x801f01c8: sub $zr, $v1, $t4
-.0x801f01cc: .word 0xcd + 0x100 * 0x1bc02
+.0x801f01c8: .word 0x6c0062
+.0x801f01cc: .word 0x6f008d
 .0x801f01d0: .word 0x740071
 .0x801f01d4: .word 0x730070
 .0x801f01d8: .word 0x7a0078
@@ -18268,169 +18263,169 @@ dylib_openseg_func_63:
 .0x801f01e4: .word 0x82007e
 .0x801f01e8: .word 0x830081
 .0x801f01ec: .word 0x89007f
-.0x801f01f0: srav $zr, $t2, $a0
-.0x801f01f4: jr $a0
-.0x801f01f8: 	mthi $a0
-.0x801f01fc: mtlo $a0
+.0x801f01f0: .word 0x8a0087
+.0x801f01f4: .word 0x900088
+.0x801f01f8: .word 0x920091
+.0x801f01fc: .word 0x950093
 .0x801f0200: .word 0x9a0094
 .0x801f0204: .word 0x9c009f
 .0x801f0208: .word 0x9e009d
-.0x801f020c: addu $zr, $a1, $zr
-.0x801f0210: slt $zr, $a1, $t3
-.0x801f0214: nor $zr, $a1, $t0
-.0x801f0218: mthi $zr
-.0x801f021c: sll $zr, $sp, 0x3
+.0x801f020c: .word 0xa000a1
+.0x801f0210: .word 0xab00aa
+.0x801f0214: .word 0xa800a7
+.0x801f0218: .word 0x60051
+.0x801f021c: .word 0xdd00c0
 .0x801f0220: .word 0xd400cb
-.0x801f0224: sub $zr, $a1, $ra
-.0x801f0228: sltu $zr, $a3, $t4
+.0x801f0224: .word 0xbf00e2
+.0x801f0228: .word 0xec00eb
 .0x801f022c: .word 0xee00ed
-.0x801f0230: subu $zr, $a3, $a0
-.0x801f0234: or $zr, $a2, $t4
-.0x801f0238: .word 0xcd + 0x100 * 0x39803
+.0x801f0230: .word 0xe400e3
+.0x801f0234: .word 0xcc00e5
+.0x801f0238: .word 0xe600cd
 .0x801f023c: .word 0xf000ef
 .0x801f0240: .word 0xf600f5
-.0x801f0244: srav $zr, $gp, $a3
+.0x801f0244: .word 0xfc0107
 
 ##########
 .0x801f0248:	.word 0xfe00fd
 ##########
 
 .0x801f024c: .word 0x10000ff
-.0x801f0250: jr $t0
-.0x801f0254: 	.word 0xc + 0x100 * 0x43404
+.0x801f0250: .word 0x10b0108
+.0x801f0254: .word 0x10d010c
 .0x801f0258: .word 0x10f010e
-.0x801f025c: mfhi $zr
+.0x801f025c: .word 0x1090110
 .0x801f0260: .word 0xffff010a
 .0x801f0264: .word 0xffffffff
 .0x801f0268: .word 0xffffffff
 .0x801f026c: .word 0xffffffff
 .0x801f0270: .word 0x128ffff
-.0x801f0274: nor $zr, $t1, $t1
-.0x801f0278: sltu $zr, $t1, $t4
+.0x801f0274: .word 0x1290127
+.0x801f0278: .word 0x12c012b
 .0x801f027c: .word 0xffff
-.0x801f0280: sll $zr, 0xd
+.0x801f0280: .word 0xa00340
 .0x801f0284: .word 0x2e006c
-.0x801f0288: add $zr, $a2, $s1
-.0x801f028c: .word 0x09
-.0x801f0290: 	.word 0x2e006c
+.0x801f0288: .word 0xd10360
+.0x801f028c: .word 0xb0009
+.0x801f0290: .word 0x2e006c
 .0x801f0294: .word 0x3400001
-.0x801f0298: nop
+.0x801f0298: .word 0x800000
 .0x801f029c: .word 0x340004a
 .0x801f02a0: .word 0xce
-.0x801f02a4: nop
+.0x801f02a4: .word 0x800000
 .0x801f02a8: .word 0x101004a
-.0x801f02ac: add $zr, $zr
-.0x801f02b0: sll $zr, $t2, 0x2
-.0x801f02b4: sll $zr, $t7, 0xd
+.0x801f02ac: .word 0x360
+.0x801f02b0: .word 0x4a0080
+.0x801f02b4: .word 0xcf0340
 .0x801f02b8: srlv $zr, $a2, $zr
-.0x801f02bc: sll $zr, $t2, 0x2
+.0x801f02bc: .word 0x4a0080
 .0x801f02c0: .word 0x35c0201
-.0x801f02c4: sra $zr, $t4, 0x2
-.0x801f02c8: mflo $zr
+.0x801f02c4: .word 0x2c0083
+.0x801f02c8: .word 0x3400012
 .0x801f02cc: .word 0xfffc00d1
 .0x801f02d0: .word 0x2cfffd
-.0x801f02d4: mflo $zr
-.0x801f02d8: mfhi $zr
-.0x801f02dc: mult $zr, $t4
-.0x801f02e0: sll $zr, $s0, 0xd
+.0x801f02d4: .word 0x1010012
+.0x801f02d8: .word 0x4a0350
+.0x801f02dc: .word 0xc0098
+.0x801f02e0: .word 0xd00340
 .0x801f02e4: nop
-.0x801f02e8: mult $zr, $t4
+.0x801f02e8: .word 0xc0098
 .0x801f02ec: .word 0x3500101
-.0x801f02f0: sra $zr, $s0, 0x2
+.0x801f02f0: .word 0x300083
 .0x801f02f4: .word 0x3400014
-.0x801f02f8: mflo $zr
-.0x801f02fc: sll $zr, $s0, 0x0
+.0x801f02f8: .word 0xd2
+.0x801f02fc: .word 0x300000
 .0x801f0300: .word 0x2010014
-.0x801f0304: mfhi $zr
+.0x801f0304: .word 0x6f0350
 
 ##########
 .0x801f0308:	.word 0x140078
 ##########
 
-.0x801f030c: mfhi $zr
+.0x801f030c: .word 0xd00350
 .0x801f0310: nop
 .0x801f0314: .word 0x130078
 .0x801f0318: .word 0x3500001
 .0x801f031c: .word 0x7c0056
 .0x801f0320: div $zr, $k0, $s0
-.0x801f0324: mthi $zr
-.0x801f0328: sll $zr, $gp, 0x0
+.0x801f0324: .word 0xd1
+.0x801f0328: .word 0x7c0000
 .0x801f032c: multu $s0, $at
 
 ##########
-.0x801f0330:	.asciiz "v\u{3}J"
+.0x801f0330:	.asciiz "v\x3J"
 	.align 2
 ##########
 
 .0x801f0334: sllv $zr, $t1, $zr
-.0x801f0338: mfhi $zr
+.0x801f0338: .word 0xd30350
 .0x801f033c: sll $zr, $s0, 0x0
 .0x801f0340: sllv $zr, $t1, $zr
-.0x801f0344: sll $zr, $s7, 0x0
+.0x801f0344: .word 0x03770000
 
 ##########
 .0x801f0348:	.word 0x4004a
 ##########
 
-.0x801f034c: jalr $k0, $zr
-.0x801f0350: 	.word 0x400d4
-.0x801f0354: mfhi $zr
+.0x801f034c: .word 0x3500009
+.0x801f0350: .word 0x400d4
+.0x801f0354: .word 0x960010
 .0x801f0358: .word 0x09
-.0x801f035c: 	.asciiz "n\u{3}o"
+.0x801f035c: 	.asciiz "n\x3o"
 	.align 2
-.0x801f0360: mfhi $zr
-.0x801f0364: mfhi $zr
+.0x801f0360: .word 0x100010
+.0x801f0364: .word 0xce0350
 .0x801f0368: nop
-.0x801f036c: mfhi $zr
-.0x801f0370: sll $zr, $s2, 0x0
+.0x801f036c: .word 0x100010
+.0x801f0370: .word 0x3720000
 .0x801f0374: .word 0x4006f
 .0x801f0378: jr $k0
-.0x801f037c: 	mtlo $zr
-.0x801f0380: sll $zr, $a0, 0x0
+.0x801f037c: 	.word 0x1000d3
+.0x801f0380: .word 0x1040000
 .0x801f0384: srav $zr, $zr, $zr
-.0x801f0388: .asciiz "s\u{3}o"
+.0x801f0388: .asciiz "s\x3o"
 	.align 2
-.0x801f038c: mfhi $zr
-.0x801f0390: add $zr, $a2, $t7
-.0x801f0394: .asciiz "\u{14}\u{1}"
+.0x801f038c: .word 0x100010
+.0x801f0390: .word 0xcf0360
+.0x801f0394: .asciiz "\x14\x1"
 	.align 2
-.0x801f0398: mfhi $zr
-.0x801f039c: sll $zr, $t6, 0x0
+.0x801f0398: .word 0x100010
+.0x801f039c: .word 0x36e0000
 .0x801f03a0: .word 0x9007f
 .0x801f03a4: .word 0x3500001
 .0x801f03a8: .word 0xd5
-.0x801f03ac: mfhi $zr
+.0x801f03ac: .word 0x80010
 .0x801f03b0: .word 0xf0
-.0x801f03b4: .asciiz "n\u{3}\u{7f}"
+.0x801f03b4: .asciiz "n\x3\x7f"
 	.align 2
-.0x801f03b8: .word 0x09
-.0x801f03bc: 	mfhi $zr
-.0x801f03c0: and $zr, $s0
+.0x801f03b8: .word 0x10009
+.0x801f03bc: .word 0xd50350
+.0x801f03c0: .word 0x100124
 .0x801f03c4: .word 0xf0fff8
-.0x801f03c8: sll $zr, $t7, 0x0
+.0x801f03c8: .word 0x36f0000
 .0x801f03cc: .word 0x180056
 .0x801f03d0: mult $k0, $s0
 .0x801f03d4: .word 0x400cf
 .0x801f03d8: sllv $zr, $t8, $zr
 .0x801f03dc: mult $s0, $at
-.0x801f03e0: .asciiz "u\u{3}V"
+.0x801f03e0: .asciiz "u\x3V"
 	.align 2
 .0x801f03e4: sllv $zr, $t5, $zr
-.0x801f03e8: sll $zr, $s4, 0xd
+.0x801f03e8: .word 0xd40340
 .0x801f03ec: .word 0x4001c
 .0x801f03f0: .word 0xc00f4
 .0x801f03f4: .word 0x3760201
 .0x801f03f8: .word 0x180056
 .0x801f03fc: mult $k1, $zr
-.0x801f0400: mfhi $zr
+.0x801f0400: .word 0x011000d0
 .0x801f0404: sllv $zr, $t8, $zr
 .0x801f0408: mult $s0, $at
-.0x801f040c: .asciiz "o\u{3}n"
+.0x801f040c: .asciiz "o\x3n"
 	.align 2
-.0x801f0410: .word 0xcd + 0x100 * 0x400
-.0x801f0414: add $zr, $a2, $t6
+.0x801f0410: .word 0x1000d
+.0x801f0414: .word 0xce0360
 .0x801f0418: sllv $zr, $gp, $zr
-.0x801f041c: .word 0xc + 0x100 * 0x3c000
+.0x801f041c: .word 0xf0000c
 
 ##########
 .0x801f0420:	.word 0x36f0201
@@ -18449,16 +18444,16 @@ dylib_openseg_func_63:
 ##########
 
 .0x801f0434: .word 0x20100f0
-.0x801f0438: sll $zr, $t2, 0xd
-.0x801f043c: sll $zr, $s6, 0x1
-.0x801f0440: sll $zr, $s5, 0xd
+.0x801f0438: .word 0x4a0340
+.0x801f043c: .word 0x560040
+.0x801f0440: .word 0xd50340
 .0x801f0444: div $zr, $v0, $k0
-.0x801f0448: sll $zr, $s6, 0x1
+.0x801f0448: .word 0x560040
 .0x801f044c: .word 0x3500001
-.0x801f0450: srl $zr, 0x2
+.0x801f0450: .word 0x600082
 .0x801f0454: .word 0x3500001
-.0x801f0458: mflo $zr
-.0x801f045c: nop
+.0x801f0458: .word 0xd2
+.0x801f045c: .word 0x600000
 .0x801f0460: .word 0xf0
 .0x801f0464: .word 0x44434241
 .0x801f0468: .word 0x63626145
@@ -18489,50 +18484,50 @@ dylib_openseg_func_63:
 .0x801f04cc: .word 0x89001c
 .0x801f04d0: .word 0x8a001f
 .0x801f04d4: .word 0x10200f9
-.0x801f04d8: mfhi $zr
-.0x801f04dc: add $zr, $a1, $a0
-.0x801f04e0: sub $zr, $a1, $a2
-.0x801f04e4: and $zr, $a1, $t3
+.0x801f04d8: .word 0x960050
+.0x801f04dc: .word 0xa40060
+.0x801f04e0: .word 0xa60062
+.0x801f04e4: .word 0xab0064
 .0x801f04e8: .word 0x10900fa
 .0x801f04ec: .word 0x95002d
 .0x801f04f0: .word 0xa0003c
 .0x801f04f4: .word 0xa70041
-.0x801f04f8: sllv $zr, $t1, $a1
+.0x801f04f8: .word 0xa90044
 .0x801f04fc: .word 0x10300fb
-.0x801f0500: .asciiz "\u{1}"
+.0x801f0500: .asciiz "\x1"
 	.align 2
 .0x801f0504: nop
-.0x801f0508: .asciiz "\u{1}"
+.0x801f0508: .asciiz "\x1"
 	.align 2
-.0x801f050c: sll $s0, $zr, 0x2
+.0x801f050c: .word 0x808080
 .0x801f0510: add $a0, $at, $zr
-.0x801f0514: sll $zr, $s4, 0x0
+.0x801f0514: .word 0x540000
 .0x801f0518: add $zr, $at, $zr
-.0x801f051c: .asciiz "\u{5}"
+.0x801f051c: .asciiz "\x5"
 	.align 2
 .0x801f0520: nop
-.0x801f0524: add $zr, $v0, $s4
+.0x801f0524: .word 0x540020
 .0x801f0528: add $zr, $at, $zr
 .0x801f052c: srlv $zr, $zr, $zr
 .0x801f0530: nop
-.0x801f0534: sll $zr, $s4, 0x1
+.0x801f0534: .word 0x540040
 .0x801f0538: add $zr, $at, $zr
 .0x801f053c: srlv $zr, $zr, $zr
 .0x801f0540: nop
-.0x801f0544: sll $zr, $s4, 0x0
+.0x801f0544: .word 0x740000
 .0x801f0548: add $zr, $at, $zr
-.0x801f054c: .asciiz "\u{5}"
+.0x801f054c: .asciiz "\x5"
 	.align 2
 .0x801f0550: nop
 .0x801f0554: add $zr, $v1, $s4
 .0x801f0558: add $zr, $at, $zr
 .0x801f055c: srlv $zr, $zr, $zr
 .0x801f0560: nop
-.0x801f0564: sll $zr, $s4, 0x1
+.0x801f0564: .word 0x740040
 .0x801f0568: add $zr, $at, $zr
 .0x801f056c: srlv $zr, $zr, $zr
 .0x801f0570: nop
-.0x801f0574: sll $zr, $s4, 0x0
+.0x801f0574: .word 0x940000
 .0x801f0578: add $zr, $at, $zr
 .0x801f057c: .asciiz "\n"
 	.align 2
@@ -18541,17 +18536,17 @@ dylib_openseg_func_63:
 .0x801f0588: add $zr, $at, $zr
 .0x801f058c: srav $zr, $zr, $zr
 .0x801f0590: nop
-.0x801f0594: sll $zr, $s4, 0x1
+.0x801f0594: .word 0x940040
 .0x801f0598: add $zr, $at, $zr
 .0x801f059c: .asciiz "\n"
 	.align 2
 .0x801f05a0: nop
-.0x801f05a4: sll $zr, $s4, 0x1
+.0x801f05a4: .word 0x940040
 .0x801f05a8: add $zr, $at, $zr
 .0x801f05ac: .asciiz "\n"
 	.align 2
 .0x801f05b0: nop
-.0x801f05b4: sll $zr, $s4, 0x0
+.0x801f05b4: .word 0xb40000
 .0x801f05b8: add $zr, $at, $zr
 .0x801f05bc: .asciiz "\n"
 	.align 2
@@ -18570,35 +18565,35 @@ dylib_openseg_func_63:
 .0x801f05f0: .word 0xfffb0000
 .0x801f05f4: add $zr, $a1, $s4
 .0x801f05f8: add $zr, $at, $zr
-.0x801f05fc: .asciiz "\u{5}"
+.0x801f05fc: .asciiz "\x5"
 	.align 2
 .0x801f0600: .word 0xfffd0000
 .0x801f0604: add $zr, $a1, $s4
 .0x801f0608: add $zr, $at, $zr
 .0x801f060c: sra $zr, 0x0
 .0x801f0610: .word 0xffff0000
-.0x801f0614: sll $zr, $s4, 0x0
+.0x801f0614: .word 0xb40000
 .0x801f0618: add $zr, $at, $zr
 .0x801f061c: .word 0xc + 0x100 * 0x0
 .0x801f0620: nop
-.0x801f0624: sll $zr, $s4, 0x0
+.0x801f0624: .word 0x940000
 .0x801f0628: add $zr, $at, $zr
 .0x801f062c: sllv $zr, $zr, $zr
 .0x801f0630: nop
-.0x801f0634: sll $zr, $s4, 0x1
+.0x801f0634: .word 0xd40040
 .0x801f0638: add $zr, $at, $zr
 .0x801f063c: jr $zr
 .0x801f0640: 	nop
-.0x801f0644: sll $zr, $s4, 0x0
+.0x801f0644: .word 0xd40000
 .0x801f0648: add $zr, $at, $zr
 .0x801f064c: .asciiz "\n"
 	.align 2
 .0x801f0650: nop
 .0x801f0654: add $zr, $a2, $s4
 .0x801f0658: add $zr, $at, $zr
-.0x801f065c: .word 0xcd + 0x100 * 0x0
+.0x801f065c: .word 0xd
 .0x801f0660: nop
-.0x801f0664: sll $zr, $s4, 0x1
+.0x801f0664: .word 0xd40040
 .0x801f0668: add $zr, $at, $zr
 
 ##########
@@ -18607,7 +18602,7 @@ dylib_openseg_func_63:
 ##########
 
 .0x801f0670: nop
-.0x801f0674: sll $zr, $s4, 0x0
+.0x801f0674: .word 0x940000
 .0x801f0678: add $zr, $at, $zr
 .0x801f067c: sllv $zr, $zr, $zr
 .0x801f0680: nop

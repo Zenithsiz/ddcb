@@ -53,7 +53,7 @@ dylib_saiseg:
 .0x801de2e8: lb $sp, -0x54($zr)
 .0x801de2ec: lb $sp, -0xa4($zr)
 .0x801de2f0: xor $zr, $t1, $t2
-.0x801de2f4: .asciiz "-\u{1}3\u{1}0\u{1}6\u{1}\'\u{1}(\u{1})\u{1}+\u{1},\u{1}.\u{1}/\u{1}4\u{1}5\u{1}1\u{1}2\u{1}7\u{1}8\u{1}"
+.0x801de2f4: .asciiz "-\u{1}3\u{1}0\u{1}6\x1\'\x1(\x1)\x1+\x1,\x1.\x1/\u{1}4\u{1}5\u{1}1\u{1}2\u{1}7\u{1}8\x1"
 	.align 2
 .0x801de318: addu $zr, $a2, $t7
 .0x801de31c: slt $zr, $at, $t0
@@ -385,7 +385,7 @@ dylib_saiseg:
 .0x801de95c: .word 0xffbbff8b
 .0x801de960: sra $zr, $s7, 0x1
 .0x801de964: div $zr, $t0, $k1
-.0x801de968: .asciiz "\u{1c}\u{1}\u{1d}\u{1}\u{1e}\u{1}\u{1f}\u{1} \u{1}!\u{1}\"\u{1}#\u{1}$\u{1}%\u{1}No."
+.0x801de968: .asciiz "\x1c\x1\x1d\x1\x1e\x1\x1f\x1 \x1!\x1\"\x1#\x1$\x1%\x1No."
 	.align 2
 .0x801de980: addiu $s0, $t1, 0x732a
 .0x801de984: .asciiz "3d"
@@ -22196,13 +22196,13 @@ dylib_saiseg_func_123:
 
 
 ##########
-.0x801f3544:	.asciiz ",\u{1}~"
+.0x801f3544:	.asciiz ",\x1~"
 	.align 2
 ##########
 
 .0x801f3548: .word 0xffff0000
 .0x801f354c: .word 0xffff0000
-.0x801f3550: .asciiz "\n\u{16}H"
+.0x801f3550: .asciiz "\n\x16H"
 	.align 2
 .0x801f3554: .word 0xc + 0x100 * 0x0
 .0x801f3558: .word 0x100000f
@@ -22246,12 +22246,12 @@ dylib_saiseg_func_123:
 .0x801f35e0: add $zr, $t6
 .0x801f35e4: and $zr, $t6
 .0x801f35e8: add $zr, $t6
-.0x801f35ec: .asciiz "\u{15}"
+.0x801f35ec: .asciiz "\x15"
 	.align 2
 .0x801f35f0: add $zr, $t6
 .0x801f35f4: .word 0xe0015
 .0x801f35f8: jr $zr
-.0x801f35fc: 	.asciiz "\u{15}"
+.0x801f35fc: 	.asciiz "\x15"
 	.align 2
 
 ##########
@@ -22260,14 +22260,14 @@ dylib_saiseg_func_123:
 
 .0x801f3604: .word 0xe0015
 .0x801f3608: .word 0xe0030
-.0x801f360c: .asciiz "\u{15}"
+.0x801f360c: .asciiz "\x15"
 	.align 2
 .0x801f3610: .word 0xe0030
 .0x801f3614: .word 0xe0015
 .0x801f3618: mfhi $zr
 
 ##########
-.0x801f361c:	.asciiz "\u{15}"
+.0x801f361c:	.asciiz "\x15"
 	.align 2
 ##########
 
@@ -22371,14 +22371,14 @@ dylib_saiseg_func_123:
 .0x801f3798: nop
 .0x801f379c: sll $zr, 0x8
 .0x801f37a0: .word 0xed
-.0x801f37a4: .asciiz "t\u{18}"
+.0x801f37a4: .asciiz "t\x18"
 	.align 2
 .0x801f37a8: sll $zr, 0xb
 .0x801f37ac: nop
 .0x801f37b0: sll $zr, 0x8
 .0x801f37b4: .word 0xf4
 .0x801f37b8: mfhi $t0
-.0x801f37bc: .asciiz ")\u{2}"
+.0x801f37bc: .asciiz ")\x2"
 	.align 2
 .0x801f37c0: nop
 .0x801f37c4: sll $zr, 0x8
@@ -22391,7 +22391,7 @@ dylib_saiseg_func_123:
 .0x801f37e0: .asciiz "w("
 	.align 2
 .0x801f37e4: add $zr, $zr
-.0x801f37e8: .asciiz "(\u{1}"
+.0x801f37e8: .asciiz "(\x1"
 	.align 2
 .0x801f37ec: sll $zr, 0xa
 .0x801f37f0: .word 0x1f7
@@ -22404,7 +22404,7 @@ dylib_saiseg_func_123:
 .0x801f3808: .asciiz "w("
 	.align 2
 .0x801f380c: add $zr, $zr
-.0x801f3810: .asciiz "x\u{1}"
+.0x801f3810: .asciiz "x\x1"
 	.align 2
 .0x801f3814: sll $zr, 0xa
 .0x801f3818: .word 0x1f7
@@ -22416,7 +22416,7 @@ dylib_saiseg_func_123:
 .0x801f382c: .word 0x1f7
 .0x801f3830: nor $a1, $zr, $zr
 .0x801f3834: sll $zr, 0xd
-.0x801f3838: .asciiz "(\u{1}"
+.0x801f3838: .asciiz "(\x1"
 	.align 2
 .0x801f383c: sll $zr, 0xa
 .0x801f3840: .word 0x1f7
@@ -22426,20 +22426,20 @@ dylib_saiseg_func_123:
 .0x801f3850: sll $zr, 0xa
 .0x801f3854: .word 0x1f7
 .0x801f3858: nor $a1, $zr, $zr
-.0x801f385c: .asciiz "J\u{3}"
+.0x801f385c: .asciiz "J\x3"
 	.align 2
 .0x801f3860: sll $zr, 0x4
 .0x801f3864: sll $zr, 0xa
 .0x801f3868: .word 0x1f7
 .0x801f386c: nor $a1, $zr, $zr
-.0x801f3870: .asciiz "J\u{3}"
+.0x801f3870: .asciiz "J\x3"
 	.align 2
-.0x801f3874: .asciiz "(\u{1}"
+.0x801f3874: .asciiz "(\x1"
 	.align 2
 .0x801f3878: sll $zr, 0xa
 .0x801f387c: .word 0x1f7
 .0x801f3880: nor $t6, $zr, $zr
-.0x801f3884: .asciiz "J\u{3}"
+.0x801f3884: .asciiz "J\x3"
 	.align 2
 .0x801f3888: mult $zr, $zr
 .0x801f388c: sll $zr, 0xa
@@ -22511,7 +22511,7 @@ dylib_saiseg_func_123:
 .0x801f3964: .word 0xb4
 .0x801f3968: sll $zr, 0x8
 .0x801f396c: or $zr, $zr
-.0x801f3970: .asciiz "h\u{1c}"
+.0x801f3970: .asciiz "h\x1c"
 	.align 2
 .0x801f3974: sll $zr, 0xd
 .0x801f3978: nop
@@ -22624,7 +22624,7 @@ dylib_saiseg_func_123:
 .0x801f3ad8: .asciiz "w("
 	.align 2
 .0x801f3adc: sll $zr, 0xc
-.0x801f3ae0: .asciiz "(\u{1}"
+.0x801f3ae0: .asciiz "(\x1"
 	.align 2
 .0x801f3ae4: sll $zr, 0xa
 .0x801f3ae8: .word 0x1f6
@@ -22637,7 +22637,7 @@ dylib_saiseg_func_123:
 .0x801f3b00: .asciiz "w("
 	.align 2
 .0x801f3b04: sll $zr, 0xc
-.0x801f3b08: .asciiz "x\u{1}"
+.0x801f3b08: .asciiz "x\x1"
 	.align 2
 .0x801f3b0c: sll $zr, 0xa
 .0x801f3b10: .word 0x1f6
@@ -22651,7 +22651,7 @@ dylib_saiseg_func_123:
 .0x801f3b2c: mult $zr, $zr
 
 ##########
-.0x801f3b30:	.asciiz "(\u{1}"
+.0x801f3b30:	.asciiz "(\x1"
 	.align 2
 ##########
 
@@ -22669,7 +22669,7 @@ dylib_saiseg_func_123:
 .0x801f3b60: .word 0x1f6
 .0x801f3b64: subu $a1, $zr, $zr
 .0x801f3b68: sub $zr, $zr
-.0x801f3b6c: .asciiz "(\u{1}"
+.0x801f3b6c: .asciiz "(\x1"
 	.align 2
 .0x801f3b70: sll $zr, 0xa
 .0x801f3b74: .word 0x1f6
@@ -22722,13 +22722,13 @@ dylib_saiseg_func_123:
 .0x801f3bfc: sll $zr, 0x8
 .0x801f3c00: .word 0xee
 .0x801f3c04: slt $a0, $zr, $zr
-.0x801f3c08: .asciiz "-\u{2}"
+.0x801f3c08: .asciiz "-\x2"
 	.align 2
 .0x801f3c0c: nop
 .0x801f3c10: sll $zr, 0x8
 .0x801f3c14: .word 0xe8
 .0x801f3c18: mfhi $at
-.0x801f3c1c: .asciiz "(\u{3}"
+.0x801f3c1c: .asciiz "(\x3"
 	.align 2
 .0x801f3c20: nop
 .0x801f3c24: mfhi $zr
@@ -22801,11 +22801,11 @@ dylib_saiseg_func_123:
 .0x801f3d30: lb $fp, -0x37bc($zr)
 .0x801f3d34: .word 0xbbb8b7
 .0x801f3d38: lb $sp, -0x5d8($zr)
-.0x801f3d3c: .asciiz "\u{3}\u{5}\u{1}c\u{3}\u{7}"
+.0x801f3d3c: .asciiz "\x3\x5\u{1}c\x3\x7"
 	.align 2
 .0x801f3d44: lb $sp, -0x5e0($zr)
 .0x801f3d48: jal 0x80204044
-.0x801f3d4c: 	.asciiz "\u{e}\u{13}"
+.0x801f3d4c: 	.asciiz "\xe\x13"
 	.align 2
 .0x801f3d50: lb $sp, -0x5e8($zr)
 .0x801f3d54: .word 0x0 # TODO: blez $t0, .0x801fbdcc
@@ -22829,7 +22829,7 @@ dylib_saiseg_func_123:
 .0x801f3d88: .word 0x5fff
 .0x801f3d8c: lb $sp, -0x620($zr)
 .0x801f3d90: .word 0x0 # TODO: bgtz $s1, .0x801fd9dc
-.0x801f3d94: 	.asciiz "9\u{1c}"
+.0x801f3d94: 	.asciiz "9\x1c"
 	.align 2
 .0x801f3d98: lb $sp, -0x638($zr)
 .0x801f3d9c: andi $t0, $s2, 0x5627
@@ -22842,7 +22842,7 @@ dylib_saiseg_func_123:
 
 .0x801f3dac: .word 0x54ff
 .0x801f3db0: lb $sp, -0x668($zr)
-.0x801f3db4: .asciiz "\u{1}\t\u{f}\u{5}\u{4}\u{2}"
+.0x801f3db4: .asciiz "\x1\t\xf\x5\x4\x2"
 	.align 2
 .0x801f3dbc: lb $sp, -0x680($zr)
 .0x801f3dc0: .word 0x0 # TODO: bne $s1, $a2, .0x801f91ec
@@ -22877,7 +22877,7 @@ dylib_saiseg_func_123:
 .0x801f3e28: lb $sp, -0x758($zr)
 
 ##########
-.0x801f3e2c:	.asciiz "\u{6}\u{6}\u{2}\u{4}\n\u{1}"
+.0x801f3e2c:	.asciiz "\x6\x6\x2\x4\n\x1"
 	.align 2
 ##########
 
@@ -22886,7 +22886,7 @@ dylib_saiseg_func_123:
 .0x801f3e3c: 	divu $zr, $zr, $zr
 .0x801f3e40: lb $sp, -0x788($zr)
 .0x801f3e44: addiu $t2, $s1, 0x4523
-.0x801f3e48: .asciiz "5\u{18}"
+.0x801f3e48: .asciiz "5\x18"
 	.align 2
 .0x801f3e4c: lb $sp, -0x7a0($zr)
 .0x801f3e50: .word 0x433fff52
@@ -22913,7 +22913,7 @@ dylib_saiseg_func_123:
 .0x801f3e98:	.word 0xffff3928
 ##########
 
-.0x801f3e9c: .asciiz "\u{b}\u{15}"
+.0x801f3e9c: .asciiz "\xb\x15"
 	.align 2
 .0x801f3ea0: lb $sp, -0x8a0($zr)
 .0x801f3ea4: .asciiz "W\\\'E\u{1f}2"
@@ -22985,7 +22985,7 @@ dylib_saiseg_func_123:
 .0x801f3f98: .word 0x56ff
 .0x801f3f9c: lb $sp, -0xb28($zr)
 .0x801f3fa0: .word 0x7ff020f
-.0x801f3fa4: .asciiz "\u{16}\u{12}"
+.0x801f3fa4: .asciiz "\x16\x12"
 	.align 2
 .0x801f3fa8: lb $sp, -0xb48($zr)
 .0x801f3fac: .word 0x0 # TODO: bne $ra, $ra, .0x801f8c20
@@ -23028,7 +23028,7 @@ dylib_saiseg_func_123:
 	.align 2
 .0x801f4038: lb $sp, -0xcc0($zr)
 .0x801f403c: .word 0xff11ff36
-.0x801f4040: .asciiz "\u{1c}K"
+.0x801f4040: .asciiz "\x1cK"
 	.align 2
 .0x801f4044: lb $sp, -0xce8($zr)
 .0x801f4048: .word 0xff1c1854
@@ -23038,7 +23038,7 @@ dylib_saiseg_func_123:
 .0x801f4058: .word 0xcd + 0x100 * 0xb4
 .0x801f405c: lb $sp, -0xd30($zr)
 .0x801f4060: .word 0xff21ff07
-.0x801f4064: .asciiz "/\u{e}"
+.0x801f4064: .asciiz "/\xe"
 	.align 2
 .0x801f4068: lb $sp, -0xd50($zr)
 .0x801f406c: .word 0xffff1121
@@ -23067,13 +23067,13 @@ dylib_saiseg_func_123:
 .0x801f40c4: .asciiz "]F"
 	.align 2
 .0x801f40c8: lb $sp, -0xe88($zr)
-.0x801f40cc: .asciiz "8%,\u{6}\u{13}]"
+.0x801f40cc: .asciiz "8%,\x6\x13]"
 	.align 2
 .0x801f40d4: lb $sp, -0xeb0($zr)
 .0x801f40d8: .word 0x4f573c5c
 .0x801f40dc: .word 0xff3f
 .0x801f40e0: lb $sp, -0xed8($zr)
-.0x801f40e4: .asciiz "NL\u{1a}HE."
+.0x801f40e4: .asciiz "NL\x1aHE."
 	.align 2
 .0x801f40ec: lb $sp, -0xf00($zr)
 .0x801f40f0: .word 0xff376059
@@ -23119,7 +23119,7 @@ dylib_saiseg_func_123:
 .0x801f4190: .word 0xffff
 .0x801f4194: lb $sp, -0x10e0($zr)
 .0x801f4198: j 0x87fc7c38
-.0x801f419c: 	.asciiz "0\u{17}"
+.0x801f419c: 	.asciiz "0\x17"
 	.align 2
 .0x801f41a0: lb $sp, -0x1104($zr)
 .0x801f41a4: .word 0x0 # TODO: bne $a3, $ra, .0x80201624
@@ -23143,7 +23143,7 @@ dylib_saiseg_func_123:
 .0x801f41e4: .word 0xffff
 .0x801f41e8: lb $sp, -0x11ac($zr)
 .0x801f41ec: j 0x8c803d20
-.0x801f41f0: 	.asciiz "\u{1}Q"
+.0x801f41f0: 	.asciiz "\x1Q"
 	.align 2
 .0x801f41f4: lb $sp, -0x11c0($zr)
 .0x801f41f8: .word 0x0 # TODO: bgtz $t9, .0x801fdb64
@@ -23165,7 +23165,7 @@ dylib_saiseg_func_123:
 .0x801f4238: .word 0xff38
 .0x801f423c: lb $sp, -0x1294($zr)
 .0x801f4240: .word 0x0 # TODO: blez $a3, .0x801fcb08
-.0x801f4244: 	.asciiz "\u{1e}*"
+.0x801f4244: 	.asciiz "\x1e*"
 	.align 2
 .0x801f4248: lb $sp, -0x12bc($zr)
 .0x801f424c: andi $ra, $t7, 0x3fff
@@ -23177,7 +23177,7 @@ dylib_saiseg_func_123:
 	.align 2
 .0x801f4260: lb $sp, -0x1304($zr)
 .0x801f4264: sltiu $v1, $t0, 0x163f
-.0x801f4268: .asciiz "K\u{1b}"
+.0x801f4268: .asciiz "K\x1b"
 	.align 2
 .0x801f426c: lb $sp, -0x1328($zr)
 .0x801f4270: .word 0xff194eff
