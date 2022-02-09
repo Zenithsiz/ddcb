@@ -1,5 +1,5 @@
 dylib_kawseg:
-.0x801ddf38: .asciiz "\u{5}"
+.0x801ddf38: .asciiz "\x5"
 	.align 2
 .0x801ddf3c: lb $fp, 0x1ab4($zr)
 .0x801ddf40: lb $fp, 0x1b70($zr)
@@ -600,19 +600,20 @@ dylib_kawseg:
 	.align 2
 .0x801df3e8: .asciiz "Earned Experience Points"
 	.align 2
-.0x801df404: .asciiz "RANK   \u{c}\u{7}%2d"
+.0x801df404: .asciiz "RANK   \xc\x7%2d"
 	.align 2
 .0x801df414: addi $s0, $v0, 0x5845
 .0x801df418: addiu $a3, $t0, 0xc20
 .0x801df41c: .asciiz "4d"
 	.align 2
-.0x801df420: .asciiz "NEXT  \u{c}\u{7}%3d"
+.0x801df420: .asciiz "NEXT  \xc\x7%3d"
 	.align 2
 .0x801df42c: addiu $s0, $t1, 0x732a
 .0x801df430: .asciiz "4d"
 	.align 2
 .0x801df434: slti $s0, $t9, 0x732a
-.0x801df438: or $t4, $zr, $zr
+.0x801df438: .asciiz "%d"
+	.align 2
 .0x801df43c: .asciiz "Detail of Earned Experience Points"
 	.align 2
 
@@ -622,7 +623,8 @@ dylib_kawseg:
 ##########
 
 .0x801df480: slti $s0, $t9, 0x732a
-.0x801df484: or $a2, $v1, $a0
+.0x801df484: .asciiz "%3d"
+	.align 2
 .0x801df488: .asciiz "Earned Digi-Parts"
 	.align 2
 .0x801df49c: addiu $s0, $t1, 0x732a
@@ -853,10 +855,9 @@ dylib_kawseg:
 	.align 2
 .0x801dfbac: .asciiz "Quit Tutorial?"
 	.align 2
-.0x801dfbbc: .word 0x65766947
-.0x801dfbc0: lui $s0, 0x5520
-.0x801dfbc4: slti $s2, $t8, -0x3000
-.0x801dfbc8: sll $s0, $zr, 0x2
+.0x801dfbbc: .asciiz "Give Up?"
+	.byte 0xd0, 0x12, 0x2b
+.0x801dfbc8: .word 0x808080
 .0x801dfbcc: .asciiz "Super Bonus"
 	.align 2
 .0x801dfbd8: .asciiz "Lucky Name"
@@ -979,7 +980,6 @@ dylib_kawseg:
 .0x801dfeac: lui $t1, 0x8888
 .0x801dfeb0: ori $t1, 0x8889
 .0x801dfeb4: addu $v0, $t0, $a2
-.align 2 # TODO: Check why needed
 .0x801dfeb8: lbu $v0, 0x0($v0)
 .0x801dfebc: nop
 .0x801dfec0: sll $v0, 0x18
@@ -1003,7 +1003,6 @@ dylib_kawseg:
 .0x801dff08: bnez $v0, .0x801dff14
 .0x801dff0c: 	nop
 .0x801dff10: addiu $a3, 0x1
-.align 2 # TODO: Check why needed
 .0x801dff14: addiu $a2, 0x1
 .0x801dff18: slti $v0, $a2, 0x1e
 .0x801dff1c: bnez $v0, .0x801dfeb8
@@ -30426,10 +30425,10 @@ dylib_kawseg_func_86:
 .0x801fb9a4:		addiu $sp, 0x48
 ##########
 
-.0x801fb9a8: sltu $zr, $v1, $s1
+.0x801fb9a8: .word 0x71006b
 .0x801fb9ac: .word 0x8b0076
-.0x801fb9b0: multu $a0, $k0
-.0x801fb9b4: divu $a0, $gp
+.0x801fb9b0: .word 0x9a0099
+.0x801fb9b4: .word 0x9c009b
 .0x801fb9b8: .word 0x9e009d
 
 ##########
@@ -30437,32 +30436,32 @@ dylib_kawseg_func_86:
 ##########
 
 .0x801fb9c0: .word 0xbe00b6
-.0x801fb9c4: jalr $a2, $zr
-.0x801fb9c8: 	.word 0xd600d5
-.0x801fb9cc: addu $zr, $a3, $s7
+.0x801fb9c4: .word 0xd400c9
+.0x801fb9c8: .word 0xd600d5
+.0x801fb9cc: .word 0xf700e1
 
 ##########
 .0x801fb9d0:	.word 0x10100ff
 ##########
 
-.0x801fb9d4: subu $zr, $t1, $a0
-.0x801fb9d8: mfhi $zr
+.0x801fb9d4: .word 0x1240123
+.0x801fb9d8: .word 0x980050
 .0x801fb9dc: .word 0xfd00a8
-.0x801fb9e0: addu $zr, $zr
+.0x801fb9e0: .word 0x121
 .0x801fb9e4: subu $zr, $at, $a2
 .0x801fb9e8: nor $zr, $at, $t7
 .0x801fb9ec: .word 0x340030
 .0x801fb9f0: .word 0x460037
 .0x801fb9f4: .word 0x57004e
-.0x801fb9f8: srlv $zr, $t6, $a0
-.0x801fb9fc: mtlo $a1
+.0x801fb9f8: .word 0x8e0086
+.0x801fb9fc: .word 0xa60093
 .0x801fba00: .word 0xce00c5
 
 ##########
 .0x801fba04:	.word 0xd000cf
 ##########
 
-.0x801fba08: mthi $a2
+.0x801fba08: .word 0xd200d1
 .0x801fba0c: .word 0xde00dd
 .0x801fba10: .word 0xe000df
 .0x801fba14: .word 0xf300f2
@@ -30472,11 +30471,11 @@ dylib_kawseg_func_86:
 ##########
 
 .0x801fba1c: .word 0x10300f8
-.0x801fba20: .asciiz "\n\u{1}\u{12}\u{1}\u{1e}\u{1}"
+.0x801fba20: .asciiz "\n\x1\x12\x1\x1e\x1"
 	.align 2
-.0x801fba28: sra $zr, $t7, 0x0
+.0x801fba28: .word 0x6f0003
 .0x801fba2c: .word 0x11300ef
-.0x801fba30: and $zr, $zr
+.0x801fba30: .word 0x64
 .0x801fba34: .word 0xf1
 
 ##########
@@ -30485,7 +30484,7 @@ dylib_kawseg_func_86:
 
 .0x801fba3c: .asciiz "y"
 	.align 2
-.0x801fba40: .word 0xc + 0x100 * 0x1
+.0x801fba40: .word 0x4c
 .0x801fba44: .word 0xffffff8f
 .0x801fba48: jr $zr
 .0x801fba4c: 	srav $zr, $zr, $zr
@@ -30528,7 +30527,7 @@ dylib_kawseg_func_86:
 .0x801fbab0: nop
 .0x801fbab4: nop
 .0x801fbab8: mult $at, $t0
-.0x801fbabc: sllv $zr, $t8, $at
+.0x801fbabc: .word 0x380084
 .0x801fbac0: .word 0xffff0000
 
 ##########
@@ -30536,7 +30535,7 @@ dylib_kawseg_func_86:
 ##########
 
 .0x801fbac8: .word 0x84810a
-.0x801fbacc: .word 0xc + 0x100 * 0x400
+.0x801fbacc: .word 0x1000c
 
 ##########
 .0x801fbad0:	.word 0x1020001
@@ -30547,7 +30546,7 @@ dylib_kawseg_func_86:
 .0x801fbadc: nop
 .0x801fbae0: nop
 .0x801fbae4: mult $a0, $t4
-.0x801fbae8: sllv $zr, $t8, $at
+.0x801fbae8: .word 0x380084
 .0x801fbaec: .word 0xffff0000
 
 ##########
@@ -30555,12 +30554,12 @@ dylib_kawseg_func_86:
 ##########
 
 .0x801fbaf4: .word 0x84810a
-.0x801fbaf8: .word 0xc + 0x100 * 0x400
+.0x801fbaf8: .word 0x1000c
 .0x801fbafc: .word 0x1020001
 .0x801fbb00: sll $at, $zr, 0x18
 
 ##########
-.0x801fbb04:	.asciiz "\u{1}"
+.0x801fbb04: .asciiz "\x1"
 	.align 2
 ##########
 
@@ -30568,24 +30567,25 @@ dylib_kawseg_func_86:
 .0x801fbb0c: .word 0x4c0076
 .0x801fbb10: .word 0x8200bc
 .0x801fbb14: .word 0x4c0076
-.0x801fbb18: .word 0x0 # TODO: bne $s0, $at, .0x801fe390
-.0x801fbb1c: .word 0x0 # TODO: blez $zr, .0x80202b30
-.0x801fbb20: .word 0x0 # TODO: blez $s0, .0x801ff750
-.0x801fbb24: 	multu $t8, $s5
-.0x801fbb28: .word 0x0 # TODO: bne $t8, $s3, .0x801fd374
-.0x801fbb2c: 	.word 0xc + 0x100 * 0x81c78
+.0x801fbb18: .word 0x16010a1d
+.0x801fbb1c: .word 0x180e1c04
+.0x801fbb20: .word 0x1a050f0b
+.0x801fbb24: .word 0x3151019
+.0x801fbb28: .word 0x17130612
+.0x801fbb2c: 	.word 0x2071e0c
 .0x801fbb30: jal 0x846c4450
 .0x801fbb34: 	jal 0x88442024
 .0x801fbb38: 	lb $sp, -0xc20($zr)
-.0x801fbb3c: .asciiz "\u{3}\u{5}\u{1}c\u{3}\u{7}"
+.0x801fbb3c: .ascii "\x3\x5\x1"
+	.asciiz "c\x3\x7"
 	.align 2
 .0x801fbb44: lb $sp, -0xc28($zr)
 .0x801fbb48: jal 0x80204044
-.0x801fbb4c: 	.asciiz "\u{e}\u{13}"
+.0x801fbb4c: 	.asciiz "\xe\x13"
 	.align 2
 .0x801fbb50: lb $sp, -0xc30($zr)
-.0x801fbb54: .word 0x0 # TODO: blez $t0, .0x80203bcc
-.0x801fbb58: 	add $a0, $zr, $zr
+.0x801fbb54: .word 0x1913201d
+.0x801fbb58: .word 0x2120
 .0x801fbb5c: lb $sp, -0xc38($zr)
 .0x801fbb60: slti $ra, $zr, 0x302d
 
@@ -30596,7 +30596,7 @@ dylib_kawseg_func_86:
 
 .0x801fbb68: lb $sp, -0xc40($zr)
 .0x801fbb6c: xori $s3, $t1, 0x433d
-.0x801fbb70: sllv $t1, $zr, $zr
+.0x801fbb70: .word 0x4e44
 .0x801fbb74: lb $sp, -0xc48($zr)
 
 ##########
@@ -30608,12 +30608,12 @@ dylib_kawseg_func_86:
 .0x801fbb84: .word 0x5b4bff63
 .0x801fbb88: .word 0x5fff
 .0x801fbb8c: lb $sp, -0xc68($zr)
-.0x801fbb90: .word 0x0 # TODO: bgtz $s1, .0x802057dc
-.0x801fbb94: 	.asciiz "9\u{1c}"
+.0x801fbb90: .word 0x1e362712
+.0x801fbb94: 	.asciiz "9\x1c"
 	.align 2
 .0x801fbb98: lb $sp, -0xc80($zr)
 .0x801fbb9c: andi $t0, $s2, 0x5627
-.0x801fbba0: multu $zr, $zr
+.0x801fbba0: .word 0x3359
 .0x801fbba4: lb $sp, -0xc98($zr)
 .0x801fbba8: .word 0x5d5aff4b
 
@@ -30622,27 +30622,27 @@ dylib_kawseg_func_86:
 ##########
 
 .0x801fbbb0: lb $sp, -0xcb0($zr)
-.0x801fbbb4: .asciiz "\u{1}\t\u{f}\u{5}\u{4}\u{2}"
+.0x801fbbb4: .asciiz "\x1\t\xf\x5\x4\x2"
 	.align 2
 .0x801fbbbc: lb $sp, -0xcc8($zr)
-.0x801fbbc0: .word 0x0 # TODO: bne $s1, $a2, .0x80200fec
-.0x801fbbc4: 	mfhi $at
+.0x801fbbc0: .word 0x1626150a
+.0x801fbbc4: .word 0xf10
 .0x801fbbc8: lb $sp, -0xce0($zr)
 .0x801fbbcc: slti $fp, $t1, 0x361b
-.0x801fbbd0: nor $v1, $zr, $zr
+.0x801fbbd0: .word 0x1e27
 .0x801fbbd4: lb $sp, -0xcf8($zr)
-.0x801fbbd8: lui $t6, 0xff30
+.0x801fbbd8: .word 0x3d4eff30
 .0x801fbbdc: .asciiz ">="
 	.align 2
 .0x801fbbe0: lb $sp, -0xd10($zr)
 .0x801fbbe4: .word 0x55ffff43
-.0x801fbbe8: mflo $t1
+.0x801fbbe8: .word 0x4f52
 .0x801fbbec: lb $sp, -0xd28($zr)
-.0x801fbbf0: sllv $zr, $t4, $s0
-.0x801fbbf4: srlv $at, $zr, $zr
+.0x801fbbf0: .word 0x20c0104
+.0x801fbbf4: .word 0xd06
 .0x801fbbf8: lb $sp, -0xd40($zr)
-.0x801fbbfc: .word 0x0 # TODO: beq $zr, $s6, .0x801fd830
-.0x801fbc00: 	mflo $v1
+.0x801fbbfc: .word 0x1016070c
+.0x801fbc00: .word 0x1d12
 .0x801fbc04: lb $sp, -0xd58($zr)
 .0x801fbc08: addiu $t5, $at, 0x1c20
 .0x801fbc0c: .asciiz "-+"
@@ -30659,14 +30659,14 @@ dylib_kawseg_func_86:
 .0x801fbc24: .asciiz "V`"
 	.align 2
 .0x801fbc28: lb $sp, -0xda0($zr)
-.0x801fbc2c: .asciiz "\u{6}\u{6}\u{2}\u{4}\n\u{1}"
+.0x801fbc2c: .asciiz "\x6\x6\x2\x4\n\x1"
 	.align 2
 .0x801fbc34: lb $sp, -0xdb8($zr)
-.0x801fbc38: .word 0x0 # TODO: beq $t8, $s4, .0x80204c88
-.0x801fbc3c: 	divu $zr, $zr
+.0x801fbc38: .word 0x13142413
+.0x801fbc3c: .word 0x91b
 .0x801fbc40: lb $sp, -0xdd0($zr)
 .0x801fbc44: addiu $t2, $s1, 0x4523
-.0x801fbc48: .asciiz "5\u{18}"
+.0x801fbc48: .asciiz "5\x18"
 	.align 2
 .0x801fbc4c: lb $sp, -0xde8($zr)
 .0x801fbc50: .word 0x433fff52
@@ -30686,23 +30686,25 @@ dylib_kawseg_func_86:
 	.align 2
 .0x801fbc88: lb $sp, -0xe9c($zr)
 .0x801fbc8c: .word 0xffff0e24
-.0x801fbc90: mult $zr, $zr
+.0x801fbc90: .word 0x3118
 .0x801fbc94: lb $sp, -0xec0($zr)
 .0x801fbc98: .word 0xffff3928
-.0x801fbc9c: .asciiz "\u{b}\u{15}"
+.0x801fbc9c: .asciiz "\xb\x15"
 	.align 2
 .0x801fbca0: lb $sp, -0xee8($zr)
-.0x801fbca4: .asciiz "W\\\'E\u{1f}2"
+.0x801fbca4: .ascii "W\\\'E\x1f"
+	.asciiz "2"
 	.align 2
 .0x801fbcac: lb $sp, -0xf10($zr)
 .0x801fbcb0: slti $ra, $s7, 0x6119
-.0x801fbcb4: .word 0xcd + 0x100 * 0x125
+.0x801fbcb4: .word 0x494d
 .0x801fbcb8: lb $sp, -0xf38($zr)
 .0x801fbcbc: .word 0xff42ff25
-.0x801fbcc0: mtlo $zr
+.0x801fbcc0: .word 0x453
 .0x801fbcc4: lb $sp, -0xf60($zr)
-.0x801fbcc8: .word 0x0 # TODO: bne $t1, $t6, .0x802041dc
-.0x801fbccc: 	.asciiz "\u{5}a"
+.0x801fbcc8: .word 0x152e2144
+.0x801fbccc: 	.ascii "\x5"
+	.asciiz "a"
 	.align 2
 .0x801fbcd0: lb $sp, -0xf88($zr)
 
@@ -30712,7 +30714,7 @@ dylib_kawseg_func_86:
 
 .0x801fbcd8: .word 0x19ff
 .0x801fbcdc: lb $sp, -0xfac($zr)
-.0x801fbce0: lui $ra, 0x324c
+.0x801fbce0: .word 0x3e5f324c
 .0x801fbce4: .word 0xffff
 .0x801fbce8: lb $sp, -0xfd4($zr)
 .0x801fbcec: .word 0xff1b4aff
@@ -30720,23 +30722,23 @@ dylib_kawseg_func_86:
 	.align 2
 .0x801fbcf4: lb $sp, -0xff8($zr)
 .0x801fbcf8: .word 0xff3257ff
-.0x801fbcfc: jalr $zr
+.0x801fbcfc: .word 0xff49
 .0x801fbd00: 	lb $sp, -0x1008($zr)
-.0x801fbd04: slt $zr, $t1, $sp
-.0x801fbd08: jalr $zr
+.0x801fbd04: .word 0x13d042a
+.0x801fbd08: .word 0xff09
 .0x801fbd0c: 	lb $sp, -0x1018($zr)
-.0x801fbd10: .word 0x0 # TODO: blez $k0, .0x80203280
+.0x801fbd10: .word 0x1b4f1d5b
 .0x801fbd14: 	.word 0xff15
 .0x801fbd18: lb $sp, -0x1028($zr)
-.0x801fbd1c: lui $at, 0x62ff
+.0x801fbd1c: .word 0x3c6162ff
 .0x801fbd20: .asciiz "NU"
 	.align 2
 .0x801fbd24: lb $sp, -0x1040($zr)
-.0x801fbd28: srl $at, $t5, 0x8
-.0x801fbd2c: srav $at, $zr, $zr
+.0x801fbd28: .word 0x30d0a02
+.0x801fbd2c: .word 0xb07
 .0x801fbd30: lb $sp, -0x105c($zr)
 .0x801fbd34: addi $t8, $t1, 0x2a15
-.0x801fbd38: and $a0, $zr, $zr
+.0x801fbd38: .word 0x2324
 .0x801fbd3c: lb $sp, -0x1078($zr)
 .0x801fbd40: sltiu $t1, $s2, 0x511a
 .0x801fbd44: .asciiz "T,"
@@ -30748,8 +30750,8 @@ dylib_kawseg_func_86:
 .0x801fbd58: .word 0xffffffff
 .0x801fbd5c: .word 0xffff
 .0x801fbd60: lb $sp, -0x10d0($zr)
-.0x801fbd64: .word 0x0 # TODO: beq $t1, $t7, .0x80203588
-.0x801fbd68: 	div $zr, $zr, $zr
+.0x801fbd64: .word 0x112f1e08
+.0x801fbd68: .word 0xc1a
 .0x801fbd6c: lb $sp, -0x10f0($zr)
 .0x801fbd70: sltiu $t2, $k0, 0x4d22
 .0x801fbd74: .asciiz ".\'"
@@ -30769,7 +30771,7 @@ dylib_kawseg_func_86:
 
 .0x801fbd9c: lb $sp, -0x1170($zr)
 .0x801fbda0: .word 0x7ff020f
-.0x801fbda4: .asciiz "\u{16}\u{12}"
+.0x801fbda4: .asciiz "\x16\x12"
 	.align 2
 .0x801fbda8: lb $sp, -0x1190($zr)
 .0x801fbdac: .word 0x0 # TODO: bne $ra, $ra, .0x80200a20

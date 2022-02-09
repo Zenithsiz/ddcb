@@ -88,9 +88,13 @@ build/iso/P.DRV: $(DYLIBS)
 	$(mkdrv) --quiet build/dylib/ -o $@
 
 # All dylibs
+# Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
+#       modification date, which `make` uses to check dependencies
 build/dylib/%.BIN: build/dcb.elf
 	@mkdir -p $(@D)
-	$(objcopy) --dump-section dylib.$(shell echo $(notdir $(basename $@)) | tr A-Z a-z)=$@ build/dcb.elf
+	@cp build/dcb.elf build/dcb.elf.cp
+	$(objcopy) --dump-section dylib.$(shell echo $(notdir $(basename $@)) | tr A-Z a-z)=$@ build/dcb.elf.cp
+	@rm build/dcb.elf.cp
 	@touch $@
 
 # Copy files in `dcb/` as they are to `build/iso`.
