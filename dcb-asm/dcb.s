@@ -12,3 +12,4 @@
 .include "dcb-asm/start.s"
 .include "dcb-asm/main_loop.s"
 .include "dcb-asm/todo.s"
+.include "dcb-asm/dylib.s"

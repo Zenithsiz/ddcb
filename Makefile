@@ -1,6 +1,7 @@
 # Command alias
 ld                     = mips-linux-gnu-ld
 as                     = mips-linux-gnu-as
+objcopy                = mips-linux-gnu-objcopy
 llc                    = /opt/llvm-mips1/bin/llc
 rustc                  = rustc
 cargo                  = cargo
@@ -22,6 +23,9 @@ TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 ASM_FILES := $(shell find "dcb-asm/" -type f -iname "*.s")
 ASM_PROCESSED_FILES := $(subst dcb-asm/, build/asm/, $(ASM_FILES))
 
+# All dylibs
+DYLIBS := build/dylib/ENDSEG.BIN build/dylib/EVOSEG.BIN build/dylib/KAWSEG.BIN build/dylib/OPENSEG.BIN build/dylib/SAISEG.BIN build/dylib/SUBSEG.BIN build/dylib/SUGSEG.BIN
+
 # All `DRV` files
 DRV_FILES := $(patsubst dcb/%/,build/iso/%.DRV,$(wildcard dcb/*/))
 
@@ -38,17 +42,11 @@ ISO_FILES := $(DRV_FILES) $(ISO_NON_DRV_FILES) build/iso/SLUS_013.28 build/iso/M
 .PHONY: build compare all clean
 
 # Default target, pack iso
-all: pack_bin
-
-# Builds the bin
-pack_bin: build/dcb.bin
-
-# Builds the executable
-build_exe: build/dcb.psexe
+all: build/dcb.bin
 
 # Compare files to original
 # TODO: Compare the bin once it's properly built
-compare: build_exe
+compare: build/dcb.psexe $(DYLIBS)
 	$(sha256sum) --check checksums.sha256
 
 # Compiles all tols
@@ -84,6 +82,20 @@ build/iso/%.DRV: $$(shell find dcb/$$*/) $(mkdrv)
 	@mkdir -p $(@D)
 	$(mkdrv) --quiet $< -o $@
 
+# Except for `P` drv
+build/iso/P.DRV: $(DYLIBS)
+	@mkdir -p $(@D)
+	$(mkdrv) --quiet build/dylib/ -o $@
+
+# All dylibs
+# Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
+#       modification date, which `make` uses to check dependencies
+build/dylib/%.BIN: build/dcb.elf
+	@mkdir -p $(@D)
+	@cp build/dcb.elf build/dcb.elf.cp
+	$(objcopy) --dump-section dylib.$(shell echo $(notdir $(basename $@)) | tr A-Z a-z)=$@ build/dcb.elf.cp
+	@rm build/dcb.elf.cp
+
 # Copy files in `dcb/` as they are to `build/iso`.
 build/iso/%: dcb/%
 	cp $< $@
@@ -102,18 +114,20 @@ build/dcb.psexe: build/dcb.elf
 	$(elf2psexe) "NA" $< $@
 
 # Final executable in elf format
-build/dcb.elf: build/dcb.o build/symbols.ld
+build/dcb.elf: build/dcb.o build/symbols.ld psx.ld
 	$(ld) $< \
 		-o $@ \
 		--whole-archive \
 		-EL \
 		--nmagic \
 		--script psx.ld \
-		--warn-section-align
+		--warn-section-align \
+		--no-check-sections \
+		-M > build/dcb.map
 
 
 # Linker script symbol ordering.
-build/symbols.ld: symbols.yaml $(generate_linker_script)
+build/symbols.ld: symbols.yaml section_addrs.yaml $(generate_linker_script)
 	$(generate_linker_script)
 
 # Assembly object files

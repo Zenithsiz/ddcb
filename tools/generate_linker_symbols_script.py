@@ -4,6 +4,9 @@
 import os
 import yaml
 
+# Get all section addresses
+section_addrs = yaml.safe_load(open("section_addrs.yaml"))
+
 
 def main(in_path="symbols.yaml", out_path="build/symbols.ld"):
 	# Get all of the symbol addresses
@@ -13,13 +16,17 @@ def main(in_path="symbols.yaml", out_path="build/symbols.ld"):
 	with open(out_path, "w") as symbols_file:
 		symbols_file.write("/* This is an automatically generated file, DO NOT MODIFY */\n\n")
 		symbols_file.write("SECTIONS {\n")
-		symbols_file.write("\t.text : {\n")
-
 		for section in symbols:
-			for symbol in symbols[section]:
-				symbols_file.write(f"\t\t*({section}.{symbol})\n")
+			addr = section_addrs[section]
+			symbols_file.write(f"\t_{section} = {hex(addr)};\n")
 
-		symbols_file.write("\t} > RAM\n")
+			symbols_file.write(f"\t{section} _{section} : {{\n")
+
+			for symbol in symbols[section]:
+				symbols_file.write(f"\t\tKEEP(*({section}.{symbol}));\n")
+
+			symbols_file.write(f"\t}}\n")
+
 		symbols_file.write("}\n")
 
 
