@@ -16,15 +16,17 @@ def main(in_path="symbols.yaml", out_path="build/symbols.ld"):
 	with open(out_path, "w") as symbols_file:
 		symbols_file.write("/* This is an automatically generated file, DO NOT MODIFY */\n\n")
 		symbols_file.write("SECTIONS {\n")
-
 		for section in symbols:
-			symbols_file.write(f"\t{section} : {{\n")
+			addr = symbol_mems[section]
+			symbols_file.write(f"\t_{section} = {hex(addr)};\n")
+
+			symbols_file.write(f"\t{section} _{section} : {{\n")
 
 			for symbol in symbols[section]:
-				symbols_file.write(f"\t\t*({section}.{symbol})\n")
+				symbols_file.write(f"\t\tKEEP(*({section}.{symbol}));\n")
 
-			mem = symbol_mems[section]
-			symbols_file.write(f"\t}} > {mem}\n")
+			mem_name = symbol_mems[section]
+			symbols_file.write(f"\t}}\n")
 
 		symbols_file.write("}\n")
 

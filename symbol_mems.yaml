@@ -1,9 +1,9 @@
 ---
-".text": "MEM_MAIN"
-"dylib.endseg": "MEM_DYLIB"
-"dylib.evoseg": "MEM_DYLIB"
-"dylib.kawseg": "MEM_DYLIB"
-"dylib.openseg": "MEM_DYLIB"
-"dylib.saiseg": "MEM_DYLIB"
-"dylib.subseg": "MEM_DYLIB"
-"dylib.sugseg": "MEM_DYLIB"
+".text": 0x80010000
+"dylib.endseg": 0x801ddf38
+"dylib.evoseg": 0x801ddf38
+"dylib.kawseg": 0x801ddf38
+"dylib.openseg": 0x801ddf38
+"dylib.saiseg": 0x801ddf38
+"dylib.subseg": 0x801ddf38
+"dylib.sugseg": 0x801ddf38

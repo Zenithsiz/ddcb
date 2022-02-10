@@ -25,40 +25,55 @@ extern crate core_impl;
 extern crate dcb_macros;
 
 // Modules
+mod dylib;
 mod todo;
 mod util;
 
-/// Prng value pointer
-pub const PRNG_VALUE_PTR: u32 = 0x801ddc10;
+// Imports
+use core_impl::panic;
 
-/*
-#[no_mangle]
-#[link_section = ".text.prng_next"]
-pub unsafe extern "C" fn prng_next() {
-	asm!(
-		".set noat",
-		".set noreorder",
-		"lui $v1, %hi({mul_factor})",
-		"lui $v0, %hi({ptr})",
-		"lw $v0, %lo({ptr})($v0)",
-		"ori $v1, %lo({mul_factor})",
-		"mult $v0, $v1",
-		"mflo $a0",
-		"addiu $v0, $a0, {add_factor}",
-		"lui $at, %hi({ptr})",
-		"sw $v0, %lo({ptr})($at)",
-		"srl $v0, 0x10",
-		"jr $ra",
-		"	andi $v0, 0x7fff",
-		ptr = const PRNG_VALUE_PTR,
-		mul_factor = const 0x41c64e6d,
-		add_factor = const 0x3039,
-		options(noreturn)
-	);
+/// Aligned null-terminated byte string
+#[repr(align(4))]
+pub struct PsxStr<const N: usize>(pub [u8; N]);
+
+impl<const N: usize> PsxStr<N> {
+	/// Creates a string from a bytes, with *mandatory* null termination
+	pub const fn from_bytes(bytes: &[u8]) -> Self {
+		// If `N` isn't a multiple of 4, panic
+		if N % 4 != 0 {
+			// SAFETY: This will only be called at compile time
+			unsafe {
+				panic!("Psx strings should be aligned to 4");
+			}
+		}
+
+		let mut s = [0u8; N];
+
+		let mut idx = 0;
+		while idx < bytes.len() {
+			s[idx] = bytes[idx];
+			idx += 1;
+		}
+
+		// If we don't have any space for null terminators, panic
+		if idx == N {
+			// SAFETY: This will only be called at compile time
+			unsafe {
+				panic!("No space for null terminator!");
+			}
+		}
+
+		while idx < N {
+			s[idx] = 0;
+			idx += 1;
+		}
+
+
+		Self(s)
+	}
 }
-*/
 
-extern "C" {
-	pub fn start();
-	pub fn main_loop();
+/// Gets a `PsxStr` from a `&str`
+macro psx_str($s:literal) {
+	PsxStr::from_bytes($s.as_bytes())
 }

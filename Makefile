@@ -95,7 +95,6 @@ build/dylib/%.BIN: build/dcb.elf
 	@cp build/dcb.elf build/dcb.elf.cp
 	$(objcopy) --dump-section dylib.$(shell echo $(notdir $(basename $@)) | tr A-Z a-z)=$@ build/dcb.elf.cp
 	@rm build/dcb.elf.cp
-	@touch $@
 
 # Copy files in `dcb/` as they are to `build/iso`.
 build/iso/%: dcb/%
@@ -115,18 +114,20 @@ build/dcb.psexe: build/dcb.elf
 	$(elf2psexe) "NA" $< $@
 
 # Final executable in elf format
-build/dcb.elf: build/dcb.o build/symbols.ld
+build/dcb.elf: build/dcb.o build/symbols.ld psx.ld
 	$(ld) $< \
 		-o $@ \
 		--whole-archive \
 		-EL \
 		--nmagic \
 		--script psx.ld \
-		--warn-section-align
+		--warn-section-align \
+		--no-check-sections \
+		-M > build/dcb.map
 
 
 # Linker script symbol ordering.
-build/symbols.ld: symbols.yaml $(generate_linker_script)
+build/symbols.ld: symbols.yaml symbol_mems.yaml $(generate_linker_script)
 	$(generate_linker_script)
 
 # Assembly object files
