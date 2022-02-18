@@ -38,9 +38,9 @@ f299:
 	jal f19
 		li $a0, 0x2
 	lui $a0, %hi(opening_mv_cd_path)
-	jal 0x801dfbac
+	jal dylib_sugseg_func_6.0x801dfbac
 		addiu $a0, %lo(opening_mv_cd_path)
-	jal 0x801e055c
+	jal dylib_sugseg_func_7.0x801e055c
 		move_ $a0, $s0
 	jal f16
 		move_ $a0, $s1

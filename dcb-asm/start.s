@@ -1,7 +1,7 @@
 start:
-	# Zero out from S_0x80077a08 until 0x801ddf38
+	# Zero out from S_0x80077a08 until DYLIB_SUGSEG_S_0x801ddf38
 	la_ $v0, S_0x80077a08
-	la_ $v1, 0x801ddf38
+	la_ $v1, DYLIB_SUGSEG_S_0x801ddf38
 .zero_loop:
 	sw $zr, ($v0)
 	addiu $v0, 0x4
@@ -20,7 +20,7 @@ start:
 	# 
 	# The heap starts at `0x801ddf38` and it's size
 	# is until the end of the stack
-	la_ $a0, 0x801ddf38
+	la_ $a0, DYLIB_SUGSEG_S_0x801ddf38
 	sll $a0, 0x3
 	srl $a0, 0x3
 	lwi $v1, S_0x8006dd48

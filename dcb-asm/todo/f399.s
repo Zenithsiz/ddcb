@@ -32,7 +32,7 @@ f399:
 .2:
 	jal f394
 		li $a0, 0x1
-	jal 0x801eab4c
+	jal dylib_sugseg_func_62.0x801eab4c
 		nop
 	lwi $v0, 0x801d8340
 	nop
@@ -252,7 +252,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801fa780
+	jal dylib_kawseg_func_83.0x801fa780
 		nop
 .13:
 	lw $v0, -0x7c14($s2)
@@ -264,7 +264,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec570
+	jal dylib_sugseg_func_78.0x801ec570
 		nop
 	li $v1, -0x1
 	bne $v0, $v1, .12
@@ -481,7 +481,7 @@ f399:
 	beqz $v0, .23
 		lui $a1, %hi(S_0x80010d28)
 	li $a0, 0x78
-	jal 0x801ea8b4
+	jal dylib_sugseg_func_60.0x801ea8b4
 		addiu $a1, %lo(S_0x80010d28)
 	j .25
 		nop
@@ -577,7 +577,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ecc58
+	jal dylib_sugseg_func_79.0x801ecc58
 		nop
 	lw $v1, -0x7cc0($s0)
 	j .188
@@ -596,14 +596,14 @@ f399:
 	beq $v1, $v0, .28
 		lui $v0, 0x801e
 	lb $a0, 0x81a($a0)
-	jal 0x801ec4cc
+	jal dylib_sugseg_func_78.0x801ec4cc
 		nop
 	lui $v0, %hi(0x801d8340)
 .28:
 	lw $v0, %lo(0x801d8340)($v0)
 	nop
 	lb $a0, 0x81a($v0)
-	jal 0x801ebacc
+	jal dylib_sugseg_func_69.0x801ebacc
 		move_ $a1, $zr
 	jal f394
 		li $a0, 0x14
@@ -617,7 +617,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x81a($v0)
-	jal 0x801ebacc
+	jal dylib_sugseg_func_69.0x801ebacc
 		move_ $a1, $zr
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -650,7 +650,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x81a($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		nop
 	lw $v1, -0x7cc0($s0)
 	li $v0, -0x1
@@ -788,7 +788,7 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ea558
+	jal dylib_sugseg_func_58.0x801ea558
 		lui $s2, 0x8888
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -796,7 +796,7 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ec7c0
+	jal dylib_sugseg_func_78.0x801ec7c0
 		ori $s2, 0x8889
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -873,7 +873,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		li $a0, 0x1
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -898,7 +898,7 @@ f399:
 	lw $v0, -0x7cc0($a0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec4cc
+	jal dylib_sugseg_func_78.0x801ec4cc
 		nop
 	j .2
 		nop
@@ -923,7 +923,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ebacc
+	jal dylib_sugseg_func_69.0x801ebacc
 		li $a1, 0x1
 	bnez $v0, .47
 		lui $v1, 0x8009
@@ -965,7 +965,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		li $s2, -0x1
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -973,7 +973,7 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ea558
+	jal dylib_sugseg_func_58.0x801ea558
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -981,7 +981,7 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ec7c0
+	jal dylib_sugseg_func_78.0x801ec7c0
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -1087,7 +1087,7 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ec84c
+	jal dylib_sugseg_func_78.0x801ec84c
 		nop
 	lw $v1, -0x7cc0($s0)
 	li $v0, -0x1
@@ -1107,7 +1107,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		li $a0, 0x1
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -1128,7 +1128,7 @@ f399:
 	ori $v0, 0x8
 	sw $v0, 0x110($v1)
 	lb $a0, 0x817($a0)
-	jal 0x801fa4e4
+	jal dylib_kawseg_func_82.0x801fa4e4
 		nop
 	lw $v1, -0x7cc0($s0)
 	j .189
@@ -1171,7 +1171,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		nop
 	lw $v1, -0x7cc0($s0)
 	j .191
@@ -1211,7 +1211,7 @@ f399:
 	beqz $v0, .50
 		li $a0, 0x78
 	lui $a1, %hi(S_0x80010d84)
-	jal 0x801ea8b4
+	jal dylib_sugseg_func_60.0x801ea8b4
 		addiu $a1, %lo(S_0x80010d84)
 	j .2
 		nop
@@ -1227,7 +1227,7 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ec84c
+	jal dylib_sugseg_func_78.0x801ec84c
 		nop
 	lw $v1, -0x7cc0($s0)
 	li $v0, -0x1
@@ -1248,7 +1248,7 @@ f399:
 	bltz $v0, .53
 		lui $v0, 0x801e
 	lb $a0, 0x817($v1)
-	jal 0x801fa4e4
+	jal dylib_kawseg_func_82.0x801fa4e4
 		nop
 	lui $v0, 0x801e
 .53:
@@ -1308,7 +1308,7 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ecbcc
+	jal dylib_sugseg_func_79.0x801ecbcc
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -1351,7 +1351,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec4cc
+	jal dylib_sugseg_func_78.0x801ec4cc
 		nop
 	j .172
 		nop
@@ -1373,7 +1373,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ebacc
+	jal dylib_sugseg_func_69.0x801ebacc
 		li $a1, 0x2
 	bnez $v0, .57
 		lui $v1, 0x8009
@@ -1417,7 +1417,7 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ecbcc
+	jal dylib_sugseg_func_79.0x801ecbcc
 		nop
 	lw $v1, -0x7cc0($s0)
 	j .194
@@ -1520,7 +1520,7 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ecb40
+	jal dylib_sugseg_func_79.0x801ecb40
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -1556,7 +1556,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec4cc
+	jal dylib_sugseg_func_78.0x801ec4cc
 		nop
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -1588,7 +1588,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ebacc
+	jal dylib_sugseg_func_69.0x801ebacc
 		li $a1, 0x5
 	bnez $v0, .66
 		lui $v0, 0x8009
@@ -1632,13 +1632,13 @@ f399:
 	nop
 	lh $a0, 0x2($v1)
 	lb $a1, 0x817($v0)
-	jal 0x801ecb40
+	jal dylib_sugseg_func_79.0x801ecb40
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
 	sh $v0, 0x80a($v1)
 	lb $a0, 0x817($v1)
-	jal 0x801ea374
+	jal dylib_sugseg_func_56.0x801ea374
 		nop
 	beqz $v0, .65
 		lui $s0, 0x801e
@@ -1667,7 +1667,7 @@ f399:
 	nop
 	lb $a0, 0x817($v0)
 	lh $a1, 0x80a($v0)
-	jal 0x801ec8e0
+	jal dylib_sugseg_func_79.0x801ec8e0
 		nop
 	lw $v1, -0x7cc0($s0)
 	li $v0, -0x2
@@ -1678,7 +1678,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		nop
 	j .172
 		nop
@@ -1722,7 +1722,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		nop
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -1772,7 +1772,7 @@ f399:
 	nop
 	lb $a1, 0x817($v1)
 	lh $a2, 0x80e($v1)
-	jal 0x801eca30
+	jal dylib_sugseg_func_79.0x801eca30
 		move_ $a0, $v0
 	lw $v1, -0x7cc0($s0)
 	li $v0, -0x1
@@ -1807,7 +1807,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ea374
+	jal dylib_sugseg_func_56.0x801ea374
 		move_ $s2, $zr
 	bnez $v0, .78
 		lui $v1, 0x801e
@@ -1888,7 +1888,7 @@ f399:
 	lw $v0, -0x7cc0($s1)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		li $a0, 0x9
 	lw $v0, -0x7cc0($s1)
 	nop
@@ -1898,7 +1898,7 @@ f399:
 	lw $v1, -0x7cc0($s1)
 	nop
 	lb $a1, 0x817($v1)
-	jal 0x801ec608
+	jal dylib_sugseg_func_78.0x801ec608
 		move_ $a0, $v0
 	addiu $s0, -0x7cb8
 	lw $a1, -0x7cc0($s1)
@@ -1986,7 +1986,7 @@ f399:
 	nop
 	lb $a0, 0x817($v0)
 	lh $a1, 0x80a($v0)
-	jal 0x801ec8e0
+	jal dylib_sugseg_func_79.0x801ec8e0
 		li $s2, 0x2
 	lw $v1, -0x7cc0($s0)
 	li $v0, -0x2
@@ -2009,7 +2009,7 @@ f399:
 	lw $v0, -0x7cc0($s1)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		li $a0, 0x8
 	la_ $v1, 0x801d8348
 	lw $v0, -0x7cc0($s1)
@@ -2090,7 +2090,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		nop
 	li $v0, 0x1
 .80:
@@ -2210,7 +2210,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		move_ $s1, $zr
 	j .91
 		nop
@@ -2232,7 +2232,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ebacc
+	jal dylib_sugseg_func_69.0x801ebacc
 		li $a1, 0x6
 	move_ $s1, $v0
 	beqz $s1, .92
@@ -2260,7 +2260,7 @@ f399:
 	bltz $a1, .88
 		nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec8e0
+	jal dylib_sugseg_func_79.0x801ec8e0
 		nop
 	lw $v1, -0x7cc0($s0)
 	li $v0, -0x2
@@ -2295,7 +2295,7 @@ f399:
 	bltz $a1, .90
 		nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec8e0
+	jal dylib_sugseg_func_79.0x801ec8e0
 		nop
 	lw $v1, -0x7cc0($s0)
 	li $v0, -0x2
@@ -2309,7 +2309,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		nop
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -2335,14 +2335,14 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801e9f5c
+	jal dylib_sugseg_func_53.0x801e9f5c
 		nop
 	bnez $v0, .95
 		nop
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		nop
 	la_ $v1, 0x801d8348
 	lw $v0, -0x7cc0($s0)
@@ -2385,7 +2385,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		li $a0, 0x3
 	j .200
 		lui $v1, 0x801e
@@ -2393,7 +2393,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		li $a0, 0x4
 	j .200
 		lui $v1, 0x801e
@@ -2401,7 +2401,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		li $a0, 0x5
 	lui $v1, 0x801e
 	j .201
@@ -2410,7 +2410,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		li $a0, 0x7
 	lw $v0, -0x7cc0($s0)
 	nop
@@ -2420,7 +2420,7 @@ f399:
 	lw $v1, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v1)
-	jal 0x801ec608
+	jal dylib_sugseg_func_78.0x801ec608
 		move_ $a0, $v0
 	lui $v1, %hi(0x801d8348)
 .200:
@@ -2441,10 +2441,10 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($a1)
-	jal 0x801ec7c0
+	jal dylib_sugseg_func_78.0x801ec7c0
 		nop
 	lw $v1, -0x7cc0($s0)
-	jal 0x801ece24
+	jal dylib_sugseg_func_80.0x801ece24
 		sh $v0, 0x80a($v1)
 	j .202
 		lui $v1, 0x801e
@@ -2452,7 +2452,7 @@ f399:
 	lw $v0, -0x7cc0($s1)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		li $a0, 0x2
 	la_ $v1, 0x801d8348
 	lw $v0, -0x7cc0($s1)
@@ -2499,7 +2499,7 @@ f399:
 	lw $v1, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v1)
-	jal 0x801ec608
+	jal dylib_sugseg_func_78.0x801ec608
 		move_ $a0, $v0
 	jal f394
 		li $a0, 0x14
@@ -2531,7 +2531,7 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($a1)
-	jal 0x801ec7c0
+	jal dylib_sugseg_func_78.0x801ec7c0
 		nop
 	lw $v1, -0x7cc0($s0)
 	j .94
@@ -2540,7 +2540,7 @@ f399:
 	lw $v0, -0x7cc0($s1)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		li $a0, 0x6
 	la_ $s2, 0x801d8348
 	lw $v0, -0x7cc0($s1)
@@ -2584,7 +2584,7 @@ f399:
 	lw $v1, -0x7cc0($s1)
 	nop
 	lb $a1, 0x817($v1)
-	jal 0x801ec608
+	jal dylib_sugseg_func_78.0x801ec608
 		move_ $a0, $v0
 	lw $a1, -0x7cc0($s1)
 	nop
@@ -2602,10 +2602,10 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($a1)
-	jal 0x801ec7c0
+	jal dylib_sugseg_func_78.0x801ec7c0
 		nop
 	lw $v1, -0x7cc0($s1)
-	jal 0x801ece24
+	jal dylib_sugseg_func_80.0x801ece24
 		sh $v0, 0x80a($v1)
 .94:
 	lui $v1, %hi(0x801d8348)
@@ -2625,7 +2625,7 @@ f399:
 	ori $v0, 0x8
 	sw $v0, 0x110($v1)
 	lb $a0, 0x817($a0)
-	jal 0x801fa4e4
+	jal dylib_kawseg_func_82.0x801fa4e4
 		nop
 	lw $v1, -0x7cc0($s0)
 	li $v0, 0x17
@@ -2732,7 +2732,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		move_ $a0, $zr
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -2744,10 +2744,10 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ec7c0
+	jal dylib_sugseg_func_78.0x801ec7c0
 		nop
 	lw $v1, -0x7cc0($s0)
-	jal 0x801ece24
+	jal dylib_sugseg_func_80.0x801ece24
 		sh $v0, 0x80a($v1)
 	j .2
 		nop
@@ -2763,7 +2763,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ea374
+	jal dylib_sugseg_func_56.0x801ea374
 		nop
 	beqz $v0, .99
 		lui $v0, 0x801e
@@ -2783,7 +2783,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec4cc
+	jal dylib_sugseg_func_78.0x801ec4cc
 		nop
 	j .172
 		nop
@@ -2798,7 +2798,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ebacc
+	jal dylib_sugseg_func_69.0x801ebacc
 		li $a1, 0x3
 	bnez $v0, .100
 		lui $v1, 0x8009
@@ -2815,19 +2815,19 @@ f399:
 	nop
 	addu $v0, $v1
 	lb $a0, 0x1b9($v0)
-	jal 0x801e9f5c
+	jal dylib_sugseg_func_53.0x801e9f5c
 		nop
 	bnez $v0, .2
 		nop
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		nop
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a1, 0x817($v0)
-	jal 0x801f6214
+	jal DYLIB_OPENSEG_S_0x801f6214
 		move_ $a0, $zr
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -2835,10 +2835,10 @@ f399:
 	nop
 	lh $a0, 0x2($v0)
 	lb $a1, 0x817($v1)
-	jal 0x801ec7c0
+	jal dylib_sugseg_func_78.0x801ec7c0
 		nop
 	lw $v1, -0x7cc0($s0)
-	jal 0x801ece24
+	jal dylib_sugseg_func_80.0x801ece24
 		sh $v0, 0x80a($v1)
 	lw $a0, -0x7cc0($s0)
 	nop
@@ -2853,7 +2853,7 @@ f399:
 	ori $v0, 0x8
 	sw $v0, 0x110($v1)
 	lb $a0, 0x817($a0)
-	jal 0x801fa4e4
+	jal dylib_kawseg_func_82.0x801fa4e4
 		nop
 	j .2
 		nop
@@ -2900,13 +2900,13 @@ f399:
 		nop
 	jal f300
 		li $a0, 0xa1
-	jal 0x801ecd68
+	jal dylib_sugseg_func_80.0x801ecd68
 		nop
 .204:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		nop
 	j .2
 		nop
@@ -2960,7 +2960,7 @@ f399:
 	beqz $v0, .104
 		li $a0, 0x78
 	lui $a1, %hi(S_0x80010eb4)
-	jal 0x801ea8b4
+	jal dylib_sugseg_func_60.0x801ea8b4
 		addiu $a1, %lo(S_0x80010eb4)
 	j .2
 		nop
@@ -2977,7 +2977,7 @@ f399:
 	j .2
 		sb $v0, 0x818($a0)
 .106:
-	jal 0x801ecd68
+	jal dylib_sugseg_func_80.0x801ecd68
 		nop
 	j .2
 		nop
@@ -3252,7 +3252,7 @@ f399:
 		nop
 	jal f300
 		li $a0, 0xa0
-	jal 0x801ec4cc
+	jal dylib_sugseg_func_78.0x801ec4cc
 		move_ $a0, $s1
 	lui $v0, 0x801e
 	lw $a0, -0x7c14($v0)
@@ -3453,7 +3453,7 @@ f399:
 	nop
 	xori $a0, 0x1
 	sll $a0, 0x18
-	jal 0x801ecac4
+	jal dylib_sugseg_func_79.0x801ecac4
 		sra $a0, 0x18
 	jal f394
 		li $a0, 0x78
@@ -3503,7 +3503,7 @@ f399:
 	xori $a1, 0x1
 	sll $a1, 0x18
 	lw $a0, 0x804($v0)
-	jal 0x801ecb40
+	jal dylib_sugseg_func_79.0x801ecb40
 		sra $a1, 0x18
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -3568,7 +3568,7 @@ f399:
 	nop
 	xori $a0, 0x1
 	sll $a0, 0x18
-	jal 0x801ec4cc
+	jal dylib_sugseg_func_78.0x801ec4cc
 		sra $a0, 0x18
 	j .172
 		nop
@@ -3586,7 +3586,7 @@ f399:
 	xori $a0, 0x1
 	sll $a0, 0x18
 	sra $a0, 0x18
-	jal 0x801ebacc
+	jal dylib_sugseg_func_69.0x801ebacc
 		li $a1, 0x4
 	bnez $v0, .124
 		lui $v1, 0x8009
@@ -3608,7 +3608,7 @@ f399:
 	li $v0, 0x4
 	bne $v1, $v0, .123
 		lui $s0, 0x801e
-	jal 0x801ecac4
+	jal dylib_sugseg_func_79.0x801ecac4
 		sh $v1, 0x80a($a1)
 	j .210
 		nop
@@ -3644,7 +3644,7 @@ f399:
 	lw $v0, 0x58($a2)
 	nop
 	lh $a0, 0x2($v0)
-	jal 0x801ecb40
+	jal dylib_sugseg_func_79.0x801ecb40
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -3703,7 +3703,7 @@ f399:
 	nop
 	xori $a0, 0x1
 	sll $a0, 0x18
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		sra $a0, 0x18
 	j .2
 		nop
@@ -3762,7 +3762,7 @@ f399:
 	nop
 	xori $a0, 0x1
 	sll $a0, 0x18
-	jal 0x801ec8e0
+	jal dylib_sugseg_func_79.0x801ec8e0
 		sra $a0, 0x18
 .128:
 	lui $v0, 0x801e
@@ -3844,7 +3844,7 @@ f399:
 	lw $v0, -0x7cc0($s1)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ecac4
+	jal dylib_sugseg_func_79.0x801ecac4
 		nop
 	jal f394
 		li $a0, 0x78
@@ -3889,7 +3889,7 @@ f399:
 	nop
 	lw $a0, 0x804($v0)
 	lb $a1, 0x817($v0)
-	jal 0x801ecb40
+	jal dylib_sugseg_func_79.0x801ecb40
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -3949,7 +3949,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec4cc
+	jal dylib_sugseg_func_78.0x801ec4cc
 		nop
 	j .172
 		nop
@@ -3963,7 +3963,7 @@ f399:
 	lw $v0, -0x7cc0($s0)
 	nop
 	lb $a0, 0x817($v0)
-	jal 0x801ebacc
+	jal dylib_sugseg_func_69.0x801ebacc
 		li $a1, 0x4
 	bnez $v0, .136
 		lui $v1, 0x8009
@@ -3982,7 +3982,7 @@ f399:
 	li $v0, 0x4
 	bne $v1, $v0, .135
 		lui $s0, 0x801e
-	jal 0x801ecac4
+	jal dylib_sugseg_func_79.0x801ecac4
 		sh $v1, 0x80a($a1)
 	j .213
 		nop
@@ -4015,7 +4015,7 @@ f399:
 	lw $v0, 0x58($a2)
 	nop
 	lh $a0, 0x2($v0)
-	jal 0x801ecb40
+	jal dylib_sugseg_func_79.0x801ecb40
 		nop
 	lw $v1, -0x7cc0($s0)
 	nop
@@ -4070,7 +4070,7 @@ f399:
 	beq $v1, $v0, .2
 		nop
 	lb $a0, 0x817($a0)
-	jal 0x801ec528
+	jal dylib_sugseg_func_78.0x801ec528
 		nop
 	j .2
 		nop
@@ -4103,7 +4103,7 @@ f399:
 		li $a0, 0x78
 .140:
 	lui $a1, %hi(S_0x80010fa0)
-	jal 0x801ea8b4
+	jal dylib_sugseg_func_60.0x801ea8b4
 		addiu $a1, %lo(S_0x80010fa0)
 	la_ $a0, 0x801d8278
 	la_ $a1, S_0x80010f48
@@ -4119,7 +4119,7 @@ f399:
 	bltz $a1, .142
 		nop
 	lb $a0, 0x817($v0)
-	jal 0x801ec8e0
+	jal dylib_sugseg_func_79.0x801ec8e0
 		nop
 .142:
 	lui $v0, 0x801e
@@ -4172,7 +4172,7 @@ f399:
 	jal f19
 		li $a0, 0x14
 .147:
-	jal 0x801e6aa4
+	jal dylib_sugseg_func_27.0x801e6aa4
 		move_ $a0, $zr
 	lui $v0, 0x801e
 	lw $v1, -0x7cc0($v0)
@@ -4278,7 +4278,7 @@ f399:
 	andi $v0, 0x1
 	bnez $v0, .149
 		li $a0, 0x1b
-	jal 0x801f6268
+	jal DYLIB_OPENSEG_S_0x801f6268
 		move_ $a1, $s2
 	li $v0, 0xa
 	sh $v0, 0x11c($s4)
@@ -4287,7 +4287,7 @@ f399:
 	nop
 	bnez $v0, .150
 		li $a0, 0x1c
-	jal 0x801f6268
+	jal DYLIB_OPENSEG_S_0x801f6268
 		move_ $a1, $s2
 	j .153
 		nop
@@ -4298,7 +4298,7 @@ f399:
 	andi $v0, 0x1
 	beqz $v0, .152
 		li $a0, 0x1a
-	jal 0x801f6268
+	jal DYLIB_OPENSEG_S_0x801f6268
 		move_ $a1, $s2
 	lh $s1, 0x11c($s4)
 	lh $v0, 0x164($s4)
@@ -4331,7 +4331,7 @@ f399:
 	sll $v1, 0x1
 	bne $s1, $v1, .153
 		move_ $a0, $s2
-	jal 0x801fb444
+	jal dylib_kawseg_func_86.0x801fb444
 		li $a1, 0x1a
 	j .153
 		nop
@@ -4342,7 +4342,7 @@ f399:
 	andi $v0, 0x1
 	bnez $v0, .153
 		li $a0, 0x18
-	jal 0x801f6268
+	jal DYLIB_OPENSEG_S_0x801f6268
 		move_ $a1, $s2
 .153:
 	lh $s1, 0x11c($s3)
@@ -4378,7 +4378,7 @@ f399:
 	sll $v0, 0x10
 	bnez $v0, .154
 		move_ $a0, $s2
-	jal 0x801fb444
+	jal dylib_kawseg_func_86.0x801fb444
 		li $a1, 0x19
 .154:
 	bnez $s1, .155
@@ -4387,7 +4387,7 @@ f399:
 	nop
 	bne $v1, $v0, .155
 		move_ $a0, $s2
-	jal 0x801fb444
+	jal dylib_kawseg_func_86.0x801fb444
 		li $a1, 0x13
 .155:
 	bgez $s1, .156
@@ -4416,12 +4416,12 @@ f399:
 	nop
 	beqz $v0, .157
 		xori $a0, $s2, 0x1
-	jal 0x801fb444
+	jal dylib_kawseg_func_86.0x801fb444
 		li $a1, 0x1a
 .157:
 	jal f401
 		nop
-	jal 0x801ecf0c
+	jal dylib_sugseg_func_80.0x801ecf0c
 		xori $a0, $s2, 0x1
 	beqz $v0, .158
 		nop
@@ -4443,7 +4443,7 @@ f399:
 	nop
 	beqz $v0, .160
 		li $a0, 0x1b
-	jal 0x801f6268
+	jal DYLIB_OPENSEG_S_0x801f6268
 		xori $a1, $s2, 0x1
 	li $v0, 0xa
 	sh $v0, 0x11c($s3)
@@ -4454,7 +4454,7 @@ f399:
 		nop
 .160:
 	li $a0, 0x1c
-	jal 0x801f6268
+	jal DYLIB_OPENSEG_S_0x801f6268
 		xori $a1, $s2, 0x1
 	j .165
 		nop
@@ -4467,7 +4467,7 @@ f399:
 	andi $v0, 0x1
 	beqz $v0, .162
 		li $a0, 0x19
-	jal 0x801f6268
+	jal DYLIB_OPENSEG_S_0x801f6268
 		xori $a1, $s2, 0x1
 .162:
 	lw $v0, 0x178($s3)
@@ -4477,7 +4477,7 @@ f399:
 	beqz $v0, .165
 		xori $s0, $s2, 0x1
 	li $a0, 0x1a
-	jal 0x801f6268
+	jal DYLIB_OPENSEG_S_0x801f6268
 		move_ $a1, $s0
 	lh $s1, 0x11c($s3)
 	lh $v0, 0x164($s3)
@@ -4510,7 +4510,7 @@ f399:
 	sll $v1, 0x1
 	bne $s1, $v1, .165
 		xori $a0, $s2, 0x1
-	jal 0x801fb444
+	jal dylib_kawseg_func_86.0x801fb444
 		li $a1, 0x1a
 	j .165
 		nop
@@ -4521,7 +4521,7 @@ f399:
 	andi $v0, 0x1
 	bnez $v0, .165
 		li $a0, 0x18
-	jal 0x801f6268
+	jal DYLIB_OPENSEG_S_0x801f6268
 		xori $a1, $s2, 0x1
 .165:
 	lh $s1, 0x11c($s4)
@@ -4557,7 +4557,7 @@ f399:
 	sll $v0, 0x10
 	bnez $v0, .166
 		xori $a0, $s2, 0x1
-	jal 0x801fb444
+	jal dylib_kawseg_func_86.0x801fb444
 		li $a1, 0x19
 .166:
 	bnez $s1, .167
@@ -4566,7 +4566,7 @@ f399:
 	nop
 	bne $v1, $v0, .167
 		xori $a0, $s2, 0x1
-	jal 0x801fb444
+	jal dylib_kawseg_func_86.0x801fb444
 		li $a1, 0x13
 .167:
 	bgez $s1, .168
@@ -4595,12 +4595,12 @@ f399:
 	nop
 	beqz $v0, .169
 		move_ $a0, $s2
-	jal 0x801fb444
+	jal dylib_kawseg_func_86.0x801fb444
 		li $a1, 0x1a
 .169:
 	jal f401
 		nop
-	jal 0x801ecf0c
+	jal dylib_sugseg_func_80.0x801ecf0c
 		move_ $a0, $s2
 	beqz $v0, .170
 		nop
@@ -4654,7 +4654,7 @@ f399:
 	nop
 	bne $v1, $v0, .2
 		nop
-	jal 0x801ecf0c
+	jal dylib_sugseg_func_80.0x801ecf0c
 		nop
 	bnez $v0, .172
 		nop
@@ -4664,7 +4664,7 @@ f399:
 	nop
 	xori $a0, 0x1
 	sll $a0, 0x18
-	jal 0x801ecf0c
+	jal dylib_sugseg_func_80.0x801ecf0c
 		sra $a0, 0x18
 	beqz $v0, .174
 		lui $v0, 0x801e
@@ -4803,7 +4803,7 @@ f399:
 	lw $v0, -0x7cc0($s1)
 	nop
 	lbu $a0, 0x81e($v0)
-	jal 0x801fb444
+	jal dylib_kawseg_func_86.0x801fb444
 		li $a1, 0xa
 	lw $v0, -0x7cc0($s1)
 	nop

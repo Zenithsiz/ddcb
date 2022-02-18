@@ -4099,7 +4099,7 @@ f345:
 		li $a0, 0x1
 	jal f8
 		nop
-	la_ $v1, 0x801eee90
+	la_ $v1, dylib_sugseg_func_92.0x801eee90
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	sw $v0, 0x18($sp)

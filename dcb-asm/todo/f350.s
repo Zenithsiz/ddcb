@@ -29,7 +29,7 @@ f350:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801ebafc
+	la_ $v1, dylib_sugseg_func_69.0x801ebafc
 	sw $v1, 0x10($sp)
 	sw $s0, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -75,7 +75,7 @@ f350:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801f00f4
+	la_ $v1, dylib_subseg_func_23.0x801f00f4
 	sw $v1, 0x10($sp)
 	li $v1, 0x1
 	sw $v1, 0x14($sp)
@@ -114,7 +114,7 @@ f350:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801e4d80
+	la_ $v1, dylib_sugseg_func_22.0x801e4d80
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -136,7 +136,7 @@ f351:
 	sw $ra, 0x28($sp)
 	jal f8
 		nop
-	la_ $v1, 0x801ebafc
+	la_ $v1, dylib_sugseg_func_69.0x801ebafc
 	sw $v1, 0x10($sp)
 	li $v1, 0xff
 	sw $v1, 0x14($sp)
@@ -206,7 +206,7 @@ f351:
 		move_ $a0, $zr
 	jal f8
 		nop
-	la_ $v1, 0x801f00f4
+	la_ $v1, dylib_subseg_func_23.0x801f00f4
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	sw $zr, 0x18($sp)
@@ -222,7 +222,7 @@ f351:
 .1:
 	jal f8
 		nop
-	la_ $v1, 0x801e4d80
+	la_ $v1, dylib_sugseg_func_22.0x801e4d80
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -269,7 +269,7 @@ f352:
 		ori $a0, 0xffff
 	jal f19
 		li $a0, 0x2
-	la_ $v0, 0x801e8e88
+	la_ $v0, dylib_sugseg_func_49.0x801e8e88
 	sw $v0, 0x10($sp)
 	sw $s0, 0x14($sp)
 	sw $zr, 0x18($sp)
@@ -312,7 +312,7 @@ f353:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801e4d80
+	la_ $v1, dylib_sugseg_func_22.0x801e4d80
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -357,7 +357,7 @@ f354:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801e8c04
+	la_ $v1, dylib_sugseg_func_49.0x801e8c04
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -402,7 +402,7 @@ f354:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801f00f4
+	la_ $v1, dylib_subseg_func_23.0x801f00f4
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	li $v1, 0x1
@@ -441,7 +441,7 @@ f354:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801e4d80
+	la_ $v1, dylib_sugseg_func_22.0x801e4d80
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -487,7 +487,7 @@ f355:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801e4b34
+	la_ $v1, dylib_sugseg_func_22.0x801e4b34
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -532,7 +532,7 @@ f355:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801f00f4
+	la_ $v1, dylib_subseg_func_23.0x801f00f4
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	li $v1, 0x1
@@ -571,7 +571,7 @@ f355:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801e4d80
+	la_ $v1, dylib_sugseg_func_22.0x801e4d80
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -620,7 +620,7 @@ f356:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801e8c04
+	la_ $v1, dylib_sugseg_func_49.0x801e8c04
 	sw $v1, 0x10($sp)
 	sw $s2, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -694,7 +694,7 @@ f357:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801e4b34
+	la_ $v1, dylib_sugseg_func_22.0x801e4b34
 	sw $v1, 0x10($sp)
 	sw $s2, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -806,7 +806,7 @@ f358:
 	move_ $a2, $zr
 	jal f362
 		li $a3, 0x380
-	la_ $v0, 0x801e6454
+	la_ $v0, dylib_sugseg_func_26.0x801e6454
 	sw $v0, 0x10($sp)
 	sw $s1, 0x14($sp)
 	sw $zr, 0x18($sp)
@@ -844,7 +844,7 @@ f358:
 		li $a0, 0x2
 	jal f8
 		nop
-	la_ $v1, 0x801e4d80
+	la_ $v1, dylib_sugseg_func_22.0x801e4d80
 	sw $v1, 0x10($sp)
 	sw $zr, 0x14($sp)
 	sw $v0, 0x18($sp)
@@ -875,7 +875,7 @@ f358:
 	jal f362
 		li $a3, 0x380
 	lwi $v0, S_0x8006e054
-	jal 0x801ebd34
+	jal dylib_sugseg_func_70.0x801ebd34
 		sb $zr, 0x1028($v0)
 	move_ $s0, $v0
 	bnez $s0, .5
@@ -3680,7 +3680,7 @@ f388:
 	nop
 	sw $v0, 0x10($sp)
 	move_ $a2, $s7
-	jal 0x801e6c78
+	jal dylib_sugseg_func_30.0x801e6c78
 		addiu $a3, $s7, 0x13c
 	bnez $v0, .1
 		li $v0, 0x1
@@ -4163,7 +4163,7 @@ f389:
 	nop
 	bltz $v0, .17
 		lui $a0, 0x8008
-	jal 0x801e7020
+	jal dylib_sugseg_func_31.0x801e7020
 		addiu $a0, $s1, 0x13c
 	lui $a0, 0x8008
 .17:
@@ -4385,7 +4385,7 @@ f390:
 	nop
 	bltz $v0, .1
 		nop
-	jal 0x801e72d4
+	jal dylib_sugseg_func_33.0x801e72d4
 		addiu $a0, $s2, 0x13c
 .1:
 	lw $a0, 0x16c($s2)

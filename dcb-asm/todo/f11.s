@@ -333,7 +333,7 @@ f22:
 		li $v0, 0x1
 	beq $v1, $v0, .0
 		li $s3, 0x1
-	jal 0x801ead04
+	jal dylib_sugseg_func_63.0x801ead04
 		nop
 .0:
 	lui $v0, 0x8008
@@ -855,7 +855,7 @@ f24_2:
 	lui $a0, 0x7fff
 	jal f19
 		ori $a0, 0xffff
-	jal 0x801e055c
+	jal dylib_sugseg_func_7.0x801e055c
 		move_ $a0, $zr
 	jal f291
 		li $a0, 0x1
