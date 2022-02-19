@@ -1437,7 +1437,7 @@ decl_static! {
 		0x00000000,
 	];
 
-	S_0x80011958: PsxStr<0x10> = psx_str!("B:\\CARD2.CDD");
+	CARD_TABLE_PATH: PsxStr<0x10> = psx_str!("B:\\CARD2.CDD");
 
 	S_0x80011968: [u32; 1280] = [
 		0x80047220,

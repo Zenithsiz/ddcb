@@ -1,3 +1,4 @@
+# Disables exceptions?
 f11:
 	mfc0 $t0, $12
 	nop
@@ -22,6 +23,7 @@ f13:
 		nop
 
 f14:
+	# Disable exceptions?
 	mfc0 $t0, $12
 	nop
 	move_ $t1, $t0
@@ -32,6 +34,8 @@ f14:
 	or $t0, $t1
 	mtc0 $t0, $12
 	nop
+
+	# Call `f4`, call `cop0 0x10` and return.
 	addiu $sp, -0x4
 	sw $ra, ($sp)
 	jal f4
