@@ -27,7 +27,7 @@ ASM_PROCESSED_FILES := $(subst dcb-asm/, build/asm/, $(ASM_FILES))
 DYLIBS := build/dylib/ENDSEG.BIN build/dylib/EVOSEG.BIN build/dylib/KAWSEG.BIN build/dylib/OPENSEG.BIN build/dylib/SAISEG.BIN build/dylib/SUBSEG.BIN build/dylib/SUGSEG.BIN
 
 # All `DRV` files
-DRV_FILES := $(patsubst dcb/%/,build/iso/%.DRV,$(wildcard dcb/*/))
+DRV_FILES := $(patsubst dcb/%/,build/iso/%.DRV,$(wildcard dcb/*/)) build/iso/P.DRV
 
 # All ISO files, excluding DRVs
 ISO_NON_DRV_FILES := $(patsubst dcb/%,build/iso/%,$(wildcard dcb/*.*))
