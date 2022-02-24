@@ -2,22 +2,22 @@
 entries:
   - name: ENDSEG
     date: "2001-05-02T09:41:44"
-    path: dcb/P/ENDSEG.BIN
+    path: build/dylib/ENDSEG.BIN
   - name: EVOSEG
     date: "2001-05-02T09:41:44"
-    path: dcb/P/EVOSEG.BIN
+    path: build/dylib/EVOSEG.BIN
   - name: KAWSEG
     date: "2001-05-02T09:41:44"
-    path: dcb/P/KAWSEG.BIN
+    path: build/dylib/KAWSEG.BIN
   - name: OPENSEG
     date: "2001-05-02T09:41:44"
-    path: dcb/P/OPENSEG.BIN
+    path: build/dylib/OPENSEG.BIN
   - name: SAISEG
     date: "2001-05-02T09:41:44"
-    path: dcb/P/SAISEG.BIN
+    path: build/dylib/SAISEG.BIN
   - name: SUBSEG
     date: "2001-05-02T09:41:44"
-    path: dcb/P/SUBSEG.BIN
+    path: build/dylib/SUBSEG.BIN
   - name: SUGSEG
     date: "2001-05-02T09:41:44"
-    path: dcb/P/SUGSEG.BIN
+    path: build/dylib/SUGSEG.BIN

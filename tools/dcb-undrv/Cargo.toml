@@ -15,7 +15,7 @@ size_format = "1.0.2"
 zutil = {git = "https://github.com/Zenithsiz/zutil", features = ["use_serde"], rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f"}
 
 # Cmd
-clap = {version = "3.1.1", features = ["derive"]}
+clap = {version = "3.1.2", features = ["derive"]}
 
 # Logging
 log = "0.4.14"

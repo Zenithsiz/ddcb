@@ -76,16 +76,19 @@ target/release/% target/release/%.d:
 build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
 	mkpsxiso dcb-iso.xml -q -y
 
-# Copy directories in `dcb/` as `DRV`s to `build/iso`.
-.SECONDEXPANSION:
-build/iso/%.DRV: $$(shell find dcb/$$*/) $(mkdrv)
+# Special case `B.DRV` so we can write the invalid entry
+build/iso/B.DRV: dcb/B.yaml $(mkdrv)
 	@mkdir -p $(@D)
 	$(mkdrv) --quiet $< -o $@
+	printf "02C0: 01 43 44 44 D5 2F 00 00 F0 3F 01 00 E6 75 AD 3A" | xxd -r - build/iso/B.DRV
+	printf "02D0: 83 52 83 53 81 5B 20 81 60 20 43 41 52 44 32 00" | xxd -r - build/iso/B.DRV
 
-# Except for `P` drv
-build/iso/P.DRV: $(DYLIBS)
+
+# Copy directories in `dcb/` as `DRV`s to `build/iso`.
+# TODO: Use dependencies here created by `mkdrv`
+build/iso/%.DRV: dcb/%.yaml $(mkdrv)
 	@mkdir -p $(@D)
-	$(mkdrv) --quiet build/dylib/ -o $@
+	$(mkdrv) --quiet $< -o $@
 
 # All dylibs
 # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the

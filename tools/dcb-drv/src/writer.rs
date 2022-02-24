@@ -17,12 +17,12 @@ pub trait DirWriterLister:
 	type FileReader: io::Read;
 
 	/// Error type for each entry
-	type Error: std::error::Error + 'static;
+	type Error;
 }
 
 /// Error for [`DirWriter::write`]
 #[derive(Debug, thiserror::Error)]
-pub enum WriteDirError<E: std::error::Error + 'static> {
+pub enum WriteDirError<E> {
 	/// Unable to get entry
 	#[error("Unable to get entry")]
 	GetEntry(#[source] E),
