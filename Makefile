@@ -46,7 +46,7 @@ all: build/dcb.bin
 
 # Compare files to original
 # TODO: Compare the bin once it's properly built
-compare: build/dcb.psexe $(DYLIBS)
+compare: build/dcb.psexe $(DYLIBS) $(DRV_FILES)
 	$(sha256sum) --check checksums.sha256
 
 # Compiles all tols
