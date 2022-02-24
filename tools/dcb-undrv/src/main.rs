@@ -6,11 +6,14 @@ mod args;
 // Imports
 use self::args::Args;
 use anyhow::Context;
+use clap::Parser;
 use dcb_drv::{DirEntryKind, DirPtr};
 use std::{
-	fs, io,
+	fs,
+	io::{self, Seek},
 	path::{Path, PathBuf},
 };
+use zutil::AsciiStrArr;
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
@@ -18,46 +21,58 @@ fn main() -> Result<(), anyhow::Error> {
 		log::LevelFilter::Info,
 		simplelog::Config::default(),
 		simplelog::TerminalMode::Stderr,
+		simplelog::ColorChoice::Auto,
 	)
 	.expect("Unable to initialize logger");
 
 	// Get all args
-	let args = args::get();
+	let args = Args::parse();
 
-	// For each input file, extract it
-	for input_file_path in &args.input_files {
-		// If we don't have an output, try the input filename without extension if it's `.drv`, else use `.`
-		let output_dir = match &args.output_dir {
-			Some(output) => output.clone(),
-			None => match input_file_path.extension() {
-				Some(extension) if extension.eq_ignore_ascii_case("drv") => input_file_path.with_extension(""),
-				_ => PathBuf::from("."),
-			},
-		};
+	// Open the file and parse a `drv` filesystem from it.
+	let input_file = fs::File::open(&args.input_file).context("Unable to open input file")?;
+	let input_file_metadata = input_file.metadata().context("Unable to get input file metadata")?;
+	let mut input_file = io::BufReader::new(input_file);
 
-		// Open the file and parse a `drv` filesystem from it.
-		let input_file = fs::File::open(&input_file_path).context("Unable to open input file")?;
-		let input_file_metadata = input_file.metadata().context("Unable to get input file metadata")?;
-		let mut input_file = io::BufReader::new(input_file);
+	// Figure out the output directory
+	// Note: If we don't have an output, try the input filename without extension if it's `.drv`, else use `.`
+	let output_dir = match &args.output_dir {
+		Some(output) => output.clone(),
+		None => match args.input_file.extension() {
+			Some(extension) if extension.eq_ignore_ascii_case("drv") => args.input_file.with_extension(""),
+			_ => PathBuf::from("."),
+		},
+	};
 
-		// Create output directory if it doesn't exist
-		zutil::try_create_folder(&output_dir)
-			.with_context(|| format!("Unable to create directory {}", output_dir.display()))?;
+	// If we should output a map file, do it
+	if let Some(path) = &args.output_map {
+		// Create the map
+		let map = self::create_map(&mut input_file, &output_dir).context("Unable to create map file")?;
 
-		// Then extract the tree
-		if let Err(err) = self::extract_tree(&mut input_file, DirPtr::root(), &output_dir, &args) {
-			log::error!("Unable to extract files from {}: {:?}", input_file_path.display(), err);
-		}
+		// Write it to file
+		zutil::write_to_file(path, &map, serde_yaml::to_writer).context("Unable to write map to file")?;
 
-		// And set it's time to the input file
-		let time = filetime::FileTime::from_last_modification_time(&input_file_metadata);
-		if let Err(err) = filetime::set_file_mtime(&output_dir, time) {
-			log::warn!(
-				"Unable to write date for output directory {}: {}",
-				output_dir.display(),
-				zutil::fmt_err_wrapper(&err)
-			);
-		}
+		// Then rewind the input file
+		input_file.rewind().context("Unable to rewind input file")?;
+	}
+
+	// Create output directory if it doesn't exist
+	zutil::try_create_folder(&output_dir)
+		.with_context(|| format!("Unable to create directory {}", output_dir.display()))?;
+
+	// Then extract the tree
+	if let Err(err) = self::extract_tree(&mut input_file, DirPtr::root(), &output_dir, &args) {
+		log::error!("Unable to extract files from {}: {:?}", args.input_file.display(), err);
+	}
+
+	// And set the directory time to the input file
+	// Note: `extract_tree` takes care of each file's input files.
+	let time = filetime::FileTime::from_last_modification_time(&input_file_metadata);
+	if let Err(err) = filetime::set_file_mtime(&output_dir, time) {
+		log::warn!(
+			"Unable to write date for output directory {}: {}",
+			output_dir.display(),
+			zutil::fmt_err_wrapper(&err)
+		);
 	}
 
 	Ok(())
@@ -96,11 +111,6 @@ fn extract_tree<R: io::Read + io::Seek>(
 						path.display(),
 						size_format::SizeFormatterSI::new(u64::from(ptr.size))
 					);
-				}
-
-				// If the output file already exists, log a warning
-				if args.warn_on_override && path.exists() {
-					log::warn!("Overriding file {}", path.display());
 				}
 
 				// Get the file's reader.
@@ -154,4 +164,99 @@ fn extract_tree<R: io::Read + io::Seek>(
 	}
 
 	Ok(())
+}
+
+/// Creates a map from a drv file
+fn create_map<R: io::Read + io::Seek>(reader: &mut R, path: &Path) -> Result<DrvMap, anyhow::Error> {
+	let entries = self::map_entries(reader, DirPtr::root(), path).context("Unable to get all root entries")?;
+
+	Ok(DrvMap { entries })
+}
+
+/// Creates a map entry
+fn create_map_entry<R: io::Read + io::Seek>(
+	reader: &mut R, path: &Path, entry: dcb_drv::DirEntry,
+) -> Result<DrvMapEntry, anyhow::Error> {
+	let entry = match entry.kind {
+		DirEntryKind::File { extension, .. } => {
+			let path = path.join(format!("{}.{}", entry.name, extension));
+
+			DrvMapEntry::File {
+				name: entry.name,
+				date: entry.date,
+				path,
+			}
+		},
+		DirEntryKind::Dir { ptr } => {
+			let path = path.join(entry.name.as_str());
+
+			// Collect all entries
+			let entries = self::map_entries(reader, ptr, &path)?;
+
+			DrvMapEntry::Dir {
+				name: entry.name,
+				date: entry.date,
+				entries,
+			}
+		},
+	};
+
+	Ok(entry)
+}
+
+/// Collects all map entries
+fn map_entries<R: io::Read + io::Seek>(
+	reader: &mut R, dir_ptr: DirPtr, path: &Path,
+) -> Result<Vec<DrvMapEntry>, anyhow::Error> {
+	// Collect all entries
+	let entries = dir_ptr
+		.read_entries(reader)
+		.with_context(|| format!("Unable to get directory entries of {}", path.display()))?
+		.collect::<Result<Vec<_>, _>>()
+		.context("Unable to parse entry")?;
+
+	// Then parse them
+	entries
+		.into_iter()
+		.map(|entry| self::create_map_entry(reader, path, entry))
+		.collect::<Result<Vec<_>, _>>()
+		.context("Unable to parse entry")
+}
+
+/// Drive map
+#[derive(Debug)]
+#[derive(serde::Serialize)]
+pub struct DrvMap {
+	/// All entries
+	entries: Vec<DrvMapEntry>,
+}
+
+/// Drive map entry
+#[derive(Debug)]
+#[derive(serde::Serialize)]
+#[serde(untagged)]
+pub enum DrvMapEntry {
+	/// Directory
+	Dir {
+		/// Name
+		name: AsciiStrArr<16>,
+
+		/// Date
+		date: chrono::NaiveDateTime,
+
+		/// Entries
+		entries: Vec<Self>,
+	},
+
+	/// File
+	File {
+		/// Name
+		name: AsciiStrArr<16>,
+
+		/// Date
+		date: chrono::NaiveDateTime,
+
+		/// Path
+		path: PathBuf,
+	},
 }

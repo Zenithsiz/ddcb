@@ -6,8 +6,7 @@
 	associated_type_bounds,
 	never_type,
 	unwrap_infallible,
-	str_internals,
-	destructuring_assignment
+	str_internals
 )]
 
 // Modules

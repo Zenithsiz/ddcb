@@ -6,18 +6,24 @@ version = "0.1.0"
 [dependencies]
 # Dcb
 dcb-drv = {path = "../dcb-drv"}
-zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f"}
 
 # Util
+chrono = {version = "0.4.19", features = ["serde"]}
 filetime = "0.2.14"
+itertools = "0.10.3"
 size_format = "1.0.2"
+zutil = {git = "https://github.com/Zenithsiz/zutil", features = ["use_serde"], rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f"}
 
 # Cmd
-clap = "2.33.3"
+clap = {version = "3.1.1", features = ["derive"]}
 
 # Logging
 log = "0.4.14"
-simplelog = "0.9.0"
+simplelog = "0.11.2"
 
 # Error handling
 anyhow = "1.0.38"
+
+# Serde
+serde = {version = "1.0.136", features = ["derive"]}
+serde_yaml = "0.8.23"

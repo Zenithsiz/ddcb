@@ -1,0 +1,320 @@
+---
+entries:
+  - name: BGM
+    date: "2000-12-19T09:49:20"
+    entries:
+      - name: BGM01
+        date: "2000-08-31T01:37:44"
+        path: dcb/A/BGM/BGM01.PAK
+      - name: BGM02
+        date: "2000-08-31T01:37:44"
+        path: dcb/A/BGM/BGM02.PAK
+      - name: BGM03
+        date: "2000-08-31T01:37:44"
+        path: dcb/A/BGM/BGM03.PAK
+      - name: BGM04
+        date: "2000-08-31T01:37:44"
+        path: dcb/A/BGM/BGM04.PAK
+      - name: BGM05
+        date: "2000-08-31T01:37:44"
+        path: dcb/A/BGM/BGM05.PAK
+      - name: BGM06
+        date: "2000-08-31T01:37:44"
+        path: dcb/A/BGM/BGM06.PAK
+      - name: BGM07
+        date: "2000-08-31T01:37:44"
+        path: dcb/A/BGM/BGM07.PAK
+      - name: BGM08
+        date: "2000-08-31T01:37:44"
+        path: dcb/A/BGM/BGM08.PAK
+      - name: BGM09
+        date: "2000-08-31T01:37:44"
+        path: dcb/A/BGM/BGM09.PAK
+      - name: BGM10
+        date: "2000-08-31T01:37:44"
+        path: dcb/A/BGM/BGM10.PAK
+      - name: BGM102
+        date: "2000-10-12T11:49:16"
+        path: dcb/A/BGM/BGM102.PAK
+      - name: BGM104
+        date: "2000-10-12T11:49:16"
+        path: dcb/A/BGM/BGM104.PAK
+      - name: BGM106
+        date: "2000-10-12T11:49:16"
+        path: dcb/A/BGM/BGM106.PAK
+      - name: BGM107
+        date: "2000-10-12T11:49:16"
+        path: dcb/A/BGM/BGM107.PAK
+      - name: BGM108
+        date: "2000-10-12T11:49:16"
+        path: dcb/A/BGM/BGM108.PAK
+      - name: BGM109
+        date: "2000-10-12T11:49:16"
+        path: dcb/A/BGM/BGM109.PAK
+      - name: BGM11
+        date: "2000-08-31T01:37:46"
+        path: dcb/A/BGM/BGM11.PAK
+      - name: BGM110
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM110.PAK
+      - name: BGM111
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM111.PAK
+      - name: BGM112
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM112.PAK
+      - name: BGM113
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM113.PAK
+      - name: BGM114
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM114.PAK
+      - name: BGM115
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM115.PAK
+      - name: BGM116
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM116.PAK
+      - name: BGM117
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM117.PAK
+      - name: BGM118
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM118.PAK
+      - name: BGM119
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM119.PAK
+      - name: BGM12
+        date: "2000-08-31T01:37:48"
+        path: dcb/A/BGM/BGM12.PAK
+      - name: BGM120
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM120.PAK
+      - name: BGM121
+        date: "2000-10-12T11:49:18"
+        path: dcb/A/BGM/BGM121.PAK
+      - name: BGM122
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM122.PAK
+      - name: BGM123
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM123.PAK
+      - name: BGM124
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM124.PAK
+      - name: BGM125
+        date: "2000-10-17T08:34:04"
+        path: dcb/A/BGM/BGM125.PAK
+      - name: BGM126
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM126.PAK
+      - name: BGM127
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM127.PAK
+      - name: BGM128
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM128.PAK
+      - name: BGM129
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM129.PAK
+      - name: BGM13
+        date: "2000-08-31T01:37:48"
+        path: dcb/A/BGM/BGM13.PAK
+      - name: BGM130
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM130.PAK
+      - name: BGM131
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM131.PAK
+      - name: BGM132
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM132.PAK
+      - name: BGM133
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM133.PAK
+      - name: BGM134
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM134.PAK
+      - name: BGM135
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM135.PAK
+      - name: BGM136
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM136.PAK
+      - name: BGM137
+        date: "2000-10-12T11:49:20"
+        path: dcb/A/BGM/BGM137.PAK
+      - name: BGM138
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM138.PAK
+      - name: BGM139
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM139.PAK
+      - name: BGM14
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM14.PAK
+      - name: BGM140
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM140.PAK
+      - name: BGM141
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM141.PAK
+      - name: BGM142
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM142.PAK
+      - name: BGM143
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM143.PAK
+      - name: BGM144
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM144.PAK
+      - name: BGM145
+        date: "2000-10-17T08:34:06"
+        path: dcb/A/BGM/BGM145.PAK
+      - name: BGM146
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM146.PAK
+      - name: BGM147
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM147.PAK
+      - name: BGM148
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM148.PAK
+      - name: BGM149
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM149.PAK
+      - name: BGM15
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM15.PAK
+      - name: BGM150
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM150.PAK
+      - name: BGM151
+        date: "2000-10-12T11:49:22"
+        path: dcb/A/BGM/BGM151.PAK
+      - name: BGM152
+        date: "2000-10-12T11:49:24"
+        path: dcb/A/BGM/BGM152.PAK
+      - name: BGM16
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM16.PAK
+      - name: BGM17
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM17.PAK
+      - name: BGM18
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM18.PAK
+      - name: BGM19
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM19.PAK
+      - name: BGM20
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM20.PAK
+      - name: BGM21
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM21.PAK
+      - name: BGM22
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM22.PAK
+      - name: BGM23
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM23.PAK
+      - name: BGM24
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM24.PAK
+      - name: BGM25
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM25.PAK
+      - name: BGM26
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM26.PAK
+      - name: BGM27
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM27.PAK
+      - name: BGM28
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM28.PAK
+      - name: BGM29
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM29.PAK
+      - name: BGM30
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM30.PAK
+      - name: BGM31
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM31.PAK
+      - name: BGM32
+        date: "2000-08-31T01:37:50"
+        path: dcb/A/BGM/BGM32.PAK
+      - name: BGM33
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM33.PAK
+      - name: BGM34
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM34.PAK
+      - name: BGM35
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM35.PAK
+      - name: BGM36
+        date: "2000-08-15T05:55:50"
+        path: dcb/A/BGM/BGM36.PAK
+      - name: BGM37
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM37.PAK
+      - name: BGM38
+        date: "2000-08-15T05:55:50"
+        path: dcb/A/BGM/BGM38.PAK
+      - name: BGM39
+        date: "2000-08-15T05:55:50"
+        path: dcb/A/BGM/BGM39.PAK
+      - name: BGM40
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM40.PAK
+      - name: BGM41
+        date: "2000-08-15T05:55:50"
+        path: dcb/A/BGM/BGM41.PAK
+      - name: BGM42
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM42.PAK
+      - name: BGM43
+        date: "2000-08-15T05:55:50"
+        path: dcb/A/BGM/BGM43.PAK
+      - name: BGM44
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM44.PAK
+      - name: BGM45
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM45.PAK
+      - name: BGM46
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM46.PAK
+      - name: BGM47
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM47.PAK
+      - name: BGM48
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM48.PAK
+      - name: BGM49
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM49.PAK
+      - name: BGM50
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM50.PAK
+      - name: BGM51
+        date: "2000-08-31T01:37:52"
+        path: dcb/A/BGM/BGM51.PAK
+  - name: BATTLE
+    date: "2001-03-16T06:51:16"
+    path: dcb/A/BATTLE.PAK
+  - name: BATTLE
+    date: "2000-09-29T05:58:02"
+    path: dcb/A/BATTLE.TIM
+  - name: SE0
+    date: "2000-09-11T03:19:10"
+    path: dcb/A/SE0.PAK
+  - name: SE1
+    date: "2000-10-12T11:49:16"
+    path: dcb/A/SE1.PAK
+  - name: VSSVER
+    date: "2001-03-16T06:51:16"
+    path: dcb/A/VSSVER.SCC
