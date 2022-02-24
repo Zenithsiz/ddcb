@@ -1,19 +1,36 @@
-# Disables exceptions?
-f11:
+# Disables interrupts
+# 
+# Moves current interrupt enable / user mode to previous,
+# as well as previous to old.
+disable_interrupts:
+	# Load the status register
 	mfc0 $t0, $12
 	nop
 	move_ $t1, $t0
+	
+	# Mask out bottom 6 bits in `$k0`
 	li $at, -0x40
 	and $t0, $at
+	
+	# Move bottom 4 bits to top 4 bits in `$k1`
 	andi $t1, 0xf
 	sll $t1, 0x2
+	
+	# Join `$k0` and `$k1` to get the full status
 	or $t0, $t1
+	
+	# Store it back
 	mtc0 $t0, $12
 	nop
+
 	jr $ra
 		nop
 
-f12:
+# Enables interrupts
+#
+# Calling `rfe` (`cop0 0x10`) doesn't return immediatly, just moves
+# old enable / user mode to previous and previous to current
+enable_interrupts:
 	jr $ra
 		cop0 0x10
 

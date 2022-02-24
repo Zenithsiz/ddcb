@@ -6,7 +6,7 @@ import re
 import yaml
 
 # Get all address labels
-addrs_label = yaml.safe_load(open("addrs_label.yaml"))
+addrs_label = yaml.safe_load(open("resources/addrs_label.yaml"))
 
 
 def main(path):

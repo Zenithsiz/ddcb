@@ -1239,8 +1239,8 @@
   - f10
   - f10.0
   - f10.1
-  - f11
-  - f12
+  - disable_interrupts
+  - enable_interrupts
   - f13
   - f14
   - f15

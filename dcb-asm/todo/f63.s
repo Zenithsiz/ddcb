@@ -527,98 +527,6 @@ f70:
 	jr $ra
 		move_ $v0, $a2
 
-f71:
-	addiu $sp, -0x20
-	sw $ra, 0x1c($sp)
-	sw $s2, 0x18($sp)
-	sw $s1, 0x14($sp)
-	sw $s0, 0x10($sp)
-	addiu $s0, $a0, 0x3
-	li $v0, -0x4
-	and $s0, $v0
-	beqz $s0, .6
-		move_ $s2, $a1
-	jal f11
-		nop
-	lui $v0, 0x8009
-	addiu $v1, $v0, -0x67b8
-	lw $a0, -0x67b8($v0)
-	nop
-	beqz $a0, .5
-		li $a2, 0x3ff
-.0:
-	bltz $a0, .4
-		nop
-	lw $a1, 0x4($v1)
-	nop
-	slt $v0, $a1, $s0
-	bnez $v0, .4
-		lui $v0, 0x8000
-	or $s1, $a0, $v0
-	sw $s1, ($v1)
-	sw $s0, 0x4($v1)
-	subu $a1, $s0
-	beqz $a1, .3
-		sw $s2, 0x8($v1)
-	addu $a0, $s0
-	lui $v0, 0x8009
-	addiu $a2, -0x1
-	blez $a2, .2
-		addiu $v1, $v0, -0x37c4
-.1:
-	lw $v0, -0xc($v1)
-	nop
-	sw $v0, ($v1)
-	lw $v0, -0x8($v1)
-	nop
-	sw $v0, 0x4($v1)
-	lw $v0, -0x4($v1)
-	nop
-	sw $v0, 0x8($v1)
-	addiu $a2, -0x1
-	bgtz $a2, .1
-		addiu $v1, -0xc
-.2:
-	sw $a0, ($v1)
-	sw $a1, 0x4($v1)
-	li $v0, -0x1
-	sw $v0, 0x8($v1)
-.3:
-	jal f12
-		nop
-	j .7
-		move_ $v0, $s1
-.4:
-	addiu $a2, -0x1
-	bltz $a2, .5
-		addiu $v1, 0xc
-	lw $a0, ($v1)
-	nop
-	bnez $a0, .0
-		nop
-.5:
-	jal f12
-		nop
-.6:
-	move_ $v0, $zr
-.7:
-	lw $ra, 0x1c($sp)
-	lw $s2, 0x18($sp)
-	lw $s1, 0x14($sp)
-	lw $s0, 0x10($sp)
-	jr $ra
-		addiu $sp, 0x20
-
-f72:
-	addiu $sp, -0x18
-	sw $ra, 0x10($sp)
-	jal f71
-		li $a1, -0x2
-	lw $ra, 0x10($sp)
-	nop
-	jr $ra
-		addiu $sp, 0x18
-
 f73:
 	addiu $sp, -0x18
 	sw $ra, 0x14($sp)
@@ -641,7 +549,7 @@ f74:
 	move_ $s1, $a0
 	addiu $s0, $a1, 0x3
 	li $v0, -0x4
-	jal f11
+	jal disable_interrupts
 		and $s0, $v0
 	lui $v0, 0x8009
 	addiu $v1, $v0, -0x67b8
@@ -696,7 +604,7 @@ f74:
 	li $v0, -0x1
 	sw $v0, 0x8($v1)
 .4:
-	jal f12
+	jal enable_interrupts
 		nop
 	j .7
 		move_ $v0, $s1
@@ -709,7 +617,7 @@ f74:
 	bnez $a1, .0
 		nop
 .6:
-	jal f12
+	jal enable_interrupts
 		nop
 	move_ $v0, $zr
 .7:
@@ -734,7 +642,7 @@ f75:
 	move_ $s0, $a0
 	beqz $s0, .9
 		move_ $v0, $zr
-	jal f11
+	jal disable_interrupts
 		nop
 	lui $v0, 0x8009
 	addiu $a0, $v0, -0x67b8
@@ -818,7 +726,7 @@ f75:
 	bnez $a1, .0
 		nop
 .8:
-	jal f12
+	jal enable_interrupts
 		nop
 	move_ $v0, $zr
 .9:

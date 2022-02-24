@@ -4,4 +4,4 @@ nm build/dcb.elf \
 	| sed -E "s/ . /\": /g" \
 	| sed -E "s/^/\"0x/g" \
 	| sort \
-	> addrs_label.yaml
+	> resources/addrs_label.yaml

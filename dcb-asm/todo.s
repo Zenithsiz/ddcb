@@ -39,6 +39,7 @@
 .include "dcb-asm/todo/f59.s"
 .include "dcb-asm/todo/f62.s"
 .include "dcb-asm/todo/f63.s"
+.include "dcb-asm/todo/f71.s"
 .include "dcb-asm/todo/f77.s"
 .include "dcb-asm/todo/f85.s"
 .include "dcb-asm/todo/f86.s"
