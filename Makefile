@@ -28,6 +28,7 @@ DYLIBS := build/dylib/ENDSEG.BIN build/dylib/EVOSEG.BIN build/dylib/KAWSEG.BIN b
 
 # All `DRV` files
 DRV_FILES := $(patsubst dcb/%/,build/iso/%.DRV,$(wildcard dcb/*/)) build/iso/P.DRV
+DRV_FILES_DEP := $(patsubst build/iso/%.DRV,build/iso/%.d,$(DRV_FILES))
 
 # All ISO files, excluding DRVs
 ISO_NON_DRV_FILES := $(patsubst dcb/%,build/iso/%,$(wildcard dcb/*.*))
@@ -77,18 +78,17 @@ build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
 	mkpsxiso dcb-iso.xml -q -y
 
 # Special case `B.DRV` so we can write the invalid entry
-build/iso/B.DRV: dcb/B.yaml $(mkdrv)
+build/iso/B.DRV build/iso/B.d: dcb/B.yaml $(mkdrv)
 	@mkdir -p $(@D)
-	$(mkdrv) --quiet $< -o $@
+	$(mkdrv) --quiet dcb/B.yaml -o build/iso/B.DRV --dep-file build/iso/B.d
 	printf "02C0: 01 43 44 44 D5 2F 00 00 F0 3F 01 00 E6 75 AD 3A" | xxd -r - build/iso/B.DRV
 	printf "02D0: 83 52 83 53 81 5B 20 81 60 20 43 41 52 44 32 00" | xxd -r - build/iso/B.DRV
 
 
 # Copy directories in `dcb/` as `DRV`s to `build/iso`.
-# TODO: Use dependencies here created by `mkdrv`
-build/iso/%.DRV: dcb/%.yaml $(mkdrv)
+build/iso/%.DRV build/iso/%.d: dcb/%.yaml $(mkdrv)
 	@mkdir -p $(@D)
-	$(mkdrv) --quiet $< -o $@
+	$(mkdrv) --quiet $< -o build/iso/$*.DRV --dep-file build/iso/$*.d
 
 # All dylibs
 # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
@@ -205,3 +205,4 @@ include build/rs/dcb.d
 include build/rs/libcore_impl.d
 include build/rs/libdcb_macros.d
 include $(TOOLS_DEP)
+include $(DRV_FILES_DEP)

@@ -1,7 +1,9 @@
 //! Map
-
 // Imports
-use std::path::PathBuf;
+use std::{
+	ops::Try,
+	path::{Path, PathBuf},
+};
 use zutil::AsciiStrArr;
 
 /// Drive map
@@ -10,6 +12,25 @@ use zutil::AsciiStrArr;
 pub struct DrvMap {
 	/// All entries
 	pub entries: Vec<DrvMapEntry>,
+}
+
+impl DrvMap {
+	/// Visits all files
+	pub fn visit_files<T: Try<Output = ()>>(&self, mut f: impl FnMut(&Path) -> T) -> T {
+		Self::visit_files_dir(&self.entries, &mut f)
+	}
+
+	/// Visits all files in a directory
+	fn visit_files_dir<T: Try<Output = ()>>(entries: &[DrvMapEntry], f: &mut impl FnMut(&Path) -> T) -> T {
+		for entry in entries {
+			match entry {
+				DrvMapEntry::Dir { entries, .. } => Self::visit_files_dir(entries, f)?,
+				DrvMapEntry::File { path, .. } => f(path)?,
+			}
+		}
+
+		T::from_output(())
+	}
 }
 
 /// Drive map entry
