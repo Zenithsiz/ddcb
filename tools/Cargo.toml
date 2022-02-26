@@ -4,6 +4,7 @@ members = [
   "dcb-bytes",
   "dcb-drv",
   "dcb-mkdrv",
+  "dcb-mkdrv-deps",
   "dcb-undrv",
   "dcb-cdrom-xa",
   "dcb-unbin",

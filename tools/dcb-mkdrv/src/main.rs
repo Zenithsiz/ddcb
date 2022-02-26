@@ -14,7 +14,7 @@ use {
 	anyhow::Context,
 	clap::Parser,
 	dcb_drv::{DirPtr, DirWriter},
-	std::{borrow::Cow, fs, io::Write, path::Path},
+	std::{borrow::Cow, fs, path::Path},
 };
 
 fn main() -> Result<(), anyhow::Error> {
@@ -38,11 +38,6 @@ fn main() -> Result<(), anyhow::Error> {
 		Some(path) => Cow::Borrowed(path),
 		None => Cow::Owned(args.input_map.with_extension("DRV")),
 	};
-
-	// Output dependency information
-	if let Some(path) = &args.dep_file {
-		self::write_deps(&output_file, path, &map).context("Unable to write dependencies")?;
-	}
 
 	// Try to pack the filesystem
 	self::write_fs(map, &output_file, &args).context("Unable to pack `drv` file")?;
@@ -73,16 +68,4 @@ pub fn write_fs(map: DrvMap, output_file: &Path, args: &Args) -> Result<(), anyh
 	}
 
 	Ok(())
-}
-
-/// Writes the dependencies
-pub fn write_deps(out_path: &Path, dep_path: &Path, map: &DrvMap) -> Result<(), anyhow::Error> {
-	// Create the output file
-	let mut output_file = fs::File::create(dep_path).context("Unable to create output file")?;
-
-	// Write the header
-	write!(output_file, "{}: ", out_path.display()).context("Unable to write header")?;
-
-	// Then visit all files
-	map.visit_files(|path| write!(output_file, "{} ", path.display()).context("Unable to write file"))
 }

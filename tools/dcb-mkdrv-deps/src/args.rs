@@ -18,4 +18,8 @@ pub struct Args {
 	/// If we should be quiet
 	#[clap(long = "quiet", short = 'q')]
 	pub quiet: bool,
+
+	/// Output dependency file
+	#[clap(long = "dep-file")]
+	pub dep_file: PathBuf,
 }

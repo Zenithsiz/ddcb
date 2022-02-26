@@ -12,9 +12,10 @@ sed                    = sed
 diff                   = diff
 sha256sum              = sha256sum
 mkdrv                  = tools/target/release/dcb-mkdrv
+mkdrv-deps             = tools/target/release/dcb-mkdrv-deps
 
 # All tools
-TOOLS := $(mkdrv)
+TOOLS := $(mkdrv) $(mkdrv-deps)
 TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All assembly files
@@ -90,24 +91,23 @@ tools/target/release/% tools/target/release/%.d:
 build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
 	mkpsxiso dcb-iso.xml -q -y
 
-# Special case `B.DRV` so we can write the invalid entry
-build/iso/B.DRV build/iso/B.d: dcb/B.yaml $(mkdrv)
+
+# `drv` dependencies
+build/iso/%.d: dcb/%.yaml $(mkdrv-deps)
 	@mkdir -p $(@D)
-	$(mkdrv) --quiet dcb/B.yaml -o build/iso/B.DRV --dep-file build/iso/B.d
+	$(mkdrv-deps) --quiet $< -o build/iso/$*.DRV --dep-file build/iso/$*.d
+
+# Special case `B.DRV` so we can write the invalid entry
+build/iso/B.DRV: build/iso/B.d dcb/B.yaml $(mkdrv)
+	@mkdir -p $(@D)
+	$(mkdrv) --quiet dcb/B.yaml -o build/iso/B.DRV
 	printf "02C0: 01 43 44 44 D5 2F 00 00 F0 3F 01 00 E6 75 AD 3A" | xxd -r - build/iso/B.DRV
 	printf "02D0: 83 52 83 53 81 5B 20 81 60 20 43 41 52 44 32 00" | xxd -r - build/iso/B.DRV
 
-# Special case `P.DRV` so we can depend on the dylibs
-# TODO: This should only be required the first time, as `build/iso/P.d` will include them afterwads,
-#       maybe find a better solution?
-build/iso/P.DRV build/iso/P.d: dcb/P.yaml $(DYLIBS) $(mkdrv)
-	@mkdir -p $(@D)
-	$(mkdrv) --quiet dcb/P.yaml -o build/iso/P.DRV --dep-file build/iso/P.d
-
 # Copy directories in `dcb/` as `DRV`s to `build/iso`.
-build/iso/%.DRV build/iso/%.d: dcb/%.yaml $(mkdrv)
+build/iso/%.DRV: dcb/%.yaml build/iso/%.d $(mkdrv)
 	@mkdir -p $(@D)
-	$(mkdrv) --quiet $< -o build/iso/$*.DRV --dep-file build/iso/$*.d
+	$(mkdrv) --quiet $< -o build/iso/$*.DRV
 
 # All dylibs
 # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
