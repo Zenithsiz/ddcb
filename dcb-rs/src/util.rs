@@ -6,9 +6,11 @@ pub mod ptr;
 pub mod u32_ptr;
 
 // Exports
-pub use asm::{load_hi, nop, read, read_from};
-pub use ptr::{ptr_hi, ptr_lo};
-pub use u32_ptr::U32Ptr;
+pub use self::{
+	asm::{load_hi, nop, read, read_from},
+	ptr::{ptr_hi, ptr_lo},
+	u32_ptr::U32Ptr,
+};
 
 /// Assembly macro that appends `.set noat` and `.set noreorder` and allows usage of mips
 /// register names

@@ -7,9 +7,11 @@
 mod test;
 
 // Imports
-use ascii::{AsciiChar, AsciiStr, AsciiString};
-use ref_cast::RefCast;
-use std::{fmt, iter::FusedIterator, ops};
+use {
+	ascii::{AsciiChar, AsciiStr, AsciiString},
+	ref_cast::RefCast,
+	std::{fmt, iter::FusedIterator, ops},
+};
 
 /// A path
 ///

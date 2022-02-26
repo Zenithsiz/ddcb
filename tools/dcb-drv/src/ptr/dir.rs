@@ -9,11 +9,13 @@ mod test;
 pub use error::{FindEntryError, FindError, ReadEntriesError, ReadEntryError, WriteEntriesError};
 
 // Imports
-use crate::{path, DirEntry, DirEntryKind, DirEntryPtr, Path};
-use ascii::AsciiStr;
-use core::str::lossy::Utf8Lossy;
-use dcb_bytes::Bytes;
-use std::io::{self, SeekFrom};
+use {
+	crate::{path, DirEntry, DirEntryKind, DirEntryPtr, Path},
+	ascii::AsciiStr,
+	core::str::lossy::Utf8Lossy,
+	dcb_bytes::Bytes,
+	std::io::{self, SeekFrom},
+};
 
 /// Directory pointer
 #[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Copy, Debug)]
@@ -42,7 +44,8 @@ impl DirPtr {
 
 	/// Returns an iterator over all entries in this directory
 	pub fn read_entries<R: io::Read + io::Seek>(
-		self, reader: &mut R,
+		self,
+		reader: &mut R,
 	) -> Result<impl Iterator<Item = Result<DirEntry, ReadEntryError>> + '_, ReadEntriesError> {
 		// Seek to the sector
 		self.seek_to(reader).map_err(ReadEntriesError::Seek)?;
@@ -86,7 +89,9 @@ impl DirPtr {
 
 	/// Finds an entry from it's path
 	pub fn find<R: io::Seek + io::Read>(
-		self, reader: &mut R, path: &Path,
+		self,
+		reader: &mut R,
+		path: &Path,
 	) -> Result<(DirEntryPtr, DirEntry), FindError> {
 		// Current directory pointer
 		let mut cur_ptr = self;
@@ -123,11 +128,10 @@ impl DirPtr {
 
 					// Else check what entry we got
 					match entry.kind {
-						DirEntryKind::File { .. } => {
+						DirEntryKind::File { .. } =>
 							return Err(FindError::ExpectedDir {
 								path: path[..(path.len() - components.remaining().len())].to_path_buf(),
-							})
-						},
+							}),
 
 						// If we got a directory, continue
 						DirEntryKind::Dir { ptr } => {
@@ -145,7 +149,9 @@ impl DirPtr {
 
 	/// Finds an entry
 	pub fn find_entry<R: io::Read + io::Seek>(
-		self, reader: &mut R, entry_name: &AsciiStr,
+		self,
+		reader: &mut R,
+		entry_name: &AsciiStr,
 	) -> Result<(DirEntryPtr, DirEntry), FindEntryError> {
 		let (filename, extension) = entry_name
 			.as_str()
@@ -178,7 +184,9 @@ impl DirPtr {
 
 	/// Writes a list of entries to a writer
 	pub fn write_entries<W: io::Seek + io::Write>(
-		self, writer: &mut W, entries: impl IntoIterator<Item = DirEntry>,
+		self,
+		writer: &mut W,
+		entries: impl IntoIterator<Item = DirEntry>,
 	) -> Result<(), WriteEntriesError> {
 		// Seek to the sector
 		self.seek_to(writer).map_err(WriteEntriesError::Seek)?;

@@ -7,7 +7,9 @@ mod bytes_io_ext;
 pub mod validate;
 
 // Exports
-pub use byteorder_ext::ByteOrderExt;
-pub use bytes::{ByteArray, Bytes};
-pub use bytes_io_ext::{BytesReadExt, BytesWriteExt};
-pub use validate::{Validate, ValidateVisitor};
+pub use self::{
+	byteorder_ext::ByteOrderExt,
+	bytes::{ByteArray, Bytes},
+	bytes_io_ext::{BytesReadExt, BytesWriteExt},
+	validate::{Validate, ValidateVisitor},
+};

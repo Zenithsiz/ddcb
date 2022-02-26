@@ -5,8 +5,10 @@
 #![allow(non_upper_case_globals)]
 
 // Imports
-use crate::{psx_str, PsxStr};
-use core_impl::{concat, stringify};
+use {
+	crate::{psx_str, PsxStr},
+	core_impl::{concat, stringify},
+};
 
 // Helper macro to declare all statics
 macro decl_static($( $NAME:ident: $T:ty = $value:expr; )*) {

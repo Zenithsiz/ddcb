@@ -1,8 +1,10 @@
 //! Iterators
 
 // Imports
-use crate::{reader, CdRomReader, Sector};
-use std::io;
+use {
+	crate::{reader, CdRomReader, Sector},
+	std::io,
+};
 
 /// Iterator over sectors
 #[derive(Debug)]

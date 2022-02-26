@@ -33,10 +33,12 @@ pub mod str;
 pub mod sync;
 
 // Exports
-pub use marker::{Copy, DiscriminantKind, Sized, Sync};
-pub use option::{
-	Option,
-	Option::{None, Some},
+pub use self::{
+	marker::{Copy, DiscriminantKind, Sized, Sync},
+	option::{
+		Option,
+		Option::{None, Some},
+	},
 };
 
 #[rustc_builtin_macro]

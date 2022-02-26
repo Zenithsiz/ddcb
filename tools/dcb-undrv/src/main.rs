@@ -4,16 +4,18 @@
 mod args;
 
 // Imports
-use self::args::Args;
-use anyhow::Context;
-use clap::Parser;
-use dcb_drv::{DirEntryKind, DirPtr};
-use std::{
-	fs,
-	io::{self, Seek},
-	path::{Path, PathBuf},
+use {
+	self::args::Args,
+	anyhow::Context,
+	clap::Parser,
+	dcb_drv::{DirEntryKind, DirPtr},
+	std::{
+		fs,
+		io::{self, Seek},
+		path::{Path, PathBuf},
+	},
+	zutil::AsciiStrArr,
 };
-use zutil::AsciiStrArr;
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
@@ -80,7 +82,10 @@ fn main() -> Result<(), anyhow::Error> {
 
 /// Extracts a `.drv` file from a reader and starting directory
 fn extract_tree<R: io::Read + io::Seek>(
-	reader: &mut R, dir_ptr: DirPtr, path: &Path, args: &Args,
+	reader: &mut R,
+	dir_ptr: DirPtr,
+	path: &Path,
+	args: &Args,
 ) -> Result<(), anyhow::Error> {
 	// Get all entries
 	// Note: We need to collect to free the reader so it can seek to the next files.
@@ -175,7 +180,9 @@ fn create_map<R: io::Read + io::Seek>(reader: &mut R, path: &Path) -> Result<Drv
 
 /// Creates a map entry
 fn create_map_entry<R: io::Read + io::Seek>(
-	reader: &mut R, path: &Path, entry: dcb_drv::DirEntry,
+	reader: &mut R,
+	path: &Path,
+	entry: dcb_drv::DirEntry,
 ) -> Result<DrvMapEntry, anyhow::Error> {
 	let entry = match entry.kind {
 		DirEntryKind::File { extension, .. } => {
@@ -206,7 +213,9 @@ fn create_map_entry<R: io::Read + io::Seek>(
 
 /// Collects all map entries
 fn map_entries<R: io::Read + io::Seek>(
-	reader: &mut R, dir_ptr: DirPtr, path: &Path,
+	reader: &mut R,
+	dir_ptr: DirPtr,
+	path: &Path,
 ) -> Result<Vec<DrvMapEntry>, anyhow::Error> {
 	// Collect all entries
 	let entries = dir_ptr

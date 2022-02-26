@@ -9,15 +9,19 @@ mod error;
 pub mod header;
 
 // Exports
-pub use ecc::Ecc;
-pub use edc::Edc;
-pub use error::{DeserializeBytesError, NewError, SerializeBytesError};
-pub use header::Header;
+pub use {
+	ecc::Ecc,
+	edc::Edc,
+	error::{DeserializeBytesError, NewError, SerializeBytesError},
+	header::Header,
+};
 
 // Imports
-use self::header::{subheader::SubMode, SubHeader};
-use dcb_bytes::Bytes;
-use header::Address;
+use {
+	self::header::{subheader::SubMode, SubHeader},
+	dcb_bytes::Bytes,
+	header::Address,
+};
 
 /// A CD-ROM/XA Sector
 ///

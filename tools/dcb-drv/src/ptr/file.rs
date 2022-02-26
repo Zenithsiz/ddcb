@@ -7,8 +7,10 @@ mod error;
 pub use error::FileCursorError;
 
 // Imports
-use std::io::{self, SeekFrom};
-use zutil::IoSlice;
+use {
+	std::io::{self, SeekFrom},
+	zutil::IoSlice,
+};
 
 /// File pointer
 #[derive(PartialEq, Eq, Clone, Copy, Debug)]

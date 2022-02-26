@@ -8,12 +8,14 @@ pub use error::DeserializeBytesError;
 
 
 // Imports
-use super::ptr::{DirPtr, FilePtr};
-use byteorder::{ByteOrder, LittleEndian};
-use chrono::NaiveDateTime;
-use dcb_bytes::Bytes;
-use std::convert::TryInto;
-use zutil::{ascii_str_arr::AsciiChar, AsciiStrArr};
+use {
+	super::ptr::{DirPtr, FilePtr},
+	byteorder::{ByteOrder, LittleEndian},
+	chrono::NaiveDateTime,
+	dcb_bytes::Bytes,
+	std::convert::TryInto,
+	zutil::{ascii_str_arr::AsciiChar, AsciiStrArr},
+};
 
 /// A directory entry kind
 #[derive(PartialEq, Eq, Clone, Copy, Debug)]

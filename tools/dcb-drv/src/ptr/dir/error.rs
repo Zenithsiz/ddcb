@@ -1,8 +1,7 @@
 //! Errors
 
 // Imports
-use crate::PathBuf;
-use std::io;
+use {crate::PathBuf, std::io};
 
 /// Error for [`DirPtr::read_entries`](super::DirPtr::read_entries)
 #[derive(Debug, thiserror::Error)]

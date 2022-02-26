@@ -1,13 +1,15 @@
 //! Writer
 
 // Imports
-use crate::{DirEntry, DirEntryKind, DirPtr, FilePtr};
-use chrono::NaiveDateTime;
-use std::{
-	convert::TryInto,
-	io::{self, SeekFrom},
+use {
+	crate::{DirEntry, DirEntryKind, DirPtr, FilePtr},
+	chrono::NaiveDateTime,
+	std::{
+		convert::TryInto,
+		io::{self, SeekFrom},
+	},
+	zutil::{AsciiStrArr, MapBoxResult},
 };
-use zutil::{AsciiStrArr, MapBoxResult};
 
 /// A directory lister
 pub trait DirWriterLister:

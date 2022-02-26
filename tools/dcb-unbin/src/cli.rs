@@ -1,8 +1,10 @@
 //! Cli manager
 
 // Imports
-use clap::{App as ClapApp, Arg as ClapArg};
-use std::path::{Path, PathBuf};
+use {
+	clap::{App as ClapApp, Arg as ClapArg},
+	std::path::{Path, PathBuf},
+};
 
 /// Data from the command line
 #[derive(PartialEq, Clone, Debug)]

@@ -18,8 +18,10 @@ pub mod swap;
 pub mod writer;
 
 // Exports
-pub use entry::{DirEntry, DirEntryKind};
-pub use path::{Path, PathBuf};
-pub use ptr::{DirEntryPtr, DirPtr, FilePtr};
-pub use swap::swap_files;
-pub use writer::{DirEntryWriter, DirEntryWriterKind, DirWriter, DirWriterLister};
+pub use {
+	entry::{DirEntry, DirEntryKind},
+	path::{Path, PathBuf},
+	ptr::{DirEntryPtr, DirPtr, FilePtr},
+	swap::swap_files,
+	writer::{DirEntryWriter, DirEntryWriterKind, DirWriter, DirWriterLister},
+};

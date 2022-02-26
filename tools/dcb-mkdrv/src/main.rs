@@ -9,11 +9,13 @@ mod dir_lister;
 mod map;
 
 // Imports
-use self::{args::Args, map::DrvMap};
-use anyhow::Context;
-use clap::Parser;
-use dcb_drv::{DirPtr, DirWriter};
-use std::{borrow::Cow, fs, io::Write, path::Path};
+use {
+	self::{args::Args, map::DrvMap},
+	anyhow::Context,
+	clap::Parser,
+	dcb_drv::{DirPtr, DirWriter},
+	std::{borrow::Cow, fs, io::Write, path::Path},
+};
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger

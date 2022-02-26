@@ -7,9 +7,11 @@ mod error;
 pub use error::WriteSectorError;
 
 // Imports
-use crate::{sector::header::SubHeader, Sector};
-use dcb_bytes::Bytes;
-use std::io::Write;
+use {
+	crate::{sector::header::SubHeader, Sector},
+	dcb_bytes::Bytes,
+	std::io::Write,
+};
 
 /// A CD-ROM/XA Mode 2 Form 1 writer.
 #[derive(PartialEq, Eq, Clone, Debug)]

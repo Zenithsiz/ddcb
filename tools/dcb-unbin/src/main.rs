@@ -4,9 +4,11 @@
 mod cli;
 
 // Imports
-use anyhow::Context;
-use dcb_cdrom_xa::CdRomReader;
-use std::{fs, io::Write, path::Path};
+use {
+	anyhow::Context,
+	dcb_cdrom_xa::CdRomReader,
+	std::{fs, io::Write, path::Path},
+};
 
 
 fn main() -> Result<(), anyhow::Error> {

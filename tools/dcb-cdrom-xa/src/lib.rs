@@ -9,7 +9,4 @@ pub mod sector;
 pub mod writer;
 
 // Exports
-pub use cursor::CdRomCursor;
-pub use reader::CdRomReader;
-pub use sector::Sector;
-pub use writer::CdRomWriter;
+pub use {cursor::CdRomCursor, reader::CdRomReader, sector::Sector, writer::CdRomWriter};

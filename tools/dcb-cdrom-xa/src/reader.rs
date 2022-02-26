@@ -5,13 +5,17 @@ mod error;
 pub mod iter;
 
 // Exports
-pub use error::{ReadNthSectorError, ReadSectorError, SeekSectorError};
-pub use iter::SectorsRangeIter;
+pub use {
+	error::{ReadNthSectorError, ReadSectorError, SeekSectorError},
+	iter::SectorsRangeIter,
+};
 
 // Imports
-use crate::Sector;
-use dcb_bytes::Bytes;
-use std::io::{Read, Seek, SeekFrom};
+use {
+	crate::Sector,
+	dcb_bytes::Bytes,
+	std::io::{Read, Seek, SeekFrom},
+};
 
 /// A CD-ROM/XA Mode 2 Form 1 reader.
 #[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Copy, Hash, Debug)]

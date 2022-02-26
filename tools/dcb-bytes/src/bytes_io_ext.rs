@@ -1,8 +1,10 @@
 //! Bytes io extensions
 
 // Imports
-use crate::{ByteArray, Bytes};
-use std::{error, fmt, io};
+use {
+	crate::{ByteArray, Bytes},
+	std::{error, fmt, io},
+};
 
 /// Bytes read extension trait
 pub trait BytesReadExt: io::Read {

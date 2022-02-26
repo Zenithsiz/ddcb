@@ -8,8 +8,10 @@ mod error;
 pub mod submode;
 
 // Exports
-pub use error::{DeserializeBytesError, SerializeBytesError};
-pub use submode::SubMode;
+pub use {
+	error::{DeserializeBytesError, SerializeBytesError},
+	submode::SubMode,
+};
 
 // Imports
 use dcb_bytes::Bytes;

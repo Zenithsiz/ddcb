@@ -1,13 +1,15 @@
 //! Directory lister
 // Imports
-use crate::{args::Args, map::DrvMapEntry};
-use anyhow::Context;
-use dcb_drv::{DirEntryWriter, DirEntryWriterKind, DirWriter, DirWriterLister};
-use std::{
-	convert::{TryFrom, TryInto},
-	fs,
-	io::Seek,
-	time::SystemTime,
+use {
+	crate::{args::Args, map::DrvMapEntry},
+	anyhow::Context,
+	dcb_drv::{DirEntryWriter, DirEntryWriterKind, DirWriter, DirWriterLister},
+	std::{
+		convert::{TryFrom, TryInto},
+		fs,
+		io::Seek,
+		time::SystemTime,
+	},
 };
 
 /// Directory list

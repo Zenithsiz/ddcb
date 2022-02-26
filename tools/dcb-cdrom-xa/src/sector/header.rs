@@ -6,9 +6,11 @@ mod error;
 pub mod subheader;
 
 // Exports
-pub use address::Address;
-pub use error::{DeserializeBytesError, SerializeBytesError};
-pub use subheader::SubHeader;
+pub use {
+	address::Address,
+	error::{DeserializeBytesError, SerializeBytesError},
+	subheader::SubHeader,
+};
 
 // Imports
 use dcb_bytes::Bytes;
@@ -26,7 +28,7 @@ pub struct Header {
 
 impl Header {
 	/// Sync's value
-	pub const SYNC: [u8; 12] = [0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00];
+	pub const SYNC: [u8; 12] = [0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00];
 }
 
 impl Bytes for Header {

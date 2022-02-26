@@ -1,12 +1,16 @@
 //! File swapping
 
 // Imports
-use crate::{ptr, DirEntryKind, DirPtr, Path};
-use std::{io, mem};
+use {
+	crate::{ptr, DirEntryKind, DirPtr, Path},
+	std::{io, mem},
+};
 
 /// Swaps two files
 pub fn swap_files<T: io::Seek + io::Read + io::Write>(
-	cursor: &mut T, lhs_path: &Path, rhs_path: &Path,
+	cursor: &mut T,
+	lhs_path: &Path,
+	rhs_path: &Path,
 ) -> Result<(), SwapFilesError> {
 	// Find both files and their entry pointers
 	let (lhs_entry_ptr, mut lhs_entry) = DirPtr::root().find(cursor, lhs_path).map_err(SwapFilesError::FindLhs)?;

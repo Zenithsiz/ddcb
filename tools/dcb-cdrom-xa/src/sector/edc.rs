@@ -1,8 +1,10 @@
 #![doc = include_str!("edc.md")]
 
 // Imports
-use byteorder::{ByteOrder, LittleEndian};
-use dcb_bytes::Bytes;
+use {
+	byteorder::{ByteOrder, LittleEndian},
+	dcb_bytes::Bytes,
+};
 
 /// Error detection
 #[derive(PartialEq, Eq, Clone, Copy)]
@@ -42,7 +44,7 @@ impl Edc {
 		let mut crc = 0;
 		#[allow(clippy::as_conversions)]
 		for &b in bytes {
-			let idx = (crc ^ u32::from(b)) & 0xFF;
+			let idx = (crc ^ u32::from(b)) & 0xff;
 			crc = (crc >> 8u32) ^ Self::CRC_TABLE[idx as usize];
 		}
 		Self { crc }

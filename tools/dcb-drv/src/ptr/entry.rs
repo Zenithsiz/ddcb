@@ -7,9 +7,11 @@ mod error;
 pub use error::WriteEntryError;
 
 // Imports
-use crate::{DirEntry, DirPtr};
-use dcb_bytes::Bytes;
-use std::io::{self, SeekFrom};
+use {
+	crate::{DirEntry, DirPtr},
+	dcb_bytes::Bytes,
+	std::io::{self, SeekFrom},
+};
 
 /// Directory entry pointer
 #[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Copy, Debug)]

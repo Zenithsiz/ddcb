@@ -3,9 +3,7 @@
 use crate::FilePtr;
 
 // Imports
-use super::*;
-use chrono::NaiveDateTime;
-use zutil::AsciiStrArr;
+use {super::*, chrono::NaiveDateTime, zutil::AsciiStrArr};
 
 #[test]
 fn write_read_entries() {

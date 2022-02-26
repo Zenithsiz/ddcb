@@ -1,8 +1,7 @@
 //! [`ByteOrder`] extension trait
 
 // Imports
-use crate::ByteArray;
-use byteorder::ByteOrder;
+use {crate::ByteArray, byteorder::ByteOrder};
 
 /// Helper trait for [`ByteOrder`] to use a generic type
 pub trait ByteOrderExt<B: ByteOrder>: Sized {

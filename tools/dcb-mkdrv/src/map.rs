@@ -1,10 +1,12 @@
 //! Map
 // Imports
-use std::{
-	ops::Try,
-	path::{Path, PathBuf},
+use {
+	std::{
+		ops::Try,
+		path::{Path, PathBuf},
+	},
+	zutil::AsciiStrArr,
 };
-use zutil::AsciiStrArr;
 
 /// Drive map
 #[derive(Debug)]
