@@ -41,7 +41,8 @@ impl<const N: usize> PsxStr<N> {
 	pub const fn from_bytes(bytes: &[u8]) -> Self {
 		// If `N` isn't a multiple of 4, panic
 		if N % 4 != 0 {
-			// SAFETY: This will only be called at compile time
+			// SAFETY: This will only be called at compile time,
+			//         which has a `panic` that doesn't cause U.B.
 			unsafe {
 				panic!("Psx strings should be aligned to 4");
 			}
@@ -57,7 +58,8 @@ impl<const N: usize> PsxStr<N> {
 
 		// If we don't have any space for null terminators, panic
 		if idx == N {
-			// SAFETY: This will only be called at compile time
+			// SAFETY: This will only be called at compile time,
+			//         which has a `panic` that doesn't cause U.B.
 			unsafe {
 				panic!("No space for null terminator!");
 			}

@@ -48,4 +48,5 @@
 		"sugseg",
 		"thiserror"
 	],
+	"rust-analyzer.checkOnSave.allTargets": false,
 }

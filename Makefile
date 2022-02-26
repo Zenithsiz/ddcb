@@ -11,12 +11,10 @@ preprocess_asm         = tools/preprocess_asm.py
 sed                    = sed
 diff                   = diff
 sha256sum              = sha256sum
-mkdrv                  = target/release/dcb-mkdrv
+mkdrv                  = tools/target/release/dcb-mkdrv
 
 # All tools
 TOOLS := $(mkdrv)
-
-# Tool dep files
 TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All assembly files
@@ -64,10 +62,10 @@ clean:
 # Cargo tools
 # Note: Make doesn't seem to understand dependencies on full-paths properly, so we make them
 #       relative after compiling
-target/release/% target/release/%.d:
-	$(cargo) build --release -p $*
+tools/target/release/% tools/target/release/%.d:
+	$(cargo) build --release --manifest-path tools/Cargo.toml -p $*
 	$(sed) -i \
-		-e "s,$(shell pwd)/,,g" target/release/$*.d
+		-e "s,$(shell pwd)/,,g" tools/target/release/$*.d
 
 
 

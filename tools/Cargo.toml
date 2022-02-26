@@ -1,0 +1,13 @@
+[workspace]
+
+members = [
+  "dcb-bytes",
+  "dcb-drv",
+  "dcb-mkdrv",
+  "dcb-undrv",
+  "dcb-cdrom-xa",
+  "dcb-unbin",
+]
+
+[patch."https://github.com/Zenithsiz/zutil"]
+zutil = {path = "../../zutil"}

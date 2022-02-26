@@ -17,10 +17,10 @@ pub trait U32Ptr {
 	fn ptr_offset<Offset: U32PtrOffset>(self, offset: Offset) -> u32;
 
 	/// Returns this u32 as a pointer
-	fn as_ptr<T>(self) -> *const T;
+	fn to_ptr<T>(self) -> *const T;
 
 	/// Returns this u32 as a mutable pointer
-	fn as_mut_ptr<T>(self) -> *mut T;
+	fn to_mut_ptr<T>(self) -> *mut T;
 }
 
 impl const U32Ptr for u32 {
@@ -45,12 +45,12 @@ impl const U32Ptr for u32 {
 	}
 
 	#[inline(always)]
-	fn as_ptr<T>(self) -> *const T {
+	fn to_ptr<T>(self) -> *const T {
 		self as _
 	}
 
 	#[inline(always)]
-	fn as_mut_ptr<T>(self) -> *mut T {
+	fn to_mut_ptr<T>(self) -> *mut T {
 		self as _
 	}
 }
