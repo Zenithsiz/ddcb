@@ -3,7 +3,6 @@
 // Imports
 use {
 	crate::{DirEntry, DirPtr, FilePtr},
-	chrono::NaiveDateTime,
 	std::{
 		convert::TryInto,
 		io::{self, SeekFrom},
@@ -134,7 +133,7 @@ pub struct DirEntryWriter<L: DirWriterLister> {
 	pub name: AsciiStrArr<0x10>,
 
 	/// Entry date
-	pub date: NaiveDateTime,
+	pub date: u32,
 
 	/// Kind
 	pub kind: DirEntryWriterKind<L>,

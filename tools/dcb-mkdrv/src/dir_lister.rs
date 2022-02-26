@@ -1,15 +1,12 @@
 //! Directory lister
+
 // Imports
 use {
 	crate::{args::Args, map::DrvMapEntry},
 	anyhow::Context,
+	chrono::NaiveDateTime,
 	dcb_drv::{DirEntryWriter, DirEntryWriterKind, DirWriter, DirWriterLister},
-	std::{
-		convert::{TryFrom, TryInto},
-		fs,
-		io::Seek,
-		time::SystemTime,
-	},
+	std::{convert::TryInto, fs, io::Seek, time::SystemTime},
 };
 
 /// Directory list
@@ -55,7 +52,7 @@ impl<'a> IntoIterator for DirLister<'a> {
 
 					DirEntryWriter {
 						name,
-						date,
+						date: self::to_seconds_since_epoch(date)?,
 						kind: DirEntryWriterKind::Dir(DirWriter::new(entries)),
 					}
 				},
@@ -77,23 +74,18 @@ impl<'a> IntoIterator for DirLister<'a> {
 						.try_into()
 						.context("Entry's file extension was invalid")?;
 
-					// Get the date
+					// Get the date, else get it from file
 					let date = match date {
-						Some(date) => date,
-						None => {
-							let secs_since_epoch = fs::metadata(&path)
-								.context("Unable to read entry metadata")?
-								.modified()
-								.context("Unable to read entry metadata modified time")?
-								.duration_since(SystemTime::UNIX_EPOCH)
-								.context("Unable to get entry's modified date since unix epoch")?
-								.as_secs();
-							chrono::NaiveDateTime::from_timestamp(
-								i64::try_from(secs_since_epoch)
-									.context("Entry modified date doesn't fit into a `i64`")?,
-								0,
-							)
-						},
+						Some(date) => self::to_seconds_since_epoch(date)?,
+						None => fs::metadata(&path)
+							.context("Unable to read entry metadata")?
+							.modified()
+							.context("Unable to read entry metadata modified time")?
+							.duration_since(SystemTime::UNIX_EPOCH)
+							.context("Unable to get entry's modified date since unix epoch")?
+							.as_secs()
+							.try_into()
+							.context("Entry modified date didn't fit into a `u32`")?,
 					};
 
 					// Open the reader
@@ -120,4 +112,10 @@ impl<'a> IntoIterator for DirLister<'a> {
 			Ok(entry)
 		})
 	}
+}
+
+/// Converts a `NaiveDateTime` into `u32` as seconds since epoch
+fn to_seconds_since_epoch(date: NaiveDateTime) -> Result<u32, anyhow::Error> {
+	// Note: We ignore sub-second precision
+	date.timestamp().try_into().context("Date didn't fit into a `u32`")
 }

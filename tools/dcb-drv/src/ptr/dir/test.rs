@@ -3,7 +3,7 @@
 use crate::FilePtr;
 
 // Imports
-use {super::*, chrono::NaiveDateTime, zutil::AsciiStrArr};
+use {super::*, zutil::AsciiStrArr};
 
 #[test]
 fn write_read_entries() {
@@ -14,13 +14,13 @@ fn write_read_entries() {
 	let entries = vec![
 		DirEntry::Dir {
 			name: AsciiStrArr::from_bytes("dir-1").expect("Invalid string"),
-			date: NaiveDateTime::from_timestamp(123, 0),
+			date: 123,
 			ptr:  DirPtr::new(123),
 		},
 		DirEntry::File {
 			name:      AsciiStrArr::from_bytes("file-1").expect("Invalid string"),
 			extension: AsciiStrArr::from_bytes("ext").expect("Invalid string"),
-			date:      NaiveDateTime::from_timestamp(123, 0),
+			date:      123,
 			ptr:       FilePtr::new(123, 456),
 		},
 	];

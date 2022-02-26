@@ -10,9 +10,7 @@ pub use self::error::DeserializeBytesError;
 use {
 	super::ptr::{DirPtr, FilePtr},
 	byteorder::{ByteOrder, LittleEndian},
-	chrono::NaiveDateTime,
 	dcb_bytes::Bytes,
-	std::convert::TryInto,
 	zutil::{ascii_str_arr::AsciiChar, AsciiStrArr},
 };
 
@@ -31,9 +29,8 @@ pub enum DirEntry {
 		/// Extension
 		extension: AsciiStrArr<0x3>,
 
-		/// Date
-		// TODO: Switch to `u32`?
-		date: NaiveDateTime,
+		/// Date, as seconds since epoch
+		date: u32,
 
 		/// Pointer
 		ptr: FilePtr,
@@ -44,9 +41,8 @@ pub enum DirEntry {
 		/// Name
 		name: AsciiStrArr<0x10>,
 
-		/// Date
-		// TODO: Switch to `u32`?
-		date: NaiveDateTime,
+		/// Date, as seconds since epoch
+		date: u32,
 
 		/// Pointer
 		ptr: DirPtr,
@@ -56,7 +52,7 @@ pub enum DirEntry {
 impl DirEntry {
 	/// Creates a file entry
 	#[must_use]
-	pub const fn file(name: AsciiStrArr<0x10>, extension: AsciiStrArr<0x3>, date: NaiveDateTime, ptr: FilePtr) -> Self {
+	pub const fn file(name: AsciiStrArr<0x10>, extension: AsciiStrArr<0x3>, date: u32, ptr: FilePtr) -> Self {
 		Self::File {
 			name,
 			extension,
@@ -67,7 +63,7 @@ impl DirEntry {
 
 	/// Creates a directory entry
 	#[must_use]
-	pub const fn dir(name: AsciiStrArr<0x10>, date: NaiveDateTime, ptr: DirPtr) -> Self {
+	pub const fn dir(name: AsciiStrArr<0x10>, date: u32, ptr: DirPtr) -> Self {
 		Self::Dir { name, date, ptr }
 	}
 
@@ -82,8 +78,8 @@ impl DirEntry {
 	}
 
 	/// Returns the date of the entry.
-	pub const fn date(&self) -> &NaiveDateTime {
-		match self {
+	pub const fn date(&self) -> u32 {
+		match *self {
 			Self::File { date, .. } => date,
 			Self::Dir { date, .. } => date,
 		}
@@ -141,7 +137,7 @@ impl Bytes for DirEntry {
 		// Get the sector position, size and date
 		let sector_pos = LittleEndian::read_u32(bytes.sector_pos);
 		let size = LittleEndian::read_u32(bytes.size);
-		let date = NaiveDateTime::from_timestamp(i64::from(LittleEndian::read_u32(bytes.date)), 0);
+		let date = LittleEndian::read_u32(bytes.date);
 
 		// Check kind
 		let entry = match bytes.kind {
@@ -152,8 +148,14 @@ impl Bytes for DirEntry {
 				ptr: FilePtr { sector_pos, size },
 			},
 			0x80 => {
-				debug_assert_eq!(size, 0, "Directory size wasn't 0");
-				debug_assert_eq!(extension.len(), 0, "Directory extension wasn't 0");
+				if size != 0 {
+					return Err(DeserializeBytesError::DirSizeNot0 { size });
+				}
+
+				if !extension.is_empty() {
+					return Err(DeserializeBytesError::DirExtensionNotEmpty { extension });
+				}
+
 				DirEntry::Dir {
 					name,
 					date,
@@ -204,13 +206,7 @@ impl Bytes for DirEntry {
 		LittleEndian::write_u32(bytes.sector_pos, sector_pos);
 
 		// Write the date by saturating it if it's too large or small.
-		// TODO: Not do this
-		let date = date
-			.timestamp()
-			.clamp(0, i64::from(u32::MAX))
-			.try_into()
-			.expect("Seconds didn't fit into date");
-		LittleEndian::write_u32(bytes.date, date);
+		LittleEndian::write_u32(bytes.date, *date);
 
 		Ok(())
 	}

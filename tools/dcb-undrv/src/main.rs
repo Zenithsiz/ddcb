@@ -7,6 +7,7 @@ mod args;
 use {
 	self::args::Args,
 	anyhow::Context,
+	chrono::NaiveDateTime,
 	clap::Parser,
 	dcb_drv::{DirEntry, DirPtr},
 	std::{
@@ -101,7 +102,7 @@ fn extract_tree<R: io::Read + io::Seek>(
 
 		// Create the date
 		// Note: `.DRV` only supports second precision.
-		let time = filetime::FileTime::from_unix_time(entry.date().timestamp(), 0);
+		let time = filetime::FileTime::from_unix_time(i64::from(entry.date()), 0);
 
 		// Then check it's type
 		match entry {
@@ -186,15 +187,15 @@ fn create_map_entry<R: io::Read + io::Seek>(
 	path: &Path,
 	entry: dcb_drv::DirEntry,
 ) -> Result<DrvMapEntry, anyhow::Error> {
+	let date = NaiveDateTime::from_timestamp(i64::from(entry.date()), 0);
+
 	let entry = match entry {
-		DirEntry::File {
-			name, extension, date, ..
-		} => {
+		DirEntry::File { name, extension, .. } => {
 			let path = path.join(format!("{}.{}", name, extension));
 
 			DrvMapEntry::File { name, date, path }
 		},
-		DirEntry::Dir { name, date, ptr } => {
+		DirEntry::Dir { name, ptr, .. } => {
 			let path = path.join(name.as_str());
 
 			// Collect all entries

@@ -1,5 +1,6 @@
 //! Errors
 
+use zutil::AsciiStrArr;
 // Imports
 use zutil::ascii_str_arr;
 
@@ -17,4 +18,12 @@ pub enum DeserializeBytesError {
 	/// Unable to read extension
 	#[error("Unable to read extension")]
 	Extension(#[source] ascii_str_arr::FromBytesError<0x3>),
+
+	/// Directory size wasn't 0
+	#[error("Directory size wasn't 0, was {size}")]
+	DirSizeNot0 { size: u32 },
+
+	/// Directory's extension wasn't empty
+	#[error("Directory extension wasn't empty, was {extension:?}")]
+	DirExtensionNotEmpty { extension: AsciiStrArr<0x3> },
 }
