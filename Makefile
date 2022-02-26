@@ -84,6 +84,12 @@ build/iso/B.DRV build/iso/B.d: dcb/B.yaml $(mkdrv)
 	printf "02C0: 01 43 44 44 D5 2F 00 00 F0 3F 01 00 E6 75 AD 3A" | xxd -r - build/iso/B.DRV
 	printf "02D0: 83 52 83 53 81 5B 20 81 60 20 43 41 52 44 32 00" | xxd -r - build/iso/B.DRV
 
+# Special case `P.DRV` so we can depend on the dylibs
+# TODO: This should only be required the first time, as `build/iso/P.d` will include them afterwads,
+#       maybe find a better solution?
+build/iso/P.DRV build/iso/P.d: dcb/P.yaml $(DYLIBS) $(mkdrv)
+	@mkdir -p $(@D)
+	$(mkdrv) --quiet dcb/P.yaml -o build/iso/P.DRV --dep-file build/iso/P.d
 
 # Copy directories in `dcb/` as `DRV`s to `build/iso`.
 build/iso/%.DRV build/iso/%.d: dcb/%.yaml $(mkdrv)
