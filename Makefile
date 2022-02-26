@@ -22,17 +22,32 @@ ASM_FILES := $(shell find "dcb-asm/" -type f -iname "*.s")
 ASM_PROCESSED_FILES := $(subst dcb-asm/, build/asm/, $(ASM_FILES))
 
 # All dylibs
-DYLIBS := build/dylib/ENDSEG.BIN build/dylib/EVOSEG.BIN build/dylib/KAWSEG.BIN build/dylib/OPENSEG.BIN build/dylib/SAISEG.BIN build/dylib/SUBSEG.BIN build/dylib/SUGSEG.BIN
+DYLIBS := \
+	build/dylib/ENDSEG.BIN \
+	build/dylib/EVOSEG.BIN \
+	build/dylib/KAWSEG.BIN \
+	build/dylib/OPENSEG.BIN \
+	build/dylib/SAISEG.BIN \
+	build/dylib/SUBSEG.BIN \
+	build/dylib/SUGSEG.BIN
 
 # All `DRV` files
-DRV_FILES := $(patsubst dcb/%/,build/iso/%.DRV,$(wildcard dcb/*/)) build/iso/P.DRV
+DRV_FILES := \
+	build/iso/A.DRV \
+	build/iso/B.DRV \
+	build/iso/C.DRV \
+	build/iso/E.DRV \
+	build/iso/F.DRV \
+	build/iso/G.DRV \
+	build/iso/P.DRV
 DRV_FILES_DEP := $(patsubst build/iso/%.DRV,build/iso/%.d,$(DRV_FILES))
 
-# All ISO files, excluding DRVs
-ISO_NON_DRV_FILES := $(patsubst dcb/%,build/iso/%,$(wildcard dcb/*.*))
-
 # All ISO files
-ISO_FILES := $(DRV_FILES) $(ISO_NON_DRV_FILES) build/iso/SLUS_013.28 build/iso/MMM.DAT
+ISO_FILES := $(DRV_FILES) \
+	build/iso/DIGIMON.MOV \
+	build/iso/SYSTEM.CNF \
+	build/iso/SLUS_013.28 \
+	build/iso/MMM.DAT
 
 
 
