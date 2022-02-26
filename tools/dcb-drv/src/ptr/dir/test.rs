@@ -12,18 +12,16 @@ fn write_read_entries() {
 	let dir = DirPtr::root();
 
 	let entries = vec![
-		DirEntry {
+		DirEntry::Dir {
 			name: AsciiStrArr::from_bytes("dir-1").expect("Invalid string"),
 			date: NaiveDateTime::from_timestamp(123, 0),
-			kind: DirEntryKind::Dir { ptr: DirPtr::new(123) },
+			ptr:  DirPtr::new(123),
 		},
-		DirEntry {
-			name: AsciiStrArr::from_bytes("file-1").expect("Invalid string"),
-			date: NaiveDateTime::from_timestamp(123, 0),
-			kind: DirEntryKind::File {
-				ptr:       FilePtr::new(123, 456),
-				extension: AsciiStrArr::from_bytes("ext").expect("Invalid string"),
-			},
+		DirEntry::File {
+			name:      AsciiStrArr::from_bytes("file-1").expect("Invalid string"),
+			extension: AsciiStrArr::from_bytes("ext").expect("Invalid string"),
+			date:      NaiveDateTime::from_timestamp(123, 0),
+			ptr:       FilePtr::new(123, 456),
 		},
 	];
 

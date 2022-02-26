@@ -4,8 +4,7 @@
 mod error;
 
 // Exports
-pub use error::DeserializeBytesError;
-
+pub use self::error::DeserializeBytesError;
 
 // Imports
 use {
@@ -17,13 +16,24 @@ use {
 	zutil::{ascii_str_arr::AsciiChar, AsciiStrArr},
 };
 
-/// A directory entry kind
+/// A directory entry
+///
+/// Each directory entry is either a file, or a directory.
+/// Both of those variants store a pointer to their respective
+/// contents.
 #[derive(PartialEq, Eq, Clone, Copy, Debug)]
-pub enum DirEntryKind {
+pub enum DirEntry {
 	/// A file
 	File {
+		/// Name
+		name: AsciiStrArr<0x10>,
+
 		/// Extension
 		extension: AsciiStrArr<0x3>,
+
+		/// Date
+		// TODO: Switch to `u32`?
+		date: NaiveDateTime,
 
 		/// Pointer
 		ptr: FilePtr,
@@ -31,25 +41,55 @@ pub enum DirEntryKind {
 
 	/// Directory
 	Dir {
+		/// Name
+		name: AsciiStrArr<0x10>,
+
+		/// Date
+		// TODO: Switch to `u32`?
+		date: NaiveDateTime,
+
 		/// Pointer
 		ptr: DirPtr,
 	},
 }
 
-impl DirEntryKind {
-	/// Creates a file kind
+impl DirEntry {
+	/// Creates a file entry
 	#[must_use]
-	pub const fn file(extension: AsciiStrArr<0x3>, ptr: FilePtr) -> Self {
-		Self::File { extension, ptr }
+	pub const fn file(name: AsciiStrArr<0x10>, extension: AsciiStrArr<0x3>, date: NaiveDateTime, ptr: FilePtr) -> Self {
+		Self::File {
+			name,
+			extension,
+			date,
+			ptr,
+		}
 	}
 
-	/// Creates a directory kind
+	/// Creates a directory entry
 	#[must_use]
-	pub const fn dir(ptr: DirPtr) -> Self {
-		Self::Dir { ptr }
+	pub const fn dir(name: AsciiStrArr<0x10>, date: NaiveDateTime, ptr: DirPtr) -> Self {
+		Self::Dir { name, date, ptr }
 	}
 
-	/// Returns this kind as a file pointer
+	/// Returns the name of the entry.
+	///
+	/// This doesn't include the extension for files
+	pub const fn name(&self) -> &AsciiStrArr<0x10> {
+		match self {
+			Self::File { name, .. } => name,
+			Self::Dir { name, .. } => name,
+		}
+	}
+
+	/// Returns the date of the entry.
+	pub const fn date(&self) -> &NaiveDateTime {
+		match self {
+			Self::File { date, .. } => date,
+			Self::Dir { date, .. } => date,
+		}
+	}
+
+	/// Returns this entry's file pointer, if a file
 	#[must_use]
 	pub const fn as_file_ptr(&self) -> Option<FilePtr> {
 		match *self {
@@ -58,36 +98,23 @@ impl DirEntryKind {
 		}
 	}
 
-	/// Returns this kind as a directory pointer
+	/// Returns this entry's directory pointer, if a directory
 	#[must_use]
 	pub const fn as_dir_ptr(&self) -> Option<DirPtr> {
 		match *self {
-			Self::Dir { ptr } => Some(ptr),
+			Self::Dir { ptr, .. } => Some(ptr),
 			_ => None,
 		}
 	}
 
-	/// Returns the sector position of this entry
+	/// Returns the sector position of this entry's contents
 	#[must_use]
 	pub const fn sector_pos(&self) -> u32 {
 		match self {
-			DirEntryKind::File { ptr, .. } => ptr.sector_pos,
-			DirEntryKind::Dir { ptr } => ptr.sector_pos,
+			Self::File { ptr, .. } => ptr.sector_pos,
+			Self::Dir { ptr, .. } => ptr.sector_pos,
 		}
 	}
-}
-
-/// A directory entry
-#[derive(PartialEq, Eq, Clone, Debug)]
-pub struct DirEntry {
-	/// Entry name
-	pub name: AsciiStrArr<0x10>,
-
-	/// Entry date
-	pub date: NaiveDateTime,
-
-	/// Entry kind
-	pub kind: DirEntryKind,
 }
 
 impl Bytes for DirEntry {
@@ -117,22 +144,26 @@ impl Bytes for DirEntry {
 		let date = NaiveDateTime::from_timestamp(i64::from(LittleEndian::read_u32(bytes.date)), 0);
 
 		// Check kind
-		let kind = match bytes.kind {
-			0x1 => DirEntryKind::File {
+		let entry = match bytes.kind {
+			0x1 => DirEntry::File {
+				name,
 				extension,
+				date,
 				ptr: FilePtr { sector_pos, size },
 			},
 			0x80 => {
 				debug_assert_eq!(size, 0, "Directory size wasn't 0");
 				debug_assert_eq!(extension.len(), 0, "Directory extension wasn't 0");
-				DirEntryKind::Dir {
+				DirEntry::Dir {
+					name,
+					date,
 					ptr: DirPtr { sector_pos },
 				}
 			},
 			&kind => return Err(DeserializeBytesError::InvalidKind(kind)),
 		};
 
-		Ok(Self { name, date, kind })
+		Ok(entry)
 	}
 
 	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
@@ -146,9 +177,15 @@ impl Bytes for DirEntry {
 		);
 
 		// Get the kind, extension and size
-		let (kind, extension, sector_pos, size) = match self.kind {
-			DirEntryKind::File { extension, ptr } => (0x1, extension, ptr.sector_pos, ptr.size),
-			DirEntryKind::Dir { ptr } => (0x80, AsciiStrArr::new(), ptr.sector_pos, 0),
+		let (kind, name, extension, date, sector_pos, size) = match self {
+			DirEntry::File {
+				name,
+				extension,
+				date,
+				ptr,
+			} => (0x1, name, *extension, date, ptr.sector_pos, ptr.size),
+			// Note: For directories, their extension bytes are zeroed out
+			DirEntry::Dir { name, date, ptr } => (0x80, name, AsciiStrArr::new(), date, ptr.sector_pos, 0),
 		};
 
 		*bytes.kind = kind;
@@ -159,7 +196,7 @@ impl Bytes for DirEntry {
 		LittleEndian::write_u32(bytes.size, size);
 
 		// Then set the name
-		let name = self.name.as_bytes();
+		let name = name.as_bytes();
 		bytes.name[..name.len()].copy_from_slice(name);
 		bytes.name[name.len()..].fill(0);
 
@@ -167,8 +204,8 @@ impl Bytes for DirEntry {
 		LittleEndian::write_u32(bytes.sector_pos, sector_pos);
 
 		// Write the date by saturating it if it's too large or small.
-		let date = self
-			.date
+		// TODO: Not do this
+		let date = date
 			.timestamp()
 			.clamp(0, i64::from(u32::MAX))
 			.try_into()

@@ -2,7 +2,7 @@
 
 // Imports
 use {
-	crate::{DirEntry, DirEntryKind, DirPtr, FilePtr},
+	crate::{DirEntry, DirPtr, FilePtr},
 	chrono::NaiveDateTime,
 	std::{
 		convert::TryInto,
@@ -92,7 +92,7 @@ impl<L: DirWriterLister> DirWriter<L> {
 					.map_err(WriteDirError::SeekToEntry)?;
 
 				// Then write it and get it's sector size
-				let (dir_entry_kind, sector_size) = match entry.kind {
+				let (entry, sector_size) = match entry.kind {
 					DirEntryWriterKind::File { extension, mut reader } => {
 						// Write the file and get the size as `u32`
 						let size: u32 = io::copy(&mut reader, writer)
@@ -102,24 +102,20 @@ impl<L: DirWriterLister> DirWriter<L> {
 						let sector_size = (size + 2047) / 2048;
 
 						let ptr = FilePtr::new(cur_sector_pos, size);
-						(DirEntryKind::file(extension, ptr), sector_size)
+						(DirEntry::file(entry.name, extension, entry.date, ptr), sector_size)
 					},
 					DirEntryWriterKind::Dir(dir) => {
 						// Write all entries recursively
 						let ptr = DirPtr::new(cur_sector_pos);
 						let sector_size = dir.write(ptr, writer).box_map_err(WriteDirError::WriteDir)?;
-						(DirEntryKind::dir(ptr), sector_size)
+						(DirEntry::dir(entry.name, entry.date, ptr), sector_size)
 					},
 				};
 
 				// Update our sector pos
 				cur_sector_pos += sector_size;
 
-				Ok(DirEntry {
-					name: entry.name,
-					date: entry.date,
-					kind: dir_entry_kind,
-				})
+				Ok(entry)
 			})
 			.collect::<Result<_, _>>()?;
 

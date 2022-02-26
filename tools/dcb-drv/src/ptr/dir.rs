@@ -10,7 +10,7 @@ pub use error::{FindEntryError, FindError, ReadEntriesError, ReadEntryError, Wri
 
 // Imports
 use {
-	crate::{path, DirEntry, DirEntryKind, DirEntryPtr, Path},
+	crate::{path, DirEntry, DirEntryPtr, Path},
 	ascii::AsciiStr,
 	core::str::lossy::Utf8Lossy,
 	dcb_bytes::Bytes,
@@ -127,14 +127,14 @@ impl DirPtr {
 					}
 
 					// Else check what entry we got
-					match entry.kind {
-						DirEntryKind::File { .. } =>
+					match entry {
+						DirEntry::File { .. } =>
 							return Err(FindError::ExpectedDir {
 								path: path[..(path.len() - components.remaining().len())].to_path_buf(),
 							}),
 
 						// If we got a directory, continue
-						DirEntryKind::Dir { ptr } => {
+						DirEntry::Dir { ptr, .. } => {
 							cur_entry = Some((entry_ptr, entry));
 							cur_ptr = ptr;
 						},
@@ -165,10 +165,10 @@ impl DirPtr {
 			.zip(0..)
 			.find_map(|(entry, idx)| match entry {
 				Ok(entry) => {
-					let is_match = entry.name.as_str() == filename &&
-						match entry.kind {
-							DirEntryKind::Dir { .. } => extension.is_none(),
-							DirEntryKind::File { extension: ext, .. } => extension == Some(ext.as_str()),
+					let is_match = entry.name().as_str() == filename &&
+						match entry {
+							DirEntry::Dir { .. } => extension.is_none(),
+							DirEntry::File { extension: ext, .. } => extension == Some(ext.as_str()),
 						};
 
 					match is_match {

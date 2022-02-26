@@ -10,16 +10,16 @@
 )]
 
 // Modules
-pub mod dir;
-pub mod entry;
-pub mod path;
-pub mod ptr;
-pub mod swap;
-pub mod writer;
+mod dir;
+mod entry;
+mod path;
+mod ptr;
+mod swap;
+mod writer;
 
 // Exports
 pub use {
-	entry::{DirEntry, DirEntryKind},
+	entry::DirEntry,
 	path::{Path, PathBuf},
 	ptr::{DirEntryPtr, DirPtr, FilePtr},
 	swap::swap_files,

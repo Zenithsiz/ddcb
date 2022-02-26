@@ -8,7 +8,7 @@ use {
 	self::args::Args,
 	anyhow::Context,
 	clap::Parser,
-	dcb_drv::{DirEntryKind, DirPtr},
+	dcb_drv::{DirEntry, DirPtr},
 	std::{
 		fs,
 		io::{self, Seek},
@@ -101,13 +101,15 @@ fn extract_tree<R: io::Read + io::Seek>(
 
 		// Create the date
 		// Note: `.DRV` only supports second precision.
-		let time = filetime::FileTime::from_unix_time(entry.date.timestamp(), 0);
+		let time = filetime::FileTime::from_unix_time(entry.date().timestamp(), 0);
 
 		// Then check it's type
-		match entry.kind {
+		match entry {
 			// If it's a file, create the file and write all contents
-			DirEntryKind::File { extension, ptr } => {
-				let path = path.join(format!("{}.{}", entry.name, extension));
+			DirEntry::File {
+				name, extension, ptr, ..
+			} => {
+				let path = path.join(format!("{}.{}", name, extension));
 
 				// Log the file and it's size
 				if !args.quiet {
@@ -140,8 +142,8 @@ fn extract_tree<R: io::Read + io::Seek>(
 			},
 
 			// If it's a directory, create it and recurse for all it's entries
-			DirEntryKind::Dir { ptr } => {
-				let path = path.join(entry.name.as_str());
+			DirEntry::Dir { name, ptr, .. } => {
+				let path = path.join(name.as_str());
 
 				// Log the directory
 				if !args.quiet {
@@ -184,27 +186,21 @@ fn create_map_entry<R: io::Read + io::Seek>(
 	path: &Path,
 	entry: dcb_drv::DirEntry,
 ) -> Result<DrvMapEntry, anyhow::Error> {
-	let entry = match entry.kind {
-		DirEntryKind::File { extension, .. } => {
-			let path = path.join(format!("{}.{}", entry.name, extension));
+	let entry = match entry {
+		DirEntry::File {
+			name, extension, date, ..
+		} => {
+			let path = path.join(format!("{}.{}", name, extension));
 
-			DrvMapEntry::File {
-				name: entry.name,
-				date: entry.date,
-				path,
-			}
+			DrvMapEntry::File { name, date, path }
 		},
-		DirEntryKind::Dir { ptr } => {
-			let path = path.join(entry.name.as_str());
+		DirEntry::Dir { name, date, ptr } => {
+			let path = path.join(name.as_str());
 
 			// Collect all entries
 			let entries = self::map_entries(reader, ptr, &path)?;
 
-			DrvMapEntry::Dir {
-				name: entry.name,
-				date: entry.date,
-				entries,
-			}
+			DrvMapEntry::Dir { name, date, entries }
 		},
 	};
 
