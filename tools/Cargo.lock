@@ -133,6 +133,24 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6245d59a3e82a7fc217c5828a6692dbc6dfb63a0c8c90495621f7b9d79704a0e"
 
 [[package]]
+name = "dcb-build"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "chrono",
+ "clap 3.1.2",
+ "dcb-drv",
+ "itertools",
+ "log",
+ "serde",
+ "serde_yaml",
+ "simplelog 0.11.2",
+ "size_format",
+ "thiserror",
+ "zutil",
+]
+
+[[package]]
 name = "dcb-bytes"
 version = "0.1.0"
 dependencies = [

@@ -8,6 +8,7 @@ members = [
   "dcb-undrv",
   "dcb-cdrom-xa",
   "dcb-unbin",
+  "dcb-build",
 ]
 
 [patch."https://github.com/Zenithsiz/zutil"]
