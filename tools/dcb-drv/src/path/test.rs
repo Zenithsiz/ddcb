@@ -10,9 +10,9 @@ fn ascii(path: &str) -> &AsciiStr {
 	AsciiStr::from_ascii(path).expect("Unable to create path")
 }
 
-/// Asserts components of `path` are `cmpts`
-fn assert_components_eq(path: &Path, cmpts: &[Component]) {
-	assert_eq!(path.components().collect::<Vec<_>>(), cmpts);
+/// Asserts components of `path` are `components`
+fn assert_components_eq(path: &Path, components: &[Component]) {
+	assert_eq!(path.components().collect::<Vec<_>>(), components);
 }
 
 #[test]

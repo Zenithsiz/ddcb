@@ -182,7 +182,7 @@ impl<'a> Iterator for Components<'a> {
 
 	fn next(&mut self) -> Option<Self::Item> {
 		// Read until the next `\\` or eof
-		let (cmpt, rest) = match self.path.0.chars().position(|ch| ch == AsciiChar::BackSlash) {
+		let (component, rest) = match self.path.0.chars().position(|ch| ch == AsciiChar::BackSlash) {
 			// If we found it first, emit a root component
 			Some(0) => (Component::Root, self.path),
 
@@ -201,14 +201,14 @@ impl<'a> Iterator for Components<'a> {
 		let rest = rest.trim_leading();
 
 		// If the component is a normal `.` or `..`, change it
-		let cmpt = match cmpt {
+		let component = match component {
 			Component::Normal(path) if path == "." => Component::CurDir,
 			Component::Normal(path) if path == ".." => Component::ParentDir,
-			_ => cmpt,
+			_ => component,
 		};
 
 		self.path = rest;
-		Some(cmpt)
+		Some(component)
 	}
 }
 

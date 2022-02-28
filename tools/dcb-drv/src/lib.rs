@@ -14,7 +14,6 @@ mod dir;
 mod entry;
 mod path;
 mod ptr;
-mod swap;
 mod writer;
 
 // Exports
@@ -22,6 +21,5 @@ pub use {
 	entry::DirEntry,
 	path::{Path, PathBuf},
 	ptr::{DirEntryPtr, DirPtr, FilePtr},
-	swap::swap_files,
 	writer::{DirEntryWriter, DirEntryWriterKind, DirWriter, DirWriterLister},
 };

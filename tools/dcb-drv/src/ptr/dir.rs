@@ -1,16 +1,20 @@
 //! Directory pointer
 
 // Modules
+pub mod entry;
 mod error;
 #[cfg(test)]
 mod test;
 
 // Exports
-pub use error::{FindEntryError, FindError, ReadEntriesError, ReadEntryError, WriteEntriesError};
+pub use {
+	entry::DirEntryPtr,
+	error::{FindEntryError, FindError, ReadEntriesError, ReadEntryError, WriteEntriesError},
+};
 
 // Imports
 use {
-	crate::{path, DirEntry, DirEntryPtr, Path},
+	crate::{path, DirEntry, Path},
 	ascii::AsciiStr,
 	core::str::lossy::Utf8Lossy,
 	dcb_bytes::Bytes,
