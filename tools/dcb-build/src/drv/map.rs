@@ -1,4 +1,5 @@
 //! Map
+
 // Imports
 use {
 	std::{
@@ -17,18 +18,23 @@ pub struct DrvMap {
 }
 
 impl DrvMap {
-	/// Visits all files
-	pub fn visit_files<T: Try<Output = ()>>(&self, mut f: impl FnMut(&Path) -> T) -> T {
-		Self::visit_files_dir(&self.entries, &mut f)
+	/// Returns all files in this map
+	pub fn files(&self) -> Vec<&Path> {
+		// Visit all files and add them
+		let mut files = vec![];
+		self.visit_files(|path| {
+			files.push(path);
+			Ok::<(), !>(())
+		})
+		.into_ok();
+
+		files
 	}
 
-	/// Visits all files in a directory
-	fn visit_files_dir<T: Try<Output = ()>>(entries: &[DrvMapEntry], f: &mut impl FnMut(&Path) -> T) -> T {
-		for entry in entries {
-			match entry {
-				DrvMapEntry::Dir { entries, .. } => Self::visit_files_dir(entries, f)?,
-				DrvMapEntry::File { path, .. } => f(path)?,
-			}
+	/// Visits all files
+	pub fn visit_files<'a, T: Try<Output = ()>>(&'a self, mut f: impl FnMut(&'a Path) -> T) -> T {
+		for entry in &self.entries {
+			entry.visit_files(&mut f)?;
 		}
 
 		T::from_output(())
@@ -65,6 +71,22 @@ pub enum DrvMapEntry {
 		/// Path
 		path: PathBuf,
 	},
+}
+
+impl DrvMapEntry {
+	/// Visits all files in this entry, recursively
+	fn visit_files<'a, T: Try<Output = ()>>(&'a self, f: &mut impl FnMut(&'a Path) -> T) -> T {
+		match self {
+			DrvMapEntry::Dir { entries, .. } => {
+				for entry in entries {
+					entry.visit_files(f)?;
+				}
+
+				T::from_output(())
+			},
+			DrvMapEntry::File { path, .. } => f(path),
+		}
+	}
 }
 
 /// Default date for directories when not specified

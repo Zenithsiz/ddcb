@@ -6,12 +6,10 @@ mod map;
 // Imports
 use {
 	self::map::DrvMap,
-	crate::Recipe,
 	anyhow::Context,
 	std::{
 		fs,
 		io,
-		ops::ControlFlow,
 		path::{Path, PathBuf},
 		time::SystemTime,
 	},
@@ -37,19 +35,14 @@ impl DrvFiles {
 	}
 }
 
-impl Recipe for DrvFiles {
-	type RebuildError = anyhow::Error;
-
-	fn is_outdated(&self) -> bool {
-		self.files.is_outdated()
-	}
-
-	fn rebuild(&mut self) -> Result<(), Self::RebuildError> {
-		self.files.rebuild()
-	}
-
-	fn build(&mut self) -> Result<(), Self::RebuildError> {
-		self.files.build()
+impl DrvFiles {
+	/// Builds this recipe
+	pub fn build(&mut self) -> Result<(), anyhow::Error> {
+		// Build all drv files
+		for file in &mut self.files {
+			file.build().with_context(|| format!("Unable to build {}", file.name))?;
+		}
+		Ok(())
 	}
 }
 
@@ -87,45 +80,50 @@ impl DrvFile {
 	}
 }
 
-impl Recipe for DrvFile {
-	type RebuildError = anyhow::Error;
-
-	fn is_outdated(&self) -> bool {
+impl DrvFile {
+	/// Returns if this recipe is outdated
+	pub fn is_outdated(&self) -> Result<bool, anyhow::Error> {
 		// Get the output file's date
 		// Note: If we don't have the output file, we're definitely outdated
 		let drv_path = self.drv_path();
-		let Ok(drv_date) = self::date_of(drv_path) else { return true; };
+		let Ok(drv_date) = self::date_of(drv_path) else { return Ok(true); };
 
-		// If the map file is out of date, rebuild
+		// If the map file is newer than the output file, we're outdated
 		let map_path = self.map_path();
-		match self::date_of(&map_path) {
-			Ok(map_date) =>
-				if map_date > drv_date {
-					return true;
-				},
-			Err(err) => {
-				log::warn!("Unable to get modified date of map file {map_path:?}: {err:?}");
-			},
-		};
+		let map_date = self::date_of(&map_path)
+			.with_context(|| format!("Unable to get date of map file {}", map_path.display()))?;
+		if map_date > drv_date {
+			return Ok(true);
+		}
 
-		// Then if any of our dependencies are newer, we're outdated
-		// Note: We're outdated if any of the files returned a `Break`
-		self.map
-			.visit_files(|path| match self::date_of(path) {
-				Ok(file_date) => match file_date > drv_date {
-					true => ControlFlow::BREAK,
-					false => ControlFlow::CONTINUE,
-				},
-				Err(err) => {
-					log::warn!("Unable to get modified date of dependency {path:?}: {err:?}");
-					ControlFlow::BREAK
-				},
-			})
-			.is_break()
+		// If any of out files are newer, we're outdated
+		for file_path in self.map.files() {
+			let path_date = self::date_of(file_path)
+				.with_context(|| format!("Unable to get date of drv input file {}", file_path.display()))?;
+			if path_date > drv_date {
+				return Ok(true);
+			}
+		}
+
+		// If we got here, we're up to date
+		Ok(false)
 	}
 
-	fn rebuild(&mut self) -> Result<(), Self::RebuildError> {
-		println!("Rebuilding {}", self.name);
+	/// Builds this recipe
+	pub fn build(&mut self) -> Result<(), anyhow::Error> {
+		// If we're not outdated, we're built
+		if !self.is_outdated().context("Unable to check if outdated")? {
+			return Ok(());
+		}
+
+		let drv_path = self.drv_path();
+		log::info!("Rebuilding {}", drv_path.display());
+
+		// Else create the output directory, if it doesn't exist
+		zutil::try_create_dir_all(drv_path.parent().context("Output file had no parent")?)
+			.context("Unable to create output file parent directory")?;
+
+		// TODO: Make the drv
 
 		Ok(())
 	}

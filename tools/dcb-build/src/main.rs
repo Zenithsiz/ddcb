@@ -1,14 +1,13 @@
 //! Builder
 
 // Features
-#![feature(try_trait_v2, control_flow_enum, never_type, let_else)]
+#![feature(try_trait_v2, control_flow_enum, never_type, let_else, unwrap_infallible)]
 
 // Modules
 mod drv;
-mod recipe;
 
 // Exports
-use self::{drv::DrvFiles, recipe::Recipe};
+use self::drv::DrvFiles;
 
 // Imports
 use anyhow::Context;

@@ -59,7 +59,7 @@ fn main() -> Result<(), anyhow::Error> {
 	}
 
 	// Create output directory if it doesn't exist
-	zutil::try_create_folder(&output_dir)
+	zutil::try_create_dir_all(&output_dir)
 		.with_context(|| format!("Unable to create directory {}", output_dir.display()))?;
 
 	// Then extract the tree
@@ -152,7 +152,7 @@ fn extract_tree<R: io::Read + io::Seek>(
 				}
 
 				// Create the directory and recurse over it
-				zutil::try_create_folder(&path)
+				zutil::try_create_dir_all(&path)
 					.with_context(|| format!("Unable to create directory {}", path.display()))?;
 				self::extract_tree(reader, ptr, &path, args)
 					.with_context(|| format!("Unable to extract directory {}", path.display()))?;
