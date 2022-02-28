@@ -10,7 +10,7 @@ mod map;
 
 // Imports
 use {
-	self::{args::Args, map::DrvMap},
+	self::{args::Args, dir_lister::FsDirLister, map::DrvMap},
 	anyhow::Context,
 	clap::Parser,
 	dcb_drv::DirPtr,
@@ -50,9 +50,9 @@ pub fn write_fs(map: DrvMap, output_file: &Path, args: &Args) -> Result<(), anyh
 	// Create the output file
 	let mut output_file = fs::File::create(output_file).context("Unable to create output file")?;
 
-	// Create the filesystem writer
-	let root_entries = dir_lister::DirLister::new(map.entries, 0, args);
-	dcb_drv::write_dir_all(&mut output_file, DirPtr::root(), root_entries)
+	// Write the filesystem
+	let lister = FsDirLister::new(map.entries, 0, args);
+	dcb_drv::write_dir_all(&mut output_file, DirPtr::root(), lister)
 		.map_err(|err| anyhow::anyhow!("Unable to write filesystem: {:?}", err))?;
 
 	// Then pad the file to a sector `2048` if it isn't already

@@ -5,13 +5,13 @@ use {
 	crate::{args::Args, map::DrvMapEntry},
 	anyhow::Context,
 	chrono::NaiveDateTime,
-	dcb_drv::{DirEntryWriter, DirEntryWriterKind, DirWriterLister},
+	dcb_drv::{DirEntryWriter, DirEntryWriterKind, DirLister},
 	std::{convert::TryInto, fs, io::Seek, time::SystemTime},
 };
 
 /// Directory list
 #[derive(Debug)]
-pub struct DirLister<'a> {
+pub struct FsDirLister<'a> {
 	/// All entries
 	entries: Vec<DrvMapEntry>,
 
@@ -22,24 +22,20 @@ pub struct DirLister<'a> {
 	args: &'a Args,
 }
 
-impl<'a> DirLister<'a> {
+impl<'a> FsDirLister<'a> {
 	/// Creates a new iterator from map entries
 	pub fn new(entries: Vec<DrvMapEntry>, depth: usize, args: &'a Args) -> Self {
 		Self { entries, depth, args }
 	}
 }
 
-impl<'a> DirWriterLister for DirLister<'a> {
+impl<'a> DirLister for FsDirLister<'a> {
 	type Error = anyhow::Error;
 	type FileReader = fs::File;
-}
 
-impl<'a> IntoIterator for DirLister<'a> {
-	type Item = Result<DirEntryWriter<Self>, <Self as DirWriterLister>::Error>;
+	type EntriesIter = impl ExactSizeIterator<Item = Result<DirEntryWriter<Self>, Self::Error>>;
 
-	type IntoIter = impl Iterator<Item = Self::Item> + ExactSizeIterator;
-
-	fn into_iter(self) -> Self::IntoIter {
+	fn entries(self) -> Self::EntriesIter {
 		self.entries.into_iter().map(move |entry| {
 			let entry = match entry {
 				DrvMapEntry::Dir { name, date, entries } => {

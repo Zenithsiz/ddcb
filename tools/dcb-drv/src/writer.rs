@@ -17,18 +17,23 @@ use {
 };
 
 /// A directory lister
-pub trait DirWriterLister:
-	Sized + IntoIterator<Item = Result<DirEntryWriter<Self>, Self::Error>, IntoIter: ExactSizeIterator>
-{
-	/// File type
+pub trait DirLister: Sized {
+	/// File reader
 	type FileReader: io::Read;
 
 	/// Error type for each entry
+	// TODO: Use a `Try` type instead?
 	type Error;
+
+	/// Iterator type for all entries
+	type EntriesIter: ExactSizeIterator<Item = Result<DirEntryWriter<Self>, Self::Error>>;
+
+	/// Returns all entries in this directory
+	fn entries(self) -> Self::EntriesIter;
 }
 
 /// Writes all entries in `lister` to `writer` at `ptr`.
-pub fn write_dir_all<L: DirWriterLister, W: io::Seek + io::Write>(
+pub fn write_dir_all<L: DirLister, W: io::Seek + io::Write>(
 	writer: &mut W,
 	ptr: DirPtr,
 	lister: L,
@@ -37,7 +42,7 @@ pub fn write_dir_all<L: DirWriterLister, W: io::Seek + io::Write>(
 	// Note: We on the directory after this directory.
 	// Note: `+1` for the null entry.
 	// Note: `+2047` is to pad this directory to the next sector, if not empty.
-	let entries = lister.into_iter();
+	let entries = lister.entries();
 	let entries_len: u32 = entries
 		.len()
 		.try_into()
@@ -92,7 +97,7 @@ pub fn write_dir_all<L: DirWriterLister, W: io::Seek + io::Write>(
 }
 
 /// A directory entry writer
-pub struct DirEntryWriter<L: DirWriterLister> {
+pub struct DirEntryWriter<L: DirLister> {
 	/// Entry name
 	pub name: AsciiStrArr<0x10>,
 
@@ -104,7 +109,7 @@ pub struct DirEntryWriter<L: DirWriterLister> {
 }
 
 /// A directory entry writer kind
-pub enum DirEntryWriterKind<L: DirWriterLister> {
+pub enum DirEntryWriterKind<L: DirLister> {
 	/// A file
 	File {
 		/// Extension

@@ -21,5 +21,5 @@ pub use {
 	entry::DirEntry,
 	path::{Path, PathBuf},
 	ptr::{DirEntryPtr, DirPtr, FilePtr},
-	writer::{write_dir_all, DirEntryWriter, DirEntryWriterKind, DirWriterLister},
+	writer::{write_dir_all, DirEntryWriter, DirEntryWriterKind, DirLister},
 };
