@@ -2,9 +2,20 @@
 //!
 //! A map of all entries in a drv filesystem
 
+// Modules
+mod error;
+
+use chrono::NaiveDateTime;
+// Exports
+pub use error::FromDrvError;
+use zutil::MapBoxResult;
+
+use crate::{DirEntry, DirPtr};
+
 // Imports
 use {
 	std::{
+		io,
 		ops::Try,
 		path::{Path, PathBuf},
 	},
@@ -21,6 +32,64 @@ pub struct DrvMap {
 }
 
 impl DrvMap {
+	/// Creates a map from a drv file `reader` at `dir_ptr`, when extracted to `path`
+	pub fn from_drv<R: io::Read + io::Seek>(
+		reader: &mut R,
+		dir_ptr: DirPtr,
+		path: &Path,
+	) -> Result<DrvMap, FromDrvError> {
+		// Collect all entries
+		let entries = dir_ptr
+			.read_entries(reader)
+			.map_err(FromDrvError::ReadEntries)?
+			.collect::<Result<Vec<_>, _>>()
+			.map_err(FromDrvError::ReadEntry)?;
+
+		// Then create each entry
+		// Note: We need to do this in 2 steps due to `reader` being borrowed
+		let entries = entries
+			.into_iter()
+			.map(|entry| Self::create_map_entry(reader, path, entry))
+			.collect::<Result<Vec<_>, _>>()?;
+
+		Ok(DrvMap { entries })
+	}
+
+	/// Creates a map entry.
+	// Note: impl detail for [`from_drv`]
+	fn create_map_entry<R: io::Read + io::Seek>(
+		reader: &mut R,
+		path: &Path,
+		entry: DirEntry,
+	) -> Result<DrvMapEntry, FromDrvError> {
+		let date = NaiveDateTime::from_timestamp(i64::from(entry.date()), 0);
+
+		let entry = match entry {
+			DirEntry::File { name, extension, .. } => {
+				let path = path.join(format!("{}.{}", name, extension));
+
+				DrvMapEntry::File {
+					name: Some(name),
+					date: Some(date),
+					path,
+				}
+			},
+			DirEntry::Dir { name, ptr, .. } => {
+				let path = path.join(name.as_str());
+				let map = Self::from_drv(reader, ptr, &path)
+					.box_map_err(|err| FromDrvError::CreateSubDirMap { name, err })?;
+
+				DrvMapEntry::Dir {
+					name,
+					date,
+					entries: map,
+				}
+			},
+		};
+
+		Ok(entry)
+	}
+
 	/// Returns the number of entries in this map
 	pub fn len(&self) -> usize {
 		self.entries.len()

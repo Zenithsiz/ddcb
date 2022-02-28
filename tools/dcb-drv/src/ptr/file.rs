@@ -4,7 +4,7 @@
 mod error;
 
 // Exports
-pub use error::FileCursorError;
+pub use error::FileSliceError;
 
 // Imports
 use {
@@ -35,9 +35,9 @@ impl FilePtr {
 	}
 
 	/// Returns the slice of this file
-	pub fn slice<T: io::Seek>(self, cursor: T) -> Result<IoSlice<T>, FileCursorError> {
+	pub fn slice<T: io::Seek>(self, cursor: T) -> Result<IoSlice<T>, FileSliceError> {
 		let pos = u64::from(self.sector_pos) * 0x800;
-		IoSlice::new_with_offset_len(cursor, pos, u64::from(self.size)).map_err(FileCursorError::Seek)
+		IoSlice::new_with_offset_len(cursor, pos, u64::from(self.size)).map_err(FileSliceError::Seek)
 	}
 }
 

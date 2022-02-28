@@ -16,6 +16,7 @@ log = "0.4.13"
 ascii = "1.0.0"
 byteorder = "1.4.2"
 chrono = "0.4.19"
+filetime = "0.2.14"
 ref-cast = "1.0.6"
 
 # Derives

@@ -13,6 +13,7 @@
 // Modules
 mod dir;
 mod entry;
+mod extract;
 mod map;
 mod path;
 mod ptr;
@@ -21,6 +22,7 @@ mod writer;
 // Exports
 pub use {
 	entry::DirEntry,
+	extract::{extract, ExtractError},
 	map::{DrvMap, DrvMapEntry},
 	path::{Path, PathBuf},
 	ptr::{DirEntryPtr, DirPtr, FilePtr},

@@ -7,13 +7,12 @@ mod args;
 use {
 	self::args::Args,
 	anyhow::Context,
-	chrono::NaiveDateTime,
 	clap::Parser,
-	dcb_drv::{DirEntry, DirPtr, DrvMap, DrvMapEntry},
+	dcb_drv::{DirPtr, DrvMap},
 	std::{
 		fs,
 		io::{self, Seek},
-		path::{Path, PathBuf},
+		path::PathBuf,
 	},
 };
 
@@ -49,7 +48,7 @@ fn main() -> Result<(), anyhow::Error> {
 	if let Some(path) = &args.output_map {
 		// Create the map
 		let map =
-			self::create_map(&mut input_file, DirPtr::root(), &output_dir).context("Unable to create map file")?;
+			DrvMap::from_drv(&mut input_file, DirPtr::root(), &output_dir).context("Unable to create map file")?;
 
 		// Write it to file
 		zutil::write_to_file(path, &map, serde_yaml::to_writer).context("Unable to write map to file")?;
@@ -58,170 +57,15 @@ fn main() -> Result<(), anyhow::Error> {
 		input_file.rewind().context("Unable to rewind input file")?;
 	}
 
-	// Create output directory if it doesn't exist
-	zutil::try_create_dir_all(&output_dir)
-		.with_context(|| format!("Unable to create directory {}", output_dir.display()))?;
-
 	// Then extract the tree
-	if let Err(err) = self::extract_tree(&mut input_file, DirPtr::root(), &output_dir, &args) {
+	if let Err(err) = dcb_drv::extract(&mut input_file, DirPtr::root(), &output_dir) {
 		log::error!("Unable to extract files from {}: {:?}", args.input_file.display(), err);
 	}
 
-	// And set the directory time to the input file
-	// Note: `extract_tree` takes care of each file's input files.
+	// And set the directory time to the input file's
+	// Note: `extract` takes care of each file's input files.
 	let time = filetime::FileTime::from_last_modification_time(&input_file_metadata);
-	if let Err(err) = filetime::set_file_mtime(&output_dir, time) {
-		log::warn!(
-			"Unable to write date for output directory {}: {}",
-			output_dir.display(),
-			zutil::fmt_err_wrapper(&err)
-		);
-	}
+	filetime::set_file_mtime(&output_dir, time).context("Unable to set date of output directory")?;
 
 	Ok(())
-}
-
-/// Extracts a `.drv` file from a reader and starting directory
-fn extract_tree<R: io::Read + io::Seek>(
-	reader: &mut R,
-	dir_ptr: DirPtr,
-	path: &Path,
-	args: &Args,
-) -> Result<(), anyhow::Error> {
-	// Get all entries
-	// Note: We need to collect to free the reader so it can seek to the next files.
-	let entries: Vec<_> = dir_ptr
-		.read_entries(reader)
-		.with_context(|| format!("Unable to get directory entries of {}", path.display()))?
-		.collect();
-
-	// Then extract each entry
-	for entry in entries {
-		// If we can't read it, return Err
-		let entry = entry.with_context(|| format!("Unable to read directory entry of {}", path.display()))?;
-
-		// Create the date
-		// Note: `.DRV` only supports second precision.
-		let time = filetime::FileTime::from_unix_time(i64::from(entry.date()), 0);
-
-		// Then check it's type
-		match entry {
-			// If it's a file, create the file and write all contents
-			DirEntry::File {
-				name, extension, ptr, ..
-			} => {
-				let path = path.join(format!("{}.{}", name, extension));
-
-				// Log the file and it's size
-				if !args.quiet {
-					println!(
-						"{} ({}B)",
-						path.display(),
-						size_format::SizeFormatterSI::new(u64::from(ptr.size))
-					);
-				}
-
-				// Get the file's reader.
-				let mut file_reader = ptr
-					.slice(&mut *reader)
-					.with_context(|| format!("Unable to read file {}", path.display()))?;
-
-				// Then create the output file and copy.
-				let mut output_file =
-					fs::File::create(&path).with_context(|| format!("Unable to create file {}", path.display()))?;
-				std::io::copy(&mut file_reader, &mut output_file)
-					.with_context(|| format!("Unable to write file {}", path.display()))?;
-
-				// And set the file's modification time
-				if let Err(err) = filetime::set_file_handle_times(&output_file, None, Some(time)) {
-					log::warn!(
-						"Unable to write date for file {}: {}",
-						path.display(),
-						zutil::fmt_err_wrapper(&err)
-					);
-				}
-			},
-
-			// If it's a directory, create it and recurse for all it's entries
-			DirEntry::Dir { name, ptr, .. } => {
-				let path = path.join(name.as_str());
-
-				// Log the directory
-				if !args.quiet {
-					println!("{}/", path.display());
-				}
-
-				// Create the directory and recurse over it
-				zutil::try_create_dir_all(&path)
-					.with_context(|| format!("Unable to create directory {}", path.display()))?;
-				self::extract_tree(reader, ptr, &path, args)
-					.with_context(|| format!("Unable to extract directory {}", path.display()))?;
-
-				// Then set it's date
-				// Note: We must do this *after* extracting the tree, else the time
-				//       will be updated when we insert files into it.
-				if let Err(err) = filetime::set_file_mtime(&path, time) {
-					log::warn!(
-						"Unable to write date for directory {}: {}",
-						path.display(),
-						zutil::fmt_err_wrapper(&err)
-					);
-				}
-			},
-		}
-	}
-
-	Ok(())
-}
-
-/// Creates a map from a drv file `reader` at `dir_ptr`, when extracted to `path`
-fn create_map<R: io::Read + io::Seek>(reader: &mut R, dir_ptr: DirPtr, path: &Path) -> Result<DrvMap, anyhow::Error> {
-	// Collect all entries
-	let entries = dir_ptr
-		.read_entries(reader)
-		.with_context(|| format!("Unable to get directory entries of {}", path.display()))?
-		.collect::<Result<Vec<_>, _>>()
-		.context("Unable to parse entry")?;
-
-	// Then parse them
-	let entries = entries
-		.into_iter()
-		.map(|entry| self::create_map_entry(reader, path, entry))
-		.collect::<Result<Vec<_>, _>>()
-		.context("Unable to create entry")?;
-
-	Ok(DrvMap { entries })
-}
-
-/// Creates a map entry
-fn create_map_entry<R: io::Read + io::Seek>(
-	reader: &mut R,
-	path: &Path,
-	entry: dcb_drv::DirEntry,
-) -> Result<DrvMapEntry, anyhow::Error> {
-	let date = NaiveDateTime::from_timestamp(i64::from(entry.date()), 0);
-
-	let entry = match entry {
-		DirEntry::File { name, extension, .. } => {
-			let path = path.join(format!("{}.{}", name, extension));
-
-			DrvMapEntry::File {
-				name: Some(name),
-				date: Some(date),
-				path,
-			}
-		},
-		DirEntry::Dir { name, ptr, .. } => {
-			let path = path.join(name.as_str());
-			let map = self::create_map(reader, ptr, &path).context("Unable to create map")?;
-
-			DrvMapEntry::Dir {
-				name,
-				date,
-				entries: map,
-			}
-		},
-	};
-
-	Ok(entry)
 }
