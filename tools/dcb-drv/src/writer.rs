@@ -2,16 +2,22 @@
 
 // Modules
 mod error;
+mod map_lister;
 
 // Exports
-pub use error::WriteDirAllError;
+pub use {
+	error::{WriteDirAllError, WriteFsError},
+	map_lister::DrvMapDirLister,
+};
 
 // Imports
 use {
-	crate::{DirEntry, DirPtr, FilePtr},
+	crate::{DirEntry, DirPtr, DrvMap, FilePtr},
 	std::{
 		convert::TryInto,
+		fs,
 		io::{self, SeekFrom},
+		path::Path,
 	},
 	zutil::{AsciiStrArr, MapBoxResult},
 };
@@ -30,6 +36,26 @@ pub trait DirLister: Sized {
 
 	/// Returns all entries in this directory
 	fn entries(self) -> Self::EntriesIter;
+}
+
+/// Writes a `.drv` filesystem to `output_file`.
+pub fn write_fs(map: &DrvMap, output_file: &Path) -> Result<(), WriteFsError> {
+	// Create the output file
+	let mut output_file = fs::File::create(output_file).map_err(WriteFsError::CreateFile)?;
+
+	// Write the filesystem
+	let lister = DrvMapDirLister::new(map);
+	self::write_dir_all(&mut output_file, DirPtr::root(), lister).map_err(WriteFsError::WriteDrv)?;
+
+	// Then pad the file to a sector `2048` if it isn't already
+	let len = output_file.metadata().map_err(WriteFsError::FileMetadata)?.len();
+	if len % 2048 != 0 {
+		output_file
+			.set_len(2048 * ((len + 2047) / 2048))
+			.map_err(WriteFsError::SetFileLen)?;
+	}
+
+	Ok(())
 }
 
 /// Writes all entries in `lister` to `writer` at `ptr`.

@@ -7,7 +7,8 @@
 	never_type,
 	unwrap_infallible,
 	str_internals,
-	try_trait_v2
+	try_trait_v2,
+	type_alias_impl_trait
 )]
 
 // Modules
@@ -26,5 +27,5 @@ pub use {
 	map::{DrvMap, DrvMapEntry},
 	path::{Path, PathBuf},
 	ptr::{DirEntryPtr, DirPtr, FilePtr},
-	writer::{write_dir_all, DirEntryWriter, DirEntryWriterKind, DirLister},
+	writer::{write_dir_all, write_fs, DirEntryWriter, DirEntryWriterKind, DirLister, DrvMapDirLister},
 };

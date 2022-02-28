@@ -106,6 +106,12 @@ impl DrvMap {
 		self.entries.into_iter()
 	}
 
+	/// Returns all entries in this map
+	// TODO: Custom iterator
+	pub fn entries(&self) -> std::slice::Iter<DrvMapEntry> {
+		self.entries.iter()
+	}
+
 	/// Visits all files
 	pub fn visit_files<T: Try<Output = ()>, F: FnMut(&Path) -> T>(&self, mut f: F) -> T {
 		self.visit_files_impl::<T, F>(&mut f)

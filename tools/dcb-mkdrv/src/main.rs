@@ -5,16 +5,9 @@
 
 // Modules
 mod args;
-mod dir_lister;
 
 // Imports
-use {
-	self::{args::Args, dir_lister::FsDirLister},
-	anyhow::Context,
-	clap::Parser,
-	dcb_drv::{DirPtr, DrvMap},
-	std::{borrow::Cow, fs, path::Path},
-};
+use {self::args::Args, anyhow::Context, clap::Parser, std::borrow::Cow};
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
@@ -39,31 +32,7 @@ fn main() -> Result<(), anyhow::Error> {
 	};
 
 	// Try to pack the filesystem
-	self::write_fs(map, &output_file, &args).context("Unable to pack `drv` file")?;
-
-	Ok(())
-}
-
-/// Writes a `.drv` filesystem to `output_file`.
-pub fn write_fs(map: DrvMap, output_file: &Path, args: &Args) -> Result<(), anyhow::Error> {
-	// Create the output file
-	let mut output_file = fs::File::create(output_file).context("Unable to create output file")?;
-
-	// Write the filesystem
-	let lister = FsDirLister::new(map, 0, args);
-	dcb_drv::write_dir_all(&mut output_file, DirPtr::root(), lister)
-		.map_err(|err| anyhow::anyhow!("Unable to write filesystem: {:?}", err))?;
-
-	// Then pad the file to a sector `2048` if it isn't already
-	let len = output_file
-		.metadata()
-		.context("Unable to get output file metadata")?
-		.len();
-	if len % 2048 != 0 {
-		output_file
-			.set_len(2048 * ((len + 2047) / 2048))
-			.context("Unable to set file length")?;
-	}
+	dcb_drv::write_fs(&map, &output_file).context("Unable to write `drv` filesystem")?;
 
 	Ok(())
 }
