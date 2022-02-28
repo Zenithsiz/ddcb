@@ -2,18 +2,18 @@
 
 // Imports
 use {
-	crate::{args::Args, map::DrvMapEntry},
+	crate::args::Args,
 	anyhow::Context,
 	chrono::NaiveDateTime,
-	dcb_drv::{DirEntryWriter, DirEntryWriterKind, DirLister},
+	dcb_drv::{DirEntryWriter, DirEntryWriterKind, DirLister, DrvMap, DrvMapEntry},
 	std::{convert::TryInto, fs, io::Seek, time::SystemTime},
 };
 
 /// Directory list
 #[derive(Debug)]
 pub struct FsDirLister<'a> {
-	/// All entries
-	entries: Vec<DrvMapEntry>,
+	/// Map
+	map: DrvMap,
 
 	/// Depth
 	depth: usize,
@@ -24,8 +24,8 @@ pub struct FsDirLister<'a> {
 
 impl<'a> FsDirLister<'a> {
 	/// Creates a new iterator from map entries
-	pub fn new(entries: Vec<DrvMapEntry>, depth: usize, args: &'a Args) -> Self {
-		Self { entries, depth, args }
+	pub fn new(map: DrvMap, depth: usize, args: &'a Args) -> Self {
+		Self { map, depth, args }
 	}
 }
 
@@ -36,14 +36,14 @@ impl<'a> DirLister for FsDirLister<'a> {
 	type EntriesIter = impl ExactSizeIterator<Item = Result<DirEntryWriter<Self>, Self::Error>>;
 
 	fn entries(self) -> Self::EntriesIter {
-		self.entries.into_iter().map(move |entry| {
+		self.map.into_entries().map(move |entry| {
 			let entry = match entry {
 				DrvMapEntry::Dir { name, date, entries } => {
 					let entries = Self::new(entries, self.depth + 1, self.args);
 
 					// Log the directory
 					if !self.args.quiet {
-						println!("{} ({} entries)", name, entries.entries.len());
+						log::info!("{} ({} entries)", name, entries.map.len());
 					}
 
 					DirEntryWriter {
@@ -94,7 +94,7 @@ impl<'a> DirLister for FsDirLister<'a> {
 							None => write!(f, "Unknown Size"),
 						});
 
-						println!("{} ({})", name, size);
+						log::info!("{} ({})", name, size);
 					}
 
 					DirEntryWriter {

@@ -6,12 +6,14 @@
 	associated_type_bounds,
 	never_type,
 	unwrap_infallible,
-	str_internals
+	str_internals,
+	try_trait_v2
 )]
 
 // Modules
 mod dir;
 mod entry;
+mod map;
 mod path;
 mod ptr;
 mod writer;
@@ -19,6 +21,7 @@ mod writer;
 // Exports
 pub use {
 	entry::DirEntry,
+	map::{DrvMap, DrvMapEntry},
 	path::{Path, PathBuf},
 	ptr::{DirEntryPtr, DirPtr, FilePtr},
 	writer::{write_dir_all, DirEntryWriter, DirEntryWriterKind, DirLister},

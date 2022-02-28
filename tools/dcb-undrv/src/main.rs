@@ -9,13 +9,12 @@ use {
 	anyhow::Context,
 	chrono::NaiveDateTime,
 	clap::Parser,
-	dcb_drv::{DirEntry, DirPtr},
+	dcb_drv::{DirEntry, DirPtr, DrvMap, DrvMapEntry},
 	std::{
 		fs,
 		io::{self, Seek},
 		path::{Path, PathBuf},
 	},
-	zutil::AsciiStrArr,
 };
 
 fn main() -> Result<(), anyhow::Error> {
@@ -49,7 +48,8 @@ fn main() -> Result<(), anyhow::Error> {
 	// If we should output a map file, do it
 	if let Some(path) = &args.output_map {
 		// Create the map
-		let map = self::create_map(&mut input_file, &output_dir).context("Unable to create map file")?;
+		let map =
+			self::create_map(&mut input_file, DirPtr::root(), &output_dir).context("Unable to create map file")?;
 
 		// Write it to file
 		zutil::write_to_file(path, &map, serde_yaml::to_writer).context("Unable to write map to file")?;
@@ -174,9 +174,21 @@ fn extract_tree<R: io::Read + io::Seek>(
 	Ok(())
 }
 
-/// Creates a map from a drv file
-fn create_map<R: io::Read + io::Seek>(reader: &mut R, path: &Path) -> Result<DrvMap, anyhow::Error> {
-	let entries = self::map_entries(reader, DirPtr::root(), path).context("Unable to get all root entries")?;
+/// Creates a map from a drv file `reader` at `dir_ptr`, when extracted to `path`
+fn create_map<R: io::Read + io::Seek>(reader: &mut R, dir_ptr: DirPtr, path: &Path) -> Result<DrvMap, anyhow::Error> {
+	// Collect all entries
+	let entries = dir_ptr
+		.read_entries(reader)
+		.with_context(|| format!("Unable to get directory entries of {}", path.display()))?
+		.collect::<Result<Vec<_>, _>>()
+		.context("Unable to parse entry")?;
+
+	// Then parse them
+	let entries = entries
+		.into_iter()
+		.map(|entry| self::create_map_entry(reader, path, entry))
+		.collect::<Result<Vec<_>, _>>()
+		.context("Unable to create entry")?;
 
 	Ok(DrvMap { entries })
 }
@@ -193,76 +205,23 @@ fn create_map_entry<R: io::Read + io::Seek>(
 		DirEntry::File { name, extension, .. } => {
 			let path = path.join(format!("{}.{}", name, extension));
 
-			DrvMapEntry::File { name, date, path }
+			DrvMapEntry::File {
+				name: Some(name),
+				date: Some(date),
+				path,
+			}
 		},
 		DirEntry::Dir { name, ptr, .. } => {
 			let path = path.join(name.as_str());
+			let map = self::create_map(reader, ptr, &path).context("Unable to create map")?;
 
-			// Collect all entries
-			let entries = self::map_entries(reader, ptr, &path)?;
-
-			DrvMapEntry::Dir { name, date, entries }
+			DrvMapEntry::Dir {
+				name,
+				date,
+				entries: map,
+			}
 		},
 	};
 
 	Ok(entry)
-}
-
-/// Collects all map entries
-fn map_entries<R: io::Read + io::Seek>(
-	reader: &mut R,
-	dir_ptr: DirPtr,
-	path: &Path,
-) -> Result<Vec<DrvMapEntry>, anyhow::Error> {
-	// Collect all entries
-	let entries = dir_ptr
-		.read_entries(reader)
-		.with_context(|| format!("Unable to get directory entries of {}", path.display()))?
-		.collect::<Result<Vec<_>, _>>()
-		.context("Unable to parse entry")?;
-
-	// Then parse them
-	entries
-		.into_iter()
-		.map(|entry| self::create_map_entry(reader, path, entry))
-		.collect::<Result<Vec<_>, _>>()
-		.context("Unable to parse entry")
-}
-
-/// Drive map
-#[derive(Debug)]
-#[derive(serde::Serialize)]
-pub struct DrvMap {
-	/// All entries
-	entries: Vec<DrvMapEntry>,
-}
-
-/// Drive map entry
-#[derive(Debug)]
-#[derive(serde::Serialize)]
-#[serde(untagged)]
-pub enum DrvMapEntry {
-	/// Directory
-	Dir {
-		/// Name
-		name: AsciiStrArr<16>,
-
-		/// Date
-		date: chrono::NaiveDateTime,
-
-		/// Entries
-		entries: Vec<Self>,
-	},
-
-	/// File
-	File {
-		/// Name
-		name: AsciiStrArr<16>,
-
-		/// Date
-		date: chrono::NaiveDateTime,
-
-		/// Path
-		path: PathBuf,
-	},
 }

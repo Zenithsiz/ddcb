@@ -6,14 +6,13 @@
 // Modules
 mod args;
 mod dir_lister;
-mod map;
 
 // Imports
 use {
-	self::{args::Args, dir_lister::FsDirLister, map::DrvMap},
+	self::{args::Args, dir_lister::FsDirLister},
 	anyhow::Context,
 	clap::Parser,
-	dcb_drv::DirPtr,
+	dcb_drv::{DirPtr, DrvMap},
 	std::{borrow::Cow, fs, path::Path},
 };
 
@@ -51,7 +50,7 @@ pub fn write_fs(map: DrvMap, output_file: &Path, args: &Args) -> Result<(), anyh
 	let mut output_file = fs::File::create(output_file).context("Unable to create output file")?;
 
 	// Write the filesystem
-	let lister = FsDirLister::new(map.entries, 0, args);
+	let lister = FsDirLister::new(map, 0, args);
 	dcb_drv::write_dir_all(&mut output_file, DirPtr::root(), lister)
 		.map_err(|err| anyhow::anyhow!("Unable to write filesystem: {:?}", err))?;
 
