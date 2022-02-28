@@ -1,12 +1,9 @@
 //! `drv` files
 
-// Modules
-mod map;
-
 // Imports
 use {
-	self::map::DrvMap,
 	anyhow::Context,
+	dcb_drv::DrvMap,
 	std::{
 		fs,
 		io,
@@ -124,6 +121,7 @@ impl DrvFile {
 			.context("Unable to create output file parent directory")?;
 
 		// TODO: Make the drv
+		dcb_drv::write_fs(&self.map, &drv_path).context("Unable to write `drv` filesystem")?;
 
 		Ok(())
 	}

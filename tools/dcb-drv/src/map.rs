@@ -112,14 +112,27 @@ impl DrvMap {
 		self.entries.iter()
 	}
 
+	/// Returns all files in this map
+	pub fn files(&self) -> Vec<&Path> {
+		// Visit all files and add them
+		let mut files = vec![];
+		self.visit_files(|path| {
+			files.push(path);
+			Ok::<(), !>(())
+		})
+		.into_ok();
+
+		files
+	}
+
 	/// Visits all files
-	pub fn visit_files<T: Try<Output = ()>, F: FnMut(&Path) -> T>(&self, mut f: F) -> T {
+	pub fn visit_files<'a, T: Try<Output = ()>, F: FnMut(&'a Path) -> T>(&'a self, mut f: F) -> T {
 		self.visit_files_impl::<T, F>(&mut f)
 	}
 
 	/// Implementation detail for [`visit_files`], to require not having `&mut F` in the
 	/// public signature, otherwise necessary due to recursion
-	fn visit_files_impl<T: Try<Output = ()>, F: FnMut(&Path) -> T>(&self, f: &mut F) -> T {
+	fn visit_files_impl<'a, T: Try<Output = ()>, F: FnMut(&'a Path) -> T>(&'a self, f: &mut F) -> T {
 		for entry in &self.entries {
 			match entry {
 				DrvMapEntry::Dir { entries, .. } => Self::visit_files_impl(entries, f)?,
