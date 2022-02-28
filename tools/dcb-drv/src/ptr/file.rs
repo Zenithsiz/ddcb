@@ -34,8 +34,8 @@ impl FilePtr {
 		cursor.seek(SeekFrom::Start(u64::from(self.sector_pos) * 0x800))
 	}
 
-	/// Returns a cursor for this file
-	pub fn cursor<T: io::Seek>(self, cursor: T) -> Result<IoSlice<T>, FileCursorError> {
+	/// Returns the slice of this file
+	pub fn slice<T: io::Seek>(self, cursor: T) -> Result<IoSlice<T>, FileCursorError> {
 		let pos = u64::from(self.sector_pos) * 0x800;
 		IoSlice::new_with_offset_len(cursor, pos, u64::from(self.size)).map_err(FileCursorError::Seek)
 	}

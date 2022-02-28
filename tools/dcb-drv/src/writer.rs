@@ -1,5 +1,11 @@
 //! Writer
 
+// Modules
+mod error;
+
+// Exports
+pub use error::WriteDirAllError;
+
 // Imports
 use {
 	crate::{DirEntry, DirPtr, FilePtr},
@@ -21,110 +27,68 @@ pub trait DirWriterLister:
 	type Error;
 }
 
-/// Error for [`DirWriter::write`]
-#[derive(Debug, thiserror::Error)]
-pub enum WriteDirError<E> {
-	/// Unable to get entry
-	#[error("Unable to get entry")]
-	GetEntry(#[source] E),
+/// Writes all entries in `lister` to `writer` at `ptr`.
+pub fn write_dir_all<L: DirWriterLister, W: io::Seek + io::Write>(
+	writer: &mut W,
+	ptr: DirPtr,
+	lister: L,
+) -> Result<u32, WriteDirAllError<L::Error>> {
+	// Get the starting sector position for the first entry.
+	// Note: We on the directory after this directory.
+	// Note: `+1` for the null entry.
+	// Note: `+2047` is to pad this directory to the next sector, if not empty.
+	let entries = lister.into_iter();
+	let entries_len: u32 = entries
+		.len()
+		.try_into()
+		.expect("Number of entries didn't fit into a `u32`");
+	let mut cur_sector_pos = ptr.sector_pos + ((entries_len + 1) * 0x20 + 2047) / 2048;
 
-	/// Unable to seek to entry
-	#[error("Unable to seek to entry")]
-	SeekToEntry(#[source] io::Error),
+	// Write each entry's contents and save the entry itself so we can write it afterwards
+	let entries: Vec<_> = entries
+		.map(|entry| {
+			// Get the entry
+			let entry = entry.map_err(WriteDirAllError::GetEntry)?;
 
-	/// Unable to write file
-	#[error("Unable to write file")]
-	WriteFile(#[source] io::Error),
+			// Seek to the entry
+			writer
+				.seek(SeekFrom::Start(u64::from(cur_sector_pos) * 2048))
+				.map_err(WriteDirAllError::SeekToEntry)?;
 
-	/// File size was too large
-	#[error("File size was too large")]
-	FileTooLarge,
+			// Then write it and get it's sector size
+			let (entry, sector_size) = match entry.kind {
+				DirEntryWriterKind::File { extension, mut reader } => {
+					// Write the file and get the size as `u32`
+					let size: u32 = io::copy(&mut reader, writer)
+						.map_err(WriteDirAllError::WriteFile)?
+						.try_into()
+						.map_err(|_| WriteDirAllError::FileTooLarge)?;
+					let sector_size = (size + 2047) / 2048;
 
-	/// Unable to write directory
-	#[error("Unable to write directory")]
-	WriteDir(#[source] Box<Self>),
+					let ptr = FilePtr::new(cur_sector_pos, size);
+					(DirEntry::file(entry.name, extension, entry.date, ptr), sector_size)
+				},
+				DirEntryWriterKind::Dir(dir) => {
+					// Write all entries recursively
+					let ptr = DirPtr::new(cur_sector_pos);
+					let sector_size = self::write_dir_all(writer, ptr, dir).box_map_err(WriteDirAllError::WriteDir)?;
+					(DirEntry::dir(entry.name, entry.date, ptr), sector_size)
+				},
+			};
 
-	/// Unable to write all directory entries
-	#[error("Unable to write directory entries")]
-	WriteEntries(#[source] crate::ptr::dir::WriteEntriesError),
-}
+			// Update our sector pos
+			cur_sector_pos += sector_size;
 
-/// A directory writer
-#[derive(PartialEq, Eq, Clone, Copy, Debug)]
-pub struct DirWriter<L> {
-	/// All entries
-	entries: L,
-}
+			Ok(entry)
+		})
+		.collect::<Result<_, _>>()?;
 
-impl<L> DirWriter<L> {
-	/// Creates a new directory writer
-	#[must_use]
-	pub const fn new(entries: L) -> Self {
-		Self { entries }
-	}
-}
+	// Then write the entries themselves
+	ptr.write_entries(writer, entries)
+		.map_err(WriteDirAllError::WriteEntries)?;
 
-impl<L: DirWriterLister> DirWriter<L> {
-	/// Writes `entries` to this directory recursively and returns the number of
-	/// sectors occupied
-	pub fn write<W: io::Seek + io::Write>(self, ptr: DirPtr, writer: &mut W) -> Result<u32, WriteDirError<L::Error>> {
-		// Get the starting sector position for the first entry.
-		// Note: We on the directory after this directory.
-		// Note: `+1` for the null entry.
-		// Note: `+2047` is to pad this directory to the next sector, if not empty.
-		let entries = self.entries.into_iter();
-		let entries_len: u32 = entries
-			.len()
-			.try_into()
-			.expect("Number of entries didn't fit into a `u32`");
-		let mut cur_sector_pos = ptr.sector_pos + ((entries_len + 1) * 0x20 + 2047) / 2048;
-
-		// Write each entry and map it so we can write it later
-		let entries: Vec<_> = entries
-			.map(|entry| {
-				// Get the entry
-				let entry = entry.map_err(WriteDirError::GetEntry)?;
-
-				// Seek to the entry
-				writer
-					.seek(SeekFrom::Start(u64::from(cur_sector_pos) * 2048))
-					.map_err(WriteDirError::SeekToEntry)?;
-
-				// Then write it and get it's sector size
-				let (entry, sector_size) = match entry.kind {
-					DirEntryWriterKind::File { extension, mut reader } => {
-						// Write the file and get the size as `u32`
-						let size: u32 = io::copy(&mut reader, writer)
-							.map_err(WriteDirError::WriteFile)?
-							.try_into()
-							.map_err(|_| WriteDirError::FileTooLarge)?;
-						let sector_size = (size + 2047) / 2048;
-
-						let ptr = FilePtr::new(cur_sector_pos, size);
-						(DirEntry::file(entry.name, extension, entry.date, ptr), sector_size)
-					},
-					DirEntryWriterKind::Dir(dir) => {
-						// Write all entries recursively
-						let ptr = DirPtr::new(cur_sector_pos);
-						let sector_size = dir.write(ptr, writer).box_map_err(WriteDirError::WriteDir)?;
-						(DirEntry::dir(entry.name, entry.date, ptr), sector_size)
-					},
-				};
-
-				// Update our sector pos
-				cur_sector_pos += sector_size;
-
-				Ok(entry)
-			})
-			.collect::<Result<_, _>>()?;
-
-		// Then write the entries
-		ptr.write_entries(writer, entries)
-			.map_err(WriteDirError::WriteEntries)?;
-
-		// And return the number of sectors we wrote.
-		Ok(cur_sector_pos - ptr.sector_pos)
-	}
+	// And return the number of sectors we wrote.
+	Ok(cur_sector_pos - ptr.sector_pos)
 }
 
 /// A directory entry writer
@@ -150,6 +114,6 @@ pub enum DirEntryWriterKind<L: DirWriterLister> {
 		reader: L::FileReader,
 	},
 
-	/// A directory
-	Dir(DirWriter<L>),
+	/// A directory lister
+	Dir(L),
 }

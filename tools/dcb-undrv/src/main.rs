@@ -123,7 +123,7 @@ fn extract_tree<R: io::Read + io::Seek>(
 
 				// Get the file's reader.
 				let mut file_reader = ptr
-					.cursor(&mut *reader)
+					.slice(&mut *reader)
 					.with_context(|| format!("Unable to read file {}", path.display()))?;
 
 				// Then create the output file and copy.

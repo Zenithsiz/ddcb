@@ -13,7 +13,7 @@ use {
 	self::{args::Args, map::DrvMap},
 	anyhow::Context,
 	clap::Parser,
-	dcb_drv::{DirPtr, DirWriter},
+	dcb_drv::DirPtr,
 	std::{borrow::Cow, fs, path::Path},
 };
 
@@ -52,8 +52,7 @@ pub fn write_fs(map: DrvMap, output_file: &Path, args: &Args) -> Result<(), anyh
 
 	// Create the filesystem writer
 	let root_entries = dir_lister::DirLister::new(map.entries, 0, args);
-	DirWriter::new(root_entries)
-		.write(DirPtr::root(), &mut output_file)
+	dcb_drv::write_dir_all(&mut output_file, DirPtr::root(), root_entries)
 		.map_err(|err| anyhow::anyhow!("Unable to write filesystem: {:?}", err))?;
 
 	// Then pad the file to a sector `2048` if it isn't already

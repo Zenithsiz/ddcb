@@ -5,7 +5,7 @@ use {
 	crate::{args::Args, map::DrvMapEntry},
 	anyhow::Context,
 	chrono::NaiveDateTime,
-	dcb_drv::{DirEntryWriter, DirEntryWriterKind, DirWriter, DirWriterLister},
+	dcb_drv::{DirEntryWriter, DirEntryWriterKind, DirWriterLister},
 	std::{convert::TryInto, fs, io::Seek, time::SystemTime},
 };
 
@@ -53,7 +53,7 @@ impl<'a> IntoIterator for DirLister<'a> {
 					DirEntryWriter {
 						name,
 						date: self::to_seconds_since_epoch(date)?,
-						kind: DirEntryWriterKind::Dir(DirWriter::new(entries)),
+						kind: DirEntryWriterKind::Dir(entries),
 					}
 				},
 				DrvMapEntry::File { name, date, path } => {
