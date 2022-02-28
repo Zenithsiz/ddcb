@@ -6,11 +6,8 @@
 // Modules
 mod drv;
 
-// Exports
-use self::drv::DrvFiles;
-
 // Imports
-use anyhow::Context;
+use {self::drv::DrvFilesRecipe, anyhow::Context};
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
@@ -23,10 +20,8 @@ fn main() -> Result<(), anyhow::Error> {
 	.context("Unable to initialize logger")?;
 
 	// Build the drv files
-	let mut drv_files = DrvFiles::new().context("Unable to create drv files")?;
+	let mut drv_files = DrvFilesRecipe::new().context("Unable to create drv files")?;
 	drv_files.build().context("Unable to build drv files")?;
-
-	//println!("{drv_files:?}");
 
 	Ok(())
 }

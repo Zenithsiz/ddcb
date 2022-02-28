@@ -6,7 +6,7 @@ use {
 	dcb_drv::DrvMap,
 	std::{
 		fs,
-		io,
+		io::{self, Seek, SeekFrom, Write},
 		path::{Path, PathBuf},
 		time::SystemTime,
 	},
@@ -14,38 +14,66 @@ use {
 
 /// All `drv` files to include in the iso
 #[derive(Debug)]
-pub struct DrvFiles {
-	/// All drv files
-	files: Vec<DrvFile>,
+pub struct DrvFilesRecipe {
+	/// Drive A
+	a_drv: DrvFileRecipe,
+	/// Drive B
+	b_drv: DrvFileRecipe,
+	/// Drive C
+	c_drv: DrvFileRecipe,
+	/// Drive E
+	e_drv: DrvFileRecipe,
+	/// Drive F
+	f_drv: DrvFileRecipe,
+	/// Drive G
+	g_drv: DrvFileRecipe,
+	/// Drive P
+	p_drv: DrvFileRecipe,
 }
 
-impl DrvFiles {
-	/// Creates the drv files
+impl DrvFilesRecipe {
+	/// Creates the drv files recipe
 	pub fn new() -> Result<Self, anyhow::Error> {
-		let files = ["A", "B", "C", "E", "F", "G", "P"]
-			.into_iter()
-			.map(|name| DrvFile::new(name.to_owned()))
-			.collect::<Result<_, _>>()
-			.context("Unable to create all drv files")?;
-
-		Ok(Self { files })
+		Ok(Self {
+			a_drv: DrvFileRecipe::new("A".to_owned()).context("Unable to create recipe for DRV A")?,
+			b_drv: DrvFileRecipe::new("B".to_owned()).context("Unable to create recipe for DRV B")?,
+			c_drv: DrvFileRecipe::new("C".to_owned()).context("Unable to create recipe for DRV C")?,
+			e_drv: DrvFileRecipe::new("E".to_owned()).context("Unable to create recipe for DRV E")?,
+			f_drv: DrvFileRecipe::new("F".to_owned()).context("Unable to create recipe for DRV F")?,
+			g_drv: DrvFileRecipe::new("G".to_owned()).context("Unable to create recipe for DRV G")?,
+			p_drv: DrvFileRecipe::new("P".to_owned()).context("Unable to create recipe for DRV P")?,
+		})
 	}
 }
 
-impl DrvFiles {
+impl DrvFilesRecipe {
 	/// Builds this recipe
 	pub fn build(&mut self) -> Result<(), anyhow::Error> {
+		log::info!("Building all DRVs");
+
 		// Build all drv files
-		for file in &mut self.files {
-			file.build().with_context(|| format!("Unable to build {}", file.name))?;
-		}
+		self.a_drv.build().context("Unable to build DRV A")?;
+		self.b_drv.build().context("Unable to build DRV B")?;
+		self.c_drv.build().context("Unable to build DRV C")?;
+		self.e_drv.build().context("Unable to build DRV E")?;
+		self.f_drv.build().context("Unable to build DRV F")?;
+		self.g_drv.build().context("Unable to build DRV G")?;
+		self.p_drv.build().context("Unable to build DRV P")?;
+
+		// Finally patch `B.DRV` with the special entry
+		self::patch_file(self.b_drv.drv_path(), 0x02c0, &[
+			0x01, 0x43, 0x44, 0x44, 0xd5, 0x2f, 0x00, 0x00, 0xf0, 0x3f, 0x01, 0x00, 0xe6, 0x75, 0xad, 0x3a, 0x83, 0x52,
+			0x83, 0x53, 0x81, 0x5b, 0x20, 0x81, 0x60, 0x20, 0x43, 0x41, 0x52, 0x44, 0x32, 0x00,
+		])
+		.context("Unable to patch DRV B")?;
+
 		Ok(())
 	}
 }
 
 /// A `drv` file recipe
 #[derive(Debug)]
-struct DrvFile {
+struct DrvFileRecipe {
 	/// Drv name
 	name: String,
 
@@ -53,8 +81,8 @@ struct DrvFile {
 	map: DrvMap,
 }
 
-impl DrvFile {
-	/// Creates a new drv file from it's name
+impl DrvFileRecipe {
+	/// Creates a new drv file recipe
 	fn new(name: String) -> Result<Self, anyhow::Error> {
 		let map_path = Self::map_path_of(&name);
 		let map = zutil::parse_from_file(&map_path, serde_yaml::from_reader).context("Unable to parse drv map")?;
@@ -77,7 +105,7 @@ impl DrvFile {
 	}
 }
 
-impl DrvFile {
+impl DrvFileRecipe {
 	/// Returns if this recipe is outdated
 	pub fn is_outdated(&self) -> Result<bool, anyhow::Error> {
 		// Get the output file's date
@@ -108,15 +136,15 @@ impl DrvFile {
 
 	/// Builds this recipe
 	pub fn build(&mut self) -> Result<(), anyhow::Error> {
+		log::info!("Building DRV {}", self.name);
+
 		// If we're not outdated, we're built
 		if !self.is_outdated().context("Unable to check if outdated")? {
 			return Ok(());
 		}
 
-		let drv_path = self.drv_path();
-		log::info!("Rebuilding {}", drv_path.display());
-
 		// Else create the output directory, if it doesn't exist
+		let drv_path = self.drv_path();
 		zutil::try_create_dir_all(drv_path.parent().context("Output file had no parent")?)
 			.context("Unable to create output file parent directory")?;
 
@@ -130,4 +158,21 @@ impl DrvFile {
 /// Returns the date of a file
 fn date_of(path: impl AsRef<Path>) -> Result<SystemTime, io::Error> {
 	fs::metadata(path).and_then(|metadata| metadata.modified())
+}
+
+/// Patches a file with `bytes` at `offset`
+fn patch_file(path: impl AsRef<Path>, offset: u64, bytes: &[u8]) -> Result<(), anyhow::Error> {
+	// Open the file
+	let mut file = fs::File::options()
+		.write(true)
+		.open(path)
+		.context("Unable to open file")?;
+
+	// Seek to the offset
+	file.seek(SeekFrom::Start(offset)).context("Unable to seek to offset")?;
+
+	// Finally write all bytes
+	file.write_all(bytes).context("Unable to write all bytes")?;
+
+	Ok(())
 }
