@@ -1,0 +1,63 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../tools"
+		}
+	],
+	"settings": {
+		"rust-analyzer.checkOnSave.allTargets": false,
+		"cSpell.words": [
+			"acqrel",
+			"addiu",
+			"addrs",
+			"addu",
+			"andi",
+			"beqz",
+			"bgez",
+			"bnez",
+			"Digi",
+			"Digimon",
+			"Digimon's",
+			"dylib",
+			"endseg",
+			"evoseg",
+			"filetime",
+			"inlateout",
+			"inout",
+			"insts",
+			"kawseg",
+			"lateout",
+			"libdcb",
+			"mattr",
+			"mcpu",
+			"mflo",
+			"mipsel",
+			"mkdrv",
+			"nmagic",
+			"noat",
+			"nonoverlapping",
+			"noreorder",
+			"noreturn",
+			"openseg",
+			"Popen",
+			"prng",
+			"psexe",
+			"psxexe",
+			"regs",
+			"rlib",
+			"saiseg",
+			"singlethreadfence",
+			"slti",
+			"SLUS",
+			"stmts",
+			"subseg",
+			"subu",
+			"sugseg",
+			"thiserror",
+			"preprocess"
+		]
+	}
+}
