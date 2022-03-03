@@ -5,13 +5,13 @@
 
 // Modules
 mod args;
-mod map;
 
 // Imports
 use {
-	self::{args::Args, map::DrvMap},
+	self::args::Args,
 	anyhow::Context,
 	clap::Parser,
+	dcb_drv::DrvMap,
 	std::{borrow::Cow, fs, io::Write, path::Path},
 };
 
