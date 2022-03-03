@@ -1,12 +1,14 @@
 [workspace]
 
 members = [
+  # Libraries
   "dcb-bytes",
   "dcb-drv",
+  "dcb-cdrom-xa", #
+  ### Binaries
   "dcb-mkdrv",
-  "dcb-mkdrv-deps",
+  "dcb-mkdrv-deps", # TODO: Remove
   "dcb-undrv",
-  "dcb-cdrom-xa",
   "dcb-unbin",
   "dcb-build",
 ]
