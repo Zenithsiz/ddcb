@@ -6,10 +6,11 @@
 // Modules
 mod asm;
 mod drv;
+mod util;
 
 // Imports
 use {
-	self::{asm::DcbAsmRecipe, drv::DrvFilesRecipe},
+	self::{asm::DcbAsmRecipe, drv::DrvRecipeAll},
 	anyhow::Context,
 };
 
@@ -24,7 +25,7 @@ fn main() -> Result<(), anyhow::Error> {
 	.context("Unable to initialize logger")?;
 
 	// Build the drv files
-	let mut drv_files = DrvFilesRecipe::new().context("Unable to create drv files recipe")?;
+	let mut drv_files = DrvRecipeAll::new().context("Unable to create drv files recipe")?;
 	drv_files.build().context("Unable to build drv files")?;
 
 	// Build the assembly
