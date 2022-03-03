@@ -54,30 +54,38 @@ impl DrvRecipeBase {
 }
 
 impl DrvRecipeBase {
-	/// Returns if this recipe is outdated
-	pub fn is_outdated(&self) -> Result<bool, anyhow::Error> {
+	/// Finds an outdated file
+	pub fn find_outdated(&self) -> Result<Option<&Path>, anyhow::Error> {
 		// If the map file is outdated, we're outdated
 		if util::is_outdated(&self.drv_path, &self.map_path).context("Unable to check if map is outdated")? {
-			return Ok(true);
+			return Ok(Some(&self.map_path));
 		}
 
 		// If any of out files are newer, we're outdated
 		for file_path in self.map.files() {
 			if util::is_outdated(&self.drv_path, file_path).context("Unable to check if dependency is outdated")? {
-				return Ok(true);
+				return Ok(Some(file_path));
 			}
 		}
 
 		// If we got here, we're up to date
-		Ok(false)
+		Ok(None)
 	}
 
 	/// Builds this recipe
 	pub fn build(&mut self) -> Result<(), anyhow::Error> {
-		// If we're not outdated, we're built
-		if !self.is_outdated().context("Unable to check if outdated")? {
+		log::info!("[Check   ] {}", self.drv_path.display());
+
+		// Try to get the outdated path, or else return, since we're up to date
+		let Some(outdated_path) = self.find_outdated().context("Unable to try to find outdated file")? else {
 			return Ok(());
-		}
+		};
+
+		log::info!(
+			"[Rebuild ] {} (Due to {})",
+			self.drv_path.display(),
+			outdated_path.display()
+		);
 
 		// Else create the output directory, if it doesn't exist
 		let drv_path_parent = self.drv_path().parent().context("Output file had no parent")?;

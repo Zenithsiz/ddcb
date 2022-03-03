@@ -16,8 +16,12 @@ use {
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
+	// TODO: Custom logging system to remove "[Info]", but keep the date
 	simplelog::TermLogger::init(
-		log::LevelFilter::Info,
+		match cfg!(debug_assertions) {
+			true => log::LevelFilter::Debug,
+			false => log::LevelFilter::Info,
+		},
 		simplelog::Config::default(),
 		simplelog::TerminalMode::Stderr,
 		simplelog::ColorChoice::Auto,

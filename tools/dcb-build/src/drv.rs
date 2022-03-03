@@ -68,6 +68,8 @@ impl DrvRecipeAll {
 impl DrvRecipeAll {
 	/// Builds this recipe
 	pub fn build(&mut self) -> Result<(), anyhow::Error> {
+		log::info!("[Check   ] Drvs");
+
 		// Build all drv files
 		self.a_drv.build().context("Unable to build DRV A")?;
 		self.b_drv.build().context("Unable to build DRV B")?;
