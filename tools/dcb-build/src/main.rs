@@ -1,7 +1,14 @@
 //! Builder
 
 // Features
-#![feature(try_trait_v2, control_flow_enum, never_type, let_else, unwrap_infallible)]
+#![feature(
+	try_trait_v2,
+	control_flow_enum,
+	never_type,
+	let_else,
+	unwrap_infallible,
+	path_try_exists
+)]
 
 // Modules
 mod asm;

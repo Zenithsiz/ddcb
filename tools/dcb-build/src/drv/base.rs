@@ -5,7 +5,10 @@ use {
 	crate::util,
 	anyhow::Context,
 	dcb_drv::DrvMap,
-	std::path::{Path, PathBuf},
+	std::{
+		fs,
+		path::{Path, PathBuf},
+	},
 };
 
 /// A `drv` file recipe
@@ -54,8 +57,8 @@ impl DrvRecipeBase {
 }
 
 impl DrvRecipeBase {
-	/// Finds an outdated file
-	pub fn find_outdated(&self) -> Result<Option<&Path>, anyhow::Error> {
+	/// Finds a file newer than our output file
+	pub fn find_newer(&self) -> Result<Option<&Path>, anyhow::Error> {
 		// If the map file is outdated, we're outdated
 		if util::is_outdated(&self.drv_path, &self.map_path).context("Unable to check if map is outdated")? {
 			return Ok(Some(&self.map_path));
@@ -76,16 +79,25 @@ impl DrvRecipeBase {
 	pub fn build(&mut self) -> Result<(), anyhow::Error> {
 		log::info!("[Check   ] {}", self.drv_path.display());
 
-		// Try to get the outdated path, or else return, since we're up to date
-		let Some(outdated_path) = self.find_outdated().context("Unable to try to find outdated file")? else {
-			return Ok(());
-		};
+		// Check if our output file exists
+		match fs::try_exists(&self.drv_path).context("Unable to check if output file exists")? {
+			// If it does check if we can find any newer file
+			true => {
+				// Try to get the outdated path, or else return, since we're up to date
+				let Some(outdated_path) = self.find_newer().context("Unable to try to find outdated file")? else {
+					return Ok(());
+				};
 
-		log::info!(
-			"[Rebuild ] {} (Due to {})",
-			self.drv_path.display(),
-			outdated_path.display()
-		);
+				log::info!(
+					"[Rebuild ] {} (Due to {})",
+					self.drv_path.display(),
+					outdated_path.display()
+				);
+			},
+
+			// Else we're outdated
+			false => log::info!("[Rebuild ] {} (Output file missing)", self.drv_path.display(),),
+		}
 
 		// Else create the output directory, if it doesn't exist
 		let drv_path_parent = self.drv_path().parent().context("Output file had no parent")?;
