@@ -82,17 +82,13 @@ impl DrvRecipeBase {
 		// Check if our output file exists
 		match fs::try_exists(&self.drv_path).context("Unable to check if output file exists")? {
 			// If it does check if we can find any newer file
-			true => {
-				// Try to get the outdated path, or else return, since we're up to date
-				let Some(outdated_path) = self.find_newer().context("Unable to try to find outdated file")? else {
-					return Ok(());
-				};
-
-				log::info!(
+			true => match self.find_newer().context("Unable to try to find outdated file")? {
+				Some(outdated_path) => log::info!(
 					"[Rebuild ] {} (Due to {})",
 					self.drv_path.display(),
 					outdated_path.display()
-				);
+				),
+				None => return Ok(()),
 			},
 
 			// Else we're outdated
