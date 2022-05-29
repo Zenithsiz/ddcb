@@ -5,12 +5,11 @@ members = [
   "dcb-bytes",
   "dcb-drv",
   "dcb-cdrom-xa", #
-  ### Binaries
+  # Binaries
   "dcb-mkdrv",
   "dcb-mkdrv-deps", # TODO: Remove
   "dcb-undrv",
   "dcb-unbin",
-  "dcb-build",
 ]
 
 [patch."https://github.com/Zenithsiz/zutil"]
