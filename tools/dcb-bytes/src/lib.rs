@@ -3,7 +3,7 @@
 // Modules
 mod byteorder_ext;
 mod bytes;
-mod bytes_io_ext;
+pub mod bytes_io_ext;
 pub mod validate;
 
 // Exports

@@ -3,9 +3,12 @@
 members = [
   # Libraries
   "dcb-bytes",
+  "dcb-bytes-derive",
   "dcb-drv",
   "dcb-pak",
   "dcb-msd",
+  "dcb-card-table",
+  "dcb-deck-table",
   "dcb-cdrom-xa", #
   # Binaries
   "dcb-mkdrv",

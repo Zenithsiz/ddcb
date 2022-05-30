@@ -191,6 +191,32 @@ dependencies = [
 ]
 
 [[package]]
+name = "dcb-bytes-derive"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "dcb-card-table"
+version = "0.1.0"
+dependencies = [
+ "ascii",
+ "byteorder",
+ "dcb-bytes",
+ "dcb-bytes-derive",
+ "derive_more",
+ "log",
+ "ref-cast",
+ "serde",
+ "strum",
+ "thiserror",
+ "zutil",
+]
+
+[[package]]
 name = "dcb-cdrom-xa"
 version = "0.1.0"
 dependencies = [
@@ -198,6 +224,23 @@ dependencies = [
  "byteorder",
  "dcb-bytes",
  "log",
+ "thiserror",
+ "zutil",
+]
+
+[[package]]
+name = "dcb-deck-table"
+version = "0.1.0"
+dependencies = [
+ "ascii",
+ "byteorder",
+ "dcb-bytes",
+ "dcb-bytes-derive",
+ "derive_more",
+ "log",
+ "ref-cast",
+ "serde",
+ "strum",
  "thiserror",
  "zutil",
 ]
@@ -813,6 +856,27 @@ name = "strsim"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
+
+[[package]]
+name = "strum"
+version = "0.20.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7318c509b5ba57f18533982607f24070a55d353e90d4cae30c467cdb2ad5ac5c"
+dependencies = [
+ "strum_macros",
+]
+
+[[package]]
+name = "strum_macros"
+version = "0.20.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ee8bc6b87a5112aeeab1f4a9f7ab634fe6cbefc4850006df31267f4cfb9e3149"
+dependencies = [
+ "heck 0.3.3",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
 
 [[package]]
 name = "syn"
