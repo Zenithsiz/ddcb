@@ -45,12 +45,12 @@ fn main() -> Result<(), anyhow::Error> {
 
 /// Writes the dependencies
 pub fn write_deps(out_path: &Path, dep_file: &Path, map: &DrvMap) -> Result<(), anyhow::Error> {
-	// Create the output file
-	let mut output_file = fs::File::create(dep_file).context("Unable to create output file")?;
+	// Create the dep file
+	let mut dep_file = fs::File::create(dep_file).context("Unable to create output file")?;
 
 	// Write the header
-	write!(output_file, "{}: ", out_path.display()).context("Unable to write header")?;
+	write!(dep_file, "{}: ", out_path.display()).context("Unable to write header")?;
 
 	// Then visit all files
-	map.visit_files(|path| write!(output_file, "{} ", path.display()).context("Unable to write file"))
+	map.visit_files(|path| write!(dep_file, "{} ", path.display()).context("Unable to write file"))
 }

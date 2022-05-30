@@ -35,27 +35,27 @@ DYLIBS := \
 
 # All `DRV` files
 DRV_FILES := \
-	build/iso/A.DRV \
-	build/iso/B.DRV \
-	build/iso/C.DRV \
-	build/iso/E.DRV \
-	build/iso/F.DRV \
-	build/iso/G.DRV \
-	build/iso/P.DRV
-DRV_FILES_DEP := $(patsubst build/iso/%.DRV,build/iso/%.d,$(DRV_FILES))
+	build/drv/A.DRV \
+	build/drv/B.DRV \
+	build/drv/C.DRV \
+	build/drv/E.DRV \
+	build/drv/F.DRV \
+	build/drv/G.DRV \
+	build/drv/P.DRV
+DRV_FILES_DEP := $(patsubst %,%.d,$(DRV_FILES))
 
 # All ISO files
 ISO_FILES := $(DRV_FILES) \
-	build/iso/DIGIMON.MOV \
-	build/iso/SYSTEM.CNF \
-	build/iso/SLUS_013.28 \
+	dcb/DIGIMON.MOV \
+	dcb/SYSTEM.CNF \
+	build/dcb.psexe \
 	build/iso/MMM.DAT
 
 
 
 # Commands
 
-.PHONY: build compare all clean
+.PHONY: all compare tools clean
 
 # Default target, pack iso
 all: build/dcb.bin
@@ -92,23 +92,22 @@ tools/target/release/% tools/target/release/%.d:
 build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
 	mkpsxiso dcb-iso.xml -q -y
 
-
-# `drv` dependencies
-build/iso/%.d: dcb/%.yaml $(mkdrv-deps)
+# `DRV` dependencies
+build/drv/%.DRV.d: dcb/%.DRV.yaml $(mkdrv-deps)
 	@mkdir -p $(@D)
-	$(mkdrv-deps) --quiet $< -o build/iso/$*.DRV --dep-file build/iso/$*.d
+	$(mkdrv-deps) --quiet $< -o build/drv/$*.DRV --dep-file $@
 
 # Special case `B.DRV` so we can write the invalid entry
-build/iso/B.DRV: build/iso/B.d dcb/B.yaml $(mkdrv)
+build/drv/B.DRV: dcb/B.DRV.yaml build/drv/B.DRV.d $(mkdrv)
 	@mkdir -p $(@D)
-	$(mkdrv) --quiet dcb/B.yaml -o build/iso/B.DRV
-	printf "02C0: 01 43 44 44 D5 2F 00 00 F0 3F 01 00 E6 75 AD 3A" | xxd -r - build/iso/B.DRV
-	printf "02D0: 83 52 83 53 81 5B 20 81 60 20 43 41 52 44 32 00" | xxd -r - build/iso/B.DRV
+	$(mkdrv) --quiet $< -o $@
+	printf "02C0: 01 43 44 44 D5 2F 00 00 F0 3F 01 00 E6 75 AD 3A" | xxd -r - $@
+	printf "02D0: 83 52 83 53 81 5B 20 81 60 20 43 41 52 44 32 00" | xxd -r - $@
 
-# Copy directories in `dcb/` as `DRV`s to `build/iso`.
-build/iso/%.DRV: dcb/%.yaml build/iso/%.d $(mkdrv)
+# Create `DRV`s
+build/drv/%.DRV: dcb/%.DRV.yaml build/drv/%.DRV.d $(mkdrv)
 	@mkdir -p $(@D)
-	$(mkdrv) --quiet $< -o build/iso/$*.DRV
+	$(mkdrv) --quiet $< -o $@
 
 # Create `PAK`s from their map files
 build/pak/%.PAK: dcb/%.yaml $(mkpak)
@@ -124,18 +123,11 @@ build/dylib/%.BIN: build/dcb.elf
 	$(objcopy) --dump-section dylib.$(shell echo $(notdir $(basename $@)) | tr A-Z a-z)=$@ build/dcb.elf.cp
 	@rm build/dcb.elf.cp
 
-# Copy files in `dcb/` as they are to `build/iso`.
-build/iso/%: dcb/%
-	cp $< $@
-
 # Empty buffer file
 build/iso/MMM.DAT:
+	@mkdir -p $(@D)
 	touch $@
 	truncate --size=24240128 $@
-
-# Copy the executable from `dcb.psexe`
-build/iso/SLUS_013.28: build/dcb.psexe
-	cp $< $@
 
 # Final executable in ps-exe format
 build/dcb.psexe: build/dcb.elf

@@ -7,22 +7,22 @@
 		<license file="license.dat" />
 
 		<directory_tree>
-			<file name="SYSTEM.CNF" type="data" source="build/iso/SYSTEM.CNF" />
+			<file name="SYSTEM.CNF" type="data" source="dcb/SYSTEM.CNF" />
 
-			<file name="P.DRV" type="data" source="build/iso/P.DRV" />
+			<file name="P.DRV" type="data" source="build/drv/P.DRV" />
 
 
-			<file name="A.DRV" type="data" source="build/iso/A.DRV" />
-			<file name="B.DRV" type="data" source="build/iso/B.DRV" />
-			<file name="C.DRV" type="data" source="build/iso/C.DRV" />
-			<file name="E.DRV" type="data" source="build/iso/E.DRV" />
-			<file name="F.DRV" type="data" source="build/iso/F.DRV" />
-			<file name="G.DRV" type="data" source="build/iso/G.DRV" />
+			<file name="A.DRV" type="data" source="build/drv/A.DRV" />
+			<file name="B.DRV" type="data" source="build/drv/B.DRV" />
+			<file name="C.DRV" type="data" source="build/drv/C.DRV" />
+			<file name="E.DRV" type="data" source="build/drv/E.DRV" />
+			<file name="F.DRV" type="data" source="build/drv/F.DRV" />
+			<file name="G.DRV" type="data" source="build/drv/G.DRV" />
 
 			<file name="MMM.DAT" type="data" source="build/iso/MMM.DAT" />
 
-			<file name="SLUS_013.28" type="data" source="build/iso/SLUS_013.28" />
-			<file name="DIGIMON.MOV" type="data" source="build/iso/DIGIMON.MOV" />
+			<file name="SLUS_013.28" type="data" source="build/dcb.psexe" />
+			<file name="DIGIMON.MOV" type="data" source="dcb/DIGIMON.MOV" />
 		</directory_tree>
 
 	</track>
