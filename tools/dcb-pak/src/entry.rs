@@ -7,7 +7,7 @@ mod error;
 pub use self::error::FromReaderError;
 
 // Imports
-use {crate::Header, dcb_bytes::Bytes, std::io};
+use {crate::Header, anyhow::Context, dcb_bytes::Bytes, std::io};
 
 /// `.PAK` entry reader
 #[derive(PartialEq, Eq, Debug)]
@@ -73,4 +73,32 @@ impl<R: io::Read> EntryReader<R> {
 		self.reader.seek(io::SeekFrom::Current(i64::from(self.header.size)))?;
 		Ok(self.reader)
 	}
+}
+
+// TODO: Better writer interface than these two
+
+/// Writes a `.PAK` entry with it's header and contents
+pub fn write_entry<W: io::Write, R: io::Read>(
+	writer: &mut W,
+	header: Header,
+	contents: &mut R,
+) -> Result<(), anyhow::Error> {
+	// Write the header
+	let header_bytes = header.to_bytes().into_ok();
+	writer.write_all(&header_bytes).context("Unable to write header")?;
+
+	// Then write the contents
+	io::copy(contents, writer).context("Unable to write contents")?;
+
+	// TODO: Go back to header and properly write the length
+
+	Ok(())
+}
+
+/// Writes the null entry in a `.PAK`
+pub fn write_null<W: io::Write>(writer: &mut W) -> Result<(), anyhow::Error> {
+	// Write `0xffff_ffff`
+	writer.write_all(&[0xff; 4]).context("Unable to write null header")?;
+
+	Ok(())
 }

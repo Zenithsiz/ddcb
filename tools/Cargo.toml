@@ -8,10 +8,11 @@ members = [
   "dcb-cdrom-xa", #
   # Binaries
   "dcb-mkdrv",
-  "dcb-mkdrv-deps", # TODO: Remove
+  "dcb-mkdrv-deps",
   "dcb-undrv",
   "dcb-unbin",
   "dcb-unpak",
+  "dcb-mkpak",
 ]
 
 [patch."https://github.com/Zenithsiz/zutil"]

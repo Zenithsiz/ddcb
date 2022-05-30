@@ -16,5 +16,8 @@ log = "0.4.13"
 byteorder = "1.4.2"
 zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f"}
 
+# Error handling
+anyhow = "1.0.38"
+
 # Derives
 thiserror = "1.0.23"

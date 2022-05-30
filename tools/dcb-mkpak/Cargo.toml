@@ -1,0 +1,28 @@
+[package]
+authors = ["Filipe Rodrigues <filipejacintorodrigues1@gmail.com>"]
+edition = "2018"
+name = "dcb-mkpak"
+version = "0.1.0"
+
+[dependencies]
+# Dcb
+dcb-pak = {path = "../dcb-pak"}
+
+# Cmd
+clap = {version = "3.1.2", features = ["derive"]}
+
+# Logging
+log = "0.4.13"
+simplelog = "0.9.0"
+
+# Error handling
+anyhow = "1.0.38"
+
+# Util
+pathdiff = "0.2.1"
+size_format = "1.0.2"
+zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f", features = ["use_serde"]}
+
+# Serde
+serde = {version = "1.0.136", features = ["derive"]}
+serde_yaml = "0.8.23"
