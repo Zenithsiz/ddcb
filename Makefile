@@ -21,7 +21,7 @@ TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All assembly files
 ASM_FILES := $(shell find "dcb-asm/" -type f -iname "*.s")
-ASM_PROCESSED_FILES := $(subst dcb-asm/, build/asm/, $(ASM_FILES))
+ASM_PROCESSED_FILES := $(subst dcb-asm/,build/asm/,$(ASM_FILES))
 
 # All dylibs
 DYLIBS := \
@@ -114,7 +114,7 @@ build/pak/%.PAK: dcb/%.yaml $(mkpak)
 	@mkdir -p $(@D)
 	$(mkpak) $< --out $@
 
-# All dylibs
+# Create dylibs
 # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
 #       modification date, which `make` uses to check dependencies
 build/dylib/%.BIN: build/dcb.elf
