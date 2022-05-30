@@ -1,0 +1,7 @@
+---
+- file_path: BGM110.PAK/0.SEQ
+  id: 110
+- file_path: BGM110.PAK/1.VH
+  id: 110
+- file_path: BGM110.PAK/2.VB
+  id: 110

@@ -1,0 +1,7 @@
+---
+- file_path: BGM50.PAK/0.SEQ
+  id: 50
+- file_path: BGM50.PAK/1.VH
+  id: 50
+- file_path: BGM50.PAK/2.VB
+  id: 50

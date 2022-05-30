@@ -63,7 +63,7 @@ all: build/dcb.bin
 # Compare files to original
 # TODO: Compare the bin once it's properly built
 compare: build/dcb.psexe $(DYLIBS) $(DRV_FILES)
-	$(sha256sum) --check checksums.sha256
+	$(sha256sum) --check --quiet checksums.sha256
 
 # Compiles all tols
 tools: $(TOOLS)
@@ -109,8 +109,10 @@ build/drv/%.DRV: dcb/%.DRV.yaml build/drv/%.DRV.d $(mkdrv)
 	@mkdir -p $(@D)
 	$(mkdrv) --quiet $< -o $@
 
+# TODO: `PAK` dependencies
+
 # Create `PAK`s from their map files
-build/pak/%.PAK: dcb/%.yaml $(mkpak)
+build/pak/%.PAK: dcb/%.PAK.yaml $(mkpak)
 	@mkdir -p $(@D)
 	$(mkpak) $< --out $@
 

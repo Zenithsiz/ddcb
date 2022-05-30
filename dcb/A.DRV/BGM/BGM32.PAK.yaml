@@ -1,0 +1,7 @@
+---
+- file_path: BGM32.PAK/0.SEQ
+  id: 32
+- file_path: BGM32.PAK/1.VH
+  id: 32
+- file_path: BGM32.PAK/2.VB
+  id: 32

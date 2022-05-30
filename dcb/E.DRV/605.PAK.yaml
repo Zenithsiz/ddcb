@@ -1,0 +1,27 @@
+---
+- file_path: 605.PAK/0.M3D
+  id: 6050
+- file_path: 605.PAK/1.UN1
+  id: 6050
+- file_path: 605.PAK/2.A2D
+  id: 6051
+- file_path: 605.PAK/3.A2D
+  id: 6052
+- file_path: 605.PAK/4.A2D
+  id: 6053
+- file_path: 605.PAK/5.UN2
+  id: 6050
+- file_path: 605.PAK/6.UN2
+  id: 9991
+- file_path: 605.PAK/7.BIN
+  id: 6051
+- file_path: 605.PAK/8.BIN
+  id: 6052
+- file_path: 605.PAK/9.BIN
+  id: 6053
+- file_path: 605.PAK/10.BIN
+  id: 6050
+- file_path: 605.PAK/11.BIN
+  id: 9991
+- file_path: 605.PAK/12.BIN
+  id: 1100
