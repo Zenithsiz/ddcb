@@ -1,115 +1,115 @@
 ---
 - name: "178"
   date: "2000-10-19T11:51:20"
-  path: dcb/G/178.PAK
+  path: build/pak/G/178.PAK
 - name: "028"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/028.PAK
+  path: build/pak/G/028.PAK
 - name: "040"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/040.PAK
+  path: build/pak/G/040.PAK
 - name: "042"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/042.PAK
+  path: build/pak/G/042.PAK
 - name: "054"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/054.PAK
+  path: build/pak/G/054.PAK
 - name: "056"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/056.PAK
+  path: build/pak/G/056.PAK
 - name: "059"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/059.PAK
+  path: build/pak/G/059.PAK
 - name: "020"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/020.PAK
+  path: build/pak/G/020.PAK
 - name: "060"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/060.PAK
+  path: build/pak/G/060.PAK
 - name: "061"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/061.PAK
+  path: build/pak/G/061.PAK
 - name: "066"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/066.PAK
+  path: build/pak/G/066.PAK
 - name: "070"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/070.PAK
+  path: build/pak/G/070.PAK
 - name: "112"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/112.PAK
+  path: build/pak/G/112.PAK
 - name: "117"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/117.PAK
+  path: build/pak/G/117.PAK
 - name: "128"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/128.PAK
+  path: build/pak/G/128.PAK
 - name: "129"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/129.PAK
+  path: build/pak/G/129.PAK
 - name: "138"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/138.PAK
+  path: build/pak/G/138.PAK
 - name: "139"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/139.PAK
+  path: build/pak/G/139.PAK
 - name: "014"
   date: "2000-11-05T13:28:14"
-  path: dcb/G/014.PAK
+  path: build/pak/G/014.PAK
 - name: "141"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/141.PAK
+  path: build/pak/G/141.PAK
 - name: "142"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/142.PAK
+  path: build/pak/G/142.PAK
 - name: "158"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/158.PAK
+  path: build/pak/G/158.PAK
 - name: "159"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/159.PAK
+  path: build/pak/G/159.PAK
 - name: "160"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/160.PAK
+  path: build/pak/G/160.PAK
 - name: "161"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/161.PAK
+  path: build/pak/G/161.PAK
 - name: "162"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/162.PAK
+  path: build/pak/G/162.PAK
 - name: "164"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/164.PAK
+  path: build/pak/G/164.PAK
 - name: "165"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/165.PAK
+  path: build/pak/G/165.PAK
 - name: "166"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/166.PAK
+  path: build/pak/G/166.PAK
 - name: "168"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/168.PAK
+  path: build/pak/G/168.PAK
 - name: "169"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/169.PAK
+  path: build/pak/G/169.PAK
 - name: "170"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/170.PAK
+  path: build/pak/G/170.PAK
 - name: "173"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/173.PAK
+  path: build/pak/G/173.PAK
 - name: "174"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/174.PAK
+  path: build/pak/G/174.PAK
 - name: "140"
   date: "2000-11-05T13:28:16"
-  path: dcb/G/140.PAK
+  path: build/pak/G/140.PAK
 - name: "180"
   date: "2000-11-05T13:28:18"
-  path: dcb/G/180.PAK
+  path: build/pak/G/180.PAK
 - name: "230"
   date: "2000-11-05T13:28:18"
-  path: dcb/G/230.PAK
+  path: build/pak/G/230.PAK
 - name: VSSVER
   date: "2001-01-09T02:55:26"
   path: dcb/G/VSSVER.SCC

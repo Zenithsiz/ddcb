@@ -1,0 +1,7 @@
+---
+- file_path: BGM128/0.SEQ
+  id: 128
+- file_path: BGM128/1.VH
+  id: 128
+- file_path: BGM128/2.VB
+  id: 128

@@ -52,13 +52,13 @@
   entries:
     - name: "1501"
       date: "2000-10-19T11:49:46"
-      path: dcb/C/EVO_PAK/1501.PAK
+      path: build/pak/C/EVO_PAK/1501.PAK
     - name: "1502"
       date: "2000-10-19T11:49:46"
-      path: dcb/C/EVO_PAK/1502.PAK
+      path: build/pak/C/EVO_PAK/1502.PAK
     - name: "1500"
       date: "2000-10-19T11:49:46"
-      path: dcb/C/EVO_PAK/1500.PAK
+      path: build/pak/C/EVO_PAK/1500.PAK
     - name: VSSVER
       date: "2001-04-11T06:36:24"
       path: dcb/C/EVO_PAK/VSSVER.SCC
@@ -145,40 +145,40 @@
   path: dcb/C/UNIT_EFF.ARC
 - name: AREA04
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA04.PAK
+  path: build/pak/C/AREA04.PAK
 - name: AREA05
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA05.PAK
+  path: build/pak/C/AREA05.PAK
 - name: AREA01
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA01.PAK
+  path: build/pak/C/AREA01.PAK
 - name: AREA06
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA06.PAK
+  path: build/pak/C/AREA06.PAK
 - name: AREA02
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA02.PAK
+  path: build/pak/C/AREA02.PAK
 - name: AREA03
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA03.PAK
+  path: build/pak/C/AREA03.PAK
 - name: AREA00
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA00.PAK
+  path: build/pak/C/AREA00.PAK
 - name: AREA08
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA08.PAK
+  path: build/pak/C/AREA08.PAK
 - name: AREA09
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA09.PAK
+  path: build/pak/C/AREA09.PAK
 - name: AREA10
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA10.PAK
+  path: build/pak/C/AREA10.PAK
 - name: AREA11
   date: "2001-05-02T08:15:32"
-  path: dcb/C/AREA11.PAK
+  path: build/pak/C/AREA11.PAK
 - name: AREA07
   date: "2001-05-02T08:15:30"
-  path: dcb/C/AREA07.PAK
+  path: build/pak/C/AREA07.PAK
 - name: VSSVER
   date: "2001-05-02T08:15:42"
   path: dcb/C/VSSVER.SCC

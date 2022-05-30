@@ -13,9 +13,10 @@ diff                   = diff
 sha256sum              = sha256sum
 mkdrv                  = tools/target/release/dcb-mkdrv
 mkdrv-deps             = tools/target/release/dcb-mkdrv-deps
+mkpak                  = tools/target/release/dcb-mkpak
 
 # All tools
-TOOLS := $(mkdrv) $(mkdrv-deps)
+TOOLS := $(mkdrv) $(mkdrv-deps) $(mkpak)
 TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All assembly files
@@ -108,6 +109,11 @@ build/iso/B.DRV: build/iso/B.d dcb/B.yaml $(mkdrv)
 build/iso/%.DRV: dcb/%.yaml build/iso/%.d $(mkdrv)
 	@mkdir -p $(@D)
 	$(mkdrv) --quiet $< -o build/iso/$*.DRV
+
+# Create `PAK`s from their map files
+build/pak/%.PAK: dcb/%.yaml $(mkpak)
+	@mkdir -p $(@D)
+	$(mkpak) $< --out $@
 
 # All dylibs
 # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
