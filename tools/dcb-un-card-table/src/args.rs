@@ -10,4 +10,8 @@ use std::path::PathBuf;
 pub struct Args {
 	/// Input path
 	pub input_path: PathBuf,
+
+	/// Output path
+	#[clap(long = "output", short = 'o')]
+	pub output_path: PathBuf,
 }

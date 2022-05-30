@@ -25,3 +25,4 @@ serde_json = "1.0.66"
 
 # Util
 itertools = "0.10.3"
+zutil = {git = "https://github.com/Zenithsiz/zutil", features = ["use_serde"], rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f"}

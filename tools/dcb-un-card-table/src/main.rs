@@ -12,10 +12,7 @@ use {
 	anyhow::Context,
 	clap::Parser,
 	dcb_card_table::Table,
-	std::{
-		fs,
-		io::{self, BufReader},
-	},
+	std::{fs, io::BufReader},
 };
 
 fn main() -> Result<(), anyhow::Error> {
@@ -40,7 +37,8 @@ fn main() -> Result<(), anyhow::Error> {
 	let table = Table::deserialize(&mut file).context("Unable to deserialize table file")?;
 
 	// And print it to stdout.
-	serde_json::to_writer_pretty(io::stdout(), &table).context("Unable to print card table")?;
+	zutil::write_to_file(&args.output_path, &table, serde_json::to_writer_pretty)
+		.context("Unable to write card table to output")?;
 
 	Ok(())
 }
