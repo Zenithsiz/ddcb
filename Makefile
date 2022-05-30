@@ -105,11 +105,10 @@ build/drv/%.DRV.d: dcb/%.DRV.yaml $(mkdrv-deps)
 	$(mkdrv-deps) --quiet $< -o build/drv/$*.DRV --dep-file $@
 
 # Special case `B.DRV` so we can write the invalid entry
-build/drv/B.DRV: dcb/B.DRV.yaml build/drv/B.DRV.d $(mkdrv)
+build/drv/B.DRV: dcb/B.DRV.yaml build/drv/B.DRV.d dcb/B.DRV.bspatch $(mkdrv)
 	@mkdir -p $(@D)
 	$(mkdrv) --quiet $< -o $@
-	printf "02C0: 01 43 44 44 D5 2F 00 00 F0 3F 01 00 E6 75 AD 3A" | xxd -r - $@
-	printf "02D0: 83 52 83 53 81 5B 20 81 60 20 43 41 52 44 32 00" | xxd -r - $@
+	$(bspatch) $@ $@ dcb/B.DRV.bspatch
 
 # Create `DRV`s
 build/drv/%.DRV: dcb/%.DRV.yaml build/drv/%.DRV.d $(mkdrv)
