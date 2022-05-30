@@ -129,9 +129,9 @@ build/pak/%.PAK: dcb/%.PAK.yaml build/pak/%.PAK.d $(mkpak)
 #       modification date, which `make` uses to check dependencies
 build/dylib/%.BIN: build/dcb.elf
 	@mkdir -p $(@D)
-	@cp build/dcb.elf build/dcb.elf.cp
-	$(objcopy) --dump-section dylib.$(shell echo $(notdir $(basename $@)) | tr A-Z a-z)=$@ build/dcb.elf.cp
-	@rm build/dcb.elf.cp
+	@cp $< $<.cp
+	$(objcopy) --dump-section dylib.$(shell echo $(notdir $(basename $@)) | tr A-Z a-z)=$@ $<.cp
+	@rm $<.cp
 
 # Empty buffer file
 build/iso/MMM.DAT:
