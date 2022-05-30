@@ -14,6 +14,7 @@ members = [
   "dcb-unbin",
   "dcb-unpak",
   "dcb-mkpak",
+  "dcb-mkpak-deps",
   "dcb-unmsd",
 ]
 

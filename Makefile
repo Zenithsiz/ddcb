@@ -14,9 +14,10 @@ sha256sum              = sha256sum
 mkdrv                  = tools/target/release/dcb-mkdrv
 mkdrv-deps             = tools/target/release/dcb-mkdrv-deps
 mkpak                  = tools/target/release/dcb-mkpak
+mkpak-deps             = tools/target/release/dcb-mkpak-deps
 
 # All tools
-TOOLS := $(mkdrv) $(mkdrv-deps) $(mkpak)
+TOOLS := $(mkdrv) $(mkdrv-deps) $(mkpak) $(mkpak-deps)
 TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All assembly files
@@ -32,6 +33,10 @@ DYLIBS := \
 	build/dylib/SAISEG.BIN \
 	build/dylib/SUBSEG.BIN \
 	build/dylib/SUGSEG.BIN
+
+# All `PAK` files
+PAK_FILES := $(patsubst dcb/%,build/pak/%,$(shell find "dcb/" -type d -iname "*.PAK"))
+PAK_FILES_DEP := $(patsubst %,%.d,$(PAK_FILES))
 
 # All `DRV` files
 DRV_FILES := \
@@ -109,10 +114,13 @@ build/drv/%.DRV: dcb/%.DRV.yaml build/drv/%.DRV.d $(mkdrv)
 	@mkdir -p $(@D)
 	$(mkdrv) --quiet $< -o $@
 
-# TODO: `PAK` dependencies
+# `PAK` dependencies
+build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak-deps)
+	@mkdir -p $(@D)
+	$(mkpak-deps) $< --out build/pak/$*.PAK --dep-file $@
 
 # Create `PAK`s from their map files
-build/pak/%.PAK: dcb/%.PAK.yaml $(mkpak)
+build/pak/%.PAK: dcb/%.PAK.yaml build/pak/%.PAK.d $(mkpak)
 	@mkdir -p $(@D)
 	$(mkpak) $< --out $@
 
@@ -225,3 +233,4 @@ include build/rs/libcore_impl.d
 include build/rs/libdcb_macros.d
 include $(TOOLS_DEP)
 include $(DRV_FILES_DEP)
+include $(PAK_FILES_DEP)
