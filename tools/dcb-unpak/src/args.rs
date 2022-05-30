@@ -1,4 +1,4 @@
-//! Cli manager
+//! Arguments
 
 // Imports
 use std::path::PathBuf;

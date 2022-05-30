@@ -358,6 +358,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "dcb-un-card-table"
+version = "0.1.5"
+dependencies = [
+ "anyhow",
+ "clap 3.1.18",
+ "dcb-bytes",
+ "dcb-card-table",
+ "dcb-cdrom-xa",
+ "itertools",
+ "log",
+ "serde_json",
+ "simplelog 0.10.2",
+]
+
+[[package]]
 name = "dcb-unbin"
 version = "0.1.0"
 dependencies = [
@@ -538,6 +553,12 @@ checksum = "a9a9d19fa1e79b6215ff29b9d6880b706147f16e9b1dbb1e4e5947b5b02bc5e3"
 dependencies = [
  "either",
 ]
+
+[[package]]
+name = "itoa"
+version = "1.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "112c678d4050afce233f4f2852bb2eb519230b3cf12f33585275537d7e41578d"
 
 [[package]]
 name = "lazy_static"
@@ -773,6 +794,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "serde_json"
+version = "1.0.81"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9b7ce2b32a1aed03c558dc61a5cd328f15aff2dbc17daad8fb8af04d2100e15c"
+dependencies = [
+ "itoa",
+ "ryu",
+ "serde",
+]
+
+[[package]]
 name = "serde_with"
 version = "1.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -812,6 +844,17 @@ name = "simplelog"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4bc0ffd69814a9b251d43afcabf96dad1b29f5028378056257be9e3fecc9f720"
+dependencies = [
+ "chrono",
+ "log",
+ "termcolor",
+]
+
+[[package]]
+name = "simplelog"
+version = "0.10.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "85d04ae642154220ef00ee82c36fb07853c10a4f2a0ca6719f9991211d2eb959"
 dependencies = [
  "chrono",
  "log",
