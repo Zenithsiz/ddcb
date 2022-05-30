@@ -49,7 +49,12 @@ impl<'a> DirLister for DrvMapDirLister<'a> {
 						kind: DirEntryWriterKind::Dir(entries),
 					}
 				},
-				DrvMapEntry::File { name, date, ref path } => {
+				DrvMapEntry::File {
+					name,
+					extension,
+					date,
+					ref path,
+				} => {
 					// Get the name
 					let name = match name {
 						Some(name) => name,
@@ -64,14 +69,17 @@ impl<'a> DirLister for DrvMapDirLister<'a> {
 					};
 
 					// Get the extension
-					let extension = path
-						.extension()
-						.ok_or_else(|| NextError::FileExtension { path: path.clone() })?
-						.try_into()
-						.map_err(|err| NextError::ConvertFileExtension {
-							path: path.clone(),
-							err,
-						})?;
+					let extension = match extension {
+						Some(extension) => extension,
+						None => path
+							.extension()
+							.ok_or_else(|| NextError::FileExtension { path: path.clone() })?
+							.try_into()
+							.map_err(|err| NextError::ConvertFileExtension {
+								path: path.clone(),
+								err,
+							})?,
+					};
 
 					// Get the date, else get it from file
 					let date = match date {

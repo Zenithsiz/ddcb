@@ -10,14 +10,16 @@ generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
 sed                    = sed
 diff                   = diff
+bspatch                = bspatch
 sha256sum              = sha256sum
 mkdrv                  = tools/target/release/dcb-mkdrv
 mkdrv-deps             = tools/target/release/dcb-mkdrv-deps
 mkpak                  = tools/target/release/dcb-mkpak
 mkpak-deps             = tools/target/release/dcb-mkpak-deps
+mk-card-table          = tools/target/release/dcb-mk-card-table
 
 # All tools
-TOOLS := $(mkdrv) $(mkdrv-deps) $(mkpak) $(mkpak-deps)
+TOOLS := $(mkdrv) $(mkdrv-deps) $(mkpak) $(mkpak-deps) $(mk-card-table)
 TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All assembly files
@@ -123,6 +125,11 @@ build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak-deps)
 build/pak/%.PAK: dcb/%.PAK.yaml build/pak/%.PAK.d $(mkpak)
 	@mkdir -p $(@D)
 	$(mkpak) $< --out $@
+
+# Card table
+build/card_table: dcb/B.DRV/card_table.json dcb/B.DRV/card_table.bspatch $(mk-card-table)
+	$(mk-card-table) $< --output $@
+	$(bspatch) $@ $@ dcb/B.DRV/card_table.bspatch
 
 # Create dylibs
 # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the

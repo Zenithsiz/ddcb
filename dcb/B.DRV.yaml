@@ -1785,8 +1785,9 @@
   date: "2000-10-13T12:46:06"
   path: dcb/B.DRV/CARD_F.TIM
 - name: CARD2
+  extension: CDD
   date: "2001-05-02T08:22:40"
-  path: dcb/B.DRV/CARD2.CDD
+  path: build/card_table
 - name: CBTL_EFF
   date: "2000-11-06T00:05:16"
   path: dcb/B.DRV/CBTL_EFF.ARC

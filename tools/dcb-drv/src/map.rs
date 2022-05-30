@@ -70,6 +70,7 @@ impl DrvMap {
 
 				DrvMapEntry::File {
 					name: Some(name),
+					extension: Some(extension),
 					date: Some(date),
 					path,
 				}
@@ -171,6 +172,10 @@ pub enum DrvMapEntry {
 		/// Name
 		// If `None`, name is path's
 		name: Option<AsciiStrArr<16>>,
+
+		/// Extension
+		// If `None`, extension is path's
+		extension: Option<AsciiStrArr<3>>,
 
 		/// Date
 		// If `None`, name is path's
