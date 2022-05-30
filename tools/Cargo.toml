@@ -21,6 +21,8 @@ members = [
   "dcb-unmsd",
   "dcb-un-card-table",
   "dcb-mk-card-table",
+  "dcb-un-deck-table",
+  "dcb-mk-deck-table",
 ]
 
 [patch."https://github.com/Zenithsiz/zutil"]

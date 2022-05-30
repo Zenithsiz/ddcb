@@ -1,4 +1,4 @@
-//! Card table Creator
+//! Deck table creator
 
 // Features
 #![feature(once_cell, never_type, seek_stream_len, try_blocks, array_zip, unwrap_infallible)]
@@ -11,7 +11,7 @@ use {
 	self::args::Args,
 	anyhow::Context,
 	clap::Parser,
-	dcb_card_table::Table,
+	dcb_deck_table::Table,
 	std::{fs, io::BufWriter},
 };
 
@@ -28,7 +28,7 @@ fn main() -> Result<(), anyhow::Error> {
 	// Get the arguments
 	let args = Args::parse();
 
-	// Parse the card table
+	// Parse the deck table
 	let table: Table =
 		zutil::parse_from_file(&args.input_path, serde_json::from_reader).context("Unable to parse input file")?;
 

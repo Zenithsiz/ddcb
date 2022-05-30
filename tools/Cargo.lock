@@ -279,6 +279,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "dcb-mk-deck-table"
+version = "0.1.5"
+dependencies = [
+ "anyhow",
+ "clap 3.1.18",
+ "dcb-bytes",
+ "dcb-cdrom-xa",
+ "dcb-deck-table",
+ "itertools",
+ "log",
+ "serde_json",
+ "simplelog 0.10.2",
+ "zutil",
+]
+
+[[package]]
 name = "dcb-mkdrv"
 version = "0.1.0"
 dependencies = [
@@ -382,6 +398,22 @@ dependencies = [
  "dcb-bytes",
  "dcb-card-table",
  "dcb-cdrom-xa",
+ "itertools",
+ "log",
+ "serde_json",
+ "simplelog 0.10.2",
+ "zutil",
+]
+
+[[package]]
+name = "dcb-un-deck-table"
+version = "0.1.5"
+dependencies = [
+ "anyhow",
+ "clap 3.1.18",
+ "dcb-bytes",
+ "dcb-cdrom-xa",
+ "dcb-deck-table",
  "itertools",
  "log",
  "serde_json",
