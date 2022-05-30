@@ -1,0 +1,26 @@
+[package]
+authors = ["Filipe Rodrigues <filipejacintorodrigues1@gmail.com>"]
+edition = "2018"
+name = "dcb-msd"
+version = "0.1.0"
+
+[dependencies]
+
+# Logging
+log = "0.4.13"
+
+# Error handling
+thiserror = "1.0.26"
+
+# Utility
+byteorder = "1.4.3"
+dbg_hex = "0.1.1"
+derive_more = "0.99.16"
+itertools = "0.10.0"
+zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f"}
+
+# Strings
+encoding_rs = "0.8.28"
+
+# Serde
+serde = {version = "1.0.127", features = ["derive"]}

@@ -98,32 +98,41 @@ dependencies = [
 
 [[package]]
 name = "clap"
-version = "3.1.2"
+version = "3.1.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5177fac1ab67102d8989464efd043c6ff44191b1557ec1ddd489b4f7e1447e77"
+checksum = "d2dbdf4bdacb33466e854ce889eee8dfd5729abf7ccd7664d0a2d60cd384440b"
 dependencies = [
  "atty",
  "bitflags",
  "clap_derive",
+ "clap_lex",
  "indexmap",
  "lazy_static",
- "os_str_bytes",
  "strsim 0.10.0",
  "termcolor",
- "textwrap 0.14.2",
+ "textwrap 0.15.0",
 ]
 
 [[package]]
 name = "clap_derive"
-version = "3.1.2"
+version = "3.1.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "01d42c94ce7c2252681b5fed4d3627cc807b13dfc033246bd05d5b252399000e"
+checksum = "25320346e922cffe59c0bbc5410c8d8784509efb321488971081313cb1e1a33c"
 dependencies = [
  "heck 0.4.0",
  "proc-macro-error",
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "clap_lex"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a37c35f1112dad5e6e0b1adaff798507497a18fceeb30cceb3bae7d1427b9213"
+dependencies = [
+ "os_str_bytes",
 ]
 
 [[package]]
@@ -168,6 +177,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "dbg_hex"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2f74abed44e4dbc4d0548b565869c66c9c6d6d84011a8c14cee2cacfdada3d60"
+
+[[package]]
 name = "dcb-bytes"
 version = "0.1.0"
 dependencies = [
@@ -210,7 +225,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "chrono",
- "clap 3.1.2",
+ "clap 3.1.18",
  "dcb-drv",
  "itertools",
  "log",
@@ -228,7 +243,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "chrono",
- "clap 3.1.2",
+ "clap 3.1.18",
  "dcb-drv",
  "itertools",
  "log",
@@ -245,7 +260,7 @@ name = "dcb-mkpak"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "clap 3.1.2",
+ "clap 3.1.18",
  "dcb-pak",
  "log",
  "pathdiff",
@@ -253,6 +268,21 @@ dependencies = [
  "serde_yaml",
  "simplelog 0.9.0",
  "size_format",
+ "zutil",
+]
+
+[[package]]
+name = "dcb-msd"
+version = "0.1.0"
+dependencies = [
+ "byteorder",
+ "dbg_hex",
+ "derive_more",
+ "encoding_rs",
+ "itertools",
+ "log",
+ "serde",
+ "thiserror",
  "zutil",
 ]
 
@@ -285,7 +315,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "chrono",
- "clap 3.1.2",
+ "clap 3.1.18",
  "dcb-drv",
  "filetime",
  "itertools",
@@ -298,11 +328,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "dcb-unmsd"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "clap 3.1.18",
+ "dbg_hex",
+ "dcb-bytes",
+ "dcb-msd",
+ "encoding_rs",
+ "itertools",
+ "log",
+ "serde_yaml",
+ "simplelog 0.9.0",
+ "zutil",
+]
+
+[[package]]
 name = "dcb-unpak"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "clap 3.1.2",
+ "clap 3.1.18",
  "dcb-pak",
  "log",
  "pathdiff",
@@ -331,6 +379,15 @@ name = "either"
 version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e78d4f1cc4ae33bbfc157ed5d5a5ef3bc29227303d595861deb238fcec4e9457"
+
+[[package]]
+name = "encoding_rs"
+version = "0.8.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9852635589dc9f9ea1b6fe9f05b50ef208c85c834a562f0c6abb1c475736ec2b"
+dependencies = [
+ "cfg-if",
+]
 
 [[package]]
 name = "filetime"
@@ -451,12 +508,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "memchr"
-version = "2.4.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "308cc39be01b73d0d18f82a0e7b2a3df85245f84af96fdddc5d202d27e47b86a"
-
-[[package]]
 name = "num"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -525,9 +576,6 @@ name = "os_str_bytes"
 version = "6.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8e22443d1643a904602595ba1cd8f7d896afe56d26712531c5ff73a15b2fbf64"
-dependencies = [
- "memchr",
-]
 
 [[package]]
 name = "pathdiff"
@@ -781,9 +829,9 @@ dependencies = [
 
 [[package]]
 name = "textwrap"
-version = "0.14.2"
+version = "0.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0066c8d12af8b5acd21e00547c3797fde4e8677254a7ee429176ccebbe93dd80"
+checksum = "b1141d4d61095b28419e22cb0bbf02755f5e54e0526f97f1e3d1d160e60885fb"
 
 [[package]]
 name = "thiserror"
