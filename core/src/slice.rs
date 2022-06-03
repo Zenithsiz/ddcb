@@ -1,8 +1,8 @@
 //! Slice
 
+// Imports
 use crate::ptr::PtrRepr;
 
-#[lang = "slice"]
 impl<T> [T] {
 	#[lang = "slice_len_fn"]
 	#[inline(always)]

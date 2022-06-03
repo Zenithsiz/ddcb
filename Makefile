@@ -194,7 +194,7 @@ build/rs/dcb.s: build/rs/dcb.ll $(llc)
 	$(llc) -O3 -march=mips -mcpu=mips1 -mattr=+soft-float $< -o $@
 
 # Rust llvm-ir
-build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib build/rs/libdcb_macros.so
+build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore.rlib build/rs/libdcb_macros.so
 	$(rustc) $< \
 		--crate-name dcb \
 		--edition 2021 \
@@ -204,22 +204,22 @@ build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore_impl.rlib bui
 		-C embed-bitcode=no \
 		--target=mipsel-sony-psx.json \
 		--out-dir $(@D) \
-		--extern core_impl=build/rs/libcore_impl.rlib \
+		--extern core=build/rs/libcore.rlib \
 		--extern dcb_macros=build/rs/libdcb_macros.so \
 		-Z macro-backtrace
 
-# `core-impl` library
-build/rs/libcore_impl.rlib build/rs/libcore_impl.d: mipsel-sony-psx.json
+# `core` library
+build/rs/libcore.rlib build/rs/libcore.d: mipsel-sony-psx.json
 	$(cargo) build \
 		--release \
-		-p "core-impl" \
+		-p "core" \
 		-Z unstable-options \
 		--out-dir $(@D) \
 		--target mipsel-sony-psx.json
 	$(sed) \
 		-e "s,target/mipsel-sony-psx/release/,$(@D)/,g" \
-		-e "s,$(shell pwd)/,,g" target/mipsel-sony-psx/release/libcore_impl.d \
-		> build/rs/libcore_impl.d
+		-e "s,$(shell pwd)/,,g" target/mipsel-sony-psx/release/libcore.d \
+		> build/rs/libcore.d
 
 # `dcb-macros` library
 build/rs/libdcb_macros.so build/rs/libdcb_macros.d:
@@ -241,7 +241,7 @@ build/asm/%.s: dcb-asm/%.s $(preprocess_asm)
 # Dependencies
 include build/dcb.d
 include build/rs/dcb.d
-include build/rs/libcore_impl.d
+include build/rs/libcore.d
 include build/rs/libdcb_macros.d
 include $(TOOLS_DEP)
 include $(DRV_FILES_DEP)

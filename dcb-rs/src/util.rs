@@ -16,7 +16,7 @@ pub use self::{
 /// register names
 pub macro asm($($args:tt)*) {{
 	#[::dcb_macros::asm_use_mips_operands]
-	::core_impl::asm!(
+	::core::asm!(
 		".set noat",
 		".set noreorder",
 		$($args)*
@@ -28,7 +28,7 @@ pub macro force_reg($reg:literal: $e:expr) {
 	match $e {
 		e => {
 			#[::dcb_macros::asm_use_mips_operands]
-			::core_impl::asm!("", in($reg) e);
+			::core::asm!("", in($reg) e);
 			e
 		}
 	}
@@ -74,5 +74,5 @@ pub macro with_compiler_fence($s:stmt; $($rest:stmt);* $(;)?) {
 
 /// Adds an optimization to run
 pub macro optimization($opt:literal $(, $in_reg:literal: $in_var:ident )*) {{
-	$crate::util::asm!(::core_impl::concat!("#optimizer: ", $opt) $(, in($in_reg) $in_var )*);
+	$crate::util::asm!(::core::concat!("#optimizer: ", $opt) $(, in($in_reg) $in_var )*);
 }}

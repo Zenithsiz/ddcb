@@ -18,6 +18,8 @@ impl_copy!(i8, i16, i32, isize);
 impl<T> Copy for *const T {}
 impl<T> Copy for *mut T {}
 
+impl<T: Copy, const N: usize> Copy for [T; N] {}
+
 
 #[lang = "sync"]
 pub unsafe auto trait Sync {}
@@ -49,3 +51,6 @@ pub trait DiscriminantKind {
 	//type Discriminant: Clone + Copy + Debug + Eq + PartialEq + Hash + Send + Sync + Unpin;
 	type Discriminant: Copy + Sync;
 }
+
+#[lang = "destruct"]
+pub trait Destruct {}

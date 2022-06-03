@@ -7,5 +7,5 @@ version = "0.1.0"
 
 [dependencies]
 
-core-impl = {path = "../core-impl"}
+core = {path = "../core"}
 dcb-macros = {path = "../dcb-macros"}

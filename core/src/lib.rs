@@ -15,12 +15,15 @@
 // Core / Std
 #![no_std]
 #![no_core]
+#![rustc_coherence_is_core] // We *are* core
+
 // Lints
 #![allow(clippy::match_like_matches_macro)] // We don't have `matches!` yet. TODO: impl it
 #![allow(clippy::missing_safety_doc)] // Most of the stuff here is a builtin
 
 // Modules
 pub mod cmp;
+pub mod drop;
 pub mod intrinsics;
 pub mod marker;
 pub mod mem;

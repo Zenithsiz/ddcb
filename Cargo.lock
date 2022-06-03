@@ -3,14 +3,14 @@
 version = 3
 
 [[package]]
-name = "core-impl"
+name = "core"
 version = "0.1.0"
 
 [[package]]
 name = "dcb"
 version = "0.1.0"
 dependencies = [
- "core-impl",
+ "core",
  "dcb-macros",
 ]
 

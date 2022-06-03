@@ -56,7 +56,7 @@ pub fn asm_labels(args: TokenStream, input: TokenStream) -> TokenStream {
 					cur_label_idx += 1;
 
 					// And replace it
-					*expr = syn::parse_str(&format!(r#"::core_impl::asm! {{ "{label_idx}:" }}"#))
+					*expr = syn::parse_str(&format!(r#"::core::asm! {{ "{label_idx}:" }}"#))
 						.expect("Unable to parse assembly macro");
 
 					// Finally insert it in the labels

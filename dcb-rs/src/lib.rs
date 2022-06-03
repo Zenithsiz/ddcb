@@ -20,7 +20,7 @@
 #![allow(dead_code)]
 
 // Extern crates
-extern crate core_impl;
+extern crate core;
 extern crate dcb_macros;
 
 // Modules
@@ -29,7 +29,7 @@ mod todo;
 mod util;
 
 // Imports
-use core_impl::panic;
+use core::panic;
 
 /// Aligned null-terminated byte string
 #[repr(align(4))]

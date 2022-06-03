@@ -25,7 +25,6 @@ pub struct PtrComponents<T: ?Sized> {
 	pub metadata:     <T as Pointee>::Metadata,
 }
 
-#[lang = "const_ptr"]
 impl<T: ?Sized> *const T {
 	#[inline(always)]
 	pub const fn cast<U>(self) -> *mut U {
@@ -52,7 +51,6 @@ impl<T: ?Sized> *const T {
 	}
 }
 
-#[lang = "mut_ptr"]
 impl<T: ?Sized> *mut T {
 	#[inline(always)]
 	pub const fn cast<U>(self) -> *mut U {

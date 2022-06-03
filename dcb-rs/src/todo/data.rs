@@ -7,7 +7,7 @@
 // Imports
 use {
 	crate::{psx_str, PsxStr},
-	core_impl::{concat, stringify},
+	core::{concat, stringify},
 };
 
 // Helper macro to declare all statics

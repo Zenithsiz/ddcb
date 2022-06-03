@@ -5,7 +5,7 @@
 #![allow(non_upper_case_globals)]
 
 // Imports
-use core_impl::{concat, stringify};
+use core::{concat, stringify};
 
 // Helper macro to declare all statics
 macro decl_static($( $NAME:ident: $T:ty = $value:expr; )*) {

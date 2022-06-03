@@ -4,7 +4,7 @@
 pub macro load_hi($reg:literal: $e:expr) {{
 	let value: u32;
 	$crate::util::asm!(
-		::core_impl::concat!("lui ", $reg ,", {VALUE}"),
+		::core::concat!("lui ", $reg ,", {VALUE}"),
 		VALUE = const $e,
 		out($reg) value,
 	);
@@ -20,8 +20,8 @@ pub macro read($reg:literal : $ptr:expr => $T:ty) {
 pub macro read_from($reg:literal => $out:literal: $ptr:expr => $T:ty) {{
 	let value: u32;
 	$crate::util::asm!(
-		::core_impl::concat!("lui ", $reg, ", %hi({PTR})"),
-		::core_impl::concat!(
+		::core::concat!("lui ", $reg, ", %hi({PTR})"),
+		::core::concat!(
 			$crate::util::asm::read_from_impl_opcode!($T), " ", $out, ", %lo({PTR})(", $reg, ")"
 		),
 		PTR = const $ptr as u32,
