@@ -3,7 +3,6 @@
 // Features
 #![feature(
 	array_chunks,
-	bool_to_option,
 	assert_matches,
 	exact_size_is_empty,
 	iter_advance_by,
@@ -166,7 +165,7 @@ fn print_asm(
 /// State
 // TODO: Remove, this was just to verify how stuff worked, it isn't necessary anymore.
 //       Although maybe reintroduce it when parsing to catch mistakes?
-#[derive(PartialEq, Clone, Debug)]
+#[derive(PartialEq, Eq, Clone, Debug)]
 pub enum State {
 	/// Start
 	Start,

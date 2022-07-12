@@ -64,7 +64,7 @@ fn create_pak(map: &Map, out_path: &Path, base_path: &Path, dep_file: &Path) -> 
 }
 
 /// A `.PAK` map, storing all info to create a `.PAK` from files.
-#[derive(PartialEq, Clone, Debug)]
+#[derive(PartialEq, Eq, Clone, Debug)]
 #[derive(serde::Serialize, serde::Deserialize)]
 #[serde(transparent)]
 pub struct Map {
@@ -74,7 +74,7 @@ pub struct Map {
 
 
 /// A map entry
-#[derive(PartialEq, Clone, Debug)]
+#[derive(PartialEq, Eq, Clone, Debug)]
 #[derive(serde::Serialize, serde::Deserialize)]
 pub struct MapEntry {
 	/// File path

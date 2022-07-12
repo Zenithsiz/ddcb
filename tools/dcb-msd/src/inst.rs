@@ -9,16 +9,20 @@ mod display;
 mod error;
 
 // Exports
-pub use display::DisplayCtx;
-pub use error::{DisplayError, EncodeError};
+pub use {
+	display::DisplayCtx,
+	error::{DisplayError, EncodeError},
+};
 
 // Imports
-use crate::{ComboBox, Screen};
-use byteorder::{ByteOrder, LittleEndian};
-use encoding_rs::SHIFT_JIS;
-use itertools::Itertools;
-use std::{assert_matches::assert_matches, io};
-use zutil::TryIntoAs;
+use {
+	crate::{ComboBox, Screen},
+	byteorder::{ByteOrder, LittleEndian},
+	encoding_rs::SHIFT_JIS,
+	itertools::Itertools,
+	std::{assert_matches::assert_matches, io},
+	zutil::TryIntoAs,
+};
 
 /// Instruction
 // TODO: Merge common instructions
@@ -623,8 +627,10 @@ mod serde_shift_jis_str {
 	use std::borrow::Cow;
 
 	// Imports
-	use encoding_rs::SHIFT_JIS;
-	use serde::{Deserialize, Deserializer, Serializer};
+	use {
+		encoding_rs::SHIFT_JIS,
+		serde::{Deserialize, Deserializer, Serializer},
+	};
 
 	/// Serialize
 	pub fn serialize<S>(bytes: &[u8], serializer: S) -> Result<S::Ok, S::Error>
@@ -636,7 +642,7 @@ mod serde_shift_jis_str {
 			.decode_without_bom_handling_and_without_replacement(bytes)
 			.expect("Unable to decode as `SHIFT_JIS`");
 
-		serializer.serialize_str(&*s)
+		serializer.serialize_str(&s)
 	}
 
 	/// Deserialize

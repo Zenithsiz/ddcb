@@ -70,7 +70,7 @@ impl ComboBox {
 }
 
 /// Combo box buttons
-#[derive(PartialEq, Clone, Copy, Debug)]
+#[derive(PartialEq, Eq, Clone, Copy, Debug)]
 pub enum ComboBoxButton {
 	/// "Player's Room"
 	PlayerRoom   = 0x0,

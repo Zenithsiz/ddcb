@@ -1,7 +1,7 @@
 //! `.MSD` files
 
 // Features
-#![feature(assert_matches, generic_associated_types, bool_to_option)]
+#![feature(assert_matches, generic_associated_types)]
 
 // Modules
 pub mod inst;

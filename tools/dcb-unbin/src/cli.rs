@@ -7,7 +7,7 @@ use {
 };
 
 /// Data from the command line
-#[derive(PartialEq, Clone, Debug)]
+#[derive(PartialEq, Eq, Clone, Debug)]
 pub struct CliData {
 	/// Input file
 	pub input_file: PathBuf,

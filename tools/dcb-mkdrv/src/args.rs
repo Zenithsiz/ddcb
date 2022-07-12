@@ -4,7 +4,7 @@
 use std::path::PathBuf;
 
 /// Arguments
-#[derive(PartialEq, Clone, Debug)]
+#[derive(PartialEq, Eq, Clone, Debug)]
 #[derive(clap::Parser)]
 #[clap(author, version, about)]
 pub struct Args {

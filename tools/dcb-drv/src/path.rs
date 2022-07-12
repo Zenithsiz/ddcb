@@ -213,7 +213,7 @@ impl<'a> Iterator for Components<'a> {
 }
 
 /// Component
-#[derive(PartialEq, Clone, Copy, Debug)]
+#[derive(PartialEq, Eq, Clone, Copy, Debug)]
 pub enum Component<'a> {
 	/// Root, `\\` at the start of the path
 	Root,

@@ -17,7 +17,7 @@ use {
 #[proc_macro_attribute]
 pub fn asm_labels(args: TokenStream, input: TokenStream) -> TokenStream {
 	/// Label
-	#[derive(PartialEq, Clone, Copy, Debug)]
+	#[derive(PartialEq, Eq, Clone, Copy, Debug)]
 	struct Label {
 		/// Label index
 		pub label_idx: usize,
