@@ -141,9 +141,9 @@ build/deck_table: dcb/B.DRV/deck_table.json dcb/B.DRV/deck_table.bspatch $(mk-de
 #       modification date, which `make` uses to check dependencies
 build/dylib/%.BIN: build/dcb.elf
 	@mkdir -p $(@D)
-	@cp $< $<.cp
-	$(objcopy) --dump-section dylib.$(shell echo $(notdir $(basename $@)) | tr A-Z a-z)=$@ $<.cp
-	@rm $<.cp
+	@cp $< $<.$*
+	$(objcopy) --dump-section dylib.$(shell echo $(notdir $(basename $@)) | tr A-Z a-z)=$@ $<.$*
+	@rm $<.$*
 
 # Empty buffer file
 build/iso/MMM.DAT:
