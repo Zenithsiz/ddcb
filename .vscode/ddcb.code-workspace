@@ -4,6 +4,9 @@
 			"path": ".."
 		},
 		{
+			"path": "../dcb-rs"
+		},
+		{
 			"path": "../tools"
 		}
 	],

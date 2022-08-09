@@ -15,8 +15,8 @@ macro impl_copy( $($T:ty),* $(,)? ) {
 impl_copy!(u8, u16, u32, usize);
 impl_copy!(i8, i16, i32, isize);
 
-impl<T> Copy for *const T {}
-impl<T> Copy for *mut T {}
+impl<T: ?Sized> Copy for *const T {}
+impl<T: ?Sized> Copy for *mut T {}
 
 impl<T: Copy, const N: usize> Copy for [T; N] {}
 

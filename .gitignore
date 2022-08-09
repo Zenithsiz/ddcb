@@ -1,5 +1,5 @@
 # Rust
-/target
+/dcb-rs/target
 /tools/target
 
 # Build
@@ -8,11 +8,5 @@
 # Python
 __pycache__
 
-# Old
-/.old
-
 # License
 /license.dat
-
-# Resources
-/resources
