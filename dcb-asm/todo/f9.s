@@ -7,11 +7,11 @@ f9:
 	lw $v0, ($v1)
 	nop
 	bltz $v0, .0
-		lui $v0, 0x8007
+		lui $v0, %hi(S_0x80077a0c)
 	jr $ra
 		li $v0, -0x3
 .0:
-	lw $v0, 0x7a0c($v0)
+	lw $v0, %lo(S_0x80077a0c)($v0)
 	nop
 	beq $v1, $v0, .1
 		move_ $v0, $zr
