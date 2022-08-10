@@ -7,9 +7,13 @@
 
 # Headers
 .include "dcb-asm/macros.s"
+.include "dcb-asm/other_data.s"
 
 # Code
 .include "dcb-asm/start.s"
 .include "dcb-asm/main_loop.s"
 .include "dcb-asm/todo.s"
 .include "dcb-asm/dylib.s"
+
+# Regex to look for possible hard-coded labels:
+# (0x800[0-8]\n)|(-?0x[0-9a-f]{4}\()|(addiu ..., ..., -?0x[0-9a-f]{4}\n)
