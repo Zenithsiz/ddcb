@@ -16,11 +16,11 @@ f48:
 	lw $a2, 0xa0($sp)
 	andi $a1, 0xff
 	sw $a1, 0x58($sp)
-	lui $v0, 0x8009
+	lui $v0, %hi(S_0x800897f4)
 	srl $v1, $a2, 0x1f
 	addu $v1, $a2, $v1
 	sra $v1, 0x1
-	lhu $a0, -0x680c($v0)
+	lhu $a0, %lo(S_0x800897f4)($v0)
 	nop
 	addu $a0, $v1
 	sll $a0, 0x6
@@ -63,12 +63,12 @@ f48:
 	nop
 	addu $v0, $a0, $v0
 	blez $v0, .5
-		lui $v1, 0x8008
+		lui $v1, %hi(S_0x800793a0)
 	lw $v0, 0xa4($sp)
 	nop
 	sll $v0, 0x2
 	addiu $v0, 0x70
-	lw $v1, -0x6c60($v1)
+	lw $v1, %lo(S_0x800793a0)($v1)
 	nop
 	addu $fp, $v0, $v1
 	lw $a3, 0x58($sp)
@@ -114,14 +114,14 @@ f48:
 	lbu $v0, ($s7)
 	nop
 	sw $v0, 0x10($sp)
-	lui $t0, 0x8009
-	lw $a0, -0x6818($t0)
+	lui $t0, %hi(S_0x800897e8)
+	lw $a0, %lo(S_0x800897e8)($t0)
 	sra $a1, 0x10
 	sra $a2, 0x10
 	jal f141
 		sra $a3, 0x10
-	lui $v0, 0x8009
-	lw $a0, -0x6818($v0)
+	lui $v0, %hi(S_0x800897e8)
+	lw $a0, %lo(S_0x800897e8)($v0)
 	lbu $v1, ($s6)
 	nop
 	sll $v1, 0x18
@@ -168,8 +168,8 @@ f48:
 	sra $a2, 0x10
 	jal f141
 		sra $a3, 0x10
-	lui $t0, 0x8009
-	lw $a0, -0x6818($t0)
+	lui $t0, %hi(S_0x800897e8)
+	lw $a0, %lo(S_0x800897e8)($t0)
 	lbu $a1, ($s6)
 	nop
 	sll $a1, 0x18
@@ -214,8 +214,8 @@ f48:
 	sra $a1, 0x10
 	jal f141
 		sra $a2, 0x10
-	lui $v0, 0x8009
-	lw $a0, -0x6818($v0)
+	lui $v0, %hi(S_0x800897e8)
+	lw $a0, %lo(S_0x800897e8)($v0)
 	lbu $a1, ($s5)
 	nop
 	sll $a1, 0x18
@@ -261,8 +261,8 @@ f48:
 	sra $a1, 0x10
 	jal f141
 		sra $a2, 0x10
-	lui $v0, 0x8009
-	lw $a0, -0x6818($v0)
+	lui $v0, %hi(S_0x800897e8)
+	lw $a0, %lo(S_0x800897e8)($v0)
 	lbu $v0, ($s2)
 	lw $a1, 0x90($sp)
 	nop
@@ -451,14 +451,14 @@ f48:
 	nop
 	sh $v0, 0x56($sp)
 	move_ $s4, $zr
-	lui $s3, 0x8009
+	lui $s3, %hi(S_0x800897e8)
 	li $s6, 0xffffff
 	lui $s5, 0xff00
 	sll $s1, $s4, 0x2
 .0:
 	addu $s1, $s4
 	sll $s0, $s1, 0x3
-	lw $a0, -0x6818($s3)
+	lw $a0, %lo(S_0x800897e8)($s3)
 	sll $s2, $s4, 0x3
 	addu $v0, $sp, $s2
 	lbu $a1, 0x18($v0)
@@ -469,21 +469,21 @@ f48:
 	sw $v0, 0x10($sp)
 	jal f146
 		addu $a0, $s0, $a0
-	lw $v0, -0x6818($s3)
+	lw $v0, %lo(S_0x800897e8)($s3)
 	nop
 	addu $v0, $s0, $v0
 	lw $v1, 0x9c($sp)
 	nop
 	sb $v1, 0x4($v0)
-	lw $v0, -0x6818($s3)
+	lw $v0, %lo(S_0x800897e8)($s3)
 	nop
 	addu $v0, $s0, $v0
 	sb $v1, 0x5($v0)
-	lw $v0, -0x6818($s3)
+	lw $v0, %lo(S_0x800897e8)($s3)
 	nop
 	addu $v0, $s0, $v0
 	sb $v1, 0x6($v0)
-	lw $a0, -0x6818($s3)
+	lw $a0, %lo(S_0x800897e8)($s3)
 	nop
 	addu $s0, $a0, $s0
 	lw $a1, 0x5c($sp)
@@ -509,14 +509,14 @@ f48:
 	lbu $v0, 0x38($v0)
 	nop
 	sb $v0, 0xac($a0)
-	lw $v1, -0x6818($s3)
+	lw $v1, %lo(S_0x800897e8)($s3)
 	nop
 	addu $v1, $s1, $v1
 	addu $v0, $sp, $s2
 	lbu $v0, 0x3a($v0)
 	nop
 	sb $v0, 0xad($v1)
-	lw $v1, -0x6818($s3)
+	lw $v1, %lo(S_0x800897e8)($s3)
 	nop
 	addu $v1, $s1, $v1
 	addiu $v1, 0xa0
@@ -531,15 +531,15 @@ f48:
 	lw $a2, 0x9c($sp)
 	nop
 	sb $a2, 0x4($v1)
-	lw $v0, -0x6818($s3)
+	lw $v0, %lo(S_0x800897e8)($s3)
 	nop
 	addu $v0, $s1, $v0
 	sb $a2, 0xa5($v0)
-	lw $v0, -0x6818($s3)
+	lw $v0, %lo(S_0x800897e8)($s3)
 	nop
 	addu $v0, $s1, $v0
 	sb $a2, 0xa6($v0)
-	lw $a1, -0x6818($s3)
+	lw $a1, %lo(S_0x800897e8)($s3)
 	nop
 	addu $a0, $a1, $s1
 	lw $a3, 0x5c($sp)
@@ -566,8 +566,8 @@ f48:
 	bnez $v0, .0
 		sll $s1, $s4, 0x2
 .1:
-	lui $v0, 0x8009
-	lw $a2, -0x6818($v0)
+	lui $v0, %hi(S_0x800897e8)
+	lw $a2, %lo(S_0x800897e8)($v0)
 	lw $v1, ($fp)
 	li $a1, 0xffffff
 	and $v1, $a1
@@ -609,32 +609,32 @@ f48:
 	lw $a3, 0x98($sp)
 	nop
 	beqz $a3, .2
-		lui $v0, 0x8009
+		lui $v0, %hi(S_0x800897e8)
 	lbu $v0, 0xf7($a2)
 	nop
 	ori $v0, 0x2
 	j .3
 		sb $v0, 0xf7($a2)
 .2:
-	lw $v1, -0x6818($v0)
+	lw $v1, %lo(S_0x800897e8)($v0)
 	nop
 	lbu $v0, 0xf7($v1)
 	nop
 	andi $v0, 0xfd
 	sb $v0, 0xf7($v1)
 .3:
-	lui $s0, 0x8009
-	lw $v0, -0x6818($s0)
+	lui $s0, %hi(S_0x800897e8)
+	lw $v0, %lo(S_0x800897e8)($s0)
 	lw $t0, 0x9c($sp)
 	nop
 	sb $t0, 0xf4($v0)
-	lw $v0, -0x6818($s0)
+	lw $v0, %lo(S_0x800897e8)($s0)
 	nop
 	sb $t0, 0xf5($v0)
-	lw $v0, -0x6818($s0)
+	lw $v0, %lo(S_0x800897e8)($s0)
 	nop
 	sb $t0, 0xf6($v0)
-	lw $a0, -0x6818($s0)
+	lw $a0, %lo(S_0x800897e8)($s0)
 	lw $v0, 0x5c($sp)
 	nop
 	sh $v0, 0xfe($a0)
@@ -643,7 +643,7 @@ f48:
 	addiu $a0, 0x10c
 	jal f999
 		addu $a1, $v0, $a1
-	lw $v1, -0x6818($s0)
+	lw $v1, %lo(S_0x800897e8)($s0)
 	lw $a0, ($fp)
 	li $a2, 0xffffff
 	and $a0, $a2
@@ -660,8 +660,8 @@ f48:
 	or $v0, $v1
 	sw $v0, ($fp)
 .4:
-	lui $a3, 0x8009
-	lw $a0, -0x6818($a3)
+	lui $a3, %hi(S_0x800897e8)
+	lw $a0, %lo(S_0x800897e8)($a3)
 	lw $v1, ($fp)
 	li $a2, 0xffffff
 	and $v1, $a2
@@ -691,7 +691,7 @@ f48:
 	or $v0, $v1
 	sw $v0, ($fp)
 	addiu $a0, 0x294
-	sw $a0, -0x6818($a3)
+	sw $a0, %lo(S_0x800897e8)($a3)
 .5:
 	lw $ra, 0x8c($sp)
 	lw $fp, 0x88($sp)

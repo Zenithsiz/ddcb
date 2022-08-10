@@ -230,9 +230,9 @@ f47:
 	nop
 	subu $v0, $v1
 	sh $v0, 0x2($a2)
-	lui $v0, 0x8008
+	lui $v0, %hi(S_0x800794f0)
 	lbu $v1, 0x3d($a2)
-	lbu $v0, -0x6b10($v0)
+	lbu $v0, %lo(S_0x800794f0)($v0)
 	nop
 	addu $v1, $v0
 	sb $v1, 0x3d($a2)
