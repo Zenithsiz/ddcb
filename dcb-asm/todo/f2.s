@@ -46,10 +46,10 @@ f2:
 	addiu $s0, $a0, %lo(S_0x80077ba0)
 	lui $v0, %hi(S_0x80077a0c)
 	sw $s0, %lo(S_0x80077a0c)($v0)
-	lui $v1, %hi(S_0x80077ba0)
+	lui $v1, %hi(S_0x80077a18)
 	lhu $v0, %lo(S_0x80077ba0)($a0)
 	nop
-	sh $v0, 0x7a18($v1)
+	sh $v0, %lo(S_0x80077a18)($v1)
 	lwi $v0, S_0x80077adc
 	nop
 	addiu $a0, $v0, 0x8

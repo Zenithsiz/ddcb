@@ -68,7 +68,7 @@ f1:
 	lui $v1, %hi(S_0x80077ba0)
 	addiu $s0, $v1, %lo(S_0x80077ba0)
 	lui $v0, 0xa000
-	sw $v0, 0x7ba0($v1)
+	sw $v0, %lo(S_0x80077ba0)($v1)
 	sw $s2, 0xa0($s0)
 	li $v0, 0x4000ff04
 	sw $v0, 0xac($s0)
