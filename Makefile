@@ -193,7 +193,8 @@ build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s $(ASM_PROCESSED_FILES)
 # Rust lib
 build/rs/libdcb.a: dcb-rs
 	@mkdir -p $(@D)
-	cp dcb-rs/build/libdcb.a $@
+# Note: Important to only update (`-u`), if newer, else we rebuild each time
+	cp -u dcb-rs/build/libdcb.a $@
 
 # Processed assembly files
 # TODO: Require `symbols.yaml` here once it isn't so slow
