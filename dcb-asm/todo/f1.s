@@ -10,8 +10,8 @@ f1:
 	move_ $s2, $a2
 	jal f1082
 		move_ $s3, $a3
-	lui $v0, 0x8007
-	sw $s0, 0x7a08($v0)
+	lui $v0, %hi(S_0x80077a08)
+	sw $s0, %lo(S_0x80077a08)($v0)
 	la_ $v0, S_0x80077ba0
 	li $v1, 0x1f
 .0:
@@ -19,43 +19,43 @@ f1:
 	addiu $v1, -0x1
 	bgez $v1, .0
 		addiu $v0, 0xc0
-	lui $a1, 0x8007
-	lui $a0, 0x8007
-	lui $v1, 0x8007
+	lui $a1, %hi(S_0x80077a18)
+	lui $a0, %hi(S_0x80077a1a)
+	lui $v1, %hi(S_0x80077a1c)
 	li $v0, 0xffff
-	sh $v0, 0x7a1c($v1)
-	sh $v0, 0x7a1a($a0)
-	sh $v0, 0x7a18($a1)
-	lui $v0, 0x8007
+	sh $v0, %lo(S_0x80077a1c)($v1)
+	sh $v0, %lo(S_0x80077a1a)($a0)
+	sh $v0, %lo(S_0x80077a18)($a1)
+	lui $v0, %hi(S_0x80077a0c)
 	la_ $v1, S_0x80077ae0
-	sw $v1, 0x7a0c($v0)
-	lui $a0, 0x8007
-	addiu $a1, $a0, 0x7ae0
+	sw $v1, %lo(S_0x80077a0c)($v0)
+	lui $a0, %hi(S_0x80077ae0)
+	addiu $a1, $a0, %lo(S_0x80077ae0)
 	li $v0, 0x8000ffff
-	sw $v0, 0x7ae0($a0)
+	sw $v0, %lo(S_0x80077ae0)($a0)
 	addiu $v1, 0xc0
 	sw $v1, 0x8($a1)
 	lwi $v0, S_0x80077a08
 	nop
 	beqz $v0, .1
-		lui $v1, 0x8007
+		lui $v1, %hi(S_0x80077aec)
 	j .4
 		sw $a1, 0xc($a1)
 .1:
 	la_ $v0, S_0x80077ba0
-	sw $v0, 0x7aec($v1)
+	sw $v0, %lo(S_0x80077aec)($v1)
 .4:
-	lui $v1, 0x8007
+	lui $v1, %hi(S_0x80077af4)
 	li $v0, -0x1
-	sw $v0, 0x7af4($v1)
+	sw $v0, %lo(S_0x80077af4)($v1)
 	lw $v0, 0x108($zr)
-	lui $v1, 0x8007
+	lui $v1, %hi(S_0x80077adc)
 	lw $v0, ($v0)
 	nop
-	sw $v0, 0x7adc($v1)
+	sw $v0, %lo(S_0x80077adc)($v1)
 	addiu $v1, $v0, 0x8
-	lui $v0, 0x8007
-	addiu $a1, $v0, 0x7bc0
+	lui $v0, %hi(S_0x80077bc0)
+	addiu $a1, $v0, %lo(S_0x80077bc0)
 	li $a0, 0x27
 .2:
 	lw $v0, ($v1)
@@ -65,8 +65,8 @@ f1:
 	addiu $a0, -0x1
 	bgez $a0, .2
 		addiu $a1, 0x4
-	lui $v1, 0x8007
-	addiu $s0, $v1, 0x7ba0
+	lui $v1, %hi(S_0x80077ba0)
+	addiu $s0, $v1, %lo(S_0x80077ba0)
 	lui $v0, 0xa000
 	sw $v0, 0x7ba0($v1)
 	sw $s2, 0xa0($s0)
@@ -114,9 +114,9 @@ f1:
 	lui $a0, 0xf200
 	jal f1094
 		ori $a0, 0x3
-	lui $v0, 0x8007
+	lui $v0, %hi(S_0x80077ad8)
 	jal f1083
-		sw $s0, 0x7ad8($v0)
+		sw $s0, %lo(S_0x80077ad8)($v0)
 	j .5
 		move_ $v0, $zr
 .3:
