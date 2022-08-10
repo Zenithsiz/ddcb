@@ -35,9 +35,9 @@ f4:
 .3:
 	bgez $a1, .5
 		move_ $s1, $zr
-	lui $v0, 0x8007
-	addiu $a1, $v0, 0x7ba0
-	lhu $v0, 0x7ba0($v0)
+	lui $v0, %hi(S_0x80077ba0)
+	addiu $a1, $v0, %lo(S_0x80077ba0)
+	lhu $v0, %lo(S_0x80077ba0)($v0)
 	nop
 	slt $v0, $a2, $v0
 	bnez $v0, .6
@@ -105,18 +105,18 @@ f4:
 	lwi $v0, S_0x80077a08
 	nop
 	beqz $v0, .10
-		lui $v0, 0x8007
+		lui $v0, %hi(S_0x80077adc)
 	blez $a2, .10
 		nop
 	lh $v0, ($v1)
 	nop
 	bnez $v0, .10
-		lui $v0, 0x8007
-	lui $v0, 0x8007
-	sw $s0, 0x7aec($v0)
-	lui $v0, 0x8007
+		lui $v0, %hi(S_0x80077adc)
+	lui $v0, %hi(S_0x80077aec)
+	sw $s0, %lo(S_0x80077aec)($v0)
+	lui $v0, %hi(S_0x80077adc)
 .10:
-	lw $v0, 0x7adc($v0)
+	lw $v0, %lo(S_0x80077adc)($v0)
 	nop
 	addiu $a1, $v0, 0x8
 	addiu $v1, $s0, 0x20
