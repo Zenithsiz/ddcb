@@ -1,9 +1,9 @@
 f39:
 	move_ $a1, $zr
-	lui $v0, 0x8008
-	addiu $a0, $v0, -0x6b08
-	lui $v0, 0x8008
-	addiu $a2, $v0, -0x29bc
+	lui $v0, %hi(S_0x800794f8)
+	addiu $a0, $v0, %lo(S_0x800794f8)
+	lui $v0, %hi(S_0x8007d644)
+	addiu $a2, $v0, %lo(S_0x8007d644)
 .0:
 	sll $v1, $a1, 0x6
 	addu $v1, $a1

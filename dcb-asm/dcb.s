@@ -16,4 +16,4 @@
 .include "dcb-asm/dylib.s"
 
 # Regex to look for possible hard-coded labels:
-# (0x800[0-8]\n)|(-?0x[0-9a-f]{4}\()|(addiu ..., ..., -?0x[0-9a-f]{4}\n)
+# (0x800.\n)|(-?0x[0-9a-f]{4}\()|(addiu ..., ..., -?0x[0-9a-f]{4}\n)|(addiu ..., -?0x[0-9a-f]{4}\n)

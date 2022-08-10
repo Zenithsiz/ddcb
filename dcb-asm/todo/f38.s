@@ -1,7 +1,7 @@
 f38:
-	lui $v0, 0x8008
+	lui $v0, %hi(S_0x80079500)
 	beqz $a0, .2
-		addiu $v1, $v0, -0x6b00
+		addiu $v1, $v0, %lo(S_0x80079500)
 .0:
 	lw $v0, ($v1)
 	nop
