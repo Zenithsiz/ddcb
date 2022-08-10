@@ -11,14 +11,14 @@ dylib_endseg_func_0:
 .0x801de828:	sw $s1, 0x24($sp)
 .0x801de82c:	sw $s0, 0x20($sp)
 .0x801de830:	addu $s2, $zr, $zr
-.0x801de834:	lui $v0, 0x801e
-.0x801de838:	addiu $a3, $v0, 0xcec
-.0x801de83c:	lui $v0, 0x801e
-.0x801de840:	addiu $a2, $v0, 0xd0c
-.0x801de844:	lui $v0, 0x801e
-.0x801de848:	addiu $a1, $v0, 0xd2c
-.0x801de84c:	lui $v0, 0x801e
-.0x801de850:	addiu $a0, $v0, 0xd4c
+.0x801de834:	lui $v0, %hi(DYLIB_ENDSEG_S_0x801e0cec)
+.0x801de838:	addiu $a3, $v0, %lo(DYLIB_ENDSEG_S_0x801e0cec)
+.0x801de83c:	lui $v0, %hi(DYLIB_ENDSEG_S_0x801e0d0c)
+.0x801de840:	addiu $a2, $v0, %lo(DYLIB_ENDSEG_S_0x801e0d0c)
+.0x801de844:	lui $v0, %hi(DYLIB_ENDSEG_S_0x801e0d2c)
+.0x801de848:	addiu $a1, $v0, %lo(DYLIB_ENDSEG_S_0x801e0d2c)
+.0x801de84c:	lui $v0, %hi(DYLIB_ENDSEG_S_0x801e0d4c)
+.0x801de850:	addiu $a0, $v0, %lo(DYLIB_ENDSEG_S_0x801e0d4c)
 .0x801de854:	sll $v1, $s2, 0x2
 	.0:
 .0x801de858:	addu $v0, $v1, $a3

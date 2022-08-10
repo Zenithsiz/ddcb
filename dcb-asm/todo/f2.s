@@ -2,8 +2,8 @@ f2:
 	addiu $sp, -0x18
 	sw $ra, 0x14($sp)
 	sw $s0, 0x10($sp)
-	lui $v0, 0x8007
-	lw $s0, 0x7a0c($v0)
+	lui $v0, %hi(S_0x80077a0c)
+	lw $s0, %lo(S_0x80077a0c)($v0)
 	jal f20
 		nop
 	lwi $v0, S_0x80077adc
@@ -44,10 +44,10 @@ f2:
 	sw $s0, 0x7a10($v0)
 	lui $a0, 0x8007
 	addiu $s0, $a0, 0x7ba0
-	lui $v0, 0x8007
-	sw $s0, 0x7a0c($v0)
-	lui $v1, 0x8007
-	lhu $v0, 0x7ba0($a0)
+	lui $v0, %hi(S_0x80077a0c)
+	sw $s0, %lo(S_0x80077a0c)($v0)
+	lui $v1, %hi(S_0x80077ba0)
+	lhu $v0, %lo(S_0x80077ba0)($a0)
 	nop
 	sh $v0, 0x7a18($v1)
 	lwi $v0, S_0x80077adc
