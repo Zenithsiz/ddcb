@@ -18,9 +18,9 @@ f71:
 		nop
 
 	# Load `0x80089848`, exit if it's 0.
-	lui $v0, 0x8009
-	addiu $v1, $v0, -0x67b8
-	lw $a0, -0x67b8($v0)
+	lui $v0, %hi(S_0x80089848)
+	addiu $v1, $v0, %lo(S_0x80089848)
+	lw $a0, %lo(S_0x80089848)($v0)
 	nop
 	beqz $a0, .exit_0_cleanup
 		li $a2, 0x3ff
@@ -31,7 +31,7 @@ f71:
 	nop
 	slt $v0, $a1, $s0
 	bnez $v0, .4
-		lui $v0, 0x8000
+		lui $v0, 0x8000 # TODO: Is this the start of an address?
 	or $s1, $a0, $v0
 	sw $s1, ($v1)
 	sw $s0, 0x4($v1)
@@ -39,10 +39,10 @@ f71:
 	beqz $a1, .3
 		sw $s2, 0x8($v1)
 	addu $a0, $s0
-	lui $v0, 0x8009
+	lui $v0, %hi(S_0x8008c83c)
 	addiu $a2, -0x1
 	blez $a2, .2
-		addiu $v1, $v0, -0x37c4
+		addiu $v1, $v0, %lo(S_0x8008c83c)
 .1:
 	lw $v0, -0xc($v1)
 	nop
