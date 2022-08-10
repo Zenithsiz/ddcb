@@ -3,6 +3,7 @@
 /tools/target
 
 # Build
+/dcb-rs/build
 /build
 
 # Python
