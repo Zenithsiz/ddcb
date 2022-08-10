@@ -2,9 +2,6 @@
 ld                     = mips-linux-gnu-ld
 as                     = mips-linux-gnu-as
 objcopy                = mips-linux-gnu-objcopy
-llc                    = /opt/llvm-mips1/bin/llc
-rustc                  = rustc
-cargo                  = cargo
 elf2psexe              = elf2psexe
 generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
@@ -63,7 +60,11 @@ ISO_FILES := $(DRV_FILES) \
 
 # Commands
 
-.PHONY: all compare tools clean
+.PHONY: all compare tools clean dcb-rs
+
+# `dcb-rs` makefile
+dcb-rs:
+	@$(MAKE) -C dcb-rs/
 
 # Default target, pack iso
 all: build/dcb.bin
@@ -156,7 +157,7 @@ build/dcb.psexe: build/dcb.elf
 	$(elf2psexe) "NA" $< $@
 
 # Final executable in elf format
-build/dcb.elf: build/dcb.o build/symbols.ld psx.ld
+build/dcb.elf: build/asm/dcb.o build/rs/libdcb.a build/symbols.ld psx.ld
 	$(ld) $< \
 		-o $@ \
 		--whole-archive \
@@ -165,6 +166,8 @@ build/dcb.elf: build/dcb.o build/symbols.ld psx.ld
 		--script psx.ld \
 		--warn-section-align \
 		--no-check-sections \
+		-Lbuild/rs/ \
+		-ldcb \
 		-M > build/dcb.map
 
 
@@ -173,65 +176,24 @@ build/symbols.ld: symbols.yaml section_addrs.yaml $(generate_linker_script)
 	$(generate_linker_script)
 
 # Assembly object files
-build/dcb.o build/dcb.d: build/asm/dcb.s build/rs/dcb.s $(ASM_PROCESSED_FILES)
+build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s $(ASM_PROCESSED_FILES)
 	$(as) \
 		-MD \
-		build/dcb.d \
-		-o build/dcb.o \
+		build/asm/dcb.d \
+		-o build/asm/dcb.o \
 		-EL \
 		-mips1 \
 		-march=r3000 \
+		-msoft-float \
 		-O2 \
-		build/rs/dcb.s \
 		build/asm/dcb.s \
 		2>&1 | sed -e "s,build/asm/,dcb-asm/,g" 1>&2
-	$(sed) -i -e "s/dcb.*-cgu.0//g" build/dcb.d
+	$(sed) -i -e "s/dcb.*-cgu.0//g" build/asm/dcb.d
 
-# Rust assembly
-# Note: Replace any `mips2` with `mips1` before assembling
-build/rs/dcb.s: build/rs/dcb.ll $(llc)
-	$(sed) -i -e "s/mips2/mips1/g" $<
-	$(llc) -O3 -march=mips -mcpu=mips1 -mattr=+soft-float $< -o $@
-
-# Rust llvm-ir
-build/rs/dcb.ll build/rs/dcb.d: dcb-rs/src/lib.rs build/rs/libcore.rlib build/rs/libdcb_macros.so
-	$(rustc) $< \
-		--crate-name dcb \
-		--edition 2021 \
-		--emit llvm-ir \
-		--emit dep-info \
-		-C opt-level=s \
-		-C embed-bitcode=no \
-		--target=mipsel-sony-psx.json \
-		--out-dir $(@D) \
-		--extern core=build/rs/libcore.rlib \
-		--extern dcb_macros=build/rs/libdcb_macros.so \
-		-Z macro-backtrace
-
-# `core` library
-build/rs/libcore.rlib build/rs/libcore.d: mipsel-sony-psx.json
-	$(cargo) build \
-		--release \
-		-p "core" \
-		-Z unstable-options \
-		--out-dir $(@D) \
-		--target mipsel-sony-psx.json
-	$(sed) \
-		-e "s,target/mipsel-sony-psx/release/,$(@D)/,g" \
-		-e "s,$(shell pwd)/,,g" target/mipsel-sony-psx/release/libcore.d \
-		> build/rs/libcore.d
-
-# `dcb-macros` library
-build/rs/libdcb_macros.so build/rs/libdcb_macros.d:
-	$(cargo) build \
-		--release \
-		-p "dcb-macros" \
-		-Z unstable-options \
-		--out-dir $(@D)
-	$(sed) \
-		-e "s,target/release/,$(@D)/,g" \
-		-e "s,$(shell pwd)/,,g" target/release/libdcb_macros.d \
-		> build/rs/libdcb_macros.d
+# Rust lib
+build/rs/libdcb.a: dcb-rs
+	@mkdir -p $(@D)
+	cp dcb-rs/build/libdcb.a $@
 
 # Processed assembly files
 # TODO: Require `symbols.yaml` here once it isn't so slow
@@ -239,10 +201,7 @@ build/asm/%.s: dcb-asm/%.s $(preprocess_asm)
 	$(preprocess_asm) $< -o $@ --replace-includes --replace-local-labels --add-label-section
 
 # Dependencies
-include build/dcb.d
-include build/rs/dcb.d
-include build/rs/libcore.d
-include build/rs/libdcb_macros.d
+include build/asm/dcb.d
 include $(TOOLS_DEP)
 include $(DRV_FILES_DEP)
 include $(PAK_FILES_DEP)

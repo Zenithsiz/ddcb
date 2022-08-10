@@ -9,8 +9,7 @@
 	naked_functions,
 	auto_traits,
 	negative_impls,
-	intrinsics,
-	untagged_unions
+	intrinsics
 )]
 // Core / Std
 #![no_std]

@@ -1,0 +1,6 @@
+[build]
+dep-info-basedir = "."
+target = "mipsel-sony-psx.json"
+
+[target."mipsel-sony-psx.json"]
+linker = "mips-linux-gnu-ld"

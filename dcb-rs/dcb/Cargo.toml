@@ -1,0 +1,12 @@
+[package]
+edition = "2021"
+name = "dcb"
+version = "0.1.0"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+
+core = {path = "../core"}
+dcb-macros = {path = "../dcb-macros"}

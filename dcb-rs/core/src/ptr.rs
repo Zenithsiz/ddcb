@@ -25,6 +25,8 @@ pub struct PtrComponents<T: ?Sized> {
 	pub metadata:     <T as Pointee>::Metadata,
 }
 
+impl<T: ?Sized> Copy for PtrComponents<T> {}
+
 impl<T: ?Sized> *const T {
 	#[inline(always)]
 	pub const fn cast<U>(self) -> *mut U {
