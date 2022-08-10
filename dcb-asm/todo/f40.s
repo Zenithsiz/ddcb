@@ -10,20 +10,20 @@ f40:
 	sw $s2, 0x20($sp)
 	sw $s1, 0x1c($sp)
 	sw $s0, 0x18($sp)
-	lui $a1, 0x8009
-	sh $a0, -0x6814($a1)
-	lui $s1, 0x8009
+	lui $a1, %hi(S_0x800897ec)
+	sh $a0, %lo(S_0x800897ec)($a1)
+	lui $s1, %hi(S_0x800897ee)
 	li $v0, 0x3c0
-	sh $v0, -0x6812($s1)
-	lui $s0, 0x8009
+	sh $v0, %lo(S_0x800897ee)($s1)
+	lui $s0, %hi(S_0x800897f0)
 	li $v0, 0x100
-	sh $v0, -0x6810($s0)
-	lui $v1, 0x8009
+	sh $v0, %lo(S_0x800897f0)($s0)
+	lui $v1, %hi(S_0x800897f2)
 	li $v0, 0x3e0
-	sh $v0, -0x680e($v1)
-	lui $v1, 0x8009
+	sh $v0, %lo(S_0x800897f2)($v1)
+	lui $v1, %hi(S_0x800897f4)
 	li $v0, 0x1f8
-	sh $v0, -0x680c($v1)
+	sh $v0, %lo(S_0x800897f4)($v1)
 	andi $v0, $a0, 0xffff
 	sll $a0, $v0, 0x2
 	addu $a0, $v0
@@ -33,13 +33,13 @@ f40:
 		sll $a0, 0x3
 	move_ $fp, $v0
 	move_ $a0, $zr
-	lhu $a2, -0x6812($s1)
-	lhu $a3, -0x6810($s0)
+	lhu $a2, %lo(S_0x800897ee)($s1)
+	lhu $a3, %lo(S_0x800897f0)($s0)
 	jal f972
 		move_ $a1, $zr
 	move_ $s4, $v0
 	move_ $s6, $zr
-	lui $s7, 0x8009
+	lui $s7, %hi(S_0x800897ec)
 	sll $a0, $s6, 0x6
 .0:
 	addu $a0, $s6
@@ -48,7 +48,7 @@ f40:
 	sll $a0, 0x6
 	la_ $v0, 0x8007d64c
 	addu $a0, $v0
-	lhu $v1, -0x6814($s7)
+	lhu $v1, %lo(S_0x800897ec)($s7)
 	nop
 	mult $v1, $s6
 	mflo $v1
@@ -60,7 +60,7 @@ f40:
 	addu $v0, $fp, $v0
 	sw $v0, ($a0)
 	move_ $s2, $v0
-	lhu $v0, -0x6814($s7)
+	lhu $v0, %lo(S_0x800897ec)($s7)
 	nop
 	beqz $v0, .4
 		move_ $s5, $zr
@@ -143,7 +143,7 @@ f40:
 	jal f999
 		addiu $a1, $sp, 0x10
 	addiu $s5, 0x1
-	lhu $v0, -0x6814($s7)
+	lhu $v0, %lo(S_0x800897ec)($s7)
 	nop
 	slt $v0, $s5, $v0
 	bnez $v0, .1
@@ -153,12 +153,12 @@ f40:
 	slti $v0, $s6, 0x2
 	bnez $v0, .0
 		sll $a0, $s6, 0x6
-	lui $v1, 0x8009
-	lwi $v0, 0x800793a0
+	lui $v1, %hi(S_0x800897e8)
+	lwi $v0, S_0x800793a0
 	nop
 	lw $v0, 0x40bc($v0)
 	nop
-	sw $v0, -0x6818($v1)
+	sw $v0, %lo(S_0x800897e8)($v1)
 	lw $ra, 0x3c($sp)
 	lw $fp, 0x38($sp)
 	lw $s7, 0x34($sp)
@@ -173,10 +173,10 @@ f40:
 		addiu $sp, 0x40
 
 f41:
-	lui $v1, 0x8009
-	lui $v0, 0x8008
-	lw $v0, -0x6c60($v0)
+	lui $v1, %hi(S_0x800897e8)
+	lui $v0, %hi(S_0x800793a0)
+	lw $v0, %lo(S_0x800793a0)($v0)
 	nop
 	lw $v0, 0x40bc($v0)
 	jr $ra
-		sw $v0, -0x6818($v1)
+		sw $v0, %lo(S_0x800897e8)($v1)
