@@ -21,8 +21,8 @@ f58:
 	lbu $v0, 0x25($s0)
 	nop
 	beqz $v0, .18
-		lui $v1, 0x8009
-	addiu $v1, -0x67c0
+		lui $v1, %hi(S_0x80089840)
+	addiu $v1, %lo(S_0x80089840)
 	lbu $v0, 0x28($s0)
 	nop
 	sll $v0, 0x2
@@ -33,7 +33,7 @@ f58:
 	nop
 	andi $v0, 0x1000
 	beqz $v0, .1
-		lui $v1, 0x8009
+		lui $v1, %hi(S_0x80089840)
 	jal f313
 		li $a0, 0x2
 	li $v0, 0x1
@@ -48,8 +48,8 @@ f58:
 	lh $v0, 0x14($s0)
 	nop
 	bnez $v0, .0
-		lui $v0, 0x8009
-	addiu $v0, -0x67c0
+		lui $v0, %hi(S_0x80089840)
+	addiu $v0, %lo(S_0x80089840)
 	lbu $v1, 0x28($s0)
 	nop
 	sll $v1, 0x2
@@ -73,7 +73,7 @@ f58:
 	j .18
 		nop
 .1:
-	addiu $v1, -0x67c0
+	addiu $v1, %lo(S_0x80089840)
 	lbu $v0, 0x28($s0)
 	nop
 	sll $v0, 0x2
@@ -84,7 +84,7 @@ f58:
 	nop
 	andi $v0, 0x4000
 	beqz $v0, .3
-		lui $v1, 0x8009
+		lui $v1, %hi(S_0x80089840)
 	jal f313
 		li $a0, 0x2
 	li $v0, 0x1
@@ -105,8 +105,8 @@ f58:
 	nop
 	addiu $v0, -0x1
 	bne $v1, $v0, .2
-		lui $v0, 0x8009
-	addiu $v0, -0x67c0
+		lui $v0, %hi(S_0x80089840)
+	addiu $v0, %lo(S_0x80089840)
 	lbu $v1, 0x28($s0)
 	nop
 	sll $v1, 0x2
@@ -136,7 +136,7 @@ f58:
 	j .18
 		nop
 .3:
-	addiu $v1, -0x67c0
+	addiu $v1, %lo(S_0x80089840)
 	lbu $v0, 0x28($s0)
 	nop
 	sll $v0, 0x2
@@ -147,7 +147,7 @@ f58:
 	nop
 	andi $v0, 0x1
 	beqz $v0, .10
-		lui $v1, 0x8009
+		lui $v1, %hi(S_0x80089840)
 	lh $v0, 0x14($s0)
 	nop
 	beqz $v0, .4
@@ -174,8 +174,8 @@ f58:
 	sh $v1, 0x14($s0)
 	sll $v1, 0x10
 	bgez $v1, .7
-		lui $v0, 0x8009
-	addiu $v0, -0x67c0
+		lui $v0, %hi(S_0x80089840)
+	addiu $v0, %lo(S_0x80089840)
 	lbu $v1, 0x28($s0)
 	nop
 	sll $v1, 0x2
@@ -194,8 +194,8 @@ f58:
 	lh $v0, 0x14($s0)
 	nop
 	bnez $v0, .8
-		lui $v0, 0x8009
-	addiu $v0, -0x67c0
+		lui $v0, %hi(S_0x80089840)
+	addiu $v0, %lo(S_0x80089840)
 	lbu $v1, 0x28($s0)
 	nop
 	sll $v1, 0x2
@@ -225,7 +225,7 @@ f58:
 	j .18
 		nop
 .10:
-	addiu $v1, -0x67c0
+	addiu $v1, %lo(S_0x80089840)
 	lbu $v0, 0x28($s0)
 	nop
 	sll $v0, 0x2
@@ -269,8 +269,8 @@ f58:
 	nop
 	slt $v0, $v0, $v1
 	bnez $v0, .14
-		lui $v1, 0x8009
-	addiu $v1, -0x67c0
+		lui $v1, %hi(S_0x80089840)
+	addiu $v1, %lo(S_0x80089840)
 	lbu $v0, 0x28($s0)
 	nop
 	sll $v0, 0x2
@@ -296,8 +296,8 @@ f58:
 	nop
 	addiu $v0, -0x1
 	bne $v1, $v0, .15
-		lui $v0, 0x8009
-	addiu $v0, -0x67c0
+		lui $v0, %hi(S_0x80089840)
+	addiu $v0, %lo(S_0x80089840)
 	lbu $v1, 0x28($s0)
 	nop
 	sll $v1, 0x2

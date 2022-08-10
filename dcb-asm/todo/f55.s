@@ -78,8 +78,8 @@ f55:
 	swl $v1, 0x47($t1)
 	swr $v1, 0x44($t1)
 .1:
-	lui $a0, 0x8008
-	lbu $v1, -0x6b0c($a0)
+	lui $a0, %hi(S_0x800794f4)
+	lbu $v1, %lo(S_0x800794f4)($a0)
 	nop
 	sll $v1, 0x4
 	addu $v1, $t1
@@ -87,7 +87,7 @@ f55:
 	nop
 	addiu $v0, -0x2
 	sh $v0, 0x18($v1)
-	lbu $v1, -0x6b0c($a0)
+	lbu $v1, %lo(S_0x800794f4)($a0)
 	nop
 	sll $v1, 0x4
 	addu $v1, $t1
@@ -95,7 +95,7 @@ f55:
 	nop
 	addiu $v0, -0x1
 	sh $v0, 0x1a($v1)
-	lbu $v1, -0x6b0c($a0)
+	lbu $v1, %lo(S_0x800794f4)($a0)
 	nop
 	sll $v1, 0x4
 	addu $v1, $t1
@@ -103,7 +103,7 @@ f55:
 	nop
 	addiu $v0, 0x4
 	sh $v0, 0x1c($v1)
-	lbu $v1, -0x6b0c($a0)
+	lbu $v1, %lo(S_0x800794f4)($a0)
 	nop
 	sll $v1, 0x4
 	addu $v1, $t1
@@ -111,7 +111,7 @@ f55:
 	nop
 	addiu $v0, 0x2
 	sh $v0, 0x1e($v1)
-	lbu $v0, -0x6b0c($a0)
+	lbu $v0, %lo(S_0x800794f4)($a0)
 	nop
 	sll $v0, 0x4
 	addu $v0, $t1
@@ -159,8 +159,8 @@ f55:
 .4:
 	sra $v0, 0x7
 	sb $v0, 0x6($a0)
-	lui $t0, 0x8008
-	lbu $a0, -0x6b0c($t0)
+	lui $t0, %hi(S_0x800794f4)
+	lbu $a0, %lo(S_0x800794f4)($t0)
 	nop
 	sll $a0, 0x4
 	addu $a0, $t1
@@ -175,7 +175,7 @@ f55:
 	and $v0, $a2
 	or $v0, $v1
 	sw $v0, 0x10($a0)
-	lbu $v0, -0x6b0c($t0)
+	lbu $v0, %lo(S_0x800794f4)($t0)
 	nop
 	sll $v0, 0x4
 	addiu $v0, 0x10
@@ -186,7 +186,7 @@ f55:
 	and $v1, $a2
 	or $v1, $v0
 	sw $v1, 0x70($a1)
-	lbu $a0, -0x6b0c($t0)
+	lbu $a0, %lo(S_0x800794f4)($t0)
 	nop
 	sll $a0, 0x3
 	addu $a0, $t1
@@ -196,7 +196,7 @@ f55:
 	and $v0, $a2
 	or $v0, $v1
 	sw $v0, ($a0)
-	lbu $v0, -0x6b0c($t0)
+	lbu $v0, %lo(S_0x800794f4)($t0)
 	nop
 	sll $v0, 0x3
 	addu $v0, $t1, $v0
