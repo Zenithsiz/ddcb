@@ -6,8 +6,8 @@ f62:
 	sw $s1, 0x1c($sp)
 	sw $s0, 0x18($sp)
 	move_ $s0, $a0
-	lui $v0, 0x8009
-	sw $zr, -0x67c4($v0)
+	lui $v0, %hi(S_0x8008983c)
+	sw $zr, %lo(S_0x8008983c)($v0)
 	lb $v1, 0xa5($s0)
 	li $v0, 0x1
 	bne $v1, $v0, .0
@@ -38,17 +38,17 @@ f62:
 	addiu $a1, $sp, 0x10
 	jal f53
 		li $a2, -0x1
-	lui $v0, 0x8009
-	addiu $s1, $v0, -0x67c0
+	lui $v0, %hi(S_0x80089840)
+	addiu $s1, $v0, %lo(S_0x80089840)
 	li $s2, 0x1
-	lui $v0, 0x8008
+	lui $v0, %hi(S_0x800794f0)
 .1:
-	lw $a0, -0x6b10($v0)
+	lw $a0, %lo(S_0x800794f0)($v0)
 	jal f19
 		nop
-	lui $a1, 0x8002
+	lui $a1, %hi(f63)
 	move_ $a0, $s0
-	addiu $a1, -0x5bf4
+	addiu $a1, %lo(f63)
 	jal f45
 		move_ $a2, $zr
 	lw $v0, 0xa0($s0)
@@ -82,7 +82,7 @@ f62:
 	lbu $v0, 0xb4($s0)
 	nop
 	beqz $v0, .1
-		lui $v0, 0x8008
+		lui $v0, %hi(S_0x800794f0)
 .4:
 	lbu $v0, 0xb4($s0)
 	nop
@@ -117,14 +117,14 @@ f62:
 .11:
 	jal f43
 		li $a1, -0x1
-	lui $s2, 0x8008
-	lui $s1, 0x8002
+	lui $s2, %hi(S_0x800794f0)
+	lui $s1, %hi(f63)
 .7:
-	lw $a0, -0x6b10($s2)
+	lw $a0, %lo(S_0x800794f0)($s2)
 	jal f19
 		nop
 	move_ $a0, $s0
-	addiu $a1, $s1, -0x5bf4
+	addiu $a1, $s1, %lo(f63)
 	jal f45
 		move_ $a2, $zr
 	lw $v0, 0xa0($s0)
@@ -137,9 +137,9 @@ f62:
 	lb $v0, 0x41($s0)
 	nop
 	beqz $v0, .7
-		lui $v1, 0x8009
+		lui $v1, %hi(S_0x8008983c)
 	li $v0, 0x1
-	sw $v0, -0x67c4($v1)
+	sw $v0, %lo(S_0x8008983c)($v1)
 	lb $a1, 0xa5($s0)
 	jal f16
 		move_ $a0, $s3
