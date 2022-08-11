@@ -352,7 +352,7 @@ f186:
 	nop
 	bnez $v0, .13
 		nop
-	jal f1053
+	jal rng_step
 		nop
 	lhu $v1, 0x2($s0)
 	nop
@@ -370,7 +370,7 @@ f186:
 	j f186.28
 		sw $v0, ($v1)
 .13:
-	jal f1053
+	jal rng_step
 		nop
 	lhu $a0, 0x2($s0)
 	nop

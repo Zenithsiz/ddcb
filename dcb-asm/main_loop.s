@@ -40,8 +40,10 @@ main_loop:
 	la_ $a2, f24_2
 	jal f13
 		move_ $a3, $zr
+
+# Step the rng on loop
 .0:
-	jal f1053
+	jal rng_step
 		nop
 	j .0
 		nop

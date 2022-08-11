@@ -13553,7 +13553,7 @@ dylib_sugseg_func_59:
 .0x801ea720:	j .8
 .0x801ea724:		sw $v0, -0x81c($s0)
 	.5:
-.0x801ea728:	jal f1053
+.0x801ea728:	jal rng_step
 .0x801ea72c:		lui $s0, 0x8008
 .0x801ea730:	addiu $s0, -0x6c58
 .0x801ea734:	lui $v1, 0x801f
@@ -13569,7 +13569,7 @@ dylib_sugseg_func_59:
 .0x801ea758:	addu $v1, $v0
 .0x801ea75c:	sra $v1, 0x1
 .0x801ea760:	subu $a0, $v1
-.0x801ea764:	jal f1053
+.0x801ea764:	jal rng_step
 .0x801ea768:		sh $a0, 0x118($s0)
 .0x801ea76c:	lui $v1, 0x801f
 .0x801ea770:	lw $v1, -0x81c($v1)

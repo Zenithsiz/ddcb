@@ -1437,7 +1437,7 @@ dylib_evoseg_func_12:
 .0x801e0b20:	sw $s1, 0x7c($sp)
 .0x801e0b24:	sw $s0, 0x78($sp)
 .0x801e0b28:	addu $s0, $a0, $zr
-.0x801e0b2c:	jal f1053
+.0x801e0b2c:	jal rng_step
 .0x801e0b30:		sw $a1, 0xa4($sp)
 .0x801e0b34:	lui $a1, 0x801f
 .0x801e0b38:	lui $v1, 0x801f
@@ -3701,7 +3701,7 @@ dylib_evoseg_func_15:
 .0x801e2d88:	lui $v0, 0x801f
 .0x801e2d8c:	addiu $s1, $v0, 0x550
 	.6:
-.0x801e2d90:	jal f1053
+.0x801e2d90:	jal rng_step
 .0x801e2d94:		nop
 .0x801e2d98:	lb $a1, 0x26($s2)
 .0x801e2d9c:	nop
@@ -6354,7 +6354,7 @@ dylib_evoseg_func_25:
 .0x801e5514:	addu $a0, $s1, $zr
 .0x801e5518:	jal f974
 .0x801e551c:		addiu $a1, $zr, 0x1
-.0x801e5520:	jal f1053
+.0x801e5520:	jal rng_step
 .0x801e5524:		nop
 .0x801e5528:	addu $v1, $v0, $zr
 .0x801e552c:	bgez $v1, .4
@@ -14777,7 +14777,7 @@ dylib_evoseg_func_86:
 .0x801ecf44:	addiu $v0, $zr, -0x1
 .0x801ecf48:	bne $v1, $v0, .34
 .0x801ecf4c:		lui $v1, 0x801f
-.0x801ecf50:	jal f1053
+.0x801ecf50:	jal rng_step
 .0x801ecf54:		nop
 .0x801ecf58:	lui $a0, 0x51eb
 .0x801ecf5c:	ori $a0, 0x851f
@@ -14821,7 +14821,7 @@ dylib_evoseg_func_86:
 .0x801ecff0:	addiu $v0, $zr, 0x1
 .0x801ecff4:	sw $v0, 0x34($v1)
 .0x801ecff8:	addiu $v0, $zr, 0x2
-.0x801ecffc:	jal f1053
+.0x801ecffc:	jal rng_step
 .0x801ed000:		sb $v0, 0xc5($s0)
 .0x801ed004:	lui $a0, 0x51eb
 .0x801ed008:	ori $a0, 0x851f
@@ -14850,7 +14850,7 @@ dylib_evoseg_func_86:
 .0x801ed060:	slti $v0, $v0, 0x15
 .0x801ed064:	beqz $v0, .12
 .0x801ed068:		lui $v0, 0x801f
-.0x801ed06c:	jal f1053
+.0x801ed06c:	jal rng_step
 .0x801ed070:		nop
 .0x801ed074:	lui $v1, 0x2aaa
 .0x801ed078:	ori $v1, 0xaaab
@@ -14885,7 +14885,7 @@ dylib_evoseg_func_86:
 .0x801ed0e8:	j .35
 .0x801ed0ec:		sh $v0, 0xb0($v1)
 	.13:
-.0x801ed0f0:	jal f1053
+.0x801ed0f0:	jal rng_step
 .0x801ed0f4:		nop
 .0x801ed0f8:	lui $v1, 0x801f
 .0x801ed0fc:	addiu $s0, $v1, 0x5478
@@ -14968,7 +14968,7 @@ dylib_evoseg_func_86:
 .0x801ed224:	nop
 .0x801ed228:	beq $v0, $s2, .17
 .0x801ed22c:		nop
-.0x801ed230:	jal f1053
+.0x801ed230:	jal rng_step
 .0x801ed234:		nop
 .0x801ed238:	srl $v1, $v0, 0x1f
 .0x801ed23c:	addu $v1, $v0, $v1
@@ -15078,7 +15078,7 @@ dylib_evoseg_func_86:
 .0x801ed3b4:	nop
 .0x801ed3b8:	beq $v0, $s1, .27
 .0x801ed3bc:		nop
-.0x801ed3c0:	jal f1053
+.0x801ed3c0:	jal rng_step
 .0x801ed3c4:		nop
 .0x801ed3c8:	srl $v1, $v0, 0x1f
 .0x801ed3cc:	addu $v1, $v0, $v1
@@ -15365,7 +15365,7 @@ dylib_evoseg_func_87:
 .0x801ed7a8:	addiu $s1, $sp, 0x10
 .0x801ed7ac:	addu $s3, $s2, $zr
 	.11:
-.0x801ed7b0:	jal f1053
+.0x801ed7b0:	jal rng_step
 .0x801ed7b4:		nop
 .0x801ed7b8:	div $zr, $v0, $s2
 .0x801ed7bc:	mfhi $v1

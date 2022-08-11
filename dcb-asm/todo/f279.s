@@ -3179,7 +3179,7 @@ f335:
 	sh $zr, 0x1a($s2)
 	sh $zr, 0x1c($s2)
 	sh $zr, 0x1e($s2)
-	jal f1053
+	jal rng_step
 		sb $zr, 0xe($s2)
 	sh $v0, 0x10($s2)
 	lw $v0, 0x28($s2)
@@ -4158,7 +4158,7 @@ f346:
 	move_ $s3, $a0
 	bgez $s3, .0
 		sw $s0, 0x40($sp)
-	jal f1053
+	jal rng_step
 		nop
 	li $v1, 0x2aaaaaab
 	mult $v0, $v1

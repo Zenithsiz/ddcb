@@ -9110,7 +9110,7 @@ dylib_openseg_func_28:
 .0x801e83e0:	addu $v0, $s2
 .0x801e83e4:	sll $s0, $v0, 0x1
 	.2:
-.0x801e83e8:	jal f1053
+.0x801e83e8:	jal rng_step
 .0x801e83ec:		nop
 .0x801e83f0:	sll $a1, $s1, 0x1
 .0x801e83f4:	addu $a1, $s0, $a1

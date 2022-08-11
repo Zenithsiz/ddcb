@@ -5887,7 +5887,7 @@ f418:
 	jal dylib_kawseg_func_69.0x801f8854
 		sw $v0, -0x7cc0($s0)
 	lw $v1, -0x7cc0($s0)
-	jal f1053
+	jal rng_step
 		sw $v0, 0x7f8($v1)
 	lw $a0, -0x7cc0($s0)
 	srl $v1, $v0, 0x1f
@@ -8864,7 +8864,7 @@ f456:
 	sll $v1, $s4, 0x2
 	addu $s2, $v1, $v0
 .1:
-	jal f1053
+	jal rng_step
 		nop
 	div $zr, $v0, $s1
 	mfhi $v1
@@ -8955,7 +8955,7 @@ f457:
 	sll $v1, $s4, 0x2
 	addu $s2, $v1, $v0
 .1:
-	jal f1053
+	jal rng_step
 		nop
 	div $zr, $v0, $s1
 	mfhi $v1
@@ -13250,7 +13250,7 @@ f476:
 	move_ $s2, $a1
 	move_ $s1, $a2
 .0:
-	jal f1053
+	jal rng_step
 		nop
 	move_ $a2, $v0
 	blez $s1, .2
@@ -14170,7 +14170,7 @@ f489:
 	slti $v0, $a1, 0x12d
 	bnez $v0, .5
 		addiu $a2, 0x4
-	jal f1053
+	jal rng_step
 		nop
 	li $a0, 0x51eb851f
 	mult $v0, $a0
@@ -14187,7 +14187,7 @@ f489:
 	slt $v0, $v0, $s1
 	beqz $v0, .16
 		nop
-	jal f1053
+	jal rng_step
 		lui $s1, 0x8007
 	lw $a0, -0x1fb0($s1)
 	sll $s0, $s4, 0x6
@@ -14208,7 +14208,7 @@ f489:
 	j .23
 		addu $v0, $s6
 .16:
-	jal f1053
+	jal rng_step
 		lui $s1, 0x8007
 	lw $a0, -0x1fb0($s1)
 	sll $s0, $s4, 0x6
@@ -14229,7 +14229,7 @@ f489:
 	addu $v0, $s3
 .23:
 	lhu $v0, ($v0)
-	jal f1053
+	jal rng_step
 		sh $v0, 0x2768($a0)
 	lw $v1, -0x1fb0($s1)
 	nop
@@ -14243,7 +14243,7 @@ f489:
 	sll $v0, 0x1
 	addu $v0, $s3
 	lhu $v0, ($v0)
-	jal f1053
+	jal rng_step
 		sh $v0, 0x276a($v1)
 	lw $v1, -0x1fb0($s1)
 	nop
@@ -17638,7 +17638,7 @@ f521:
 	sll $a0, 0x18
 	bnez $a0, .1
 		li $v0, -0x1
-	jal f1053
+	jal rng_step
 		nop
 	move_ $v1, $v0
 	bgez $v1, .0
@@ -50768,71 +50768,6 @@ f1052:
 .1:
 	jr $ra
 		nop
-
-f1053:
-	lui $v1, 0x41c6
-	lwi $v0, 0x801ddc10
-	ori $v1, 0x4e6d
-	mult $v0, $v1
-	mflo $a0
-	addiu $v0, $a0, 0x3039
-	swi $v0, 0x801ddc10
-	srl $v0, 0x10
-	jr $ra
-		andi $v0, 0x7fff
-	lui $at, 0x801e
-	jr $ra
-		sw $a0, -0x23f0($at)
-	nop
-	addiu $sp, -0x20
-	sw $s1, 0x14($sp)
-	move_ $s1, $a0
-	sw $s2, 0x18($sp)
-	move_ $s2, $a1
-	sw $ra, 0x1c($sp)
-	beqz $s1, .3
-		sw $s0, 0x10($sp)
-	beqz $s2, .4
-		move_ $v0, $zr
-	jal f1056
-		move_ $a0, $s1
-	move_ $a0, $s2
-	jal f1056
-		addu $s0, $s1, $v0
-	addu $v0, $s2, $v0
-	beq $s0, $v0, .3
-		move_ $v1, $s1
-	lb $v0, ($v1)
-	nop
-	beqz $v0, .1
-		addiu $s1, $v1, 0x1
-.0:
-	lb $v0, ($s1)
-	nop
-	bnez $v0, .0
-		addiu $s1, 0x1
-.1:
-	addiu $s1, -0x1
-.2:
-	lbu $v0, ($s2)
-	addiu $s2, 0x1
-	sb $v0, ($s1)
-	bnez $v0, .2
-		addiu $s1, 0x1
-	j f1053.4
-		move_ $v0, $v1
-.3:
-	move_ $v0, $zr
-.4:
-	lw $ra, 0x1c($sp)
-	lw $s2, 0x18($sp)
-	lw $s1, 0x14($sp)
-	lw $s0, 0x10($sp)
-	jr $ra
-		addiu $sp, 0x20
-	nop
-	nop
-	nop
 
 f1054:
 	beqz $a0, .0

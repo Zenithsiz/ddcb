@@ -18440,7 +18440,7 @@ dylib_subseg_func_26:
 .0x801f1434:	subu $v0, $s3
 .0x801f1438:	sll $s2, $v0, 0x3
 	.20:
-.0x801f143c:	jal f1053
+.0x801f143c:	jal rng_step
 .0x801f1440:		nop
 .0x801f1444:	lw $a1, 0x42d8($s4)
 .0x801f1448:	nop

@@ -1838,7 +1838,7 @@ f372:
 	sw $s2, 0x18($sp)
 	sw $s1, 0x14($sp)
 	sw $s0, 0x10($sp)
-	jal f1053
+	jal rng_step
 		move_ $s2, $a0
 	lhu $s1, 0x120($s2)
 	nop
@@ -1853,7 +1853,7 @@ f372:
 		nop
 	break 0x0, 0x7
 .0:
-	jal f1053
+	jal rng_step
 		subu $s1, $v0
 	lhu $s0, 0x120($s2)
 	nop
@@ -1868,7 +1868,7 @@ f372:
 		nop
 	break 0x0, 0x7
 .1:
-	jal f1053
+	jal rng_step
 		subu $s0, $v0
 	lhu $v1, 0x120($s2)
 	nop
@@ -4692,7 +4692,7 @@ f391:
 	lw $a0, 0x20($sp)
 	nop
 	sll $v0, $a0, 0x3
-	jal f1053
+	jal rng_step
 		sh $v0, 0x7c($s1)
 	lw $v1, 0x2c($sp)
 	nop
@@ -4716,7 +4716,7 @@ f391:
 	slti $v0, $a0, 0x3
 	beqz $v0, .17
 		addiu $v0, $s3, -0xb4
-	jal f1053
+	jal rng_step
 		nop
 	div $zr, $v0, $s3
 	mfhi $v1
@@ -4728,7 +4728,7 @@ f391:
 	addu $v0, $s3, $v0
 	sra $v0, 0x1
 	subu $v1, $v0
-	jal f1053
+	jal rng_step
 		sh $v1, 0x32($s1)
 	div $zr, $v0, $s5
 	mfhi $v1
@@ -4801,7 +4801,7 @@ f391:
 	j .37
 		sh $s6, 0x76($s1)
 .21:
-	jal f1053
+	jal rng_step
 		nop
 	move_ $a0, $v0
 	bgez $a0, .22
@@ -4814,7 +4814,7 @@ f391:
 	j .37
 		sh $s6, 0x76($s1)
 .23:
-	jal f1053
+	jal rng_step
 		nop
 	move_ $a0, $v0
 	bgez $a0, .24
@@ -4823,7 +4823,7 @@ f391:
 .24:
 	sra $s7, $v0, 0xc
 	sll $v0, $s7, 0xc
-	jal f1053
+	jal rng_step
 		subu $s7, $a0, $v0
 	div $zr, $v0, $s6
 	mfhi $v0
@@ -4835,10 +4835,10 @@ f391:
 .37:
 	sh $s7, 0x34($s1)
 .26:
-	jal f1053
+	jal rng_step
 		nop
 	andi $v0, 0xfff
-	jal f1053
+	jal rng_step
 		sh $v0, 0x82($s1)
 	andi $v1, $v0, 0x1ff
 	andi $v0, $s4, 0x1
