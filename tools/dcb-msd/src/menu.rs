@@ -9,6 +9,9 @@ pub enum ComboBox {
 
 	/// Large combo box with 5 buttons
 	Large,
+
+	/// Unknown combo box
+	Unknown,
 }
 
 impl ComboBox {
@@ -18,6 +21,7 @@ impl ComboBox {
 		match self {
 			ComboBox::Small => "small",
 			ComboBox::Large => "large",
+			ComboBox::Unknown => "unknown",
 		}
 	}
 
@@ -37,6 +41,7 @@ impl ComboBox {
 					HauntedArena | FusionShop |
 					Yes | No
 			),
+			Self::Unknown => false,
 		}
 	}
 

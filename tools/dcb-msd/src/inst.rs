@@ -20,7 +20,7 @@ use {
 	byteorder::{ByteOrder, LittleEndian},
 	encoding_rs::SHIFT_JIS,
 	itertools::Itertools,
-	std::{assert_matches::assert_matches, io},
+	std::io,
 	zutil::TryIntoAs,
 };
 
@@ -178,6 +178,9 @@ pub enum Inst<'a> {
 		/// Unknown
 		value: u16,
 	},
+
+	/// Unknown
+	Unknown { value: u32 },
 }
 
 impl<'a> Inst<'a> {
@@ -200,9 +203,7 @@ impl<'a> Inst<'a> {
 				let op = LittleEndian::read_u32(slice.get(0x4..0x8)?);
 				let value = LittleEndian::read_u32(slice.get(0x8..0xc)?);
 
-				// 0 => Set, 1 => Add, 6 => ???
-
-				assert_matches!(op, 0 | 1 | 6, "Unknown set_value operation");
+				// 0 => Set, 1 => Add, _ => ???
 
 				Self::ChangeVar { var, op, value }
 			},
@@ -232,8 +233,6 @@ impl<'a> Inst<'a> {
 				let var = LittleEndian::read_u16(slice.get(0x2..0x4)?);
 				let op = LittleEndian::read_u32(slice.get(0x4..0x8)?);
 				let value = LittleEndian::read_u32(slice.get(0x8..0xc)?);
-
-				assert_matches!(op, 3 | 5, "Unknown test operation");
 
 				Self::Test { var, op, value }
 			},
@@ -273,6 +272,7 @@ impl<'a> Inst<'a> {
 					let combo_box = match value {
 						0x61 => ComboBox::Small,
 						0x78 => ComboBox::Large,
+						0xffff => ComboBox::Unknown,
 						_ => return None,
 					};
 
@@ -322,6 +322,7 @@ impl<'a> Inst<'a> {
 					value,
 				}
 			},
+
 			_ => return None,
 		};
 
@@ -377,6 +378,7 @@ impl<'a> Inst<'a> {
 					&match combo_box {
 						ComboBox::Small => 0x61u16,
 						ComboBox::Large => 0x78,
+						ComboBox::Unknown => 0xffff,
 					}
 					.to_le_bytes(),
 				)?;
@@ -418,6 +420,9 @@ impl<'a> Inst<'a> {
 				f.write_all(&[0x0, 0x0])?;
 				f.write_all(&brightness.to_le_bytes())?;
 				f.write_all(&[0x0, 0x0])?;
+				f.write_all(&value.to_le_bytes())?;
+			},
+			Self::Unknown { value } => {
 				f.write_all(&value.to_le_bytes())?;
 			},
 		}
@@ -483,8 +488,7 @@ impl<'a> Inst<'a> {
 
 					(_, 0) => write!(f, "set_var {var_label}, {value:#x}")?,
 					(_, 1) => write!(f, "add_var {var_label}, {value:#x}")?,
-					(_, 6) => write!(f, "???_var {var_label}, {value:#x}")?,
-					_ => unreachable!(),
+					_ => write!(f, "mod_var {var:#x}, {op:#x}, {var_label}, {value:#x}")?,
 				}
 			},
 			Self::Test { var, op, value } => {
@@ -496,7 +500,7 @@ impl<'a> Inst<'a> {
 				match op {
 					3 => write!(f, "test_eq {var}, {value:#x}")?,
 					5 => write!(f, "test_lt {var}, {value:#x}")?,
-					_ => unreachable!(),
+					_ => write!(f, "test {op:#x}, {var}, {value:#x}")?,
 				}
 			},
 
@@ -520,7 +524,7 @@ impl<'a> Inst<'a> {
 						3 => write!(f, "Extra Arena"),
 						4 => write!(f, "Beet Arena"),
 						5 => write!(f, "Haunted Arena"),
-						_ => write!(f, "<Unknown arena {location:#x}>"),
+						_ => write!(f, "Arena{location:#x}"),
 					});
 
 					write!(f, "display_location \"{location}\"")?;
@@ -533,7 +537,7 @@ impl<'a> Inst<'a> {
 						3 => write!(f, "Gatomon"),
 						4 => write!(f, "Patamon"),
 						5 => write!(f, "Wormmon"),
-						_ => write!(f, "<Unknown partner {partner:#x}>"),
+						_ => write!(f, "Partner{partner:#x}"),
 					});
 
 					write!(f, "add_partner \"{partner}\"")?;
@@ -582,6 +586,7 @@ impl<'a> Inst<'a> {
 				Some(button) => write!(f, "combo_box_add_button \"{}\"", button.as_str().escape_debug())?,
 				None => write!(f, "combo_box_add_button {value:#x}")?,
 			},
+			Self::Unknown { value } => write!(f, "unknown {value:#x}")?,
 		}
 
 		Ok(())
@@ -617,6 +622,7 @@ impl<'a> Inst<'a> {
 				4 + len + (4 - len % 4)
 			},
 			Self::SetBrightness { .. } => 16,
+			Self::Unknown { .. } => 4,
 		}
 	}
 }
