@@ -2,6 +2,7 @@
 ld                     = mips-linux-gnu-ld
 as                     = mips-linux-gnu-as
 objcopy                = mips-linux-gnu-objcopy
+cargo                  = cargo
 elf2psexe              = elf2psexe
 generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
