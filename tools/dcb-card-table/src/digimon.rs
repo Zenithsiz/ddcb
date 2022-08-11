@@ -173,28 +173,29 @@ impl Bytes for Digimon {
 	fn deserialize_bytes(bytes: &Self::ByteArray) -> Result<Self, Self::DeserializeError> {
 		// Split bytes
 		let bytes = zutil::array_split!(bytes,
-			name                : [0x15],
-			unknown_15          : [0x2],
-			speciality_level    : 0x1,
-			dp_cost             : 0x1,
-			dp_give             : 0x1,
-			unknown_1a          : 0x1,
-			hp                  : [0x2],
-			move_circle         : [0x1c],
-			move_triangle       : [0x1c],
-			move_cross          : [0x1c],
-			condition_first     : [0x20],
-			condition_second    : [0x20],
-			effect_first        : [0x10],
-			effect_second       : [0x10],
-			effect_third        : [0x10],
-			cross_move_effect   : 1,
-			unknown_e2          : 1,
-			effect_arrow_color  : 1,
-			effect_description_0: [0x15],
-			effect_description_1: [0x15],
-			effect_description_2: [0x15],
-			effect_description_3: [0x15],
+			name                : [0x15], // 0x0
+			unknown_15          : [0x2],  // 0x15
+			speciality_level    : 0x1,    // 0x17
+			dp_cost             : 0x1,    // 0x18
+			dp_give             : 0x1,    // 0x19
+			unknown_1a          : 0x1,    // 0x1a
+			hp                  : [0x2],  // 0x1b
+			move_circle         : [0x1c], // 0x1d
+			move_triangle       : [0x1c], // 0x39
+			move_cross          : [0x1c], // 0x55
+			condition_first     : [0x20], // 0x71
+			condition_second    : [0x20], // 0x91
+			effect_first        : [0x10], // 0xb1
+			effect_second       : [0x10], // 0xc1
+			effect_third        : [0x10], // 0xd1
+			cross_move_effect   : 1,      // 0xe1
+			unknown_e2          : 1,      // 0xe2
+			effect_arrow_color  : 1,      // 0xe3
+			effect_description_0: [0x15], // 0xe4
+			effect_description_1: [0x15], // 0xf9
+			effect_description_2: [0x15], // 0x10e
+			effect_description_3: [0x15], // 0x123
+			// 0x138
 		);
 
 		// Return the struct after building it
