@@ -1,8 +1,9 @@
 //! Instruction
 //!
-//! Instructions of the msd format are variable length, they are word-aligned.
+//! Instructions are word-aligned (4 bytes) and variable-length (with no upper limit).
 //!
-//! The first word of the instruction is the mnemonic, with the words following being data.
+//! They don't have an upper limit, as most instructions that require string data inline the
+//! string into the instruction itself. These strings are will word-aligned, however.
 
 // Modules
 mod display;
@@ -184,24 +185,37 @@ pub enum Inst<'a> {
 }
 
 impl<'a> Inst<'a> {
-	/// Decodes an instruction
+	/// Decodes an instruction.
+	///
+	/// Returns `None` if no instruction matches,
+	/// or if unable to read part of a matching instruction.
 	#[must_use]
-	#[allow(clippy::too_many_lines)] // TODO: Simplify
 	pub fn decode(slice: &'a [u8]) -> Option<Self> {
-		let inst = match LittleEndian::read_u16(slice.get(..0x2)?) {
+		// Macro to help read bytes from `slice`.
+		macro read_slice($read:ident, $offset:expr) {
+			slice.get($offset).map(LittleEndian::$read)
+		}
+		macro read_u16($offset:expr) {
+			read_slice!(read_u16, $offset)
+		}
+		macro read_u32($offset:expr) {
+			read_slice!(read_u32, $offset)
+		}
+
+		let inst = match read_u16!(..0x2)? {
 			// Jump
 			0x05 => {
-				let var = LittleEndian::read_u16(slice.get(0x2..0x4)?);
-				let addr = LittleEndian::read_u32(slice.get(0x4..0x8)?);
+				let var = read_u16!(0x2..0x4)?;
+				let addr = read_u32!(0x4..0x8)?;
 
 				Self::Jump { var, addr }
 			},
 
 			// Change variable
 			0x07 => {
-				let var = LittleEndian::read_u16(slice.get(0x2..0x4)?);
-				let op = LittleEndian::read_u32(slice.get(0x4..0x8)?);
-				let value = LittleEndian::read_u32(slice.get(0x8..0xc)?);
+				let var = read_u16!(0x2..0x4)?;
+				let op = read_u32!(0x4..0x8)?;
+				let value = read_u32!(0x8..0xc)?;
 
 				// 0 => Set, 1 => Add, _ => ???
 
@@ -210,8 +224,8 @@ impl<'a> Inst<'a> {
 
 			// Set buffer
 			0x08 => {
-				let buffer = LittleEndian::read_u16(slice.get(0x2..0x4)?);
-				let len = usize::from(LittleEndian::read_u16(slice.get(0x4..0x6)?));
+				let buffer = read_u16!(0x2..0x4)?;
+				let len = usize::from(read_u16!(0x4..0x6)?);
 				let bytes = slice.get(0x6..(0x6 + len))?;
 
 				// If any bytes except the last are null or the last isn't null, return `None`.
@@ -230,15 +244,15 @@ impl<'a> Inst<'a> {
 
 			// Test
 			0x09 => {
-				let var = LittleEndian::read_u16(slice.get(0x2..0x4)?);
-				let op = LittleEndian::read_u32(slice.get(0x4..0x8)?);
-				let value = LittleEndian::read_u32(slice.get(0x8..0xc)?);
+				let var = read_u16!(0x2..0x4)?;
+				let op = read_u32!(0x4..0x8)?;
+				let value = read_u32!(0x8..0xc)?;
 
 				Self::Test { var, op, value }
 			},
 
 			// Misc.
-			0x0a => match LittleEndian::read_u16(slice.get(0x2..0x4)?) {
+			0x0a => match read_u16!(0x2..0x4)? {
 				0x00 => Self::StartTransition,
 				0x01 => Self::ComboBoxAwait,
 				0x02 => Self::SetBgBattleCafe,
@@ -260,13 +274,13 @@ impl<'a> Inst<'a> {
 			},
 
 			// ???
-			0x0b => match LittleEndian::read_u16(slice.get(0x2..0x4)?) {
+			0x0b => match read_u16!(0x2..0x4)? {
 				// Open combo box
 				0x0 => {
-					if slice.get(0x4..0x6)? != [0x0, 0x0] {
+					if read_u16!(0x4..0x6)? != 0x0 {
 						return None;
 					}
-					let value = LittleEndian::read_u16(slice.get(0x6..0x8)?);
+					let value = read_u16!(0x6..0x8)?;
 
 					// value: 0x61 0x78
 					let combo_box = match value {
@@ -284,7 +298,7 @@ impl<'a> Inst<'a> {
 					if slice.get(0x4..0x6)? != [0x0, 0x0] {
 						return None;
 					}
-					let value = LittleEndian::read_u16(slice.get(0x6..0x8)?);
+					let value = read_u16!(0x6..0x8)?;
 
 					Self::AddComboBoxButton { value }
 				},
@@ -294,7 +308,7 @@ impl<'a> Inst<'a> {
 					if slice.get(0x4..0x6)? != [0x0, 0x0] {
 						return None;
 					}
-					let value1 = LittleEndian::read_u16(slice.get(0x6..0x8)?);
+					let value1 = read_u16!(0x6..0x8)?;
 
 					Self::DisplayScene { value0, value1 }
 				},
@@ -302,10 +316,10 @@ impl<'a> Inst<'a> {
 
 			// Set brightness
 			0x0d => {
-				let kind = LittleEndian::read_u16(slice.get(0x2..0x4)?);
-				let place = LittleEndian::read_u16(slice.get(0x6..0x8)?);
-				let brightness = LittleEndian::read_u16(slice.get(0xa..0xc)?);
-				let value = LittleEndian::read_u16(slice.get(0xe..0x10)?);
+				let kind = read_u16!(0x2..0x4)?;
+				let place = read_u16!(0x6..0x8)?;
+				let brightness = read_u16!(0xa..0xc)?;
+				let value = read_u16!(0xe..0x10)?;
 
 				// If any of the padding is non-zero, return
 				if slice.get(0x4..0x6)? != [0x0, 0x0] ||
@@ -330,7 +344,6 @@ impl<'a> Inst<'a> {
 	}
 
 	/// Encodes this instruction
-	// TODO: Improve
 	pub fn encode<W: io::Write>(&self, f: &mut W) -> Result<(), EncodeError> {
 		match self {
 			Self::DisplayTextBuffer => f.write_all(&[0xa, 0x0, 0x4, 0x0])?,
@@ -431,7 +444,6 @@ impl<'a> Inst<'a> {
 	}
 
 	/// Displays an instruction
-	#[allow(clippy::too_many_lines)] // TODO: Refactor
 	pub fn display<W: io::Write, Ctx: DisplayCtx>(&self, f: &mut W, ctx: &Ctx) -> Result<(), DisplayError> {
 		match self {
 			Self::DisplayTextBuffer => write!(f, "display_text_buffer")?,
