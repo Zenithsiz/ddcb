@@ -28,7 +28,7 @@ impl ComboBox {
 	/// Returns if a button is allowed in this box
 	#[must_use]
 	pub const fn button_allowed(self, button: ComboBoxButton) -> bool {
-		#[allow(clippy::enum_glob_use)] // It's local to shit small function
+		#[allow(clippy::enum_glob_use)] // It's local to this small function
 		use ComboBoxButton::*;
 
 		match self {
