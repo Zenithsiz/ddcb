@@ -6,21 +6,19 @@
 //! string into the instruction itself. These strings are will word-aligned, however.
 
 // Modules
-mod display;
 mod error;
+mod fmt;
+mod parse;
 
 // Exports
 pub use {
-	display::DisplayCtx,
 	error::{DisplayError, EncodeError},
+	fmt::{InstArgFmt, InstFmt},
 };
 
 // Imports
 use {
-	crate::{ComboBox, Screen},
 	byteorder::{ByteOrder, LittleEndian},
-	encoding_rs::SHIFT_JIS,
-	itertools::Itertools,
 	std::io,
 	zutil::TryIntoAs,
 };
@@ -51,7 +49,7 @@ pub enum Inst<'a> {
 	SetBgBattleCafe,
 
 	/// Opens a screen
-	OpenScreen(Screen),
+	OpenScreen { screen: u16 },
 
 	/// Sets the background to the battle arena
 	// TODO: Check what texture it uses, looks all messed up most of the times.
@@ -114,19 +112,8 @@ pub enum Inst<'a> {
 		addr: u32,
 	},
 
-	/// Unknown `0a`.
-	// TODO:
-	Unknown0a {
-		/// Unknown
-		value: u16,
-	},
-
 	/// Opens a combo box
-	OpenComboBox {
-		/// The combo box being opened
-		// TODO: Just have the value here for now
-		combo_box: ComboBox,
-	},
+	OpenComboBox { combo_box: u16 },
 
 	/// Adds a combo box button
 	AddComboBoxButton {
@@ -260,17 +247,11 @@ impl<'a> Inst<'a> {
 				0x04 => Self::DisplayTextBuffer,
 				0x05 => Self::WaitInput,
 				0x06 => Self::EmptyTextBox,
-				0x07 => Self::OpenScreen(Screen::PlayerRoom),
-				0x09 => Self::OpenScreen(Screen::CardList),
-				0x0a => Self::OpenScreen(Screen::ChoosePartner),
 				0x0b => Self::ResetChoosePartner,
 				0x0c => Self::SetBgBattleArena,
-				0x0d => Self::OpenScreen(Screen::BattleArenaIntro),
-				0x0f => Self::OpenScreen(Screen::Keyboard),
-				0x11 => Self::OpenScreen(Screen::EditPartner),
 				0x13 => Self::ResetGameCompletion,
 				0x16 => Self::DisplayCenterTextBox,
-				value => Self::Unknown0a { value },
+				screen => Self::OpenScreen { screen },
 			},
 
 			// ???
@@ -280,15 +261,7 @@ impl<'a> Inst<'a> {
 					if read_u16!(0x4..0x6)? != 0x0 {
 						return None;
 					}
-					let value = read_u16!(0x6..0x8)?;
-
-					// value: 0x61 0x78
-					let combo_box = match value {
-						0x61 => ComboBox::Small,
-						0x78 => ComboBox::Large,
-						0xffff => ComboBox::Unknown,
-						_ => return None,
-					};
+					let combo_box = read_u16!(0x6..0x8)?;
 
 					Self::OpenComboBox { combo_box }
 				},
@@ -350,19 +323,15 @@ impl<'a> Inst<'a> {
 			Self::WaitInput => f.write_all(&[0xa, 0x0, 0x5, 0x0])?,
 			Self::EmptyTextBox => f.write_all(&[0xa, 0x0, 0x6, 0x0])?,
 			Self::SetBgBattleCafe => f.write_all(&[0xa, 0x0, 0x2, 0x0])?,
-			Self::OpenScreen(screen) => match screen {
-				Screen::PlayerRoom => f.write_all(&[0xa, 0x0, 0x7, 0x0])?,
-				Screen::CardList => f.write_all(&[0xa, 0x0, 0x9, 0x0])?,
-				Screen::ChoosePartner => f.write_all(&[0xa, 0x0, 0xa, 0x0])?,
-				Screen::EditPartner => f.write_all(&[0xa, 0x0, 0x11, 0x0])?,
-				Screen::Keyboard => f.write_all(&[0xa, 0x0, 0xf, 0x0])?,
-				Screen::BattleArenaIntro => f.write_all(&[0xa, 0x0, 0xd, 0x0])?,
-			},
 			Self::SetBgBattleArena => f.write_all(&[0xa, 0x0, 0xc, 0x0])?,
 			Self::DisplayCenterTextBox => f.write_all(&[0xa, 0x0, 0x16, 0x0])?,
 			Self::ResetGameCompletion => f.write_all(&[0xa, 0x0, 0x13, 0x0])?,
 			Self::StartTransition => f.write_all(&[0xa, 0x0, 0x0, 0x0])?,
 			Self::ResetChoosePartner => f.write_all(&[0xa, 0x0, 0xb, 0x0])?,
+			Self::OpenScreen { screen } => {
+				f.write_all(&[0xa, 0x0])?;
+				f.write_all(&screen.to_le_bytes())?;
+			},
 			Self::ChangeVar { var, op, value } => {
 				f.write_all(&[0x7, 0x0])?;
 				f.write_all(&var.to_le_bytes())?;
@@ -380,21 +349,10 @@ impl<'a> Inst<'a> {
 				f.write_all(&var.to_le_bytes())?;
 				f.write_all(&addr.to_le_bytes())?;
 			},
-			Self::Unknown0a { value } => {
-				f.write_all(&[0xa, 0x0])?;
-				f.write_all(&value.to_le_bytes())?;
-			},
 			Self::OpenComboBox { combo_box } => {
 				f.write_all(&[0xb, 0x0, 0x0, 0x0])?;
 				f.write_all(&[0x0, 0x0])?;
-				f.write_all(
-					&match combo_box {
-						ComboBox::Small => 0x61u16,
-						ComboBox::Large => 0x78,
-						ComboBox::Unknown => 0xffff,
-					}
-					.to_le_bytes(),
-				)?;
+				f.write_all(&combo_box.to_le_bytes())?;
 			},
 			Self::AddComboBoxButton { value } => {
 				f.write_all(&[0xb, 0x0, 0x1, 0x0])?;
@@ -443,138 +401,64 @@ impl<'a> Inst<'a> {
 		Ok(())
 	}
 
-	/// Displays an instruction
-	pub fn display<W: io::Write, Ctx: DisplayCtx>(&self, f: &mut W, ctx: &Ctx) -> Result<(), DisplayError> {
-		match self {
-			Self::DisplayTextBuffer => write!(f, "display_text_buffer")?,
-			Self::WaitInput => write!(f, "wait_input")?,
-			Self::EmptyTextBox => write!(f, "empty_text_box")?,
-			Self::SetBgBattleCafe => write!(f, "set_bg \"Battle Cafe\"")?,
-			Self::OpenScreen(screen) => write!(f, "open_screen \"{}\"", screen.as_str().escape_debug())?,
-			Self::SetBgBattleArena => write!(f, "set_bg \"Battle Arena\"")?,
-			Self::DisplayCenterTextBox => write!(f, "display_center_text_box")?,
-			Self::ResetGameCompletion => write!(f, "reset_game_completion")?,
-			Self::StartTransition => write!(f, "start_transition")?,
-			Self::ResetChoosePartner => write!(f, "reset_choose_partner")?,
-			Self::ChangeVar { var, op, value } => {
-				let var_label = zutil::DisplayWrapper::new(|f| match ctx.var_label(*var) {
-					Some(label) => write!(f, "{label}"),
-					None => write!(f, "{var:#x}"),
-				});
+	/// Formats this instruction
+	pub fn format(&self) -> InstFmt {
+		let (mnemonic, args) = match *self {
+			Self::DisplayTextBuffer => ("display_text_buffer", vec![]),
+			Self::WaitInput => ("wait_input", vec![]),
+			Self::EmptyTextBox => ("empty_text_box", vec![]),
+			Self::SetBgBattleCafe => ("set_bg", vec![InstArgFmt::String("Battle Cafe".as_bytes())]),
+			// TODO: Return custom type from here?
+			Self::OpenScreen { screen } => ("open_screen", vec![InstArgFmt::U16(screen)]),
+			Self::SetBgBattleArena => ("set_bg", vec![InstArgFmt::String("Battle Arena".as_bytes())]),
+			Self::DisplayCenterTextBox => ("display_center_text_box", vec![]),
+			Self::ResetGameCompletion => ("reset_game_completion", vec![]),
+			Self::StartTransition => ("start_transition", vec![]),
+			Self::ResetChoosePartner => ("reset_choose_partner", vec![]),
+			Self::ChangeVar { var, op, value } => match (var, op) {
+				// Arena intro colors
+				(0x5, 0) => ("set_arena_match_intro_colors", vec![InstArgFmt::Colors {
+					yellow: value & 0b00001 != 0,
+					black:  value & 0b00010 != 0,
+					green:  value & 0b00100 != 0,
+					blue:   value & 0b01000 != 0,
+					red:    value & 0b10000 != 0,
+				}]),
 
-				match (var, op) {
-					// Arena intro colors
-					(0x5, 0) => {
-						#[derive(derive_more::Display)]
-						#[allow(clippy::missing_docs_in_private_items)] // Just for formatting
-						enum Color {
-							Yellow,
-							Black,
-							Green,
-							Blue,
-							Red,
-						}
+				// Arena match intro index
+				(0xb, 0) => ("set_arena_match_intro_idx", vec![InstArgFmt::Ordinal(value)]),
 
-						let colors = self::bits_iterator(*value)
-							.take(5)
-							.zip([Color::Yellow, Color::Black, Color::Green, Color::Blue, Color::Red])
-							.filter_map(|(set, color)| set.then_some(color));
-
-						write!(f, "set_arena_match_intro_colors {}", colors.format("+"))?;
-					},
-
-					// Arena match intro index
-					(0xb, 0) => {
-						let idx = zutil::DisplayWrapper::new(|f| match value {
-							0 => write!(f, "1st"),
-							1 => write!(f, "2nd"),
-							2 => write!(f, "3rd"),
-							3 => write!(f, "4th"),
-							4 => write!(f, "5th"),
-							5 => write!(f, "Last"),
-							_ => write!(f, "{value:#x}"),
-						});
-
-						write!(f, "set_arena_match_intro_idx \"{idx}\"")?;
-					},
-
-					(_, 0) => write!(f, "set_var {var_label}, {value:#x}")?,
-					(_, 1) => write!(f, "add_var {var_label}, {value:#x}")?,
-					_ => write!(f, "mod_var {var:#x}, {op:#x}, {var_label}, {value:#x}")?,
-				}
+				(_, 0) => ("set_var", vec![InstArgFmt::Var(var), InstArgFmt::U32(value)]),
+				(_, 1) => ("add_var", vec![InstArgFmt::Var(var), InstArgFmt::U32(value)]),
+				_ => ("mod_var", vec![
+					InstArgFmt::U32(op),
+					InstArgFmt::Var(var),
+					InstArgFmt::U32(value),
+				]),
 			},
-			Self::Test { var, op, value } => {
-				let var = zutil::DisplayWrapper::new(|f| match ctx.var_label(*var) {
-					Some(label) => write!(f, "{label}"),
-					None => write!(f, "{var:#x}"),
-				});
-
-				match op {
-					3 => write!(f, "test_eq {var}, {value:#x}")?,
-					5 => write!(f, "test_lt {var}, {value:#x}")?,
-					_ => write!(f, "test {op:#x}, {var}, {value:#x}")?,
-				}
+			Self::Test { var, op, value } => match op {
+				3 => ("test_eq", vec![InstArgFmt::Var(var), InstArgFmt::U32(value)]),
+				5 => ("test_lt", vec![InstArgFmt::Var(var), InstArgFmt::U32(value)]),
+				_ => ("test", vec![
+					InstArgFmt::U32(op),
+					InstArgFmt::Var(var),
+					InstArgFmt::U32(value),
+				]),
 			},
 
-			Self::Jump { var, addr } => {
-				let addr = zutil::DisplayWrapper::new(|f| match ctx.pos_label(*addr) {
-					Some(label) => write!(f, "{label}"),
-					None => write!(f, "{addr:#x}"),
-				});
-
-				write!(f, "jump {var:#x}, {addr}")?;
-			},
-			Self::Unknown0a { value } => write!(f, "unknown_0a {value:#x}")?,
-			Self::OpenComboBox { combo_box: menu } => write!(f, "open_menu {}", menu.as_str())?,
+			Self::Jump { var, addr } => ("jump", vec![InstArgFmt::Var(var), InstArgFmt::Addr(addr)]),
+			Self::OpenComboBox { combo_box } => ("open_menu", vec![InstArgFmt::U16(combo_box)]),
 			Self::DisplayScene { value0, value1 } => match (value0, value1) {
-				(0x2, value) => write!(f, "battle {value:#x}")?,
-				(0x8, location) => {
-					let location = zutil::DisplayWrapper::new(|f| match location {
-						0 => write!(f, "Player Room"),
-						1 => write!(f, "Battle Cafe"),
-						2 => write!(f, "Battle Arena"),
-						3 => write!(f, "Extra Arena"),
-						4 => write!(f, "Beet Arena"),
-						5 => write!(f, "Haunted Arena"),
-						_ => write!(f, "Arena{location:#x}"),
-					});
+				(0x2, value) => ("battle", vec![InstArgFmt::U16(value)]),
+				(0x8, location) => ("display_location", vec![InstArgFmt::Location(location)]),
+				(0xa, partner) => ("add_partner", vec![InstArgFmt::Partner(partner)]),
+				(0x12, value) => ("add_completion_points", vec![InstArgFmt::U16(value)]),
 
-					write!(f, "display_location \"{location}\"")?;
-				},
-				(0xa, partner) => {
-					let partner = zutil::DisplayWrapper::new(|f| match partner {
-						0 => write!(f, "Veemon"),
-						1 => write!(f, "Hawkmon"),
-						2 => write!(f, "Armadillomon"),
-						3 => write!(f, "Gatomon"),
-						4 => write!(f, "Patamon"),
-						5 => write!(f, "Wormmon"),
-						_ => write!(f, "Partner{partner:#x}"),
-					});
-
-					write!(f, "add_partner \"{partner}\"")?;
-				},
-				(0x12, value) => write!(f, "add_completion_points {value}")?,
-
-				_ => write!(f, "display_scene {value0:#x}, {value1:#x}")?,
+				_ => ("display_scene", vec![InstArgFmt::U16(value0), InstArgFmt::U16(value1)]),
 			},
-			Self::SetBuffer { buffer, bytes } => {
-				let bytes = zutil::DisplayWrapper::new(|f| {
-					match SHIFT_JIS.decode_without_bom_handling_and_without_replacement(bytes) {
-						Some(s) => {
-							write!(f, "\"{}\"", s.escape_debug())
-						},
-						None => {
-							let bytes = bytes.iter().format_with("", |byte, f| f(&format_args!("{byte:x}")));
-							write!(f, "0x{bytes}",)
-						},
-					}
-				});
-
-				match buffer {
-					0x4 => write!(f, "set_text_buffer {bytes}")?,
-					_ => write!(f, "set_buffer {buffer:#x}, {bytes}")?,
-				}
+			Self::SetBuffer { buffer, bytes } => match buffer {
+				0x4 => ("set_text_buffer", vec![InstArgFmt::String(bytes)]),
+				_ => ("set_buffer", vec![InstArgFmt::U16(buffer), InstArgFmt::String(bytes)]),
 			},
 
 			Self::SetBrightness {
@@ -583,25 +467,26 @@ impl<'a> Inst<'a> {
 				brightness,
 				value,
 			} => match (kind, place, brightness, value) {
-				(0x0, 0x0, _, 0xa) => write!(f, "set_light_left_char {brightness:#x}")?,
-				(0x0, 0x1, _, 0xa) => write!(f, "set_light_right_char {brightness:#x}")?,
-				(0x1, _, 0xffff, 0xffff) => write!(f, "set_light_unknown {place:#x}")?,
-				_ => write!(f, "set_light {kind:#x}, {place:#x}, {brightness:#x}, {value:#x}")?,
+				(0x0, 0x0, _, 0xa) => ("set_light_left_char", vec![InstArgFmt::U16(brightness)]),
+				(0x0, 0x1, _, 0xa) => ("set_light_right_char", vec![InstArgFmt::U16(brightness)]),
+				(0x1, _, 0xffff, 0xffff) => ("set_light_unknown", vec![InstArgFmt::U16(place)]),
+				_ => ("set_light", vec![
+					InstArgFmt::U16(kind),
+					InstArgFmt::U16(place),
+					InstArgFmt::U16(brightness),
+					InstArgFmt::U16(value),
+				]),
 			},
-			Self::ComboBoxAwait => write!(f, "combo_box_await")?,
-			Self::BattleCafeAwait => write!(f, "battle_cafe_await")?,
-			// TODO: Not do it hackily like this
-			Self::AddComboBoxButton { value } => match ComboBox::Small
-				.parse_button(*value)
-				.or_else(|| ComboBox::Large.parse_button(*value))
-			{
-				Some(button) => write!(f, "combo_box_add_button \"{}\"", button.as_str().escape_debug())?,
-				None => write!(f, "combo_box_add_button {value:#x}")?,
-			},
-			Self::Unknown { value } => write!(f, "unknown {value:#x}")?,
-		}
+			Self::ComboBoxAwait => ("combo_box_await", vec![]),
+			Self::BattleCafeAwait => ("battle_cafe_await", vec![]),
+			Self::AddComboBoxButton { value } => ("combo_box_add_button", vec![InstArgFmt::ComboBoxButton(value)]),
+			Self::Unknown { value } => ("unknown", vec![InstArgFmt::U32(value)]),
+		};
 
-		Ok(())
+		InstFmt {
+			mnemonic: mnemonic.to_owned(),
+			args,
+		}
 	}
 
 	/// Returns this instruction's size
@@ -616,7 +501,7 @@ impl<'a> Inst<'a> {
 			Self::ComboBoxAwait => 4,
 			Self::BattleCafeAwait => 4,
 			Self::SetBgBattleCafe => 4,
-			Self::OpenScreen(_) => 4,
+			Self::OpenScreen { .. } => 4,
 			Self::SetBgBattleArena => 4,
 			Self::DisplayCenterTextBox => 4,
 			Self::ResetGameCompletion => 4,
@@ -625,7 +510,6 @@ impl<'a> Inst<'a> {
 			Self::ChangeVar { .. } => 0xc,
 			Self::Test { .. } => 0xc,
 			Self::Jump { .. } => 8,
-			Self::Unknown0a { .. } => 4,
 			Self::OpenComboBox { .. } => 8,
 			Self::AddComboBoxButton { .. } => 8,
 			Self::DisplayScene { .. } => 8,
@@ -677,15 +561,4 @@ mod serde_shift_jis_str {
 			Cow::Owned(_) => panic!("Unable to deserialize"),
 		}
 	}
-}
-
-
-/// Bits iterator from least to most significant
-fn bits_iterator(mut value: u32) -> impl Iterator<Item = bool> {
-	std::iter::from_fn(move || {
-		let is_set = (value & 0x1) != 0;
-		value >>= 1u32;
-		Some(is_set)
-	})
-	.take(32)
 }

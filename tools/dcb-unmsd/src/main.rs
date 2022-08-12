@@ -21,12 +21,17 @@ use {
 	args::Args,
 	byteorder::{ByteOrder, LittleEndian},
 	clap::Parser,
-	dcb_msd::Inst,
+	dcb_msd::{
+		inst::{InstArgFmt, InstFmt},
+		Inst,
+	},
+	encoding_rs::SHIFT_JIS,
 	itertools::Itertools,
 	std::{
 		collections::{BTreeMap, HashMap},
 		convert::TryInto,
 		fs,
+		io::{self, Write},
 	},
 };
 
@@ -127,6 +132,8 @@ fn print_asm(
 	vars: &HashMap<u16, String>,
 	args: &Args,
 ) -> Result<(), anyhow::Error> {
+	let mut stdout = std::io::stdout().lock();
+
 	for (&pos, inst) in insts {
 		if let Some(label) = labels.get(&pos) {
 			println!("{label}:");
@@ -142,13 +149,147 @@ fn print_asm(
 			);
 		}
 
-		let mut stdout = std::io::stdout();
+		let inst_fmt = inst.format();
 		let ctx = DisplayCtx { labels, vars };
-		inst.display(&mut stdout, &ctx).context("Unable to display")?;
+		self::write_inst_fmt(&inst_fmt, &mut stdout, &ctx).context("Unable to write instruction")?;
 
 		println!();
 	}
 
+	Ok(())
+}
+
+/// Writes a formatted instruction
+fn write_inst_fmt<W: Write>(inst: &InstFmt, writer: &mut W, ctx: &DisplayCtx) -> Result<(), io::Error> {
+	write!(writer, "{}", inst.mnemonic)?;
+
+	for arg in inst.args.iter().with_position() {
+		match arg {
+			// " {arg}, "
+			itertools::Position::First(arg) => {
+				write!(writer, " ")?;
+				self::write_inst_arg_fmt(arg, writer, ctx)?;
+				write!(writer, ", ")?;
+			},
+			// "{arg}, "
+			itertools::Position::Middle(arg) => {
+				self::write_inst_arg_fmt(arg, writer, ctx)?;
+				write!(writer, ", ")?;
+			},
+			// "{arg}"
+			itertools::Position::Last(arg) => {
+				self::write_inst_arg_fmt(arg, writer, ctx)?;
+			},
+			// " {arg}"
+			itertools::Position::Only(arg) => {
+				write!(writer, " ")?;
+				self::write_inst_arg_fmt(arg, writer, ctx)?;
+			},
+		}
+	}
+
+	Ok(())
+}
+
+/// Writes a formatted instruction argument
+fn write_inst_arg_fmt<W: Write>(arg: &InstArgFmt, writer: &mut W, ctx: &DisplayCtx) -> Result<(), io::Error> {
+	match *arg {
+		InstArgFmt::String(bytes) => match SHIFT_JIS.decode_without_bom_handling_and_without_replacement(bytes) {
+			Some(s) => write!(writer, "\"{}\"", s.escape_debug())?,
+			None => {
+				let bytes = bytes.iter().format_with("", |byte, f| f(&format_args!("{byte:x}")));
+				write!(writer, "0x{bytes}")?;
+			},
+		},
+		InstArgFmt::U16(value) => write!(writer, "{value:#x}")?,
+		InstArgFmt::U32(value) => write!(writer, "{value:#x}")?,
+		InstArgFmt::Var(var) => match ctx.var_label(var) {
+			Some(label) => write!(writer, "{}", label.escape_default())?,
+			None => write!(writer, "{var:#x}")?,
+		},
+		InstArgFmt::Addr(addr) => match ctx.addr_label(addr) {
+			Some(label) => write!(writer, "{}", label.escape_default())?,
+			None => write!(writer, "{addr:#x}")?,
+		},
+		InstArgFmt::Colors {
+			yellow,
+			black,
+			green,
+			blue,
+			red,
+		} => {
+			write!(writer, "\"")?;
+			if yellow {
+				write!(writer, "y")?;
+			}
+			if black {
+				write!(writer, "b")?;
+			}
+			if green {
+				write!(writer, "g")?;
+			}
+			if blue {
+				write!(writer, "u")?;
+			}
+			if red {
+				write!(writer, "r")?;
+			}
+			write!(writer, "\"")?;
+		},
+		InstArgFmt::Ordinal(idx) => match idx {
+			0 => write!(writer, "\"1st\"")?,
+			1 => write!(writer, "\"2nd\"")?,
+			2 => write!(writer, "\"3rd\"")?,
+			3 => write!(writer, "\"4th\"")?,
+			4 => write!(writer, "\"5th\"")?,
+			5 => write!(writer, "\"Last\"")?,
+			_ => write!(writer, "#{idx:#x}")?,
+		},
+		InstArgFmt::ComboBox(combo_box) => match combo_box {
+			0x61 => write!(writer, "\"small\"")?,
+			0x78 => write!(writer, "\"large\"")?,
+			_ => write!(writer, "{combo_box:#x}")?,
+		},
+		InstArgFmt::ComboBoxButton(button) => match button {
+			0x0 => write!(writer, "\"small_player_room\"")?,
+			0x1 => write!(writer, "\"small_menu\"")?,
+			0x2 => write!(writer, "\"small_battle_cafe\"")?,
+			0x3 => write!(writer, "\"small_battle_arena\"")?,
+			0x4 => write!(writer, "\"small_extra_arena\"")?,
+			0x5 => write!(writer, "\"small_beet_arena\"")?,
+			0x6 => write!(writer, "\"small_haunted_arena\"")?,
+			0x7 => write!(writer, "\"small_fusion_shop\"")?,
+			0x8 => write!(writer, "\"small_yes\"")?,
+			0x9 => write!(writer, "\"small_no\"")?,
+			0x0c => write!(writer, "\"large_talk\"")?,
+			0x0d => write!(writer, "\"large_battle\"")?,
+			0x0e => write!(writer, "\"large_deck_data\"")?,
+			0x0f => write!(writer, "\"large_save\"")?,
+			0x10 => write!(writer, "\"large_yes\"")?,
+			0x11 => write!(writer, "\"large_no\"")?,
+			0x12 => write!(writer, "\"large_cards\"")?,
+			0x13 => write!(writer, "\"large_partner\"")?,
+			_ => write!(writer, "\"button_{button:#x}\"")?,
+		},
+		InstArgFmt::Location(location) => match location {
+			0 => write!(writer, "\"player_room\"")?,
+			1 => write!(writer, "\"battle_cafe\"")?,
+			2 => write!(writer, "\"battle_arena\"")?,
+			3 => write!(writer, "\"extra_arena\"")?,
+			4 => write!(writer, "\"beet_arena\"")?,
+			5 => write!(writer, "\"haunted_arena\"")?,
+			_ => write!(writer, "location_{location:#x}")?,
+		},
+		InstArgFmt::Partner(partner) => match partner {
+			0 => write!(writer, "\"veemon\"")?,
+			1 => write!(writer, "\"hawkmon\"")?,
+			2 => write!(writer, "\"armadillomon\"")?,
+			3 => write!(writer, "\"gatomon\"")?,
+			4 => write!(writer, "\"patamon\"")?,
+			5 => write!(writer, "\"wormmon\"")?,
+			_ => write!(writer, "\"partner_{partner:#x}\"")?,
+		},
+	}
 	Ok(())
 }
 
@@ -161,15 +302,12 @@ struct DisplayCtx<'a> {
 	vars: &'a HashMap<u16, String>,
 }
 
-impl<'a> dcb_msd::inst::DisplayCtx for DisplayCtx<'a> {
-	type PosLabel<'b> = &'b str where Self: 'b;
-	type VarLabel<'b> = &'b str where Self: 'b;
-
-	fn pos_label(&self, pos: u32) -> Option<Self::PosLabel<'_>> {
+impl<'a> DisplayCtx<'a> {
+	fn addr_label(&self, pos: u32) -> Option<&'a str> {
 		self.labels.get(&pos).map(String::as_str)
 	}
 
-	fn var_label(&self, var: u16) -> Option<Self::VarLabel<'_>> {
+	fn var_label(&self, var: u16) -> Option<&'a str> {
 		self.vars.get(&var).map(String::as_str)
 	}
 }

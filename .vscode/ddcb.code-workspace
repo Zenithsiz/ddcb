@@ -25,6 +25,7 @@
 			"addrs",
 			"addu",
 			"andi",
+			"Armadillomon",
 			"asciiz",
 			"beqz",
 			"bgez",
@@ -38,6 +39,8 @@
 			"endseg",
 			"evoseg",
 			"filetime",
+			"Gatomon",
+			"Hawkmon",
 			"inlateout",
 			"inout",
 			"insts",
@@ -56,6 +59,7 @@
 			"noreorder",
 			"noreturn",
 			"openseg",
+			"Patamon",
 			"pathdiff",
 			"Popen",
 			"preprocess",
@@ -72,7 +76,9 @@
 			"subseg",
 			"subu",
 			"sugseg",
-			"thiserror"
+			"thiserror",
+			"Veemon",
+			"Wormmon"
 		]
 	}
 }
