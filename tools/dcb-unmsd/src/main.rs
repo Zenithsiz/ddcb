@@ -222,17 +222,17 @@ fn write_inst_arg_fmt<W: Write>(arg: &InstArgFmt, writer: &mut W, ctx: &DisplayC
 			if yellow {
 				write!(writer, "y")?;
 			}
-			if black {
-				write!(writer, "b")?;
-			}
-			if green {
-				write!(writer, "g")?;
-			}
 			if blue {
 				write!(writer, "u")?;
 			}
+			if black {
+				write!(writer, "b")?;
+			}
 			if red {
 				write!(writer, "r")?;
+			}
+			if green {
+				write!(writer, "g")?;
 			}
 			write!(writer, "\"")?;
 		},
