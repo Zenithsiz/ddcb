@@ -1,18 +1,18 @@
 //! Formatting
 
 /// Formatted instruction
-pub struct InstFmt<'a> {
+pub struct InstFmt {
 	/// Mnemonic
 	pub mnemonic: String,
 
 	/// Arguments
-	pub args: Vec<InstArgFmt<'a>>,
+	pub args: Vec<InstArgFmt>,
 }
 
 /// Formatted instruction argument
-pub enum InstArgFmt<'a> {
+pub enum InstArgFmt {
 	/// String
-	String(&'a [u8]),
+	String(Vec<u8>),
 
 	/// u16
 	U16(u16),

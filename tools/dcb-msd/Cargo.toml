@@ -1,6 +1,6 @@
 [package]
 authors = ["Filipe Rodrigues <filipejacintorodrigues1@gmail.com>"]
-edition = "2018"
+edition = "2021"
 name = "dcb-msd"
 version = "0.1.0"
 
@@ -10,6 +10,7 @@ version = "0.1.0"
 log = "0.4.13"
 
 # Error handling
+anyhow = "1.0.61"
 thiserror = "1.0.26"
 
 # Utility

@@ -71,8 +71,12 @@ fn main() -> Result<(), anyhow::Error> {
 				},
 			};
 
-			it.advance_by(inst.size())
-				.expect("Iterator had less elements than size of instruction");
+			it.advance_by(
+				inst.size()
+					.try_into()
+					.expect("Instruction size didn't fit into a `usize`"),
+			)
+			.expect("Iterator had less elements than size of instruction");
 			Some(Ok((pos, inst)))
 		})
 		.collect::<Result<BTreeMap<_, _>, anyhow::Error>>()
@@ -142,7 +146,10 @@ fn print_asm(
 		if args.asm_debug {
 			print!("{pos:#010x}: ");
 
-			let bytes = &contents[(pos as usize)..((pos as usize) + inst.size())];
+			// TODO: Not use `as` here
+			let start = pos as usize;
+			let end = (pos + inst.size()) as usize;
+			let bytes = &contents[start..end];
 			print!(
 				"[0x{}] ",
 				bytes.iter().format_with("", |value, f| f(&format_args!("{value:02x}")))
@@ -194,7 +201,7 @@ fn write_inst_fmt<W: Write>(inst: &InstFmt, writer: &mut W, ctx: &DisplayCtx) ->
 /// Writes a formatted instruction argument
 fn write_inst_arg_fmt<W: Write>(arg: &InstArgFmt, writer: &mut W, ctx: &DisplayCtx) -> Result<(), io::Error> {
 	match *arg {
-		InstArgFmt::String(bytes) => match SHIFT_JIS.decode_without_bom_handling_and_without_replacement(bytes) {
+		InstArgFmt::String(ref bytes) => match SHIFT_JIS.decode_without_bom_handling_and_without_replacement(bytes) {
 			Some(s) => write!(writer, "\"{}\"", s.escape_debug())?,
 			None => {
 				let bytes = bytes.iter().format_with("", |byte, f| f(&format_args!("{byte:x}")));
@@ -211,6 +218,8 @@ fn write_inst_arg_fmt<W: Write>(arg: &InstArgFmt, writer: &mut W, ctx: &DisplayC
 			Some(label) => write!(writer, "{}", label.escape_default())?,
 			None => write!(writer, "{addr:#x}")?,
 		},
+		// TODO: Move this back to `dcb-msd`,
+		//       since parsing requires it
 		InstArgFmt::Colors {
 			yellow,
 			black,

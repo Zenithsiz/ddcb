@@ -14,7 +14,7 @@ mod parse;
 pub use {
 	error::EncodeError,
 	fmt::{InstArgFmt, InstFmt},
-	parse::{ParsedInst, ParsedInstArg},
+	parse::{parse_stmts, ParsedInst, ParsedInstArg},
 };
 
 // Imports
@@ -26,9 +26,9 @@ use {
 
 /// Instruction
 // TODO: Merge common instructions
-#[derive(PartialEq, Eq, Clone, Copy, Hash, Debug)]
+#[derive(PartialEq, Eq, Clone, Hash, Debug)]
 #[derive(serde::Serialize, serde::Deserialize)]
-pub enum Inst<'a> {
+pub enum Inst {
 	/// Displays the text buffer in the text box.
 	///
 	/// Displays the text in the text buffer and scrolls to the next line.
@@ -149,7 +149,7 @@ pub enum Inst<'a> {
 
 		/// The bytes to set
 		#[serde(with = "serde_shift_jis_str")]
-		bytes: &'a [u8],
+		bytes: Vec<u8>,
 	},
 
 	/// Sets the brightness of `place` to `brightness`.
@@ -172,22 +172,22 @@ pub enum Inst<'a> {
 	Unknown { value: u32 },
 }
 
-impl<'a> Inst<'a> {
+impl Inst {
 	/// Decodes an instruction.
 	///
 	/// Returns `None` if no instruction matches,
 	/// or if unable to read part of a matching instruction.
 	#[must_use]
-	pub fn decode(slice: &'a [u8]) -> Option<Self> {
-		// Macro to help read bytes from `slice`.
-		macro read_slice($read:ident, $offset:expr) {
-			slice.get($offset).map(LittleEndian::$read)
+	pub fn decode(bytes: &[u8]) -> Option<Self> {
+		// Macro to help read bytes from `bytes`.
+		macro read_bytes($read:ident, $offset:expr) {
+			bytes.get($offset).map(LittleEndian::$read)
 		}
 		macro read_u16($offset:expr) {
-			read_slice!(read_u16, $offset)
+			read_bytes!(read_u16, $offset)
 		}
 		macro read_u32($offset:expr) {
-			read_slice!(read_u32, $offset)
+			read_bytes!(read_u32, $offset)
 		}
 
 		let inst = match read_u16!(..0x2)? {
@@ -214,7 +214,7 @@ impl<'a> Inst<'a> {
 			0x08 => {
 				let buffer = read_u16!(0x2..0x4)?;
 				let len = usize::from(read_u16!(0x4..0x6)?);
-				let bytes = slice.get(0x6..(0x6 + len))?;
+				let bytes = bytes.get(0x6..(0x6 + len))?;
 
 				// If any bytes except the last are null or the last isn't null, return `None`.
 				if bytes.iter().take(len.checked_sub(1)?).any(|&ch| ch == 0) {
@@ -226,7 +226,7 @@ impl<'a> Inst<'a> {
 
 				Self::SetBuffer {
 					buffer,
-					bytes: &bytes[..(len - 1)],
+					bytes: bytes[..(len - 1)].to_owned(),
 				}
 			},
 
@@ -269,7 +269,7 @@ impl<'a> Inst<'a> {
 
 				// Add combo box button
 				0x1 => {
-					if slice.get(0x4..0x6)? != [0x0, 0x0] {
+					if bytes.get(0x4..0x6)? != [0x0, 0x0] {
 						return None;
 					}
 					let value = read_u16!(0x6..0x8)?;
@@ -279,7 +279,7 @@ impl<'a> Inst<'a> {
 
 				// Display scene?
 				value0 => {
-					if slice.get(0x4..0x6)? != [0x0, 0x0] {
+					if bytes.get(0x4..0x6)? != [0x0, 0x0] {
 						return None;
 					}
 					let value1 = read_u16!(0x6..0x8)?;
@@ -296,9 +296,9 @@ impl<'a> Inst<'a> {
 				let value = read_u16!(0xe..0x10)?;
 
 				// If any of the padding is non-zero, return
-				if slice.get(0x4..0x6)? != [0x0, 0x0] ||
-					slice.get(0x8..0xa)? != [0x0, 0x0] ||
-					slice.get(0xc..0xe)? != [0x0, 0x0]
+				if bytes.get(0x4..0x6)? != [0x0, 0x0] ||
+					bytes.get(0x8..0xa)? != [0x0, 0x0] ||
+					bytes.get(0xc..0xe)? != [0x0, 0x0]
 				{
 					return None;
 				}
@@ -457,9 +457,12 @@ impl<'a> Inst<'a> {
 
 				_ => ("display_scene", vec![InstArgFmt::U16(value0), InstArgFmt::U16(value1)]),
 			},
-			Self::SetBuffer { buffer, bytes } => match buffer {
-				0x4 => ("set_text_buffer", vec![InstArgFmt::String(bytes)]),
-				_ => ("set_buffer", vec![InstArgFmt::U16(buffer), InstArgFmt::String(bytes)]),
+			Self::SetBuffer { buffer, ref bytes } => match buffer {
+				0x4 => ("set_text_buffer", vec![InstArgFmt::String(bytes.to_owned())]),
+				_ => ("set_buffer", vec![
+					InstArgFmt::U16(buffer),
+					InstArgFmt::String(bytes.to_owned()),
+				]),
 			},
 
 			Self::SetBrightness {
@@ -492,7 +495,7 @@ impl<'a> Inst<'a> {
 
 	/// Returns this instruction's size
 	#[must_use]
-	pub const fn size(&self) -> usize {
+	pub fn size(&self) -> u32 {
 		// TODO: Combine them
 		#[allow(clippy::match_same_arms)] // We want to explicitly not combine them for now
 		match self {
@@ -515,7 +518,7 @@ impl<'a> Inst<'a> {
 			Self::AddComboBoxButton { .. } => 8,
 			Self::DisplayScene { .. } => 8,
 			Self::SetBuffer { bytes, .. } => {
-				let len = bytes.len() + 2;
+				let len = u32::try_from(bytes.len()).expect("Bytes length didn't fit into a `u32`") + 2;
 				4 + len + (4 - len % 4)
 			},
 			Self::SetBrightness { .. } => 16,
@@ -527,8 +530,6 @@ impl<'a> Inst<'a> {
 
 /// Helper module to serialize and deserialize bytes as `shift_jis`
 mod serde_shift_jis_str {
-	use std::borrow::Cow;
-
 	// Imports
 	use {
 		encoding_rs::SHIFT_JIS,
@@ -549,17 +550,14 @@ mod serde_shift_jis_str {
 	}
 
 	/// Deserialize
-	pub fn deserialize<'de, D>(deserializer: D) -> Result<&'de [u8], D::Error>
+	pub fn deserialize<'de, D>(deserializer: D) -> Result<Vec<u8>, D::Error>
 	where
 		D: Deserializer<'de>,
 	{
-		// TODO: Not panic on bad encoding + non-borrowed encoding
+		// TODO: Not panic on bad encoding
 		let s = <&str>::deserialize(deserializer)?;
 		let (s, ..) = SHIFT_JIS.encode(s);
 
-		match s {
-			Cow::Borrowed(s) => Ok(s),
-			Cow::Owned(_) => panic!("Unable to deserialize"),
-		}
+		Ok(s.into_owned())
 	}
 }
