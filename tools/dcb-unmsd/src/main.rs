@@ -84,16 +84,6 @@ fn main() -> Result<(), anyhow::Error> {
 
 	log::info!("Found {} instructions", insts.len());
 
-	// Get all variable names
-	let vars = match &args.vars {
-		Some(vars_path) => {
-			let vars_file = std::fs::File::open(vars_path).context("Unable to open vars file")?;
-			serde_yaml::from_reader::<_, HashMap<u16, String>>(vars_file).context("Unable to parse vars file")?
-		},
-		None => HashMap::new(),
-	};
-
-
 	// Construct some heuristic labels
 	let heuristic_labels = insts
 		.iter()
@@ -109,7 +99,7 @@ fn main() -> Result<(), anyhow::Error> {
 
 	match args.to_yaml {
 		true => self::print_yaml(&insts).context("Unable to print instructions in yaml")?,
-		false => self::print_asm(&contents, &insts, &heuristic_labels, &vars, &args)
+		false => self::print_asm(&contents, &insts, &heuristic_labels, &args)
 			.context("Unable to print instructions in asm")?,
 	}
 
@@ -133,7 +123,6 @@ fn print_asm(
 	contents: &[u8],
 	insts: &BTreeMap<u32, Inst>,
 	labels: &HashMap<u32, String>,
-	vars: &HashMap<u16, String>,
 	args: &Args,
 ) -> Result<(), anyhow::Error> {
 	let mut stdout = std::io::stdout().lock();
@@ -157,7 +146,7 @@ fn print_asm(
 		}
 
 		let inst_fmt = inst.format();
-		let ctx = DisplayCtx { labels, vars };
+		let ctx = DisplayCtx { labels };
 		self::write_inst_fmt(&inst_fmt, &mut stdout, &ctx).context("Unable to write instruction")?;
 
 		println!();
@@ -208,95 +197,10 @@ fn write_inst_arg_fmt<W: Write>(arg: &InstArgFmt, writer: &mut W, ctx: &DisplayC
 				write!(writer, "0x{bytes}")?;
 			},
 		},
-		InstArgFmt::U16(value) => write!(writer, "{value:#x}")?,
-		InstArgFmt::U32(value) => write!(writer, "{value:#x}")?,
-		InstArgFmt::Var(var) => match ctx.var_label(var) {
-			Some(label) => write!(writer, "{}", label.escape_default())?,
-			None => write!(writer, "{var:#x}")?,
-		},
+		InstArgFmt::Number(num) => write!(writer, "{num:#x}")?,
 		InstArgFmt::Addr(addr) => match ctx.addr_label(addr) {
 			Some(label) => write!(writer, "{}", label.escape_default())?,
 			None => write!(writer, "{addr:#x}")?,
-		},
-		// TODO: Move this back to `dcb-msd`,
-		//       since parsing requires it
-		InstArgFmt::Colors {
-			yellow,
-			black,
-			green,
-			blue,
-			red,
-		} => {
-			write!(writer, "\"")?;
-			if yellow {
-				write!(writer, "y")?;
-			}
-			if blue {
-				write!(writer, "u")?;
-			}
-			if black {
-				write!(writer, "b")?;
-			}
-			if red {
-				write!(writer, "r")?;
-			}
-			if green {
-				write!(writer, "g")?;
-			}
-			write!(writer, "\"")?;
-		},
-		InstArgFmt::Ordinal(idx) => match idx {
-			0 => write!(writer, "\"1st\"")?,
-			1 => write!(writer, "\"2nd\"")?,
-			2 => write!(writer, "\"3rd\"")?,
-			3 => write!(writer, "\"4th\"")?,
-			4 => write!(writer, "\"5th\"")?,
-			5 => write!(writer, "\"Last\"")?,
-			_ => write!(writer, "#{idx:#x}")?,
-		},
-		InstArgFmt::ComboBox(combo_box) => match combo_box {
-			0x61 => write!(writer, "\"small\"")?,
-			0x78 => write!(writer, "\"large\"")?,
-			_ => write!(writer, "{combo_box:#x}")?,
-		},
-		InstArgFmt::ComboBoxButton(button) => match button {
-			0x0 => write!(writer, "\"small_player_room\"")?,
-			0x1 => write!(writer, "\"small_menu\"")?,
-			0x2 => write!(writer, "\"small_battle_cafe\"")?,
-			0x3 => write!(writer, "\"small_battle_arena\"")?,
-			0x4 => write!(writer, "\"small_extra_arena\"")?,
-			0x5 => write!(writer, "\"small_beet_arena\"")?,
-			0x6 => write!(writer, "\"small_haunted_arena\"")?,
-			0x7 => write!(writer, "\"small_fusion_shop\"")?,
-			0x8 => write!(writer, "\"small_yes\"")?,
-			0x9 => write!(writer, "\"small_no\"")?,
-			0x0c => write!(writer, "\"large_talk\"")?,
-			0x0d => write!(writer, "\"large_battle\"")?,
-			0x0e => write!(writer, "\"large_deck_data\"")?,
-			0x0f => write!(writer, "\"large_save\"")?,
-			0x10 => write!(writer, "\"large_yes\"")?,
-			0x11 => write!(writer, "\"large_no\"")?,
-			0x12 => write!(writer, "\"large_cards\"")?,
-			0x13 => write!(writer, "\"large_partner\"")?,
-			_ => write!(writer, "\"button_{button:#x}\"")?,
-		},
-		InstArgFmt::Location(location) => match location {
-			0 => write!(writer, "\"player_room\"")?,
-			1 => write!(writer, "\"battle_cafe\"")?,
-			2 => write!(writer, "\"battle_arena\"")?,
-			3 => write!(writer, "\"extra_arena\"")?,
-			4 => write!(writer, "\"beet_arena\"")?,
-			5 => write!(writer, "\"haunted_arena\"")?,
-			_ => write!(writer, "location_{location:#x}")?,
-		},
-		InstArgFmt::Partner(partner) => match partner {
-			0 => write!(writer, "\"veemon\"")?,
-			1 => write!(writer, "\"hawkmon\"")?,
-			2 => write!(writer, "\"armadillomon\"")?,
-			3 => write!(writer, "\"gatomon\"")?,
-			4 => write!(writer, "\"patamon\"")?,
-			5 => write!(writer, "\"wormmon\"")?,
-			_ => write!(writer, "\"partner_{partner:#x}\"")?,
 		},
 	}
 	Ok(())
@@ -306,17 +210,10 @@ fn write_inst_arg_fmt<W: Write>(arg: &InstArgFmt, writer: &mut W, ctx: &DisplayC
 struct DisplayCtx<'a> {
 	/// Labels
 	labels: &'a HashMap<u32, String>,
-
-	/// Variables
-	vars: &'a HashMap<u16, String>,
 }
 
 impl<'a> DisplayCtx<'a> {
 	fn addr_label(&self, pos: u32) -> Option<&'a str> {
 		self.labels.get(&pos).map(String::as_str)
-	}
-
-	fn var_label(&self, var: u16) -> Option<&'a str> {
-		self.vars.get(&var).map(String::as_str)
 	}
 }

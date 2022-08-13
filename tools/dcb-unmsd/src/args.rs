@@ -11,10 +11,6 @@ pub struct Args {
 	/// Input files
 	pub input_file: PathBuf,
 
-	/// Variables file
-	#[clap(long = "vars")]
-	pub vars: Option<PathBuf>,
-
 	/// If file should be deserialized to `yaml`
 	#[clap(long = "yaml")]
 	pub to_yaml: bool,

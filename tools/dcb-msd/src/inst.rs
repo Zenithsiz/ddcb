@@ -404,13 +404,18 @@ impl Inst {
 
 	/// Formats this instruction
 	pub fn format(&self) -> InstFmt {
+		// Wraps a number around `InstArgFmt::Number`, casting into `i64`
+		macro num($num:expr) {
+			InstArgFmt::Number(i64::from($num))
+		}
+
 		let (mnemonic, args) = match *self {
 			Self::DisplayTextBuffer => ("display_text_buffer", vec![]),
 			Self::WaitInput => ("wait_input", vec![]),
 			Self::EmptyTextBox => ("empty_text_box", vec![]),
 			Self::SetBgBattleCafe => ("set_bg_battle_cafe", vec![]),
 			// TODO: Return custom type from here?
-			Self::OpenScreen { screen } => ("open_screen", vec![InstArgFmt::U16(screen)]),
+			Self::OpenScreen { screen } => ("open_screen", vec![num!(screen)]),
 			Self::SetBgBattleArena => ("set_bg_battle_arena", vec![]),
 			Self::DisplayCenterTextBox => ("display_center_text_box", vec![]),
 			Self::ResetGameCompletion => ("reset_game_completion", vec![]),
@@ -418,51 +423,35 @@ impl Inst {
 			Self::ResetChoosePartner => ("reset_choose_partner", vec![]),
 			Self::ChangeVar { var, op, value } => match (var, op) {
 				// Arena intro colors
-				(0x5, 0) => ("set_arena_match_intro_colors", vec![InstArgFmt::Colors {
-					yellow: value & 0b00001 != 0,
-					black:  value & 0b00010 != 0,
-					green:  value & 0b00100 != 0,
-					blue:   value & 0b01000 != 0,
-					red:    value & 0b10000 != 0,
-				}]),
+				// TODO: Maybe convert to string like "yubrg" for all colors
+				(0x5, 0) => ("set_arena_match_intro_colors", vec![num!(value)]),
 
 				// Arena match intro index
-				(0xb, 0) => ("set_arena_match_intro_idx", vec![InstArgFmt::Ordinal(value)]),
+				(0xb, 0) => ("set_arena_match_intro_idx", vec![num!(value)]),
 
-				(_, 0) => ("set_var", vec![InstArgFmt::Var(var), InstArgFmt::U32(value)]),
-				(_, 1) => ("add_var", vec![InstArgFmt::Var(var), InstArgFmt::U32(value)]),
-				_ => ("mod_var", vec![
-					InstArgFmt::U32(op),
-					InstArgFmt::Var(var),
-					InstArgFmt::U32(value),
-				]),
+				(_, 0) => ("set_var", vec![num!(var), num!(value)]),
+				(_, 1) => ("add_var", vec![num!(var), num!(value)]),
+				_ => ("mod_var", vec![num!(op), num!(var), num!(value)]),
 			},
 			Self::Test { var, op, value } => match op {
-				3 => ("test_eq", vec![InstArgFmt::Var(var), InstArgFmt::U32(value)]),
-				5 => ("test_lt", vec![InstArgFmt::Var(var), InstArgFmt::U32(value)]),
-				_ => ("test", vec![
-					InstArgFmt::U32(op),
-					InstArgFmt::Var(var),
-					InstArgFmt::U32(value),
-				]),
+				3 => ("test_eq", vec![num!(var), num!(value)]),
+				5 => ("test_lt", vec![num!(var), num!(value)]),
+				_ => ("test", vec![num!(op), num!(var), num!(value)]),
 			},
 
-			Self::Jump { var, addr } => ("jump", vec![InstArgFmt::Var(var), InstArgFmt::Addr(addr)]),
-			Self::OpenComboBox { combo_box } => ("open_combo_box", vec![InstArgFmt::U16(combo_box)]),
+			Self::Jump { var, addr } => ("jump", vec![num!(var), InstArgFmt::Addr(addr)]),
+			Self::OpenComboBox { combo_box } => ("open_combo_box", vec![num!(combo_box)]),
 			Self::DisplayScene { value0, value1 } => match (value0, value1) {
-				(0x2, value) => ("battle", vec![InstArgFmt::U16(value)]),
-				(0x8, location) => ("display_location", vec![InstArgFmt::Location(location)]),
-				(0xa, partner) => ("add_partner", vec![InstArgFmt::Partner(partner)]),
-				(0x12, value) => ("add_completion_points", vec![InstArgFmt::U16(value)]),
+				(0x2, value) => ("battle", vec![num!(value)]),
+				(0x8, location) => ("display_location", vec![num!(location)]),
+				(0xa, partner) => ("add_partner", vec![num!(partner)]),
+				(0x12, value) => ("add_completion_points", vec![num!(value)]),
 
-				_ => ("display_scene", vec![InstArgFmt::U16(value0), InstArgFmt::U16(value1)]),
+				_ => ("display_scene", vec![num!(value0), num!(value1)]),
 			},
 			Self::SetBuffer { buffer, ref bytes } => match buffer {
 				0x4 => ("set_text_buffer", vec![InstArgFmt::String(bytes.to_owned())]),
-				_ => ("set_buffer", vec![
-					InstArgFmt::U16(buffer),
-					InstArgFmt::String(bytes.to_owned()),
-				]),
+				_ => ("set_buffer", vec![num!(buffer), InstArgFmt::String(bytes.to_owned())]),
 			},
 
 			Self::SetBrightness {
@@ -471,20 +460,20 @@ impl Inst {
 				brightness,
 				value,
 			} => match (kind, place, brightness, value) {
-				(0x0, 0x0, _, 0xa) => ("set_light_left_char", vec![InstArgFmt::U16(brightness)]),
-				(0x0, 0x1, _, 0xa) => ("set_light_right_char", vec![InstArgFmt::U16(brightness)]),
-				(0x1, _, 0xffff, 0xffff) => ("set_light_unknown", vec![InstArgFmt::U16(place)]),
+				(0x0, 0x0, _, 0xa) => ("set_light_left_char", vec![num!(brightness)]),
+				(0x0, 0x1, _, 0xa) => ("set_light_right_char", vec![num!(brightness)]),
+				(0x1, _, 0xffff, 0xffff) => ("set_light_unknown", vec![num!(place)]),
 				_ => ("set_light", vec![
-					InstArgFmt::U16(kind),
-					InstArgFmt::U16(place),
-					InstArgFmt::U16(brightness),
-					InstArgFmt::U16(value),
+					num!(kind),
+					num!(place),
+					num!(brightness),
+					num!(value),
 				]),
 			},
 			Self::ComboBoxAwait => ("combo_box_await", vec![]),
 			Self::BattleCafeAwait => ("battle_cafe_await", vec![]),
-			Self::AddComboBoxButton { value } => ("combo_box_add_button", vec![InstArgFmt::ComboBoxButton(value)]),
-			Self::Unknown { value } => ("unknown", vec![InstArgFmt::U32(value)]),
+			Self::AddComboBoxButton { value } => ("combo_box_add_button", vec![num!(value)]),
+			Self::Unknown { value } => ("unknown", vec![num!(value)]),
 		};
 
 		InstFmt {
