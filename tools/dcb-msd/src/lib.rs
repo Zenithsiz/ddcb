@@ -1,7 +1,7 @@
 //! `.MSD` files
 
 // Features
-#![feature(assert_matches, generic_associated_types, decl_macro)]
+#![feature(assert_matches, generic_associated_types, decl_macro, try_blocks)]
 
 // Modules
 pub mod inst;
