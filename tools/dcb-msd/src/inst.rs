@@ -12,8 +12,9 @@ mod parse;
 
 // Exports
 pub use {
-	error::{DisplayError, EncodeError},
+	error::EncodeError,
 	fmt::{InstArgFmt, InstFmt},
+	parse::{ParsedInst, ParsedInstArg},
 };
 
 // Imports
@@ -407,10 +408,10 @@ impl<'a> Inst<'a> {
 			Self::DisplayTextBuffer => ("display_text_buffer", vec![]),
 			Self::WaitInput => ("wait_input", vec![]),
 			Self::EmptyTextBox => ("empty_text_box", vec![]),
-			Self::SetBgBattleCafe => ("set_bg", vec![InstArgFmt::String("Battle Cafe".as_bytes())]),
+			Self::SetBgBattleCafe => ("set_bg_battle_cafe", vec![]),
 			// TODO: Return custom type from here?
 			Self::OpenScreen { screen } => ("open_screen", vec![InstArgFmt::U16(screen)]),
-			Self::SetBgBattleArena => ("set_bg", vec![InstArgFmt::String("Battle Arena".as_bytes())]),
+			Self::SetBgBattleArena => ("set_bg_battle_arena", vec![]),
 			Self::DisplayCenterTextBox => ("display_center_text_box", vec![]),
 			Self::ResetGameCompletion => ("reset_game_completion", vec![]),
 			Self::StartTransition => ("start_transition", vec![]),
@@ -447,7 +448,7 @@ impl<'a> Inst<'a> {
 			},
 
 			Self::Jump { var, addr } => ("jump", vec![InstArgFmt::Var(var), InstArgFmt::Addr(addr)]),
-			Self::OpenComboBox { combo_box } => ("open_menu", vec![InstArgFmt::U16(combo_box)]),
+			Self::OpenComboBox { combo_box } => ("open_combo_box", vec![InstArgFmt::U16(combo_box)]),
 			Self::DisplayScene { value0, value1 } => match (value0, value1) {
 				(0x2, value) => ("battle", vec![InstArgFmt::U16(value)]),
 				(0x8, location) => ("display_location", vec![InstArgFmt::Location(location)]),
