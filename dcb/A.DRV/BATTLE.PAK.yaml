@@ -1,7 +1,7 @@
 ---
-- file_path: BATTLE.PAK/0.MSD
+- file_path: "/build/msd/A.DRV/BATTLE.PAK/0.MSD"
   id: 998
-- file_path: BATTLE.PAK/1.MSD
+- file_path: "/build/msd/A.DRV/BATTLE.PAK/1.MSD"
   id: 999
 - file_path: BATTLE.PAK/2.BIN
   id: 104

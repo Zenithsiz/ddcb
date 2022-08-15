@@ -57,7 +57,16 @@ fn create_pak(map: &Map, base_path: &Path, output: &Path) -> Result<(), anyhow::
 	let mut output_file = BufWriter::new(output_file);
 
 	for entry in &map.entries {
-		let entry_path = base_path.join(&entry.file_path);
+		// Get the entry path
+		// Note: If it's relative, use the base path of the file,
+		//       else, if it's absolute, use the current directory we're
+		//       running from
+		// TODO: Check if this isn't too surprising of a behavior
+		let entry_path = match entry.file_path.strip_prefix("/") {
+			Ok(path) => path.to_path_buf(),
+			Err(_) => base_path.join(&entry.file_path),
+		};
+
 		let file =
 			fs::File::open(entry_path).with_context(|| format!("Unable to open file {}", entry.file_path.display()))?;
 		let mut file = BufReader::new(file);

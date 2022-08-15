@@ -17,15 +17,15 @@
   id: 6
 - file_path: 009.PAK/8.UN1
   id: 7
-- file_path: 009.PAK/9.MSD
+- file_path: "/build/msd/F.DRV/009.PAK/9.MSD"
   id: 521
-- file_path: 009.PAK/10.MSD
+- file_path: "/build/msd/F.DRV/009.PAK/10.MSD"
   id: 522
-- file_path: 009.PAK/11.MSD
+- file_path: "/build/msd/F.DRV/009.PAK/11.MSD"
   id: 523
-- file_path: 009.PAK/12.MSD
+- file_path: "/build/msd/F.DRV/009.PAK/12.MSD"
   id: 400
-- file_path: 009.PAK/13.MSD
+- file_path: "/build/msd/F.DRV/009.PAK/13.MSD"
   id: 416
 - file_path: 009.PAK/14.BIN
   id: 9

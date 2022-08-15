@@ -4,13 +4,13 @@
   entries:
     - name: UNIT00
       date: "2001-04-17T02:53:36"
-      path: dcb/C.DRV/EVENT/UNIT00.MSD
+      path: build/msd/C.DRV/EVENT/UNIT00.MSD
     - name: UNIT01
       date: "2001-04-17T02:53:38"
-      path: dcb/C.DRV/EVENT/UNIT01.MSD
+      path: build/msd/C.DRV/EVENT/UNIT01.MSD
     - name: UNIT02
       date: "2001-04-17T02:53:40"
-      path: dcb/C.DRV/EVENT/UNIT02.MSD
+      path: build/msd/C.DRV/EVENT/UNIT02.MSD
     - name: VSSVER
       date: "2001-04-17T02:56:44"
       path: dcb/C.DRV/EVENT/VSSVER.SCC
@@ -106,40 +106,40 @@
       path: dcb/C.DRV/DEBUG/AREA04.TIS
     - name: CITY11
       date: "2001-05-02T08:15:14"
-      path: dcb/C.DRV/DEBUG/CITY11.MSD
+      path: build/msd/C.DRV/DEBUG/CITY11.MSD
     - name: CITY10
       date: "2001-05-02T08:15:14"
-      path: dcb/C.DRV/DEBUG/CITY10.MSD
+      path: build/msd/C.DRV/DEBUG/CITY10.MSD
     - name: CITY09
       date: "2001-05-02T08:15:14"
-      path: dcb/C.DRV/DEBUG/CITY09.MSD
+      path: build/msd/C.DRV/DEBUG/CITY09.MSD
     - name: CITY06
       date: "2001-05-02T08:15:12"
-      path: dcb/C.DRV/DEBUG/CITY06.MSD
+      path: build/msd/C.DRV/DEBUG/CITY06.MSD
     - name: CITY08
       date: "2001-05-02T08:15:14"
-      path: dcb/C.DRV/DEBUG/CITY08.MSD
+      path: build/msd/C.DRV/DEBUG/CITY08.MSD
     - name: CITY07
       date: "2001-05-02T08:15:12"
-      path: dcb/C.DRV/DEBUG/CITY07.MSD
+      path: build/msd/C.DRV/DEBUG/CITY07.MSD
     - name: CITY03
       date: "2001-05-02T08:15:12"
-      path: dcb/C.DRV/DEBUG/CITY03.MSD
+      path: build/msd/C.DRV/DEBUG/CITY03.MSD
     - name: CITY05
       date: "2001-05-02T08:15:12"
-      path: dcb/C.DRV/DEBUG/CITY05.MSD
+      path: build/msd/C.DRV/DEBUG/CITY05.MSD
     - name: CITY00
       date: "2001-05-02T08:15:10"
-      path: dcb/C.DRV/DEBUG/CITY00.MSD
+      path: build/msd/C.DRV/DEBUG/CITY00.MSD
     - name: CITY04
       date: "2001-05-02T08:15:12"
-      path: dcb/C.DRV/DEBUG/CITY04.MSD
+      path: build/msd/C.DRV/DEBUG/CITY04.MSD
     - name: CITY02
       date: "2001-05-02T08:15:10"
-      path: dcb/C.DRV/DEBUG/CITY02.MSD
+      path: build/msd/C.DRV/DEBUG/CITY02.MSD
     - name: CITY01
       date: "2001-05-02T08:15:10"
-      path: dcb/C.DRV/DEBUG/CITY01.MSD
+      path: build/msd/C.DRV/DEBUG/CITY01.MSD
 - name: UNIT_EFF
   date: "2000-10-19T11:49:44"
   path: dcb/C.DRV/UNIT_EFF.ARC

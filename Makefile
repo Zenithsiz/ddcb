@@ -13,6 +13,7 @@ sha256sum              = sha256sum
 mkdrv                  = tools/target/release/dcb-mkdrv
 mkdrv-deps             = tools/target/release/dcb-mkdrv-deps
 mkpak                  = tools/target/release/dcb-mkpak
+mkmsd                  = tools/target/release/dcb-mkmsd
 mkpak-deps             = tools/target/release/dcb-mkpak-deps
 mk-card-table          = tools/target/release/dcb-mk-card-table
 mk-deck-table          = tools/target/release/dcb-mk-deck-table
@@ -127,6 +128,12 @@ build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak-deps)
 build/pak/%.PAK: dcb/%.PAK.yaml build/pak/%.PAK.d $(mkpak)
 	@mkdir -p $(@D)
 	$(mkpak) $< --out $@
+
+# `MSD` files
+build/msd/%.MSD: dcb/%.MSD.s dcb/%.MSD.bspatch $(mkmsd)
+	@mkdir -p "$(@D)"
+	$(mkmsd) "$<" -o "$@"
+	$(bspatch) "$@" "$@" "dcb/$*.MSD.bspatch"
 
 # Card table
 build/card_table: dcb/B.DRV/card_table.json dcb/B.DRV/card_table.bspatch $(mk-card-table)

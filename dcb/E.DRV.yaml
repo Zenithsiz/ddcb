@@ -3955,10 +3955,10 @@
   entries:
     - name: SKILL999
       date: "2000-08-18T03:08:18"
-      path: dcb/E.DRV/SKILL/SKILL999.MSD
+      path: build/msd/E.DRV/SKILL/SKILL999.MSD
     - name: SKILL998
       date: "2000-08-18T05:22:12"
-      path: dcb/E.DRV/SKILL/SKILL998.MSD
+      path: build/msd/E.DRV/SKILL/SKILL998.MSD
     - name: SKILL729
       date: "2001-05-02T07:32:50"
-      path: dcb/E.DRV/SKILL/SKILL729.MSD
+      path: build/msd/E.DRV/SKILL/SKILL729.MSD

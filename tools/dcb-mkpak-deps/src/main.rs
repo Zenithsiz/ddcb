@@ -55,7 +55,15 @@ fn create_pak(map: &Map, out_path: &Path, base_path: &Path, dep_file: &Path) -> 
 	write!(dep_file, "{}: ", out_path.display()).context("Unable to write header")?;
 
 	for entry in &map.entries {
-		let entry_path = base_path.join(&entry.file_path);
+		// Get the entry path
+		// Note: If it's relative, use the base path of the file,
+		//       else, if it's absolute, use the current directory we're
+		//       running from
+		// TODO: Check if this isn't too surprising of a behavior
+		let entry_path = match entry.file_path.strip_prefix("/") {
+			Ok(path) => path.to_path_buf(),
+			Err(_) => base_path.join(&entry.file_path),
+		};
 
 		write!(dep_file, "{} ", entry_path.display()).context("Unable to write file")?;
 	}
