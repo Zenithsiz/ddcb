@@ -1,11 +1,16 @@
 ---
-- file_path: 737.PAK/0.M3D
+- file_path: "737.PAK/0.M3D"
   id: 7370
-- file_path: 737.PAK/1.A2D
+  kind: m3d
+- file_path: "737.PAK/1.A2D"
   id: 2671
-- file_path: 737.PAK/2.BIN
+  kind: a2d
+- file_path: "737.PAK/2.BIN"
   id: 7370
-- file_path: 737.PAK/3.BIN
+  kind: bin
+- file_path: "737.PAK/3.BIN"
   id: 2671
-- file_path: 737.PAK/4.BIN
+  kind: bin
+- file_path: "737.PAK/4.BIN"
   id: 890
+  kind: bin

@@ -9,9 +9,13 @@ use std::path::PathBuf;
 #[clap(author, version, about)]
 pub struct Args {
 	/// Input map
+	///
+	/// If any of the entries within the map are absolute
+	/// paths, they will be relative to where this binary is
+	/// called from, instead of relative from the map file.
 	pub input_map: PathBuf,
 
 	/// The output file
-	#[clap(long = "out", short = 'o')]
+	#[clap(long = "output", short = 'o')]
 	pub output: PathBuf,
 }

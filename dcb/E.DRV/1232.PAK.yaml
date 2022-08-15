@@ -1,11 +1,16 @@
 ---
-- file_path: 1232.PAK/0.M3D
+- file_path: "1232.PAK/0.M3D"
   id: 12741
-- file_path: 1232.PAK/1.A2D
+  kind: m3d
+- file_path: "1232.PAK/1.A2D"
   id: 4972
-- file_path: 1232.PAK/2.BIN
+  kind: a2d
+- file_path: "1232.PAK/2.BIN"
   id: 4972
-- file_path: 1232.PAK/3.BIN
+  kind: bin
+- file_path: "1232.PAK/3.BIN"
   id: 12741
-- file_path: 1232.PAK/4.BIN
+  kind: bin
+- file_path: "1232.PAK/4.BIN"
   id: 2151
+  kind: bin

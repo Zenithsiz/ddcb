@@ -1,13 +1,19 @@
 ---
-- file_path: 1059.PAK/0.M3D
+- file_path: "1059.PAK/0.M3D"
   id: 10591
-- file_path: 1059.PAK/1.M3D
+  kind: m3d
+- file_path: "1059.PAK/1.M3D"
   id: 10590
-- file_path: 1059.PAK/2.BIN
+  kind: m3d
+- file_path: "1059.PAK/2.BIN"
   id: 10592
-- file_path: 1059.PAK/3.BIN
+  kind: bin
+- file_path: "1059.PAK/3.BIN"
   id: 10591
-- file_path: 1059.PAK/4.BIN
+  kind: bin
+- file_path: "1059.PAK/4.BIN"
   id: 10590
-- file_path: 1059.PAK/5.BIN
+  kind: bin
+- file_path: "1059.PAK/5.BIN"
   id: 1572
+  kind: bin

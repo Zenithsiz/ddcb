@@ -1,7 +1,10 @@
 ---
-- file_path: 415.PAK/0.M3D
+- file_path: "415.PAK/0.M3D"
   id: 4120
-- file_path: 415.PAK/1.BIN
+  kind: m3d
+- file_path: "415.PAK/1.BIN"
   id: 4120
-- file_path: 415.PAK/2.BIN
+  kind: bin
+- file_path: "415.PAK/2.BIN"
   id: 9991
+  kind: bin

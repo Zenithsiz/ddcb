@@ -1,5 +1,7 @@
 ---
-- file_path: 446.PAK/0.A2D
+- file_path: "446.PAK/0.A2D"
   id: 4470
-- file_path: 446.PAK/1.BIN
+  kind: a2d
+- file_path: "446.PAK/1.BIN"
   id: 4470
+  kind: bin

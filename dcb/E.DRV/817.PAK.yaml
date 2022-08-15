@@ -1,7 +1,10 @@
 ---
-- file_path: 817.PAK/0.A2D
+- file_path: "817.PAK/0.A2D"
   id: 2671
-- file_path: 817.PAK/1.BIN
+  kind: a2d
+- file_path: "817.PAK/1.BIN"
   id: 2671
-- file_path: 817.PAK/2.BIN
+  kind: bin
+- file_path: "817.PAK/2.BIN"
   id: 832
+  kind: bin

@@ -1,9 +1,13 @@
 ---
-- file_path: 420.PAK/0.M3D
+- file_path: "420.PAK/0.M3D"
   id: 4200
-- file_path: 420.PAK/1.UN1
+  kind: m3d
+- file_path: "420.PAK/1.UN1"
   id: 4200
-- file_path: 420.PAK/2.UN2
+  kind: un1
+- file_path: "420.PAK/2.UN2"
   id: 4200
-- file_path: 420.PAK/3.BIN
+  kind: un2
+- file_path: "420.PAK/3.BIN"
   id: 4200
+  kind: bin

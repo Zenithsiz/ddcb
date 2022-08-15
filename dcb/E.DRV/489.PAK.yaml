@@ -1,17 +1,25 @@
 ---
-- file_path: 489.PAK/0.A2D
+- file_path: "489.PAK/0.A2D"
   id: 6882
-- file_path: 489.PAK/1.A2D
+  kind: a2d
+- file_path: "489.PAK/1.A2D"
   id: 6883
-- file_path: 489.PAK/2.A2D
+  kind: a2d
+- file_path: "489.PAK/2.A2D"
   id: 6884
-- file_path: 489.PAK/3.UN2
+  kind: a2d
+- file_path: "489.PAK/3.UN2"
   id: 9991
-- file_path: 489.PAK/4.BIN
+  kind: un2
+- file_path: "489.PAK/4.BIN"
   id: 6882
-- file_path: 489.PAK/5.BIN
+  kind: bin
+- file_path: "489.PAK/5.BIN"
   id: 6883
-- file_path: 489.PAK/6.BIN
+  kind: bin
+- file_path: "489.PAK/6.BIN"
   id: 6884
-- file_path: 489.PAK/7.BIN
+  kind: bin
+- file_path: "489.PAK/7.BIN"
   id: 9991
+  kind: bin

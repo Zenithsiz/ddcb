@@ -1,23 +1,34 @@
 ---
-- file_path: 551.PAK/0.M3D
+- file_path: "551.PAK/0.M3D"
   id: 5550
-- file_path: 551.PAK/1.UN1
+  kind: m3d
+- file_path: "551.PAK/1.UN1"
   id: 5550
-- file_path: 551.PAK/2.A2D
+  kind: un1
+- file_path: "551.PAK/2.A2D"
   id: 5551
-- file_path: 551.PAK/3.A2D
+  kind: a2d
+- file_path: "551.PAK/3.A2D"
   id: 5552
-- file_path: 551.PAK/4.A2D
+  kind: a2d
+- file_path: "551.PAK/4.A2D"
   id: 5360
-- file_path: 551.PAK/5.UN2
+  kind: a2d
+- file_path: "551.PAK/5.UN2"
   id: 5550
-- file_path: 551.PAK/6.BIN
+  kind: un2
+- file_path: "551.PAK/6.BIN"
   id: 5551
-- file_path: 551.PAK/7.BIN
+  kind: bin
+- file_path: "551.PAK/7.BIN"
   id: 5552
-- file_path: 551.PAK/8.BIN
+  kind: bin
+- file_path: "551.PAK/8.BIN"
   id: 5360
-- file_path: 551.PAK/9.BIN
+  kind: bin
+- file_path: "551.PAK/9.BIN"
   id: 5550
-- file_path: 551.PAK/10.BIN
+  kind: bin
+- file_path: "551.PAK/10.BIN"
   id: 800
+  kind: bin

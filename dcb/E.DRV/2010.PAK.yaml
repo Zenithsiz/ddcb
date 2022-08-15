@@ -1,17 +1,25 @@
 ---
-- file_path: 2010.PAK/0.M3D
+- file_path: "2010.PAK/0.M3D"
   id: 20101
-- file_path: 2010.PAK/1.M3D
+  kind: m3d
+- file_path: "2010.PAK/1.M3D"
   id: 20102
-- file_path: 2010.PAK/2.M3D
+  kind: m3d
+- file_path: "2010.PAK/2.M3D"
   id: 20103
-- file_path: 2010.PAK/3.UN1
+  kind: m3d
+- file_path: "2010.PAK/3.UN1"
   id: 20101
-- file_path: 2010.PAK/4.UN1
+  kind: un1
+- file_path: "2010.PAK/4.UN1"
   id: 20102
-- file_path: 2010.PAK/5.UN1
+  kind: un1
+- file_path: "2010.PAK/5.UN1"
   id: 20103
-- file_path: 2010.PAK/6.BIN
+  kind: un1
+- file_path: "2010.PAK/6.BIN"
   id: 20101
-- file_path: 2010.PAK/7.BIN
+  kind: bin
+- file_path: "2010.PAK/7.BIN"
   id: 20102
+  kind: bin

@@ -1,33 +1,49 @@
 ---
-- file_path: 220.PAK/0.M3D
+- file_path: "220.PAK/0.M3D"
   id: 220
-- file_path: 220.PAK/1.UN1
+  kind: m3d
+- file_path: "220.PAK/1.UN1"
   id: 0
-- file_path: 220.PAK/2.UN1
+  kind: un1
+- file_path: "220.PAK/2.UN1"
   id: 1
-- file_path: 220.PAK/3.UN1
+  kind: un1
+- file_path: "220.PAK/3.UN1"
   id: 2
-- file_path: 220.PAK/4.UN1
+  kind: un1
+- file_path: "220.PAK/4.UN1"
   id: 3
-- file_path: 220.PAK/5.UN1
+  kind: un1
+- file_path: "220.PAK/5.UN1"
   id: 4
-- file_path: 220.PAK/6.UN1
+  kind: un1
+- file_path: "220.PAK/6.UN1"
   id: 5
-- file_path: 220.PAK/7.UN1
+  kind: un1
+- file_path: "220.PAK/7.UN1"
   id: 6
-- file_path: 220.PAK/8.UN1
+  kind: un1
+- file_path: "220.PAK/8.UN1"
   id: 7
+  kind: un1
 - file_path: "/build/msd/F.DRV/220.PAK/9.MSD"
   id: 1246
+  kind: msd
 - file_path: "/build/msd/F.DRV/220.PAK/10.MSD"
   id: 1247
+  kind: msd
 - file_path: "/build/msd/F.DRV/220.PAK/11.MSD"
   id: 1248
+  kind: msd
 - file_path: "/build/msd/F.DRV/220.PAK/12.MSD"
   id: 450
+  kind: msd
 - file_path: "/build/msd/F.DRV/220.PAK/13.MSD"
   id: 406
+  kind: msd
 - file_path: "/build/msd/F.DRV/220.PAK/14.MSD"
   id: 2006
-- file_path: 220.PAK/15.BIN
+  kind: msd
+- file_path: "220.PAK/15.BIN"
   id: 220
+  kind: bin

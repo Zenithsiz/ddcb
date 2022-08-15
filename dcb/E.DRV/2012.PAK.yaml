@@ -1,19 +1,28 @@
 ---
-- file_path: 2012.PAK/0.M3D
+- file_path: "2012.PAK/0.M3D"
   id: 20120
-- file_path: 2012.PAK/1.UN1
+  kind: m3d
+- file_path: "2012.PAK/1.UN1"
   id: 20120
-- file_path: 2012.PAK/2.A2D
+  kind: un1
+- file_path: "2012.PAK/2.A2D"
   id: 11280
-- file_path: 2012.PAK/3.A2D
+  kind: a2d
+- file_path: "2012.PAK/3.A2D"
   id: 11281
-- file_path: 2012.PAK/4.A2D
+  kind: a2d
+- file_path: "2012.PAK/4.A2D"
   id: 11285
-- file_path: 2012.PAK/5.BIN
+  kind: a2d
+- file_path: "2012.PAK/5.BIN"
   id: 11280
-- file_path: 2012.PAK/6.BIN
+  kind: bin
+- file_path: "2012.PAK/6.BIN"
   id: 11281
-- file_path: 2012.PAK/7.BIN
+  kind: bin
+- file_path: "2012.PAK/7.BIN"
   id: 11285
-- file_path: 2012.PAK/8.BIN
+  kind: bin
+- file_path: "2012.PAK/8.BIN"
   id: 20120
+  kind: bin

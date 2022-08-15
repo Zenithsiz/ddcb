@@ -1,15 +1,22 @@
 ---
-- file_path: 723.PAK/0.M3D
+- file_path: "723.PAK/0.M3D"
   id: 7230
-- file_path: 723.PAK/1.M3D
+  kind: m3d
+- file_path: "723.PAK/1.M3D"
   id: 7231
-- file_path: 723.PAK/2.UN1
+  kind: m3d
+- file_path: "723.PAK/2.UN1"
   id: 7230
-- file_path: 723.PAK/3.UN1
+  kind: un1
+- file_path: "723.PAK/3.UN1"
   id: 7231
-- file_path: 723.PAK/4.BIN
+  kind: un1
+- file_path: "723.PAK/4.BIN"
   id: 7230
-- file_path: 723.PAK/5.BIN
+  kind: bin
+- file_path: "723.PAK/5.BIN"
   id: 7231
-- file_path: 723.PAK/6.BIN
+  kind: bin
+- file_path: "723.PAK/6.BIN"
   id: 541
+  kind: bin

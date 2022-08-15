@@ -1,29 +1,43 @@
 ---
-- file_path: 688.PAK/0.M3D
+- file_path: "688.PAK/0.M3D"
   id: 6880
-- file_path: 688.PAK/1.M3D
+  kind: m3d
+- file_path: "688.PAK/1.M3D"
   id: 6881
-- file_path: 688.PAK/2.UN1
+  kind: m3d
+- file_path: "688.PAK/2.UN1"
   id: 6880
-- file_path: 688.PAK/3.UN1
+  kind: un1
+- file_path: "688.PAK/3.UN1"
   id: 6881
-- file_path: 688.PAK/4.A2D
+  kind: un1
+- file_path: "688.PAK/4.A2D"
   id: 6882
-- file_path: 688.PAK/5.A2D
+  kind: a2d
+- file_path: "688.PAK/5.A2D"
   id: 6883
-- file_path: 688.PAK/6.A2D
+  kind: a2d
+- file_path: "688.PAK/6.A2D"
   id: 6884
-- file_path: 688.PAK/7.UN2
+  kind: a2d
+- file_path: "688.PAK/7.UN2"
   id: 6880
-- file_path: 688.PAK/8.BIN
+  kind: un2
+- file_path: "688.PAK/8.BIN"
   id: 6882
-- file_path: 688.PAK/9.BIN
+  kind: bin
+- file_path: "688.PAK/9.BIN"
   id: 6883
-- file_path: 688.PAK/10.BIN
+  kind: bin
+- file_path: "688.PAK/10.BIN"
   id: 6884
-- file_path: 688.PAK/11.BIN
+  kind: bin
+- file_path: "688.PAK/11.BIN"
   id: 6880
-- file_path: 688.PAK/12.BIN
+  kind: bin
+- file_path: "688.PAK/12.BIN"
   id: 6881
-- file_path: 688.PAK/13.BIN
+  kind: bin
+- file_path: "688.PAK/13.BIN"
   id: 812
+  kind: bin

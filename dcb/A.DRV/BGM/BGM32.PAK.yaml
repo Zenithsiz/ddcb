@@ -1,7 +1,10 @@
 ---
-- file_path: BGM32.PAK/0.SEQ
+- file_path: "BGM32.PAK/0.SEQ"
   id: 32
-- file_path: BGM32.PAK/1.VH
+  kind: seq
+- file_path: "BGM32.PAK/1.VH"
   id: 32
-- file_path: BGM32.PAK/2.VB
+  kind: vh
+- file_path: "BGM32.PAK/2.VB"
   id: 32
+  kind: vb

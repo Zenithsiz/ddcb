@@ -1,25 +1,37 @@
 ---
-- file_path: 2074.PAK/0.M3D
+- file_path: "2074.PAK/0.M3D"
   id: 20740
-- file_path: 2074.PAK/1.M3D
+  kind: m3d
+- file_path: "2074.PAK/1.M3D"
   id: 20741
-- file_path: 2074.PAK/2.M3D
+  kind: m3d
+- file_path: "2074.PAK/2.M3D"
   id: 20742
-- file_path: 2074.PAK/3.M3D
+  kind: m3d
+- file_path: "2074.PAK/3.M3D"
   id: 20743
-- file_path: 2074.PAK/4.A2D
+  kind: m3d
+- file_path: "2074.PAK/4.A2D"
   id: 10610
-- file_path: 2074.PAK/5.A2D
+  kind: a2d
+- file_path: "2074.PAK/5.A2D"
   id: 20744
-- file_path: 2074.PAK/6.BIN
+  kind: a2d
+- file_path: "2074.PAK/6.BIN"
   id: 10610
-- file_path: 2074.PAK/7.BIN
+  kind: bin
+- file_path: "2074.PAK/7.BIN"
   id: 20740
-- file_path: 2074.PAK/8.BIN
+  kind: bin
+- file_path: "2074.PAK/8.BIN"
   id: 20741
-- file_path: 2074.PAK/9.BIN
+  kind: bin
+- file_path: "2074.PAK/9.BIN"
   id: 20742
-- file_path: 2074.PAK/10.BIN
+  kind: bin
+- file_path: "2074.PAK/10.BIN"
   id: 20743
-- file_path: 2074.PAK/11.BIN
+  kind: bin
+- file_path: "2074.PAK/11.BIN"
   id: 20744
+  kind: bin

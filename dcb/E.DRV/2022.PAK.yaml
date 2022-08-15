@@ -1,9 +1,13 @@
 ---
-- file_path: 2022.PAK/0.M3D
+- file_path: "2022.PAK/0.M3D"
   id: 20220
-- file_path: 2022.PAK/1.A2D
+  kind: m3d
+- file_path: "2022.PAK/1.A2D"
   id: 20221
-- file_path: 2022.PAK/2.BIN
+  kind: a2d
+- file_path: "2022.PAK/2.BIN"
   id: 20220
-- file_path: 2022.PAK/3.BIN
+  kind: bin
+- file_path: "2022.PAK/3.BIN"
   id: 20221
+  kind: bin

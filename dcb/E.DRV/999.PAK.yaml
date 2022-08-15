@@ -1,11 +1,16 @@
 ---
-- file_path: 999.PAK/0.M3D
+- file_path: "999.PAK/0.M3D"
   id: 9992
-- file_path: 999.PAK/1.UN1
+  kind: m3d
+- file_path: "999.PAK/1.UN1"
   id: 9992
-- file_path: 999.PAK/2.UN2
+  kind: un1
+- file_path: "999.PAK/2.UN2"
   id: 9991
-- file_path: 999.PAK/3.BIN
+  kind: un2
+- file_path: "999.PAK/3.BIN"
   id: 9991
-- file_path: 999.PAK/4.BIN
+  kind: bin
+- file_path: "999.PAK/4.BIN"
   id: 9992
+  kind: bin

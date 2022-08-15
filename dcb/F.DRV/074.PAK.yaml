@@ -1,33 +1,49 @@
 ---
-- file_path: 074.PAK/0.M3D
+- file_path: "074.PAK/0.M3D"
   id: 74
-- file_path: 074.PAK/1.UN1
+  kind: m3d
+- file_path: "074.PAK/1.UN1"
   id: 0
-- file_path: 074.PAK/2.UN1
+  kind: un1
+- file_path: "074.PAK/2.UN1"
   id: 1
-- file_path: 074.PAK/3.UN1
+  kind: un1
+- file_path: "074.PAK/3.UN1"
   id: 2
-- file_path: 074.PAK/4.UN1
+  kind: un1
+- file_path: "074.PAK/4.UN1"
   id: 3
-- file_path: 074.PAK/5.UN1
+  kind: un1
+- file_path: "074.PAK/5.UN1"
   id: 4
-- file_path: 074.PAK/6.UN1
+  kind: un1
+- file_path: "074.PAK/6.UN1"
   id: 5
-- file_path: 074.PAK/7.UN1
+  kind: un1
+- file_path: "074.PAK/7.UN1"
   id: 6
-- file_path: 074.PAK/8.UN1
+  kind: un1
+- file_path: "074.PAK/8.UN1"
   id: 7
+  kind: un1
 - file_path: "/build/msd/F.DRV/074.PAK/9.MSD"
   id: 770
+  kind: msd
 - file_path: "/build/msd/F.DRV/074.PAK/10.MSD"
   id: 771
+  kind: msd
 - file_path: "/build/msd/F.DRV/074.PAK/11.MSD"
   id: 772
+  kind: msd
 - file_path: "/build/msd/F.DRV/074.PAK/12.MSD"
   id: 472
+  kind: msd
 - file_path: "/build/msd/F.DRV/074.PAK/13.MSD"
   id: 409
+  kind: msd
 - file_path: "/build/msd/F.DRV/074.PAK/14.MSD"
   id: 414
-- file_path: 074.PAK/15.BIN
+  kind: msd
+- file_path: "074.PAK/15.BIN"
   id: 74
+  kind: bin

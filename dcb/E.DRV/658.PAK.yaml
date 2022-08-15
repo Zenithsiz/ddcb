@@ -1,11 +1,16 @@
 ---
-- file_path: 658.PAK/0.A2D
+- file_path: "658.PAK/0.A2D"
   id: 7517
-- file_path: 658.PAK/1.A2D
+  kind: a2d
+- file_path: "658.PAK/1.A2D"
   id: 4331
-- file_path: 658.PAK/2.BIN
+  kind: a2d
+- file_path: "658.PAK/2.BIN"
   id: 7517
-- file_path: 658.PAK/3.BIN
+  kind: bin
+- file_path: "658.PAK/3.BIN"
   id: 4331
-- file_path: 658.PAK/4.BIN
+  kind: bin
+- file_path: "658.PAK/4.BIN"
   id: 512
+  kind: bin

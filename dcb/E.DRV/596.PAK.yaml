@@ -1,3 +1,4 @@
 ---
-- file_path: 596.PAK/0.BIN
+- file_path: "596.PAK/0.BIN"
   id: 1000
+  kind: bin

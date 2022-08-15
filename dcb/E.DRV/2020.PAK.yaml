@@ -1,21 +1,31 @@
 ---
-- file_path: 2020.PAK/0.M3D
+- file_path: "2020.PAK/0.M3D"
   id: 20200
-- file_path: 2020.PAK/1.M3D
+  kind: m3d
+- file_path: "2020.PAK/1.M3D"
   id: 20201
-- file_path: 2020.PAK/2.M3D
+  kind: m3d
+- file_path: "2020.PAK/2.M3D"
   id: 20202
-- file_path: 2020.PAK/3.M3D
+  kind: m3d
+- file_path: "2020.PAK/3.M3D"
   id: 20203
-- file_path: 2020.PAK/4.A2D
+  kind: m3d
+- file_path: "2020.PAK/4.A2D"
   id: 10610
-- file_path: 2020.PAK/5.BIN
+  kind: a2d
+- file_path: "2020.PAK/5.BIN"
   id: 20200
-- file_path: 2020.PAK/6.BIN
+  kind: bin
+- file_path: "2020.PAK/6.BIN"
   id: 20201
-- file_path: 2020.PAK/7.BIN
+  kind: bin
+- file_path: "2020.PAK/7.BIN"
   id: 20202
-- file_path: 2020.PAK/8.BIN
+  kind: bin
+- file_path: "2020.PAK/8.BIN"
   id: 20203
-- file_path: 2020.PAK/9.BIN
+  kind: bin
+- file_path: "2020.PAK/9.BIN"
   id: 10610
+  kind: bin

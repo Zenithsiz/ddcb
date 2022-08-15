@@ -1,5 +1,7 @@
 ---
-- file_path: BG906.PAK/0.M3D
+- file_path: "BG906.PAK/0.M3D"
   id: 906
-- file_path: BG906.PAK/1.BIN
+  kind: m3d
+- file_path: "BG906.PAK/1.BIN"
   id: 906
+  kind: bin

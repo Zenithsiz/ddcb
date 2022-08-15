@@ -1,11 +1,16 @@
 ---
-- file_path: 1010.PAK/0.A2D
+- file_path: "1010.PAK/0.A2D"
   id: 5380
-- file_path: 1010.PAK/1.UN2
+  kind: a2d
+- file_path: "1010.PAK/1.UN2"
   id: 9991
-- file_path: 1010.PAK/2.BIN
+  kind: un2
+- file_path: "1010.PAK/2.BIN"
   id: 9991
-- file_path: 1010.PAK/3.BIN
+  kind: bin
+- file_path: "1010.PAK/3.BIN"
   id: 5380
-- file_path: 1010.PAK/4.BIN
+  kind: bin
+- file_path: "1010.PAK/4.BIN"
   id: 1391
+  kind: bin

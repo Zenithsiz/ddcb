@@ -1,13 +1,19 @@
 ---
-- file_path: 654.PAK/0.M3D
+- file_path: "654.PAK/0.M3D"
   id: 6540
-- file_path: 654.PAK/1.M3D
+  kind: m3d
+- file_path: "654.PAK/1.M3D"
   id: 6541
-- file_path: 654.PAK/2.UN2
+  kind: m3d
+- file_path: "654.PAK/2.UN2"
   id: 6540
-- file_path: 654.PAK/3.BIN
+  kind: un2
+- file_path: "654.PAK/3.BIN"
   id: 6540
-- file_path: 654.PAK/4.BIN
+  kind: bin
+- file_path: "654.PAK/4.BIN"
   id: 6541
-- file_path: 654.PAK/5.BIN
+  kind: bin
+- file_path: "654.PAK/5.BIN"
   id: 481
+  kind: bin

@@ -1,7 +1,10 @@
 ---
-- file_path: BGM133.PAK/0.SEQ
+- file_path: "BGM133.PAK/0.SEQ"
   id: 133
-- file_path: BGM133.PAK/1.VH
+  kind: seq
+- file_path: "BGM133.PAK/1.VH"
   id: 133
-- file_path: BGM133.PAK/2.VB
+  kind: vh
+- file_path: "BGM133.PAK/2.VB"
   id: 133
+  kind: vb

@@ -1,11 +1,17 @@
-//! `.PAK` Creator
+//! `.PAK` Packer.
+//!
+//! Creates `.PAK` files from a "map" file, which includes
+//! all files that will be put into the `.PAK`.
+//!
+//! This map is a yaml file with an array of entries,
+//! where each entry is an object `{ file_name: path, id: u16 }`.
+//!
+//! The file path may be relative, to indicate the files are relative
+//! to the map file, or absolute, to indicate the files are relative
+//! to the current directory when executing this program.
 
 // Features
 #![feature(seek_stream_len)]
-
-use std::io::BufWriter;
-
-use dcb_pak::entry;
 
 // Modules
 mod args;
@@ -15,97 +21,83 @@ use {
 	anyhow::Context,
 	args::Args,
 	clap::StructOpt,
-	dcb_pak::header,
+	dcb_pak::{entry, header},
 	std::{
 		convert::TryInto,
 		fs,
-		io::{BufReader, Seek},
+		io::{BufReader, BufWriter, Seek},
 		path::{Path, PathBuf},
 	},
+	tracing_subscriber::prelude::*,
 };
 
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
-	simplelog::TermLogger::init(
-		log::LevelFilter::Info,
-		simplelog::Config::default(),
-		simplelog::TerminalMode::Stderr,
-	)
-	.context("Unable to initialize logger")?;
+	tracing_subscriber::registry()
+		.with(tracing_subscriber::fmt::layer().with_filter(tracing_subscriber::EnvFilter::from_default_env()))
+		.init();
 
 	// Get all args
 	let args = Args::parse();
+	tracing::trace!(?args, "Arguments");
 
 	// Read the map file
 	let map = zutil::parse_from_file(&args.input_map, serde_yaml::from_reader).context("Unable to parse input map")?;
+	tracing::trace!(?map, "Map");
 
 	// Then make the pak
-	self::create_pak(
-		&map,
-		args.input_map.parent().context("Input map path had no parent")?,
-		&args.output,
-	)
-	.context("Unable to create `PAK`")?;
+	let base_path = &args.input_map.parent().context("Input map path had no parent")?;
+	self::create_pak(&map, base_path, &args.output).context("Unable to create `PAK`")?;
 
 	Ok(())
 }
 
-/// Creates a `.PAK` file to `output`.
+/// Creates a `.PAK` file to `output` from `map`.
 fn create_pak(map: &Map, base_path: &Path, output: &Path) -> Result<(), anyhow::Error> {
 	let output_file = fs::File::create(output).context("Unable to create output file")?;
 	let mut output_file = BufWriter::new(output_file);
 
 	for entry in &map.entries {
 		// Get the entry path
-		// Note: If it's relative, use the base path of the file,
-		//       else, if it's absolute, use the current directory we're
-		//       running from
-		// TODO: Check if this isn't too surprising of a behavior
+		// Note: Absolute => relative to current directory
+		//       Relative => relative to base path
 		let entry_path = match entry.file_path.strip_prefix("/") {
 			Ok(path) => path.to_path_buf(),
 			Err(_) => base_path.join(&entry.file_path),
 		};
 
-		let file =
-			fs::File::open(entry_path).with_context(|| format!("Unable to open file {}", entry.file_path.display()))?;
-		let mut file = BufReader::new(file);
-
-		// Get the kind from the extension
-		// TODO: Do this better without the extension
-		let kind = match entry
-			.file_path
-			.extension()
-			.and_then(std::ffi::OsStr::to_str)
-			.context("File had no extension")?
-		{
-			"M3D" => header::Kind::Model3DSet,
-			"UN1" => header::Kind::Unknown1,
-			"MSD" => header::Kind::GameScript,
-			"A2D" => header::Kind::Animation2D,
-			"UN2" => header::Kind::Unknown2,
-			"BIN" => header::Kind::FileContents,
-			"SEQ" => header::Kind::AudioSeq,
-			"VH" => header::Kind::AudioVh,
-			"VB" => header::Kind::AudioVb,
-			ext => anyhow::bail!("Unknown file extension: {ext}"),
+		// Get the entry kind
+		let kind = match entry.kind {
+			MapEntryKind::Model3DSet => header::Kind::Model3DSet,
+			MapEntryKind::Unknown1 => header::Kind::Unknown1,
+			MapEntryKind::GameScript => header::Kind::GameScript,
+			MapEntryKind::Animation2D => header::Kind::Animation2D,
+			MapEntryKind::Unknown2 => header::Kind::Unknown2,
+			MapEntryKind::FileContents => header::Kind::FileContents,
+			MapEntryKind::AudioSeq => header::Kind::AudioSeq,
+			MapEntryKind::AudioVh => header::Kind::AudioVh,
+			MapEntryKind::AudioVb => header::Kind::AudioVb,
 		};
 
-		// Get the file size
+		// Open the file for reader and get it's size
+		let entry_file =
+			fs::File::open(entry_path).with_context(|| format!("Unable to open file {}", entry.file_path.display()))?;
+		let mut file = BufReader::new(entry_file);
 		let size = file
 			.stream_len()
 			.context("Unable to get file size")?
 			.try_into()
 			.context("File size didn't fit into a `u32`")?;
 
-		// Create the header
+		// Then create the header
 		let header = dcb_pak::Header {
 			kind,
 			id: entry.id,
 			size,
 		};
 
-		// Then write it
+		// And write it
 		entry::write_entry(&mut output_file, header, &mut file).context("Unable to write entry")?;
 	}
 
@@ -134,4 +126,39 @@ pub struct MapEntry {
 
 	/// Id
 	id: u16,
+
+	/// Kind
+	kind: MapEntryKind,
+}
+
+/// Map entry kind
+#[derive(PartialEq, Eq, Clone, Copy, Debug)]
+#[derive(serde::Serialize, serde::Deserialize)]
+pub enum MapEntryKind {
+	#[serde(rename = "m3d")]
+	Model3DSet,
+
+	#[serde(rename = "un1")]
+	Unknown1,
+
+	#[serde(rename = "msd")]
+	GameScript,
+
+	#[serde(rename = "a2d")]
+	Animation2D,
+
+	#[serde(rename = "un2")]
+	Unknown2,
+
+	#[serde(rename = "bin")]
+	FileContents,
+
+	#[serde(rename = "seq")]
+	AudioSeq,
+
+	#[serde(rename = "vh")]
+	AudioVh,
+
+	#[serde(rename = "vb")]
+	AudioVb,
 }

@@ -1,15 +1,22 @@
 ---
-- file_path: 2006.PAK/0.M3D
+- file_path: "2006.PAK/0.M3D"
   id: 20060
-- file_path: 2006.PAK/1.UN1
+  kind: m3d
+- file_path: "2006.PAK/1.UN1"
   id: 20060
-- file_path: 2006.PAK/2.A2D
+  kind: un1
+- file_path: "2006.PAK/2.A2D"
   id: 4140
-- file_path: 2006.PAK/3.UN2
+  kind: a2d
+- file_path: "2006.PAK/3.UN2"
   id: 9991
-- file_path: 2006.PAK/4.BIN
+  kind: un2
+- file_path: "2006.PAK/4.BIN"
   id: 4140
-- file_path: 2006.PAK/5.BIN
+  kind: bin
+- file_path: "2006.PAK/5.BIN"
   id: 9991
-- file_path: 2006.PAK/6.BIN
+  kind: bin
+- file_path: "2006.PAK/6.BIN"
   id: 20060
+  kind: bin

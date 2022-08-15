@@ -1,9 +1,13 @@
 ---
-- file_path: 2051.PAK/0.M3D
+- file_path: "2051.PAK/0.M3D"
   id: 20510
-- file_path: 2051.PAK/1.A2D
+  kind: m3d
+- file_path: "2051.PAK/1.A2D"
   id: 12780
-- file_path: 2051.PAK/2.BIN
+  kind: a2d
+- file_path: "2051.PAK/2.BIN"
   id: 12780
-- file_path: 2051.PAK/3.BIN
+  kind: bin
+- file_path: "2051.PAK/3.BIN"
   id: 20510
+  kind: bin

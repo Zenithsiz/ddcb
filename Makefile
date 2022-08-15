@@ -127,7 +127,7 @@ build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak-deps)
 # Create `PAK`s from their map files
 build/pak/%.PAK: dcb/%.PAK.yaml build/pak/%.PAK.d $(mkpak)
 	@mkdir -p $(@D)
-	$(mkpak) $< --out $@
+	$(mkpak) "$<" --output "$@"
 
 # `MSD` files
 build/msd/%.MSD: dcb/%.MSD.s dcb/%.MSD.bspatch $(mkmsd)

@@ -1,19 +1,28 @@
 ---
-- file_path: 638.PAK/0.M3D
+- file_path: "638.PAK/0.M3D"
   id: 7092
-- file_path: 638.PAK/1.M3D
+  kind: m3d
+- file_path: "638.PAK/1.M3D"
   id: 6383
-- file_path: 638.PAK/2.M3D
+  kind: m3d
+- file_path: "638.PAK/2.M3D"
   id: 6382
-- file_path: 638.PAK/3.A2D
+  kind: m3d
+- file_path: "638.PAK/3.A2D"
   id: 2671
-- file_path: 638.PAK/4.BIN
+  kind: a2d
+- file_path: "638.PAK/4.BIN"
   id: 2671
-- file_path: 638.PAK/5.BIN
+  kind: bin
+- file_path: "638.PAK/5.BIN"
   id: 7092
-- file_path: 638.PAK/6.BIN
+  kind: bin
+- file_path: "638.PAK/6.BIN"
   id: 6383
-- file_path: 638.PAK/7.BIN
+  kind: bin
+- file_path: "638.PAK/7.BIN"
   id: 6382
-- file_path: 638.PAK/8.BIN
+  kind: bin
+- file_path: "638.PAK/8.BIN"
   id: 1130
+  kind: bin

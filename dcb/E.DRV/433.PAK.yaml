@@ -1,13 +1,19 @@
 ---
-- file_path: 433.PAK/0.M3D
+- file_path: "433.PAK/0.M3D"
   id: 4330
-- file_path: 433.PAK/1.UN1
+  kind: m3d
+- file_path: "433.PAK/1.UN1"
   id: 4330
-- file_path: 433.PAK/2.A2D
+  kind: un1
+- file_path: "433.PAK/2.A2D"
   id: 4331
-- file_path: 433.PAK/3.A2D
+  kind: a2d
+- file_path: "433.PAK/3.A2D"
   id: 4040
-- file_path: 433.PAK/4.BIN
+  kind: a2d
+- file_path: "433.PAK/4.BIN"
   id: 4331
-- file_path: 433.PAK/5.BIN
+  kind: bin
+- file_path: "433.PAK/5.BIN"
   id: 4040
+  kind: bin
