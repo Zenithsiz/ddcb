@@ -6,6 +6,7 @@
 // Modules
 mod args;
 
+
 // Imports
 use {self::args::Args, anyhow::Context, clap::Parser, tracing_subscriber::prelude::*};
 
@@ -23,8 +24,8 @@ fn main() -> Result<(), anyhow::Error> {
 	let map = zutil::parse_from_file(&args.input_map, serde_yaml::from_reader).context("Unable to read map file")?;
 	tracing::trace!(?map, "Map");
 
-	// Try to write the filesystem
-	dcb_mkdrv::write::write_fs(&map, &args.output_file).context("Unable to write `drv` filesystem")?;
+	// Try to write all dependencies
+	dcb_mkdrv::write::write_deps(&map, &args.output_file, &args.dep_file).context("Unable to write `drv` filesystem")?;
 
 	Ok(())
 }

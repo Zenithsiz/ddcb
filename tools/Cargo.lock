@@ -342,6 +342,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "dcb-mkdrv-deps"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "chrono",
+ "clap 3.2.17",
+ "dcb-mkdrv",
+ "itertools",
+ "serde",
+ "serde_yaml 0.9.9",
+ "size_format",
+ "thiserror",
+ "tracing",
+ "tracing-subscriber",
+ "zutil",
+]
+
+[[package]]
 name = "dcb-mkmsd"
 version = "0.1.0"
 dependencies = [
@@ -368,6 +386,20 @@ dependencies = [
  "anyhow",
  "clap 3.2.17",
  "dcb-pak",
+ "serde",
+ "serde_yaml 0.9.9",
+ "tracing",
+ "tracing-subscriber",
+ "zutil",
+]
+
+[[package]]
+name = "dcb-mkpak-deps"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap 3.2.17",
+ "dcb-mkpak",
  "serde",
  "serde_yaml 0.9.9",
  "tracing",

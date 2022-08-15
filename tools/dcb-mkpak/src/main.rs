@@ -21,12 +21,13 @@ use {
 	anyhow::Context,
 	args::Args,
 	clap::StructOpt,
+	dcb_mkpak::{Map, MapEntryKind},
 	dcb_pak::{entry, header},
 	std::{
 		convert::TryInto,
 		fs,
-		io::{BufReader, BufWriter, Seek, Write},
-		path::{Path, PathBuf},
+		io::{BufReader, BufWriter, Seek},
+		path::Path,
 	},
 	tracing_subscriber::prelude::*,
 };
@@ -46,41 +47,21 @@ fn main() -> Result<(), anyhow::Error> {
 	let map = zutil::parse_from_file(&args.input_map, serde_yaml::from_reader).context("Unable to parse input map")?;
 	tracing::trace!(?map, "Map");
 
-	// If we have a dep file, create it and write the header
-	let dep_file = match &args.dep_file {
-		Some(path) => {
-			let file = fs::File::create(path).context("Unable to create dependency file")?;
-			write!(&file, "{}: ", args.output.display()).context("Unable to write dependency file header")?;
-			Some(file)
-		},
-		None => None,
-	};
-
 	// Then make the pak
 	let base_path = &args.input_map.parent().context("Input map path had no parent")?;
-	self::create_pak(&map, base_path, &args.output, dep_file.as_ref()).context("Unable to create `PAK`")?;
+	self::create_pak(&map, base_path, &args.output).context("Unable to create `PAK`")?;
 
 	Ok(())
 }
 
 /// Creates a `.PAK` file to `output` from `map`.
-fn create_pak(map: &Map, base_path: &Path, output: &Path, dep_file: Option<&fs::File>) -> Result<(), anyhow::Error> {
+fn create_pak(map: &Map, base_path: &Path, output: &Path) -> Result<(), anyhow::Error> {
 	let output_file = fs::File::create(output).context("Unable to create output file")?;
 	let mut output_file = BufWriter::new(output_file);
 
 	for entry in &map.entries {
 		// Get the entry path
-		// Note: Absolute => relative to current directory
-		//       Relative => relative to base path
-		let entry_path = match entry.file_path.strip_prefix("/") {
-			Ok(path) => path.to_path_buf(),
-			Err(_) => base_path.join(&entry.file_path),
-		};
-
-		// Write the entry on the dependency file, if any
-		if let Some(mut file) = dep_file {
-			write!(file, "{} ", entry_path.display()).context("Unable to write entry to dependency file")?;
-		}
+		let entry_path = dcb_mkpak::resolve_entry_file_path(entry, base_path);
 
 		// Get the entry kind
 		let kind = match entry.kind {
@@ -120,60 +101,4 @@ fn create_pak(map: &Map, base_path: &Path, output: &Path, dep_file: Option<&fs::
 	entry::write_null(&mut output_file).context("Unable to write null entry")?;
 
 	Ok(())
-}
-
-/// A `.PAK` map, storing all info to create a `.PAK` from files.
-#[derive(PartialEq, Eq, Clone, Debug)]
-#[derive(serde::Serialize, serde::Deserialize)]
-#[serde(transparent)]
-pub struct Map {
-	/// Entries
-	entries: Vec<MapEntry>,
-}
-
-
-/// A map entry
-#[derive(PartialEq, Eq, Clone, Debug)]
-#[derive(serde::Serialize, serde::Deserialize)]
-pub struct MapEntry {
-	/// File path
-	file_path: PathBuf,
-
-	/// Id
-	id: u16,
-
-	/// Kind
-	kind: MapEntryKind,
-}
-
-/// Map entry kind
-#[derive(PartialEq, Eq, Clone, Copy, Debug)]
-#[derive(serde::Serialize, serde::Deserialize)]
-pub enum MapEntryKind {
-	#[serde(rename = "m3d")]
-	Model3DSet,
-
-	#[serde(rename = "un1")]
-	Unknown1,
-
-	#[serde(rename = "msd")]
-	GameScript,
-
-	#[serde(rename = "a2d")]
-	Animation2D,
-
-	#[serde(rename = "un2")]
-	Unknown2,
-
-	#[serde(rename = "bin")]
-	FileContents,
-
-	#[serde(rename = "seq")]
-	AudioSeq,
-
-	#[serde(rename = "vh")]
-	AudioVh,
-
-	#[serde(rename = "vb")]
-	AudioVb,
 }

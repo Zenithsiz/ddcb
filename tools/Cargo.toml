@@ -12,10 +12,12 @@ members = [
   "dcb-cdrom-xa", #
   # Binaries
   "dcb-mkdrv",
+  "dcb-mkdrv-deps",
   "dcb-undrv",
   "dcb-unbin",
   "dcb-unpak",
   "dcb-mkpak",
+  "dcb-mkpak-deps",
   "dcb-mkmsd",
   "dcb-unmsd",
   "dcb-un-card-table",

@@ -11,13 +11,15 @@ diff                   = diff
 bspatch                = bspatch
 sha256sum              = sha256sum
 mkdrv                  = tools/target/release/dcb-mkdrv
+mkdrv-deps             = tools/target/release/dcb-mkdrv-deps
 mkpak                  = tools/target/release/dcb-mkpak
+mkpak-deps             = tools/target/release/dcb-mkpak-deps
 mkmsd                  = tools/target/release/dcb-mkmsd
 mk-card-table          = tools/target/release/dcb-mk-card-table
 mk-deck-table          = tools/target/release/dcb-mk-deck-table
 
 # All tools
-TOOLS := $(mkdrv) $(mkpak) $(mk-card-table) $(mk-deck-table)
+TOOLS := $(mkdrv) $(mkpak) $(mkpak-deps) $(mkmsd) $(mk-card-table) $(mk-deck-table)
 TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All assembly files
@@ -37,6 +39,9 @@ DYLIBS := \
 # All `PAK` files
 PAK_FILES := $(patsubst dcb/%,build/pak/%,$(shell find "dcb/" -type d -iname "*.PAK"))
 PAK_FILES_DEP := $(patsubst %,%.d,$(PAK_FILES))
+
+# All `MSD` files
+MSD_FILES := $(patsubst dcb/%,build/msd/%,$(shell find "dcb/" -type d -iname "*.MSD.s"))
 
 # All `DRV` files
 DRV_FILES := \
@@ -61,6 +66,8 @@ ISO_FILES := $(DRV_FILES) \
 # Commands
 
 .PHONY: all compare tools clean dcb-rs
+.SUFFIXES:
+.PRECIOUS: %
 
 # `dcb-rs` makefile
 dcb-rs:
@@ -71,7 +78,7 @@ all: build/dcb.bin
 
 # Compare files to original
 # TODO: Compare the bin once it's properly built
-compare: build/dcb.psexe $(DYLIBS) $(DRV_FILES) $(ISO_FILES)
+compare: build/dcb.psexe $(DYLIBS) $(DRV_FILES) $(PAK_FILES) $(MSD_FILES) $(ISO_FILES)
 	$(sha256sum) --check --quiet checksums.sha256
 
 # Compiles all tols
@@ -101,18 +108,28 @@ tools/target/release/% tools/target/release/%.d:
 build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
 	mkpsxiso dcb-iso.xml -q -y
 
-# `DRV` files
-include drv-deps.d
-build/drv/%.DRV build/drv/%.DRV.d: dcb/%.DRV.yaml dcb/%.DRV.bspatch $(mkdrv)
+# `DRV` dependencies
+build/drv/%.DRV.d: dcb/%.DRV.yaml $(mkdrv-deps)
 	@mkdir -p $(@D)
-	$(mkdrv) "$<" -o "build/drv/$*.DRV" --dep-file "build/drv/$*.DRV.d"
-	$(bspatch) "build/drv/$*.DRV" "build/drv/$*.DRV" "dcb/$*.DRV.bspatch"
+	$(mkdrv-deps) "$<" -o "build/drv/$*.DRV" --dep-file "$@"
+
+# `DRV` files
+include $(DRV_FILES_DEP)
+build/drv/%.DRV: dcb/%.DRV.yaml dcb/%.DRV.bspatch $(mkdrv)
+	@mkdir -p $(@D)
+	$(mkdrv) "$<" -o "$@"
+	$(bspatch) "$@" "$@" "dcb/$*.DRV.bspatch"
+
+# `PAK` dependencies
+build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak-deps)
+	@mkdir -p $(@D)
+	$(mkpak-deps) "$<" --output "build/pak/$*.PAK" --dep-file "$@"
 
 # `PAK` files
-include pak-deps.d
-build/pak/%.PAK build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak)
+include $(PAK_FILES_DEP)
+build/pak/%.PAK: dcb/%.PAK.yaml $(mkpak) | build/pak/%.PAK.d
 	@mkdir -p $(@D)
-	$(mkpak) "$<" --output "build/pak/$*.PAK" --dep-file "build/pak/$*.PAK.d"
+	$(mkpak) "$<" --output "$@"
 
 # `MSD` files
 build/msd/%.MSD: dcb/%.MSD.s dcb/%.MSD.bspatch $(mkmsd)
@@ -152,7 +169,7 @@ build/dcb.psexe: build/dcb.elf
 	$(elf2psexe) "NA" $< $@
 
 # Final executable in elf format
-build/dcb.elf: build/asm/dcb.o build/rs/libdcb.a build/symbols.ld psx.ld
+build/dcb.elf: build/asm/dcb.o dcb-rs/build/libdcb.a build/symbols.ld psx.ld
 	$(ld) $< \
 		-o $@ \
 		--whole-archive \
@@ -161,7 +178,7 @@ build/dcb.elf: build/asm/dcb.o build/rs/libdcb.a build/symbols.ld psx.ld
 		--script psx.ld \
 		--warn-section-align \
 		--no-check-sections \
-		-Lbuild/rs/ \
+		-Ldcb-rs/build/ \
 		-ldcb \
 		-M > build/dcb.map
 
@@ -185,12 +202,6 @@ build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s $(ASM_PROCESSED_FILES)
 		2>&1 | sed -e "s,build/asm/,dcb-asm/,g" 1>&2
 	$(sed) -i -e "s/dcb.*-cgu.0//g" build/asm/dcb.d
 
-# Rust lib
-build/rs/libdcb.a: dcb-rs
-	@mkdir -p $(@D)
-# Note: Important to only update (`-u`), if newer, else we rebuild each time
-	cp -u dcb-rs/build/libdcb.a $@
-
 # Processed assembly files
 # TODO: Require `symbols.yaml` here once it isn't so slow
 build/asm/%.s: dcb-asm/%.s $(preprocess_asm)
@@ -199,5 +210,3 @@ build/asm/%.s: dcb-asm/%.s $(preprocess_asm)
 # Dependencies
 include build/asm/dcb.d
 include $(TOOLS_DEP)
-include $(DRV_FILES_DEP)
-include $(PAK_FILES_DEP)

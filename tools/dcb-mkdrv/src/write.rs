@@ -16,9 +16,35 @@ use {
 	},
 };
 
-/// Writes a `.drv` filesystem to `output_file`,
-/// as well as dependencies to `dep_file`
-pub fn write_fs(map: &DrvMap, output_file: &Path, dep_file: Option<&fs::File>) -> Result<(), anyhow::Error> {
+/// Writes `.drv` dependencies to `dep_file`
+pub fn write_deps(map: &DrvMap, output_file: &Path, dep_file: &Path) -> Result<(), anyhow::Error> {
+	// Create the dependency file
+	let mut dep_file = fs::File::create(dep_file).context("Unable to create dependency file")?;
+	write!(&mut dep_file, "{}: ", output_file.display()).context("Unable to write dependency file header")?;
+
+	// Parse all entries
+	let entries = entry::entries(map).context("Unable to read all entries in map")?;
+
+	// Finally write all dependencies
+	fn visit_entries(entries: &[DirEntryWriter], dep_file: &mut fs::File) -> Result<(), anyhow::Error> {
+		for entry in entries {
+			match &entry.kind {
+				DirEntryWriterKind::Dir { entries } => visit_entries(entries, dep_file)?,
+				DirEntryWriterKind::File { path, .. } =>
+					write!(dep_file, "{} ", path.display()).context("Unable to write entry to dependency file")?,
+			}
+		}
+
+		Ok(())
+	}
+
+	visit_entries(&entries, &mut dep_file).context("Unable to write all dependencies")?;
+
+	Ok(())
+}
+
+/// Writes a `.drv` filesystem to `output_file`
+pub fn write_fs(map: &DrvMap, output_file: &Path) -> Result<(), anyhow::Error> {
 	// Create the output file
 	let mut output_file = fs::File::create(output_file).context("Unable to create output file")?;
 
@@ -32,23 +58,6 @@ pub fn write_fs(map: &DrvMap, output_file: &Path, dep_file: Option<&fs::File>) -
 		output_file
 			.set_len(2048 * ((len + 2047) / 2048))
 			.context("Unable to set file length")?;
-	}
-
-	// Finally write all dependencies, if we have a dependency file
-	if let Some(dep_file) = dep_file {
-		fn visit_entries(entries: &[DirEntryWriter], mut dep_file: &fs::File) -> Result<(), anyhow::Error> {
-			for entry in entries {
-				match &entry.kind {
-					DirEntryWriterKind::Dir { entries } => visit_entries(entries, dep_file)?,
-					DirEntryWriterKind::File { path, .. } =>
-						write!(dep_file, "{} ", path.display()).context("Unable to write entry to dependency file")?,
-				}
-			}
-
-			Ok(())
-		}
-
-		visit_entries(&entries, dep_file).context("Unable to write all dependencies")?;
 	}
 
 	Ok(())
