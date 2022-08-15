@@ -12,7 +12,6 @@ members = [
   "dcb-cdrom-xa", #
   # Binaries
   "dcb-mkdrv",
-  "dcb-mkdrv-deps",
   "dcb-undrv",
   "dcb-unbin",
   "dcb-unpak",

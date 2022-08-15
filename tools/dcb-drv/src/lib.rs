@@ -18,7 +18,6 @@ mod extract;
 mod map;
 mod path;
 mod ptr;
-mod writer;
 
 // Exports
 pub use {
@@ -27,5 +26,4 @@ pub use {
 	map::{DrvMap, DrvMapEntry},
 	path::{Path, PathBuf},
 	ptr::{DirEntryPtr, DirPtr, FilePtr},
-	writer::{write_dir_all, write_fs, DirEntryWriter, DirEntryWriterKind, DirLister, DrvMapDirLister},
 };

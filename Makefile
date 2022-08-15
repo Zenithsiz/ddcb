@@ -11,14 +11,13 @@ diff                   = diff
 bspatch                = bspatch
 sha256sum              = sha256sum
 mkdrv                  = tools/target/release/dcb-mkdrv
-mkdrv-deps             = tools/target/release/dcb-mkdrv-deps
 mkpak                  = tools/target/release/dcb-mkpak
 mkmsd                  = tools/target/release/dcb-mkmsd
 mk-card-table          = tools/target/release/dcb-mk-card-table
 mk-deck-table          = tools/target/release/dcb-mk-deck-table
 
 # All tools
-TOOLS := $(mkdrv) $(mkdrv-deps) $(mkpak) $(mkpak-deps) $(mk-card-table) $(mk-deck-table)
+TOOLS := $(mkdrv) $(mkpak) $(mk-card-table) $(mk-deck-table)
 TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All assembly files
@@ -102,16 +101,11 @@ tools/target/release/% tools/target/release/%.d:
 build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
 	mkpsxiso dcb-iso.xml -q -y
 
-# `DRV` dependencies
-build/drv/%.DRV.d: dcb/%.DRV.yaml $(mkdrv-deps)
-	@mkdir -p $(@D)
-	$(mkdrv-deps) --quiet $< -o build/drv/$*.DRV --dep-file $@
-
 # `DRV` files
-build/drv/%.DRV: dcb/%.DRV.yaml build/drv/%.DRV.d dcb/%.DRV.bspatch $(mkdrv)
+build/drv/%.DRV build/drv/%.DRV.d: dcb/%.DRV.yaml dcb/%.DRV.bspatch $(mkdrv)
 	@mkdir -p $(@D)
-	$(mkdrv) --quiet "$<" -o "$@"
-	$(bspatch) "$@" "$@" "dcb/$*.DRV.bspatch"
+	$(mkdrv) "$<" -o "build/drv/$*.DRV" --dep-file "build/drv/$*.DRV.d"
+	$(bspatch) "build/drv/$*.DRV" "build/drv/$*.DRV" "dcb/$*.DRV.bspatch"
 
 # `PAK` files
 build/pak/%.PAK build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak)

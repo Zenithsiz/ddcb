@@ -82,7 +82,7 @@ impl DrvMap {
 
 				DrvMapEntry::Dir {
 					name,
-					date,
+					date: Some(date),
 					entries: map,
 				}
 			},
@@ -159,8 +159,8 @@ pub enum DrvMapEntry {
 		name: AsciiStrArr<16>,
 
 		/// Date
-		#[serde(default = "default_date")]
-		date: chrono::NaiveDateTime,
+		// If `None`, date is current date
+		date: Option<chrono::NaiveDateTime>,
 
 		/// Entries
 		// Note: Can't be defaulted, as we need it, since we're untagged
@@ -178,16 +178,10 @@ pub enum DrvMapEntry {
 		extension: Option<AsciiStrArr<3>>,
 
 		/// Date
-		// If `None`, name is path's
+		// If `None`, date is path's
 		date: Option<chrono::NaiveDateTime>,
 
 		/// Path
 		path: PathBuf,
 	},
-}
-
-/// Default date for directories when not specified
-// TODO: Make something better than this
-fn default_date() -> chrono::NaiveDateTime {
-	chrono::Utc::now().naive_utc()
 }
