@@ -14,7 +14,7 @@ mod parse;
 pub use {
 	error::EncodeError,
 	fmt::{InstArgFmt, InstFmt},
-	parse::{parse_stmts, ParsedInst, ParsedInstArg},
+	parse::{parse_stmts, ParsedInst, ParsedInstArg, ParsedStmt},
 };
 
 // Imports
@@ -364,7 +364,7 @@ impl Inst {
 			Self::BattleCafeAwait => f.write_all(&[0xa, 0x0, 0x3, 0x0])?,
 			Self::DisplayScene { value0, value1 } => {
 				f.write_all(&[0xb, 0x0])?;
-				f.write_all(&value0.to_be_bytes())?;
+				f.write_all(&value0.to_le_bytes())?;
 				f.write_all(&[0x0, 0x0])?;
 				f.write_all(&value1.to_le_bytes())?;
 			},
@@ -372,7 +372,8 @@ impl Inst {
 				f.write_all(&[0x8, 0x0])?;
 				f.write_all(&buffer.to_le_bytes())?;
 
-				let len = bytes.len().try_into_as::<u16>().map_err(EncodeError::LenToU16)?;
+				// Note `+1` for the null terminator
+				let len = (bytes.len() + 1).try_into_as::<u16>().map_err(EncodeError::LenToU16)?;
 				f.write_all(&len.to_le_bytes())?;
 				f.write_all(bytes)?;
 
@@ -386,7 +387,7 @@ impl Inst {
 				value,
 			} => {
 				f.write_all(&[0xd, 0x0])?;
-				f.write_all(&kind.to_be_bytes())?;
+				f.write_all(&kind.to_le_bytes())?;
 				f.write_all(&[0x0, 0x0])?;
 				f.write_all(&place.to_le_bytes())?;
 				f.write_all(&[0x0, 0x0])?;

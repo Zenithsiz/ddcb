@@ -57,10 +57,11 @@ pub fn parse_stmts(stmts: impl IntoIterator<Item = ParsedStmt>) -> Result<Vec<In
 			},
 		};
 
-		cur_pos += match inst.inner {
+		let inst_size = match inst.inner {
 			InProgressParsedInstInner::Parsed(ref inst) => inst.size(),
 			InProgressParsedInstInner::LabelAddr { size, .. } => size,
 		};
+		cur_pos += inst_size;
 
 		insts.push(inst);
 	}
@@ -252,7 +253,7 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 		}),
 
 		"jump" => two_arg!(inst.args, (var, addr) => match (var, addr) {
-			(ParsedInstArg::Number(var), ParsedInstArg::Label(label)) => inst_label_addr!(label, 4, addr => Inst::Jump {
+			(ParsedInstArg::Number(var), ParsedInstArg::Label(label)) => inst_label_addr!(label, 8, addr => Inst::Jump {
 				var: var.try_into().context("Unable to fit variable into a `u16`")?,
 				addr,
 			}),
@@ -279,7 +280,11 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 			value0: 0xa,
 			value1: partner.try_into().context("Unable to fit partner into a `u16`")?,
 		}),
-		"add_completion_points" => number_number_arg!(inst.args, (value0, value1) => Inst::DisplayScene {
+		"add_completion_points" => number_arg!(inst.args, value => Inst::DisplayScene {
+			value0: 0x12,
+			value1: value.try_into().context("Unable to fit partner into a `u16`")?,
+		}),
+		"display_scene" => number_number_arg!(inst.args, (value0, value1) => Inst::DisplayScene {
 			value0: value0.try_into().context("Unable to fit value0 into a `u16`")?,
 			value1: value1.try_into().context("Unable to fit value1 into a `u16`")?,
 		}),
@@ -322,7 +327,7 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 		"combo_box_await" => no_args!(inst.args, Inst::ComboBoxAwait),
 		"battle_cafe_await" => no_args!(inst.args, Inst::BattleCafeAwait),
 
-		"add_combo_box_button" => number_arg!(inst.args, value => Inst::AddComboBoxButton {
+		"combo_box_add_button" => number_arg!(inst.args, value => Inst::AddComboBoxButton {
 			value: value.try_into().context("Unable to fit value into a `u16`")?
 		}),
 

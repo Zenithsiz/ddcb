@@ -199,7 +199,7 @@ fn write_inst_arg_fmt<W: Write>(arg: &InstArgFmt, writer: &mut W, ctx: &DisplayC
 		},
 		InstArgFmt::Number(num) => write!(writer, "{num:#x}")?,
 		InstArgFmt::Addr(addr) => match ctx.addr_label(addr) {
-			Some(label) => write!(writer, "{}", label.escape_default())?,
+			Some(label) => write!(writer, "{label}")?,
 			None => write!(writer, "{addr:#x}")?,
 		},
 	}

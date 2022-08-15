@@ -18,6 +18,7 @@ members = [
   "dcb-unpak",
   "dcb-mkpak",
   "dcb-mkpak-deps",
+  "dcb-mkmsd",
   "dcb-unmsd",
   "dcb-un-card-table",
   "dcb-mk-card-table",
