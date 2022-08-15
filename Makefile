@@ -107,16 +107,11 @@ build/drv/%.DRV.d: dcb/%.DRV.yaml $(mkdrv-deps)
 	@mkdir -p $(@D)
 	$(mkdrv-deps) --quiet $< -o build/drv/$*.DRV --dep-file $@
 
-# Special case `B.DRV` so we can write the invalid entry
-build/drv/B.DRV: dcb/B.DRV.yaml build/drv/B.DRV.d dcb/B.DRV.bspatch $(mkdrv)
+# `DRV` files
+build/drv/%.DRV: dcb/%.DRV.yaml build/drv/%.DRV.d dcb/%.DRV.bspatch $(mkdrv)
 	@mkdir -p $(@D)
-	$(mkdrv) --quiet $< -o $@
-	$(bspatch) $@ $@ dcb/B.DRV.bspatch
-
-# Create `DRV`s
-build/drv/%.DRV: dcb/%.DRV.yaml build/drv/%.DRV.d $(mkdrv)
-	@mkdir -p $(@D)
-	$(mkdrv) --quiet $< -o $@
+	$(mkdrv) --quiet "$<" -o "$@"
+	$(bspatch) "$@" "$@" "dcb/$*.DRV.bspatch"
 
 # `PAK` files
 build/pak/%.PAK build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak)
