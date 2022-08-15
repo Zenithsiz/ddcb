@@ -371,22 +371,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "dcb-mkpak-deps"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap 3.2.17",
- "dcb-pak",
- "log",
- "pathdiff",
- "serde",
- "serde_yaml 0.8.23",
- "simplelog 0.9.0",
- "size_format",
- "zutil",
-]
-
-[[package]]
 name = "dcb-msd"
 version = "0.1.0"
 dependencies = [

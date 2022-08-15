@@ -14,7 +14,6 @@ mkdrv                  = tools/target/release/dcb-mkdrv
 mkdrv-deps             = tools/target/release/dcb-mkdrv-deps
 mkpak                  = tools/target/release/dcb-mkpak
 mkmsd                  = tools/target/release/dcb-mkmsd
-mkpak-deps             = tools/target/release/dcb-mkpak-deps
 mk-card-table          = tools/target/release/dcb-mk-card-table
 mk-deck-table          = tools/target/release/dcb-mk-deck-table
 
@@ -119,15 +118,10 @@ build/drv/%.DRV: dcb/%.DRV.yaml build/drv/%.DRV.d $(mkdrv)
 	@mkdir -p $(@D)
 	$(mkdrv) --quiet $< -o $@
 
-# `PAK` dependencies
-build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak-deps)
+# `PAK` files
+build/pak/%.PAK build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak)
 	@mkdir -p $(@D)
-	$(mkpak-deps) $< --out build/pak/$*.PAK --dep-file $@
-
-# Create `PAK`s from their map files
-build/pak/%.PAK: dcb/%.PAK.yaml build/pak/%.PAK.d $(mkpak)
-	@mkdir -p $(@D)
-	$(mkpak) "$<" --output "$@"
+	$(mkpak) "$<" --output "build/pak/$*.PAK" --dep-file "build/pak/$*.PAK.d"
 
 # `MSD` files
 build/msd/%.MSD: dcb/%.MSD.s dcb/%.MSD.bspatch $(mkmsd)

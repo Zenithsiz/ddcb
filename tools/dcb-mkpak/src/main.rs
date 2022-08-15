@@ -25,7 +25,7 @@ use {
 	std::{
 		convert::TryInto,
 		fs,
-		io::{BufReader, BufWriter, Seek},
+		io::{BufReader, BufWriter, Seek, Write},
 		path::{Path, PathBuf},
 	},
 	tracing_subscriber::prelude::*,
@@ -46,15 +46,25 @@ fn main() -> Result<(), anyhow::Error> {
 	let map = zutil::parse_from_file(&args.input_map, serde_yaml::from_reader).context("Unable to parse input map")?;
 	tracing::trace!(?map, "Map");
 
+	// If we have a dep file, create it and write the header
+	let dep_file = match &args.dep_file {
+		Some(path) => {
+			let file = fs::File::create(path).context("Unable to create dependency file")?;
+			write!(&file, "{}: ", args.output.display()).context("Unable to write dependency file header")?;
+			Some(file)
+		},
+		None => None,
+	};
+
 	// Then make the pak
 	let base_path = &args.input_map.parent().context("Input map path had no parent")?;
-	self::create_pak(&map, base_path, &args.output).context("Unable to create `PAK`")?;
+	self::create_pak(&map, base_path, &args.output, dep_file.as_ref()).context("Unable to create `PAK`")?;
 
 	Ok(())
 }
 
 /// Creates a `.PAK` file to `output` from `map`.
-fn create_pak(map: &Map, base_path: &Path, output: &Path) -> Result<(), anyhow::Error> {
+fn create_pak(map: &Map, base_path: &Path, output: &Path, dep_file: Option<&fs::File>) -> Result<(), anyhow::Error> {
 	let output_file = fs::File::create(output).context("Unable to create output file")?;
 	let mut output_file = BufWriter::new(output_file);
 
@@ -66,6 +76,11 @@ fn create_pak(map: &Map, base_path: &Path, output: &Path) -> Result<(), anyhow::
 			Ok(path) => path.to_path_buf(),
 			Err(_) => base_path.join(&entry.file_path),
 		};
+
+		// Write the entry on the dependency file, if any
+		if let Some(mut file) = dep_file {
+			write!(file, "{} ", entry_path.display()).context("Unable to write entry to dependency file")?;
+		}
 
 		// Get the entry kind
 		let kind = match entry.kind {
