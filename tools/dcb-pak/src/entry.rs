@@ -16,15 +16,18 @@ pub struct EntryReader<R> {
 	header: Header,
 
 	/// Entry reader
-	// Note: This will be seeked to the start of
-	//       this entry's content.
+	// Note: On creation, the reader is left
+	//       on the start of the contents, past
+	//       the header.
 	reader: R,
 }
 
-// Constructor
-impl<R: io::Read> EntryReader<R> {
+impl<R> EntryReader<R> {
 	/// Deserializes an entry from a reader
-	pub fn from_reader(mut reader: R) -> Result<Option<Self>, FromReaderError> {
+	pub fn from_reader(mut reader: R) -> Result<Option<Self>, FromReaderError>
+	where
+		R: io::Read,
+	{
 		// Read the header
 		// Note: We do a two-part read so we can quit early if we find `0xffffffff`
 		let mut header_bytes = [0u8; 0x8];
@@ -37,7 +40,7 @@ impl<R: io::Read> EntryReader<R> {
 			return Ok(None);
 		}
 
-		// Then read the rest and parse the header
+		// Else read the rest and parse the header
 		reader
 			.read_exact(&mut header_bytes[0x4..])
 			.map_err(FromReaderError::ReadHeader)?;
@@ -45,28 +48,25 @@ impl<R: io::Read> EntryReader<R> {
 
 		Ok(Some(Self { header, reader }))
 	}
-}
 
-// Getters
-impl<R> EntryReader<R> {
 	/// Returns this entry's header
 	#[must_use]
 	pub const fn header(&self) -> &Header {
 		&self.header
 	}
-}
 
-// Read
-impl<R: io::Read> EntryReader<R> {
 	/// Returns a reader over the contents of this entry
 	#[must_use]
-	pub fn contents(self) -> impl io::Read {
+	pub fn into_contents(self) -> impl io::Read
+	where
+		R: io::Read,
+	{
 		// Note: Our reader is at the start of the contents
-		<R as io::Read>::take(self.reader, u64::from(self.header.size))
+		self.reader.take(u64::from(self.header.size))
 	}
 
 	/// Seeks the reader to the end of the contents and returns it
-	pub fn seek_end(mut self) -> Result<R, io::Error>
+	pub fn into_end(mut self) -> Result<R, io::Error>
 	where
 		R: io::Seek,
 	{

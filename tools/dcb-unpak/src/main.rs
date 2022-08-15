@@ -109,14 +109,15 @@ fn extract_pak(input_file_path: &Path, output_dir: &Path, args: &Args) -> Result
 
 		// If we can extract, create the output file and copy the contents
 		if !args.no_extract {
+			let mut contents = entry.into_contents();
 			let mut output_file = fs::File::create(&file_path)
 				.with_context(|| format!("Unable to create file {}", file_path.display()))?;
-			io::copy(&mut entry.contents(), &mut output_file)
+			io::copy(&mut contents, &mut output_file)
 				.with_context(|| format!("Unable to write file {}", file_path.display()))?;
 		}
 		// Else seek to the end of the contents
 		else {
-			entry.seek_end().context("Unable to seek to end of entry")?;
+			entry.into_end().context("Unable to seek to end of entry")?;
 		}
 	}
 
