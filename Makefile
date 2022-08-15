@@ -102,12 +102,14 @@ build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
 	mkpsxiso dcb-iso.xml -q -y
 
 # `DRV` files
+include drv-deps.d
 build/drv/%.DRV build/drv/%.DRV.d: dcb/%.DRV.yaml dcb/%.DRV.bspatch $(mkdrv)
 	@mkdir -p $(@D)
 	$(mkdrv) "$<" -o "build/drv/$*.DRV" --dep-file "build/drv/$*.DRV.d"
 	$(bspatch) "build/drv/$*.DRV" "build/drv/$*.DRV" "dcb/$*.DRV.bspatch"
 
 # `PAK` files
+include pak-deps.d
 build/pak/%.PAK build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak)
 	@mkdir -p $(@D)
 	$(mkpak) "$<" --output "build/pak/$*.PAK" --dep-file "build/pak/$*.PAK.d"
@@ -119,14 +121,16 @@ build/msd/%.MSD: dcb/%.MSD.s dcb/%.MSD.bspatch $(mkmsd)
 	$(bspatch) "$@" "$@" "dcb/$*.MSD.bspatch"
 
 # Card table
-build/card_table: dcb/B.DRV/card_table.json dcb/B.DRV/card_table.bspatch $(mk-card-table)
+build/misc/B.DRV/CARD2.CDD: dcb/B.DRV/CARD2.CDD.json dcb/B.DRV/CARD2.CDD.bspatch $(mk-card-table)
+	@mkdir -p "$(@D)"
 	$(mk-card-table) $< --output $@
-	$(bspatch) $@ $@ dcb/B.DRV/card_table.bspatch
+	$(bspatch) $@ $@ dcb/B.DRV/CARD2.CDD.bspatch
 
 # Deck table
-build/deck_table: dcb/B.DRV/deck_table.json dcb/B.DRV/deck_table.bspatch $(mk-deck-table)
+build/misc/B.DRV/DECK2.DEK: dcb/B.DRV/DECK2.DEK.json dcb/B.DRV/DECK2.DEK.bspatch $(mk-deck-table)
+	@mkdir -p "$(@D)"
 	$(mk-deck-table) $< --output $@
-	$(bspatch) $@ $@ dcb/B.DRV/deck_table.bspatch
+	$(bspatch) $@ $@ dcb/B.DRV/DECK2.DEK.bspatch
 
 # Create dylibs
 # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
