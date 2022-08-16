@@ -62,6 +62,9 @@ pub enum Arg {
 	/// String
 	String(String),
 
+	/// Variable
+	Var(String),
+
 	/// Number
 	Number(i64),
 
@@ -138,9 +141,21 @@ fn parse_args(src: &str, tokens: &mut PeekSlice<Spanned<Token>>) -> Result<Vec<A
 				Arg::String(s)
 			},
 
-			// On identifier, add an identifier argument
-			Some(token) if token.inner == Token::Ident => {
-				let ident = src[token.span].to_owned();
+			// On dollar + identifier, add a variable
+			Some(dollar) if dollar.inner == Token::Dollar => match tokens.next() {
+				Some(ident) if ident.inner == Token::Ident => {
+					let var = src[ident.span].to_owned();
+					Arg::Var(var)
+				},
+
+				// Else it's an unexpected token
+				Some(token) => anyhow::bail!("Expected identifier, found {:?} ({token:?})", &src[token.span]),
+				None => anyhow::bail!("Expected identifier, found end"),
+			},
+
+			// On identifier, add an label argument
+			Some(ident) if ident.inner == Token::Ident => {
+				let ident = src[ident.span].to_owned();
 				Arg::Ident(ident)
 			},
 
