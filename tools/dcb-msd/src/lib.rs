@@ -35,10 +35,10 @@ use {
 };
 
 /// Assembles a file
-pub fn assemble(path: &Path) -> Result<Vec<Inst>, anyhow::Error> {
+pub fn assemble(path: &Path, header_unknown: &mut Option<u32>) -> Result<Vec<Inst>, anyhow::Error> {
 	// Parse the root file
 	let mut vars = HashMap::new();
-	let ast = self::parse_ast(path, &mut vars)?;
+	let ast = self::parse_ast(path, &mut vars, header_unknown)?;
 
 	// Finally compile it
 	let insts = compile::compile(ast).context("Unable to compile ast")?;
@@ -49,20 +49,29 @@ pub fn assemble(path: &Path) -> Result<Vec<Inst>, anyhow::Error> {
 /// Fully parses the ast of a file.
 ///
 /// This includes expanding it's macros
-fn parse_ast(path: &Path, vars: &mut HashMap<String, ast::Arg>) -> Result<Ast, anyhow::Error> {
+fn parse_ast(
+	path: &Path,
+	vars: &mut HashMap<String, ast::Arg>,
+	header_unknown: &mut Option<u32>,
+) -> Result<Ast, anyhow::Error> {
 	// Read the file, tokenize and then parse it
 	let src = fs::read_to_string(path).context("Unable to read file")?;
 	let tokens = token::tokenize(&src);
 	let ast = ast::parse(&src, &mut PeekSlice::new(&tokens)).context("Unable to parse file")?;
 
 	// Then resolve macros
-	let ast = self::resolve_macros(ast, path, vars).context("Unable to resolve macros")?;
+	let ast = self::resolve_macros(ast, path, vars, header_unknown).context("Unable to resolve macros")?;
 
 	Ok(ast)
 }
 
 /// Resolves macros in an ast
-fn resolve_macros(ast: Ast, base_path: &Path, vars: &mut HashMap<String, ast::Arg>) -> Result<Ast, anyhow::Error> {
+fn resolve_macros(
+	ast: Ast,
+	base_path: &Path,
+	vars: &mut HashMap<String, ast::Arg>,
+	header_unknown: &mut Option<u32>,
+) -> Result<Ast, anyhow::Error> {
 	let items = ast
 		.items
 		.into_iter()
@@ -95,7 +104,7 @@ fn resolve_macros(ast: Ast, base_path: &Path, vars: &mut HashMap<String, ast::Ar
 					tracing::debug!("Including file {include_path:?}");
 
 					// And parse the ast
-					let ast = self::parse_ast(&include_path, vars)
+					let ast = self::parse_ast(&include_path, vars, header_unknown)
 						.with_context(|| format!("Unable to parse included file {include_path:?}"))?;
 
 					Ok(ast.items)
@@ -116,6 +125,25 @@ fn resolve_macros(ast: Ast, base_path: &Path, vars: &mut HashMap<String, ast::Ar
 					args => anyhow::bail!(
 						"Macro `.set` expected a variable argument and another any argument, fond {args:?}"
 					),
+				},
+
+				// On `.header_unknown` set the unknown header
+				"header_unknown" => match macro_.args.as_slice() {
+					&[ast::Arg::Number(value)] => {
+						match header_unknown {
+							Some(value) =>
+								anyhow::bail!("`header_unknown` is already set to {value:?}, can't set it again"),
+							None =>
+								*header_unknown = Some(
+									value
+										.try_into()
+										.context("`.header_unknown` value must fit in a `u32`")?,
+								),
+						}
+
+						Ok(vec![])
+					},
+					args => anyhow::bail!("Macro `.header_unknown` expected a single number argument, fond {args:?}"),
 				},
 
 				mnemonic => anyhow::bail!("Unknown macro {mnemonic:?}"),

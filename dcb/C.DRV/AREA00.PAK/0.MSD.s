@@ -1,3 +1,4 @@
+.header_unknown 0x174
 # Includes
 .include "/msd-vars.s"
 

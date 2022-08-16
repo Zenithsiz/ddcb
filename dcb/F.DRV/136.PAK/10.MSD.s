@@ -1,3 +1,4 @@
+.header_unknown 0x1cc
 display_scene 0x10, 0x3e9
 open_combo_box 0x551
 open_combo_box 0xffff

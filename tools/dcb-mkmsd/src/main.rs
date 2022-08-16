@@ -19,6 +19,7 @@ mod args;
 use {
 	anyhow::Context,
 	args::Args,
+	byteorder::{ByteOrder, LittleEndian},
 	clap::Parser,
 	std::{fs, io::Write},
 	tracing_subscriber::prelude::*,
@@ -35,13 +36,22 @@ fn main() -> Result<(), anyhow::Error> {
 	let args = Args::parse();
 
 	// Assemble the file
-	let insts = dcb_msd::assemble(&args.input_file).context("Unable to assemble")?;
+	let mut header_unknown = None;
+	let insts = dcb_msd::assemble(&args.input_file, &mut header_unknown).context("Unable to assemble")?;
+	let header_unknown = header_unknown.context("You must supply a value for the unknown header field")?;
 
 	// Finally output them all
 	let output_file = fs::File::create(args.output_file).context("Unable to create output file")?;
 
 	// Write the header
-	let header = [0; 0x10];
+	let mut header = [0; 0x10];
+	header[0x0..0x4].copy_from_slice(b"MSCD");
+	header[0x4..0x8].copy_from_slice(&[0x3, 0x0, 0x0, 0x0]);
+	LittleEndian::write_u32(
+		&mut header[0x8..0xc],
+		0x10 + 0x4 * u32::try_from(insts.len()).context("Number of instructions didn't fit into `u32`")?,
+	);
+	LittleEndian::write_u32(&mut header[0xc..0x10], header_unknown);
 	(&output_file).write_all(&header).context("Unable to write header")?;
 
 	// Then all instructions

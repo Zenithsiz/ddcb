@@ -1,3 +1,4 @@
+.header_unknown 0x174
 jump_0:
 empty_text_box
 set_var 0x15e, 0x0

@@ -1,3 +1,4 @@
+.header_unknown 0x1e
 set_bg_battle_cafe
 test_eq 0x1d, 0x1
 jump 0x4, jump_2
