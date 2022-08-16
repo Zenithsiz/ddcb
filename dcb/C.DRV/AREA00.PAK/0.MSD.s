@@ -570,8 +570,8 @@ test_eq 0x1, 0x3
 jump 0x188, jump_368
 test_eq 0x1, 0x4
 jump 0x7e, jump_125
-test_eq 0x1, 0xffffffff
-jump 0x18d, jump_373
+test_eq 0x1, $menu_button_triangle
+jump 0x18d, goto_map
 jump_125:
 display_location 0x0
 empty_text_box
@@ -6021,7 +6021,7 @@ empty_text_box
 display_scene 0xf, 0x6e
 open_screen 0x11
 jump 0x0, jump_0
-jump_373:
+goto_map:
 empty_text_box
 display_scene 0xf, 0x6f
 set_var 0x0, 0x0
