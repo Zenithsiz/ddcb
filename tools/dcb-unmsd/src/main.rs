@@ -21,10 +21,7 @@ use {
 	args::Args,
 	byteorder::{ByteOrder, LittleEndian},
 	clap::Parser,
-	dcb_msd::{
-		inst::{InstArgFmt, InstFmt},
-		Inst,
-	},
+	dcb_msd::{Inst, InstArgFmt, InstFmt},
 	encoding_rs::SHIFT_JIS,
 	itertools::Itertools,
 	std::{

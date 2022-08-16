@@ -1,65 +1,42 @@
-//! Instruction parsing
+//! Compiling
 
 // Imports
-use {crate::Inst, anyhow::Context, encoding_rs::SHIFT_JIS, std::collections::HashMap};
+use {
+	crate::{ast, Ast, Inst},
+	anyhow::Context,
+	encoding_rs::SHIFT_JIS,
+	std::collections::HashMap,
+};
 
-/// Parsed instruction
-#[derive(PartialEq, Eq, Clone, Debug)]
-pub struct ParsedInst {
-	/// Mnemonic
-	pub mnemonic: String,
-
-	/// Arguments
-	pub args: Vec<ParsedInstArg>,
-}
-
-/// Parsed instruction argument
-#[derive(PartialEq, Eq, Clone, Debug)]
-pub enum ParsedInstArg {
-	/// String
-	String(String),
-
-	/// Number
-	Number(i64),
-
-	/// Label
-	Label(String),
-}
-
-/// Parsed Statement
-pub enum ParsedStmt {
-	/// Label
-	Label(String),
-
-	/// Instruction
-	Inst(ParsedInst),
-}
-
-/// Parses statements into instructions
-pub fn parse_stmts(stmts: impl IntoIterator<Item = ParsedStmt>) -> Result<Vec<Inst>, (usize, anyhow::Error)> {
+/// Compiles an ast into instructions.
+pub fn compile(ast: Ast) -> Result<Vec<Inst>, anyhow::Error> {
 	// All in-progress instructions
 	let mut insts = vec![];
 	let mut labels = HashMap::new();
 
 	let mut cur_pos = 0;
-	for (stmt_idx, stmt) in stmts.into_iter().enumerate() {
-		let inst = match stmt {
+	for item in ast.items {
+		// Try to parse the item
+		let inst = match item {
 			// If we got a label, we can add it to the labels and stop here
-			ParsedStmt::Label(label) => {
-				labels.insert(label, cur_pos);
+			ast::Item::Label(label) => {
+				labels.insert(label.name, cur_pos);
 				continue;
 			},
 
 			// Else parse the instruction
-			ParsedStmt::Inst(inst) => match self::parse_inst(inst, stmt_idx) {
-				Ok(inst) => inst,
-				Err(err) => return Err((stmt_idx, err)),
-			},
+			ast::Item::Inst(inst) => self::parse_inst(inst).context("Unable to parse instruction")?,
+
+			// All macros should have been handled by now
+			// TODO: Encode that information on the type system, maybe with a tag on
+			//       the macro variant of `!` type?
+			ast::Item::Macro(macro_) => unreachable!("Unhandled macro {macro_:?}"),
 		};
 
-		let inst_size = match inst.inner {
-			InProgressParsedInstInner::Parsed(ref inst) => inst.size(),
-			InProgressParsedInstInner::LabelAddr { size, .. } => size,
+		// Then update our position
+		let inst_size = match inst {
+			TodoInst::Done(ref inst) => inst.size(),
+			TodoInst::LabelAddr { size, .. } => size,
 		};
 		cur_pos += inst_size;
 
@@ -69,35 +46,29 @@ pub fn parse_stmts(stmts: impl IntoIterator<Item = ParsedStmt>) -> Result<Vec<In
 	// Finally parse them all
 	insts
 		.into_iter()
-		.map(|inst| match inst.inner {
-			InProgressParsedInstInner::Parsed(inst) => Ok(inst),
-			InProgressParsedInstInner::LabelAddr { label, parse, .. } => match labels.get(&label).copied() {
-				Some(pos) => parse(pos).map_err(|err| (inst.idx, err)),
-				None => Err((inst.idx, anyhow::anyhow!("Unknown label {label:?}"))),
+		.map(|inst| match inst {
+			TodoInst::Done(inst) => Ok(inst),
+			TodoInst::LabelAddr { label, parse, .. } => match labels.get(&label).copied() {
+				Some(pos) => parse(pos),
+				None => anyhow::bail!("Unknown label {label:?}"),
 			},
 		})
 		.collect()
 }
 
 /// Parses an instruction
-fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst, anyhow::Error> {
-	// Macro to create an `InProgressParsedInst::Inst` from an instruction
+fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
+	// Macro to create an `TodoInst` from an instruction
 	macro inst($inst:expr) {
-		InProgressParsedInst {
-			idx:   stmt_idx,
-			inner: InProgressParsedInstInner::Parsed($inst),
-		}
+		TodoInst::Done($inst)
 	}
 
-	// Macro to create an `InProgressParsedInst` from an instruction
+	// Macro to create an `TodoInst` from an instruction
 	macro inst_label_addr($label:expr, $size:expr, $addr:ident => $inst:expr) {
-		InProgressParsedInst {
-			idx:   stmt_idx,
-			inner: InProgressParsedInstInner::LabelAddr {
-				label: $label,
-				size:  $size,
-				parse: Box::new(move |$addr| Ok($inst)),
-			},
+		TodoInst::LabelAddr {
+			label: $label,
+			size:  $size,
+			parse: Box::new(move |$addr| Ok($inst)),
 		}
 	}
 
@@ -144,7 +115,7 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 	// Macro to create a branch for a 1-argument number instructions
 	macro number_arg($args:expr, $arg:ident => $inst:expr) {
 		one_arg!($args, arg => match arg {
-			ParsedInstArg::Number($arg) => inst!($inst),
+			ast::Arg::Number($arg) => inst!($inst),
 			arg => anyhow::bail!("Expected a number argument, found {arg:?}"),
 		})
 	}
@@ -152,7 +123,7 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 	// Macro to create a branch for a 1-argument string instructions
 	macro string_arg($args:expr, $arg:ident => $inst:expr) {
 		one_arg!($args, arg => match arg {
-			ParsedInstArg::String($arg) => inst!($inst),
+			ast::Arg::String($arg) => inst!($inst),
 			arg => anyhow::bail!("Expected a string argument, found {arg:?}"),
 		})
 	}
@@ -160,7 +131,7 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 	// Macro to create a branch for a 2-argument number, number instructions
 	macro number_number_arg($args:expr, ($arg0:ident, $arg1:ident) => $inst:expr) {
 		two_arg!($args, (arg0, arg1) => match (arg0, arg1) {
-			(ParsedInstArg::Number($arg0), ParsedInstArg::Number($arg1)) => inst!($inst),
+			(ast::Arg::Number($arg0), ast::Arg::Number($arg1)) => inst!($inst),
 			arg => anyhow::bail!("Expected two number argument, found {arg:?}"),
 		})
 	}
@@ -168,7 +139,7 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 	// Macro to create a branch for a 2-argument number, string instructions
 	macro number_string_arg($args:expr, ($arg0:ident, $arg1:ident) => $inst:expr) {
 		two_arg!($args, (arg0, arg1) => match (arg0, arg1) {
-			(ParsedInstArg::Number($arg0), ParsedInstArg::String($arg1)) => inst!($inst),
+			(ast::Arg::Number($arg0), ast::Arg::String($arg1)) => inst!($inst),
 			arg => anyhow::bail!("Expected a number and string argument, found {arg:?}"),
 		})
 	}
@@ -176,7 +147,7 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 	// Macro to create a branch for a 3-argument number, number, number instructions
 	macro number_number_number_arg($args:expr, ($arg0:ident, $arg1:ident, $arg2:ident) => $inst:expr) {
 		three_arg!($args, (arg0, arg1, arg2) => match (arg0, arg1, arg2) {
-			(ParsedInstArg::Number($arg0), ParsedInstArg::Number($arg1), ParsedInstArg::Number($arg2)) => inst!($inst),
+			(ast::Arg::Number($arg0), ast::Arg::Number($arg1), ast::Arg::Number($arg2)) => inst!($inst),
 			arg => anyhow::bail!("Expected three number argument, found {arg:?}"),
 		})
 	}
@@ -184,7 +155,7 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 	// Macro to create a branch for a 4-argument number, number, number, number, instructions
 	macro number_number_number_number_arg($args:expr, ($arg0:ident, $arg1:ident, $arg2:ident, $arg3:ident) => $inst:expr) {
 		four_arg!($args, (arg0, arg1, arg2, arg3) => match (arg0, arg1, arg2, arg3) {
-			(ParsedInstArg::Number($arg0), ParsedInstArg::Number($arg1), ParsedInstArg::Number($arg2), ParsedInstArg::Number($arg3)) => inst!($inst),
+			(ast::Arg::Number($arg0), ast::Arg::Number($arg1), ast::Arg::Number($arg2), ast::Arg::Number($arg3)) => inst!($inst),
 			arg => anyhow::bail!("Expected four number argument, found {arg:?}"),
 		})
 	}
@@ -253,11 +224,11 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 		}),
 
 		"jump" => two_arg!(inst.args, (var, addr) => match (var, addr) {
-			(ParsedInstArg::Number(var), ParsedInstArg::Label(label)) => inst_label_addr!(label, 8, addr => Inst::Jump {
+			(ast::Arg::Number(var), ast::Arg::Ident(label)) => inst_label_addr!(label, 8, addr => Inst::Jump {
 				var: var.try_into().context("Unable to fit variable into a `u16`")?,
 				addr,
 			}),
-			(ParsedInstArg::Number(var), ParsedInstArg::Number(addr)) => inst!(Inst::Jump {
+			(ast::Arg::Number(var), ast::Arg::Number(addr)) => inst!(Inst::Jump {
 				var: var.try_into().context("Unable to fit variable into a `u16`")?,
 				addr: addr.try_into().context("Unable to fit variable into a `u16`")?,
 			}),
@@ -341,20 +312,13 @@ fn parse_inst(inst: ParsedInst, stmt_idx: usize) -> Result<InProgressParsedInst,
 	Ok(inst)
 }
 
-struct InProgressParsedInst {
-	/// Inner
-	inner: InProgressParsedInstInner,
 
-	/// Index
-	idx: usize,
-}
+/// Todo Instruction
+enum TodoInst {
+	/// Done
+	Done(Inst),
 
-/// In-progress parsing instruction inner
-enum InProgressParsedInstInner {
-	/// Fully parsed
-	Parsed(Inst),
-
-	/// Needs label address
+	/// Needs an address for a label
 	LabelAddr {
 		label: String,
 		size:  u32,

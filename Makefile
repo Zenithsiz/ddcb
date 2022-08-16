@@ -106,42 +106,42 @@ build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
 	mkpsxiso dcb-iso.xml -q -y
 
 # `DRV` dependencies
-build/drv/%.DRV.d: dcb/%.DRV.yaml $(mkdrv-deps)
+build/drv/%.DRV.d: dcb/%.DRV.yaml | $(mkdrv-deps)
 	@mkdir -p $(@D)
 	$(mkdrv-deps) "$<" -o "build/drv/$*.DRV" --dep-file "$@"
 
 # `DRV` files
 include $(DRV_FILES_DEP)
-build/drv/%.DRV: dcb/%.DRV.yaml dcb/%.DRV.bspatch $(mkdrv)
+build/drv/%.DRV: dcb/%.DRV.yaml dcb/%.DRV.bspatch | $(mkdrv)
 	@mkdir -p $(@D)
 	$(mkdrv) "$<" -o "$@"
 	$(bspatch) "$@" "$@" "dcb/$*.DRV.bspatch"
 
 # `PAK` dependencies
-build/pak/%.PAK.d: dcb/%.PAK.yaml $(mkpak-deps)
+build/pak/%.PAK.d: dcb/%.PAK.yaml | $(mkpak-deps)
 	@mkdir -p $(@D)
 	$(mkpak-deps) "$<" --output "build/pak/$*.PAK" --dep-file "$@"
 
 # `PAK` files
 include $(PAK_FILES_DEP)
-build/pak/%.PAK: dcb/%.PAK.yaml $(mkpak) | build/pak/%.PAK.d
+build/pak/%.PAK: dcb/%.PAK.yaml | build/pak/%.PAK.d $(mkpak)
 	@mkdir -p $(@D)
 	$(mkpak) "$<" --output "$@"
 
 # `MSD` files
-build/msd/%.MSD: dcb/%.MSD.s dcb/%.MSD.bspatch $(mkmsd)
+build/msd/%.MSD: dcb/%.MSD.s dcb/%.MSD.bspatch | $(mkmsd)
 	@mkdir -p "$(@D)"
 	$(mkmsd) "$<" -o "$@"
 	$(bspatch) "$@" "$@" "dcb/$*.MSD.bspatch"
 
 # Card table
-build/misc/B.DRV/CARD2.CDD: dcb/B.DRV/CARD2.CDD.json dcb/B.DRV/CARD2.CDD.bspatch $(mk-card-table)
+build/misc/B.DRV/CARD2.CDD: dcb/B.DRV/CARD2.CDD.json dcb/B.DRV/CARD2.CDD.bspatch | $(mk-card-table)
 	@mkdir -p "$(@D)"
 	$(mk-card-table) $< --output $@
 	$(bspatch) $@ $@ dcb/B.DRV/CARD2.CDD.bspatch
 
 # Deck table
-build/misc/B.DRV/DECK2.DEK: dcb/B.DRV/DECK2.DEK.json dcb/B.DRV/DECK2.DEK.bspatch $(mk-deck-table)
+build/misc/B.DRV/DECK2.DEK: dcb/B.DRV/DECK2.DEK.json dcb/B.DRV/DECK2.DEK.bspatch | $(mk-deck-table)
 	@mkdir -p "$(@D)"
 	$(mk-deck-table) $< --output $@
 	$(bspatch) $@ $@ dcb/B.DRV/DECK2.DEK.bspatch
@@ -181,7 +181,7 @@ build/dcb.elf: build/asm/dcb.o dcb-rs/build/libdcb.a build/symbols.ld psx.ld
 
 
 # Linker script symbol ordering.
-build/symbols.ld: symbols.yaml section_addrs.yaml $(generate_linker_script)
+build/symbols.ld: symbols.yaml section_addrs.yaml | $(generate_linker_script)
 	$(generate_linker_script)
 
 # Assembly object files
@@ -199,10 +199,10 @@ build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s
 	$(sed) -i -e "s/dcb.*-cgu.0//g" build/asm/dcb.d
 
 # Processed assembly files
-build/asm/dcb.s: build/asm/dcb-expanded.s $(preprocess_asm) symbols.yaml
+build/asm/dcb.s: build/asm/dcb-expanded.s symbols.yaml | $(preprocess_asm)
 	$(preprocess_asm) "$<" -o "$@" --replace-local-labels --add-label-section
 
-build/asm/dcb-expanded.s: dcb-asm/dcb.s $(expand_asm)
+build/asm/dcb-expanded.s: dcb-asm/dcb.s | $(expand_asm)
 	$(expand_asm) "$<" -o "$@"
 
 # Dependencies

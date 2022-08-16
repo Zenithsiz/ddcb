@@ -1,7 +1,10 @@
 //! Tokens
 
 // Imports
-use {crate::util::Spanned, logos::Logos};
+use {
+	crate::util::{Span, Spanned},
+	logos::Logos,
+};
 
 // Token
 #[derive(PartialEq, Eq, Clone, Debug)]
@@ -11,6 +14,10 @@ pub enum Token {
 	#[regex(r#"\p{XID_Start}\p{XID_Continue}*"#)]
 	Ident,
 
+	/// Period
+	#[token(".")]
+	Period,
+
 	/// Colon
 	#[token(":")]
 	Colon,
@@ -18,6 +25,10 @@ pub enum Token {
 	/// Comma
 	#[token(",")]
 	Comma,
+
+	/// Line feed
+	#[token("\n")]
+	LineFeed,
 
 	/// Number
 	#[regex(r#"(0x[0-9a-f]+|0b[0-1]+|0o[0-7]+|[0-9]+)"#)]
@@ -29,14 +40,19 @@ pub enum Token {
 	String,
 
 	#[error]
-	#[regex(r"[ \t\n\f]+", logos::skip)]
-	#[regex(r"#[^\n]*", logos::skip)]
+	#[regex(r"[^\S\n]+", logos::skip)] // Whitespace, barring newlines
+	#[regex(r"#[^\n]*", logos::skip)] // Comments
 	Error,
 }
 
-/// Tokenizes a line
-pub fn tokenize(line: &str) -> Vec<Spanned<Token>> {
-	let lexer = Token::lexer(line);
+/// Tokenizes a file
+pub fn tokenize(src: &str) -> Vec<Spanned<Token>> {
+	// Create the lexer
+	let lexer = Token::lexer(src);
 
-	lexer.spanned().map(|(token, span)| Spanned::new(token, span)).collect()
+	// Then get all tokens, spanned
+	lexer
+		.spanned()
+		.map(|(token, span)| Spanned::new(token, Span::from_range(&span)))
+		.collect()
 }

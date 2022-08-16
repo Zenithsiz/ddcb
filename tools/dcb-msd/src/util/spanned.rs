@@ -1,48 +1,53 @@
 //! Spanned types
 
 // Imports
-use {
-	logos::Span,
-	std::ops::{Deref, DerefMut},
-};
+use std::ops::Index;
+
+/// Span
+
+#[derive(PartialEq, Eq, Clone, Copy, Debug)]
+pub struct Span {
+	start: usize,
+	end:   usize,
+}
+
+impl Span {
+	/// Creates a span from a range
+	pub fn from_range(range: &std::ops::Range<usize>) -> Self {
+		Self {
+			start: range.start,
+			end:   range.end,
+		}
+	}
+
+	/// Returns this span as a range
+	pub fn to_range(self) -> std::ops::Range<usize> {
+		self.start..self.end
+	}
+}
+
+// TODO: Generalize?
+impl Index<Span> for str {
+	type Output = str;
+
+	fn index(&self, index: Span) -> &Self::Output {
+		self.index(index.to_range())
+	}
+}
 
 /// Type with a span
-#[derive(Clone, Debug)]
+#[derive(PartialEq, Eq, Clone, Copy, Debug)]
 pub struct Spanned<T> {
 	/// Inner value
-	inner: T,
+	pub inner: T,
 
 	/// Span
-	span: Span,
+	pub span: Span,
 }
 
 impl<T> Spanned<T> {
 	/// Creates a new spanned value
 	pub fn new(inner: T, span: Span) -> Self {
 		Self { inner, span }
-	}
-
-	/// Consumes this into it's inner value
-	pub fn _into_inner(this: Self) -> T {
-		this.inner
-	}
-
-	/// Returns the span of this value
-	pub fn span(this: &Self) -> Span {
-		this.span.clone()
-	}
-}
-
-impl<T> Deref for Spanned<T> {
-	type Target = T;
-
-	fn deref(&self) -> &Self::Target {
-		&self.inner
-	}
-}
-
-impl<T> DerefMut for Spanned<T> {
-	fn deref_mut(&mut self) -> &mut Self::Target {
-		&mut self.inner
 	}
 }

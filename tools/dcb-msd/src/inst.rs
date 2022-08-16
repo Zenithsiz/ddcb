@@ -8,13 +8,11 @@
 // Modules
 mod error;
 mod fmt;
-mod parse;
 
 // Exports
 pub use {
 	error::EncodeError,
 	fmt::{InstArgFmt, InstFmt},
-	parse::{parse_stmts, ParsedInst, ParsedInstArg, ParsedStmt},
 };
 
 // Imports

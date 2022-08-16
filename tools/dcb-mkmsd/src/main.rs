@@ -20,57 +20,22 @@ use {
 	anyhow::Context,
 	args::Args,
 	clap::Parser,
-	std::{collections::HashMap, fs, io::Write},
+	std::{fs, io::Write},
+	tracing_subscriber::prelude::*,
 };
 
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
-	simplelog::TermLogger::init(
-		log::LevelFilter::Info,
-		simplelog::Config::default(),
-		simplelog::TerminalMode::Stderr,
-	)
-	.expect("Unable to initialize logger");
+	tracing_subscriber::registry()
+		.with(tracing_subscriber::fmt::layer().with_filter(tracing_subscriber::EnvFilter::from_default_env()))
+		.init();
 
 	// Get all arguments
 	let args = Args::parse();
 
-	// Read the file
-	let contents = fs::read_to_string(&args.input_file).context("Unable to read file")?;
-
-	// Parse the file
-	// TODO: Properly span it instead of keeping track of which lines each
-	//       statement came from.
-	let mut stmts = vec![];
-	let mut stmt_lines = HashMap::new();
-
-	// For each line, tokenize and parse it
-	for (line_idx, line) in contents.lines().enumerate() {
-		let tokens = dcb_msd::token::tokenize(line);
-		let line_stmts = match dcb_msd::parse::parse(line, &tokens) {
-			Ok(stmts) => stmts,
-			Err(err) => anyhow::bail!("{}:{}: {err:?}", args.input_file.display(), line_idx + 1),
-		};
-		let stmts_start = stmts.len();
-		stmts.extend(line_stmts);
-		let stmts_end = stmts.len();
-
-		for stmt_idx in stmts_start..stmts_end {
-			stmt_lines.insert(stmt_idx, line_idx);
-		}
-	}
-
-	// Then parse all the lines
-	let insts = match dcb_msd::inst::parse_stmts(stmts) {
-		Ok(insts) => insts,
-		Err((stmt_idx, err)) => {
-			let line_idx = stmt_lines
-				.get(&stmt_idx)
-				.expect("Statement index didn't correspond to any line index");
-			anyhow::bail!("{}:{}: {err:?}", args.input_file.display(), line_idx + 1)
-		},
-	};
+	// Assemble the file
+	let insts = dcb_msd::assemble(&args.input_file).context("Unable to assemble")?;
 
 	// Finally output them all
 	let output_file = fs::File::create(args.output_file).context("Unable to create output file")?;
