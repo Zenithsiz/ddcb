@@ -1,13 +1,13 @@
 ---
-- file_path: "1158.PAK/0.M3D"
+- file_path: '1158.PAK/0.M3D'
   id: 11580
   kind: m3d
-- file_path: "1158.PAK/1.BIN"
+- file_path: '1158.PAK/1.BIN'
   id: 11562
   kind: bin
-- file_path: "1158.PAK/2.BIN"
+- file_path: '1158.PAK/2.BIN'
   id: 11580
   kind: bin
-- file_path: "1158.PAK/3.BIN"
+- file_path: '1158.PAK/3.BIN'
   id: 1902
   kind: bin

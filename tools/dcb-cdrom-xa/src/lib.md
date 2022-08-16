@@ -4,6 +4,7 @@ This crate implements the `CD-ROM/XA Mode 2 Form 1` specification
 within the [`CdRomReader`] / [`CdRomWriter`] / [`CdRomCursor`] structs.
 
 # Layout
+
 The `CD-ROM/XA Mode 2 Form 1` specification dictates that the
 file be split into sectors of size `0x930` bytes. See the [`sector`]
 module for it's layout.

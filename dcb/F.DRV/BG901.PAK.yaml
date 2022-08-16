@@ -1,7 +1,7 @@
 ---
-- file_path: "BG901.PAK/0.M3D"
+- file_path: 'BG901.PAK/0.M3D'
   id: 901
   kind: m3d
-- file_path: "BG901.PAK/1.BIN"
+- file_path: 'BG901.PAK/1.BIN'
   id: 901
   kind: bin

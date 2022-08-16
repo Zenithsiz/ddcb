@@ -3,6 +3,7 @@ A digimon card
 This module contains the [`Digimon`] struct, which describes a digimon card.
 
 # Layout
+
 The digimon card has a size of `0x138` bytes, and it's layout is the following:
 
 | Offset | Size | Type                | Name                     | Location               | Details                                                                             |

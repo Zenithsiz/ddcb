@@ -3,6 +3,7 @@ An item card
 This module contains the [`Item`] struct, which describes an item card.
 
 # Layout
+
 The item card has a size of `0xde` bytes, and it's layout is the following:
 
 | Offset | Size | Type                | Name                     | Location               | Details                                                             |

@@ -3,6 +3,7 @@ A deck
 This module contains the [`Deck`] struct, which describes a deck.
 
 # Layout
+
 Each deck has a size of `0x6e` bytes, and it's layout is the following:
 
 | Offset | Size | Type         | Name       | Location     | Details              |

@@ -1,6 +1,7 @@
 The table of all digimon in the game
 
 # Details
+
 The card table contains a small header detailing how many of each cards exist, following by a contiguous
 array of card entries.
 
@@ -12,6 +13,7 @@ array of card entries.
 | 0x8    | variable | [`CardEntry`](#card-entry-layout) | Card Entries | A contiguous array of [Card Entry](#card-entry-layout) |
 
 # Card Entry Layout
+
 Each card entry consists of a header of the card, the card itself and a null terminator.
 
 | Offset | Size     | Type           | Name            | Details                                      |

@@ -3,6 +3,7 @@ A digimon's move
 This module contains the [`Move`] struct, which describes a generic move over the triangle, circle or cross.
 
 # Layout
+
 Each move has a size of `0x1c` bytes, and it's layout is the following:
 
 | Offset | Size | Type         | Name    | Location  | Details                           |

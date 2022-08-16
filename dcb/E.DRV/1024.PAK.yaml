@@ -1,25 +1,25 @@
 ---
-- file_path: "1024.PAK/0.M3D"
+- file_path: '1024.PAK/0.M3D'
   id: 10240
   kind: m3d
-- file_path: "1024.PAK/1.UN1"
+- file_path: '1024.PAK/1.UN1'
   id: 10240
   kind: un1
-- file_path: "1024.PAK/2.A2D"
+- file_path: '1024.PAK/2.A2D'
   id: 10241
   kind: a2d
-- file_path: "1024.PAK/3.A2D"
+- file_path: '1024.PAK/3.A2D'
   id: 10242
   kind: a2d
-- file_path: "1024.PAK/4.BIN"
+- file_path: '1024.PAK/4.BIN'
   id: 10241
   kind: bin
-- file_path: "1024.PAK/5.BIN"
+- file_path: '1024.PAK/5.BIN'
   id: 10242
   kind: bin
-- file_path: "1024.PAK/6.BIN"
+- file_path: '1024.PAK/6.BIN'
   id: 10240
   kind: bin
-- file_path: "1024.PAK/7.BIN"
+- file_path: '1024.PAK/7.BIN'
   id: 1460
   kind: bin

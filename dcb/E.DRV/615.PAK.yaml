@@ -1,10 +1,10 @@
 ---
-- file_path: "615.PAK/0.UN2"
+- file_path: '615.PAK/0.UN2'
   id: 9991
   kind: un2
-- file_path: "615.PAK/1.BIN"
+- file_path: '615.PAK/1.BIN'
   id: 9991
   kind: bin
-- file_path: "615.PAK/2.BIN"
+- file_path: '615.PAK/2.BIN'
   id: 1091
   kind: bin

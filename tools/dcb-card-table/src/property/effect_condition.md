@@ -3,6 +3,7 @@ A digimon's effect condition
 This module contains the [`EffectCondition`] struct, which describes a condition for an effect.
 
 # Layout
+
 Each support condition has a size of `0x20` bytes, and it's layout is the following:
 
 | Offset | Size | Type                         | Name              | Location       | Details                                                                            |

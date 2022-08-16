@@ -3,6 +3,7 @@ A digimon's support effect
 This module contains the [`Effect`] struct, which describes a support effect.
 
 # Layout
+
 Each support effect has a size of `0x10` bytes, and it's general layout is the following:
 
 | Offset | Size | Type   | Name        | Location | Details                                                |

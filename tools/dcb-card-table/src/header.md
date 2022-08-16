@@ -1,6 +1,7 @@
 Header for each card in the table.
 
 # Details
+
 Each header contains the id of the card, as well as it's type.
 
 | Offset | Size | Type         | Name      | Details                                                                                         |

@@ -1,5 +1,5 @@
 ---
-".text":
+'.text':
   - cd_drv_extension_version
   - S_0x80010008
   - S_0x80010024
@@ -17709,7 +17709,7 @@
   - S_0x80077ff4
   - S_0x80077ff8
   - S_0x80077ffc
-"dylib.endseg":
+'dylib.endseg':
   - DYLIB_ENDSEG_S_0x801ddf38
   - DYLIB_ENDSEG_S_0x801ddf3c
   - DYLIB_ENDSEG_S_0x801ddf40
@@ -18398,7 +18398,7 @@
   - DYLIB_ENDSEG_S_0x801e0d90
   - DYLIB_ENDSEG_S_0x801e0d94
   - DYLIB_ENDSEG_S_0x801e0d98
-"dylib.evoseg":
+'dylib.evoseg':
   - DYLIB_EVOSEG_S_0x801ddf38
   - DYLIB_EVOSEG_S_0x801ddf3c
   - DYLIB_EVOSEG_S_0x801ddf40
@@ -26108,7 +26108,7 @@
   - DYLIB_EVOSEG_S_0x801f59a0
   - DYLIB_EVOSEG_S_0x801f59a4
   - DYLIB_EVOSEG_S_0x801f59a8
-"dylib.kawseg":
+'dylib.kawseg':
   - DYLIB_KAWSEG_S_0x801ddf38
   - DYLIB_KAWSEG_S_0x801ddf3c
   - DYLIB_KAWSEG_S_0x801ddf40
@@ -29297,7 +29297,7 @@
   - DYLIB_KAWSEG_S_0x801fcc1c
   - DYLIB_KAWSEG_S_0x801fcc20
   - DYLIB_KAWSEG_S_0x801fcc24
-"dylib.openseg":
+'dylib.openseg':
   - DYLIB_OPENSEG_S_0x801ddf38
   - DYLIB_OPENSEG_S_0x801ddf3c
   - DYLIB_OPENSEG_S_0x801ddf40
@@ -39373,7 +39373,7 @@
   - DYLIB_OPENSEG_S_0x801f817c
   - DYLIB_OPENSEG_S_0x801f8180
   - DYLIB_OPENSEG_S_0x801f8184
-"dylib.saiseg":
+'dylib.saiseg':
   - DYLIB_SAISEG_S_0x801ddf38
   - DYLIB_SAISEG_S_0x801ddf3c
   - DYLIB_SAISEG_S_0x801ddf40
@@ -43166,7 +43166,7 @@
   - DYLIB_SAISEG_S_0x801f545c
   - DYLIB_SAISEG_S_0x801f5460
   - DYLIB_SAISEG_S_0x801f5464
-"dylib.subseg":
+'dylib.subseg':
   - DYLIB_SUBSEG_S_0x801ddf38
   - DYLIB_SUBSEG_S_0x801ddf3c
   - DYLIB_SUBSEG_S_0x801ddf40
@@ -47669,7 +47669,7 @@
   - DYLIB_SUBSEG_S_0x801f449c
   - DYLIB_SUBSEG_S_0x801f44a0
   - DYLIB_SUBSEG_S_0x801f44a4
-"dylib.sugseg":
+'dylib.sugseg':
   - DYLIB_SUGSEG_S_0x801ddf38
   - DYLIB_SUGSEG_S_0x801ddf3c
   - DYLIB_SUGSEG_S_0x801ddf40

@@ -1,46 +1,46 @@
 ---
-- file_path: "1000.PAK/0.M3D"
+- file_path: '1000.PAK/0.M3D'
   id: 10001
   kind: m3d
-- file_path: "1000.PAK/1.M3D"
+- file_path: '1000.PAK/1.M3D'
   id: 10000
   kind: m3d
-- file_path: "1000.PAK/2.UN1"
+- file_path: '1000.PAK/2.UN1'
   id: 10001
   kind: un1
-- file_path: "1000.PAK/3.UN1"
+- file_path: '1000.PAK/3.UN1'
   id: 10000
   kind: un1
-- file_path: "1000.PAK/4.A2D"
+- file_path: '1000.PAK/4.A2D'
   id: 7517
   kind: a2d
-- file_path: "1000.PAK/5.A2D"
+- file_path: '1000.PAK/5.A2D'
   id: 10003
   kind: a2d
-- file_path: "1000.PAK/6.A2D"
+- file_path: '1000.PAK/6.A2D'
   id: 10002
   kind: a2d
-- file_path: "1000.PAK/7.UN2"
+- file_path: '1000.PAK/7.UN2'
   id: 1000
   kind: un2
-- file_path: "1000.PAK/8.UN2"
+- file_path: '1000.PAK/8.UN2'
   id: 10000
   kind: un2
-- file_path: "1000.PAK/9.BIN"
+- file_path: '1000.PAK/9.BIN'
   id: 7517
   kind: bin
-- file_path: "1000.PAK/10.BIN"
+- file_path: '1000.PAK/10.BIN'
   id: 10001
   kind: bin
-- file_path: "1000.PAK/11.BIN"
+- file_path: '1000.PAK/11.BIN'
   id: 10002
   kind: bin
-- file_path: "1000.PAK/12.BIN"
+- file_path: '1000.PAK/12.BIN'
   id: 10000
   kind: bin
-- file_path: "1000.PAK/13.BIN"
+- file_path: '1000.PAK/13.BIN'
   id: 10003
   kind: bin
-- file_path: "1000.PAK/14.BIN"
+- file_path: '1000.PAK/14.BIN'
   id: 1360
   kind: bin

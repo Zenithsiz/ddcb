@@ -1,19 +1,19 @@
 ---
-- file_path: "740.PAK/0.M3D"
+- file_path: '740.PAK/0.M3D'
   id: 6540
   kind: m3d
-- file_path: "740.PAK/1.M3D"
+- file_path: '740.PAK/1.M3D'
   id: 6541
   kind: m3d
-- file_path: "740.PAK/2.UN2"
+- file_path: '740.PAK/2.UN2'
   id: 6540
   kind: un2
-- file_path: "740.PAK/3.BIN"
+- file_path: '740.PAK/3.BIN'
   id: 6540
   kind: bin
-- file_path: "740.PAK/4.BIN"
+- file_path: '740.PAK/4.BIN'
   id: 6541
   kind: bin
-- file_path: "740.PAK/5.BIN"
+- file_path: '740.PAK/5.BIN'
   id: 900
   kind: bin

@@ -1,31 +1,31 @@
 ---
-- file_path: "834.PAK/0.M3D"
+- file_path: '834.PAK/0.M3D'
   id: 8340
   kind: m3d
-- file_path: "834.PAK/1.M3D"
+- file_path: '834.PAK/1.M3D'
   id: 8341
   kind: m3d
-- file_path: "834.PAK/2.M3D"
+- file_path: '834.PAK/2.M3D'
   id: 8343
   kind: m3d
-- file_path: "834.PAK/3.UN1"
+- file_path: '834.PAK/3.UN1'
   id: 8340
   kind: un1
-- file_path: "834.PAK/4.A2D"
+- file_path: '834.PAK/4.A2D'
   id: 2671
   kind: a2d
-- file_path: "834.PAK/5.BIN"
+- file_path: '834.PAK/5.BIN'
   id: 1380
   kind: bin
-- file_path: "834.PAK/6.BIN"
+- file_path: '834.PAK/6.BIN'
   id: 8340
   kind: bin
-- file_path: "834.PAK/7.BIN"
+- file_path: '834.PAK/7.BIN'
   id: 8341
   kind: bin
-- file_path: "834.PAK/8.BIN"
+- file_path: '834.PAK/8.BIN'
   id: 8343
   kind: bin
-- file_path: "834.PAK/9.BIN"
+- file_path: '834.PAK/9.BIN'
   id: 2671
   kind: bin

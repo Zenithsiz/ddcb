@@ -1,16 +1,16 @@
 ---
-- file_path: "1211.PAK/0.A2D"
+- file_path: '1211.PAK/0.A2D'
   id: 5370
   kind: a2d
-- file_path: "1211.PAK/1.A2D"
+- file_path: '1211.PAK/1.A2D'
   id: 12101
   kind: a2d
-- file_path: "1211.PAK/2.BIN"
+- file_path: '1211.PAK/2.BIN'
   id: 5370
   kind: bin
-- file_path: "1211.PAK/3.BIN"
+- file_path: '1211.PAK/3.BIN'
   id: 12101
   kind: bin
-- file_path: "1211.PAK/4.BIN"
+- file_path: '1211.PAK/4.BIN'
   id: 2081
   kind: bin

@@ -3,6 +3,7 @@ A digivolve card
 This module contains the [`Digivolve`] struct, which describes a digivolve card.
 
 # Layout
+
 The digivolve card has a size of `0x6c` bytes, and it's layout is the following:
 
 | Offset | Size | Type              | Name                     | Location             | Details                                                             |

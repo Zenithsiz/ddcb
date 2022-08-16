@@ -1,7 +1,7 @@
 ---
-- file_path: "/build/msd/C.DRV/AREA04.PAK/0.MSD"
+- file_path: '/build/msd/C.DRV/AREA04.PAK/0.MSD'
   id: 204
   kind: msd
-- file_path: "AREA04.PAK/1.BIN"
+- file_path: 'AREA04.PAK/1.BIN'
   id: 4004
   kind: bin

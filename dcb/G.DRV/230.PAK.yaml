@@ -1,34 +1,34 @@
 ---
-- file_path: "230.PAK/0.M3D"
+- file_path: '230.PAK/0.M3D'
   id: 230
   kind: m3d
-- file_path: "230.PAK/1.UN1"
+- file_path: '230.PAK/1.UN1'
   id: 2300
   kind: un1
-- file_path: "230.PAK/2.UN1"
+- file_path: '230.PAK/2.UN1'
   id: 0
   kind: un1
-- file_path: "230.PAK/3.UN1"
+- file_path: '230.PAK/3.UN1'
   id: 2
   kind: un1
-- file_path: "230.PAK/4.UN1"
+- file_path: '230.PAK/4.UN1'
   id: 1
   kind: un1
-- file_path: "230.PAK/5.UN1"
+- file_path: '230.PAK/5.UN1'
   id: 3
   kind: un1
-- file_path: "230.PAK/6.UN1"
+- file_path: '230.PAK/6.UN1'
   id: 4
   kind: un1
-- file_path: "230.PAK/7.UN1"
+- file_path: '230.PAK/7.UN1'
   id: 5
   kind: un1
-- file_path: "230.PAK/8.UN1"
+- file_path: '230.PAK/8.UN1'
   id: 7
   kind: un1
-- file_path: "230.PAK/9.UN1"
+- file_path: '230.PAK/9.UN1'
   id: 6
   kind: un1
-- file_path: "230.PAK/10.BIN"
+- file_path: '230.PAK/10.BIN'
   id: 230
   kind: bin
