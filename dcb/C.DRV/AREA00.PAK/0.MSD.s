@@ -5997,27 +5997,27 @@ combo_box_add_button 0x13
 combo_box_add_button 0xf
 combo_box_await
 test_eq 0x1, 0x1
-jump 0x18a, jump_370
+jump 0x18a, goto_card_menu
 test_eq 0x1, 0x2
-jump 0x18c, jump_372
+jump 0x18c, goto_edit_partner
 test_eq 0x1, 0x3
-jump 0x18b, jump_371
+jump 0x18b, goto_save
 test_eq 0x1, 0xffffffff
 jump 0x189, jump_369
 jump_369:
 set_var 0x16a, 0x0
 jump 0x3, jump_3
-jump_370:
+goto_card_menu:
 empty_text_box
 display_scene 0xf, 0x6e
 open_screen 0x9
 jump 0x0, jump_0
-jump_371:
+goto_save:
 empty_text_box
 display_scene 0xf, 0x6e
 display_scene 0x6, 0x1
 jump 0x0, jump_0
-jump_372:
+goto_edit_partner:
 empty_text_box
 display_scene 0xf, 0x6e
 open_screen 0x11
