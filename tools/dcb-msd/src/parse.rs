@@ -2,9 +2,12 @@
 
 // Imports
 use {
-	crate::{token::Token, util::Spanned},
+	crate::{
+		inst::{ParsedInst, ParsedInstArg, ParsedStmt},
+		token::Token,
+		util::Spanned,
+	},
 	anyhow::Context,
-	dcb_msd::inst::{ParsedInst, ParsedInstArg, ParsedStmt},
 };
 
 /// Parses tokens into statements

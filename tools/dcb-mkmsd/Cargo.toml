@@ -28,5 +28,3 @@ zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "2a029369ac5aa4e7dbd6
 # Strings
 encoding_rs = "0.8.28"
 unicode-xid = "0.2.3"
-logos = "0.12.1"
-snailquote = "0.3.1"

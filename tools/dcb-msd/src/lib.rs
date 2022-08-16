@@ -5,6 +5,9 @@
 
 // Modules
 pub mod inst;
+pub mod parse;
+pub mod token;
+mod util;
 
 // Exports
 pub use inst::Inst;

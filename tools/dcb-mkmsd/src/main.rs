@@ -14,9 +14,6 @@
 
 // Modules
 mod args;
-mod parse;
-mod token;
-mod util;
 
 // Imports
 use {
@@ -50,8 +47,8 @@ fn main() -> Result<(), anyhow::Error> {
 
 	// For each line, tokenize and parse it
 	for (line_idx, line) in contents.lines().enumerate() {
-		let tokens = token::tokenize(line);
-		let line_stmts = match parse::parse(line, &tokens) {
+		let tokens = dcb_msd::token::tokenize(line);
+		let line_stmts = match dcb_msd::parse::parse(line, &tokens) {
 			Ok(stmts) => stmts,
 			Err(err) => anyhow::bail!("{}:{}: {err:?}", args.input_file.display(), line_idx + 1),
 		};
