@@ -1,3 +1,6 @@
+# Includes
+.include "/msd-vars.s"
+
 jump_0:
 empty_text_box
 set_var 0x167, 0x0
@@ -26,9 +29,9 @@ jump 0x16f, jump_346
 display_scene 0xf, 0x70
 display_location 0xffff
 start_transition
-test_eq 0x1e, 0x1
+test_eq $seen_game_intro, 0x1
 jump 0x3, jump_3
-set_var 0x1e, 0x1
+set_var $seen_game_intro, 0x1
 empty_text_box
 set_text_buffer "Welcome to the world of Digital"
 display_text_buffer

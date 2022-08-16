@@ -71,20 +71,27 @@ fn resolve_macros(ast: Ast, base_path: &Path, vars: &mut HashMap<String, ast::Ar
 			ast::Item::Macro(macro_) => match macro_.mnemonic.as_str() {
 				// On `.include`, assemble the included file then merge it on this ast
 				"include" => {
-					let file_name = match macro_.args.as_slice() {
+					let path = match macro_.args.as_slice() {
 						[ast::Arg::Var(var)] => match vars
 							.get(var)
 							.with_context(|| format!("Unable to get variable ${var:?}"))?
 						{
-							ast::Arg::String(file_name) => file_name,
+							ast::Arg::String(path) => path,
 							arg => anyhow::bail!("Macro `.expand` expected a single string argument, found {arg:?}"),
 						},
-						[ast::Arg::String(file_name)] => file_name,
+						[ast::Arg::String(path)] => path,
 						args => anyhow::bail!("Macro `.expand` expected a single string argument, found {args:?}"),
 					};
+					let path = Path::new(path);
 
 					// Calculate the include path
-					let include_path = base_path.with_extension("").join(file_name).with_extension("s");
+					let include_path = match path.strip_prefix("/") {
+						// If it was absolute, include the file relative to us
+						Ok(path) => path.to_path_buf(),
+
+						// Else include it relative to the current file
+						Err(_) => base_path.parent().context("File had no parent directory")?.join(path),
+					};
 					tracing::debug!("Including file {include_path:?}");
 
 					// And parse the ast
