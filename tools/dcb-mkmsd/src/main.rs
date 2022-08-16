@@ -21,7 +21,10 @@ use {
 	args::Args,
 	byteorder::{ByteOrder, LittleEndian},
 	clap::Parser,
-	std::{fs, io::Write},
+	std::{
+		fs,
+		io::{Seek, SeekFrom, Write},
+	},
 	tracing_subscriber::prelude::*,
 };
 
@@ -41,24 +44,33 @@ fn main() -> Result<(), anyhow::Error> {
 	let header_unknown = header_unknown.context("You must supply a value for the unknown header field")?;
 
 	// Finally output them all
-	let output_file = fs::File::create(args.output_file).context("Unable to create output file")?;
+	let mut output_file = fs::File::create(args.output_file).context("Unable to create output file")?;
 
-	// Write the header
+	// Skip the header
+	output_file
+		.seek(SeekFrom::Current(0x10))
+		.context("Unable to seek past the header")?;
+
+	// Then all instructions
+	for inst in insts {
+		// TODO: Get instruction line index for errors
+		inst.encode(&mut output_file).context("Unable to encode instruction")?;
+	}
+
+	// Finally go back and write the header
+	let output_len = output_file
+		.stream_position()
+		.context("Unable to get output file size")?;
+	output_file.rewind().context("Unable to rewind output file")?;
 	let mut header = [0; 0x10];
 	header[0x0..0x4].copy_from_slice(b"MSCD");
 	header[0x4..0x8].copy_from_slice(&[0x3, 0x0, 0x0, 0x0]);
 	LittleEndian::write_u32(
 		&mut header[0x8..0xc],
-		0x10 + 0x4 * u32::try_from(insts.len()).context("Number of instructions didn't fit into `u32`")?,
+		output_len.try_into().context("File size didn't fit into a `u32`")?,
 	);
 	LittleEndian::write_u32(&mut header[0xc..0x10], header_unknown);
 	(&output_file).write_all(&header).context("Unable to write header")?;
-
-	// Then all instructions
-	for inst in insts {
-		// TODO: Get instruction line index for errors
-		inst.encode(&mut &output_file).context("Unable to encode instruction")?;
-	}
 
 	Ok(())
 }
