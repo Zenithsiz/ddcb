@@ -6,6 +6,7 @@ cargo                  = cargo
 elf2psexe              = elf2psexe
 generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
+expand_asm             = tools/expand_asm.py
 sed                    = sed
 diff                   = diff
 bspatch                = bspatch
@@ -21,10 +22,6 @@ mk-deck-table          = tools/target/release/dcb-mk-deck-table
 # All tools
 TOOLS := $(mkdrv) $(mkpak) $(mkpak-deps) $(mkmsd) $(mk-card-table) $(mk-deck-table)
 TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
-
-# All assembly files
-ASM_FILES := $(shell find "dcb-asm/" -type f -iname "*.s")
-ASM_PROCESSED_FILES := $(subst dcb-asm/,build/asm/,$(ASM_FILES))
 
 # All dylibs
 DYLIBS := \
@@ -188,7 +185,7 @@ build/symbols.ld: symbols.yaml section_addrs.yaml $(generate_linker_script)
 	$(generate_linker_script)
 
 # Assembly object files
-build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s $(ASM_PROCESSED_FILES)
+build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s
 	$(as) \
 		-MD \
 		build/asm/dcb.d \
@@ -198,14 +195,15 @@ build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s $(ASM_PROCESSED_FILES)
 		-march=r3000 \
 		-msoft-float \
 		-O2 \
-		build/asm/dcb.s \
-		2>&1 | sed -e "s,build/asm/,dcb-asm/,g" 1>&2
+		build/asm/dcb.s
 	$(sed) -i -e "s/dcb.*-cgu.0//g" build/asm/dcb.d
 
 # Processed assembly files
-# TODO: Require `symbols.yaml` here once it isn't so slow
-build/asm/%.s: dcb-asm/%.s $(preprocess_asm)
-	$(preprocess_asm) $< -o $@ --replace-includes --replace-local-labels --add-label-section
+build/asm/dcb.s: build/asm/dcb-expanded.s $(preprocess_asm) symbols.yaml
+	$(preprocess_asm) "$<" -o "$@" --replace-local-labels --add-label-section
+
+build/asm/dcb-expanded.s: dcb-asm/dcb.s $(expand_asm)
+	$(expand_asm) "$<" -o "$@"
 
 # Dependencies
 include build/asm/dcb.d
