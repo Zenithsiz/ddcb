@@ -201,7 +201,7 @@ build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s
 build/asm/dcb.s: build/asm/dcb-expanded.s symbols.yaml | $(preprocess_asm)
 	$(preprocess_asm) "$<" -o "$@" --replace-local-labels --add-label-section
 
-build/asm/dcb-expanded.s: dcb-asm/dcb.s | $(expand_asm)
+build/asm/dcb-expanded.s: dcb-asm/dcb.s $(shell find dcb-asm -type f) | $(expand_asm)
 	$(expand_asm) "$<" -o "$@"
 
 # Dependencies
