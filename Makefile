@@ -10,18 +10,17 @@ sed                    = sed
 diff                   = diff
 bspatch                = bspatch
 sha256sum              = sha256sum
-mkdrv                  = tools/target/release/dcb-mkdrv
-mkdrv-deps             = tools/target/release/dcb-mkdrv-deps
-mkpak                  = tools/target/release/dcb-mkpak
-mkpak-deps             = tools/target/release/dcb-mkpak-deps
-mkmsd                  = tools/target/release/dcb-mkmsd
-mk-card-table          = tools/target/release/dcb-mk-card-table
-mk-deck-table          = tools/target/release/dcb-mk-deck-table
-mkpsexe                = tools/target/release/dcb-mkpsexe
+mkdrv                  = build/tools/dcb-mkdrv
+mkdrv-deps             = build/tools/dcb-mkdrv-deps
+mkpak                  = build/tools/dcb-mkpak
+mkpak-deps             = build/tools/dcb-mkpak-deps
+mkmsd                  = build/tools/dcb-mkmsd
+mk-card-table          = build/tools/dcb-mk-card-table
+mk-deck-table          = build/tools/dcb-mk-deck-table
+mkpsexe                = build/tools/dcb-mkpsexe
 
 # All tools
 TOOLS := $(mkdrv) $(mkpak) $(mkpak-deps) $(mkmsd) $(mk-card-table) $(mk-deck-table) $(mkpsexe)
-TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All dylibs
 DYLIBS := \
@@ -93,12 +92,14 @@ clean:
 # Cargo tools
 # Note: Make doesn't seem to understand dependencies on full-paths properly, so we make them
 #       relative after compiling
-tools/target/release/% tools/target/release/%.d:
-	$(cargo) build --release --manifest-path tools/Cargo.toml -p $*
-	$(sed) -i \
-		-e "s,$(shell pwd)/,,g" tools/target/release/$*.d
-
-
+build/tools/%:
+	@mkdir -p $(@D)
+	$(cargo) build \
+		--release \
+		--manifest-path tools/Cargo.toml \
+		--package "$*" \
+		-Z unstable-options \
+		--out-dir build/tools
 
 # Files
 
@@ -163,7 +164,7 @@ build/iso/MMM.DAT:
 	truncate --size=24240128 $@
 
 # Final executable in ps-exe format
-build/dcb.psexe: build/dcb.elf license-psexe.dat
+build/dcb.psexe: build/dcb.elf license-psexe.dat | $(mkpsexe)
 	$(mkpsexe) "$<" --output "$@" --license "license-psexe.dat"
 
 # Final executable in elf format
@@ -208,4 +209,3 @@ build/asm/dcb-expanded.s: dcb-asm/dcb.s | $(expand_asm)
 
 # Dependencies
 include build/asm/dcb.d
-include $(TOOLS_DEP)
