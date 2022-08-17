@@ -6,7 +6,6 @@ cargo                  = cargo
 generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
 expand_asm             = tools/expand_asm.py
-diff                   = diff
 bspatch                = bspatch
 sha256sum              = sha256sum
 mkdrv                  = build/tools/dcb-mkdrv
