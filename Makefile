@@ -24,9 +24,6 @@ mk-card-table          = build/tools/dcb-mk-card-table
 mk-deck-table          = build/tools/dcb-mk-deck-table
 mkpsexe                = build/tools/dcb-mkpsexe
 
-# All tools
-TOOLS := $(mkdrv) $(mkpak) $(mkpak-deps) $(mkmsd) $(mk-card-table) $(mk-deck-table) $(mkpsexe)
-
 # TODO: Remove these `find` based approaches
 
 # All `DRV` files
@@ -47,7 +44,7 @@ include $(DEPS)
 
 # Commands
 
-.PHONY: all compare tools clean
+.PHONY: all compare clean
 .SUFFIXES:
 .PRECIOUS: %
 
@@ -63,9 +60,6 @@ build/compare.d: | $(generate_compare_deps)
 include build/compare.d
 compare: | build/compare.d
 	$(sha256sum) --check --quiet checksums.sha256
-
-# Compiles all tols
-tools: $(TOOLS)
 
 # Removes all build files
 clean:
