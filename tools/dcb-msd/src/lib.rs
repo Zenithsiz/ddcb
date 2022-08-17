@@ -31,14 +31,22 @@ use {
 	crate::util::PeekSlice,
 	anyhow::Context,
 	itertools::Itertools,
-	std::{collections::HashMap, fs, path::Path},
+	std::{
+		collections::HashMap,
+		fs,
+		path::{Path, PathBuf},
+	},
 };
 
 /// Assembles a file
-pub fn assemble(path: &Path, header_unknown: &mut Option<u32>) -> Result<Vec<Inst>, anyhow::Error> {
+pub fn assemble(
+	path: &Path,
+	header_unknown: &mut Option<u32>,
+	deps: &mut Vec<PathBuf>,
+) -> Result<Vec<Inst>, anyhow::Error> {
 	// Parse the root file
 	let mut vars = HashMap::new();
-	let ast = self::parse_ast(path, &mut vars, header_unknown)?;
+	let ast = self::parse_ast(path, &mut vars, header_unknown, deps)?;
 
 	// Finally compile it
 	let insts = compile::compile(ast).context("Unable to compile ast")?;
@@ -53,6 +61,7 @@ fn parse_ast(
 	path: &Path,
 	vars: &mut HashMap<String, ast::Arg>,
 	header_unknown: &mut Option<u32>,
+	deps: &mut Vec<PathBuf>,
 ) -> Result<Ast, anyhow::Error> {
 	// Read the file, tokenize and then parse it
 	let src = fs::read_to_string(path).context("Unable to read file")?;
@@ -60,7 +69,7 @@ fn parse_ast(
 	let ast = ast::parse(&src, &mut PeekSlice::new(&tokens)).context("Unable to parse file")?;
 
 	// Then resolve macros
-	let ast = self::resolve_macros(ast, path, vars, header_unknown).context("Unable to resolve macros")?;
+	let ast = self::resolve_macros(ast, path, vars, header_unknown, deps).context("Unable to resolve macros")?;
 
 	Ok(ast)
 }
@@ -71,6 +80,7 @@ fn resolve_macros(
 	base_path: &Path,
 	vars: &mut HashMap<String, ast::Arg>,
 	header_unknown: &mut Option<u32>,
+	deps: &mut Vec<PathBuf>,
 ) -> Result<Ast, anyhow::Error> {
 	let items = ast
 		.items
@@ -104,8 +114,9 @@ fn resolve_macros(
 					tracing::debug!("Including file {include_path:?}");
 
 					// And parse the ast
-					let ast = self::parse_ast(&include_path, vars, header_unknown)
+					let ast = self::parse_ast(&include_path, vars, header_unknown, deps)
 						.with_context(|| format!("Unable to parse included file {include_path:?}"))?;
+					deps.push(include_path);
 
 					Ok(ast.items)
 				},

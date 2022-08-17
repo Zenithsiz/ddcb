@@ -40,11 +40,12 @@ fn main() -> Result<(), anyhow::Error> {
 
 	// Assemble the file
 	let mut header_unknown = None;
-	let insts = dcb_msd::assemble(&args.input_file, &mut header_unknown).context("Unable to assemble")?;
+	let mut deps = vec![];
+	let insts = dcb_msd::assemble(&args.input_file, &mut header_unknown, &mut deps).context("Unable to assemble")?;
 	let header_unknown = header_unknown.context("You must supply a value for the unknown header field")?;
 
 	// Finally output them all
-	let mut output_file = fs::File::create(args.output_file).context("Unable to create output file")?;
+	let mut output_file = fs::File::create(&args.output_file).context("Unable to create output file")?;
 
 	// Skip the header
 	output_file
@@ -71,6 +72,16 @@ fn main() -> Result<(), anyhow::Error> {
 	);
 	LittleEndian::write_u32(&mut header[0xc..0x10], header_unknown);
 	(&output_file).write_all(&header).context("Unable to write header")?;
+
+	// If we got a dependency file, also write it
+	if let Some(dep_file) = &args.dep_file {
+		let file = fs::File::create(dep_file).context("Unable to create dependency file")?;
+		write!(&file, "{}: ", args.output_file.display()).context("Unable to write dependency file header")?;
+
+		for dep in &deps {
+			write!(&file, "{} ", dep.display()).context("Unable to write dependency file entry")?;
+		}
+	}
 
 	Ok(())
 }

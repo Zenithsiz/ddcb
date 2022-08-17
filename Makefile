@@ -20,6 +20,8 @@ mkpsexe                = build/tools/dcb-mkpsexe
 # All tools
 TOOLS := $(mkdrv) $(mkpak) $(mkpak-deps) $(mkmsd) $(mk-card-table) $(mk-deck-table) $(mkpsexe)
 
+# TODO: Make all of these listings automatic in some way?
+
 # All dylibs
 DYLIBS := \
 	build/dylib/ENDSEG.BIN \
@@ -35,7 +37,8 @@ PAK_FILES := $(patsubst dcb/%,build/pak/%,$(shell find "dcb/" -type d -iname "*.
 PAK_FILES_DEP := $(patsubst %,%.d,$(PAK_FILES))
 
 # All `MSD` files
-MSD_FILES := $(patsubst dcb/%,build/msd/%,$(shell find "dcb/" -type d -iname "*.MSD.s"))
+MSD_FILES := $(patsubst dcb/%.s,build/msd/%,$(shell find "dcb/" -type f -iname "*.MSD.s"))
+MSD_FILES_DEP := $(patsubst %,%.d,$(MSD_FILES))
 
 # All `DRV` files
 DRV_FILES := \
@@ -129,10 +132,11 @@ build/pak/%.PAK: dcb/%.PAK.yaml | build/pak/%.PAK.d $(mkpak)
 	$(mkpak) "$<" --output "$@"
 
 # `MSD` files
-build/msd/%.MSD: dcb/%.MSD.s dcb/%.MSD.bspatch | $(mkmsd)
+include $(MSD_FILES_DEP)
+build/msd/%.MSD build/msd/%.MSD.d: dcb/%.MSD.s dcb/%.MSD.bspatch | $(mkmsd)
 	@mkdir -p "$(@D)"
-	$(mkmsd) "$<" -o "$@"
-	$(bspatch) "$@" "$@" "dcb/$*.MSD.bspatch"
+	$(mkmsd) "$<" -o "build/msd/$*.MSD" --deps "build/msd/$*.MSD.d"
+	$(bspatch) "build/msd/$*.MSD" "build/msd/$*.MSD" "dcb/$*.MSD.bspatch"
 
 # Card table
 build/misc/B.DRV/CARD2.CDD: dcb/B.DRV/CARD2.CDD.json dcb/B.DRV/CARD2.CDD.bspatch | $(mk-card-table)
