@@ -25,6 +25,8 @@ TOOLS := $(mkdrv) $(mkpak) $(mkpak-deps) $(mkmsd) $(mk-card-table) $(mk-deck-tab
 # TODO: Make all of these listings automatic in some way?
 
 # All dylibs
+# TODO: Not do this manually just for `compare` by parsing `checksums.sha256` and getting
+#       them there.
 DYLIBS := \
 	build/dylib/ENDSEG.BIN \
 	build/dylib/EVOSEG.BIN \
@@ -34,6 +36,12 @@ DYLIBS := \
 	build/dylib/SUBSEG.BIN \
 	build/dylib/SUGSEG.BIN
 
+# TODO: Remove these `find` based approaches
+
+# All `DRV` files
+DRV_FILES := $(patsubst dcb/%,build/drv/%,$(shell find "dcb/" -type d -iname "*.DRV")) build/drv/P.DRV
+DRV_FILES_DEP := $(patsubst %,%.d,$(DRV_FILES))
+
 # All `PAK` files
 PAK_FILES := $(patsubst dcb/%,build/pak/%,$(shell find "dcb/" -type d -iname "*.PAK"))
 PAK_FILES_DEP := $(patsubst %,%.d,$(PAK_FILES))
@@ -42,43 +50,18 @@ PAK_FILES_DEP := $(patsubst %,%.d,$(PAK_FILES))
 MSD_FILES := $(patsubst dcb/%.s,build/msd/%,$(shell find "dcb/" -type f -iname "*.MSD.s"))
 MSD_FILES_DEP := $(patsubst %,%.d,$(MSD_FILES))
 
-# All `DRV` files
-DRV_FILES := \
-	build/drv/A.DRV \
-	build/drv/B.DRV \
-	build/drv/C.DRV \
-	build/drv/E.DRV \
-	build/drv/F.DRV \
-	build/drv/G.DRV \
-	build/drv/P.DRV
-DRV_FILES_DEP := $(patsubst %,%.d,$(DRV_FILES))
-
-# All ISO files
-ISO_FILES := $(DRV_FILES) \
-	dcb/DIGIMON.MOV \
-	dcb/SYSTEM.CNF \
-	build/dcb.psexe \
-	build/iso/MMM.DAT
-
-# All `dcb-rs` files
-DCB_RS_FILES := dcb-rs/build/libdcb.a
-
 # Commands
 
 .PHONY: all compare tools clean
 .SUFFIXES:
 .PRECIOUS: %
 
-# `dcb-rs` makefile
-$(DCB_RS_FILES):
-	@$(MAKE) -C dcb-rs/
-
 # Default target, pack iso
 all: build/dcb.bin
 
 # Compare files to original
 # TODO: Compare the bin once it's properly built
-compare: build/dcb.psexe $(DYLIBS) $(DRV_FILES) $(PAK_FILES) $(MSD_FILES) $(ISO_FILES)
+compare: build/dcb.psexe build/iso/MMM.DAT $(DYLIBS) $(DRV_FILES) $(PAK_FILES) $(MSD_FILES)
 	$(sha256sum) --check --quiet checksums.sha256
 
 # Compiles all tols
@@ -89,12 +72,16 @@ clean:
 	rm -r build/
 
 
+# Sub makefiles
+
+# `dcb-rs` makefile
+DCB_RS_FILES := dcb-rs/build/libdcb.a
+$(DCB_RS_FILES):
+	@$(MAKE) -C dcb-rs/
 
 # Tools
 
 # Cargo tools
-# Note: Make doesn't seem to understand dependencies on full-paths properly, so we make them
-#       relative after compiling
 build/tools/%:
 	@mkdir -p $(@D)
 	$(cargo) build \
