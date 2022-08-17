@@ -3,7 +3,6 @@ ld                     = mips-linux-gnu-ld
 as                     = mips-linux-gnu-as
 objcopy                = mips-linux-gnu-objcopy
 cargo                  = cargo
-elf2psexe              = elf2psexe
 generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
 expand_asm             = tools/expand_asm.py
@@ -18,9 +17,10 @@ mkpak-deps             = tools/target/release/dcb-mkpak-deps
 mkmsd                  = tools/target/release/dcb-mkmsd
 mk-card-table          = tools/target/release/dcb-mk-card-table
 mk-deck-table          = tools/target/release/dcb-mk-deck-table
+mkpsexe                = tools/target/release/dcb-mkpsexe
 
 # All tools
-TOOLS := $(mkdrv) $(mkpak) $(mkpak-deps) $(mkmsd) $(mk-card-table) $(mk-deck-table)
+TOOLS := $(mkdrv) $(mkpak) $(mkpak-deps) $(mkmsd) $(mk-card-table) $(mk-deck-table) $(mkpsexe)
 TOOLS_DEP := $(patsubst %,%.d,$(TOOLS))
 
 # All dylibs
@@ -163,8 +163,8 @@ build/iso/MMM.DAT:
 	truncate --size=24240128 $@
 
 # Final executable in ps-exe format
-build/dcb.psexe: build/dcb.elf
-	$(elf2psexe) "NA" $< $@
+build/dcb.psexe: build/dcb.elf license-psexe.dat
+	$(mkpsexe) "$<" --output "$@" --license "license-psexe.dat"
 
 # Final executable in elf format
 build/dcb.elf: build/asm/dcb.o dcb-rs/build/libdcb.a build/symbols.ld psx.ld
