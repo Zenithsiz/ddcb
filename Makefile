@@ -8,6 +8,7 @@ generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
 expand_asm             = tools/expand_asm.py
 generate_iso_deps      = tools/generate_iso_deps.py
+generate_compare_deps  = tools/generate_compare_deps.py
 bspatch                = bspatch
 sha256sum              = sha256sum
 mkdrv                  = build/tools/dcb-mkdrv
@@ -60,8 +61,13 @@ MSD_FILES_DEP := $(patsubst %,%.d,$(MSD_FILES))
 all: build/dcb.bin
 
 # Compare files to original
+build/compare.d: | $(generate_compare_deps)
+	@mkdir -p $(@D)
+	$(generate_compare_deps) > "$@"
+
 # TODO: Compare the bin once it's properly built
-compare: build/dcb.psexe build/iso/MMM.DAT $(DYLIBS) $(DRV_FILES) $(PAK_FILES) $(MSD_FILES)
+include build/compare.d
+compare: | build/compare.d
 	$(sha256sum) --check --quiet checksums.sha256
 
 # Compiles all tols
@@ -161,10 +167,12 @@ build/iso/MMM.DAT:
 
 # Final executable in ps-exe format
 build/dcb.psexe: build/dcb.elf license-psexe.dat | $(mkpsexe)
+	@mkdir -p $(@D)
 	$(mkpsexe) "$<" --output "$@" --license "license-psexe.dat"
 
 # Final executable in elf format
 build/dcb.elf: build/asm/dcb.o dcb-rs/build/libdcb.a build/symbols.ld psx.ld
+	@mkdir -p $(@D)
 	$(ld) $< \
 		-o $@ \
 		--whole-archive \
@@ -180,11 +188,13 @@ build/dcb.elf: build/asm/dcb.o dcb-rs/build/libdcb.a build/symbols.ld psx.ld
 
 # Linker script symbol ordering.
 build/symbols.ld: symbols.yaml section_addrs.yaml | $(generate_linker_script)
+	@mkdir -p $(@D)
 	$(generate_linker_script)
 
 # Assembly object files
 include build/asm/dcb.d
 build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s
+	@mkdir -p $(@D)
 	$(as) \
 		-MD \
 		build/asm/dcb.d \
@@ -198,7 +208,9 @@ build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s
 
 # Processed assembly files
 build/asm/dcb.s: build/asm/dcb-expanded.s symbols.yaml | $(preprocess_asm)
+	@mkdir -p $(@D)
 	$(preprocess_asm) "$<" -o "$@" --replace-local-labels --add-label-section
 
 build/asm/dcb-expanded.s: dcb-asm/dcb.s $(shell find dcb-asm -type f) | $(expand_asm)
+	@mkdir -p $(@D)
 	$(expand_asm) "$<" -o "$@"
