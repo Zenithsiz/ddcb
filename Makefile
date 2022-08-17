@@ -58,16 +58,17 @@ ISO_FILES := $(DRV_FILES) \
 	build/dcb.psexe \
 	build/iso/MMM.DAT
 
-
+# All `dcb-rs` files
+DCB_RS_FILES := dcb-rs/build/libdcb.a
 
 # Commands
 
-.PHONY: all compare tools clean dcb-rs
+.PHONY: all compare tools clean
 .SUFFIXES:
 .PRECIOUS: %
 
 # `dcb-rs` makefile
-dcb-rs:
+$(DCB_RS_FILES):
 	@$(MAKE) -C dcb-rs/
 
 # Default target, pack iso
