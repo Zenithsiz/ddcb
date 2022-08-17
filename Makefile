@@ -7,6 +7,7 @@ cargo                  = cargo
 generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
 expand_asm             = tools/expand_asm.py
+generate_iso_deps      = tools/generate_iso_deps.py
 bspatch                = bspatch
 sha256sum              = sha256sum
 mkdrv                  = build/tools/dcb-mkdrv
@@ -105,8 +106,13 @@ build/tools/%:
 
 # Files
 
+# Bin/cue dependencies
+build/dcb.bin.d: | $(generate_iso_deps)
+	$(generate_iso_deps) > "$@"
+
 # Bin/cue
-build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
+include build/dcb.bin.d
+build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml
 	$(mkpsxiso) dcb-iso.xml -q -y
 
 # `DRV` dependencies
@@ -190,6 +196,7 @@ build/symbols.ld: symbols.yaml section_addrs.yaml | $(generate_linker_script)
 	$(generate_linker_script)
 
 # Assembly object files
+include build/asm/dcb.d
 build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s
 	$(as) \
 		-MD \
@@ -208,6 +215,3 @@ build/asm/dcb.s: build/asm/dcb-expanded.s symbols.yaml | $(preprocess_asm)
 
 build/asm/dcb-expanded.s: dcb-asm/dcb.s $(shell find dcb-asm -type f) | $(expand_asm)
 	$(expand_asm) "$<" -o "$@"
-
-# Dependencies
-include build/asm/dcb.d
