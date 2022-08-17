@@ -46,7 +46,7 @@ include $(DEPS)
 
 .PHONY: all compare clean
 .SUFFIXES:
-.PRECIOUS: %
+.SECONDARY:
 
 # Default target, pack iso
 all: build/dcb.bin
