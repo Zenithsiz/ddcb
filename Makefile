@@ -41,6 +41,10 @@ PAK_FILES_DEP := $(patsubst %,%.d,$(PAK_FILES))
 MSD_FILES := $(patsubst dcb/%.s,build/msd/%,$(shell find "dcb/" -type f -iname "*.MSD.s"))
 MSD_FILES_DEP := $(patsubst %,%.d,$(MSD_FILES))
 
+# Dependencies
+DEPS := $(shell mkdir -p "build/" && find "build/" -type f -iname '*.d')
+include $(DEPS)
+
 # Commands
 
 .PHONY: all compare tools clean
@@ -182,7 +186,6 @@ build/symbols.ld: symbols.yaml section_addrs.yaml | $(generate_linker_script)
 	$(generate_linker_script)
 
 # Assembly object files
-include build/asm/dcb.d
 build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s
 	@mkdir -p $(@D)
 	$(as) \
