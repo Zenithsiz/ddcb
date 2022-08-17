@@ -6,7 +6,6 @@ cargo                  = cargo
 generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
 expand_asm             = tools/expand_asm.py
-sed                    = sed
 diff                   = diff
 bspatch                = bspatch
 sha256sum              = sha256sum
@@ -198,7 +197,6 @@ build/asm/dcb.o build/asm/dcb.d: build/asm/dcb.s
 		-msoft-float \
 		-O2 \
 		build/asm/dcb.s
-	$(sed) -i -e "s/dcb.*-cgu.0//g" build/asm/dcb.d
 
 # Processed assembly files
 build/asm/dcb.s: build/asm/dcb-expanded.s symbols.yaml | $(preprocess_asm)
