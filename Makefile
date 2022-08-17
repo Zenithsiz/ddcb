@@ -2,6 +2,7 @@
 ld                     = mips-linux-gnu-ld
 as                     = mips-linux-gnu-as
 objcopy                = mips-linux-gnu-objcopy
+mkpsxiso               = mkpsxiso
 cargo                  = cargo
 generate_linker_script = tools/generate_linker_symbols_script.py
 preprocess_asm         = tools/preprocess_asm.py
@@ -106,7 +107,7 @@ build/tools/%:
 
 # Bin/cue
 build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml $(ISO_FILES)
-	mkpsxiso dcb-iso.xml -q -y
+	$(mkpsxiso) dcb-iso.xml -q -y
 
 # `DRV` dependencies
 build/drv/%.DRV.d: dcb/%.DRV.yaml | $(mkdrv-deps)
