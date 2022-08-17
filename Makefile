@@ -1,3 +1,7 @@
+# Disable all builtin rules and variables
+MAKEFLAGS += --no-builtin-rules
+MAKEFLAGS += --no-builtin-variables
+
 # Command alias
 ld                     = mips-linux-gnu-ld
 as                     = mips-linux-gnu-as
@@ -22,20 +26,6 @@ mkpsexe                = build/tools/dcb-mkpsexe
 
 # All tools
 TOOLS := $(mkdrv) $(mkpak) $(mkpak-deps) $(mkmsd) $(mk-card-table) $(mk-deck-table) $(mkpsexe)
-
-# TODO: Make all of these listings automatic in some way?
-
-# All dylibs
-# TODO: Not do this manually just for `compare` by parsing `checksums.sha256` and getting
-#       them there.
-DYLIBS := \
-	build/dylib/ENDSEG.BIN \
-	build/dylib/EVOSEG.BIN \
-	build/dylib/KAWSEG.BIN \
-	build/dylib/OPENSEG.BIN \
-	build/dylib/SAISEG.BIN \
-	build/dylib/SUBSEG.BIN \
-	build/dylib/SUGSEG.BIN
 
 # TODO: Remove these `find` based approaches
 
