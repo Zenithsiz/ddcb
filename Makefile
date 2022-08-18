@@ -88,7 +88,7 @@ build/tools/%:
 # Files
 
 # Bin/cue dependencies
-build/dcb.bin.d: | $(generate_iso_deps)
+build/dcb.bin.d: dcb-iso.xml | $(generate_iso_deps)
 	$(generate_iso_deps) > "$@"
 
 # Bin/cue
@@ -159,10 +159,10 @@ build/dcb.psexe: build/dcb.elf license-psexe.dat | $(mkpsexe)
 	$(mkpsexe) "$<" --output "$@" --license "license-psexe.dat"
 
 # Final executable in elf format
-build/dcb.elf: build/asm/dcb.o dcb-rs/build/libdcb.a build/symbols.ld psx.ld
+build/dcb.elf build/dcb.map: build/asm/dcb.o dcb-rs/build/libdcb.a build/symbols.ld psx.ld
 	@mkdir -p $(@D)
 	$(ld) $< \
-		-o $@ \
+		-o build/dcb.elf \
 		--whole-archive \
 		-EL \
 		--nmagic \
