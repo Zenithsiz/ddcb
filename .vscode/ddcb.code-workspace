@@ -18,6 +18,13 @@
 				"strings": false
 			}
 		},
+		"[yaml]": {
+			"editor.quickSuggestions": {
+				"other": false,
+				"comments": false,
+				"strings": false
+			}
+		},
 		"rust-analyzer.checkOnSave.allTargets": false,
 		"cSpell.words": [
 			"acqrel",
@@ -30,6 +37,7 @@
 			"beqz",
 			"bgez",
 			"bnez",
+			"Cmpt",
 			"Digi",
 			"Digimon",
 			"Digimon's",
@@ -80,7 +88,8 @@
 			"thiserror",
 			"Veemon",
 			"Wormmon",
-			"yubrg"
+			"yubrg",
+			"zbuild"
 		]
 	}
 }

@@ -1,0 +1,317 @@
+---
+alias:
+  ld: mips-linux-gnu-ld
+  as: mips-linux-gnu-as
+  objcopy: mips-linux-gnu-objcopy
+  mkpsxiso: mkpsxiso
+  cargo: cargo
+  generate_linker_script: tools/generate_linker_symbols_script.py
+  preprocess_asm: tools/preprocess_asm.py
+  expand_asm: tools/expand_asm.py
+  generate_iso_deps: tools/generate_iso_deps.py
+  generate_compare_deps: tools/generate_compare_deps.py
+  bspatch: bspatch
+  sha256sum: sha256sum
+  mkdrv: build/tools/dcb-mkdrv
+  mkdrv-deps: build/tools/dcb-mkdrv-deps
+  mkpak: build/tools/dcb-mkpak
+  mkpak-deps: build/tools/dcb-mkpak-deps
+  mkmsd: build/tools/dcb-mkmsd
+  mk-card-table: build/tools/dcb-mk-card-table
+  mk-deck-table: build/tools/dcb-mk-deck-table
+  mkpsexe: build/tools/dcb-mkpsexe
+
+# By default built the final binary
+default:
+  file: build/drv/C.DRV
+
+rules:
+  # Compare
+  compare:
+    deps: [file: checksums.sha256, deps_file: 'build/compare.d']
+    exec:
+      - [$(sha256sum), --check, --quiet, checksums.sha256]
+
+  # Compare dependencies
+  compare-deps:
+    out: [file: build/compare.d]
+    deps: [file: checksums.sha256, file: $(generate_compare_deps)]
+    exec:
+      - [mkdir, -p, build/]
+      - [bash, -c, '$(generate_compare_deps) > build/compare.d']
+
+  # Clean
+  clean:
+    exec:
+      - [rm, -r, build/]
+
+  # `dcb.bin`
+  mkpsxiso:
+    out:
+      - file: build/dcb.bin
+      - file: build/dcb.cue
+    deps: [file: dcb-iso.xml, file: license.dat, deps_file: build/dcb.bin.d]
+    exec:
+      - [$(mkpsxiso), build/dcb.bin, -q, -y]
+
+  # `dcb.bin` dependencies
+  mkpsxiso-deps:
+    out: [file: build/dcb.bin.d]
+    deps: [file: dcb-iso.xml]
+    exec:
+      - [bash, -c, '$(generate_iso_deps) > build/dcb.bin.d']
+
+  # Cargo tools
+  # TODO: Dependencies?
+  cargo-tool:
+    out: [file: build/tools/^(name)]
+    exec:
+      - - $(cargo)
+        - build
+        - --release
+        - --manifest-path=tools/Cargo.toml
+        - --package=^(name)
+        - -Z=unstable-options
+        - --out-dir=build/tools
+
+  # `drv`
+  mkdrv:
+    out: [file: build/drv/^(name).DRV]
+    deps:
+      - file: ^(name).DRV.yaml
+      - file: ^(name).DRV.bspatch
+      - deps_file: build/drv/^(name).DRV.d
+      - file: $(mkdrv)
+
+    exec:
+      - [mkdir, -p, build/drv/]
+      - [$(mkdrv), ^(name).DRV.yaml, -o, build/drv/^(name).DRV]
+      - - $(bspatch)
+        - build/drv/^(name).DRV
+        - build/drv/^(name).DRV
+        - ^(name).DRV.bspatch
+
+  # `drv` dependencies
+  mkdrv-deps:
+    out: [file: build/drv/^(path).d]
+    deps: [file: ^(path).yaml, file: $(mkdrv-deps)]
+    exec:
+      - [mkdir, -p, build/drv/]
+      - - $(mkdrv-deps)
+        - ^(path).yaml
+        - -o
+        - build/drv/^(path)
+        - --dep-file
+        - build/drv/^(path).d
+
+  # `pak`
+  mkpak:
+    out: [file: build/pak/^(path)]
+    deps:
+      - file: ^(path).yaml
+      - file: ^(path).bspatch
+      - deps_file: build/pak/^(path).d
+      - file: $(mkpak)
+
+    exec:
+      - [mkdir, -p, build/pak/]
+      - [$(mkpak), (path).yaml, -o, build/pak/^(path)]
+      - [$(bspatch), build/pak/^(path), build/pak/^(path), ^(path).bspatch]
+
+  # `pak` dependencies
+  mkpak-deps:
+    out: [file: build/pak/^(path).d]
+    deps: [file: ^(path).yaml, file: $(mkpak-deps)]
+    exec:
+      - [mkdir, -p, build/pak/]
+      - - $(mkpak-deps)
+        - ^(path).yaml
+        - -o
+        - build/pak/^(path)
+        - --dep-file
+        - build/pak/^(path).d
+
+  # `msd`
+  mkmsd:
+    out: [file: build/msd/^(path), deps_file: build/msd/^(path).d]
+    deps:
+      - file: ^(path).yaml
+      - file: ^(path).bspatch
+      - deps_file: build/msd/^(path).d
+      - file: $(mkmsd)
+
+    exec:
+      - [mkdir, -p, build/msd/]
+      - [$(mkmsd), ^(path).yaml, -o, build/msd/^(path)]
+      - [$(bspatch), build/msd/^(path), build/msd/^(path), ^(path).bspatch]
+
+  # Card table
+  card_table:
+    out: [file: build/misc/dcb/B.DRV/CARD2.CDD]
+    deps:
+      - file: dcb/B.DRV/CARD2.CDD.json
+      - file: dcb/B.DRV/CARD2.CDD.bspatch
+      - file: $(mk-card-table)
+    exec:
+      - [mkdir, -p, build/misc/dcb/B.DRV/]
+      - - $(mk-card-table)
+        - dcb/B.DRV/CARD2.CDD.json
+        - -o
+        - build/misc/dcb/B.DRV/CARD2.CDD
+
+      - - $(bspatch)
+        - build/misc/dcb/B.DRV/CARD2.CDD
+        - build/misc/dcb/B.DRV/CARD2.CDD
+        - dcb/B.DRV/CARD2.CDD.bspatch
+
+  # Deck table
+  deck_table:
+    out: [file: build/misc/dcb/B.DRV/DECK2.DEK]
+    deps:
+      - file: dcb/B.DRV/DECK2.DEK.json
+      - file: dcb/B.DRV/DECK2.DEK.bspatch
+      - file: $(mk-deck-table)
+    exec:
+      - [mkdir, -p, build/misc/dcb/B.DRV/]
+      - - $(mk-deck-table)
+        - dcb/B.DRV/DECK2.DEK.json
+        - -o
+        - build/misc/dcb/B.DRV/DECK2.DEK
+
+      - - $(bspatch)
+        - build/misc/dcb/B.DRV/DECK2.DEK
+        - build/misc/dcb/B.DRV/DECK2.DEK
+        - dcb/B.DRV/DECK2.DEK.bspatch
+
+  # Buffer
+  mmm_buffer:
+    out: [file: build/iso/MMM.DAT]
+    exec:
+      - [mkdir, -p, build/iso/]
+      - [touch, build/iso/MMM.DAT]
+      - [truncate, --size=24240128, build/iso/MMM.DAT]
+
+  # Dylibs
+  dylib:
+    out: [file: build/dylib/^(name)]
+    deps:
+      - file: build/dcb.elf
+
+    # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
+    #       modification date, which `make` uses to check dependencies
+    # TODO: Check if output is right
+    exec:
+      - [mkdir, -p, build/dylib/]
+      - [cp, build/dcb.elf, build/dcb.elf.^(name)]
+      - - $(objcopy)
+        - --dump-section
+        - dylib.^(name)=/build/dylib/^(name)
+        - build/dcb.elf.^(name)
+      - [rm, build/dcb.elf.^(name)]
+
+  # Executable (ps-exe)
+  exe_psexe:
+    out: [file: build/dcb.psexe]
+    deps:
+      - file: build/dcb.elf
+      - file: license-psexe.dat
+      - file: $(mkpsexe)
+    exec:
+      - [mkdir, -p, build/]
+      - - $(mkpsexe)
+        - build/dcb.elf
+        - -o
+        - build/dcb.psexe
+        - --license
+        - license-psexe.dat
+
+  # Executable (elf)
+  exe_elf:
+    out: [file: build/dcb.elf]
+
+    deps:
+      - file: build/asm/dcb.o
+      - file: dcb-rs/build/libdcb.a
+      - file: build/symbols.ld
+      - file: psx.ld
+
+    exec:
+      - [mkdir, -p, build/]
+      - - $(ld)
+        - build/asm/dcb.o
+        - -o
+        - build/dcb.elf
+        - --whole-archive
+        - -EL
+        - --nmagic
+        - --script
+        - psx.ld
+        - --warn-section-align
+        - --no-check-sections
+        - -Ldcb-rs/build/
+        - -ldcb
+
+  # Linker script symbol ordering
+  linker_script_symbols:
+    out: [file: build/symbols.ld]
+    deps:
+      - file: symbols.yaml
+      - file: section_addrs.yaml
+      - file: $(generate_linker_script)
+
+    exec:
+      - [mkdir, -p, build/]
+      - [$(generate_linker_script)]
+
+  # Assembly object files
+  asm_obj:
+    out: [file: build/asm/dcb.o, deps_file: build/asm/dcb.d]
+
+    deps:
+      - file: build/asm/dcb.s
+
+    exec:
+      - [mkdir, -p, build/asm/]
+      - - $(as)
+        - -MD
+        - build/asm/dcb.d
+        - -o
+        - build/asm/dcb.o
+        - -EL
+        - -mips1
+        - -march=r3000
+        - -msoft-float
+        - -O2
+        - build/asm/dcb.d
+
+  # Processed asm
+  process_asm:
+    out: [file: build/asm/dcb.s]
+    deps:
+      - file: build/asm/dcb-expanded.s
+      - file: symbols.yaml
+      - file: $(preprocess_asm)
+
+    exec:
+      - [mkdir, -p, build/asm/]
+      - - $(preprocess_asm)
+        - build/asm/dcb-expanded.s
+        - -o
+        - build/asm/dcb.s
+        - --replace-local-labels
+        - --add-label-section
+
+  # Expanded asm
+  # TODO: Make `expand_asm` emit a dependency file
+  expand_asm:
+    out: [file: build/asm/dcb-expanded.s]
+    deps:
+      - file: dcb-asm/dcb.s
+      - file: $(expand_asm)
+
+    exec:
+      - [mkdir, -p, build/asm/]
+      - - $(expand_asm)
+        - dcb-asm/dcb.s
+        - -o
+        - build/asm/
