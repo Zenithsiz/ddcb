@@ -13,10 +13,10 @@
 // Modules
 mod args;
 mod ast;
-//mod rules;
+mod rules;
 
 // Exports
-pub use self::ast::Ast;
+pub use self::{ast::Ast, rules::Rules};
 
 // Imports
 use {anyhow::Context, args::Args, clap::StructOpt, std::fs, tracing_subscriber::prelude::*};
@@ -39,14 +39,12 @@ fn main() -> Result<(), anyhow::Error> {
 	};
 	tracing::trace!(target: "dcb_zbuild_ast", ?ast, "Parsed ast");
 
-	/*
 	// Build the rules
 	let rules = Rules::new(ast).context("Unable to create rules")?;
-	tracing::trace!(?rules, "rules");
+	tracing::trace!(target: "dcb_zbuild_rules", ?rules, "rules");
 
 	// Build the default rule
-	rules.build_default().context("Unable to build default rule")?;
-	*/
+	//rules.build_default().context("Unable to build default rule")?;
 
 	Ok(())
 }

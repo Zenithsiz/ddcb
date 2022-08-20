@@ -1,8 +1,8 @@
 //! Pattern
 
-/// Alias
+/// Pattern
 #[derive(Clone, Debug)]
-pub struct Alias {
-	/// Alias name
+pub struct Pattern {
+	/// Pattern name
 	pub name: String,
 }
