@@ -63,13 +63,11 @@ pub fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime, anyho
 		Target::File { file } => match self::find_rule_for_file(file, rules.rules.values(), global_expr_visitor)? {
 				Some(rule) => rule,
 
-				// If we didn't find it, check if the file exists.
-				None => match fs::metadata(file) {
-					// If it did, assume it's up to date and returns it's modification date
-					Ok(metadata) => return Ok(self::file_modified_time(metadata)),
-
-					// Else we're missing a file to build
-					_ => anyhow::bail!("Missing file {file:?} and no rule to build it found"),
+				// If we didn't find it and it exists, assume it's
+				// a non-builder dependency and return it's time
+				None => {
+					let metadata = fs::metadata(file).with_context(|| format!("Missing file {file:?} and no rule to build it found"))?;
+					return Ok(self::file_modified_time(metadata))
 				},
 			}
 		,
@@ -80,13 +78,20 @@ pub fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime, anyho
 			todo!();
 		},
 	};
-	tracing::debug!(target: "dcb_zbuild_find_rule", rule_name = ?rule.name, "Found rule");
+	tracing::trace!(target: "dcb_zbuild_find_rule", rule = ?rule, ?target, "Found rule");
 
 	// Go through all dependencies and build them
+	// TODO: If the output includes a deps_file, also build it.
 	let last_build_time = self::rule_last_build_time(&rule).ok().flatten();
 	let mut needs_rebuilt = last_build_time.is_none();
 	for dep in &rule.deps {
 		let dep_file = dep.file();
+
+		// If the dependency if also an output, don't build it
+		if rule.output.iter().any(|out| dep.file() == out.file()) {
+			tracing::debug!(?dep_file, "Skipping dependency, will be build on output");
+			continue;
+		}
 		tracing::debug!(?dep_file, "Build dependency");
 
 		// Build and set `needs_rebuilt` to true if any of them were rebuilt
@@ -179,6 +184,7 @@ pub fn rebuild_rule(rule: &Rule<String>) -> Result<(), anyhow::Error> {
 	tracing::debug!(?rule.name, "Rebuilding");
 
 	for exec in &rule.exec {
+		tracing::trace!(target: "dcb_zbuild_exec", ?exec, "Running command");
 		let (program, args) = exec.args.split_first().context("Rule executable cannot be empty")?;
 
 		Command::new(program)

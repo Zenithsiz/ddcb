@@ -4,13 +4,13 @@
   entries:
     - name: UNIT00
       date: '2001-04-17T02:53:36'
-      path: build/msd/C.DRV/EVENT/UNIT00.MSD
+      path: build/msd/dcb/C.DRV/EVENT/UNIT00.MSD
     - name: UNIT01
       date: '2001-04-17T02:53:38'
-      path: build/msd/C.DRV/EVENT/UNIT01.MSD
+      path: build/msd/dcb/C.DRV/EVENT/UNIT01.MSD
     - name: UNIT02
       date: '2001-04-17T02:53:40'
-      path: build/msd/C.DRV/EVENT/UNIT02.MSD
+      path: build/msd/dcb/C.DRV/EVENT/UNIT02.MSD
     - name: VSSVER
       date: '2001-04-17T02:56:44'
       path: dcb/C.DRV/EVENT/VSSVER.SCC
@@ -52,13 +52,13 @@
   entries:
     - name: '1501'
       date: '2000-10-19T11:49:46'
-      path: build/pak/C.DRV/EVO_PAK/1501.PAK
+      path: build/pak/dcb/C.DRV/EVO_PAK/1501.PAK
     - name: '1502'
       date: '2000-10-19T11:49:46'
-      path: build/pak/C.DRV/EVO_PAK/1502.PAK
+      path: build/pak/dcb/C.DRV/EVO_PAK/1502.PAK
     - name: '1500'
       date: '2000-10-19T11:49:46'
-      path: build/pak/C.DRV/EVO_PAK/1500.PAK
+      path: build/pak/dcb/C.DRV/EVO_PAK/1500.PAK
     - name: VSSVER
       date: '2001-04-11T06:36:24'
       path: dcb/C.DRV/EVO_PAK/VSSVER.SCC
@@ -106,79 +106,79 @@
       path: dcb/C.DRV/DEBUG/AREA04.TIS
     - name: CITY11
       date: '2001-05-02T08:15:14'
-      path: build/msd/C.DRV/DEBUG/CITY11.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY11.MSD
     - name: CITY10
       date: '2001-05-02T08:15:14'
-      path: build/msd/C.DRV/DEBUG/CITY10.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY10.MSD
     - name: CITY09
       date: '2001-05-02T08:15:14'
-      path: build/msd/C.DRV/DEBUG/CITY09.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY09.MSD
     - name: CITY06
       date: '2001-05-02T08:15:12'
-      path: build/msd/C.DRV/DEBUG/CITY06.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY06.MSD
     - name: CITY08
       date: '2001-05-02T08:15:14'
-      path: build/msd/C.DRV/DEBUG/CITY08.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY08.MSD
     - name: CITY07
       date: '2001-05-02T08:15:12'
-      path: build/msd/C.DRV/DEBUG/CITY07.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY07.MSD
     - name: CITY03
       date: '2001-05-02T08:15:12'
-      path: build/msd/C.DRV/DEBUG/CITY03.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY03.MSD
     - name: CITY05
       date: '2001-05-02T08:15:12'
-      path: build/msd/C.DRV/DEBUG/CITY05.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY05.MSD
     - name: CITY00
       date: '2001-05-02T08:15:10'
-      path: build/msd/C.DRV/DEBUG/CITY00.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY00.MSD
     - name: CITY04
       date: '2001-05-02T08:15:12'
-      path: build/msd/C.DRV/DEBUG/CITY04.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY04.MSD
     - name: CITY02
       date: '2001-05-02T08:15:10'
-      path: build/msd/C.DRV/DEBUG/CITY02.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY02.MSD
     - name: CITY01
       date: '2001-05-02T08:15:10'
-      path: build/msd/C.DRV/DEBUG/CITY01.MSD
+      path: build/msd/dcb/C.DRV/DEBUG/CITY01.MSD
 - name: UNIT_EFF
   date: '2000-10-19T11:49:44'
   path: dcb/C.DRV/UNIT_EFF.ARC
 - name: AREA04
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA04.PAK
+  path: build/pak/dcb/C.DRV/AREA04.PAK
 - name: AREA05
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA05.PAK
+  path: build/pak/dcb/C.DRV/AREA05.PAK
 - name: AREA01
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA01.PAK
+  path: build/pak/dcb/C.DRV/AREA01.PAK
 - name: AREA06
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA06.PAK
+  path: build/pak/dcb/C.DRV/AREA06.PAK
 - name: AREA02
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA02.PAK
+  path: build/pak/dcb/C.DRV/AREA02.PAK
 - name: AREA03
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA03.PAK
+  path: build/pak/dcb/C.DRV/AREA03.PAK
 - name: AREA00
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA00.PAK
+  path: build/pak/dcb/C.DRV/AREA00.PAK
 - name: AREA08
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA08.PAK
+  path: build/pak/dcb/C.DRV/AREA08.PAK
 - name: AREA09
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA09.PAK
+  path: build/pak/dcb/C.DRV/AREA09.PAK
 - name: AREA10
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA10.PAK
+  path: build/pak/dcb/C.DRV/AREA10.PAK
 - name: AREA11
   date: '2001-05-02T08:15:32'
-  path: build/pak/C.DRV/AREA11.PAK
+  path: build/pak/dcb/C.DRV/AREA11.PAK
 - name: AREA07
   date: '2001-05-02T08:15:30'
-  path: build/pak/C.DRV/AREA07.PAK
+  path: build/pak/dcb/C.DRV/AREA07.PAK
 - name: VSSVER
   date: '2001-05-02T08:15:42'
   path: dcb/C.DRV/VSSVER.SCC

@@ -99,7 +99,7 @@ build/dcb.bin build/dcb.cue: license.dat dcb-iso.xml
 # `DRV` dependencies
 build/drv/%.DRV.d: dcb/%.DRV.yaml | $(mkdrv-deps)
 	@mkdir -p $(@D)
-	$(mkdrv-deps) "$<" -o "build/drv/$*.DRV" --dep-file "$@"
+	$(mkdrv-deps) "$<" -o "build/drv/$*.DRV" --deps-file "$@"
 
 # `DRV` files
 include $(DRV_FILES_DEP)
@@ -111,7 +111,7 @@ build/drv/%.DRV: dcb/%.DRV.yaml dcb/%.DRV.bspatch | $(mkdrv)
 # `PAK` dependencies
 build/pak/%.PAK.d: dcb/%.PAK.yaml | $(mkpak-deps)
 	@mkdir -p $(@D)
-	$(mkpak-deps) "$<" --output "build/pak/$*.PAK" --dep-file "$@"
+	$(mkpak-deps) "$<" --output "build/pak/$*.PAK" --deps-file "$@"
 
 # `PAK` files
 include $(PAK_FILES_DEP)
@@ -123,7 +123,7 @@ build/pak/%.PAK: dcb/%.PAK.yaml | build/pak/%.PAK.d $(mkpak)
 include $(MSD_FILES_DEP)
 build/msd/%.MSD build/msd/%.MSD.d: dcb/%.MSD.s dcb/%.MSD.bspatch | $(mkmsd)
 	@mkdir -p "$(@D)"
-	$(mkmsd) "$<" -o "build/msd/$*.MSD" --deps "build/msd/$*.MSD.d"
+	$(mkmsd) "$<" -o "build/msd/$*.MSD" --deps-file "build/msd/$*.MSD.d"
 	$(bspatch) "build/msd/$*.MSD" "build/msd/$*.MSD" "dcb/$*.MSD.bspatch"
 
 # Card table

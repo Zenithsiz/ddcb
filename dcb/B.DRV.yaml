@@ -1777,7 +1777,7 @@
   path: dcb/B.DRV/BCARD.ARC
 - name: BETA
   date: '2001-05-02T08:22:40'
-  path: build/msd/B.DRV/BETA.MSD
+  path: build/msd/dcb/B.DRV/BETA.MSD
 - name: BG
   date: '2001-04-10T02:23:18'
   path: dcb/B.DRV/BG.ARC
@@ -1787,7 +1787,7 @@
 - name: CARD2
   extension: CDD
   date: '2001-05-02T08:22:40'
-  path: build/misc/B.DRV/CARD2.CDD
+  path: build/misc/dcb/B.DRV/CARD2.CDD
 - name: CBTL_EFF
   date: '2000-11-06T00:05:16'
   path: dcb/B.DRV/CBTL_EFF.ARC
@@ -1797,7 +1797,7 @@
 - name: DECK2
   extension: DEK
   date: '2001-05-02T09:22:50'
-  path: build/misc/B.DRV/DECK2.DEK
+  path: build/misc/dcb/B.DRV/DECK2.DEK
 - name: FONT
   date: '2001-04-10T02:22:18'
   path: dcb/B.DRV/FONT.ARC

@@ -47,7 +47,7 @@ alias:
   asm_obj_deps : $(build_dir)/asm/dcb.d
 
 # By default built the final binary
-default: $(build_dir)/drv/dcb/C.DRV
+default: $(dcb_bin)
 
 rules:
   # Compare
@@ -62,6 +62,7 @@ rules:
     deps: [$(checksums), $(generate_compare_deps)]
 
     exec:
+      - [mkdir, -p, dir_name: $(compare_deps)]
       - [bash, -c, '$(generate_compare_deps) > $(compare_deps)']
 
   # Clean
@@ -81,13 +82,14 @@ rules:
     out: [$(dcb_bin), $(dcb_bin_cue)]
     deps: [$(dcb_bin_xml), $(license_iso), deps_file: $(dcb_bin_deps)]
     exec:
-      - [$(mkpsxiso), $(dcb_bin), -q, -y]
+      - [$(mkpsxiso), $(dcb_bin_xml), -q, -y]
 
   # `dcb.bin` dependencies
   mkpsxiso-deps:
     out: [$(dcb_bin_deps)]
     deps: [$(dcb_bin_xml)]
     exec:
+      - [mkdir, -p, dir_name: $(dcb_bin_deps)]
       - [bash, -c, '$(generate_iso_deps) > $(dcb_bin_deps)']
 
   # Cargo tools
@@ -106,53 +108,58 @@ rules:
   # `drv`
   mkdrv:
     alias:
-      drv: $(build_dir)/drv/^(name).DRV
-      drv_yaml: ^(name).DRV.yaml
-      drv_patch: ^(name).DRV.bspatch
+      drv: $(build_dir)/drv/^(path).DRV
+      drv_yaml: ^(path).DRV.yaml
+      drv_patch: ^(path).DRV.bspatch
     out: [$(drv)]
     deps: [$(drv_yaml), $(drv_patch), $(mkdrv), deps_file: $(drv).d]
 
     exec:
+      - [mkdir, -p, dir_name: $(drv)]
       - [$(mkdrv), $(drv_yaml), -o, $(drv)]
       - [$(bspatch), $(drv), $(drv), $(drv_patch)]
 
   # `drv` dependencies
   mkdrv-deps:
     alias:
-      drv: $(build_dir)/drv/^(path)
+      drv: $(build_dir)/drv/^(path).DRV
+      drv_yaml: ^(path).DRV.yaml
     out: [$(drv).d]
-    deps: [^(path).yaml, $(mkdrv-deps)]
+    deps: [$(drv_yaml), $(mkdrv-deps)]
     exec:
       - [mkdir, -p, dir_name: $(drv)]
       - - $(mkdrv-deps)
-        - ^(path).yaml
+        - $(drv_yaml)
         - -o
         - $(drv)
-        - --dep-file
+        - --deps-file
         - $(drv).d
 
   # `pak`
   mkpak:
     alias:
-      pak: $(build_dir)/pak/^(path)
+      pak: $(build_dir)/pak/^(path).PAK
+      pak_yaml: ^(path).PAK.yaml
     out: [$(pak)]
-    deps: [^(path).yaml, ^(path).bspatch, $(mkpak), deps_file: $(pak).d]
+    deps: [$(pak_yaml), $(mkpak), deps_file: $(pak).d]
     exec:
-      - [$(mkpak), (path).yaml, -o, $(pak)]
-      - [$(bspatch), $(pak), $(pak), ^(path).bspatch]
+      - [mkdir, -p, dir_name: $(pak)]
+      - [$(mkpak), $(pak_yaml), -o, $(pak)]
 
   # `pak` dependencies
   mkpak-deps:
     alias:
-      pak: $(build_dir)/pak/^(path)
+      pak: $(build_dir)/pak/^(path).PAK
+      pak_yaml: ^(path).PAK.yaml
     out: [$(pak).d]
-    deps: [^(path).yaml, $(mkpak-deps)]
+    deps: [$(pak_yaml), $(mkpak-deps)]
     exec:
+      - [mkdir, -p, dir_name: $(pak)]
       - - $(mkpak-deps)
-        - ^(path).yaml
+        - $(pak_yaml)
         - -o
         - $(pak)
-        - --dep-file
+        - --deps-file
         - $(pak).d
 
   # `msd`
@@ -160,9 +167,10 @@ rules:
     alias:
       msd: $(build_dir)/msd/^(path)
     out: [$(msd), deps_file: $(msd).d]
-    deps: [^(path).yaml, ^(path).bspatch, $(mkmsd), deps_file: $(msd).d]
+    deps: [^(path).s, ^(path).bspatch, $(mkmsd), deps_file: $(msd).d]
     exec:
-      - [$(mkmsd), ^(path).yaml, -o, $(msd)]
+      - [mkdir, -p, dir_name: $(msd)]
+      - [$(mkmsd), ^(path).s, -o, $(msd), --deps-file, $(msd).d]
       - [$(bspatch), $(msd), $(msd), ^(path).bspatch]
 
   # Card table
@@ -175,6 +183,7 @@ rules:
       - ^(path).CDD.bspatch
       - $(mk-card-table)
     exec:
+      - [mkdir, -p, dir_name: $(cdd)]
       - [$(mk-card-table), ^(path).CDD.json, -o, $(cdd)]
       - [$(bspatch), $(cdd), $(cdd), ^(path).CDD.bspatch]
 
@@ -188,6 +197,7 @@ rules:
       - ^(path).DEK.bspatch
       - $(mk-deck-table)
     exec:
+      - [mkdir, -p, dir_name: $(dek)]
       - [$(mk-deck-table), ^(path).DEK.json, -o, $(dek)]
       - [$(bspatch), $(dek), $(dek), ^(path).DEK.bspatch]
 
@@ -202,7 +212,7 @@ rules:
   # Dylibs
   dylib:
     alias:
-      dylib: $(build_dir)/dylib/^(name)
+      dylib: $(build_dir)/dylib/^(name).BIN
       dylib_section: dylib.^(name)
       dcb_elf_copy: $(dcb_elf).^(name)
     out: [$(dylib)]
@@ -211,6 +221,7 @@ rules:
     # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
     #       modification date, which `make` uses to check dependencies
     exec:
+      - [mkdir, -p, dir_name: $(dylib)]
       - [cp, $(dcb_elf), $(dcb_elf_copy)]
       - [$(objcopy), --dump-section, $(dylib_section)=$(dylib), $(dcb_elf_copy)]
       - [rm, $(dcb_elf_copy)]
@@ -220,6 +231,7 @@ rules:
     out: [$(dcb_psexe)]
     deps: [$(dcb_elf), $(license_psexe), $(mkpsexe)]
     exec:
+      - [mkdir, -p, dir_name: $(dcb_psexe)]
       - - $(mkpsexe)
         - $(dcb_elf)
         - -o
@@ -238,6 +250,7 @@ rules:
       - $(linker_script)
 
     exec:
+      - [mkdir, -p, dir_name: $(dcb_elf)]
       - - $(ld)
         - $(asm_obj)
         - -o
@@ -257,6 +270,7 @@ rules:
     out: [$(build_dir)/symbols.ld]
     deps: [symbols.yaml, section_addrs.yaml, $(generate_linker_script)]
     exec:
+      - [mkdir, -p, $(build_dir)]
       - [$(generate_linker_script)]
 
   # Assembly object files
@@ -264,6 +278,7 @@ rules:
     out: [$(asm_obj), deps_file: $(asm_obj_deps)]
     deps: [$(asm_processed)]
     exec:
+      - [mkdir, -p, dir_name: $(asm_obj)]
       - - $(as)
         - -MD
         - $(asm_obj_deps)
@@ -274,13 +289,14 @@ rules:
         - -march=r3000
         - -msoft-float
         - -O2
-        - $(asm_src)
+        - $(asm_processed)
 
   # Processed asm
   process_asm:
     out: [$(asm_processed)]
     deps: [$(asm_expanded), symbols.yaml, $(preprocess_asm)]
     exec:
+      - [mkdir, -p, dir_name: $(asm_processed)]
       - - $(preprocess_asm)
         - $(asm_expanded)
         - -o
@@ -294,6 +310,7 @@ rules:
     out: [$(asm_expanded)]
     deps: [$(asm_src), $(expand_asm)]
     exec:
+      - [mkdir, -p, dir_name: $(asm_expanded)]
       - - $(expand_asm)
         - $(asm_src)
         - -o
