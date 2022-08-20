@@ -1,9 +1,5 @@
 //! Build
 
-use std::process::Command;
-
-use crate::rules::Item;
-
 // Modules
 mod expand_expr;
 mod expand_rule;
@@ -17,7 +13,7 @@ use {
 		match_expr::match_expr,
 	},
 	crate::{
-		rules::{Expr, Rule, Target},
+		rules::{Expr, Item, Rule, Target},
 		Rules,
 	},
 	anyhow::Context,
@@ -26,10 +22,11 @@ use {
 		fs,
 		time::{Duration, SystemTime},
 	},
+	tokio::process::Command,
 };
 
 /// Builds a target expression
-pub fn build_expr(target: &Target<Expr>, rules: &Rules) -> Result<SystemTime, anyhow::Error> {
+pub async fn build_expr(target: &Target<Expr>, rules: &Rules) -> Result<SystemTime, anyhow::Error> {
 	// Build the global expression visitor
 	let mut global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
 
@@ -49,13 +46,14 @@ pub fn build_expr(target: &Target<Expr>, rules: &Rules) -> Result<SystemTime, an
 	};
 
 	// Then build a `Target<String>`
-	self::build(&target, rules)
+	self::build(&target, rules).await
 }
 
 /// Builds a target.
 ///
 /// Returns the time the target was last built
-pub fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime, anyhow::Error> {
+#[async_recursion::async_recursion]
+pub async fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime, anyhow::Error> {
 	// Find the rule to use for this target
 	let global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
 	let rule = match target {
@@ -96,8 +94,9 @@ pub fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime, anyho
 
 		// Build and set `needs_rebuilt` to true if any of them were rebuilt
 		let target = Target::File { file: dep_file.clone() };
-		let dep_build_time =
-			self::build(&target, rules).with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
+		let dep_build_time = self::build(&target, rules)
+			.await
+			.with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
 		if let Some(last_build_time) = last_build_time && dep_build_time > last_build_time {
 			needs_rebuilt = true;
 		}
@@ -116,8 +115,9 @@ pub fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime, anyho
 
 			for dep_dep in dep_deps {
 				let target = Target::File { file: dep_dep.clone() };
-				let dep_build_time =
-					self::build(&target, rules).with_context(|| format!("Unable to build dependency {dep_dep:?}"))?;
+				let dep_build_time = self::build(&target, rules)
+					.await
+					.with_context(|| format!("Unable to build dependency {dep_dep:?}"))?;
 				if let Some(last_build_time) = last_build_time && dep_build_time > last_build_time {
 					needs_rebuilt = true;
 				}
@@ -127,7 +127,7 @@ pub fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime, anyho
 
 	// Then rebuild, if needed
 	if needs_rebuilt {
-		self::rebuild_rule(&rule).context("Unable to rebuild rule")?;
+		self::rebuild_rule(&rule).await.context("Unable to rebuild rule")?;
 	}
 
 	// Then get the build time
@@ -180,7 +180,7 @@ fn file_modified_time(metadata: fs::Metadata) -> SystemTime {
 }
 
 /// Rebuilds a rule
-pub fn rebuild_rule(rule: &Rule<String>) -> Result<(), anyhow::Error> {
+pub async fn rebuild_rule(rule: &Rule<String>) -> Result<(), anyhow::Error> {
 	tracing::debug!(?rule.name, "Rebuilding");
 
 	for exec in &rule.exec {
@@ -192,6 +192,7 @@ pub fn rebuild_rule(rule: &Rule<String>) -> Result<(), anyhow::Error> {
 			.spawn()
 			.with_context(|| format!("Unable to spawn {exec:?}"))?
 			.wait()
+			.await
 			.with_context(|| format!("Command {exec:?} was interrupted"))?
 			.exit_ok()
 			.with_context(|| format!("Command {exec:?} returned error"))?;

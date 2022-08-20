@@ -27,7 +27,8 @@ pub use self::{ast::Ast, rules::Rules};
 use {anyhow::Context, args::Args, clap::StructOpt, std::fs, tracing_subscriber::prelude::*};
 
 
-fn main() -> Result<(), anyhow::Error> {
+#[tokio::main]
+async fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
 	tracing_subscriber::registry()
 		.with(tracing_subscriber::fmt::layer().with_filter(tracing_subscriber::EnvFilter::from_default_env()))
@@ -49,7 +50,7 @@ fn main() -> Result<(), anyhow::Error> {
 	tracing::trace!(target: "dcb_zbuild_rules", ?rules, "rules");
 
 	// Build the default rule
-	build::build_expr(&rules.default, &rules).context("Unable to build default rule")?;
+	build::build_expr(&rules.default, &rules).await.context("Unable to build default rule")?;
 
 	Ok(())
 }
