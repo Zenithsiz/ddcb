@@ -43,17 +43,12 @@ pub struct Rules {
 impl Rules {
 	/// Creates all rules from the ast
 	pub fn new(ast: Ast) -> Result<Self, anyhow::Error> {
-		// Get the global aliases
-		let aliases: HashMap<_, _> = ast
+		let aliases = ast
 			.aliases
 			.into_iter()
 			.map(|(alias, value)| (alias, Expr::new(value)))
 			.collect();
-
-		// Then parse the default target
 		let default = target::Target::new(ast.default);
-
-		// Finally parse all rules
 		let rules = ast
 			.rules
 			.into_iter()
