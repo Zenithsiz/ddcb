@@ -123,6 +123,7 @@ rules:
     out: [$(drv).d]
     deps: [^(path).yaml, $(mkdrv-deps)]
     exec:
+      - [mkdir, -p, dir_name: $(drv)]
       - - $(mkdrv-deps)
         - ^(path).yaml
         - -o

@@ -27,9 +27,11 @@ impl Item<Expr> {
 			},
 		}
 	}
+}
 
+impl<T> Item<T> {
 	/// Returns the file of this item
-	pub fn file(&self) -> &Expr {
+	pub fn file(&self) -> &T {
 		match self {
 			Item::File(file) | Item::DepsFile(file) => file,
 		}

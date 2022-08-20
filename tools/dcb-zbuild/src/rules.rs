@@ -34,7 +34,7 @@ pub struct Rules {
 	pub aliases: HashMap<String, Expr>,
 
 	/// Default file to build
-	pub default: Target,
+	pub default: Target<Expr>,
 
 	/// Rules
 	pub rules: HashMap<String, Rule<Expr>>,

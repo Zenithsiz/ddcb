@@ -5,24 +5,24 @@ use {super::Expr, crate::ast, std::collections::HashMap};
 
 /// Target
 #[derive(Clone, Debug)]
-pub enum Target {
+pub enum Target<T> {
 	/// File
 	File {
 		/// Target file
-		file: Expr,
+		file: T,
 	},
 
 	/// Rule
 	Rule {
 		/// Target rule name
-		rule: Expr,
+		rule: T,
 
 		/// Patterns
 		pats: HashMap<String, String>,
 	},
 }
 
-impl Target {
+impl Target<Expr> {
 	/// Creates a new target from it's ast
 	pub fn new(ast: ast::Target) -> Self {
 		match ast {
