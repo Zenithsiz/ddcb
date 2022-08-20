@@ -24,7 +24,7 @@ pub enum Target {
 
 impl Target {
 	/// Creates a new target from it's ast
-	pub(crate) fn new(ast: ast::Target) -> Self {
+	pub fn new(ast: ast::Target) -> Self {
 		match ast {
 			ast::Target::File(file) => Self::File { file: Expr::new(file) },
 			ast::Target::Rule { rule } => Self::Rule {

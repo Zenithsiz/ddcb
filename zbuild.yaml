@@ -47,7 +47,7 @@ alias:
   asm_obj_deps : $(build_dir)/asm/dcb.d
 
 # By default built the final binary
-default: $(build_dir)/drv/C.DRV
+default: $(build_dir)/drv/dcb/C.DRV
 
 rules:
   # Compare
@@ -110,7 +110,7 @@ rules:
       drv_yaml: ^(name).DRV.yaml
       drv_patch: ^(name).DRV.bspatch
     out: [$(drv)]
-    deps: [$(drv_yaml), $(drv_patch), $(mkdrv), $(drv).d]
+    deps: [$(drv_yaml), $(drv_patch), $(mkdrv), deps_file: $(drv).d]
 
     exec:
       - [$(mkdrv), $(drv_yaml), -o, $(drv)]

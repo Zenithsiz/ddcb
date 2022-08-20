@@ -1,19 +1,19 @@
 //! Items
 
 // Imports
-use {super::Expr, crate::ast, std::path::PathBuf};
+use {super::Expr, crate::ast};
 
 /// Item
 #[derive(Clone, Debug)]
-pub enum Item {
+pub enum Item<T> {
 	/// File
-	File(Expr),
+	File(T),
 
 	/// Dependencies file
-	DepsFile(Expr),
+	DepsFile(T),
 }
 
-impl Item {
+impl Item<Expr> {
 	/// Creates a new item from it's `ast`.
 	pub fn new(item: ast::Item) -> Self {
 		match item {
@@ -28,8 +28,10 @@ impl Item {
 		}
 	}
 
-	/// Returns all files in this item
-	pub fn _files(&self) -> Vec<PathBuf> {
-		todo!();
+	/// Returns the file of this item
+	pub fn file(&self) -> &Expr {
+		match self {
+			Item::File(file) | Item::DepsFile(file) => file,
+		}
 	}
 }

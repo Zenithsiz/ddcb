@@ -7,12 +7,14 @@
 	map_try_insert,
 	label_break_value,
 	never_type,
-	closure_lifetime_binder
+	closure_lifetime_binder,
+	anonymous_lifetime_in_impl_trait
 )]
 
 // Modules
 mod args;
 mod ast;
+mod build;
 mod rules;
 
 // Exports
@@ -44,7 +46,7 @@ fn main() -> Result<(), anyhow::Error> {
 	tracing::trace!(target: "dcb_zbuild_rules", ?rules, "rules");
 
 	// Build the default rule
-	//rules.build_default().context("Unable to build default rule")?;
+	build::build(&rules.default, &rules).context("Unable to build default rule")?;
 
 	Ok(())
 }

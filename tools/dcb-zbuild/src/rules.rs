@@ -11,7 +11,7 @@ mod target;
 // Exports
 pub use {
 	alias::Alias,
-	expr::Expr,
+	expr::{Expr, ExprCmpt, ExprOp},
 	item::Item,
 	pattern::Pattern,
 	rule::{Command, Rule},
@@ -34,10 +34,10 @@ pub struct Rules {
 	pub aliases: HashMap<String, Expr>,
 
 	/// Default file to build
-	pub default: target::Target,
+	pub default: Target,
 
 	/// Rules
-	pub rules: HashMap<String, rule::Rule>,
+	pub rules: HashMap<String, Rule<Expr>>,
 }
 
 impl Rules {
@@ -48,11 +48,11 @@ impl Rules {
 			.into_iter()
 			.map(|(alias, value)| (alias, Expr::new(value)))
 			.collect();
-		let default = target::Target::new(ast.default);
+		let default = Target::new(ast.default);
 		let rules = ast
 			.rules
 			.into_iter()
-			.map(|(name, rule)| (name, rule::Rule::new(rule)))
+			.map(|(name, rule)| (name.clone(), Rule::new(name, rule)))
 			.collect();
 
 		Ok(Self {

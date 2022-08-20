@@ -1,5 +1,7 @@
 //! Rule
 
+use std::collections::HashMap;
+
 // Imports
 use {
 	super::{Expr, Item},
@@ -8,20 +10,31 @@ use {
 
 /// Rule
 #[derive(Clone, Debug)]
-pub struct Rule {
+pub struct Rule<T> {
+	/// Name
+	pub name: String,
+
+	/// Aliases
+	pub aliases: HashMap<String, T>,
+
 	/// Output items
-	pub output: Vec<Item>,
+	pub output: Vec<Item<T>>,
 
 	/// Dependencies
-	pub deps: Vec<Item>,
+	pub deps: Vec<Item<T>>,
 
 	/// Execution
-	pub exec: Vec<Command>,
+	pub exec: Vec<Command<T>>,
 }
 
-impl Rule {
+impl Rule<Expr> {
 	/// Creates a new rule from it's ast
-	pub(crate) fn new(rule: ast::Rule) -> Self {
+	pub fn new(name: String, rule: ast::Rule) -> Self {
+		let aliases = rule
+			.aliases
+			.into_iter()
+			.map(|(name, expr)| (name, Expr::new(expr)))
+			.collect();
 		let output = rule.output.into_iter().map(Item::new).collect();
 		let deps = rule.deps.into_iter().map(Item::new).collect();
 		let exec = rule
@@ -32,13 +45,19 @@ impl Rule {
 			})
 			.collect();
 
-		Self { output, deps, exec }
+		Self {
+			name,
+			aliases,
+			output,
+			deps,
+			exec,
+		}
 	}
 }
 
 /// Command
 #[derive(Clone, Debug)]
-pub struct Command {
+pub struct Command<T> {
 	/// All arguments
-	pub args: Vec<Expr>,
+	pub args: Vec<T>,
 }
