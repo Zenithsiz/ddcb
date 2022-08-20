@@ -228,7 +228,7 @@ impl Rule {
 			match output {
 				Item::File(file) | Item::DepsFile(file) => {
 					let file = file.eval_pats(|pat| pats.get(pat).cloned())?;
-					let file_mtime = fs::metadata(file)
+					let _file_mtime = fs::metadata(file)
 						.ok()
 						.map(|metadata| FileTime::from_last_modification_time(&metadata));
 					for dep in &self.deps {

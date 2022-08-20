@@ -42,7 +42,7 @@ impl Item {
 	}
 
 	/// Returns all files in this item
-	pub fn files(&self) -> Vec<PathBuf> {
+	pub fn _files(&self) -> Vec<PathBuf> {
 		todo!();
 	}
 }

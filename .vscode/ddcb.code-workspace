@@ -38,6 +38,7 @@
 			"bgez",
 			"bnez",
 			"Cmpt",
+			"cmpts",
 			"Digi",
 			"Digimon",
 			"Digimon's",

@@ -13,13 +13,13 @@
 // Modules
 mod args;
 mod ast;
-mod rules;
+//mod rules;
 
 // Exports
-pub use ast::Ast;
+pub use self::ast::Ast;
 
 // Imports
-use {self::rules::Rules, anyhow::Context, args::Args, clap::StructOpt, std::fs, tracing_subscriber::prelude::*};
+use {anyhow::Context, args::Args, clap::StructOpt, std::fs, tracing_subscriber::prelude::*};
 
 
 fn main() -> Result<(), anyhow::Error> {
@@ -37,14 +37,16 @@ fn main() -> Result<(), anyhow::Error> {
 		let file = fs::File::open("zbuild.yaml").context("Unable to open `zbuild.yaml`")?;
 		serde_yaml::from_reader::<_, Ast>(file).context("Unable to parse `zbuild.yaml`")?
 	};
-	tracing::trace!(?ast, "Ast");
+	tracing::trace!(target: "dcb_zbuild_ast", ?ast, "Parsed ast");
 
+	/*
 	// Build the rules
 	let rules = Rules::new(ast).context("Unable to create rules")?;
 	tracing::trace!(?rules, "rules");
 
 	// Build the default rule
 	rules.build_default().context("Unable to build default rule")?;
+	*/
 
 	Ok(())
 }
