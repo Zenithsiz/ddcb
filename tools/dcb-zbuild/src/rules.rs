@@ -1,9 +1,5 @@
 //! Rules
 
-use std::fs;
-
-use filetime::FileTime;
-
 // Modules
 mod alias;
 mod expr;
@@ -16,7 +12,8 @@ pub use {alias::AliasesCtx, expr::Expr, item::Item};
 use {
 	crate::{ast, Ast},
 	anyhow::Context,
-	std::collections::HashMap,
+	filetime::FileTime,
+	std::{collections::HashMap, fs},
 };
 
 /// Rules.
