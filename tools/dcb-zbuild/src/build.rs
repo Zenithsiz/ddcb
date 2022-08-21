@@ -27,14 +27,12 @@ use {
 
 /// Builds a target expression
 pub async fn build_expr(target: &Target<Expr>, rules: &Rules) -> Result<SystemTime, anyhow::Error> {
-	// Build the global expression visitor
-	let mut global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
-
 	// Expand the target
 	let target = match target {
 		// If we got a file, check which rule can make it
 		Target::File { file } => {
 			// Expand the file
+			let mut global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
 			let file = self::expand_expr_string(file, &mut global_expr_visitor)
 				.with_context(|| format!("Unable to expand expression {file:?}"))?;
 			tracing::debug!(?file, "Expanded target");
@@ -55,10 +53,9 @@ pub async fn build_expr(target: &Target<Expr>, rules: &Rules) -> Result<SystemTi
 #[async_recursion::async_recursion]
 pub async fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime, anyhow::Error> {
 	// Find the rule to use for this target
-	let global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
 	let rule = match target {
 		// If we got a file, check which rule can make it
-		Target::File { file } => match self::find_rule_for_file(file, rules.rules.values(), global_expr_visitor)? {
+		Target::File { file } => match self::find_rule_for_file(file, rules)? {
 				Some(rule) => rule,
 
 				// If we didn't find it and it exists, assume it's
@@ -203,15 +200,12 @@ pub async fn rebuild_rule(rule: &Rule<String>) -> Result<(), anyhow::Error> {
 }
 
 /// Finds a rule for `file`
-pub fn find_rule_for_file(
-	file: &str,
-	rules: impl IntoIterator<Item = &Rule<Expr>>,
-	global_expr_visitor: expand_expr::GlobalVisitor,
-) -> Result<Option<Rule<String>>, anyhow::Error> {
+pub fn find_rule_for_file(file: &str, rules: &Rules) -> Result<Option<Rule<String>>, anyhow::Error> {
 	tracing::trace!(target: "dcb_zbuild_find_rule", ?file, "Searching for match");
 
-	for rule in rules {
+	for rule in rules.rules.values() {
 		tracing::trace!(target: "dcb_zbuild_find_rule", rule_name = ?rule.name, "Checking rule");
+		let global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
 		let mut rule_output_expr_visitor = expand_expr::RuleOutputVisitor::new(global_expr_visitor, &rule.aliases);
 
 		for output in &rule.output {
