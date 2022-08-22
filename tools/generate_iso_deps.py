@@ -9,4 +9,4 @@ files = root.findall("track/directory_tree/")
 files = map(lambda file: file.get("source"), files)
 files = ' '.join(files)
 
-print(f"build/exe/dcb.bin: {files}")
+print(f"build/dcb.bin: {files}")

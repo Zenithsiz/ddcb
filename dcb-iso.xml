@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<iso_project image_name="build/exe/dcb.bin" cue_sheet="build/exe/dcb.cue" no_xa="0">
+<iso_project image_name="build/dcb.bin" cue_sheet="build/dcb.cue" no_xa="0">
 	<track type="data">
 		<identifiers system="PLAYSTATION" application="PLAYSTATION" volume="DIGIMON_DIGITAL_CARD_BATTLE" volume_set="MYDISC" publisher="BANDAI" data_preparer="" copyright="BANDAI" />
 

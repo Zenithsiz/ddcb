@@ -35,8 +35,8 @@ alias:
   license_iso  : license.dat
   license_psexe: license-psexe.dat
   compare_deps : $(build_dir)/compare.d
-  dcb_bin      : $(build_dir)/exe/dcb.bin
-  dcb_bin_cue  : $(build_dir)/exe/dcb.cue
+  dcb_bin      : $(build_dir)/dcb.bin
+  dcb_bin_cue  : $(build_dir)/dcb.cue
   dcb_bin_deps : $(dcb_bin).d
   dcb_elf      : $(build_dir)/exe/dcb.elf
   dcb_psexe    : $(build_dir)/exe/dcb.psexe
@@ -75,7 +75,7 @@ rules:
   dcb-rs:
     out: [dcb-rs/^(path)]
     exec:
-      - [make -C dcb-rs/]
+      - [make, -C, dcb-rs/]
 
   # `dcb.bin`
   mkpsxiso:
