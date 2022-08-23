@@ -92,38 +92,9 @@ pub async fn build(target: &Target<Expr>, rules: &Rules) -> Result<SystemTime, a
 
 		// If the dependency if a deps file, read it and apply it
 		if let Item::DepsFile(_) = dep {
-			let (output, dep_deps) = self::parse_deps_file(dep_file)
-				.with_context(|| format!("Unable to parse dependency file {dep_file:?}"))?;
-
-			match rule.output.is_empty() {
-				// If there were no rules, make sure it matches the rule name
-				true => anyhow::ensure!(
-					output == rule.name,
-					"Dependency file {dep_file:?} did not list the rule name as the dependency, found: {output:?}, \
-					 expected {:?}",
-					rule.name
-				),
-
-				// If there were any rules, make sure the dependency file applies to one of them
-				false => anyhow::ensure!(
-					rule.output.iter().any(|rule_output| rule_output.file() == &output),
-					"Dependency file {dep_file:?} did not list any dependencies for rule output, found: {output:?}, \
-					 expected {:?}",
-					rule.output,
-				),
-			}
-
-			for dep_dep in dep_deps {
-				let target = Target::File {
-					file: Expr::string(dep_dep.clone()),
-				};
-				let dep_build_time = self::build(&target, rules)
-					.await
-					.with_context(|| format!("Unable to build dependency {dep_dep:?}"))?;
-				if let Some(last_build_time) = last_build_time && dep_build_time > last_build_time {
-					needs_rebuilt = true;
-				}
-			}
+			self::build_deps_file(dep_file, &rule, rules)
+				.await
+				.with_context(|| format!("Unable to build all dependencies in dependency file {dep_file:?}"))?;
 		}
 	}
 
@@ -141,9 +112,52 @@ pub async fn build(target: &Target<Expr>, rules: &Rules) -> Result<SystemTime, a
 	Ok(cur_build_time)
 }
 
+/// Builds all dependencies of a `deps` file.
+///
+/// Returns the time of the latest built dependency, if any
+async fn build_deps_file(
+	dep_file: &str,
+	rule: &Rule<String>,
+	rules: &Rules,
+) -> Result<Option<SystemTime>, anyhow::Error> {
+	let (output, dep_deps) = self::parse_deps_file(dep_file).context("Unable to parse dependency file")?;
+
+	match rule.output.is_empty() {
+		// If there were no rules, make sure it matches the rule name
+		true => anyhow::ensure!(
+			output == rule.name,
+			"Dependency file did not list the rule name as the dependency, found: {output:?}, expected {:?}",
+			rule.name
+		),
+
+		// If there were any rules, make sure the dependency file applies to one of them
+		false => anyhow::ensure!(
+			rule.output.iter().any(|rule_output| rule_output.file() == &output),
+			"Dependency file did not list any dependencies for rule output, found: {output:?}, expected any of {:?}",
+			rule.output,
+		),
+	}
+
+	let mut latest_build_time: Option<SystemTime> = None;
+	for dep_dep in dep_deps {
+		let target = Target::File {
+			file: Expr::string(dep_dep.clone()),
+		};
+		let dep_build_time = self::build(&target, rules)
+			.await
+			.with_context(|| format!("Unable to build dependency {dep_dep:?}"))?;
+		match &mut latest_build_time {
+			Some(latest_build_time) => *latest_build_time = (*latest_build_time).max(dep_build_time),
+			None => latest_build_time = Some(dep_build_time),
+		}
+	}
+
+	Ok(latest_build_time)
+}
+
 /// Parses a dependencies file
 // TODO: Support multiple dependencies in each file
-fn parse_deps_file(file: &String) -> Result<(String, Vec<String>), anyhow::Error> {
+fn parse_deps_file(file: &str) -> Result<(String, Vec<String>), anyhow::Error> {
 	// Read it
 	let contents = fs::read_to_string(file).context("Unable to read file")?;
 
