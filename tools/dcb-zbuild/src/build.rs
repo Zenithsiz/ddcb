@@ -48,6 +48,11 @@ impl Builder {
 		}
 	}
 
+	/// Returns the number of targets
+	pub async fn targets(&self) -> usize {
+		self.targets.lock().await.len()
+	}
+
 	/// Builds an unexpanded target
 	pub async fn build_unexpanded(&self, target: &Target<Expr>, rules: &Rules) -> Result<BuildResult, anyhow::Error> {
 		// Expand the target

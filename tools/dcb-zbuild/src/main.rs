@@ -57,6 +57,7 @@ async fn main() -> Result<(), anyhow::Error> {
 		.build_unexpanded(&rules.default, &rules)
 		.await
 		.context("Unable to build default rule")?;
+	tracing::info!("Built {} targets", builder.targets().await);
 
 	Ok(())
 }
