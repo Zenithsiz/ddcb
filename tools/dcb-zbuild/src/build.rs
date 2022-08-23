@@ -189,6 +189,7 @@ pub async fn rebuild_rule(rule: &Rule<String>) -> Result<(), anyhow::Error> {
 		tracing::trace!(target: "dcb_zbuild_exec", ?exec, "Running command");
 		let (program, args) = exec.args.split_first().context("Rule executable cannot be empty")?;
 
+		tracing::info!(target: "dcb_zbuild_exec", "{} {}", program, args.join(" "));
 		Command::new(program)
 			.args(args)
 			.spawn()
