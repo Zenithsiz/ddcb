@@ -19,10 +19,10 @@ use {
 		Rules,
 	},
 	anyhow::Context,
+	dashmap::{mapref::entry::Entry as DashMapEntry, DashMap},
 	filetime::FileTime,
-	futures::{pin_mut, stream::FuturesUnordered, TryStreamExt},
+	futures::pin_mut,
 	std::{
-		collections::{hash_map, HashMap},
 		fs,
 		future::Future,
 		mem,
@@ -39,20 +39,19 @@ use {
 #[derive(Debug)]
 pub struct Builder {
 	/// All targets' status
-	targets: Mutex<HashMap<Target<String>, BuildStatus>>,
+	targets: DashMap<Target<String>, BuildStatus>,
 }
 
 impl Builder {
 	/// Creates a new builder
 	pub fn new() -> Self {
-		Self {
-			targets: Mutex::new(HashMap::new()),
-		}
+		let targets = DashMap::<Target<String>, BuildStatus>::new();
+		Self { targets }
 	}
 
 	/// Returns the number of targets
 	pub async fn targets(&self) -> usize {
-		self.targets.lock().await.len()
+		self.targets.len()
 	}
 
 	/// Builds an unexpanded target
@@ -68,39 +67,36 @@ impl Builder {
 	/// Builds a target
 	#[async_recursion::async_recursion]
 	pub async fn build(&self, target: &Target<String>, rules: &Rules) -> Result<BuildResult, anyhow::Error> {
-		tracing::trace!(?target, "Building");
-
-		// Then check if we're already building
-		let mut targets = self.targets.lock().await;
-		let build_status = match targets.raw_entry_mut().from_key(target) {
+		// Check if we need to build and create a new entry, if so
+		let (build_status, do_build) = match self.targets.entry(target.clone()) {
 			// If there's already a build status, check it
-			hash_map::RawEntryMut::Occupied(entry) =>
-				return {
-					let build_status = entry.get().clone();
-					mem::drop(targets);
-
-					build_status
-						.await_built()
-						.await
-						.map_err(|()| anyhow::anyhow!("Build failed"))
-				},
+			DashMapEntry::Occupied(entry) => (entry.get().clone(), false),
 
 			// Else if it's vacant, take responsibility for building
-			hash_map::RawEntryMut::Vacant(entry) => {
+			DashMapEntry::Vacant(entry) => {
 				let build_status = BuildStatus::new();
-				entry.insert(target.clone(), build_status.clone());
-				mem::drop(targets);
-
-				build_status
+				entry.insert(build_status.clone());
+				(build_status, true)
 			},
 		};
 
-		// Finally build and finish the build on the status
-		let res = self.build_unchecked(target, rules).await;
-		build_status.finish_build(res.as_ref().map_err(|_| ()).copied()).await;
+		// Then check if we need to build
+		match do_build {
+			true => {
+				tracing::trace!(?target, "Building");
+				let res = self.build_unchecked(target, rules).await;
+				build_status.finish_build(res.as_ref().map_err(|_| ()).copied()).await;
+				res
+			},
 
-		// And return it
-		res
+			false => {
+				tracing::trace!(?target, "Awaiting");
+				build_status
+					.await_built()
+					.await
+					.map_err(|()| anyhow::anyhow!("Build failed"))
+			},
+		}
 	}
 
 	/// Builds a target without checking for existing targets
@@ -138,48 +134,48 @@ impl Builder {
 		};
 		tracing::trace!(target: "dcb_zbuild_find_rule", rule = ?rule, ?target, "Found rule");
 
-		let deps = rule
-			.deps
-			.iter()
-			.filter_map(|dep| {
-				// If the dependency if also an output, don't build it
-				if rule.output.iter().any(|out| dep.file() == out.file()) {
-					tracing::debug!(?dep, "Skipping dependency, will be build on output");
-					return None;
+		let deps = rule.deps.iter().filter_map(|dep| {
+			// If the dependency if also an output, don't build it
+			if rule.output.iter().any(|out| dep.file() == out.file()) {
+				tracing::debug!(?dep, "Skipping dependency, will be build on output");
+				return None;
+			}
+
+			let rule = &rule;
+			Some(async move {
+				let dep_file = dep.file();
+				tracing::debug!(?dep_file, "Build dependency");
+
+				// Build the dependency
+				let target = Target::File { file: dep_file.clone() };
+				let dep_result = self
+					.build(&target, rules)
+					.await
+					.with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
+
+				// If the dependency if a deps file, build it too
+				let mut dep_dep_result = None;
+				if let Item::DepsFile(_) = dep {
+					dep_dep_result = self
+						.build_deps_file(dep_file, rule, rules)
+						.await
+						.with_context(|| format!("Unable to build all dependencies in dependency file {dep_file:?}"))?;
 				}
 
-				let rule = &rule;
-				Some(async move {
-					let dep_file = dep.file();
-					tracing::debug!(?dep_file, "Build dependency");
-
-					// Build the dependency
-					let target = Target::File { file: dep_file.clone() };
-					let dep_result = self
-						.build(&target, rules)
-						.await
-						.with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
-
-					// If the dependency if a deps file, build it too
-					let mut dep_dep_result = None;
-					if let Item::DepsFile(_) = dep {
-						dep_dep_result = self.build_deps_file(dep_file, rule, rules).await.with_context(|| {
-							format!("Unable to build all dependencies in dependency file {dep_file:?}")
-						})?;
-					}
-
-					let res = match dep_dep_result {
-						Some(dep_dep_result) => dep_result.latest(dep_dep_result),
-						None => dep_result,
-					};
-					Ok::<_, anyhow::Error>(res)
-				})
+				let res = match dep_dep_result {
+					Some(dep_dep_result) => dep_result.latest(dep_dep_result),
+					None => dep_result,
+				};
+				Ok::<_, anyhow::Error>(res)
 			})
-			.collect::<FuturesUnordered<_>>()
-			.try_collect::<Vec<_>>()
-			.await?;
+		});
 
-		let deps_res = deps.iter().max_by_key(|res| res.build_time);
+		let dep_build_times = futures::future::join_all(deps)
+			.await
+			.into_iter()
+			.collect::<Result<Vec<_>, _>>()?;
+
+		let deps_res = dep_build_times.iter().max_by_key(|res| res.build_time);
 		let last_build_time = self::rule_last_build_time(&rule).ok().flatten();
 		let needs_rebuilt = match (deps_res, last_build_time) {
 			(_, None) => true,
@@ -233,19 +229,19 @@ impl Builder {
 		}
 
 		// Gather all dependencies
-		let deps = deps
-			.into_iter()
-			.map(|dep| async {
-				let target = Target::File { file: dep.clone() };
-				self.build(&target, rules)
-					.await
-					.with_context(move || format!("Unable to build dependency {dep:?}"))
-			})
-			.collect::<FuturesUnordered<_>>();
+		let deps = deps.into_iter().map(|dep| async {
+			let target = Target::File { file: dep.clone() };
+			self.build(&target, rules)
+				.await
+				.with_context(move || format!("Unable to build dependency {dep:?}"))
+		});
 
 		// Then run them all and get the latest time
-		let build_times = deps.try_collect::<Vec<_>>().await?;
-		let latest_res = build_times.into_iter().max_by_key(|res| res.build_time);
+		let dep_build_times = futures::future::join_all(deps)
+			.await
+			.into_iter()
+			.collect::<Result<Vec<_>, _>>()?;
+		let latest_res = dep_build_times.into_iter().max_by_key(|res| res.build_time);
 
 		Ok(latest_res.map(|res| BuildResult {
 			build_time: res.build_time,
@@ -255,12 +251,18 @@ impl Builder {
 
 /// Build status inner
 #[derive(Clone, Debug)]
-pub struct BuildStatusInner {
-	/// Current build result
-	result: Option<Result<BuildResult, ()>>,
+pub enum BuildStatusInner {
+	/// Building
+	Building {
+		/// Wakers
+		wakers: Vec<Waker>,
+	},
 
-	/// Wakers
-	wakers: Vec<Waker>,
+	/// Built
+	Built {
+		/// Built result
+		value: Result<BuildResult, ()>,
+	},
 }
 
 /// Build status
@@ -274,52 +276,42 @@ impl BuildStatus {
 	/// Creates a new build subscriber
 	pub fn new() -> Self {
 		Self {
-			inner: Arc::new(Mutex::new(BuildStatusInner {
-				result: None,
-				wakers: vec![],
-			})),
+			inner: Arc::new(Mutex::new(BuildStatusInner::Building { wakers: vec![] })),
 		}
 	}
 
-	/// Sets this status as built
+	/// Finishes building
 	pub async fn finish_build(&self, res: Result<BuildResult, ()>) {
-		// Write the result
 		let mut inner = self.inner.lock().await;
-		inner.result = Some(res);
+		match &mut *inner {
+			BuildStatusInner::Building { wakers } => {
+				let wakers = mem::take(wakers);
+				*inner = BuildStatusInner::Built { value: res };
+				mem::drop(inner);
 
-		// Finally wake all wakers
-		// Note: We need to clone them and drop the lock, to avoid blocking them all
-		//       on the mutex lock
-		let wakers = mem::take(&mut inner.wakers);
-		mem::drop(inner);
-
-		for waker in wakers {
-			waker.wake();
+				for waker in wakers {
+					waker.wake();
+				}
+			},
+			BuildStatusInner::Built { .. } => unreachable!("Already finished building"),
 		}
 	}
 
 	/// Awaits until the build is done
 	pub async fn await_built(&self) -> Result<BuildResult, ()> {
-		futures::future::poll_fn(move |ctx| {
-			// Try to lock the inner mutex
+		std::future::poll_fn(|ctx| {
+			// Lock
 			let inner_fut = self.inner.lock();
 			pin_mut!(inner_fut);
 			let mut inner = inner_fut.poll(ctx).ready()?;
 
-			// If there's already a build result, return it
-			if let Some(res) = inner.result {
-				return Poll::Ready(res);
+			match &mut *inner {
+				BuildStatusInner::Building { wakers } => {
+					wakers.push(ctx.waker().clone());
+					Poll::Pending
+				},
+				BuildStatusInner::Built { value } => Poll::Ready(*value),
 			}
-
-			// Else register as a waker
-			inner.wakers.push(ctx.waker().clone());
-
-			// Then, before awaiting, ensure there's still no result
-			if let Some(res) = inner.result {
-				return Poll::Ready(res);
-			}
-
-			Poll::Pending
 		})
 		.await
 	}
@@ -381,7 +373,7 @@ fn file_modified_time(metadata: fs::Metadata) -> SystemTime {
 
 /// Rebuilds a rule
 pub async fn rebuild_rule(rule: &Rule<String>) -> Result<(), anyhow::Error> {
-	tracing::debug!(?rule.name, "Rebuilding");
+	tracing::debug!(?rule.output, "Rebuilding");
 
 	for exec in &rule.exec {
 		tracing::trace!(target: "dcb_zbuild_exec", ?exec, "Running command");
