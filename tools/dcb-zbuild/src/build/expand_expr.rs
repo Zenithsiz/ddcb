@@ -3,14 +3,21 @@
 // Imports
 use {
 	crate::rules::{Alias, Expr, ExprCmpt, ExprOp, Pattern},
+	anyhow::Context,
 	std::{borrow::Cow, collections::HashMap, path::PathBuf},
 };
 
 /// Expands an expression to it's components
 pub fn expand_expr(expr: &Expr, visitor: &mut impl Visitor) -> Result<Vec<ExprCmpt>, anyhow::Error> {
-	let expr = match expr {
+	let cmpts = match expr {
 		// TODO: Support some operations here?
-		Expr::Op { .. } => anyhow::bail!("Expression operators are not supported here"),
+		Expr::Op { op, expr } => {
+			let s = self::expand_expr_string(expr, visitor)
+				.with_context(|| format!("Unable to expand expression to string for operator {expr:?}"))?;
+			let s = self::expand_op(op, s)?;
+
+			vec![ExprCmpt::String(s)]
+		},
 
 		// If we got a string, simply expand it
 		Expr::String(cmpts) => cmpts.iter().try_fold::<_, _, Result<_, _>>(vec![], |mut cmpts, cmpt| {
@@ -32,7 +39,7 @@ pub fn expand_expr(expr: &Expr, visitor: &mut impl Visitor) -> Result<Vec<ExprCm
 		})?,
 	};
 
-	Ok(expr)
+	Ok(cmpts)
 }
 
 /// Expands an expression into a string
@@ -79,6 +86,7 @@ pub fn expand_expr_string(expr: &Expr, visitor: &mut impl Visitor) -> Result<Str
 /// Expands an operation on an expression
 fn expand_op(op: &ExprOp, expr: String) -> Result<String, anyhow::Error> {
 	let expr = match op {
+		// TODO: Not add `/` here.
 		ExprOp::DirName => {
 			// Get the path and try to pop the last segment
 			let mut path = PathBuf::from(expr);
@@ -87,9 +95,12 @@ fn expand_op(op: &ExprOp, expr: String) -> Result<String, anyhow::Error> {
 			// Then convert it back to a string
 			// Note: This should technically never fail, since the path was originally
 			//       utf-8
-			path.into_os_string()
+			let mut path = path
+				.into_os_string()
 				.into_string()
-				.expect("utf-8 path was no longer utf-8 after getting dir-name")
+				.expect("utf-8 path was no longer utf-8 after getting dir-name");
+			path.push('/');
+			path
 		},
 	};
 

@@ -20,7 +20,7 @@ use {
 	},
 	anyhow::Context,
 	filetime::FileTime,
-	futures::pin_mut,
+	futures::{pin_mut, stream::FuturesUnordered, TryStreamExt},
 	std::{
 		collections::{hash_map, HashMap},
 		fs,
@@ -32,6 +32,8 @@ use {
 	},
 	tokio::{process::Command, sync::Mutex},
 };
+
+// TODO: There's some race condition somewhere ... find it.
 
 /// Builder
 #[derive(Debug)]
@@ -69,19 +71,26 @@ impl Builder {
 		tracing::trace!(?target, "Building");
 
 		// Then check if we're already building
-		let build_status = match self.targets.lock().await.raw_entry_mut().from_key(target) {
+		let mut targets = self.targets.lock().await;
+		let build_status = match targets.raw_entry_mut().from_key(target) {
 			// If there's already a build status, check it
 			hash_map::RawEntryMut::Occupied(entry) =>
-				return entry
-					.get()
-					.await_built()
-					.await
-					.map_err(|()| anyhow::anyhow!("Build failed")),
+				return {
+					let build_status = entry.get().clone();
+					mem::drop(targets);
+
+					build_status
+						.await_built()
+						.await
+						.map_err(|()| anyhow::anyhow!("Build failed"))
+				},
 
 			// Else if it's vacant, take responsibility for building
 			hash_map::RawEntryMut::Vacant(entry) => {
 				let build_status = BuildStatus::new();
 				entry.insert(target.clone(), build_status.clone());
+				mem::drop(targets);
+
 				build_status
 			},
 		};
@@ -129,37 +138,54 @@ impl Builder {
 		};
 		tracing::trace!(target: "dcb_zbuild_find_rule", rule = ?rule, ?target, "Found rule");
 
-		// Go through all dependencies and build them
-		// TODO: If the output includes a deps_file, also build it.
+		let deps = rule
+			.deps
+			.iter()
+			.filter_map(|dep| {
+				// If the dependency if also an output, don't build it
+				if rule.output.iter().any(|out| dep.file() == out.file()) {
+					tracing::debug!(?dep, "Skipping dependency, will be build on output");
+					return None;
+				}
+
+				let rule = &rule;
+				Some(async move {
+					let dep_file = dep.file();
+					tracing::debug!(?dep_file, "Build dependency");
+
+					// Build the dependency
+					let target = Target::File { file: dep_file.clone() };
+					let dep_result = self
+						.build(&target, rules)
+						.await
+						.with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
+
+					// If the dependency if a deps file, build it too
+					let mut dep_dep_result = None;
+					if let Item::DepsFile(_) = dep {
+						dep_dep_result = self.build_deps_file(dep_file, rule, rules).await.with_context(|| {
+							format!("Unable to build all dependencies in dependency file {dep_file:?}")
+						})?;
+					}
+
+					let res = match dep_dep_result {
+						Some(dep_dep_result) => dep_result.latest(dep_dep_result),
+						None => dep_result,
+					};
+					Ok::<_, anyhow::Error>(res)
+				})
+			})
+			.collect::<FuturesUnordered<_>>()
+			.try_collect::<Vec<_>>()
+			.await?;
+
+		let deps_res = deps.iter().max_by_key(|res| res.build_time);
 		let last_build_time = self::rule_last_build_time(&rule).ok().flatten();
-		let mut needs_rebuilt = last_build_time.is_none();
-		for dep in &rule.deps {
-			let dep_file = dep.file();
-
-			// If the dependency if also an output, don't build it
-			if rule.output.iter().any(|out| dep.file() == out.file()) {
-				tracing::debug!(?dep_file, "Skipping dependency, will be build on output");
-				continue;
-			}
-			tracing::debug!(?dep_file, "Build dependency");
-
-			// Build and set `needs_rebuilt` to true if any of them were rebuilt
-			let target = Target::File { file: dep_file.clone() };
-			let dep_result = self
-				.build(&target, rules)
-				.await
-				.with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
-			if let Some(last_build_time) = last_build_time && dep_result.build_time > last_build_time {
-				needs_rebuilt = true;
-			}
-
-			// If the dependency if a deps file, read it and apply it
-			if let Item::DepsFile(_) = dep {
-				self.build_deps_file(dep_file, &rule, rules)
-					.await
-					.with_context(|| format!("Unable to build all dependencies in dependency file {dep_file:?}"))?;
-			}
-		}
+		let needs_rebuilt = match (deps_res, last_build_time) {
+			(_, None) => true,
+			(None, Some(_)) => false,
+			(Some(deps_res), Some(last_build_time)) => deps_res.build_time > last_build_time,
+		};
 
 		// Then rebuild, if needed
 		if needs_rebuilt {
@@ -186,8 +212,8 @@ impl Builder {
 		dep_file: &str,
 		rule: &Rule<String>,
 		rules: &Rules,
-	) -> Result<Option<SystemTime>, anyhow::Error> {
-		let (output, dep_deps) = self::parse_deps_file(dep_file).context("Unable to parse dependency file")?;
+	) -> Result<Option<BuildResult>, anyhow::Error> {
+		let (output, deps) = self::parse_deps_file(dep_file).context("Unable to parse dependency file")?;
 
 		match rule.output.is_empty() {
 			// If there were no rules, make sure it matches the rule name
@@ -206,20 +232,24 @@ impl Builder {
 			),
 		}
 
-		let mut latest_build_time: Option<SystemTime> = None;
-		for dep_dep in dep_deps {
-			let target = Target::File { file: dep_dep.clone() };
-			let dep_result = self
-				.build(&target, rules)
-				.await
-				.with_context(|| format!("Unable to build dependency {dep_dep:?}"))?;
-			match &mut latest_build_time {
-				Some(latest_build_time) => *latest_build_time = (*latest_build_time).max(dep_result.build_time),
-				None => latest_build_time = Some(dep_result.build_time),
-			}
-		}
+		// Gather all dependencies
+		let deps = deps
+			.into_iter()
+			.map(|dep| async {
+				let target = Target::File { file: dep.clone() };
+				self.build(&target, rules)
+					.await
+					.with_context(move || format!("Unable to build dependency {dep:?}"))
+			})
+			.collect::<FuturesUnordered<_>>();
 
-		Ok(latest_build_time)
+		// Then run them all and get the latest time
+		let build_times = deps.try_collect::<Vec<_>>().await?;
+		let latest_res = build_times.into_iter().max_by_key(|res| res.build_time);
+
+		Ok(latest_res.map(|res| BuildResult {
+			build_time: res.build_time,
+		}))
 	}
 }
 
@@ -300,6 +330,13 @@ impl BuildStatus {
 pub struct BuildResult {
 	/// Build time
 	build_time: SystemTime,
+}
+
+impl BuildResult {
+	/// Returns the latest of two build results
+	pub fn latest(self, other: Self) -> Self {
+		std::cmp::max_by_key(self, other, |res| res.build_time)
+	}
 }
 
 /// Parses a dependencies file
