@@ -62,7 +62,7 @@ async fn main() -> Result<(), anyhow::Error> {
 
 	// Build the rules
 	let rules = Rules::new(ast).context("Unable to create rules")?;
-	tracing::trace!(target: "dcb_zbuild_rules", ?rules, "rules");
+	tracing::trace!(target: "dcb_zbuild_rules", ?rules, "Rules");
 
 	// Build the default rule
 	let builder = build::Builder::new();

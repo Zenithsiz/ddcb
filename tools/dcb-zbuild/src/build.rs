@@ -21,7 +21,7 @@ use {
 	anyhow::Context,
 	dashmap::{mapref::entry::Entry as DashMapEntry, DashMap},
 	filetime::FileTime,
-	futures::pin_mut,
+	futures::{pin_mut, stream::FuturesUnordered, TryStreamExt},
 	std::{
 		fs,
 		future::Future,
@@ -33,7 +33,8 @@ use {
 	tokio::{process::Command, sync::Mutex},
 };
 
-// TODO: There's some race condition somewhere ... find it.
+// TODO: If the user zbuild file is not generated properly, it can
+//       make us deadlock, check for cycles somehow
 
 /// Builder
 #[derive(Debug)]
@@ -83,19 +84,15 @@ impl Builder {
 		// Then check if we need to build
 		match do_build {
 			true => {
-				tracing::trace!(?target, "Building");
 				let res = self.build_unchecked(target, rules).await;
 				build_status.finish_build(res.as_ref().map_err(|_| ()).copied()).await;
 				res
 			},
 
-			false => {
-				tracing::trace!(?target, "Awaiting");
-				build_status
-					.await_built()
-					.await
-					.map_err(|()| anyhow::anyhow!("Build failed"))
-			},
+			false => build_status
+				.await_built()
+				.await
+				.map_err(|()| anyhow::anyhow!("Build failed")),
 		}
 	}
 
@@ -132,50 +129,51 @@ impl Builder {
 					.with_context(|| format!("Unable to expand rule {:?}", rule.name))?
 			},
 		};
-		tracing::trace!(target: "dcb_zbuild_find_rule", rule = ?rule, ?target, "Found rule");
+		tracing::trace!(?target, ?rule, "Found rule");
 
-		let deps = rule.deps.iter().filter_map(|dep| {
-			// If the dependency if also an output, don't build it
-			if rule.output.iter().any(|out| dep.file() == out.file()) {
-				tracing::debug!(?dep, "Skipping dependency, will be build on output");
-				return None;
-			}
-
-			let rule = &rule;
-			Some(async move {
-				let dep_file = dep.file();
-				tracing::debug!(?dep_file, "Build dependency");
-
-				// Build the dependency
-				let target = Target::File { file: dep_file.clone() };
-				let dep_result = self
-					.build(&target, rules)
-					.await
-					.with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
-
-				// If the dependency if a deps file, build it too
-				let mut dep_dep_result = None;
-				if let Item::DepsFile(_) = dep {
-					dep_dep_result = self
-						.build_deps_file(dep_file, rule, rules)
-						.await
-						.with_context(|| format!("Unable to build all dependencies in dependency file {dep_file:?}"))?;
+		// Then build all dependencies
+		let deps_res = rule
+			.deps
+			.iter()
+			.filter_map(|dep| {
+				// If the dependency if also an output, don't build it
+				if rule.output.iter().any(|out| dep.file() == out.file()) {
+					tracing::trace!(?target, ?dep, "Skipping dependency, will be build on output");
+					return None;
 				}
 
-				let res = match dep_dep_result {
-					Some(dep_dep_result) => dep_result.latest(dep_dep_result),
-					None => dep_result,
-				};
-				Ok::<_, anyhow::Error>(res)
+				let rule = &rule;
+				Some(async move {
+					let dep_file = dep.file();
+
+					// Build the dependency
+					let target = Target::File { file: dep_file.clone() };
+					let dep_result = self
+						.build(&target, rules)
+						.await
+						.with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
+
+					// If the dependency if a deps file, build it too
+					let mut dep_dep_result = None;
+					if let Item::DepsFile(_) = dep {
+						dep_dep_result = self.build_deps_file(dep_file, rule, rules).await.with_context(|| {
+							format!("Unable to build all dependencies in dependency file {dep_file:?}")
+						})?;
+					}
+
+					let res = match dep_dep_result {
+						Some(dep_dep_result) => dep_result.latest(dep_dep_result),
+						None => dep_result,
+					};
+					Ok::<_, anyhow::Error>(res)
+				})
 			})
-		});
-
-		let dep_build_times = futures::future::join_all(deps)
-			.await
+			.collect::<FuturesUnordered<_>>()
+			.try_collect::<Vec<_>>()
+			.await?
 			.into_iter()
-			.collect::<Result<Vec<_>, _>>()?;
+			.max_by_key(|res| res.build_time);
 
-		let deps_res = dep_build_times.iter().max_by_key(|res| res.build_time);
 		let last_build_time = self::rule_last_build_time(&rule).ok().flatten();
 		let needs_rebuilt = match (deps_res, last_build_time) {
 			(_, None) => true,
@@ -228,24 +226,22 @@ impl Builder {
 			),
 		}
 
-		// Gather all dependencies
-		let deps = deps.into_iter().map(|dep| async {
-			let target = Target::File { file: dep.clone() };
-			self.build(&target, rules)
-				.await
-				.with_context(move || format!("Unable to build dependency {dep:?}"))
-		});
-
-		// Then run them all and get the latest time
-		let dep_build_times = futures::future::join_all(deps)
-			.await
+		// Build all dependencies
+		let deps_res = deps
 			.into_iter()
-			.collect::<Result<Vec<_>, _>>()?;
-		let latest_res = dep_build_times.into_iter().max_by_key(|res| res.build_time);
+			.map(|dep| async {
+				let target = Target::File { file: dep.clone() };
+				self.build(&target, rules)
+					.await
+					.with_context(move || format!("Unable to build dependency {dep:?}"))
+			})
+			.collect::<FuturesUnordered<_>>()
+			.try_collect::<Vec<_>>()
+			.await?
+			.into_iter()
+			.max_by_key(|res| res.build_time);
 
-		Ok(latest_res.map(|res| BuildResult {
-			build_time: res.build_time,
-		}))
+		Ok(deps_res)
 	}
 }
 
@@ -373,10 +369,7 @@ fn file_modified_time(metadata: fs::Metadata) -> SystemTime {
 
 /// Rebuilds a rule
 pub async fn rebuild_rule(rule: &Rule<String>) -> Result<(), anyhow::Error> {
-	tracing::debug!(?rule.output, "Rebuilding");
-
 	for exec in &rule.exec {
-		tracing::trace!(target: "dcb_zbuild_exec", ?exec, "Running command");
 		let (program, args) = exec.args.split_first().context("Rule executable cannot be empty")?;
 
 		tracing::info!(target: "dcb_zbuild_exec", "{} {}", program, args.join(" "));
@@ -397,17 +390,13 @@ pub async fn rebuild_rule(rule: &Rule<String>) -> Result<(), anyhow::Error> {
 
 /// Finds a rule for `file`
 pub fn find_rule_for_file(file: &str, rules: &Rules) -> Result<Option<Rule<String>>, anyhow::Error> {
-	tracing::trace!(target: "dcb_zbuild_find_rule", ?file, "Searching for match");
-
 	for rule in rules.rules.values() {
-		tracing::trace!(target: "dcb_zbuild_find_rule", rule_name = ?rule.name, "Checking rule");
 		let global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
 		let mut rule_output_expr_visitor = expand_expr::RuleOutputVisitor::new(global_expr_visitor, &rule.aliases);
 
 		for output in &rule.output {
 			let output = output.file();
 			let file_cmpts = self::expand_expr(output, &mut rule_output_expr_visitor)?;
-			tracing::trace!(target: "dcb_zbuild_find_rule", ?file_cmpts, "Checking output");
 
 			if let Some(pats) = self::match_expr(&file_cmpts, file)
 				.with_context(|| format!("Unable to match expression inside rule {:?}", rule.name))?

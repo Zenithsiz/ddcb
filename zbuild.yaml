@@ -289,20 +289,22 @@ rules:
 
   # Linker script symbol ordering
   linker_script_symbols:
-    out: [$(build_dir)/symbols.ld]
+    alias:
+      symbols: $(build_dir)/symbols.ld
+    out: [$(symbols)]
     deps:
       - symbols.yaml
       - section_addrs.yaml
       - $(generate_linker_script)
-      - $(build_dir)
+      - dir_name: $(symbols)
 
     exec:
       - [$(generate_linker_script)]
 
   # Assembly object files
   asm_obj:
-    out: [$(asm_obj), dir_name: $(asm_obj), deps_file: $(asm_obj_deps)]
-    deps: [$(asm_processed)]
+    out: [$(asm_obj), deps_file: $(asm_obj_deps)]
+    deps: [$(asm_processed), dir_name: $(asm_obj)]
     exec:
       - - $(as)
         - -MD

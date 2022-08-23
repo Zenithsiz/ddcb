@@ -18,7 +18,6 @@ pub fn expand_target(
 			// Expand the file
 			let file = self::expand_expr_string(file, &mut global_expr_visitor)
 				.with_context(|| format!("Unable to expand expression {file:?}"))?;
-			tracing::debug!(?file, "Expanded file target");
 
 			Target::File { file }
 		},
@@ -27,7 +26,6 @@ pub fn expand_target(
 			// Expand the rule
 			let rule = self::expand_expr_string(rule, &mut global_expr_visitor)
 				.with_context(|| format!("Unable to expand expression {rule:?}"))?;
-			tracing::debug!(?rule, "Expanded rule target");
 
 			// Expand all patterns
 			let pats = pats
