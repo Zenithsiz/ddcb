@@ -26,7 +26,13 @@ mod rules;
 pub use self::{ast::Ast, rules::Rules};
 
 // Imports
-use {anyhow::Context, args::Args, clap::StructOpt, std::fs, tracing_subscriber::prelude::*};
+use {
+	anyhow::Context,
+	args::Args,
+	clap::StructOpt,
+	std::{env, fs},
+	tracing_subscriber::prelude::*,
+};
 
 
 #[tokio::main]
@@ -42,7 +48,7 @@ async fn main() -> Result<(), anyhow::Error> {
 
 	// Parse the ast
 	let ast = {
-		let file = fs::File::open("zbuild.yaml").context("Unable to open `zbuild.yaml`")?;
+		let file = self::find_zbuild()?;
 		serde_yaml::from_reader::<_, Ast>(file).context("Unable to parse `zbuild.yaml`")?
 	};
 	tracing::trace!(target: "dcb_zbuild_ast", ?ast, "Parsed ast");
@@ -60,4 +66,18 @@ async fn main() -> Result<(), anyhow::Error> {
 	tracing::info!("Built {} targets", builder.targets().await);
 
 	Ok(())
+}
+
+/// Finds and sets the working directory to the nearest zbuild file
+pub fn find_zbuild() -> Result<fs::File, anyhow::Error> {
+	match fs::File::open("zbuild.yaml") {
+		Ok(file) => Ok(file),
+		Err(_) => match env::current_dir().context("Unable to get current directory")?.parent() {
+			Some(parent) => {
+				env::set_current_dir(parent).context("Unable to set current directory")?;
+				self::find_zbuild()
+			},
+			None => anyhow::bail!("No `zbuild.yaml` file found in current or parent directories"),
+		},
+	}
 }
