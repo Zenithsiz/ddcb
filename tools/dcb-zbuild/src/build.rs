@@ -3,6 +3,7 @@
 // Modules
 mod expand_expr;
 mod expand_rule;
+mod expand_target;
 mod match_expr;
 
 // Imports
@@ -10,6 +11,7 @@ use {
 	self::{
 		expand_expr::{expand_expr, expand_expr_string},
 		expand_rule::expand_rule,
+		expand_target::expand_target,
 		match_expr::match_expr,
 	},
 	crate::{
@@ -25,53 +27,17 @@ use {
 	tokio::process::Command,
 };
 
-/// Builds a target expression
-pub async fn build_expr(target: &Target<Expr>, rules: &Rules) -> Result<SystemTime, anyhow::Error> {
-	// Expand the target
-	let mut global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
-	let target = match target {
-		// If we got a file, check which rule can make it
-		Target::File { file } => {
-			// Expand the file
-			let file = self::expand_expr_string(file, &mut global_expr_visitor)
-				.with_context(|| format!("Unable to expand expression {file:?}"))?;
-			tracing::debug!(?file, "Expanded file target");
-
-			Target::File { file }
-		},
-
-		Target::Rule { rule, pats } => {
-			// Expand the rule
-			let rule = self::expand_expr_string(rule, &mut global_expr_visitor)
-				.with_context(|| format!("Unable to expand expression {rule:?}"))?;
-			tracing::debug!(?rule, "Expanded rule target");
-
-			// Expand all patterns
-			let pats = pats
-				.iter()
-				.map(|(pat, expr)| {
-					let value = self::expand_expr_string(expr, &mut global_expr_visitor)
-						.with_context(|| format!("Unable to expand expression {expr:?}"))?;
-
-					Ok((pat.to_owned(), value))
-				})
-				.collect::<Result<_, anyhow::Error>>()?;
-
-			Target::Rule { rule, pats }
-		},
-	};
-
-	// Then build a `Target<String>`
-	self::build(&target, rules).await
-}
-
 /// Builds a target.
 ///
 /// Returns the time the target was last built
 #[async_recursion::async_recursion]
-pub async fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime, anyhow::Error> {
+pub async fn build(target: &Target<Expr>, rules: &Rules) -> Result<SystemTime, anyhow::Error> {
+	// Expand the target
+	let global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
+	let target = self::expand_target(target, global_expr_visitor).context("Unable to expand target")?;
+
 	// Find the rule to use for this target
-	let rule = match target {
+	let rule = match &target {
 		// If we got a file, check which rule can make it
 		Target::File { file } => match self::find_rule_for_file(file, rules)? {
 			Some(rule) => rule,
@@ -79,7 +45,7 @@ pub async fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime,
 			// If we didn't find it and it exists, assume it's
 			// a non-builder dependency and return it's time
 			None => {
-				let metadata = fs::metadata(file)
+				let metadata = fs::metadata(&file)
 					.with_context(|| format!("Missing file {file:?} and no rule to build it found"))?;
 				return Ok(self::file_modified_time(metadata));
 			},
@@ -92,7 +58,6 @@ pub async fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime,
 				.rules
 				.get(rule)
 				.with_context(|| format!("Unknown rule {rule:?}"))?;
-			let global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
 			let rule_output_expr_visitor = expand_expr::RuleOutputVisitor::new(global_expr_visitor, &rule.aliases);
 			self::expand_rule(rule, rule_output_expr_visitor, pats)
 				.with_context(|| format!("Unable to expand rule {:?}", rule.name))?
@@ -115,7 +80,9 @@ pub async fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime,
 		tracing::debug!(?dep_file, "Build dependency");
 
 		// Build and set `needs_rebuilt` to true if any of them were rebuilt
-		let target = Target::File { file: dep_file.clone() };
+		let target = Target::File {
+			file: Expr::string(dep_file.clone()),
+		};
 		let dep_build_time = self::build(&target, rules)
 			.await
 			.with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
@@ -147,7 +114,9 @@ pub async fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime,
 			}
 
 			for dep_dep in dep_deps {
-				let target = Target::File { file: dep_dep.clone() };
+				let target = Target::File {
+					file: Expr::string(dep_dep.clone()),
+				};
 				let dep_build_time = self::build(&target, rules)
 					.await
 					.with_context(|| format!("Unable to build dependency {dep_dep:?}"))?;

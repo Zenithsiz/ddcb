@@ -50,7 +50,7 @@ async fn main() -> Result<(), anyhow::Error> {
 	tracing::trace!(target: "dcb_zbuild_rules", ?rules, "rules");
 
 	// Build the default rule
-	build::build_expr(&rules.default, &rules)
+	build::build(&rules.default, &rules)
 		.await
 		.context("Unable to build default rule")?;
 
