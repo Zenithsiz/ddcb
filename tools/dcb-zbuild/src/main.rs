@@ -11,7 +11,9 @@
 	anonymous_lifetime_in_impl_trait,
 	fs_try_exists,
 	iterator_try_reduce,
-	exit_status_error
+	exit_status_error,
+	poll_ready,
+	hash_raw_entry
 )]
 
 // Modules
@@ -50,7 +52,9 @@ async fn main() -> Result<(), anyhow::Error> {
 	tracing::trace!(target: "dcb_zbuild_rules", ?rules, "rules");
 
 	// Build the default rule
-	build::build(&rules.default, &rules)
+	let builder = build::Builder::new();
+	builder
+		.build_unexpanded(&rules.default, &rules)
 		.await
 		.context("Unable to build default rule")?;
 

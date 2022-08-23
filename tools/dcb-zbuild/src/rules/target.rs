@@ -1,10 +1,15 @@
 //! Target
 
+use {
+	itertools::Itertools,
+	std::hash::{Hash, Hasher},
+};
+
 // Imports
 use {super::Expr, crate::ast, std::collections::HashMap};
 
 /// Target
-#[derive(Clone, Debug)]
+#[derive(PartialEq, Eq, Clone, Debug)]
 pub enum Target<T> {
 	/// File
 	File {
@@ -30,6 +35,23 @@ impl Target<Expr> {
 			ast::Target::Rule { rule } => Self::Rule {
 				rule: Expr::new(rule),
 				pats: HashMap::new(),
+			},
+		}
+	}
+}
+
+impl Hash for Target<String> {
+	fn hash<H: Hasher>(&self, state: &mut H) {
+		core::mem::discriminant(self).hash(state);
+		match self {
+			Target::File { file } => file.hash(state),
+			Target::Rule { rule, pats } => {
+				rule.hash(state);
+				// TODO: Not have to sort the patterns
+				for (pat, value) in pats.iter().sorted() {
+					pat.hash(state);
+					value.hash(state);
+				}
 			},
 		}
 	}

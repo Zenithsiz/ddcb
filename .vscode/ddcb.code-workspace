@@ -53,6 +53,7 @@
 			"inlateout",
 			"inout",
 			"insts",
+			"itertools",
 			"kawseg",
 			"lateout",
 			"libdcb",
