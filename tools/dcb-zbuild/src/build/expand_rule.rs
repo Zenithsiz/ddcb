@@ -13,14 +13,14 @@ use {
 pub fn expand_rule(
 	rule: &Rule<Expr>,
 	rule_output_expr_visitor: expand_expr::RuleOutputVisitor,
-	pats: HashMap<String, String>,
+	pats: &HashMap<String, String>,
 ) -> Result<Rule<String>, anyhow::Error> {
 	// Helper function to expand an expression
-	let mut rule_expr_visitor = expand_expr::RuleVisitor::new(rule_output_expr_visitor, &pats);
+	let mut rule_expr_visitor = expand_expr::RuleVisitor::new(rule_output_expr_visitor, pats);
 	let mut expand_expr = |expr| self::expand_expr_string(expr, &mut rule_expr_visitor);
 
 	// Helper function to expand an item
-	let mut rule_expr_visitor = expand_expr::RuleVisitor::new(rule_output_expr_visitor, &pats);
+	let mut rule_expr_visitor = expand_expr::RuleVisitor::new(rule_output_expr_visitor, pats);
 	let mut expand_item = |item: &Item<Expr>| match item {
 		Item::File(file) => self::expand_expr_string(file, &mut rule_expr_visitor).map(Item::File),
 		Item::DepsFile(file) => self::expand_expr_string(file, &mut rule_expr_visitor).map(Item::DepsFile),

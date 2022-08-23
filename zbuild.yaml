@@ -47,7 +47,9 @@ alias:
   asm_obj_deps : $(build_dir)/asm/dcb.d
 
 # By default built the final binary
-default: $(dcb_bin)
+# TODO: Actually build the final binary once issues with `mkpsxiso` are solved
+default:
+  rule: compare
 
 rules:
   # Compare

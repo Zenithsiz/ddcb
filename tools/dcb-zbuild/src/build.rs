@@ -28,19 +28,37 @@ use {
 /// Builds a target expression
 pub async fn build_expr(target: &Target<Expr>, rules: &Rules) -> Result<SystemTime, anyhow::Error> {
 	// Expand the target
+	let mut global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
 	let target = match target {
 		// If we got a file, check which rule can make it
 		Target::File { file } => {
 			// Expand the file
-			let mut global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
 			let file = self::expand_expr_string(file, &mut global_expr_visitor)
 				.with_context(|| format!("Unable to expand expression {file:?}"))?;
-			tracing::debug!(?file, "Expanded target");
+			tracing::debug!(?file, "Expanded file target");
 
 			Target::File { file }
 		},
 
-		Target::Rule { .. } => todo!(),
+		Target::Rule { rule, pats } => {
+			// Expand the rule
+			let rule = self::expand_expr_string(rule, &mut global_expr_visitor)
+				.with_context(|| format!("Unable to expand expression {rule:?}"))?;
+			tracing::debug!(?rule, "Expanded rule target");
+
+			// Expand all patterns
+			let pats = pats
+				.iter()
+				.map(|(pat, expr)| {
+					let value = self::expand_expr_string(expr, &mut global_expr_visitor)
+						.with_context(|| format!("Unable to expand expression {expr:?}"))?;
+
+					Ok((pat.to_owned(), value))
+				})
+				.collect::<Result<_, anyhow::Error>>()?;
+
+			Target::Rule { rule, pats }
+		},
 	};
 
 	// Then build a `Target<String>`
@@ -56,21 +74,28 @@ pub async fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime,
 	let rule = match target {
 		// If we got a file, check which rule can make it
 		Target::File { file } => match self::find_rule_for_file(file, rules)? {
-				Some(rule) => rule,
+			Some(rule) => rule,
 
-				// If we didn't find it and it exists, assume it's
-				// a non-builder dependency and return it's time
-				None => {
-					let metadata = fs::metadata(file).with_context(|| format!("Missing file {file:?} and no rule to build it found"))?;
-					return Ok(self::file_modified_time(metadata))
-				},
-			}
-		,
+			// If we didn't find it and it exists, assume it's
+			// a non-builder dependency and return it's time
+			None => {
+				let metadata = fs::metadata(file)
+					.with_context(|| format!("Missing file {file:?} and no rule to build it found"))?;
+				return Ok(self::file_modified_time(metadata));
+			},
+		},
 
 		// If we got a rule name with patterns, find it and replace all patterns
-		Target::Rule { .. } => {
+		Target::Rule { rule, pats } => {
 			// Find the rule and expand it
-			todo!();
+			let rule = rules
+				.rules
+				.get(rule)
+				.with_context(|| format!("Unknown rule {rule:?}"))?;
+			let global_expr_visitor = expand_expr::GlobalVisitor::new(&rules.aliases);
+			let rule_output_expr_visitor = expand_expr::RuleOutputVisitor::new(global_expr_visitor, &rule.aliases);
+			self::expand_rule(rule, rule_output_expr_visitor, pats)
+				.with_context(|| format!("Unable to expand rule {:?}", rule.name))?
 		},
 	};
 	tracing::trace!(target: "dcb_zbuild_find_rule", rule = ?rule, ?target, "Found rule");
@@ -103,12 +128,23 @@ pub async fn build(target: &Target<String>, rules: &Rules) -> Result<SystemTime,
 			let (output, dep_deps) = self::parse_deps_file(dep_file)
 				.with_context(|| format!("Unable to parse dependency file {dep_file:?}"))?;
 
-			anyhow::ensure!(
-				rule.output.iter().any(|rule_output| rule_output.file() == &output),
-				"Dependency file {dep_file:?} did not list any dependencies for rule output, found: {output:?}, \
-				 expected {:?}",
-				rule.output
-			);
+			match rule.output.is_empty() {
+				// If there were no rules, make sure it matches the rule name
+				true => anyhow::ensure!(
+					output == rule.name,
+					"Dependency file {dep_file:?} did not list the rule name as the dependency, found: {output:?}, \
+					 expected {:?}",
+					rule.name
+				),
+
+				// If there were any rules, make sure the dependency file applies to one of them
+				false => anyhow::ensure!(
+					rule.output.iter().any(|rule_output| rule_output.file() == &output),
+					"Dependency file {dep_file:?} did not list any dependencies for rule output, found: {output:?}, \
+					 expected {:?}",
+					rule.output,
+				),
+			}
 
 			for dep_dep in dep_deps {
 				let target = Target::File { file: dep_dep.clone() };
@@ -216,7 +252,7 @@ pub fn find_rule_for_file(file: &str, rules: &Rules) -> Result<Option<Rule<Strin
 			if let Some(pats) = self::match_expr(&file_cmpts, file)
 				.with_context(|| format!("Unable to match expression inside rule {:?}", rule.name))?
 			{
-				let rule = self::expand_rule(rule, rule_output_expr_visitor, pats)
+				let rule = self::expand_rule(rule, rule_output_expr_visitor, &pats)
 					.with_context(|| format!("Unable to expand rule {:?}", rule.name))?;
 				return Ok(Some(rule));
 			}

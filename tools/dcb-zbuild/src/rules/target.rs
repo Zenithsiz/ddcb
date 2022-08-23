@@ -18,7 +18,7 @@ pub enum Target<T> {
 		rule: T,
 
 		/// Patterns
-		pats: HashMap<String, String>,
+		pats: HashMap<String, T>,
 	},
 }
 
