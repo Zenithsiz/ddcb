@@ -13,7 +13,8 @@
 	iterator_try_reduce,
 	exit_status_error,
 	poll_ready,
-	hash_raw_entry
+	hash_raw_entry,
+	decl_macro
 )]
 
 // Modules
@@ -21,6 +22,7 @@ mod args;
 mod ast;
 mod build;
 mod rules;
+mod util;
 
 // Exports
 pub use self::{ast::Ast, rules::Rules};

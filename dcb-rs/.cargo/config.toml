@@ -1,5 +1,5 @@
 [build]
-dep-info-basedir = "."
+dep-info-basedir = ".."
 target = "mipsel-sony-psx.json"
 
 [target."mipsel-sony-psx.json"]

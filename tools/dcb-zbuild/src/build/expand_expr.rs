@@ -10,7 +10,6 @@ use {
 /// Expands an expression to it's components
 pub fn expand_expr(expr: &Expr, visitor: &mut impl Visitor) -> Result<Vec<ExprCmpt>, anyhow::Error> {
 	let cmpts = match expr {
-		// TODO: Support some operations here?
 		Expr::Op { op, expr } => {
 			let s = self::expand_expr_string(expr, visitor)
 				.with_context(|| format!("Unable to expand expression to string for operator {expr:?}"))?;

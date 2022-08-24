@@ -102,7 +102,7 @@ rules:
       - - sed
         - -i
         - -e
-        - 's,$(dep_out_dir)/,$(build_dir)/,g'
+        - 's,dcb-rs/$(dep_out_dir)/,$(dcb_rs)/,g'
         - ../$(dcb_rs_lib_deps)
 
   # `dcb.bin`
