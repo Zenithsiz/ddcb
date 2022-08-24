@@ -11,6 +11,7 @@ members = [
   "dcb-deck-table",
   "dcb-cdrom-xa", #
   # Binaries
+  "dcb-zbuild",
   "dcb-mkdrv",
   "dcb-mkdrv-deps",
   "dcb-undrv",

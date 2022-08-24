@@ -7,7 +7,7 @@ version = "0.1.0"
 
 # Dcb
 dcb-bytes = {path = "../dcb-bytes"}
-zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f"}
+zutil = {git = "https://github.com/Zenithsiz/zutil", features = ["use_serde"], rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f"}
 
 # Log
 log = "0.4.13"
@@ -15,7 +15,7 @@ log = "0.4.13"
 # Util
 ascii = "1.0.0"
 byteorder = "1.4.2"
-chrono = "0.4.19"
+chrono = {version = "0.4.19", features = ["serde"]}
 filetime = "0.2.14"
 ref-cast = "1.0.6"
 

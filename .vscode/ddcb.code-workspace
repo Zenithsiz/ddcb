@@ -18,6 +18,13 @@
 				"strings": false
 			}
 		},
+		"[yaml]": {
+			"editor.quickSuggestions": {
+				"other": false,
+				"comments": false,
+				"strings": false
+			}
+		},
 		"rust-analyzer.checkOnSave.allTargets": false,
 		"cSpell.words": [
 			"acqrel",
@@ -30,6 +37,9 @@
 			"beqz",
 			"bgez",
 			"bnez",
+			"Cmpt",
+			"cmpts",
+			"dashmap",
 			"Digi",
 			"Digimon",
 			"Digimon's",
@@ -44,9 +54,11 @@
 			"inlateout",
 			"inout",
 			"insts",
+			"itertools",
 			"kawseg",
 			"lateout",
 			"libdcb",
+			"mapref",
 			"mattr",
 			"mcpu",
 			"mflo",
@@ -80,7 +92,8 @@
 			"thiserror",
 			"Veemon",
 			"Wormmon",
-			"yubrg"
+			"yubrg",
+			"zbuild"
 		]
 	}
 }

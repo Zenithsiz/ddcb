@@ -26,19 +26,19 @@
 - file_path: '011.PAK/8.UN1'
   id: 7
   kind: un1
-- file_path: '/build/msd/F.DRV/011.PAK/9.MSD'
+- file_path: '/build/msd/dcb/F.DRV/011.PAK/9.MSD'
   id: 800
   kind: msd
-- file_path: '/build/msd/F.DRV/011.PAK/10.MSD'
+- file_path: '/build/msd/dcb/F.DRV/011.PAK/10.MSD'
   id: 801
   kind: msd
-- file_path: '/build/msd/F.DRV/011.PAK/11.MSD'
+- file_path: '/build/msd/dcb/F.DRV/011.PAK/11.MSD'
   id: 802
   kind: msd
-- file_path: '/build/msd/F.DRV/011.PAK/12.MSD'
+- file_path: '/build/msd/dcb/F.DRV/011.PAK/12.MSD'
   id: 405
   kind: msd
-- file_path: '/build/msd/F.DRV/011.PAK/13.MSD'
+- file_path: '/build/msd/dcb/F.DRV/011.PAK/13.MSD'
   id: 477
   kind: msd
 - file_path: '011.PAK/14.BIN'

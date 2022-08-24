@@ -28,7 +28,6 @@ imports_indent = "Block"
 imports_layout = "HorizontalVertical"
 indent_style = "Block"
 inline_attribute_width = 0
-license_template_path = ""
 match_arm_blocks = false
 match_arm_leading_pipes = "Never"
 match_block_trailing_comma = true

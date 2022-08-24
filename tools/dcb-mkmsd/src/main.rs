@@ -45,7 +45,8 @@ fn main() -> Result<(), anyhow::Error> {
 	let header_unknown = header_unknown.context("You must supply a value for the unknown header field")?;
 
 	// Finally output them all
-	let mut output_file = fs::File::create(&args.output_file).context("Unable to create output file")?;
+	let mut output_file = fs::File::create(&args.output_file)
+		.with_context(|| format!("Unable to create output file {:?}", args.output_file))?;
 
 	// Skip the header
 	output_file

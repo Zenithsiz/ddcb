@@ -16,6 +16,6 @@ pub struct Args {
 	pub output_file: PathBuf,
 
 	/// Output dependency file
-	#[clap(long = "dep-file")]
+	#[clap(long = "deps-file")]
 	pub dep_file: PathBuf,
 }

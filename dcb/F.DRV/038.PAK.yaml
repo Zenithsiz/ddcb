@@ -26,19 +26,19 @@
 - file_path: '038.PAK/8.UN1'
   id: 7
   kind: un1
-- file_path: '/build/msd/F.DRV/038.PAK/9.MSD'
+- file_path: '/build/msd/dcb/F.DRV/038.PAK/9.MSD'
   id: 659
   kind: msd
-- file_path: '/build/msd/F.DRV/038.PAK/10.MSD'
+- file_path: '/build/msd/dcb/F.DRV/038.PAK/10.MSD'
   id: 660
   kind: msd
-- file_path: '/build/msd/F.DRV/038.PAK/11.MSD'
+- file_path: '/build/msd/dcb/F.DRV/038.PAK/11.MSD'
   id: 661
   kind: msd
-- file_path: '/build/msd/F.DRV/038.PAK/12.MSD'
+- file_path: '/build/msd/dcb/F.DRV/038.PAK/12.MSD'
   id: 414
   kind: msd
-- file_path: '/build/msd/F.DRV/038.PAK/13.MSD'
+- file_path: '/build/msd/dcb/F.DRV/038.PAK/13.MSD'
   id: 403
   kind: msd
 - file_path: '038.PAK/14.BIN'

@@ -20,6 +20,6 @@ pub struct Args {
 	pub output: PathBuf,
 
 	/// Dependency file
-	#[clap(long = "dep-file")]
+	#[clap(long = "deps-file")]
 	pub dep_file: PathBuf,
 }

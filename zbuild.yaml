@@ -1,0 +1,365 @@
+---
+alias:
+  # Commands
+  # External tools
+  # prettier-ignore
+  ld       : mips-linux-gnu-ld
+  as       : mips-linux-gnu-as
+  objcopy  : mips-linux-gnu-objcopy
+  mkpsxiso : mkpsxiso
+  cargo    : cargo
+  bspatch  : bspatch
+  sha256sum: sha256sum
+  
+  # Internal tools
+  generate_linker_script: tools/generate_linker_symbols_script.py
+  preprocess_asm        : tools/preprocess_asm.py
+  expand_asm            : tools/expand_asm.py
+  generate_iso_deps     : tools/generate_iso_deps.py
+  generate_compare_deps : tools/generate_compare_deps.py
+  mkdrv        : $(build_dir)/tools/dcb-mkdrv
+  mkdrv-deps   : $(build_dir)/tools/dcb-mkdrv-deps
+  mkpak        : $(build_dir)/tools/dcb-mkpak
+  mkpak-deps   : $(build_dir)/tools/dcb-mkpak-deps
+  mkmsd        : $(build_dir)/tools/dcb-mkmsd
+  mk-card-table: $(build_dir)/tools/dcb-mk-card-table
+  mk-deck-table: $(build_dir)/tools/dcb-mk-deck-table
+  mkpsexe      : $(build_dir)/tools/dcb-mkpsexe
+
+  # Files
+  build_dir      : build
+  checksums      : checksums.sha256
+  dcb_bin_xml    : dcb-iso.xml
+  asm_src        : dcb-asm/dcb.s
+  linker_script  : psx.ld
+  license_iso    : license.dat
+  license_psexe  : license-psexe.dat
+  compare_deps   : $(build_dir)/compare.d
+  dcb_bin        : $(build_dir)/dcb.bin
+  dcb_bin_cue    : $(build_dir)/dcb.cue
+  dcb_bin_deps   : $(dcb_bin).d
+  dcb_elf        : $(build_dir)/exe/dcb.elf
+  dcb_psexe      : $(build_dir)/exe/dcb.psexe
+  mmm_buffer     : $(build_dir)/iso/MMM.DAT
+  asm_expanded   : $(build_dir)/asm/dcb-expanded.s
+  asm_processed  : $(build_dir)/asm/dcb.s
+  asm_obj        : $(build_dir)/asm/dcb.o
+  asm_obj_deps   : $(build_dir)/asm/dcb.d
+  dcb_rs         : $(build_dir)/rs
+  dcb_rs_lib     : $(dcb_rs)/libdcb.a
+  dcb_rs_lib_deps: $(dcb_rs)/libdcb.d
+
+# By default built the final binary
+default:
+  - $(dcb_bin)
+
+rules:
+  # Compare
+  compare:
+    deps: [$(checksums), deps_file: $(compare_deps)]
+    exec:
+      - [$(sha256sum), --check, --quiet, $(checksums)]
+
+  # Compare dependencies
+  compare-deps:
+    out: [$(compare_deps)]
+    deps: [$(checksums), $(generate_compare_deps)]
+    static_deps: [dir_name: $(compare_deps)]
+
+    exec:
+      - [bash, -c, '$(generate_compare_deps) > $(compare_deps)']
+
+  # Clean
+  clean:
+    exec:
+      - [rm, -rf, $(build_dir)/]
+      - [rm, -rf, dcb-rs/target/]
+      - [rm, -rf, tools/target/]
+
+  # Directories
+  mkdir:
+    alias:
+      dir: $(build_dir)^(path)/
+    out: [$(dir)]
+    exec:
+      - [mkdir, -p, $(dir)]
+
+  # Rust library
+  rs_lib:
+    alias:
+      dep_out_dir: target/mipsel-sony-psx/release
+    out: [$(dcb_rs_lib), deps_file: $(dcb_rs_lib_deps)]
+    static_deps: [dir_name: $(dcb_rs_lib)]
+    exec_cwd: dcb-rs/
+    exec:
+      - - $(cargo)
+        - build
+        - --release
+        - --package=dcb
+        - -Z=unstable-options
+        - --out-dir=../$(dcb_rs)/
+      - [cp, $(dep_out_dir)/libdcb.d, ../$(dcb_rs_lib_deps)]
+      - - sed
+        - -i
+        - -e
+        - 's,dcb-rs/$(dep_out_dir)/,$(dcb_rs)/,g'
+        - ../$(dcb_rs_lib_deps)
+
+  # `dcb.bin`
+  mkpsxiso:
+    out: [$(dcb_bin), $(dcb_bin_cue)]
+    deps: [$(dcb_bin_xml), $(license_iso), deps_file: $(dcb_bin_deps)]
+    exec:
+      - [$(mkpsxiso), $(dcb_bin_xml), -q, -y]
+
+  # `dcb.bin` dependencies
+  mkpsxiso-deps:
+    out: [$(dcb_bin_deps)]
+    deps: [$(dcb_bin_xml)]
+    static_deps: [dir_name: $(dcb_bin_deps)]
+    exec:
+      - [bash, -c, '$(generate_iso_deps) > $(dcb_bin_deps)']
+
+  # Cargo tools
+  # TODO: Dependencies?
+  cargo-tool:
+    out: [$(build_dir)/tools/^(name)]
+    exec:
+      - - $(cargo)
+        - build
+        - --release
+        - --manifest-path=tools/Cargo.toml
+        - --package=^(name)
+        - -Z=unstable-options
+        - --out-dir=$(build_dir)/tools
+
+  # `drv`
+  mkdrv:
+    alias:
+      drv: $(build_dir)/drv/^(path).DRV
+      drv_yaml: ^(path).DRV.yaml
+      drv_patch: ^(path).DRV.bspatch
+    out: [$(drv)]
+    deps:
+      - $(drv_yaml)
+      - $(drv_patch)
+      - $(mkdrv)
+      - deps_file: $(drv).d
+    static_deps: [dir_name: $(drv)]
+
+    exec:
+      - [$(mkdrv), $(drv_yaml), -o, $(drv)]
+      - [$(bspatch), $(drv), $(drv), $(drv_patch)]
+
+  # `drv` dependencies
+  mkdrv-deps:
+    alias:
+      drv: $(build_dir)/drv/^(path).DRV
+      drv_yaml: ^(path).DRV.yaml
+    out: [$(drv).d]
+    deps: [$(drv_yaml), $(mkdrv-deps)]
+    static_deps: [dir_name: $(drv)]
+    exec:
+      - - $(mkdrv-deps)
+        - $(drv_yaml)
+        - -o
+        - $(drv)
+        - --deps-file
+        - $(drv).d
+
+  # `pak`
+  mkpak:
+    alias:
+      pak: $(build_dir)/pak/^(path).PAK
+      pak_yaml: ^(path).PAK.yaml
+    out: [$(pak)]
+    deps: [$(pak_yaml), $(mkpak), deps_file: $(pak).d]
+    static_deps: [dir_name: $(pak)]
+    exec:
+      - [$(mkpak), $(pak_yaml), -o, $(pak)]
+
+  # `pak` dependencies
+  mkpak-deps:
+    alias:
+      pak: $(build_dir)/pak/^(path).PAK
+      pak_yaml: ^(path).PAK.yaml
+    out: [$(pak).d]
+    deps: [$(pak_yaml), $(mkpak-deps)]
+    static_deps: [dir_name: $(pak)]
+    exec:
+      - - $(mkpak-deps)
+        - $(pak_yaml)
+        - -o
+        - $(pak)
+        - --deps-file
+        - $(pak).d
+
+  # `msd`
+  mkmsd:
+    alias:
+      msd: $(build_dir)/msd/^(path).MSD
+      msd_src: ^(path).MSD.s
+      msd_patch: ^(path).MSD.bspatch
+    out: [$(msd), deps_file: $(msd).d]
+    deps:
+      - $(msd_src)
+      - $(msd_patch)
+      - $(mkmsd)
+    static_deps: [dir_name: $(msd)]
+
+    exec:
+      - [$(mkmsd), $(msd_src), -o, $(msd), --deps-file, $(msd).d]
+      - [$(bspatch), $(msd), $(msd), $(msd_patch)]
+
+  # Card table
+  card_table:
+    alias:
+      cdd: $(build_dir)/misc/^(path).CDD
+    out: [$(cdd)]
+    deps:
+      - ^(path).CDD.json
+      - ^(path).CDD.bspatch
+      - $(mk-card-table)
+    static_deps: [dir_name: $(cdd)]
+    exec:
+      - [$(mk-card-table), ^(path).CDD.json, -o, $(cdd)]
+      - [$(bspatch), $(cdd), $(cdd), ^(path).CDD.bspatch]
+
+  # Deck table
+  deck_table:
+    alias:
+      dek: $(build_dir)/misc/^(path).DEK
+    out: [$(dek)]
+    deps:
+      - ^(path).DEK.json
+      - ^(path).DEK.bspatch
+      - $(mk-deck-table)
+    static_deps: [dir_name: $(dek)]
+    exec:
+      - [$(mk-deck-table), ^(path).DEK.json, -o, $(dek)]
+      - [$(bspatch), $(dek), $(dek), ^(path).DEK.bspatch]
+
+  # Buffer
+  mmm_buffer:
+    out: [$(mmm_buffer)]
+    static_deps: [dir_name: $(mmm_buffer)]
+    exec:
+      - [touch, $(mmm_buffer)]
+      - [truncate, --size=24240128, $(mmm_buffer)]
+
+  # Dylibs
+  dylib:
+    alias:
+      dylib: $(build_dir)/dylib/^(name).BIN
+      dylib_section: dylib.^(name)
+      dcb_elf_copy: $(dcb_elf).^(name)
+    out: [$(dylib)]
+    deps: [$(dcb_elf)]
+    static_deps: [dir_name: $(dylib)]
+
+    # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
+    #       modification date, which `make` uses to check dependencies
+    exec:
+      - [cp, $(dcb_elf), $(dcb_elf_copy)]
+      - [$(objcopy), --dump-section, $(dylib_section)=$(dylib), $(dcb_elf_copy)]
+      - [rm, $(dcb_elf_copy)]
+
+  # Executable (ps-exe)
+  exe_psexe:
+    out: [$(dcb_psexe)]
+    deps: [$(dcb_elf), $(license_psexe), $(mkpsexe)]
+    static_deps: [dir_name: $(dcb_psexe)]
+    exec:
+      - - $(mkpsexe)
+        - $(dcb_elf)
+        - -o
+        - $(dcb_psexe)
+        - --license
+        - $(license_psexe)
+
+  # Executable (elf)
+  exe_elf:
+    out: [$(dcb_elf)]
+
+    deps:
+      - $(asm_obj)
+      - $(dcb_rs_lib)
+      - $(build_dir)/symbols.ld
+      - $(linker_script)
+    static_deps: [dir_name: $(dcb_elf)]
+
+    exec:
+      - - $(ld)
+        - $(asm_obj)
+        - -o
+        - $(dcb_elf)
+        - --whole-archive
+        - -EL
+        - --nmagic
+        - --script
+        - $(linker_script)
+        - --warn-section-align
+        - --no-check-sections
+        - -L$(dcb_rs)/
+        - -ldcb
+
+  # Linker script symbol ordering
+  linker_script_symbols:
+    alias:
+      symbols: $(build_dir)/symbols.ld
+    out: [$(symbols)]
+    deps:
+      - symbols.yaml
+      - section_addrs.yaml
+      - $(generate_linker_script)
+    static_deps: [dir_name: $(symbols)]
+
+    exec:
+      - [$(generate_linker_script)]
+
+  # Assembly object files
+  asm_obj:
+    out: [$(asm_obj), deps_file: $(asm_obj_deps)]
+    deps: [$(asm_processed)]
+    static_deps: [dir_name: $(asm_obj)]
+    exec:
+      - - $(as)
+        - -MD
+        - $(asm_obj_deps)
+        - -o
+        - $(asm_obj)
+        - -EL
+        - -mips1
+        - -march=r3000
+        - -msoft-float
+        - -O2
+        - $(asm_processed)
+
+  # Processed asm
+  process_asm:
+    out: [$(asm_processed)]
+    deps:
+      - $(asm_expanded)
+      - symbols.yaml
+      - $(preprocess_asm)
+    static_deps: [dir_name: $(asm_processed)]
+
+    exec:
+      - - $(preprocess_asm)
+        - $(asm_expanded)
+        - -o
+        - $(asm_processed)
+        - --replace-local-labels
+        - --add-label-section
+
+  # Expanded asm
+  # TODO: Make `expand_asm` emit a dependency file
+  expand_asm:
+    out: [$(asm_expanded)]
+    deps: [$(asm_src), $(expand_asm)]
+    static_deps: [dir_name: $(asm_expanded)]
+    exec:
+      - - $(expand_asm)
+        - $(asm_src)
+        - -o
+        - $(asm_expanded)
