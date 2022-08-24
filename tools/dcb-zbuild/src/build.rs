@@ -23,6 +23,7 @@ use {
 	dashmap::{mapref::entry::Entry as DashMapEntry, DashMap},
 	filetime::FileTime,
 	futures::{pin_mut, stream::FuturesUnordered, TryStreamExt},
+	itertools::Itertools,
 	std::{
 		fs,
 		future::Future,
@@ -140,6 +141,20 @@ impl Builder {
 			},
 		};
 		tracing::trace!(?target, ?rule, "Found rule");
+
+		// Ensure no dependencies are also outputs
+		if let Some((out, dep)) = rule
+			.output
+			.iter()
+			.cartesian_product(&rule.deps)
+			.find(|(out, dep)| out.file() == dep.file())
+		{
+			anyhow::bail!(
+				"Rule {:?} cannot contain a dependency ({dep:?}) as an output ({out:?})",
+				rule.name
+			);
+		}
+
 
 		#[derive(Clone, Copy, Debug)]
 		enum DepKind {

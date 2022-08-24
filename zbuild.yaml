@@ -205,7 +205,6 @@ rules:
       - $(msd_src)
       - $(msd_patch)
       - $(mkmsd)
-      - deps_file: $(msd).d
     static_deps: [dir_name: $(msd)]
 
     exec:
