@@ -30,7 +30,10 @@ use {
 		task::{Poll, Waker},
 		time::{Duration, SystemTime},
 	},
-	tokio::{process::Command, sync::Mutex},
+	tokio::{
+		process::Command,
+		sync::{Mutex, Semaphore},
+	},
 };
 
 // TODO: If the user zbuild file is not generated properly, it can
@@ -41,13 +44,19 @@ use {
 pub struct Builder {
 	/// All targets' status
 	targets: DashMap<Target<String>, BuildStatus>,
+
+	/// Command execution semaphore
+	exec_semaphore: Semaphore,
 }
 
 impl Builder {
 	/// Creates a new builder
-	pub fn new() -> Self {
+	pub fn new(jobs: usize) -> Self {
 		let targets = DashMap::<Target<String>, BuildStatus>::new();
-		Self { targets }
+		Self {
+			targets,
+			exec_semaphore: Semaphore::new(jobs),
+		}
 	}
 
 	/// Returns the number of targets
@@ -204,7 +213,7 @@ impl Builder {
 
 		// Then rebuild, if needed
 		if needs_rebuilt {
-			self::rebuild_rule(&rule).await.context("Unable to rebuild rule")?;
+			self.rebuild_rule(&rule).await.context("Unable to rebuild rule")?;
 		}
 
 		// Then get the build time
@@ -263,6 +272,28 @@ impl Builder {
 			.max_by_key(|res| res.build_time);
 
 		Ok(deps_res)
+	}
+
+	/// Rebuilds a rule
+	pub async fn rebuild_rule(&self, rule: &Rule<String>) -> Result<(), anyhow::Error> {
+		for exec in &rule.exec {
+			let (program, args) = exec.args.split_first().context("Rule executable cannot be empty")?;
+
+			let _exec_guard = self.exec_semaphore.acquire().await.expect("Exec semaphore was closed");
+			tracing::info!(target: "dcb_zbuild_exec", "{} {}", program, args.join(" "));
+			Command::new(program)
+				.args(args)
+				.spawn()
+				.with_context(|| format!("Unable to spawn {exec:?}"))?
+				.wait()
+				.await
+				.with_context(|| format!("Command {exec:?} was interrupted"))?
+				.exit_ok()
+				.with_context(|| format!("Command {exec:?} returned error"))?;
+		}
+
+
+		Ok(())
 	}
 }
 
@@ -386,27 +417,6 @@ fn file_modified_time(metadata: fs::Metadata) -> SystemTime {
 	let unix_offset = Duration::new(file_time.unix_seconds() as u64, file_time.nanoseconds());
 
 	SystemTime::UNIX_EPOCH + unix_offset
-}
-
-/// Rebuilds a rule
-pub async fn rebuild_rule(rule: &Rule<String>) -> Result<(), anyhow::Error> {
-	for exec in &rule.exec {
-		let (program, args) = exec.args.split_first().context("Rule executable cannot be empty")?;
-
-		tracing::info!(target: "dcb_zbuild_exec", "{} {}", program, args.join(" "));
-		Command::new(program)
-			.args(args)
-			.spawn()
-			.with_context(|| format!("Unable to spawn {exec:?}"))?
-			.wait()
-			.await
-			.with_context(|| format!("Command {exec:?} was interrupted"))?
-			.exit_ok()
-			.with_context(|| format!("Command {exec:?} returned error"))?;
-	}
-
-
-	Ok(())
 }
 
 /// Finds a rule for `file`

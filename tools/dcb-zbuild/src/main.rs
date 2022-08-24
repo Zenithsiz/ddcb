@@ -65,7 +65,13 @@ async fn main() -> Result<(), anyhow::Error> {
 	tracing::trace!(target: "dcb_zbuild_rules", ?rules, "Rules");
 
 	// Build the default rule
-	let builder = build::Builder::new();
+	let jobs = match args.jobs {
+		Some(jobs) => jobs,
+		None => std::thread::available_parallelism()
+			.context("Unable to get available parallelism")?
+			.into(),
+	};
+	let builder = build::Builder::new(jobs);
 	builder
 		.build_unexpanded(&rules.default, &rules)
 		.await
