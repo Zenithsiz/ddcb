@@ -132,53 +132,74 @@ impl Builder {
 		tracing::trace!(?target, ?rule, "Found rule");
 
 		// Then build all dependencies
-		let deps_res = rule
-			.deps
-			.iter()
-			.filter_map(|dep| {
-				// If the dependency if also an output, don't build it
-				if rule.output.iter().any(|out| dep.file() == out.file()) {
-					tracing::trace!(?target, ?dep, "Skipping dependency, will be build on output");
-					return None;
+		let deps_res = Iterator::chain(
+			rule.deps.iter().map(|dep| (dep, false)),
+			rule.static_deps.iter().map(|dep| (dep, true)),
+		)
+		.filter_map(|(dep, is_dep_static)| {
+			// If the dependency if also an output, don't build it
+			if rule.output.iter().any(|out| dep.file() == out.file()) {
+				tracing::trace!(?target, ?dep, "Skipping dependency, will be build on output");
+				return None;
+			}
+
+			let rule = &rule;
+			Some(async move {
+				let dep_file = dep.file();
+
+				// Build the dependency
+				let dep_file_exists =
+					fs::try_exists(dep_file).with_context(|| format!("Unable to check if {dep_file} exists"))?;
+				let dep_result = match (is_dep_static, dep_file_exists) {
+					// If we're static and it exists, don't do anything
+					(true, true) => None,
+
+					// If we're static and it doesn't exist, or we're non static, build it
+					(true, false) | (false, _) => {
+						let target = Target::File { file: dep_file.clone() };
+						let dep_result = self
+							.build(&target, rules)
+							.await
+							.with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
+						Some(dep_result)
+					},
+				};
+
+				// If the dependency if a deps file, build it too
+				let mut dep_dep_result = None;
+				if let Item::DepsFile(_) = dep {
+					dep_dep_result = self
+						.build_deps_file(dep_file, rule, rules)
+						.await
+						.with_context(|| format!("Unable to build all dependencies in dependency file {dep_file:?}"))?;
 				}
 
-				let rule = &rule;
-				Some(async move {
-					let dep_file = dep.file();
-
-					// Build the dependency
-					let target = Target::File { file: dep_file.clone() };
-					let dep_result = self
-						.build(&target, rules)
-						.await
-						.with_context(|| format!("Unable to build dependency {dep_file:?}"))?;
-
-					// If the dependency if a deps file, build it too
-					let mut dep_dep_result = None;
-					if let Item::DepsFile(_) = dep {
-						dep_dep_result = self.build_deps_file(dep_file, rule, rules).await.with_context(|| {
-							format!("Unable to build all dependencies in dependency file {dep_file:?}")
-						})?;
-					}
-
-					let res = match dep_dep_result {
-						Some(dep_dep_result) => dep_result.latest(dep_dep_result),
-						None => dep_result,
-					};
-					Ok::<_, anyhow::Error>(res)
-				})
+				let res = match (dep_result, dep_dep_result) {
+					(Some(dep_result), Some(dep_dep_result)) => Some(dep_result.latest(dep_dep_result)),
+					(Some(res), None) | (None, Some(res)) => Some(res),
+					(None, None) => None,
+				};
+				Ok::<_, anyhow::Error>(res)
 			})
-			.collect::<FuturesUnordered<_>>()
-			.try_collect::<Vec<_>>()
-			.await?
-			.into_iter()
-			.max_by_key(|res| res.build_time);
+		})
+		.collect::<FuturesUnordered<_>>()
+		.try_collect::<Vec<_>>()
+		.await?
+		.into_iter()
+		.flatten()
+		.max_by_key(|res| res.build_time);
 
-		let last_build_time = self::rule_last_build_time(&rule).ok().flatten();
-		let needs_rebuilt = match (deps_res, last_build_time) {
+		let output_last_build_time = self::rule_last_build_time(&rule).ok().flatten();
+		tracing::trace!(?target, ?output_last_build_time, ?deps_res, "Check rebuild");
+		let needs_rebuilt = match (deps_res, output_last_build_time) {
+			// If not built, rebuild
 			(_, None) => true,
+
+			// If no dependencies and built, don't rebuild
 			(None, Some(_)) => false,
-			(Some(deps_res), Some(last_build_time)) => deps_res.build_time > last_build_time,
+
+			// If output build time is earlier than last dependency, build
+			(Some(deps_res), Some(output_build_time)) => deps_res.build_time > output_build_time,
 		};
 
 		// Then rebuild, if needed

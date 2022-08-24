@@ -23,6 +23,9 @@ pub struct Rule<T> {
 	/// Dependencies
 	pub deps: Vec<Item<T>>,
 
+	/// Static dependencies
+	pub static_deps: Vec<Item<T>>,
+
 	/// Execution
 	pub exec: Vec<Command<T>>,
 }
@@ -37,6 +40,7 @@ impl Rule<Expr> {
 			.collect();
 		let output = rule.output.into_iter().map(Item::new).collect();
 		let deps = rule.deps.into_iter().map(Item::new).collect();
+		let static_deps = rule.static_deps.into_iter().map(Item::new).collect();
 		let exec = rule
 			.exec
 			.into_iter()
@@ -50,6 +54,7 @@ impl Rule<Expr> {
 			aliases,
 			output,
 			deps,
+			static_deps,
 			exec,
 		}
 	}

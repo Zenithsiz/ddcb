@@ -196,6 +196,10 @@ pub struct Rule {
 	#[serde(default)]
 	pub deps: Vec<Item>,
 
+	/// Static dependencies
+	#[serde(default)]
+	pub static_deps: Vec<Item>,
+
 	/// Execution
 	pub exec: Vec<Command>,
 }

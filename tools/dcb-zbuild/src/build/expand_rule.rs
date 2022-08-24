@@ -33,6 +33,11 @@ pub fn expand_rule(
 		.collect::<Result<_, _>>()?;
 	let output = rule.output.iter().map(&mut expand_item).collect::<Result<_, _>>()?;
 	let deps = rule.deps.iter().map(&mut expand_item).collect::<Result<_, _>>()?;
+	let static_deps = rule
+		.static_deps
+		.iter()
+		.map(&mut expand_item)
+		.collect::<Result<_, _>>()?;
 	let exec = rule
 		.exec
 		.iter()
@@ -49,6 +54,7 @@ pub fn expand_rule(
 		aliases,
 		output,
 		deps,
+		static_deps,
 		exec,
 	})
 }

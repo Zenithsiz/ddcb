@@ -61,7 +61,8 @@ rules:
   # Compare dependencies
   compare-deps:
     out: [$(compare_deps)]
-    deps: [$(checksums), $(generate_compare_deps), dir_name: $(compare_deps)]
+    deps: [$(checksums), $(generate_compare_deps)]
+    static_deps: [dir_name: $(compare_deps)]
 
     exec:
       - [bash, -c, '$(generate_compare_deps) > $(compare_deps)']
@@ -104,7 +105,8 @@ rules:
   # `dcb.bin` dependencies
   mkpsxiso-deps:
     out: [$(dcb_bin_deps)]
-    deps: [$(dcb_bin_xml), dir_name: $(dcb_bin_deps)]
+    deps: [$(dcb_bin_xml)]
+    static_deps: [dir_name: $(dcb_bin_deps)]
     exec:
       - [bash, -c, '$(generate_iso_deps) > $(dcb_bin_deps)']
 
@@ -132,8 +134,8 @@ rules:
       - $(drv_yaml)
       - $(drv_patch)
       - $(mkdrv)
-      - dir_name: $(drv)
       - deps_file: $(drv).d
+    static_deps: [dir_name: $(drv)]
 
     exec:
       - [$(mkdrv), $(drv_yaml), -o, $(drv)]
@@ -145,7 +147,8 @@ rules:
       drv: $(build_dir)/drv/^(path).DRV
       drv_yaml: ^(path).DRV.yaml
     out: [$(drv).d]
-    deps: [$(drv_yaml), $(mkdrv-deps), dir_name: $(drv)]
+    deps: [$(drv_yaml), $(mkdrv-deps)]
+    static_deps: [dir_name: $(drv)]
     exec:
       - - $(mkdrv-deps)
         - $(drv_yaml)
@@ -160,7 +163,8 @@ rules:
       pak: $(build_dir)/pak/^(path).PAK
       pak_yaml: ^(path).PAK.yaml
     out: [$(pak)]
-    deps: [$(pak_yaml), $(mkpak), dir_name: $(pak), deps_file: $(pak).d]
+    deps: [$(pak_yaml), $(mkpak), deps_file: $(pak).d]
+    static_deps: [dir_name: $(pak)]
     exec:
       - [$(mkpak), $(pak_yaml), -o, $(pak)]
 
@@ -170,7 +174,8 @@ rules:
       pak: $(build_dir)/pak/^(path).PAK
       pak_yaml: ^(path).PAK.yaml
     out: [$(pak).d]
-    deps: [$(pak_yaml), $(mkpak-deps), dir_name: $(pak)]
+    deps: [$(pak_yaml), $(mkpak-deps)]
+    static_deps: [dir_name: $(pak)]
     exec:
       - - $(mkpak-deps)
         - $(pak_yaml)
@@ -190,8 +195,8 @@ rules:
       - $(msd_src)
       - $(msd_patch)
       - $(mkmsd)
-      - dir_name: $(msd)
       - deps_file: $(msd).d
+    static_deps: [dir_name: $(msd)]
 
     exec:
       - [$(mkmsd), $(msd_src), -o, $(msd), --deps-file, $(msd).d]
@@ -206,7 +211,7 @@ rules:
       - ^(path).CDD.json
       - ^(path).CDD.bspatch
       - $(mk-card-table)
-      - dir_name: $(cdd)
+    static_deps: [dir_name: $(cdd)]
     exec:
       - [$(mk-card-table), ^(path).CDD.json, -o, $(cdd)]
       - [$(bspatch), $(cdd), $(cdd), ^(path).CDD.bspatch]
@@ -220,7 +225,7 @@ rules:
       - ^(path).DEK.json
       - ^(path).DEK.bspatch
       - $(mk-deck-table)
-      - dir_name: $(dek)
+    static_deps: [dir_name: $(dek)]
     exec:
       - [$(mk-deck-table), ^(path).DEK.json, -o, $(dek)]
       - [$(bspatch), $(dek), $(dek), ^(path).DEK.bspatch]
@@ -228,7 +233,7 @@ rules:
   # Buffer
   mmm_buffer:
     out: [$(mmm_buffer)]
-    deps: [dir_name: $(mmm_buffer)]
+    static_deps: [dir_name: $(mmm_buffer)]
     exec:
       - [touch, $(mmm_buffer)]
       - [truncate, --size=24240128, $(mmm_buffer)]
@@ -240,7 +245,8 @@ rules:
       dylib_section: dylib.^(name)
       dcb_elf_copy: $(dcb_elf).^(name)
     out: [$(dylib)]
-    deps: [$(dcb_elf), dir_name: $(dylib)]
+    deps: [$(dcb_elf)]
+    static_deps: [dir_name: $(dylib)]
 
     # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
     #       modification date, which `make` uses to check dependencies
@@ -252,7 +258,8 @@ rules:
   # Executable (ps-exe)
   exe_psexe:
     out: [$(dcb_psexe)]
-    deps: [$(dcb_elf), $(license_psexe), $(mkpsexe), dir_name: $(dcb_psexe)]
+    deps: [$(dcb_elf), $(license_psexe), $(mkpsexe)]
+    static_deps: [dir_name: $(dcb_psexe)]
     exec:
       - - $(mkpsexe)
         - $(dcb_elf)
@@ -270,7 +277,7 @@ rules:
       - dcb-rs/build/libdcb.a
       - $(build_dir)/symbols.ld
       - $(linker_script)
-      - dir_name: $(dcb_elf)
+    static_deps: [dir_name: $(dcb_elf)]
 
     exec:
       - - $(ld)
@@ -296,7 +303,7 @@ rules:
       - symbols.yaml
       - section_addrs.yaml
       - $(generate_linker_script)
-      - dir_name: $(symbols)
+    static_deps: [dir_name: $(symbols)]
 
     exec:
       - [$(generate_linker_script)]
@@ -304,7 +311,8 @@ rules:
   # Assembly object files
   asm_obj:
     out: [$(asm_obj), deps_file: $(asm_obj_deps)]
-    deps: [$(asm_processed), dir_name: $(asm_obj)]
+    deps: [$(asm_processed)]
+    static_deps: [dir_name: $(asm_obj)]
     exec:
       - - $(as)
         - -MD
@@ -325,7 +333,7 @@ rules:
       - $(asm_expanded)
       - symbols.yaml
       - $(preprocess_asm)
-      - dir_name: $(asm_processed)
+    static_deps: [dir_name: $(asm_processed)]
 
     exec:
       - - $(preprocess_asm)
@@ -339,7 +347,8 @@ rules:
   # TODO: Make `expand_asm` emit a dependency file
   expand_asm:
     out: [$(asm_expanded)]
-    deps: [$(asm_src), $(expand_asm), dir_name: $(asm_expanded)]
+    deps: [$(asm_src), $(expand_asm)]
+    static_deps: [dir_name: $(asm_expanded)]
     exec:
       - - $(expand_asm)
         - $(asm_src)
