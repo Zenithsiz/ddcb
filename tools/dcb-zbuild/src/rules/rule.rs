@@ -26,6 +26,9 @@ pub struct Rule<T> {
 	/// Static dependencies
 	pub static_deps: Vec<Item<T>>,
 
+	/// Execution working directory
+	pub exec_cwd: Option<T>,
+
 	/// Execution
 	pub exec: Vec<Command<T>>,
 }
@@ -41,6 +44,7 @@ impl Rule<Expr> {
 		let output = rule.output.into_iter().map(Item::new).collect();
 		let deps = rule.deps.into_iter().map(Item::new).collect();
 		let static_deps = rule.static_deps.into_iter().map(Item::new).collect();
+		let exec_cwd = rule.exec_cwd.map(Expr::new);
 		let exec = rule
 			.exec
 			.into_iter()
@@ -55,6 +59,7 @@ impl Rule<Expr> {
 			output,
 			deps,
 			static_deps,
+			exec_cwd,
 			exec,
 		}
 	}

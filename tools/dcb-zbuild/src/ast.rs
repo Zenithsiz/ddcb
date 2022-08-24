@@ -200,6 +200,10 @@ pub struct Rule {
 	#[serde(default)]
 	pub static_deps: Vec<Item>,
 
+	/// Execution working directory
+	#[serde(default)]
+	pub exec_cwd: Option<Expr>,
+
 	/// Execution
 	pub exec: Vec<Command>,
 }

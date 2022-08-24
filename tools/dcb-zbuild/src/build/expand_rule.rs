@@ -38,6 +38,7 @@ pub fn expand_rule(
 		.iter()
 		.map(&mut expand_item)
 		.collect::<Result<_, _>>()?;
+	let exec_cwd = rule.exec_cwd.as_ref().map(&mut expand_expr).transpose()?;
 	let exec = rule
 		.exec
 		.iter()
@@ -55,6 +56,7 @@ pub fn expand_rule(
 		output,
 		deps,
 		static_deps,
+		exec_cwd,
 		exec,
 	})
 }

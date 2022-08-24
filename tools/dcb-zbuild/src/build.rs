@@ -280,10 +280,19 @@ impl Builder {
 			let (program, args) = exec.args.split_first().context("Rule executable cannot be empty")?;
 
 			let _exec_guard = self.exec_semaphore.acquire().await.expect("Exec semaphore was closed");
+
+			// Create the command
+			let mut cmd = Command::new(program);
+			cmd.args(args);
+
+			// Set the working directory, if we have any
+			if let Some(cwd) = &rule.exec_cwd {
+				cmd.current_dir(cwd);
+			}
+
+			// Then spawn it
 			tracing::info!(target: "dcb_zbuild_exec", "{} {}", program, args.join(" "));
-			Command::new(program)
-				.args(args)
-				.spawn()
+			cmd.spawn()
 				.with_context(|| format!("Unable to spawn {exec:?}"))?
 				.wait()
 				.await

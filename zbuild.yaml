@@ -27,24 +27,27 @@ alias:
   mkpsexe      : $(build_dir)/tools/dcb-mkpsexe
 
   # Files
-  build_dir    : build
-  checksums    : checksums.sha256
-  dcb_bin_xml  : dcb-iso.xml
-  asm_src      : dcb-asm/dcb.s
-  linker_script: psx.ld
-  license_iso  : license.dat
-  license_psexe: license-psexe.dat
-  compare_deps : $(build_dir)/compare.d
-  dcb_bin      : $(build_dir)/dcb.bin
-  dcb_bin_cue  : $(build_dir)/dcb.cue
-  dcb_bin_deps : $(dcb_bin).d
-  dcb_elf      : $(build_dir)/exe/dcb.elf
-  dcb_psexe    : $(build_dir)/exe/dcb.psexe
-  mmm_buffer   : $(build_dir)/iso/MMM.DAT
-  asm_expanded : $(build_dir)/asm/dcb-expanded.s
-  asm_processed: $(build_dir)/asm/dcb.s
-  asm_obj      : $(build_dir)/asm/dcb.o
-  asm_obj_deps : $(build_dir)/asm/dcb.d
+  build_dir      : build
+  checksums      : checksums.sha256
+  dcb_bin_xml    : dcb-iso.xml
+  asm_src        : dcb-asm/dcb.s
+  linker_script  : psx.ld
+  license_iso    : license.dat
+  license_psexe  : license-psexe.dat
+  compare_deps   : $(build_dir)/compare.d
+  dcb_bin        : $(build_dir)/dcb.bin
+  dcb_bin_cue    : $(build_dir)/dcb.cue
+  dcb_bin_deps   : $(dcb_bin).d
+  dcb_elf        : $(build_dir)/exe/dcb.elf
+  dcb_psexe      : $(build_dir)/exe/dcb.psexe
+  mmm_buffer     : $(build_dir)/iso/MMM.DAT
+  asm_expanded   : $(build_dir)/asm/dcb-expanded.s
+  asm_processed  : $(build_dir)/asm/dcb.s
+  asm_obj        : $(build_dir)/asm/dcb.o
+  asm_obj_deps   : $(build_dir)/asm/dcb.d
+  dcb_rs         : $(build_dir)/rs
+  dcb_rs_lib     : $(dcb_rs)/libdcb.a
+  dcb_rs_lib_deps: $(dcb_rs)/libdcb.d
 
 # By default built the final binary
 default:
@@ -69,30 +72,38 @@ rules:
   # Clean
   clean:
     exec:
-      - [rm, -r, $(build_dir)/]
+      - [rm, -rf, $(build_dir)/]
+      - [rm, -rf, dcb-rs/target/]
+      - [rm, -rf, tools/target/]
 
   # Directories
-  # TODO: Not have to worry about modification date here
-  mkdir_build:
-    alias:
-      dir: $(build_dir)/
-    out: [$(dir)]
-    exec:
-      - [mkdir, -p, $(dir)]
-
   mkdir:
     alias:
-      dir: $(build_dir)/^(path)/
+      dir: $(build_dir)^(path)/
     out: [$(dir)]
     exec:
       - [mkdir, -p, $(dir)]
 
-  # `dcb-rs`
-  # TODO: Make this a sub-zbuild in the future?
-  dcb-rs:
-    out: [dcb-rs/^(path)]
+  # Rust library
+  rs_lib:
+    alias:
+      dep_out_dir: target/mipsel-sony-psx/release
+    out: [$(dcb_rs_lib), deps_file: $(dcb_rs_lib_deps)]
+    static_deps: [dir_name: $(dcb_rs_lib)]
+    exec_cwd: dcb-rs/
     exec:
-      - [make, -C, dcb-rs/]
+      - - $(cargo)
+        - build
+        - --release
+        - --package=dcb
+        - -Z=unstable-options
+        - --out-dir=../$(dcb_rs)/
+      - [cp, $(dep_out_dir)/libdcb.d, ../$(dcb_rs_lib_deps)]
+      - - sed
+        - -i
+        - -e
+        - 's,$(dep_out_dir)/,$(build_dir)/,g'
+        - ../$(dcb_rs_lib_deps)
 
   # `dcb.bin`
   mkpsxiso:
@@ -273,7 +284,7 @@ rules:
 
     deps:
       - $(asm_obj)
-      - dcb-rs/build/libdcb.a
+      - $(dcb_rs_lib)
       - $(build_dir)/symbols.ld
       - $(linker_script)
     static_deps: [dir_name: $(dcb_elf)]
@@ -290,7 +301,7 @@ rules:
         - $(linker_script)
         - --warn-section-align
         - --no-check-sections
-        - -Ldcb-rs/build/
+        - -L$(dcb_rs)/
         - -ldcb
 
   # Linker script symbol ordering
