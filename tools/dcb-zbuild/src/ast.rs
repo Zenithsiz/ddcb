@@ -12,7 +12,7 @@ pub struct Ast {
 	pub aliases: HashMap<String, Expr>,
 
 	/// Default target
-	pub default: Target,
+	pub default: Vec<Target>,
 
 	/// Rules
 	pub rules: HashMap<String, Rule>,

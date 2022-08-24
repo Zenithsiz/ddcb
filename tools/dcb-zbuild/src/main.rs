@@ -30,7 +30,8 @@ use {
 	anyhow::Context,
 	args::Args,
 	clap::StructOpt,
-	std::{env, fs},
+	futures::{stream::FuturesUnordered, TryStreamExt},
+	std::{collections::HashMap, env, fs},
 	tracing_subscriber::prelude::*,
 };
 
@@ -71,11 +72,45 @@ async fn main() -> Result<(), anyhow::Error> {
 			.context("Unable to get available parallelism")?
 			.into(),
 	};
+
+	let targets = match args.targets.is_empty() {
+		// If empty, use the default rules
+		true => rules.default.clone(),
+
+		// Else get them
+		// TODO: Maybe don't infer rules?
+		false => args
+			.targets
+			.iter()
+			.map(|target| match rules.rules.get(target) {
+				Some(rule) => rules::Target::Rule {
+					rule: rules::Expr::string(rule.name.to_owned()),
+					pats: HashMap::new(),
+				},
+				None => rules::Target::File {
+					file: rules::Expr::string(target.to_owned()),
+				},
+			})
+			.collect(),
+	};
+
 	let builder = build::Builder::new(jobs);
-	builder
-		.build_unexpanded(&rules.default, &rules)
-		.await
-		.context("Unable to build default rule")?;
+	targets
+		.iter()
+		.map(|target| {
+			let builder = &builder;
+			let rules = &rules;
+			async move {
+				builder
+					.build_unexpanded(target, rules)
+					.await
+					.with_context(|| format!("Unable to build {target:?}"))
+			}
+		})
+		.collect::<FuturesUnordered<_>>()
+		.try_collect::<Vec<_>>()
+		.await?;
+
 	tracing::info!("Built {} targets", builder.targets().await);
 
 	Ok(())

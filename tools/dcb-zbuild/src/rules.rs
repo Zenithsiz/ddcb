@@ -33,8 +33,8 @@ pub struct Rules {
 	/// use.
 	pub aliases: HashMap<String, Expr>,
 
-	/// Default file to build
-	pub default: Target<Expr>,
+	/// Default targets to build
+	pub default: Vec<Target<Expr>>,
 
 	/// Rules
 	pub rules: HashMap<String, Rule<Expr>>,
@@ -48,7 +48,7 @@ impl Rules {
 			.into_iter()
 			.map(|(alias, value)| (alias, Expr::new(value)))
 			.collect();
-		let default = Target::new(ast.default);
+		let default = ast.default.into_iter().map(Target::new).collect();
 		let rules = ast
 			.rules
 			.into_iter()
