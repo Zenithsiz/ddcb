@@ -360,17 +360,12 @@ impl Inst {
 				place,
 				brightness,
 				value,
-			} => match (kind, place, brightness, value) {
-				(0x0, 0x0, _, 0xa) => ("set_light_left_char", vec![num!(brightness)]),
-				(0x0, 0x1, _, 0xa) => ("set_light_right_char", vec![num!(brightness)]),
-				(0x1, _, 0xffff, 0xffff) => ("set_light_unknown", vec![num!(place)]),
-				_ => ("set_light", vec![
-					num!(kind),
-					num!(place),
-					num!(brightness),
-					num!(value),
-				]),
-			},
+			} => ("set_light", vec![
+				num!(kind),
+				num!(place),
+				num!(brightness),
+				num!(value),
+			]),
 			Self::AddComboBoxButton { value } => ("combo_box_add_button", vec![num!(value)]),
 			Self::Unknown { value } => ("unknown", vec![num!(value)]),
 		};

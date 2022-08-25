@@ -207,24 +207,6 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 			bytes: SHIFT_JIS.encode(&bytes).0.into_owned(),
 		}),
 
-		"set_light_left_char" => number_arg!(inst.args, brightness => Inst::SetBrightness {
-			kind: 0x0,
-			place: 0x0,
-			brightness: brightness.try_into().context("Unable to fit brightness into a `u16`")?,
-			value: 0xa,
-		}),
-		"set_light_right_char" => number_arg!(inst.args, brightness => Inst::SetBrightness {
-			kind: 0x0,
-			place: 0x1,
-			brightness: brightness.try_into().context("Unable to fit brightness into a `u16`")?,
-			value: 0xa,
-		}),
-		"set_light_unknown" => number_arg!(inst.args, place => Inst::SetBrightness {
-			kind: 0x1,
-			place: place.try_into().context("Unable to fit place into a `u16`")?,
-			brightness: 0xffff,
-			value: 0xffff,
-		}),
 		"set_light" =>
 			number_number_number_number_arg!(inst.args, (kind, place, brightness, value) => Inst::SetBrightness {
 				kind: kind.try_into().context("Unable to fit kind into a `u16`")?,
