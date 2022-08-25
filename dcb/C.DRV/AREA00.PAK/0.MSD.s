@@ -563,15 +563,15 @@ jump_124:
 
 	# Else display the city menu
 	.empty_text_box
-.set_text_buffer "Where do you want to go?"
+	.set_text_buffer "Where do you want to go?"
 	.display_text_buffer
-.set_text_buffer "*c5Push *c7*b1*c5 to go to map."
+	.set_text_buffer "*c5Push *c7*b1*c5 to go to map."
 	.display_text_buffer
-.open_combo_box 0x78
-.combo_box_add_button 0x2
-.combo_box_add_button 0x3
-.combo_box_add_button 0x1
-.combo_box_add_button 0x0
+	.open_combo_box 0x78
+	.combo_box_add_button 0x2
+	.combo_box_add_button 0x3
+	.combo_box_add_button 0x1
+	.combo_box_add_button 0x0
 	.combo_box_await
 	.test_eq 0x1, 0x1
 	jump 0x7f, jump_126
@@ -6004,15 +6004,15 @@ jump 0x0, jump_0
 goto_city_sub_menu_screen:
 	# Set that we're on the sub menu screen
 	.set_var $on_city_sub_menu, 0x1
-	
+
 	# Then display the menu
 	.empty_text_box
-.set_text_buffer "Pick a Menu Option."
+	.set_text_buffer "Pick a Menu Option."
 	.display_text_buffer
-.open_combo_box 0x61
-.combo_box_add_button 0x12
-.combo_box_add_button 0x13
-.combo_box_add_button 0xf
+	.open_combo_box 0x61
+	.combo_box_add_button 0x12
+	.combo_box_add_button 0x13
+	.combo_box_add_button 0xf
 	.combo_box_await
 
 	# And check where where we're going
