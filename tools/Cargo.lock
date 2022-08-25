@@ -33,6 +33,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a4c527152e37cf757a3f78aae5a06fbeefdb07ccc535c980a3208ee3060dd544"
 
 [[package]]
+name = "arrayvec"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "23b62fc65de8e4e7f52534fb52b0f3ed04746ae267519eef2a83941e8085068b"
+
+[[package]]
 name = "ascii"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -329,7 +335,7 @@ dependencies = [
  "dcb-bytes",
  "dcb-card-table",
  "dcb-cdrom-xa",
- "itertools",
+ "itertools 0.10.3",
  "log",
  "serde_json",
  "simplelog 0.10.2",
@@ -345,11 +351,39 @@ dependencies = [
  "dcb-bytes",
  "dcb-cdrom-xa",
  "dcb-deck-table",
- "itertools",
+ "itertools 0.10.3",
  "log",
  "serde_json",
  "simplelog 0.10.2",
  "zutil",
+]
+
+[[package]]
+name = "dcb-mkarc"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "clap 3.2.17",
+ "hexdump",
+ "serde",
+ "serde_yaml 0.9.9",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "dcb-mkarc-deps"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "clap 3.2.17",
+ "hexdump",
+ "serde",
+ "serde_yaml 0.9.9",
+ "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]
@@ -360,7 +394,7 @@ dependencies = [
  "chrono",
  "clap 3.2.17",
  "dcb-drv",
- "itertools",
+ "itertools 0.10.3",
  "serde",
  "serde_yaml 0.9.9",
  "size_format",
@@ -378,7 +412,7 @@ dependencies = [
  "chrono",
  "clap 3.2.17",
  "dcb-mkdrv",
- "itertools",
+ "itertools 0.10.3",
  "serde",
  "serde_yaml 0.9.9",
  "size_format",
@@ -399,7 +433,7 @@ dependencies = [
  "dcb-bytes",
  "dcb-msd",
  "encoding_rs",
- "itertools",
+ "itertools 0.10.3",
  "tracing",
  "tracing-subscriber",
  "unicode-xid",
@@ -455,7 +489,7 @@ dependencies = [
  "dbg_hex",
  "derive_more",
  "encoding_rs",
- "itertools",
+ "itertools 0.10.3",
  "logos",
  "serde",
  "snailquote",
@@ -485,7 +519,7 @@ dependencies = [
  "dcb-bytes",
  "dcb-card-table",
  "dcb-cdrom-xa",
- "itertools",
+ "itertools 0.10.3",
  "log",
  "serde_json",
  "simplelog 0.10.2",
@@ -501,11 +535,25 @@ dependencies = [
  "dcb-bytes",
  "dcb-cdrom-xa",
  "dcb-deck-table",
- "itertools",
+ "itertools 0.10.3",
  "log",
  "serde_json",
  "simplelog 0.10.2",
  "zutil",
+]
+
+[[package]]
+name = "dcb-unarc"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "clap 3.2.17",
+ "hexdump",
+ "serde",
+ "serde_yaml 0.9.9",
+ "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]
@@ -528,7 +576,7 @@ dependencies = [
  "clap 3.2.17",
  "dcb-drv",
  "filetime",
- "itertools",
+ "itertools 0.10.3",
  "log",
  "serde",
  "serde_yaml 0.8.23",
@@ -548,7 +596,7 @@ dependencies = [
  "dcb-bytes",
  "dcb-msd",
  "encoding_rs",
- "itertools",
+ "itertools 0.10.3",
  "log",
  "serde_yaml 0.8.23",
  "simplelog 0.9.0",
@@ -582,7 +630,7 @@ dependencies = [
  "dashmap",
  "filetime",
  "futures",
- "itertools",
+ "itertools 0.10.3",
  "serde",
  "serde_yaml 0.9.9",
  "tokio",
@@ -776,6 +824,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "hexdump"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e40283dadb02f3af778878be1d717b17b4e4ab92e1d935ab03a730b0542905f2"
+dependencies = [
+ "arrayvec",
+ "itertools 0.4.19",
+]
+
+[[package]]
 name = "iana-time-zone"
 version = "0.1.44"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -812,6 +870,12 @@ checksum = "a0249b28817672371aa3a25e0420548646663592c0442d71ac67c9cb4fe1f94c"
 dependencies = [
  "static_assertions",
 ]
+
+[[package]]
+name = "itertools"
+version = "0.4.19"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c4a9b56eb56058f43dc66e58f40a214b2ccbc9f3df51861b63d51dec7b65bc3f"
 
 [[package]]
 name = "itertools"

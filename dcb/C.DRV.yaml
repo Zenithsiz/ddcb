@@ -142,7 +142,7 @@
       path: build/msd/dcb/C.DRV/DEBUG/CITY01.MSD
 - name: UNIT_EFF
   date: '2000-10-19T11:49:44'
-  path: dcb/C.DRV/UNIT_EFF.ARC
+  path: build/arc/dcb/C.DRV/UNIT_EFF.ARC
 - name: AREA04
   date: '2001-05-02T08:15:30'
   path: build/pak/dcb/C.DRV/AREA04.PAK

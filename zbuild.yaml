@@ -22,6 +22,8 @@ alias:
   mkdrv-deps   : $(tools_dir)/dcb-mkdrv-deps
   mkpak        : $(tools_dir)/dcb-mkpak
   mkpak-deps   : $(tools_dir)/dcb-mkpak-deps
+  mkarc        : $(tools_dir)/dcb-mkarc
+  mkarc-deps   : $(tools_dir)/dcb-mkarc-deps
   mkmsd        : $(tools_dir)/dcb-mkmsd
   mk-card-table: $(tools_dir)/dcb-mk-card-table
   mk-deck-table: $(tools_dir)/dcb-mk-deck-table
@@ -203,6 +205,33 @@ rules:
         - $(pak)
         - --deps-file
         - $(pak).d
+
+  # `arc`
+  mkarc:
+    alias:
+      arc: $(build_dir)/arc/^(path).ARC
+      arc_yaml: ^(path).ARC.yaml
+    out: [$(arc)]
+    deps: [$(arc_yaml), $(mkarc), deps_file: $(arc).d]
+    static_deps: [dir_name: $(arc)]
+    exec:
+      - [$(mkarc), $(arc_yaml), -o, $(arc)]
+
+  # `arc` dependencies
+  mkarc-deps:
+    alias:
+      arc: $(build_dir)/arc/^(path).ARC
+      arc_yaml: ^(path).ARC.yaml
+    out: [$(arc).d]
+    deps: [$(arc_yaml), $(mkarc-deps)]
+    static_deps: [dir_name: $(arc)]
+    exec:
+      - - $(mkarc-deps)
+        - $(arc_yaml)
+        - -o
+        - $(arc)
+        - --deps-file
+        - $(arc).d
 
   # `msd`
   mkmsd:
