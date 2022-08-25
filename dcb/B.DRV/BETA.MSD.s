@@ -1,4 +1,9 @@
 .header_unknown 0xa
+
+# Includes
+.include "/msd-macros.s"
+.include "/msd-vars.s"
+
 set_var 0x1, 0x0
 unknown 0x1000c
 unknown 0x0

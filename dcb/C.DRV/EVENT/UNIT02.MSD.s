@@ -1,4 +1,9 @@
 .header_unknown 0x1e
+
+# Includes
+.include "/msd-macros.s"
+.include "/msd-vars.s"
+
 set_bg_battle_cafe
 test_eq 0x1d, 0x1
 jump 0x4, jump_2

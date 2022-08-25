@@ -1,5 +1,7 @@
 .header_unknown 0x174
+
 # Includes
+.include "/msd-macros.s"
 .include "/msd-vars.s"
 
 jump_0:

@@ -1,4 +1,9 @@
 .header_unknown 0x174
+
+# Includes
+.include "/msd-macros.s"
+.include "/msd-vars.s"
+
 jump_0:
 empty_text_box
 set_var 0x15e, 0x0

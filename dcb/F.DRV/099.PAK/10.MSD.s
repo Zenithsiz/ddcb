@@ -1,4 +1,9 @@
 .header_unknown 0x1c6
+
+# Includes
+.include "/msd-macros.s"
+.include "/msd-vars.s"
+
 display_scene 0x10, 0x2f4
 open_combo_box 0x3df
 set_light 0x0, 0xa6f, 0x6, 0x1
