@@ -8,7 +8,6 @@ alias:
   objcopy  : mips-linux-gnu-objcopy
   mkpsxiso : mkpsxiso
   cargo    : cargo
-  bspatch  : bspatch
   sha256sum: sha256sum
   
   # Internal tools
@@ -17,6 +16,7 @@ alias:
   expand_asm            : tools/expand_asm.py
   generate_iso_deps     : tools/generate_iso_deps.py
   generate_compare_deps : tools/generate_compare_deps.py
+  bspatch               : tools/bspatch.py
   tools_dir    : $(build_dir)/tools
   mkdrv        : $(tools_dir)/dcb-mkdrv
   mkdrv-deps   : $(tools_dir)/dcb-mkdrv-deps
