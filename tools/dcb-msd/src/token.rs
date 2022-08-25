@@ -30,6 +30,10 @@ pub enum Token {
 	#[token("$")]
 	Dollar,
 
+	/// Slash
+	#[token("/")]
+	Slash,
+
 	/// Line feed
 	#[token("\n")]
 	LineFeed,

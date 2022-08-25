@@ -7,6 +7,7 @@ use {
 		Token,
 	},
 	anyhow::Context,
+	std::num::ParseIntError,
 };
 
 /// Syntax tree
@@ -49,7 +50,7 @@ pub struct Inst {
 /// Macro
 #[derive(Clone, Debug)]
 pub struct Macro {
-	/// Mnemonic
+	/// Macro mnemonic
 	pub mnemonic: String,
 
 	/// Arguments
@@ -64,6 +65,15 @@ pub enum Arg {
 
 	/// Variable
 	Var(String),
+
+	/// Argument
+	Arg(usize),
+
+	/// Macro mnemonic
+	MacroMnemonic(String),
+
+	/// Macro separator
+	MacroSep,
 
 	/// Number
 	Number(i64),
@@ -141,17 +151,42 @@ fn parse_args(src: &str, tokens: &mut PeekSlice<Spanned<Token>>) -> Result<Vec<A
 				Arg::String(s)
 			},
 
-			// On dollar + identifier, add a variable
+			// On dollar
 			Some(dollar) if dollar.inner == Token::Dollar => match tokens.next() {
+				// On ident, it's a variable
 				Some(ident) if ident.inner == Token::Ident => {
 					let var = src[ident.span].to_owned();
 					Arg::Var(var)
+				},
+
+				// On number, it's an argument
+				Some(num) if num.inner == Token::Number => {
+					let num_str = &src[num.span];
+					let num = self::parse_num(num_str)?;
+
+					Arg::Arg(num)
 				},
 
 				// Else it's an unexpected token
 				Some(token) => anyhow::bail!("Expected identifier, found {:?} ({token:?})", &src[token.span]),
 				None => anyhow::bail!("Expected identifier, found end"),
 			},
+
+			// On period
+			Some(period) if period.inner == Token::Period => match tokens.next() {
+				// On ident, it's a macro mnemonic
+				Some(ident) if ident.inner == Token::Ident => {
+					let mnemonic = src[ident.span].to_owned();
+					Arg::MacroMnemonic(mnemonic)
+				},
+
+				// Else it's an unexpected token
+				Some(token) => anyhow::bail!("Expected identifier, found {:?} ({token:?})", &src[token.span]),
+				None => anyhow::bail!("Expected identifier, found end"),
+			},
+
+			// On `/`, it's a macro separator
+			Some(slash) if slash.inner == Token::Slash => Arg::MacroSep,
 
 			// On identifier, add an label argument
 			Some(ident) if ident.inner == Token::Ident => {
@@ -162,13 +197,7 @@ fn parse_args(src: &str, tokens: &mut PeekSlice<Spanned<Token>>) -> Result<Vec<A
 			// On number, parse the number and add the argument
 			Some(token) if token.inner == Token::Number => {
 				let num_str = &src[token.span];
-				let num = match num_str {
-					num_str if num_str.starts_with("0x") => i64::from_str_radix(&num_str[2..], 16),
-					num_str if num_str.starts_with("0b") => i64::from_str_radix(&num_str[2..], 2),
-					num_str if num_str.starts_with("0o") => i64::from_str_radix(&num_str[2..], 8),
-					num_str => num_str.parse::<i64>(),
-				};
-				let num = num.with_context(|| format!("Unable to parse number {num_str:?}"))?;
+				let num = self::parse_num(num_str)?;
 
 				Arg::Number(num)
 			},
@@ -203,4 +232,32 @@ fn parse_args(src: &str, tokens: &mut PeekSlice<Spanned<Token>>) -> Result<Vec<A
 		}
 	}
 	Ok(args)
+}
+
+/// Parses a number
+fn parse_num<T: ParsableNum>(num_str: &str) -> Result<T, anyhow::Error> {
+	let num = match num_str {
+		num_str if num_str.starts_with("0x") => T::from_str_radix(&num_str[2..], 16),
+		num_str if num_str.starts_with("0b") => T::from_str_radix(&num_str[2..], 2),
+		num_str if num_str.starts_with("0o") => T::from_str_radix(&num_str[2..], 8),
+		num_str => T::from_str_radix(num_str, 10),
+	};
+	let num = num.with_context(|| format!("Unable to parse number {num_str:?}"))?;
+	Ok(num)
+}
+
+trait ParsableNum: Sized {
+	fn from_str_radix(src: &str, radix: u32) -> Result<Self, ParseIntError>;
+}
+
+impl ParsableNum for i64 {
+	fn from_str_radix(src: &str, radix: u32) -> Result<Self, ParseIntError> {
+		i64::from_str_radix(src, radix)
+	}
+}
+
+impl ParsableNum for usize {
+	fn from_str_radix(src: &str, radix: u32) -> Result<Self, ParseIntError> {
+		usize::from_str_radix(src, radix)
+	}
 }

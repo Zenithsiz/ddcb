@@ -46,7 +46,8 @@ pub fn assemble(
 ) -> Result<Vec<Inst>, anyhow::Error> {
 	// Parse the root file
 	let mut vars = HashMap::new();
-	let ast = self::parse_ast(path, &mut vars, header_unknown, deps)?;
+	let mut macros = HashMap::new();
+	let ast = self::parse_ast(path, &mut vars, &mut macros, header_unknown, deps)?;
 
 	// Finally compile it
 	let insts = compile::compile(ast).context("Unable to compile ast")?;
@@ -60,6 +61,7 @@ pub fn assemble(
 fn parse_ast(
 	path: &Path,
 	vars: &mut HashMap<String, ast::Arg>,
+	macros: &mut HashMap<String, Vec<ast::Arg>>,
 	header_unknown: &mut Option<u32>,
 	deps: &mut Vec<PathBuf>,
 ) -> Result<Ast, anyhow::Error> {
@@ -69,7 +71,8 @@ fn parse_ast(
 	let ast = ast::parse(&src, &mut PeekSlice::new(&tokens)).context("Unable to parse file")?;
 
 	// Then resolve macros
-	let ast = self::resolve_macros(ast, path, vars, header_unknown, deps).context("Unable to resolve macros")?;
+	let ast =
+		self::resolve_macros(ast, path, vars, macros, header_unknown, deps).context("Unable to resolve macros")?;
 
 	Ok(ast)
 }
@@ -79,9 +82,11 @@ fn resolve_macros(
 	ast: Ast,
 	base_path: &Path,
 	vars: &mut HashMap<String, ast::Arg>,
+	macros: &mut HashMap<String, Vec<ast::Arg>>,
 	header_unknown: &mut Option<u32>,
 	deps: &mut Vec<PathBuf>,
 ) -> Result<Ast, anyhow::Error> {
+	let mut need_redo = false;
 	let items = ast
 		.items
 		.into_iter()
@@ -114,7 +119,7 @@ fn resolve_macros(
 					tracing::debug!("Including file {include_path:?}");
 
 					// And parse the ast
-					let ast = self::parse_ast(&include_path, vars, header_unknown, deps)
+					let ast = self::parse_ast(&include_path, vars, macros, header_unknown, deps)
 						.with_context(|| format!("Unable to parse included file {include_path:?}"))?;
 					deps.push(include_path);
 
@@ -138,6 +143,24 @@ fn resolve_macros(
 					),
 				},
 
+				// On `.macro` add the macro
+				// TODO: Allow multiple statement macros
+				"macro" => match macro_.args.as_slice() {
+					[ast::Arg::Ident(mnemonic), args @ ..] => {
+						macros.try_insert(mnemonic.clone(), args.to_vec()).map_err(|err| {
+							anyhow::anyhow!(
+								"Macro {mnemonic:?} already exists (= {:?}), can't replace with {args:?}",
+								err.entry.get()
+							)
+						})?;
+
+						Ok(vec![])
+					},
+
+					args =>
+						anyhow::bail!("Macro `.macro` expected an identifier followed by it's arguments, fond {args:?}"),
+				},
+
 				// On `.header_unknown` set the unknown header
 				"header_unknown" => match macro_.args.as_slice() {
 					&[ast::Arg::Number(value)] => {
@@ -157,19 +180,55 @@ fn resolve_macros(
 					args => anyhow::bail!("Macro `.header_unknown` expected a single number argument, fond {args:?}"),
 				},
 
-				mnemonic => anyhow::bail!("Unknown macro {mnemonic:?}"),
+				// Else check custom macros
+				macro_mnemonic => match macros.get(macro_mnemonic) {
+					Some(macro_insts) => {
+						let macro_args = &macro_.args;
+						macro_insts
+							.split(|arg| matches!(arg, ast::Arg::MacroSep))
+							.map(|macro_insts| match macro_insts {
+								[ast::Arg::Ident(_) | ast::Arg::MacroMnemonic(_), inst_args @ ..] => {
+									let mut inst_args = inst_args
+										.iter()
+										.map(|arg| match arg {
+											&ast::Arg::Arg(idx) =>
+												macro_args.get(idx).context("Missing arguments for macro"),
+											arg => Ok(arg),
+										})
+										.map(|res| res.cloned())
+										.collect::<Result<Vec<_>, _>>()?;
+									self::replace_vars(&mut inst_args, vars)?;
+
+									match &macro_insts[0] {
+										ast::Arg::Ident(mnemonic) => Ok(ast::Item::Inst(ast::Inst {
+											mnemonic: mnemonic.clone(),
+											args:     inst_args,
+										})),
+										ast::Arg::MacroMnemonic(mnemonic) => {
+											need_redo = true;
+											Ok(ast::Item::Macro(ast::Macro {
+												mnemonic: mnemonic.clone(),
+												args:     inst_args,
+											}))
+										},
+										_ => unreachable!(),
+									}
+								},
+
+								args => anyhow::bail!(
+									"Macro `.{macro_mnemonic}` expects a mnemonic identifier per instruction, fond \
+									 {args:?}"
+								),
+							})
+							.collect::<Result<_, _>>()
+					},
+					None => anyhow::bail!("Unknown macro {macro_mnemonic:?}"),
+				},
 			},
 
 			// On other items we replace variables
 			ast::Item::Inst(mut inst) => {
-				for arg in &mut inst.args {
-					if let ast::Arg::Var(var) = arg {
-						*arg = vars
-							.get(var)
-							.with_context(|| format!("Unable to get variable ${var:?}"))?
-							.clone();
-					};
-				}
+				self::replace_vars(&mut inst.args, vars)?;
 
 				Ok(vec![ast::Item::Inst(inst)])
 			},
@@ -178,5 +237,25 @@ fn resolve_macros(
 		.flatten_ok()
 		.collect::<Result<Vec<_>, _>>()?;
 
+	// If we need to redo, do it
+	// TODO: This is awful..., find a better way
+	if need_redo {
+		return self::resolve_macros(Ast { items }, base_path, vars, macros, header_unknown, deps);
+	}
+
 	Ok(Ast { items })
+}
+
+/// Replaces all variables in an instruction's arguments
+fn replace_vars(args: &mut [ast::Arg], vars: &mut HashMap<String, ast::Arg>) -> Result<(), anyhow::Error> {
+	for arg in args {
+		if let ast::Arg::Var(var) = arg {
+			*arg = vars
+				.get(var)
+				.with_context(|| format!("Unable to get variable ${var:?}"))?
+				.clone();
+		};
+	}
+
+	Ok(())
 }
