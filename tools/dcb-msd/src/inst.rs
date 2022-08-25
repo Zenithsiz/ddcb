@@ -345,11 +345,7 @@ impl Inst {
 			// TODO: Return custom type from here?
 			Self::OpenScreen { screen } => ("open_screen", vec![num!(screen)]),
 			Self::ChangeVar { var, op, value } => ("mod_var", vec![num!(op), num!(var), num!(value)]),
-			Self::Test { var, op, value } => match op {
-				3 => ("test_eq", vec![num!(var), num!(value)]),
-				5 => ("test_lt", vec![num!(var), num!(value)]),
-				_ => ("test", vec![num!(op), num!(var), num!(value)]),
-			},
+			Self::Test { var, op, value } => ("test", vec![num!(op), num!(var), num!(value)]),
 
 			Self::Jump { var, addr } => ("jump", vec![num!(var), InstArgFmt::Addr(addr)]),
 			Self::OpenComboBox { combo_box } => ("open_combo_box", vec![num!(combo_box)]),

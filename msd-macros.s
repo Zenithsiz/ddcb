@@ -20,3 +20,6 @@
 
 .macro set_var, mod_var, 0x0, $0, $1
 .macro add_var, mod_var, 0x1, $0, $1
+
+.macro test_eq, test, 0x3, $0, $1
+.macro test_lt, test, 0x5, $0, $1

@@ -171,18 +171,6 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 			value: value.try_into().context("Unable to fit value into a `u16`")?
 		}),
 
-		"test_eq" => number_number_arg!(inst.args, (var, value) => Inst::Test {
-			var: var.try_into().context("Unable to fit variable into a `u16`")?,
-			op: 0x3,
-			value: value.try_into().context("Unable to fit value into a `u16`")?
-		}),
-
-		"test_lt" => number_number_arg!(inst.args, (var, value) => Inst::Test {
-			var: var.try_into().context("Unable to fit variable into a `u16`")?,
-			op: 0x5,
-			value: value.try_into().context("Unable to fit value into a `u16`")?
-		}),
-
 		"test" => number_number_number_arg!(inst.args, (op, var, value) => Inst::Test {
 			var: var.try_into().context("Unable to fit variable into a `u16`")?,
 			op: op.try_into().context("Unable to fit operation into a `u32`")?,
