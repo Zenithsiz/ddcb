@@ -28,7 +28,7 @@ jump 0x153, jump_322
 test_eq 0x115, 0x1
 jump 0x16f, jump_346
 display_scene 0xf, 0x70
-display_location 0xffff
+display_location $location_clear_screen
 start_transition
 test_eq $seen_game_intro, 0x1
 jump 0x3, jump_3
@@ -583,12 +583,12 @@ jump_124:
 	jump 0x18d, goto_map
 
 jump_125:
-display_location 0x0
+display_location $location_player_room
 empty_text_box
 open_screen 0x7
 jump 0x0, jump_0
 jump_126:
-display_location 0x1
+display_location $location_battle_cafe
 empty_text_box
 display_scene 0x7, 0x0
 display_scene 0xf, 0x81
@@ -3866,7 +3866,7 @@ jump_256:
 empty_text_box
 set_var 0x112, 0x1
 display_scene 0xf, 0x7c
-display_location 0x2
+display_location $location_battle_arena
 set_bg_battle_arena
 jump_257:
 test_eq 0x10c, 0x1
@@ -4481,7 +4481,7 @@ jump_298:
 empty_text_box
 set_var 0x113, 0x1
 display_scene 0xf, 0x7c
-display_location 0x2
+display_location $location_battle_arena
 set_bg_battle_arena
 jump_299:
 test_eq 0x10d, 0x1
@@ -4985,7 +4985,7 @@ jump_322:
 empty_text_box
 set_var 0x114, 0x1
 display_scene 0xf, 0x7c
-display_location 0x2
+display_location $location_battle_arena
 set_bg_battle_arena
 jump_323:
 test_eq 0x10d, 0x1
@@ -5489,7 +5489,7 @@ jump_346:
 empty_text_box
 set_var 0x115, 0x1
 display_scene 0xf, 0x7c
-display_location 0x2
+display_location $location_battle_arena
 set_bg_battle_arena
 jump_347:
 test_eq 0x10d, 0x1
