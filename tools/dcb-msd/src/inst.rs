@@ -350,10 +350,8 @@ impl Inst {
 			Self::Jump { var, addr } => ("jump", vec![num!(var), InstArgFmt::Addr(addr)]),
 			Self::OpenComboBox { combo_box } => ("open_combo_box", vec![num!(combo_box)]),
 			Self::DisplayScene { value0, value1 } => ("display_scene", vec![num!(value0), num!(value1)]),
-			Self::SetBuffer { buffer, ref bytes } => match buffer {
-				0x4 => ("set_text_buffer", vec![InstArgFmt::String(bytes.to_owned())]),
-				_ => ("set_buffer", vec![num!(buffer), InstArgFmt::String(bytes.to_owned())]),
-			},
+			Self::SetBuffer { buffer, ref bytes } =>
+				("set_buffer", vec![num!(buffer), InstArgFmt::String(bytes.to_owned())]),
 
 			Self::SetBrightness {
 				kind,

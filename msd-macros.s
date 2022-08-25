@@ -33,3 +33,5 @@
 .macro set_light_right_char, set_light, 0x0, 0x1, $0, 0xa
 
 .macro set_light_unknown, set_light, 0x1, $0, 0xffff, 0xffff
+
+.macro set_text_buffer, set_buffer, 0x4, $0

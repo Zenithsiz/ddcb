@@ -10,81 +10,81 @@ jump 0x4, jump_2
 .test_eq 0x1b, 0x0
 jump 0x3, jump_1
 jump_0:
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Hey, what\'s up? I\'m No.3, the"
+.set_text_buffer "Hey, what\'s up? I\'m No.3, the"
 .start_transition
-set_text_buffer "operator of this Fusion Shop!"
-.start_transition
-.reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
-.start_transition
-set_text_buffer "I know you\'ve heard this"
-.start_transition
-set_text_buffer "all before, but this is"
-.start_transition
-set_text_buffer "part of my program."
+.set_text_buffer "operator of this Fusion Shop!"
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "So, you\'re gonna hear the whole"
+.set_text_buffer "I know you\'ve heard this"
 .start_transition
-set_text_buffer "explanation one more time."
+.set_text_buffer "all before, but this is"
 .start_transition
-.reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
-.start_transition
-set_text_buffer "Card Fusion is a cool system"
-.start_transition
-set_text_buffer "that makes a new Card"
-.start_transition
-set_text_buffer "by combining 2 Cards."
+.set_text_buffer "part of my program."
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "The two Cards you Fuse together"
+.set_text_buffer "So, you\'re gonna hear the whole"
 .start_transition
-set_text_buffer "cease to exist, but you already"
-.start_transition
-set_text_buffer "know that."
+.set_text_buffer "explanation one more time."
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "And Fusion can\'t create"
+.set_text_buffer "Card Fusion is a cool system"
 .start_transition
-set_text_buffer "a Card for which you already"
+.set_text_buffer "that makes a new Card"
 .start_transition
-set_text_buffer "have the maximum number."
-.start_transition
-.reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
-.start_transition
-set_text_buffer "I hope you already know"
-.start_transition
-set_text_buffer "all this, because I\'m not gonna"
-.start_transition
-set_text_buffer "explain it again."
+.set_text_buffer "by combining 2 Cards."
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "You can Fuse any Card"
+.set_text_buffer "The two Cards you Fuse together"
 .start_transition
-set_text_buffer "you want. No fuss!"
+.set_text_buffer "cease to exist, but you already"
 .start_transition
-set_text_buffer "Do what you want."
+.set_text_buffer "know that."
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "You can also do"
+.set_text_buffer "And Fusion can\'t create"
 .start_transition
-set_text_buffer "Partner Fusion."
+.set_text_buffer "a Card for which you already"
 .start_transition
-set_text_buffer "Isn\'t that cool?"
+.set_text_buffer "have the maximum number."
+.start_transition
+.reset_choose_partner
+.set_text_buffer "*c4Andromon No.3*c7"
+.start_transition
+.set_text_buffer "I hope you already know"
+.start_transition
+.set_text_buffer "all this, because I\'m not gonna"
+.start_transition
+.set_text_buffer "explain it again."
+.start_transition
+.reset_choose_partner
+.set_text_buffer "*c4Andromon No.3*c7"
+.start_transition
+.set_text_buffer "You can Fuse any Card"
+.start_transition
+.set_text_buffer "you want. No fuss!"
+.start_transition
+.set_text_buffer "Do what you want."
+.start_transition
+.reset_choose_partner
+.set_text_buffer "*c4Andromon No.3*c7"
+.start_transition
+.set_text_buffer "You can also do"
+.start_transition
+.set_text_buffer "Partner Fusion."
+.start_transition
+.set_text_buffer "Isn\'t that cool?"
 .start_transition
 .reset_choose_partner
 .set_var 0x1d, 0x1
@@ -92,95 +92,95 @@ jump 0x5, jump_3
 jump_1:
 .test_eq 0x18, 0x1
 jump 0x2, jump_0
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Hey, what\'s up? I\'m No.3, the"
+.set_text_buffer "Hey, what\'s up? I\'m No.3, the"
 .start_transition
-set_text_buffer "operator of this Fusion Shop!"
-.start_transition
-.reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
-.start_transition
-set_text_buffer "Hey! Don\'t tell me you\'ve"
-.start_transition
-set_text_buffer "made it here and never been to"
-.start_transition
-set_text_buffer "a Fusion Shop! No way!"
+.set_text_buffer "operator of this Fusion Shop!"
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "OK. I\'ll be nice."
+.set_text_buffer "Hey! Don\'t tell me you\'ve"
 .start_transition
-set_text_buffer "I\'ll tell you what you need"
+.set_text_buffer "made it here and never been to"
 .start_transition
-set_text_buffer "to know about Fusion!"
-.start_transition
-.reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
-.start_transition
-set_text_buffer "Card Fusion is a cool system"
-.start_transition
-set_text_buffer "that makes a new Card"
-.start_transition
-set_text_buffer "by combining 2 Cards."
+.set_text_buffer "a Fusion Shop! No way!"
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "But the Cards you use in"
+.set_text_buffer "OK. I\'ll be nice."
 .start_transition
-set_text_buffer "Fusion are discarded."
+.set_text_buffer "I\'ll tell you what you need"
 .start_transition
-set_text_buffer "That\'s just the way it is."
-.start_transition
-.reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
-.start_transition
-set_text_buffer "And Fusion can\'t create a Card"
-.start_transition
-set_text_buffer "for which  you already have"
-.start_transition
-set_text_buffer "the maximum number."
+.set_text_buffer "to know about Fusion!"
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "That\'s what Fusion is all about."
+.set_text_buffer "Card Fusion is a cool system"
 .start_transition
-set_text_buffer "I won\'t tell you what you can"
+.set_text_buffer "that makes a new Card"
 .start_transition
-set_text_buffer "or can\'t do."
-.start_transition
-.reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
-.start_transition
-set_text_buffer "You can Fuse whatever Cards"
-.start_transition
-set_text_buffer "you want to. No fuss!"
-.start_transition
-set_text_buffer "Just do as you like."
+.set_text_buffer "by combining 2 Cards."
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Get your Partner\'s Rank up"
+.set_text_buffer "But the Cards you use in"
 .start_transition
-set_text_buffer "by using Partner Fusion."
+.set_text_buffer "Fusion are discarded."
 .start_transition
-set_text_buffer "This is pretty cool too."
+.set_text_buffer "That\'s just the way it is."
+.start_transition
+.reset_choose_partner
+.set_text_buffer "*c4Andromon No.3*c7"
+.start_transition
+.set_text_buffer "And Fusion can\'t create a Card"
+.start_transition
+.set_text_buffer "for which  you already have"
+.start_transition
+.set_text_buffer "the maximum number."
+.start_transition
+.reset_choose_partner
+.set_text_buffer "*c4Andromon No.3*c7"
+.start_transition
+.set_text_buffer "That\'s what Fusion is all about."
+.start_transition
+.set_text_buffer "I won\'t tell you what you can"
+.start_transition
+.set_text_buffer "or can\'t do."
+.start_transition
+.reset_choose_partner
+.set_text_buffer "*c4Andromon No.3*c7"
+.start_transition
+.set_text_buffer "You can Fuse whatever Cards"
+.start_transition
+.set_text_buffer "you want to. No fuss!"
+.start_transition
+.set_text_buffer "Just do as you like."
+.start_transition
+.reset_choose_partner
+.set_text_buffer "*c4Andromon No.3*c7"
+.start_transition
+.set_text_buffer "Get your Partner\'s Rank up"
+.start_transition
+.set_text_buffer "by using Partner Fusion."
+.start_transition
+.set_text_buffer "This is pretty cool too."
 .start_transition
 .reset_choose_partner
 .set_var 0x1d, 0x1
 jump 0x5, jump_3
 jump_2:
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Hey, what\'s up? You can Fuse"
+.set_text_buffer "Hey, what\'s up? You can Fuse"
 .start_transition
-set_text_buffer "whatever  Cards you want to."
+.set_text_buffer "whatever  Cards you want to."
 .start_transition
-set_text_buffer "Just do as you like."
+.set_text_buffer "Just do as you like."
 .start_transition
 .reset_choose_partner
 jump_3:
@@ -190,20 +190,20 @@ jump 0x7, jump_5
 jump 0x6, jump_4
 jump 0x7, jump_5
 jump_4:
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Wow! You have the data for"
+.set_text_buffer "Wow! You have the data for"
 .start_transition
-set_text_buffer "Special Fusion!"
+.set_text_buffer "Special Fusion!"
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "With this data, you can tell"
+.set_text_buffer "With this data, you can tell"
 .start_transition
-set_text_buffer "when a Special Fusion is"
+.set_text_buffer "when a Special Fusion is"
 .start_transition
-set_text_buffer "about to happen."
+.set_text_buffer "about to happen."
 .start_transition
 .reset_choose_partner
 .set_var 0x16, 0x1
@@ -216,20 +216,20 @@ jump 0xa, jump_8
 jump 0x8, jump_6
 jump 0xa, jump_8
 jump_6:
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Hey! Is that the Fusion Mutation"
+.set_text_buffer "Hey! Is that the Fusion Mutation"
 .start_transition
-set_text_buffer "Prediction Data?"
+.set_text_buffer "Prediction Data?"
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Sweet. With this data you\'ll"
+.set_text_buffer "Sweet. With this data you\'ll"
 .start_transition
-set_text_buffer "know Fusion Mutation will occur"
+.set_text_buffer "know Fusion Mutation will occur"
 .start_transition
-set_text_buffer "before it happens."
+.set_text_buffer "before it happens."
 .start_transition
 .reset_choose_partner
 .set_var 0x17, 0x1
@@ -237,28 +237,28 @@ jump 0xa, jump_8
 jump_7:
 .test_eq 0x17, 0x1
 jump 0xa, jump_8
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Wow! You\'ve got the Fusion"
+.set_text_buffer "Wow! You\'ve got the Fusion"
 .start_transition
-set_text_buffer "Mutation Prediction Data, too?"
+.set_text_buffer "Mutation Prediction Data, too?"
 .start_transition
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "With this data, you\'ll know when"
+.set_text_buffer "With this data, you\'ll know when"
 .start_transition
-set_text_buffer "a Fusion Mutation is about"
+.set_text_buffer "a Fusion Mutation is about"
 .start_transition
-set_text_buffer "to happen."
+.set_text_buffer "to happen."
 .start_transition
 .reset_choose_partner
 .set_var 0x17, 0x1
 jump 0xa, jump_8
 jump_8:
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "OK, let\'s get started!"
+.set_text_buffer "OK, let\'s get started!"
 .start_transition
 .reset_choose_partner
 jump_9:
@@ -278,11 +278,11 @@ jump_12:
 .display_text_buffer
 jump_13:
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Choose Card Fusion or"
+.set_text_buffer "Choose Card Fusion or"
 .start_transition
-set_text_buffer "Partner Fusion."
+.set_text_buffer "Partner Fusion."
 .start_transition
 jump_14:
 .combo_box_await
@@ -293,11 +293,11 @@ jump 0x11, jump_15
 jump 0x10, jump_14
 jump_15:
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Are you telling me you\'re "
+.set_text_buffer "Are you telling me you\'re "
 .start_transition
-set_text_buffer "leaving my shop already?"
+.set_text_buffer "leaving my shop already?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
@@ -320,11 +320,11 @@ jump 0x13, jump_17
 jump_17:
 open_screen 0x8
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Which Partner"
+.set_text_buffer "Which Partner"
 .start_transition
-set_text_buffer "do you want to use?"
+.set_text_buffer "do you want to use?"
 .start_transition
 jump_18:
 .combo_box_await
@@ -340,9 +340,9 @@ jump_20:
 open_screen 0xa
 jump_21:
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Which Card do you want to use?"
+.set_text_buffer "Which Card do you want to use?"
 .start_transition
 jump_22:
 .combo_box_await
@@ -356,11 +356,11 @@ open_screen 0xd
 jump 0x13, jump_17
 jump_24:
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Are you sure you want to Fuse"
+.set_text_buffer "Are you sure you want to Fuse"
 .start_transition
-set_text_buffer "these 2 Cards?"
+.set_text_buffer "these 2 Cards?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
@@ -388,11 +388,11 @@ jump_27:
 .set_var 0x12, 0xffffffff
 display_scene 0x5, 0x9
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "This is too cool!"
+.set_text_buffer "This is too cool!"
 .start_transition
-set_text_buffer "You got yourself a Digi-Part!"
+.set_text_buffer "You got yourself a Digi-Part!"
 .start_transition
 .reset_choose_partner
 display_scene 0x7, 0x1
@@ -400,24 +400,24 @@ jump 0x17, jump_21
 jump_28:
 .set_bg_battle_arena
 display_scene 0x5, 0x9
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Awesome!"
+.set_text_buffer "Awesome!"
 .start_transition
-set_text_buffer "Your Partner\'s Rank has gone up!"
+.set_text_buffer "Your Partner\'s Rank has gone up!"
 .start_transition
 .reset_choose_partner
 jump 0x1c, jump_26
 jump_29:
 .set_bg_battle_arena
 display_scene 0x5, 0x9
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Your Partner\'s Rank has gone up!"
+.set_text_buffer "Your Partner\'s Rank has gone up!"
 .start_transition
-set_text_buffer "And you got yourself"
+.set_text_buffer "And you got yourself"
 .start_transition
-set_text_buffer "a Digi-Part too!"
+.set_text_buffer "a Digi-Part too!"
 .start_transition
 .reset_choose_partner
 jump 0x1c, jump_26
@@ -425,11 +425,11 @@ jump_30:
 .set_var 0x12, 0xffffffff
 .set_bg_battle_arena
 display_scene 0x5, 0x9
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Your Partner\'s Experience Points"
+.set_text_buffer "Your Partner\'s Experience Points"
 .start_transition
-set_text_buffer "have gone up!"
+.set_text_buffer "have gone up!"
 .start_transition
 .reset_choose_partner
 display_scene 0x7, 0x2
@@ -441,11 +441,11 @@ jump_32:
 open_combo_box 0x0
 .display_center_text_box
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Alright!"
+.set_text_buffer "Alright!"
 .start_transition
-set_text_buffer "Pick your first Card."
+.set_text_buffer "Pick your first Card."
 .start_transition
 jump_33:
 .combo_box_await
@@ -466,9 +466,9 @@ combo_box_add_button 0x0
 open_combo_box 0x1
 jump_37:
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Now, pick your second Card."
+.set_text_buffer "Now, pick your second Card."
 .start_transition
 open_screen 0xe
 jump_38:
@@ -494,13 +494,13 @@ jump 0x2d, jump_42
 jump 0x2e, jump_43
 jump_41:
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Sorry! This will"
+.set_text_buffer "Sorry! This will"
 .start_transition
-set_text_buffer "create a Card you\'ve"
+.set_text_buffer "create a Card you\'ve"
 .start_transition
-set_text_buffer "already maxed out!"
+.set_text_buffer "already maxed out!"
 .start_transition
 .reset_choose_partner
 .display_location 0x1
@@ -509,11 +509,11 @@ open_screen 0x14
 jump 0x28, jump_37
 jump_42:
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "This looks like it\'s going to"
+.set_text_buffer "This looks like it\'s going to"
 .start_transition
-set_text_buffer "be a Special Fusion!"
+.set_text_buffer "be a Special Fusion!"
 .start_transition
 jump 0x31, jump_46
 jump_43:
@@ -524,30 +524,30 @@ jump 0x2f, jump_44
 jump 0x30, jump_45
 jump_44:
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Darn! This looks like it\'s going"
+.set_text_buffer "Darn! This looks like it\'s going"
 .start_transition
-set_text_buffer "to cause a Fusion Mutation!"
+.set_text_buffer "to cause a Fusion Mutation!"
 .start_transition
 jump 0x31, jump_46
 jump_45:
 .set_bg_battle_arena
 display_scene 0x5, 0xa
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Far out! You\'re gonna get"
+.set_text_buffer "Far out! You\'re gonna get"
 .start_transition
-set_text_buffer "a(n) *c6*h1 Card*c7."
+.set_text_buffer "a(n) *c6*h1 Card*c7."
 .start_transition
 jump 0x31, jump_46
 jump_46:
 .reset_choose_partner
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Hey, so you want to Fuse"
+.set_text_buffer "Hey, so you want to Fuse"
 .start_transition
-set_text_buffer "these 2 Cards?"
+.set_text_buffer "these 2 Cards?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
@@ -562,11 +562,11 @@ jump_47:
 .reset_game_completion
 display_scene 0x5, 0x9
 .set_bg_battle_arena
-set_text_buffer "*c4Andromon No.3*c7"
+.set_text_buffer "*c4Andromon No.3*c7"
 .start_transition
-set_text_buffer "Far out! You got"
+.set_text_buffer "Far out! You got"
 .start_transition
-set_text_buffer "a(n) *c5*h1 Card*c7!"
+.set_text_buffer "a(n) *c5*h1 Card*c7!"
 .start_transition
 jump_48:
 .combo_box_await

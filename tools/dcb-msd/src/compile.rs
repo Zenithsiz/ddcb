@@ -121,7 +121,7 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 	}
 
 	// Macro to create a branch for a 1-argument string instructions
-	macro string_arg($args:expr, $arg:ident => $inst:expr) {
+	macro _string_arg($args:expr, $arg:ident => $inst:expr) {
 		one_arg!($args, arg => match arg {
 			ast::Arg::String($arg) => inst!($inst),
 			arg => anyhow::bail!("Expected a string argument, found {arg:?}"),
@@ -198,10 +198,6 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 			value1: value1.try_into().context("Unable to fit value1 into a `u16`")?,
 		}),
 
-		"set_text_buffer" => string_arg!(inst.args, bytes => Inst::SetBuffer {
-			buffer: 0x4,
-			bytes: SHIFT_JIS.encode(&bytes).0.into_owned(),
-		}),
 		"set_buffer" => number_string_arg!(inst.args, (buffer, bytes) => Inst::SetBuffer {
 			buffer: buffer.try_into().context("Unable to fit buffer into a `u16`")?,
 			bytes: SHIFT_JIS.encode(&bytes).0.into_owned(),
