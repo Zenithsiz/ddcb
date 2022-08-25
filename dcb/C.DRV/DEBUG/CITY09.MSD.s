@@ -514,10 +514,10 @@ jump 0x13f, jump_303
 .display_text_buffer
 .set_text_buffer "*c5Push *c7*b1*c5 to go to map."
 .display_text_buffer
-open_combo_box 0x78
-combo_box_add_button 0x2
-combo_box_add_button 0x3
-combo_box_add_button 0x1
+.open_combo_box 0x78
+.combo_box_add_button 0x2
+.combo_box_add_button 0x3
+.combo_box_add_button 0x1
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x7c, jump_123
@@ -619,18 +619,18 @@ jump_133:
 .display_text_buffer
 .test_eq 0xcc, 0x1
 jump 0x8a, jump_134
-open_combo_box 0x61
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x8f, jump_139
 .test_eq 0x1, 0xffffffff
 jump 0x88, jump_132
 jump_134:
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x8b, jump_135
@@ -662,9 +662,9 @@ jump_136:
 .display_text_buffer
 .set_text_buffer "Got it?! "
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x8d, jump_137
@@ -773,18 +773,18 @@ jump_140:
 .display_text_buffer
 .test_eq 0xcc, 0x1
 jump 0x91, jump_141
-open_combo_box 0x61
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x96, jump_146
 .test_eq 0x1, 0xffffffff
 jump 0x88, jump_132
 jump_141:
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x92, jump_142
@@ -876,9 +876,9 @@ jump_143:
 .display_text_buffer
 .set_text_buffer "He he he he he..."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x94, jump_144
@@ -1094,9 +1094,9 @@ jump_148:
 .display_text_buffer
 .test_eq 0xcc, 0x1
 jump 0x99, jump_149
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x9a, jump_150
@@ -1105,10 +1105,10 @@ jump 0xa0, jump_156
 .test_eq 0x1, 0xffffffff
 jump 0x88, jump_132
 jump_149:
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x9a, jump_150
@@ -1192,9 +1192,9 @@ jump_153:
 .display_text_buffer
 .set_text_buffer "You still haven\'t learned your lesson?"
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x9e, jump_154
@@ -1349,9 +1349,9 @@ jump_158:
 .display_text_buffer
 .test_eq 0xcd, 0x1
 jump 0xa3, jump_159
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xa4, jump_160
@@ -1360,10 +1360,10 @@ jump 0xa9, jump_165
 .test_eq 0x1, 0xffffffff
 jump 0x88, jump_132
 jump_159:
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xa4, jump_160
@@ -1423,9 +1423,9 @@ jump_162:
 .display_text_buffer
 .set_text_buffer "Growl, growl..."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xa7, jump_163
@@ -1610,10 +1610,10 @@ jump_167:
 .empty_text_box
 .set_text_buffer "Pick a Menu Option."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xac, jump_168
@@ -1645,9 +1645,9 @@ jump_169:
 .display_text_buffer
 .set_text_buffer "I just knew it."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xae, jump_170
@@ -2066,9 +2066,9 @@ jump_188:
 .display_text_buffer
 .test_eq 0xd5, 0x1
 jump 0xc2, jump_189
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xc3, jump_190
@@ -2077,10 +2077,10 @@ jump 0xdd, jump_215
 .test_eq 0x1, 0xffffffff
 jump 0x88, jump_132
 jump_189:
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xc3, jump_190
@@ -2258,9 +2258,9 @@ jump_203:
 .display_text_buffer
 .set_text_buffer "take you head-on. Are you ready?"
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xd2, jump_204
@@ -2511,10 +2511,10 @@ display_scene 0xf, 0x80
 .display_text_buffer
 .test_eq 0x167, 0x1
 jump 0xdf, jump_217
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xe0, jump_218
@@ -2525,9 +2525,9 @@ jump 0xed, jump_230
 .test_eq 0x1, 0xffffffff
 jump 0x88, jump_132
 jump_217:
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xe0, jump_218
@@ -2594,9 +2594,9 @@ jump_220:
 .display_text_buffer
 .set_text_buffer "Do you think you can beat me?"
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xe3, jump_221
@@ -2827,10 +2827,10 @@ jump_232:
 .empty_text_box
 .set_text_buffer "Pick a Menu Option."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xf0, jump_233
@@ -2860,9 +2860,9 @@ jump_234:
 .display_text_buffer
 .set_text_buffer "Let\'s start!"
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xf2, jump_235
@@ -3051,10 +3051,10 @@ jump_240:
 .display_text_buffer
 .test_eq 0x15e, 0x1
 jump 0xf8, jump_241
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xf9, jump_242
@@ -3065,9 +3065,9 @@ jump 0xff, jump_248
 .test_eq 0x1, 0xffffffff
 jump 0x88, jump_132
 jump_241:
-open_combo_box 0x61
-combo_box_add_button 0xc
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xc
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xf9, jump_242
@@ -3123,9 +3123,9 @@ jump_244:
 .display_text_buffer
 .set_text_buffer "Come on. Let\'s begin!"
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0xfc, jump_245
@@ -3275,9 +3275,9 @@ jump_250:
 .display_text_buffer
 .set_text_buffer "enter Battle Arena?"
 .display_text_buffer
-open_combo_box 0x78
-combo_box_add_button 0x8
-combo_box_add_button 0x9
+.open_combo_box 0x78
+.combo_box_add_button 0x8
+.combo_box_add_button 0x9
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x104, jump_251
@@ -3341,9 +3341,9 @@ jump_253:
 .empty_text_box
 .set_text_buffer "Pick a Menu Option."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x108, jump_254
@@ -3361,9 +3361,9 @@ jump_254:
 .display_text_buffer
 .set_text_buffer "I\'ll win. You\'ll lose."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x109, jump_255
@@ -3542,9 +3542,9 @@ jump_259:
 .empty_text_box
 .set_text_buffer "Pick a Menu Option."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x10f, jump_260
@@ -3562,9 +3562,9 @@ jump_260:
 .display_text_buffer
 .set_text_buffer "He he he he he..."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x110, jump_261
@@ -3733,9 +3733,9 @@ jump_265:
 .empty_text_box
 .set_text_buffer "Pick a Menu Option."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x116, jump_266
@@ -3751,9 +3751,9 @@ jump_266:
 .display_text_buffer
 .set_text_buffer "Do you still want to play a match?"
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x117, jump_267
@@ -3971,9 +3971,9 @@ jump_270:
 .display_text_buffer
 .set_text_buffer "leave the Arena?"
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x11c, jump_271
@@ -3998,9 +3998,9 @@ jump_273:
 .display_text_buffer
 .set_text_buffer "enter Battle Arena?"
 .display_text_buffer
-open_combo_box 0x78
-combo_box_add_button 0x8
-combo_box_add_button 0x9
+.open_combo_box 0x78
+.combo_box_add_button 0x8
+.combo_box_add_button 0x9
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x120, jump_274
@@ -4034,9 +4034,9 @@ jump_276:
 .empty_text_box
 .set_text_buffer "Pick a Menu Option."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x124, jump_277
@@ -4054,9 +4054,9 @@ jump_277:
 .display_text_buffer
 .set_text_buffer "Got it?"
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x125, jump_278
@@ -4175,9 +4175,9 @@ jump_282:
 .empty_text_box
 .set_text_buffer "Pick a Menu Option."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x12a, jump_283
@@ -4195,9 +4195,9 @@ jump_283:
 .display_text_buffer
 .set_text_buffer "He he he he he..."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x12b, jump_284
@@ -4325,9 +4325,9 @@ jump_288:
 .empty_text_box
 .set_text_buffer "Pick a Menu Option."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0xd
-combo_box_add_button 0xe
+.open_combo_box 0x61
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x130, jump_289
@@ -4345,9 +4345,9 @@ jump_289:
 .display_text_buffer
 .set_text_buffer "still haven\'t learned your lesson, huh?"
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x131, jump_290
@@ -4499,10 +4499,10 @@ jump_294:
 .empty_text_box
 .set_text_buffer "Pick a Menu Option."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0xd
-combo_box_add_button 0xe
-combo_box_add_button 0xf
+.open_combo_box 0x61
+.combo_box_add_button 0xd
+.combo_box_add_button 0xe
+.combo_box_add_button 0xf
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x137, jump_295
@@ -4520,9 +4520,9 @@ jump_295:
 .display_text_buffer
 .set_text_buffer "Growl...growl..."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x138, jump_296
@@ -4679,9 +4679,9 @@ jump_301:
 .display_text_buffer
 .set_text_buffer "leave the Arena?"
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x10
-combo_box_add_button 0x11
+.open_combo_box 0x61
+.combo_box_add_button 0x10
+.combo_box_add_button 0x11
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x13e, jump_302
@@ -4694,10 +4694,10 @@ jump_303:
 .empty_text_box
 .set_text_buffer "Pick a Menu Option."
 .display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x12
-combo_box_add_button 0x13
-combo_box_add_button 0xf
+.open_combo_box 0x61
+.combo_box_add_button 0x12
+.combo_box_add_button 0x13
+.combo_box_add_button 0xf
 .combo_box_await
 .test_eq 0x1, 0x1
 jump 0x141, jump_305

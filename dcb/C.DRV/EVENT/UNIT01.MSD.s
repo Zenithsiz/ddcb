@@ -535,7 +535,7 @@ jump 0x16, jump_19
 jump_33:
 .empty_text_box
 jump_34:
-open_combo_box 0x0
+.open_combo_box 0x0
 .display_center_text_box
 .set_bg_battle_arena
 .set_text_buffer "*c4Andromon No.2*c7"
@@ -557,8 +557,8 @@ jump_37:
 jump 0xe, jump_11
 jump 0x29, jump_37
 jump_38:
-combo_box_add_button 0x0
-open_combo_box 0x1
+.combo_box_add_button 0x0
+.open_combo_box 0x1
 jump_39:
 .set_bg_battle_arena
 .set_text_buffer "*c4Andromon No.2*c7"
@@ -578,8 +578,8 @@ jump 0x2c, jump_40
 jump_41:
 .display_location 0x0
 open_screen 0xf
-combo_box_add_button 0x1
-open_combo_box 0x0
+.combo_box_add_button 0x1
+.open_combo_box 0x0
 jump 0x26, jump_34
 jump_42:
 .test_eq 0xb, 0xffffffff

@@ -71,15 +71,6 @@ pub enum Inst {
 		addr: u32,
 	},
 
-	/// Opens a combo box
-	OpenComboBox { combo_box: u16 },
-
-	/// Adds a combo box button
-	AddComboBoxButton {
-		/// The button value
-		value: u16,
-	},
-
 	/// Display scene
 	// TODO: Figure out
 	DisplayScene {
@@ -198,36 +189,14 @@ impl Inst {
 			},
 
 			// ???
-			0x0b => match read_u16!(0x2..0x4)? {
-				// Open combo box
-				0x0 => {
-					if read_u16!(0x4..0x6)? != 0x0 {
-						return None;
-					}
-					let combo_box = read_u16!(0x6..0x8)?;
+			0x0b => {
+				let value0 = read_u16!(0x2..0x4)?;
+				if bytes.get(0x4..0x6)? != [0x0, 0x0] {
+					return None;
+				}
+				let value1 = read_u16!(0x6..0x8)?;
 
-					Self::OpenComboBox { combo_box }
-				},
-
-				// Add combo box button
-				0x1 => {
-					if bytes.get(0x4..0x6)? != [0x0, 0x0] {
-						return None;
-					}
-					let value = read_u16!(0x6..0x8)?;
-
-					Self::AddComboBoxButton { value }
-				},
-
-				// Display scene?
-				value0 => {
-					if bytes.get(0x4..0x6)? != [0x0, 0x0] {
-						return None;
-					}
-					let value1 = read_u16!(0x6..0x8)?;
-
-					Self::DisplayScene { value0, value1 }
-				},
+				Self::DisplayScene { value0, value1 }
 			},
 
 			// Set brightness
@@ -282,16 +251,6 @@ impl Inst {
 				f.write_all(&[0x5, 0x0])?;
 				f.write_all(&var.to_le_bytes())?;
 				f.write_all(&addr.to_le_bytes())?;
-			},
-			Self::OpenComboBox { combo_box } => {
-				f.write_all(&[0xb, 0x0, 0x0, 0x0])?;
-				f.write_all(&[0x0, 0x0])?;
-				f.write_all(&combo_box.to_le_bytes())?;
-			},
-			Self::AddComboBoxButton { value } => {
-				f.write_all(&[0xb, 0x0, 0x1, 0x0])?;
-				f.write_all(&[0x0, 0x0])?;
-				f.write_all(&value.to_le_bytes())?;
 			},
 			Self::DisplayScene { value0, value1 } => {
 				f.write_all(&[0xb, 0x0])?;
@@ -348,7 +307,6 @@ impl Inst {
 			Self::Test { var, op, value } => ("test", vec![num!(op), num!(var), num!(value)]),
 
 			Self::Jump { var, addr } => ("jump", vec![num!(var), InstArgFmt::Addr(addr)]),
-			Self::OpenComboBox { combo_box } => ("open_combo_box", vec![num!(combo_box)]),
 			Self::DisplayScene { value0, value1 } => ("display_scene", vec![num!(value0), num!(value1)]),
 			Self::SetBuffer { buffer, ref bytes } =>
 				("set_buffer", vec![num!(buffer), InstArgFmt::String(bytes.to_owned())]),
@@ -364,7 +322,6 @@ impl Inst {
 				num!(brightness),
 				num!(value),
 			]),
-			Self::AddComboBoxButton { value } => ("combo_box_add_button", vec![num!(value)]),
 			Self::Unknown { value } => ("unknown", vec![num!(value)]),
 		};
 
@@ -384,8 +341,6 @@ impl Inst {
 			Self::ChangeVar { .. } => 0xc,
 			Self::Test { .. } => 0xc,
 			Self::Jump { .. } => 8,
-			Self::OpenComboBox { .. } => 8,
-			Self::AddComboBoxButton { .. } => 8,
 			Self::DisplayScene { .. } => 8,
 			Self::SetBuffer { bytes, .. } => {
 				let len = u32::try_from(bytes.len()).expect("Bytes length didn't fit into a `u32`") + 2;

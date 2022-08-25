@@ -189,10 +189,6 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 			arg => anyhow::bail!("Expected number and number/label argument, found {arg:?}"),
 		}),
 
-		"open_combo_box" => number_arg!(inst.args, combo_box => Inst::OpenComboBox {
-			combo_box: combo_box.try_into().context("Unable to fit combo box into a `u16`")?
-		}),
-
 		"display_scene" => number_number_arg!(inst.args, (value0, value1) => Inst::DisplayScene {
 			value0: value0.try_into().context("Unable to fit value0 into a `u16`")?,
 			value1: value1.try_into().context("Unable to fit value1 into a `u16`")?,
@@ -210,10 +206,6 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 				brightness: brightness.try_into().context("Unable to fit brightness into a `u16`")?,
 				value: value.try_into().context("Unable to fit value into a `u16`")?,
 			}),
-
-		"combo_box_add_button" => number_arg!(inst.args, value => Inst::AddComboBoxButton {
-			value: value.try_into().context("Unable to fit value into a `u16`")?
-		}),
 
 		"unknown" => number_arg!(inst.args, value => Inst::Unknown {
 			value: value.try_into().context("Unable to fit value into a `u32`")?

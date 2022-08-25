@@ -35,3 +35,6 @@
 .macro set_light_unknown, set_light, 0x1, $0, 0xffff, 0xffff
 
 .macro set_text_buffer, set_buffer, 0x4, $0
+
+.macro open_combo_box      , display_scene, 0x0, $0
+.macro combo_box_add_button, display_scene, 0x1, $0

@@ -218,12 +218,12 @@ jump_2:
 .combo_box_await
 test 0x0, 0x2, 0x4
 jump 0x2, jump_2
-combo_box_add_button 0x0
+.combo_box_add_button 0x0
 jump_3:
 .combo_box_await
 test 0x0, 0x2, 0x8
 jump 0x3, jump_3
-open_combo_box 0x1e
+.open_combo_box 0x1e
 .battle 0x4
 set_buffer 0x0, "Next, I pick a Digimon to battle with.\\nIt will go into the Battle Slot."
 .start_transition
@@ -232,29 +232,29 @@ display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x1f0000
 unknown 0x10000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x200000
 unknown 0x20000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x210000
 unknown 0x30000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 .battle 0x4
 set_light 0x0, 0xf5, 0x9d, 0x0
 set_buffer 0x0, "It\'s best to start with *e3 Cards.\\nStarting off with Level *e4 or *e5 Cards\\ncauses Digimon to malfunction."
 .start_transition
 .empty_text_box
 display_scene 0x5, 0x1
-combo_box_add_button 0x21
+.combo_box_add_button 0x21
 jump_4:
 .combo_box_await
 test 0x0, 0x2, 0xb
@@ -279,27 +279,27 @@ display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x1f0000
 unknown 0x10000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "DP are gained every time you insert\\na Card. For example, this is 10 DP."
 .start_transition
 display_scene 0x5, 0x1
-combo_box_add_button 0x1f
+.combo_box_add_button 0x1f
 jump_5:
 .combo_box_await
 test 0x0, 0x2, 0xe
 jump 0x5, jump_5
 .wait_input
-combo_box_add_button 0xffff
+.combo_box_add_button 0xffff
 jump_6:
 .combo_box_await
 test 0x0, 0x2, 0x13
 jump 0x6, jump_6
-combo_box_add_button 0xffff
+.combo_box_add_button 0xffff
 jump_7:
 .combo_box_await
 test 0x0, 0x2, 0x17
@@ -310,7 +310,7 @@ display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_light 0x0, 0xa2, 0xad, 0xc
 set_buffer 0x0, "As soon as there are enough DP,\\nI can digivolve my Digimon.\\nBut there aren\'t enough DP yet."
 .start_transition
@@ -380,22 +380,22 @@ unknown 0x0
 unknown 0x2000c
 unknown 0x0
 unknown 0x80000
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x10000
 unknown 0x10000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x20000
 unknown 0x20000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x30000
 unknown 0x30000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_light 0x0, 0x92, 0xb1, 0x24
 set_buffer 0x0, "I think you should keep this Hand.\\nLook, you have a Level *e3 Card!"
 .start_transition
@@ -432,12 +432,12 @@ display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x0
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x10000
 unknown 0x10000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "You should use this Card,\\nbecause it\'s a Level *e3 Card."
 .start_transition
 set_buffer 0x0, "Press *b2 to use that Card."
@@ -479,17 +479,17 @@ display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x0
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x20000
 unknown 0x20000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x30000
 unknown 0x30000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "This is a good one."
 .start_transition
 set_buffer 0x0, "You can collect 30 DP with this.\\nChoose the MoriShellmon Card and press\\n*b2 to place it in the DP Slot."
@@ -517,7 +517,7 @@ jump_23:
 .combo_box_await
 test 0x0, 0x2, 0xe
 jump 0x17, jump_23
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "Like I told you before,\\nif you have enough DP, you can\\ndigivolve your Digimon now."
 .start_transition
 set_light 0x0, 0x6f, 0x95, 0x40
@@ -570,9 +570,9 @@ set_buffer 0x0, "For example, <*b0 to 0>\\nmeans the Opponent\'s *b0 Attack Powe
 set_buffer 0x0, "Check out the Special Effect\\nDescriptions by pressing the START\\nbutton, then *b2 in the menu."
 .start_transition
 .empty_text_box
-combo_box_add_button 0x1
+.combo_box_add_button 0x1
 .combo_box_await
-open_combo_box 0x3c
+.open_combo_box 0x3c
 set_buffer 0x0, "At this point, nobody knows which\\nAttack the other player has chosen.\\nIsn\'t this exciting?"
 .start_transition
 set_buffer 0x0, "*p, go ahead and choose an Attack.\\nWhat? You can\'t decide?"
@@ -614,15 +614,15 @@ display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x200000
 unknown 0x20000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "I think I\'ll go with this Card."
 .start_transition
-combo_box_add_button 0x20
+.combo_box_add_button 0x20
 .wait_input
 display_scene 0x5, 0x1
 jump_29:
@@ -641,7 +641,7 @@ display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x0
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_light 0x0, 0xe0, 0x3f, 0x3a
 set_buffer 0x0, "Here, Digimon Cards display their\\nSupport Effects. If you use this Card,\\nyou can boost your Attack Power by +200."
 .start_transition
@@ -650,7 +650,7 @@ unknown 0x3000c
 unknown 0x20000
 unknown 0x20000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_light 0x0, 0xe0, 0x3f, 0x3a
 set_buffer 0x0, "This Attack Option Card\\ncan only be used as a Support Card.\\nThis Card recovers your HP by +300."
 .start_transition
@@ -659,21 +659,21 @@ unknown 0x3000c
 unknown 0x0
 unknown 0x0
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x20000
 unknown 0x20000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x0
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x20000
 unknown 0x20000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "You can use either Card for Support,\\nbut remember, you can only use\\neach Card once."
 .start_transition
 set_buffer 0x0, "Remember, Digimon Cards can be used to\\ndigivolve later, or to add to your DP."
@@ -682,7 +682,7 @@ unknown 0x3000c
 unknown 0x200000
 unknown 0x70000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 .set_var 0x8, 0xaa
 set_buffer 0x0, "By the way, you can check your Opponent\'s\\nHand and his Support Card."
 .start_transition
@@ -750,7 +750,7 @@ jump_36:
 test 0x0, 0x2, 0x4
 jump 0x24, jump_36
 .battle 0x6
-combo_box_add_button 0x0
+.combo_box_add_button 0x0
 set_buffer 0x0, "Since my Digimon is already in the Battle\\nSlot, I don\'t have to do anything here.\\nThis Phase is done."
 .start_transition
 jump_37:
@@ -770,30 +770,30 @@ display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x220000
 unknown 0x10000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x230000
 unknown 0x20000
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x240000
 unknown 0x30000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 display_scene 0x5, 0x1
-combo_box_add_button 0x24
+.combo_box_add_button 0x24
 .set_var 0x9, 0xffffffff
 jump_38:
 .combo_box_await
 test 0x0, 0x2, 0xe
 jump 0x26, jump_38
 .wait_input
-combo_box_add_button 0xffff
+.combo_box_add_button 0xffff
 jump_39:
 .combo_box_await
 test 0x0, 0x2, 0x13
@@ -804,7 +804,7 @@ display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "OK, time to digivolve!"
 .start_transition
 set_light 0x0, 0x71, 0x3d, 0x3c
@@ -817,15 +817,15 @@ unknown 0x3000c
 unknown 0x220000
 unknown 0x10000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x1e0000
 unknown 0x0
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "Of course, you can only digivolve to a\\nDigimon of the same color (Speciality).\\nOK, let\'s pick this one."
 .start_transition
-combo_box_add_button 0x1e
+.combo_box_add_button 0x1e
 .set_var 0x9, 0xffffffff
 display_scene 0x5, 0x1
 jump_40:
@@ -862,9 +862,9 @@ test 0x0, 0x2, 0x19
 jump 0x29, jump_41
 set_buffer 0x0, "Press a button (*b0, *b1, *b2) to\\nchoose an Attack, just like last time."
 .start_transition
-combo_box_add_button 0x0
+.combo_box_add_button 0x0
 .combo_box_await
-open_combo_box 0x3c
+.open_combo_box 0x3c
 set_buffer 0x0, "Since this is just practice,\\nI\'ll let you know what I\'ve chosen.\\nI picked *b0."
 .start_transition
 set_buffer 0x0, "*p, now you know which Attack\\nto choose, right?"
@@ -906,7 +906,7 @@ display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x0
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "Well, you only have this Card left.\\nThis is just Practice, so use it."
 .start_transition
 set_buffer 0x0, "Choose the Drimogemon Card and press *b2."
@@ -941,7 +941,7 @@ unknown 0x20000
 display_scene 0x6, 0x1
 set_buffer 0x0, "Now it\'s my turn, but... I\'ll pass\\nthis time. I won\'t use a Support Card."
 .start_transition
-combo_box_add_button 0xffff
+.combo_box_add_button 0xffff
 jump_49:
 .combo_box_await
 test 0x0, 0x2, 0x20
@@ -1000,22 +1000,22 @@ unknown 0x0
 unknown 0x2000c
 unknown 0x0
 unknown 0x80000
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x50000
 unknown 0x10000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x60000
 unknown 0x20000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x70000
 unknown 0x30000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "What you want is a Level *e4 Digimon Card\\nin Red. Why don\'t you try discarding your\\nwhole Hand? Go ahead and press *b1."
 .start_transition
 jump_55:
@@ -1084,12 +1084,12 @@ display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x80000
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x90000
 unknown 0x10000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "Well, this one only needs 30 Points,\\nso you have enough DP already.\\nSo, press *b0 to skip this step."
 .start_transition
 jump_62:
@@ -1111,18 +1111,18 @@ open_screen 0x8
 .combo_box_await
 test 0x0, 0x2, 0x15
 jump 0x40, jump_64
-open_combo_box 0x14
+.open_combo_box 0x14
 .combo_box_await
 .set_var 0x9, 0x3
 unknown 0x3000c
 unknown 0x80000
 unknown 0x0
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x90000
 unknown 0x10000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_buffer 0x0, "Look, the OK means that you can\\ndigivolve to this Digimon."
 .start_transition
 set_buffer 0x0, "Now choose a Digimon to digivolve to!\\nBirdramon is the only Level *e4 Card.\\nSo choose it and press *b2."
@@ -1177,9 +1177,9 @@ set_buffer 0x0, "Since this is just practice, let\'s both \\ntry using *b0 and r
 .start_transition
 set_buffer 0x0, "*p, you use *b0, too."
 .start_transition
-combo_box_add_button 0x0
+.combo_box_add_button 0x0
 .combo_box_await
-open_combo_box 0x3c
+.open_combo_box 0x3c
 jump_70:
 open_screen 0x7
 .combo_box_await
@@ -1215,17 +1215,17 @@ display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x220000
 unknown 0x10000
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x230000
 unknown 0x20000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 unknown 0x3000c
 unknown 0x250000
 unknown 0x40000
 display_scene 0x3, 0xa2
-open_combo_box 0x1e
+.open_combo_box 0x1e
 set_light 0x0, 0xf8, 0x54, 0x18
 set_buffer 0x0, "Look!"
 .start_transition
@@ -1233,7 +1233,7 @@ set_buffer 0x0, "I can take a Face-Down Card from here\\nand use it as a Support
 .start_transition
 .empty_text_box
 display_scene 0x5, 0x1
-combo_box_add_button 0xfffe
+.combo_box_add_button 0xfffe
 jump_73:
 .combo_box_await
 test 0x0, 0x2, 0x1d
