@@ -1,5 +1,5 @@
 /* Include all symbol definitions */
-INCLUDE build/symbols.ld
+INCLUDE build/exe/symbols.ld
 
 /* Then discard everything else */
 SECTIONS {

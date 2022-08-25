@@ -8,7 +8,7 @@ import yaml
 section_addrs = yaml.safe_load(open("section_addrs.yaml"))
 
 
-def main(in_path="symbols.yaml", out_path="build/symbols.ld"):
+def main(in_path="symbols.yaml", out_path="build/exe/symbols.ld"):
 	# Get all of the symbol addresses
 	symbols = yaml.safe_load(open(in_path, "r"))
 

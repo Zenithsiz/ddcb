@@ -1,6 +1,5 @@
 ---
 alias:
-  # Commands
   # External tools
   # prettier-ignore
   ld       : mips-linux-gnu-ld
@@ -9,15 +8,16 @@ alias:
   mkpsxiso : mkpsxiso
   cargo    : cargo
   sha256sum: sha256sum
-  
-  # Internal tools
+
+  # Other tools
   generate_linker_script: tools/generate_linker_symbols_script.py
   preprocess_asm        : tools/preprocess_asm.py
   expand_asm            : tools/expand_asm.py
   generate_iso_deps     : tools/generate_iso_deps.py
   generate_compare_deps : tools/generate_compare_deps.py
   bspatch               : tools/bspatch.py
-  tools_dir    : $(build_dir)/tools
+
+  # Cargo tools
   mkdrv        : $(tools_dir)/dcb-mkdrv
   mkdrv-deps   : $(tools_dir)/dcb-mkdrv-deps
   mkpak        : $(tools_dir)/dcb-mkpak
@@ -29,28 +29,42 @@ alias:
   mk-deck-table: $(tools_dir)/dcb-mk-deck-table
   mkpsexe      : $(tools_dir)/dcb-mkpsexe
 
+  # Directories
+  build_dir : build
+  tools_dir : $(build_dir)/tools
+  dcb_rs_dir: $(build_dir)/dcb-rs
+  exe_dir   : $(build_dir)/exe
+  asm_dir   : $(build_dir)/asm
+  misc_dir  : $(build_dir)/misc
+  drv_dir   : $(build_dir)/drv
+  pak_dir   : $(build_dir)/pak
+  arc_dir   : $(build_dir)/arc
+  msd_dir   : $(build_dir)/msd
+  dylib_dir : $(build_dir)/dylib
+
   # Files
-  build_dir      : build
-  checksums      : checksums.sha256
-  dcb_bin_xml    : dcb-iso.xml
-  asm_src        : dcb-asm/dcb.s
-  linker_script  : psx.ld
-  license_iso    : license.dat
-  license_psexe  : license-psexe.dat
-  compare_deps   : $(build_dir)/compare.d
-  dcb_bin        : $(build_dir)/dcb.bin
-  dcb_bin_cue    : $(build_dir)/dcb.cue
-  dcb_bin_deps   : $(dcb_bin).d
-  dcb_elf        : $(build_dir)/exe/dcb.elf
-  dcb_psexe      : $(build_dir)/exe/dcb.psexe
-  mmm_buffer     : $(build_dir)/iso/MMM.DAT
-  asm_expanded   : $(build_dir)/asm/dcb-expanded.s
-  asm_processed  : $(build_dir)/asm/dcb.s
-  asm_obj        : $(build_dir)/asm/dcb.o
-  asm_obj_deps   : $(build_dir)/asm/dcb.d
-  dcb_rs         : $(build_dir)/rs
-  dcb_rs_lib     : $(dcb_rs)/libdcb.a
-  dcb_rs_lib_deps: $(dcb_rs)/libdcb.d
+  checksums            : checksums.sha256
+  dcb_bin_xml          : dcb-iso.xml
+  asm_src              : dcb-asm/dcb.s
+  linker_script        : psx.ld
+  license_iso          : license.dat
+  license_psexe        : license-psexe.dat
+
+  # Built files
+  compare_deps         : $(build_dir)/compare.d
+  dcb_bin              : $(build_dir)/dcb.bin
+  dcb_bin_deps         : $(build_dir)/dcb.bin.d
+  dcb_bin_cue          : $(build_dir)/dcb.cue
+  linker_script_symbols: $(exe_dir)/symbols.ld
+  dcb_elf              : $(exe_dir)/dcb.elf
+  dcb_psexe            : $(exe_dir)/dcb.psexe
+  mmm_buffer           : $(misc_dir)/MMM.DAT
+  asm_expanded         : $(asm_dir)/dcb-expanded.s
+  asm_processed        : $(asm_dir)/dcb-processed.s
+  asm_obj              : $(asm_dir)/dcb.o
+  asm_obj_deps         : $(asm_dir)/dcb.d
+  dcb_rs_lib           : $(dcb_rs_dir)/libdcb.a
+  dcb_rs_lib_deps      : $(dcb_rs_dir)/libdcb.d
 
 # By default built the final binary
 default:
@@ -68,7 +82,6 @@ rules:
     out: [$(compare_deps)]
     deps: [$(checksums), $(generate_compare_deps)]
     static_deps: [dir_name: $(compare_deps)]
-
     exec:
       - [bash, -c, '$(generate_compare_deps) > $(compare_deps)']
 
@@ -88,9 +101,9 @@ rules:
       - [mkdir, -p, $(dir)]
 
   # Rust library
-  rs_lib:
+  dcb_rs:
     alias:
-      dep_out_dir: target/mipsel-sony-psx/release
+      target_dir: target/mipsel-sony-psx/release
     out: [$(dcb_rs_lib), deps_file: $(dcb_rs_lib_deps)]
     static_deps: [dir_name: $(dcb_rs_lib)]
     exec_cwd: dcb-rs/
@@ -100,12 +113,12 @@ rules:
         - --release
         - --package=dcb
         - -Z=unstable-options
-        - --out-dir=../$(dcb_rs)/
-      - [cp, $(dep_out_dir)/libdcb.d, ../$(dcb_rs_lib_deps)]
+        - --out-dir=../$(dcb_rs_dir)/
+      - [cp, $(target_dir)/libdcb.d, ../$(dcb_rs_lib_deps)]
       - - sed
         - -i
         - -e
-        - 's,dcb-rs/$(dep_out_dir)/,$(dcb_rs)/,g'
+        - 's,dcb-rs/$(target_dir)/,$(dcb_rs_dir)/,g'
         - ../$(dcb_rs_lib_deps)
 
   # `dcb.bin`
@@ -148,7 +161,7 @@ rules:
   # `drv`
   mkdrv:
     alias:
-      drv: $(build_dir)/drv/^(path).DRV
+      drv: $(drv_dir)/^(path).DRV
       drv_yaml: ^(path).DRV.yaml
       drv_patch: ^(path).DRV.bspatch
     out: [$(drv)]
@@ -158,7 +171,6 @@ rules:
       - $(mkdrv)
       - deps_file: $(drv).d
     static_deps: [dir_name: $(drv)]
-
     exec:
       - [$(mkdrv), $(drv_yaml), -o, $(drv)]
       - [$(bspatch), $(drv), $(drv), $(drv_patch)]
@@ -166,7 +178,7 @@ rules:
   # `drv` dependencies
   mkdrv-deps:
     alias:
-      drv: $(build_dir)/drv/^(path).DRV
+      drv: $(drv_dir)/^(path).DRV
       drv_yaml: ^(path).DRV.yaml
     out: [$(drv).d]
     deps: [$(drv_yaml), $(mkdrv-deps)]
@@ -182,7 +194,7 @@ rules:
   # `pak`
   mkpak:
     alias:
-      pak: $(build_dir)/pak/^(path).PAK
+      pak: $(pak_dir)/^(path).PAK
       pak_yaml: ^(path).PAK.yaml
     out: [$(pak)]
     deps: [$(pak_yaml), $(mkpak), deps_file: $(pak).d]
@@ -193,7 +205,7 @@ rules:
   # `pak` dependencies
   mkpak-deps:
     alias:
-      pak: $(build_dir)/pak/^(path).PAK
+      pak: $(pak_dir)/^(path).PAK
       pak_yaml: ^(path).PAK.yaml
     out: [$(pak).d]
     deps: [$(pak_yaml), $(mkpak-deps)]
@@ -209,7 +221,7 @@ rules:
   # `arc`
   mkarc:
     alias:
-      arc: $(build_dir)/arc/^(path).ARC
+      arc: $(arc_dir)/^(path).ARC
       arc_yaml: ^(path).ARC.yaml
     out: [$(arc)]
     deps: [$(arc_yaml), $(mkarc), deps_file: $(arc).d]
@@ -220,7 +232,7 @@ rules:
   # `arc` dependencies
   mkarc-deps:
     alias:
-      arc: $(build_dir)/arc/^(path).ARC
+      arc: $(arc_dir)/^(path).ARC
       arc_yaml: ^(path).ARC.yaml
     out: [$(arc).d]
     deps: [$(arc_yaml), $(mkarc-deps)]
@@ -236,7 +248,7 @@ rules:
   # `msd`
   mkmsd:
     alias:
-      msd: $(build_dir)/msd/^(path).MSD
+      msd: $(msd_dir)/^(path).MSD
       msd_src: ^(path).MSD.s
       msd_patch: ^(path).MSD.bspatch
     out: [$(msd), deps_file: $(msd).d]
@@ -245,7 +257,6 @@ rules:
       - $(msd_patch)
       - $(mkmsd)
     static_deps: [dir_name: $(msd)]
-
     exec:
       - [$(mkmsd), $(msd_src), -o, $(msd), --deps-file, $(msd).d]
       - [$(bspatch), $(msd), $(msd), $(msd_patch)]
@@ -253,7 +264,7 @@ rules:
   # Card table
   card_table:
     alias:
-      cdd: $(build_dir)/misc/^(path).CDD
+      cdd: $(misc_dir)/^(path).CDD
     out: [$(cdd)]
     deps:
       - ^(path).CDD.json
@@ -267,7 +278,7 @@ rules:
   # Deck table
   deck_table:
     alias:
-      dek: $(build_dir)/misc/^(path).DEK
+      dek: $(misc_dir)/^(path).DEK
     out: [$(dek)]
     deps:
       - ^(path).DEK.json
@@ -289,7 +300,7 @@ rules:
   # Dylibs
   dylib:
     alias:
-      dylib: $(build_dir)/dylib/^(name).BIN
+      dylib: $(dylib_dir)/^(name).BIN
       dylib_section: dylib.^(name)
       dcb_elf_copy: $(dcb_elf).^(name)
     out: [$(dylib)]
@@ -323,10 +334,9 @@ rules:
     deps:
       - $(asm_obj)
       - $(dcb_rs_lib)
-      - $(build_dir)/symbols.ld
+      - $(linker_script_symbols)
       - $(linker_script)
     static_deps: [dir_name: $(dcb_elf)]
-
     exec:
       - - $(ld)
         - $(asm_obj)
@@ -339,20 +349,17 @@ rules:
         - $(linker_script)
         - --warn-section-align
         - --no-check-sections
-        - -L$(dcb_rs)/
+        - -L$(dcb_rs_dir)/
         - -ldcb
 
   # Linker script symbol ordering
   linker_script_symbols:
-    alias:
-      symbols: $(build_dir)/symbols.ld
-    out: [$(symbols)]
+    out: [$(linker_script_symbols)]
     deps:
       - symbols.yaml
       - section_addrs.yaml
       - $(generate_linker_script)
-    static_deps: [dir_name: $(symbols)]
-
+    static_deps: [dir_name: $(linker_script_symbols)]
     exec:
       - [$(generate_linker_script)]
 
@@ -382,7 +389,6 @@ rules:
       - symbols.yaml
       - $(preprocess_asm)
     static_deps: [dir_name: $(asm_processed)]
-
     exec:
       - - $(preprocess_asm)
         - $(asm_expanded)
