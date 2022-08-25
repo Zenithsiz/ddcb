@@ -429,7 +429,7 @@ add_partner 0xa
 display_location 0xe
 add_partner 0x14
 display_location 0x36
-set_bg_battle_cafe
+.set_bg_battle_cafe
 set_var 0x7, 0x14
 jump_10:
 unknown 0x8000b
@@ -466,7 +466,7 @@ unknown 0x3000c
 unknown 0x150000
 unknown 0x670000
 add_partner 0x8
-battle_cafe_await
+.battle_cafe_await
 display_location 0x1
 display_location 0x2
 display_location 0x3

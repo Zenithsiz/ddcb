@@ -328,7 +328,7 @@ unknown 0x3000c
 unknown 0x170000
 unknown 0x480000
 add_partner 0x28
-set_bg_battle_cafe
+.set_bg_battle_cafe
 unknown 0x3000c
 unknown 0x160000
 unknown 0x560000
@@ -362,7 +362,7 @@ jump_9:
 display_location 0x64
 jump 0x0, jump_7
 jump_10:
-battle_cafe_await
+.battle_cafe_await
 jump 0x0, jump_7
 jump_11:
 add_partner 0x1

@@ -41,7 +41,7 @@ set_var 0x56, 0x17
 set_var 0x57, 0x2f
 set_var 0x58, 0x170
 set_var 0x59, 0xf0
-empty_text_box
+.empty_text_box
 set_arena_match_intro_colors 0xffffffff
 unknown 0xc
 unknown 0x500000
@@ -264,7 +264,7 @@ display_location 0x3e
 display_location 0x3f
 display_location 0x53
 add_partner 0x1e
-battle_cafe_await
+.battle_cafe_await
 set_var 0x1be, 0x0
 battle 0x0
 add_partner 0x1

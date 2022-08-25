@@ -343,7 +343,7 @@ display_scene 0x3, 0x67
 display_location 0x14
 display_location 0x15
 add_partner 0xa
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_partner 0x1e
 add_partner 0xf
 unknown 0x3000c
@@ -375,7 +375,7 @@ display_scene 0x3, 0x67
 display_scene 0x3, 0x85
 display_scene 0x3, 0x8c
 add_partner 0xf
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x7
 battle 0x0
 add_partner 0x1

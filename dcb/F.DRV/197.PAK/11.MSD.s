@@ -318,7 +318,7 @@ add_completion_points 0x3
 jump 0x0, jump_4
 jump_7:
 add_partner 0x19
-battle_cafe_await
+.battle_cafe_await
 unknown 0x3000c
 unknown 0x170000
 unknown 0x600000

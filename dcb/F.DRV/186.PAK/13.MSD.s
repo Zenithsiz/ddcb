@@ -239,7 +239,7 @@ jump 0x0, jump_4
 jump 0x0, jump_3
 jump_4:
 add_partner 0x2d
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x23
 add_partner 0x1
 set_var 0x0, 0x0

@@ -183,7 +183,7 @@ display_location 0x32
 display_location 0x33
 display_location 0x34
 add_partner 0x3c
-set_bg_battle_cafe
+.set_bg_battle_cafe
 display_scene 0x3, 0x5b
 set_var 0x8, 0x65
 jump_2:
@@ -208,7 +208,7 @@ unknown 0x70001
 add_var 0x7, 0x1
 test 0x0, 0x7, 0x2e
 jump 0x0, jump_3
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x14
 display_scene 0x7, 0x16
 battle 0x0

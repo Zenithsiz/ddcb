@@ -237,8 +237,8 @@ display_location 0x2
 add_partner 0x46
 display_location 0x3
 add_partner 0x28
-set_bg_battle_cafe
-display_text_buffer
+.set_bg_battle_cafe
+.display_text_buffer
 add_partner 0x28
 unknown 0x3000c
 unknown 0x160000
@@ -250,7 +250,7 @@ display_scene 0x3, 0x52
 display_location 0x7
 display_location 0x8
 add_partner 0x1e
-battle_cafe_await
-wait_input
+.battle_cafe_await
+.wait_input
 battle 0x0
 set_var 0x0, 0x0

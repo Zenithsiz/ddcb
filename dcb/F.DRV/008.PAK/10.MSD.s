@@ -282,12 +282,12 @@ add_var 0x16, 0x5f
 unknown 0xa000b
 unknown 0x160001
 set_var 0x16, 0xffffffa1
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_var 0x16, 0x64
 unknown 0xa000b
 unknown 0x160001
 set_var 0x16, 0xffffff9c
-display_text_buffer
+.display_text_buffer
 display_location 0x0
 add_var 0x16, 0x69
 unknown 0xa000b
@@ -314,8 +314,8 @@ add_var 0x16, 0x73
 unknown 0xa000b
 unknown 0x160001
 set_var 0x16, 0xffffff8d
-battle_cafe_await
-wait_input
+.battle_cafe_await
+.wait_input
 add_var 0x16, 0xbe
 unknown 0xa000b
 unknown 0x160001

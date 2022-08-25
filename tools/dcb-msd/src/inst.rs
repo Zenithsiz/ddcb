@@ -27,48 +27,8 @@ use {
 #[derive(PartialEq, Eq, Clone, Hash, Debug)]
 #[derive(serde::Serialize, serde::Deserialize)]
 pub enum Inst {
-	/// Displays the text buffer in the text box.
-	///
-	/// Displays the text in the text buffer and scrolls to the next line.
-	/// If the text box is full, waits for input until displaying the next line.
-	DisplayTextBuffer,
-
-	/// Wait for input from the user.
-	///
-	/// Pauses execution until the users sends input.
-	WaitInput,
-
-	/// Empty text box
-	///
-	/// Empties the text box, removing all characters and setting
-	/// the cursor to the first line.
-	EmptyTextBox,
-
-	/// Sets the background to the battle cafe
-	SetBgBattleCafe,
-
 	/// Opens a screen
 	OpenScreen { screen: u16 },
-
-	/// Sets the background to the battle arena
-	// TODO: Check what texture it uses, looks all messed up most of the times.
-	SetBgBattleArena,
-
-	/// Opens the center text box
-	// TODO: Rename, somewhat confusing
-	DisplayCenterTextBox,
-
-	/// Resets the game completion to 0 points.
-	ResetGameCompletion,
-
-	/// Transitions between the single red flashing light at the beginning
-	/// of each city to the proper menu interface
-	StartTransition,
-
-	/// Resets all of the partners in the choose partner menu.
-	///
-	/// Partners may then be added with `DisplayScene 0xa`
-	ResetChoosePartner,
 
 	/// Changes a variable value
 	///
@@ -119,12 +79,6 @@ pub enum Inst {
 		/// The button value
 		value: u16,
 	},
-
-	/// Awaits the user's selection on the combo box
-	ComboBoxAwait,
-
-	/// Awaits the user's selection on the battle cafe
-	BattleCafeAwait,
 
 	/// Display scene
 	// TODO: Figure out
@@ -238,19 +192,9 @@ impl Inst {
 			},
 
 			// Misc.
-			0x0a => match read_u16!(0x2..0x4)? {
-				0x00 => Self::StartTransition,
-				0x01 => Self::ComboBoxAwait,
-				0x02 => Self::SetBgBattleCafe,
-				0x03 => Self::BattleCafeAwait,
-				0x04 => Self::DisplayTextBuffer,
-				0x05 => Self::WaitInput,
-				0x06 => Self::EmptyTextBox,
-				0x0b => Self::ResetChoosePartner,
-				0x0c => Self::SetBgBattleArena,
-				0x13 => Self::ResetGameCompletion,
-				0x16 => Self::DisplayCenterTextBox,
-				screen => Self::OpenScreen { screen },
+			0x0a => {
+				let screen = read_u16!(0x2..0x4)?;
+				Self::OpenScreen { screen }
 			},
 
 			// ???
@@ -318,15 +262,6 @@ impl Inst {
 	/// Encodes this instruction
 	pub fn encode<W: io::Write>(&self, f: &mut W) -> Result<(), EncodeError> {
 		match self {
-			Self::DisplayTextBuffer => f.write_all(&[0xa, 0x0, 0x4, 0x0])?,
-			Self::WaitInput => f.write_all(&[0xa, 0x0, 0x5, 0x0])?,
-			Self::EmptyTextBox => f.write_all(&[0xa, 0x0, 0x6, 0x0])?,
-			Self::SetBgBattleCafe => f.write_all(&[0xa, 0x0, 0x2, 0x0])?,
-			Self::SetBgBattleArena => f.write_all(&[0xa, 0x0, 0xc, 0x0])?,
-			Self::DisplayCenterTextBox => f.write_all(&[0xa, 0x0, 0x16, 0x0])?,
-			Self::ResetGameCompletion => f.write_all(&[0xa, 0x0, 0x13, 0x0])?,
-			Self::StartTransition => f.write_all(&[0xa, 0x0, 0x0, 0x0])?,
-			Self::ResetChoosePartner => f.write_all(&[0xa, 0x0, 0xb, 0x0])?,
 			Self::OpenScreen { screen } => {
 				f.write_all(&[0xa, 0x0])?;
 				f.write_all(&screen.to_le_bytes())?;
@@ -358,8 +293,6 @@ impl Inst {
 				f.write_all(&[0x0, 0x0])?;
 				f.write_all(&value.to_le_bytes())?;
 			},
-			Self::ComboBoxAwait => f.write_all(&[0xa, 0x0, 0x1, 0x0])?,
-			Self::BattleCafeAwait => f.write_all(&[0xa, 0x0, 0x3, 0x0])?,
 			Self::DisplayScene { value0, value1 } => {
 				f.write_all(&[0xb, 0x0])?;
 				f.write_all(&value0.to_le_bytes())?;
@@ -409,17 +342,8 @@ impl Inst {
 		}
 
 		let (mnemonic, args) = match *self {
-			Self::DisplayTextBuffer => ("display_text_buffer", vec![]),
-			Self::WaitInput => ("wait_input", vec![]),
-			Self::EmptyTextBox => ("empty_text_box", vec![]),
-			Self::SetBgBattleCafe => ("set_bg_battle_cafe", vec![]),
 			// TODO: Return custom type from here?
 			Self::OpenScreen { screen } => ("open_screen", vec![num!(screen)]),
-			Self::SetBgBattleArena => ("set_bg_battle_arena", vec![]),
-			Self::DisplayCenterTextBox => ("display_center_text_box", vec![]),
-			Self::ResetGameCompletion => ("reset_game_completion", vec![]),
-			Self::StartTransition => ("start_transition", vec![]),
-			Self::ResetChoosePartner => ("reset_choose_partner", vec![]),
 			Self::ChangeVar { var, op, value } => match (var, op) {
 				// Arena intro colors
 				// TODO: Maybe convert to string like "yubrg" for all colors
@@ -469,8 +393,6 @@ impl Inst {
 					num!(value),
 				]),
 			},
-			Self::ComboBoxAwait => ("combo_box_await", vec![]),
-			Self::BattleCafeAwait => ("battle_cafe_await", vec![]),
 			Self::AddComboBoxButton { value } => ("combo_box_add_button", vec![num!(value)]),
 			Self::Unknown { value } => ("unknown", vec![num!(value)]),
 		};
@@ -487,18 +409,7 @@ impl Inst {
 		// TODO: Combine them
 		#[allow(clippy::match_same_arms)] // We want to explicitly not combine them for now
 		match self {
-			Self::DisplayTextBuffer => 4,
-			Self::WaitInput => 4,
-			Self::EmptyTextBox => 4,
-			Self::ComboBoxAwait => 4,
-			Self::BattleCafeAwait => 4,
-			Self::SetBgBattleCafe => 4,
 			Self::OpenScreen { .. } => 4,
-			Self::SetBgBattleArena => 4,
-			Self::DisplayCenterTextBox => 4,
-			Self::ResetGameCompletion => 4,
-			Self::StartTransition => 4,
-			Self::ResetChoosePartner => 4,
 			Self::ChangeVar { .. } => 0xc,
 			Self::Test { .. } => 0xc,
 			Self::Jump { .. } => 8,

@@ -615,7 +615,7 @@ display_scene 0x9, 0x1
 display_scene 0x9, 0x6
 display_scene 0x9, 0x1e
 display_scene 0x9, 0x1f
-set_bg_battle_cafe
+.set_bg_battle_cafe
 unknown 0x3000c
 unknown 0x160000
 unknown 0x540000
@@ -628,7 +628,7 @@ display_location 0x7
 display_location 0x1b
 display_location 0x1c
 add_partner 0x2d
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x1
 battle 0x0
 set_var 0x0, 0x0

@@ -461,7 +461,7 @@ display_scene 0x3, 0x59
 add_partner 0x5
 display_location 0x1d
 display_location 0x20
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_partner 0xf
 display_location 0x16
 set_var 0x7, 0x28
@@ -496,7 +496,7 @@ add_partner 0x1
 display_location 0xd
 display_location 0x12
 add_partner 0x28
-battle_cafe_await
+.battle_cafe_await
 display_scene 0x9, 0x5
 display_scene 0x9, 0x6
 display_scene 0x9, 0x7

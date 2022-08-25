@@ -298,8 +298,8 @@ add_var 0x7, 0x101
 unknown 0xa000b
 unknown 0x70001
 set_var 0x7, 0xfffffeff
-set_bg_battle_cafe
-display_text_buffer
+.set_bg_battle_cafe
+.display_text_buffer
 unknown 0x3000c
 unknown 0x170000
 unknown 0x820000
@@ -312,8 +312,8 @@ add_var 0x7, 0x108
 unknown 0xa000b
 unknown 0x70001
 set_var 0x7, 0xfffffef8
-battle_cafe_await
-wait_input
+.battle_cafe_await
+.wait_input
 add_var 0x7, 0x129
 unknown 0xa000b
 unknown 0x70001

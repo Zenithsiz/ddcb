@@ -230,7 +230,7 @@ jump 0x0, jump_2
 jump_7:
 add_partner 0x1e
 display_scene 0x7, 0x17
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x1
 set_var 0x1be, 0x0
 battle 0x0

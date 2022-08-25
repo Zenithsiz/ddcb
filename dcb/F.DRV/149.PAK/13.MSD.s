@@ -231,7 +231,7 @@ display_location 0x6
 add_partner 0x1e
 display_scene 0x3, 0x54
 display_location 0x7
-battle_cafe_await
+.battle_cafe_await
 open_screen 0x8
 add_partner 0x7d
 add_partner 0x1

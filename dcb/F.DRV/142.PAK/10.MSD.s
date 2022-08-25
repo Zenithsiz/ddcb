@@ -288,7 +288,7 @@ add_partner 0x1e
 unknown 0x3000c
 unknown 0x170000
 unknown 0x540000
-set_bg_battle_cafe
+.set_bg_battle_cafe
 display_location 0x1
 add_partner 0x28
 unknown 0x3000c
@@ -297,7 +297,7 @@ unknown 0x520000
 add_partner 0x6
 display_location 0x3
 add_partner 0x9
-battle_cafe_await
+.battle_cafe_await
 set_var 0x1be, 0x0
 battle 0x0
 add_partner 0x1

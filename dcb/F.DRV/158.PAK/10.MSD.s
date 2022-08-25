@@ -349,7 +349,7 @@ test_eq 0x7, 0x41
 jump 0x0, jump_16
 jump 0x0, jump_15
 jump_16:
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_partner 0x3
 display_scene 0x3, 0x70
 unknown 0x3000c
@@ -375,7 +375,7 @@ jump 0x0, jump_18
 jump 0x0, jump_17
 jump_18:
 add_partner 0x1e
-battle_cafe_await
+.battle_cafe_await
 set_var 0x1be, 0x0
 battle 0x0
 add_partner 0x1

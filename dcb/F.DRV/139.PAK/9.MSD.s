@@ -151,7 +151,7 @@ set_var 0x56, 0x17
 set_var 0x57, 0x27
 set_var 0x58, 0x170
 set_var 0x59, 0xf0
-empty_text_box
+.empty_text_box
 unknown 0xc
 unknown 0x80000
 unknown 0xd0000
@@ -247,7 +247,7 @@ unknown 0x460000
 add_partner 0x4
 display_location 0xc
 add_partner 0x41
-set_bg_battle_cafe
+.set_bg_battle_cafe
 display_location 0xd
 display_location 0x10
 display_location 0x11
@@ -272,7 +272,7 @@ display_location 0x8
 display_location 0x64
 add_partner 0x5
 add_partner 0x11
-battle_cafe_await
+.battle_cafe_await
 set_var 0x1be, 0x0
 battle 0x0
 add_partner 0x1

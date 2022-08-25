@@ -420,7 +420,7 @@ add_partner 0xa
 display_location 0x14
 display_location 0x15
 display_scene 0x3, 0x59
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_partner 0x32
 display_location 0x16
 display_location 0x20
@@ -447,7 +447,7 @@ jump 0x0, jump_3
 jump 0x0, jump_2
 jump_3:
 add_partner 0x28
-battle_cafe_await
+.battle_cafe_await
 display_scene 0x9, 0x5
 display_scene 0x9, 0x6
 battle 0x0

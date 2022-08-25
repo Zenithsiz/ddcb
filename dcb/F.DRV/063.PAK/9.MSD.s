@@ -108,8 +108,8 @@ unknown 0x480000
 add_partner 0xa
 display_location 0x3
 add_partner 0x32
-set_bg_battle_cafe
-display_text_buffer
+.set_bg_battle_cafe
+.display_text_buffer
 add_partner 0x5
 display_location 0x1
 display_location 0x2
@@ -117,8 +117,8 @@ add_partner 0x19
 unknown 0x3000c
 unknown 0x170000
 unknown 0x520000
-battle_cafe_await
-wait_input
+.battle_cafe_await
+.wait_input
 add_partner 0x5
 unknown 0x3000c
 unknown 0x170000

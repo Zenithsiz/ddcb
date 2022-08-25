@@ -170,9 +170,9 @@ display_scene 0xe, 0x0
 set_var 0x1be, 0x0
 battle 0x3
 add_partner 0x1
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_partner 0x5f
-battle_cafe_await
+.battle_cafe_await
 add_partner 0xa
 display_location 0x1
 display_location 0x0

@@ -110,7 +110,7 @@ jump 0x0, jump_1
 jump 0x0, jump_0
 jump_1:
 add_partner 0x6
-set_bg_battle_cafe
+.set_bg_battle_cafe
 display_location 0x0
 add_partner 0x8
 unknown 0x3000c
@@ -173,6 +173,6 @@ unknown 0x3000c
 unknown 0x160000
 unknown 0x850000
 add_partner 0x1c
-battle_cafe_await
+.battle_cafe_await
 battle 0x0
 set_var 0x0, 0x0

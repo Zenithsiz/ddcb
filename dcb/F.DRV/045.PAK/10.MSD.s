@@ -354,8 +354,8 @@ set_var 0x16, 0xfffffee3
 unknown 0x3000c
 unknown 0x170000
 unknown 0x8b0000
-set_bg_battle_cafe
-display_text_buffer
+.set_bg_battle_cafe
+.display_text_buffer
 display_scene 0x9, 0xb
 display_location 0x6
 display_location 0x7
@@ -364,8 +364,8 @@ add_var 0x16, 0x123
 unknown 0xa000b
 unknown 0x160001
 set_var 0x16, 0xfffffedd
-battle_cafe_await
-wait_input
+.battle_cafe_await
+.wait_input
 add_partner 0x5
 battle 0x0
 add_partner 0x1

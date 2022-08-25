@@ -100,7 +100,7 @@ set_var 0x56, 0x2f
 set_var 0x57, 0x2f
 set_var 0x58, 0x170
 set_var 0x59, 0xf0
-empty_text_box
+.empty_text_box
 set_var 0x4c, 0xffffffff
 unknown 0xc
 unknown 0x40000
@@ -279,7 +279,7 @@ set_var 0x3b, 0xff
 set_var 0x0, 0xffffffff
 add_partner 0x1
 display_scene 0xe, 0x0
-set_bg_battle_cafe
+.set_bg_battle_cafe
 set_var 0x1be, 0x0
 battle 0x3
 add_partner 0x26
@@ -295,7 +295,7 @@ unknown 0x160000
 unknown 0x8b0000
 display_scene 0x3, 0x66
 add_partner 0xf
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x28
 unknown 0x3000c
 unknown 0x170000
@@ -309,7 +309,7 @@ unknown 0x160000
 unknown 0x5b0000
 display_location 0x3
 add_partner 0x21
-set_bg_battle_cafe
+.set_bg_battle_cafe
 display_location 0xd
 display_location 0xe
 display_location 0xf
@@ -327,7 +327,7 @@ display_scene 0x3, 0x61
 add_partner 0x5
 display_location 0x66
 add_partner 0x1d
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x1
 set_var 0x1be, 0x0
 battle 0x0

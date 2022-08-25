@@ -94,7 +94,7 @@ set_var 0x56, 0x17
 set_var 0x57, 0x2f
 set_var 0x58, 0x170
 set_var 0x59, 0xf0
-empty_text_box
+.empty_text_box
 unknown 0xc
 unknown 0x540000
 unknown 0xd0000
@@ -469,10 +469,10 @@ display_location 0x51
 display_location 0x53
 display_location 0x54
 display_location 0x55
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_partner 0x5e
 display_scene 0x3, 0x69
-battle_cafe_await
+.battle_cafe_await
 display_location 0x52
 set_var 0x8, 0x3c
 jump_9:

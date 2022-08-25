@@ -271,7 +271,7 @@ jump 0x0, jump_5
 jump 0x0, jump_4
 jump_5:
 add_partner 0xf
-set_bg_battle_cafe
+.set_bg_battle_cafe
 set_var 0x7, 0x6
 jump_6:
 unknown 0x8000b
@@ -284,6 +284,6 @@ jump_7:
 add_partner 0x6e
 display_scene 0x7, 0x16
 display_scene 0x7, 0x17
-battle_cafe_await
+.battle_cafe_await
 battle 0x0
 set_var 0x0, 0x0

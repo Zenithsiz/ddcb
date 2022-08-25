@@ -185,5 +185,5 @@ jump 0x0, jump_3
 jump 0x0, jump_2
 jump_3:
 add_partner 0x48
-battle_cafe_await
+.battle_cafe_await
 set_var 0x0, 0x0

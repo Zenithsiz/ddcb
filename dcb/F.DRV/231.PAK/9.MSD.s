@@ -454,7 +454,7 @@ jump 0x0, jump_11
 jump 0x0, jump_10
 jump_11:
 add_partner 0x5
-battle_cafe_await
+.battle_cafe_await
 unknown 0x3000c
 unknown 0x160000
 unknown 0x600000

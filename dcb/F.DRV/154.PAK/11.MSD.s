@@ -194,7 +194,7 @@ display_location 0x32
 add_partner 0x5
 display_location 0x33
 add_partner 0x31
-set_bg_battle_cafe
+.set_bg_battle_cafe
 display_location 0x0
 display_location 0x64
 unknown 0x3000c
@@ -215,7 +215,7 @@ add_partner 0x5
 add_partner 0x1e
 display_location 0x5
 add_partner 0x46
-battle_cafe_await
+.battle_cafe_await
 add_partner 0xa
 display_location 0x5a
 unknown 0x3000c

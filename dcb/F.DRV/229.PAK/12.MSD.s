@@ -261,7 +261,7 @@ add_partner 0x5
 unknown 0x3000c
 unknown 0x170000
 unknown 0x8e0000
-battle_cafe_await
+.battle_cafe_await
 set_var 0x1be, 0x0
 battle 0x4
 add_partner 0xa

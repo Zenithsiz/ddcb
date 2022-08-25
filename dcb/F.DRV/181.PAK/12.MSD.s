@@ -276,7 +276,7 @@ display_location 0x0
 display_location 0x3
 display_location 0x2
 add_partner 0x5
-battle_cafe_await
+.battle_cafe_await
 set_var 0x1be, 0x0
 battle 0x4
 add_partner 0xa

@@ -392,9 +392,9 @@ display_scene 0x3, 0x62
 add_partner 0xf
 display_location 0x14
 display_scene 0x3, 0x69
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_partner 0xf
-display_text_buffer
+.display_text_buffer
 add_partner 0x1a
 display_location 0x1
 display_scene 0x3, 0x61
@@ -417,10 +417,10 @@ display_scene 0x3, 0x81
 display_scene 0x3, 0x83
 display_scene 0x3, 0x85
 add_partner 0x1e
-wait_input
+.wait_input
 add_partner 0x5
 display_location 0x1a
-battle_cafe_await
+.battle_cafe_await
 display_scene 0x7, 0x16
 display_scene 0x7, 0x17
 add_partner 0x1

@@ -389,7 +389,7 @@ unknown 0x170000
 unknown 0x560000
 display_location 0x31
 display_location 0x64
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_var 0x16, 0xa1
 unknown 0xa000b
 unknown 0x160001
@@ -404,9 +404,9 @@ set_var 0x16, 0xffffff5c
 unknown 0x3000c
 unknown 0x170000
 unknown 0x810000
-battle_cafe_await
-set_bg_battle_cafe
-display_text_buffer
+.battle_cafe_await
+.set_bg_battle_cafe
+.display_text_buffer
 display_location 0x28
 set_var 0x8, 0x11
 jump_8:
@@ -439,8 +439,8 @@ add_var 0x16, 0xb2
 unknown 0xa000b
 unknown 0x160001
 set_var 0x16, 0xffffff4e
-battle_cafe_await
-wait_input
+.battle_cafe_await
+.wait_input
 add_var 0x16, 0xb9
 unknown 0xa000b
 unknown 0x160001
@@ -459,8 +459,8 @@ add_var 0x16, 0xc8
 unknown 0xa000b
 unknown 0x160001
 set_var 0x16, 0xffffff38
-set_bg_battle_cafe
-display_text_buffer
+.set_bg_battle_cafe
+.display_text_buffer
 display_location 0x29
 add_var 0x16, 0xcb
 unknown 0xa000b
@@ -477,7 +477,7 @@ set_var 0x16, 0xffffff30
 unknown 0x3000c
 unknown 0x170000
 unknown 0x830000
-wait_input
+.wait_input
 display_location 0x2c
 display_location 0x2e
 display_location 0x30
@@ -485,8 +485,8 @@ add_var 0x16, 0xd5
 unknown 0xa000b
 unknown 0x160001
 set_var 0x16, 0xffffff2b
-battle_cafe_await
-wait_input
+.battle_cafe_await
+.wait_input
 add_var 0x16, 0xf3
 unknown 0xa000b
 unknown 0x160001

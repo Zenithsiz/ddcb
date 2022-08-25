@@ -412,7 +412,7 @@ jump 0x0, jump_6
 jump_7:
 set_var 0x1be, 0x0
 battle 0x4
-battle_cafe_await
+.battle_cafe_await
 display_location 0x1e
 display_location 0x1f
 set_var 0x9, 0x32

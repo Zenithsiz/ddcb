@@ -547,7 +547,7 @@ jump 0x0, jump_11
 jump 0x0, jump_10
 jump_11:
 add_partner 0xa
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_partner 0x8
 unknown 0x3000c
 unknown 0x170000
@@ -586,7 +586,7 @@ display_scene 0x7, 0x16
 add_partner 0x14
 display_location 0x2b
 add_partner 0xa
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x1
 battle 0x0
 set_var 0x0, 0x0

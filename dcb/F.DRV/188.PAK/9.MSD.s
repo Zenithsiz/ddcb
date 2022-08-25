@@ -219,11 +219,11 @@ display_scene 0xe, 0x0
 set_var 0x1be, 0x0
 battle 0x1
 add_partner 0x1
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_partner 0x91
 display_location 0x68
 add_partner 0x4
-battle_cafe_await
+.battle_cafe_await
 unknown 0x3000c
 unknown 0x160000
 unknown 0x60000

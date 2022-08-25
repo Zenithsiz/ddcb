@@ -356,7 +356,7 @@ display_location 0x5
 display_location 0xc
 display_location 0x11
 display_scene 0x3, 0x67
-set_bg_battle_cafe
+.set_bg_battle_cafe
 add_partner 0xa
 display_location 0x14
 display_location 0x15
@@ -408,7 +408,7 @@ jump 0x0, jump_7
 jump 0x0, jump_6
 jump_7:
 add_partner 0xa
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x7
 battle 0x0
 add_partner 0x1

@@ -188,7 +188,7 @@ unknown 0x5f0000
 add_partner 0x3c
 display_location 0x32
 add_partner 0xd
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x1
 display_scene 0x7, 0x16
 set_var 0x1be, 0x0

@@ -597,7 +597,7 @@ jump 0x0, jump_23
 jump 0x0, jump_22
 jump_23:
 add_partner 0x1e
-set_bg_battle_cafe
+.set_bg_battle_cafe
 display_location 0x7
 unknown 0x3000c
 unknown 0x160000
@@ -610,7 +610,7 @@ display_location 0xa
 display_location 0xf
 display_location 0x10
 add_partner 0x25
-battle_cafe_await
+.battle_cafe_await
 display_location 0x11
 unknown 0x3000c
 unknown 0x160000

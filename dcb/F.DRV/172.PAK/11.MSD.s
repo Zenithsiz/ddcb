@@ -237,7 +237,7 @@ unknown 0x170000
 unknown 0x590000
 display_location 0x20
 add_partner 0x14
-battle_cafe_await
+.battle_cafe_await
 set_var 0x1be, 0x0
 battle 0x0
 set_var 0x0, 0x0

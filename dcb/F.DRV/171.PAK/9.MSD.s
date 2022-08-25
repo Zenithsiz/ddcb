@@ -342,7 +342,7 @@ add_partner 0x71
 display_location 0x5a
 add_partner 0xa
 display_scene 0x9, 0x5a
-set_bg_battle_cafe
+.set_bg_battle_cafe
 display_location 0x0
 display_location 0x1
 display_location 0x2
@@ -367,7 +367,7 @@ display_location 0x31
 display_location 0x32
 display_location 0x33
 add_partner 0x5
-battle_cafe_await
+.battle_cafe_await
 add_partner 0x46
 set_var 0x7, 0x14
 jump_4:
@@ -382,7 +382,7 @@ unknown 0x3000c
 unknown 0x160000
 unknown 0x6f0000
 add_partner 0x1e
-set_bg_battle_cafe
+.set_bg_battle_cafe
 display_location 0x5a
 display_location 0x6
 display_location 0x7
@@ -396,7 +396,7 @@ display_scene 0x9, 0x1
 display_location 0x4
 display_location 0x5
 add_partner 0x5
-battle_cafe_await
+.battle_cafe_await
 unknown 0x3000c
 unknown 0x160000
 unknown 0x8c0000

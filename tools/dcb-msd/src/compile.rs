@@ -73,7 +73,7 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 	}
 
 	// Macro to create a branch for no-argument instructions
-	macro no_args($args:expr, $inst:expr) {
+	macro _no_args($args:expr, $inst:expr) {
 		match <[_; 0]>::try_from($args) {
 			Ok([]) => inst!($inst),
 			Err(args) => anyhow::bail!("Expected no arguments, found {args:?}"),
@@ -161,16 +161,6 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 	}
 
 	let inst = match inst.mnemonic.as_str() {
-		"display_text_buffer" => no_args!(inst.args, Inst::DisplayTextBuffer),
-		"wait_input" => no_args!(inst.args, Inst::WaitInput),
-		"empty_text_box" => no_args!(inst.args, Inst::EmptyTextBox),
-		"set_bg_battle_cafe" => no_args!(inst.args, Inst::SetBgBattleCafe),
-		"set_bg_battle_arena" => no_args!(inst.args, Inst::SetBgBattleArena),
-		"display_center_text_box" => no_args!(inst.args, Inst::DisplayCenterTextBox),
-		"reset_game_completion" => no_args!(inst.args, Inst::ResetGameCompletion),
-		"start_transition" => no_args!(inst.args, Inst::StartTransition),
-		"reset_choose_partner" => no_args!(inst.args, Inst::ResetChoosePartner),
-
 		"open_screen" => number_arg!(inst.args, screen => Inst::OpenScreen {
 			screen: screen.try_into().context("Unable to fit screen number into a `u16`")?,
 		}),
@@ -294,9 +284,6 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 				brightness: brightness.try_into().context("Unable to fit brightness into a `u16`")?,
 				value: value.try_into().context("Unable to fit value into a `u16`")?,
 			}),
-
-		"combo_box_await" => no_args!(inst.args, Inst::ComboBoxAwait),
-		"battle_cafe_await" => no_args!(inst.args, Inst::BattleCafeAwait),
 
 		"combo_box_add_button" => number_arg!(inst.args, value => Inst::AddComboBoxButton {
 			value: value.try_into().context("Unable to fit value into a `u16`")?
