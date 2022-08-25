@@ -8,6 +8,7 @@ import argparse
 def main(args):
 	# If `DCB_USE_BSPATCH` is defined and non-'1', just return
 	if os.environ.get('DCB_USE_BSPATCH') not in [None, '1']:
+		print("Skipping patching due to `DCB_USE_BSPATCH`")
 		return
 
 	# Else execute bspatch

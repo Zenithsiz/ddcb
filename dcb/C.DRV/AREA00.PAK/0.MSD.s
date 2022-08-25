@@ -548,31 +548,40 @@ jump_123:
 test_eq 0x169, 0x0
 jump 0x7d, jump_124
 add_completion_points 0x1
+
+# Goes to the city menu.
+# 
+# Brings up the sub-menu if we were there previously
 jump_124:
-display_scene 0xe, 0x1e
-test_eq 0x16a, 0x1
-jump 0x188, jump_368
-empty_text_box
-set_text_buffer "Where do you want to go?"
-display_text_buffer
-set_text_buffer "*c5Push *c7*b1*c5 to go to map."
-display_text_buffer
-open_combo_box 0x78
-combo_box_add_button 0x2
-combo_box_add_button 0x3
-combo_box_add_button 0x1
-combo_box_add_button 0x0
-combo_box_await
-test_eq 0x1, 0x1
-jump 0x7f, jump_126
-test_eq 0x1, 0x2
-jump 0x103, jump_254
-test_eq 0x1, 0x3
-jump 0x188, jump_368
-test_eq 0x1, 0x4
-jump 0x7e, jump_125
-test_eq 0x1, $menu_button_triangle
-jump 0x18d, goto_map
+	display_scene 0xe, 0x1e
+
+	# If we're coming from the menu screen, go to it
+	test_eq $on_city_sub_menu, 0x1
+	jump 0x188, goto_city_sub_menu_screen
+
+	# Else display the city menu
+	empty_text_box
+	set_text_buffer "Where do you want to go?"
+	display_text_buffer
+	set_text_buffer "*c5Push *c7*b1*c5 to go to map."
+	display_text_buffer
+	open_combo_box 0x78
+	combo_box_add_button 0x2
+	combo_box_add_button 0x3
+	combo_box_add_button 0x1
+	combo_box_add_button 0x0
+	combo_box_await
+	test_eq 0x1, 0x1
+	jump 0x7f, jump_126
+	test_eq 0x1, 0x2
+	jump 0x103, jump_254
+	test_eq 0x1, 0x3
+	jump 0x188, goto_city_sub_menu_screen
+	test_eq 0x1, 0x4
+	jump 0x7e, jump_125
+	test_eq 0x1, 0xffffffff
+	jump 0x18d, goto_map
+
 jump_125:
 display_location 0x0
 empty_text_box
@@ -5986,43 +5995,60 @@ jump 0x170, jump_347
 jump_367:
 set_var 0x115, 0x0
 jump 0x0, jump_0
-jump_368:
-set_var 0x16a, 0x1
-empty_text_box
-set_text_buffer "Pick a Menu Option."
-display_text_buffer
-open_combo_box 0x61
-combo_box_add_button 0x12
-combo_box_add_button 0x13
-combo_box_add_button 0xf
-combo_box_await
-test_eq 0x1, 0x1
-jump 0x18a, goto_card_menu
-test_eq 0x1, 0x2
-jump 0x18c, goto_edit_partner
-test_eq 0x1, 0x3
-jump 0x18b, goto_save
-test_eq 0x1, 0xffffffff
-jump 0x189, jump_369
-jump_369:
-set_var 0x16a, 0x0
-jump 0x3, jump_3
+
+# Goes to the city sub-menu screen
+goto_city_sub_menu_screen:
+	# Set that we're on the sub menu screen
+	set_var $on_city_sub_menu, 0x1
+	
+	# Then display the menu
+	empty_text_box
+	set_text_buffer "Pick a Menu Option."
+	display_text_buffer
+	open_combo_box 0x61
+	combo_box_add_button 0x12
+	combo_box_add_button 0x13
+	combo_box_add_button 0xf
+	combo_box_await
+
+	# And check where where we're going
+	test_eq 0x1, 0x1
+	jump 0x18a, goto_card_menu
+	test_eq 0x1, 0x2
+	jump 0x18c, goto_edit_partner
+	test_eq 0x1, 0x3
+	jump 0x18b, goto_save
+	test_eq 0x1, 0xffffffff
+	jump 0x189, goto_city_menu_screen_from_sub_menu
+
+# Returns to the city menu from the sub menu
+goto_city_menu_screen_from_sub_menu:
+	set_var $on_city_sub_menu, 0x0
+	jump 0x3, jump_3
+
+# Goes to the card menu screen
 goto_card_menu:
-empty_text_box
-display_scene 0xf, 0x6e
-open_screen 0x9
-jump 0x0, jump_0
+	empty_text_box
+	display_scene 0xf, 0x6e
+	open_screen 0x9
+	jump 0x0, jump_0
+
+# Goes to the save screen
 goto_save:
-empty_text_box
-display_scene 0xf, 0x6e
-display_scene 0x6, 0x1
-jump 0x0, jump_0
+	empty_text_box
+	display_scene 0xf, 0x6e
+	display_scene 0x6, 0x1
+	jump 0x0, jump_0
+
+# Goes to the edit partner screen
 goto_edit_partner:
-empty_text_box
-display_scene 0xf, 0x6e
-open_screen 0x11
-jump 0x0, jump_0
+	empty_text_box
+	display_scene 0xf, 0x6e
+	open_screen 0x11
+	jump 0x0, jump_0
+
+# Goes to the map screen
 goto_map:
-empty_text_box
-display_scene 0xf, 0x6f
-set_var 0x0, 0x0
+	empty_text_box
+	display_scene 0xf, 0x6f
+	set_var 0x0, 0x0
