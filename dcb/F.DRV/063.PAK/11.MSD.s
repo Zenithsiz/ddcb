@@ -375,10 +375,10 @@ jump 0x0, jump_7
 jump 0x0, jump_6
 jump_7:
 .set_var 0x0, 0xffffffff
-add_partner 0x1
+.add_partner 0x1
 display_scene 0xe, 0x0
-battle 0x3
-add_partner 0x2c
+.battle 0x3
+.add_partner 0x2c
 .set_var 0x16, 0x0
 .add_var 0x16, 0x64
 unknown 0xa000b
@@ -387,8 +387,8 @@ unknown 0x160001
 unknown 0x3000c
 unknown 0x170000
 unknown 0x560000
-display_location 0x31
-display_location 0x64
+.display_location 0x31
+.display_location 0x64
 .set_bg_battle_cafe
 .add_var 0x16, 0xa1
 unknown 0xa000b
@@ -407,7 +407,7 @@ unknown 0x810000
 .battle_cafe_await
 .set_bg_battle_cafe
 .display_text_buffer
-display_location 0x28
+.display_location 0x28
 .set_var 0x8, 0x11
 jump_8:
 unknown 0x8000b
@@ -421,7 +421,7 @@ jump_9:
 unknown 0xa000b
 unknown 0x160001
 .set_var 0x16, 0xffffff5a
-display_location 0x2a
+.display_location 0x2a
 .add_var 0x16, 0xa9
 unknown 0xa000b
 unknown 0x160001
@@ -445,23 +445,23 @@ unknown 0x160001
 unknown 0xa000b
 unknown 0x160001
 .set_var 0x16, 0xffffff47
-display_location 0x3c
-display_location 0x3d
-display_location 0x3e
-display_location 0x3f
-display_location 0x40
-display_location 0x41
-display_location 0x42
-display_location 0x43
-display_location 0x44
-display_location 0x45
+.display_location 0x3c
+.display_location 0x3d
+.display_location 0x3e
+.display_location 0x3f
+.display_location 0x40
+.display_location 0x41
+.display_location 0x42
+.display_location 0x43
+.display_location 0x44
+.display_location 0x45
 .add_var 0x16, 0xc8
 unknown 0xa000b
 unknown 0x160001
 .set_var 0x16, 0xffffff38
 .set_bg_battle_cafe
 .display_text_buffer
-display_location 0x29
+.display_location 0x29
 .add_var 0x16, 0xcb
 unknown 0xa000b
 unknown 0x160001
@@ -469,7 +469,7 @@ unknown 0x160001
 unknown 0x3000c
 unknown 0x170000
 unknown 0x810000
-display_location 0x2b
+.display_location 0x2b
 .add_var 0x16, 0xd0
 unknown 0xa000b
 unknown 0x160001
@@ -478,9 +478,9 @@ unknown 0x3000c
 unknown 0x170000
 unknown 0x830000
 .wait_input
-display_location 0x2c
-display_location 0x2e
-display_location 0x30
+.display_location 0x2c
+.display_location 0x2e
+.display_location 0x30
 .add_var 0x16, 0xd5
 unknown 0xa000b
 unknown 0x160001
@@ -494,19 +494,19 @@ unknown 0x160001
 unknown 0x3000c
 unknown 0x170000
 unknown 0x10000
-display_location 0x46
-display_location 0x47
-display_location 0x48
-display_location 0x49
-display_location 0x4a
-display_location 0x4b
-display_location 0x4c
-display_location 0x4d
-display_location 0x4e
-display_location 0x4f
+.display_location 0x46
+.display_location 0x47
+.display_location 0x48
+.display_location 0x49
+.display_location 0x4a
+.display_location 0x4b
+.display_location 0x4c
+.display_location 0x4d
+.display_location 0x4e
+.display_location 0x4f
 .add_var 0x16, 0xf6
 unknown 0xa000b
 unknown 0x160001
 .set_var 0x16, 0xffffff0a
-battle 0x0
+.battle 0x0
 .set_var 0x0, 0x0

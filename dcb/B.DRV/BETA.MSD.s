@@ -197,7 +197,7 @@ open_screen 0x8
 unknown 0x2000c
 unknown 0x10000
 unknown 0x0
-battle 0x0
+.battle 0x0
 unknown 0xc
 unknown 0x10000
 unknown 0x0
@@ -224,7 +224,7 @@ jump_3:
 test 0x0, 0x2, 0x8
 jump 0x3, jump_3
 open_combo_box 0x1e
-battle 0x4
+.battle 0x4
 set_buffer 0x0, "Next, I pick a Digimon to battle with.\\nIt will go into the Battle Slot."
 .start_transition
 .set_var 0x9, 0x1
@@ -248,7 +248,7 @@ unknown 0x210000
 unknown 0x30000
 display_scene 0x3, 0xa2
 open_combo_box 0x1e
-battle 0x4
+.battle 0x4
 set_light 0x0, 0xf5, 0x9d, 0x0
 set_buffer 0x0, "It\'s best to start with *e3 Cards.\\nStarting off with Level *e4 or *e5 Cards\\ncauses Digimon to malfunction."
 .start_transition
@@ -262,7 +262,7 @@ jump 0x4, jump_4
 set_buffer 0x0, "Betamon is now ready to battle."
 .start_transition
 .wait_input
-battle 0x7
+.battle 0x7
 unknown 0xc
 unknown 0x10000
 unknown 0x10000
@@ -304,7 +304,7 @@ jump_7:
 .combo_box_await
 test 0x0, 0x2, 0x17
 jump 0x7, jump_7
-battle 0xa
+.battle 0xa
 .set_var 0x9, 0x0
 display_scene 0x4, 0x1
 unknown 0x3000c
@@ -320,7 +320,7 @@ set_buffer 0x0, "I\'ll show you how to digivolve on my \\nnext turn."
 .start_transition
 .empty_text_box
 display_scene 0x5, 0x1
-battle 0xb
+.battle 0xb
 unknown 0xc
 unknown 0x10000
 unknown 0x20000
@@ -332,7 +332,7 @@ jump_8:
 .combo_box_await
 test 0x0, 0x2, 0x2
 jump 0x8, jump_8
-battle 0x0
+.battle 0x0
 unknown 0x2000c
 unknown 0x0
 unknown 0x0
@@ -424,7 +424,7 @@ jump 0xf, jump_15
 unknown 0x2000c
 unknown 0x0
 unknown 0x50000
-battle 0x4
+.battle 0x4
 set_buffer 0x0, "Now, pick your Digimon to battle with."
 .start_transition
 .set_var 0x9, 0x1
@@ -471,7 +471,7 @@ unknown 0x10000
 unknown 0x2000c
 unknown 0x0
 unknown 0x70000
-battle 0x7
+.battle 0x7
 set_buffer 0x0, "*p, your Digivolve Phase is next.\\nYou have to collect DP to digivolve.\\nWhich Card would be best?"
 .start_transition
 .set_var 0x9, 0x2
@@ -535,7 +535,7 @@ jump 0x18, jump_24
 unknown 0x2000c
 unknown 0x0
 unknown 0x20000
-battle 0xc
+.battle 0xc
 unknown 0xc
 unknown 0x0
 unknown 0x20000
@@ -602,7 +602,7 @@ display_scene 0x6, 0x1
 unknown 0x2000c
 unknown 0x10000
 unknown 0x0
-battle 0xd
+.battle 0xd
 set_buffer 0x0, "OK, we have both chosen our Attacks.\\nNow, let\'s choose a Support Card."
 .start_transition
 set_buffer 0x0, "Let\'s make use of Digimon Cards and\\nOption Cards to support the Battle Card.\\nI know you\'ve been wondering about them."
@@ -633,7 +633,7 @@ display_scene 0x6, 0x0
 unknown 0x2000c
 unknown 0x0
 unknown 0x70000
-battle 0xe
+.battle 0xe
 set_buffer 0x0, "*p, it\'s your turn to choose."
 .start_transition
 .set_var 0x9, 0x4
@@ -724,7 +724,7 @@ jump_34:
 .combo_box_await
 test 0x0, 0x2, 0x2
 jump 0x22, jump_34
-battle 0x0
+.battle 0x0
 unknown 0x2000c
 unknown 0x10000
 unknown 0x0
@@ -749,7 +749,7 @@ jump_36:
 .combo_box_await
 test 0x0, 0x2, 0x4
 jump 0x24, jump_36
-battle 0x6
+.battle 0x6
 combo_box_add_button 0x0
 set_buffer 0x0, "Since my Digimon is already in the Battle\\nSlot, I don\'t have to do anything here.\\nThis Phase is done."
 .start_transition
@@ -757,7 +757,7 @@ jump_37:
 .combo_box_await
 test 0x0, 0x2, 0xb
 jump 0x25, jump_37
-battle 0x7
+.battle 0x7
 unknown 0xc
 unknown 0x10000
 unknown 0x10000
@@ -798,7 +798,7 @@ jump_39:
 .combo_box_await
 test 0x0, 0x2, 0x13
 jump 0x27, jump_39
-battle 0x9
+.battle 0x9
 .set_var 0x9, 0x3
 display_scene 0x4, 0x1
 unknown 0x3000c
@@ -841,14 +841,14 @@ set_buffer 0x0, "After digivolving, all DP in DP slot\\nwill be deleted."
 .start_transition
 .empty_text_box
 .wait_input
-battle 0xa
+.battle 0xa
 .set_var 0x8, 0x78
 set_buffer 0x0, "Now the Digivolve Phase is over."
 .start_transition
 unknown 0x2000c
 unknown 0x10000
 unknown 0x20000
-battle 0xc
+.battle 0xc
 unknown 0xc
 unknown 0x10000
 unknown 0x20000
@@ -897,7 +897,7 @@ set_buffer 0x0, "Now we have both chosen our Attacks.\\nNext, we have to choose\
 unknown 0x2000c
 unknown 0x0
 unknown 0x70000
-battle 0xd
+.battle 0xd
 display_scene 0x6, 0x0
 set_buffer 0x0, "The player who attacks second\\ngets to choose a Support Card first.\\nSo, *p, this time you choose first."
 .start_transition
@@ -934,7 +934,7 @@ jump_48:
 .combo_box_await
 test 0x0, 0x2, 0x1d
 jump 0x30, jump_48
-battle 0xe
+.battle 0xe
 unknown 0xc
 unknown 0x10000
 unknown 0x20000
@@ -952,7 +952,7 @@ jump_50:
 .combo_box_await
 test 0x0, 0x2, 0x2
 jump 0x32, jump_50
-battle 0x0
+.battle 0x0
 unknown 0x2000c
 unknown 0x0
 unknown 0x0
@@ -1073,7 +1073,7 @@ jump 0x3d, jump_61
 unknown 0x2000c
 unknown 0x0
 unknown 0x70000
-battle 0x7
+.battle 0x7
 unknown 0xc
 unknown 0x0
 unknown 0x10000
@@ -1153,7 +1153,7 @@ jump 0x45, jump_68
 unknown 0x2000c
 unknown 0x0
 unknown 0x0
-battle 0xa
+.battle 0xa
 set_buffer 0x0, "Now our Levels are equal.\\nLevel *e4 is really strong!"
 .start_transition
 set_buffer 0x0, "This completes the Digivolve Phase."
@@ -1161,7 +1161,7 @@ set_buffer 0x0, "This completes the Digivolve Phase."
 unknown 0x2000c
 unknown 0x0
 unknown 0x20000
-battle 0xc
+.battle 0xc
 unknown 0xc
 unknown 0x0
 unknown 0x20000
@@ -1201,7 +1201,7 @@ open_screen 0x8
 .combo_box_await
 test 0x0, 0x2, 0x1a
 jump 0x49, jump_72
-battle 0xd
+.battle 0xd
 unknown 0x2000c
 unknown 0x10000
 unknown 0x0

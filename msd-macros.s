@@ -23,3 +23,8 @@
 
 .macro test_eq, test, 0x3, $0, $1
 .macro test_lt, test, 0x5, $0, $1
+
+.macro battle               , display_scene, 0x2 , $0
+.macro display_location     , display_scene, 0x8 , $0
+.macro add_partner          , display_scene, 0xa , $0
+.macro add_completion_points, display_scene, 0x12, $0

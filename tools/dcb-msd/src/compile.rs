@@ -193,22 +193,6 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 			combo_box: combo_box.try_into().context("Unable to fit combo box into a `u16`")?
 		}),
 
-		"battle" => number_arg!(inst.args, value => Inst::DisplayScene {
-			value0: 0x2,
-			value1: value.try_into().context("Unable to fit value into a `u16`")?,
-		}),
-		"display_location" => number_arg!(inst.args, location => Inst::DisplayScene {
-			value0: 0x8,
-			value1: location.try_into().context("Unable to fit location into a `u16`")?,
-		}),
-		"add_partner" => number_arg!(inst.args, partner => Inst::DisplayScene {
-			value0: 0xa,
-			value1: partner.try_into().context("Unable to fit partner into a `u16`")?,
-		}),
-		"add_completion_points" => number_arg!(inst.args, value => Inst::DisplayScene {
-			value0: 0x12,
-			value1: value.try_into().context("Unable to fit partner into a `u16`")?,
-		}),
 		"display_scene" => number_number_arg!(inst.args, (value0, value1) => Inst::DisplayScene {
 			value0: value0.try_into().context("Unable to fit value0 into a `u16`")?,
 			value1: value1.try_into().context("Unable to fit value1 into a `u16`")?,

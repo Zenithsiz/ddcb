@@ -464,7 +464,7 @@ set_text_buffer "Do you want to quit Card Fusion?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
-battle 0x1
+.battle 0x1
 .set_var 0x8, 0xffffffff
 .test_eq 0x1, 0x0
 jump 0x16, jump_18
@@ -529,7 +529,7 @@ set_text_buffer "these two Cards?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
-battle 0x2
+.battle 0x2
 .set_bg_battle_arena
 .test_eq 0x1, 0x1
 jump 0x22, jump_30
@@ -645,7 +645,7 @@ jump 0x32, jump_45
 jump 0x31, jump_44
 jump 0x30, jump_43
 jump_44:
-display_location 0x0
+.display_location 0x0
 open_screen 0xf
 combo_box_add_button 0x1
 open_combo_box 0x0
@@ -667,7 +667,7 @@ set_text_buffer "I\'m sorry. It looks like you"
 set_text_buffer "have the maximum of this Card."
 .start_transition
 .reset_choose_partner
-display_location 0x1
+.display_location 0x1
 display_scene 0x4, 0x1
 open_screen 0x14
 jump 0x2f, jump_42
@@ -779,10 +779,10 @@ set_text_buffer "these two Cards?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
-battle 0x1
+.battle 0x1
 .test_eq 0x1, 0x1
 jump 0x3f, jump_58
-display_location 0x1
+.display_location 0x1
 display_scene 0x4, 0x1
 open_screen 0x14
 jump 0x2f, jump_42

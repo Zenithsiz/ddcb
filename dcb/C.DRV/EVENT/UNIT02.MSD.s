@@ -301,7 +301,7 @@ set_text_buffer "leaving my shop already?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
-battle 0x1
+.battle 0x1
 .set_var 0x8, 0xffffffff
 .test_eq 0x1, 0x0
 jump 0xf, jump_13
@@ -364,7 +364,7 @@ set_text_buffer "these 2 Cards?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
-battle 0x2
+.battle 0x2
 .test_eq 0x1, 0x1
 jump 0x1b, jump_25
 open_screen 0x12
@@ -479,7 +479,7 @@ jump 0x2b, jump_40
 jump 0x2a, jump_39
 jump 0x29, jump_38
 jump_39:
-display_location 0x0
+.display_location 0x0
 open_screen 0xf
 combo_box_add_button 0x1
 open_combo_box 0x0
@@ -503,7 +503,7 @@ set_text_buffer "create a Card you\'ve"
 set_text_buffer "already maxed out!"
 .start_transition
 .reset_choose_partner
-display_location 0x1
+.display_location 0x1
 display_scene 0x4, 0x1
 open_screen 0x14
 jump 0x28, jump_37
@@ -551,10 +551,10 @@ set_text_buffer "these 2 Cards?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
-battle 0x1
+.battle 0x1
 .test_eq 0x1, 0x1
 jump 0x32, jump_47
-display_location 0x1
+.display_location 0x1
 display_scene 0x4, 0x1
 open_screen 0x14
 jump 0x28, jump_37

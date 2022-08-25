@@ -19,7 +19,7 @@ jump 0x193, jump_385
 .test_eq 0x116, 0x1
 jump 0x1ad, jump_408
 display_scene 0xf, 0x71
-display_location 0xffff
+.display_location 0xffff
 .start_transition
 jump_1:
 .set_var 0x10c, 0x0
@@ -30,486 +30,486 @@ jump_1:
 .reset_game_completion
 .test_eq 0xc, 0x0
 jump 0x3, jump_2
-add_completion_points 0x3
+.add_completion_points 0x3
 jump_2:
 .test_eq 0xd, 0x0
 jump 0x4, jump_3
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_3:
 .test_eq 0xe, 0x0
 jump 0x5, jump_4
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_4:
 .test_eq 0xf, 0x0
 jump 0x6, jump_5
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_5:
 .test_eq 0x17, 0x0
 jump 0x7, jump_6
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_6:
 .test_eq 0x1a, 0x0
 jump 0x8, jump_7
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_7:
 .test_eq 0x1e, 0x0
 jump 0x9, jump_8
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_8:
 .test_eq 0x1f, 0x0
 jump 0xa, jump_9
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_9:
 .test_eq 0x20, 0x0
 jump 0xb, jump_10
-add_completion_points 0x4
+.add_completion_points 0x4
 jump_10:
 .test_eq 0x21, 0x0
 jump 0xc, jump_11
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_11:
 .test_eq 0x22, 0x0
 jump 0xd, jump_12
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_12:
 .test_eq 0x23, 0x0
 jump 0xe, jump_13
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_13:
 .test_eq 0x24, 0x0
 jump 0xf, jump_14
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_14:
 .test_eq 0x30, 0x0
 jump 0x10, jump_15
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_15:
 .test_eq 0x32, 0x0
 jump 0x11, jump_16
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_16:
 .test_eq 0x37, 0x0
 jump 0x12, jump_17
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_17:
 .test_eq 0x38, 0x0
 jump 0x13, jump_18
-add_completion_points 0x5
+.add_completion_points 0x5
 jump_18:
 .test_eq 0x39, 0x0
 jump 0x14, jump_19
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_19:
 .test_eq 0x3a, 0x0
 jump 0x15, jump_20
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_20:
 .test_eq 0x3b, 0x0
 jump 0x16, jump_21
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_21:
 .test_eq 0x3c, 0x0
 jump 0x17, jump_22
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_22:
 .test_eq 0x3d, 0x0
 jump 0x18, jump_23
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_23:
 .test_eq 0x3e, 0x0
 jump 0x19, jump_24
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_24:
 .test_eq 0x4f, 0x0
 jump 0x1a, jump_25
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_25:
 .test_eq 0x50, 0x0
 jump 0x1b, jump_26
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_26:
 .test_eq 0x52, 0x0
 jump 0x1c, jump_27
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_27:
 .test_eq 0x57, 0x0
 jump 0x1d, jump_28
-add_completion_points 0x5
+.add_completion_points 0x5
 jump_28:
 .test_eq 0x59, 0x0
 jump 0x1e, jump_29
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_29:
 .test_eq 0x5a, 0x0
 jump 0x1f, jump_30
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_30:
 .test_eq 0x5b, 0x0
 jump 0x20, jump_31
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_31:
 .test_eq 0x5c, 0x0
 jump 0x21, jump_32
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_32:
 .test_eq 0x5d, 0x0
 jump 0x22, jump_33
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_33:
 .test_eq 0x6a, 0x0
 jump 0x23, jump_34
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_34:
 .test_eq 0x6c, 0x0
 jump 0x24, jump_35
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_35:
 .test_eq 0x70, 0x0
 jump 0x25, jump_36
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_36:
 .test_eq 0x75, 0x0
 jump 0x26, jump_37
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_37:
 .test_eq 0x77, 0x0
 jump 0x27, jump_38
-add_completion_points 0x5
+.add_completion_points 0x5
 jump_38:
 .test_eq 0x78, 0x0
 jump 0x28, jump_39
-add_completion_points 0x2
+.add_completion_points 0x2
 jump_39:
 .test_eq 0x79, 0x0
 jump 0x29, jump_40
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_40:
 .test_eq 0x83, 0x0
 jump 0x2a, jump_41
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_41:
 .test_eq 0x85, 0x0
 jump 0x2b, jump_42
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_42:
 .test_eq 0x8a, 0x0
 jump 0x2c, jump_43
-add_completion_points 0x5
+.add_completion_points 0x5
 jump_43:
 .test_eq 0x8b, 0x0
 jump 0x2d, jump_44
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_44:
 .test_eq 0x8c, 0x0
 jump 0x2e, jump_45
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_45:
 .test_eq 0x9a, 0x0
 jump 0x2f, jump_46
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_46:
 .test_eq 0x9c, 0x0
 jump 0x30, jump_47
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_47:
 .test_eq 0xa0, 0x0
 jump 0x31, jump_48
-add_completion_points 0x5
+.add_completion_points 0x5
 jump_48:
 .test_eq 0xa8, 0x0
 jump 0x32, jump_49
-add_completion_points 0x4
+.add_completion_points 0x4
 jump_49:
 .test_eq 0xa9, 0x0
 jump 0x33, jump_50
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_50:
 .test_eq 0xaa, 0x0
 jump 0x34, jump_51
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_51:
 .test_eq 0xab, 0x0
 jump 0x35, jump_52
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_52:
 .test_eq 0xb1, 0x0
 jump 0x36, jump_53
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_53:
 .test_eq 0xba, 0x0
 jump 0x37, jump_54
-add_completion_points 0x4
+.add_completion_points 0x4
 jump_54:
 .test_eq 0xbb, 0x0
 jump 0x38, jump_55
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_55:
 .test_eq 0xbc, 0x0
 jump 0x39, jump_56
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_56:
 .test_eq 0xbd, 0x0
 jump 0x3a, jump_57
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_57:
 .test_eq 0xc3, 0x0
 jump 0x3b, jump_58
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_58:
 .test_eq 0xcc, 0x0
 jump 0x3c, jump_59
-add_completion_points 0x4
+.add_completion_points 0x4
 jump_59:
 .test_eq 0xcd, 0x0
 jump 0x3d, jump_60
-add_completion_points 0x4
+.add_completion_points 0x4
 jump_60:
 .test_eq 0xd5, 0x0
 jump 0x3e, jump_61
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_61:
 .test_eq 0xd7, 0x0
 jump 0x3f, jump_62
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_62:
 .test_eq 0xdb, 0x0
 jump 0x40, jump_63
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_63:
 .test_eq 0xe0, 0x0
 jump 0x41, jump_64
-add_completion_points 0x5
+.add_completion_points 0x5
 jump_64:
 .test_eq 0xe1, 0x0
 jump 0x42, jump_65
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_65:
 .test_eq 0xe2, 0x0
 jump 0x43, jump_66
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_66:
 .test_eq 0xf5, 0x0
 jump 0x44, jump_67
-add_completion_points 0x5
+.add_completion_points 0x5
 jump_67:
 .test_eq 0xf6, 0x0
 jump 0x45, jump_68
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_68:
 .test_eq 0xf7, 0x0
 jump 0x46, jump_69
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_69:
 .test_eq 0xf8, 0x0
 jump 0x47, jump_70
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_70:
 .test_eq 0x109, 0x0
 jump 0x48, jump_71
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_71:
 .test_eq 0x10a, 0x0
 jump 0x49, jump_72
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_72:
 .test_eq 0x10b, 0x0
 jump 0x4a, jump_73
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_73:
 .test_eq 0x11a, 0x0
 jump 0x4b, jump_74
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_74:
 .test_eq 0x11b, 0x0
 jump 0x4c, jump_75
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_75:
 .test_eq 0x11c, 0x0
 jump 0x4d, jump_76
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_76:
 .test_eq 0x11d, 0x0
 jump 0x4e, jump_77
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_77:
 .test_eq 0x11e, 0x0
 jump 0x4f, jump_78
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_78:
 .test_eq 0x11f, 0x0
 jump 0x50, jump_79
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_79:
 .test_eq 0x120, 0x0
 jump 0x51, jump_80
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_80:
 .test_eq 0x121, 0x0
 jump 0x52, jump_81
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_81:
 .test_eq 0x122, 0x0
 jump 0x53, jump_82
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_82:
 .test_eq 0x123, 0x0
 jump 0x54, jump_83
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_83:
 .test_eq 0x124, 0x0
 jump 0x55, jump_84
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_84:
 .test_eq 0x125, 0x0
 jump 0x56, jump_85
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_85:
 .test_eq 0x139, 0x0
 jump 0x57, jump_86
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_86:
 .test_eq 0x13a, 0x0
 jump 0x58, jump_87
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_87:
 .test_eq 0x13b, 0x0
 jump 0x59, jump_88
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_88:
 .test_eq 0x13c, 0x0
 jump 0x5a, jump_89
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_89:
 .test_eq 0x13d, 0x0
 jump 0x5b, jump_90
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_90:
 .test_eq 0x13e, 0x0
 jump 0x5c, jump_91
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_91:
 .test_eq 0x13f, 0x0
 jump 0x5d, jump_92
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_92:
 .test_eq 0x140, 0x0
 jump 0x5e, jump_93
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_93:
 .test_eq 0x141, 0x0
 jump 0x5f, jump_94
 jump_94:
 .test_eq 0x143, 0x0
 jump 0x60, jump_95
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_95:
 .test_eq 0x144, 0x0
 jump 0x61, jump_96
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_96:
 .test_eq 0x145, 0x0
 jump 0x62, jump_97
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_97:
 .test_eq 0x146, 0x0
 jump 0x63, jump_98
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_98:
 .test_eq 0x147, 0x0
 jump 0x64, jump_99
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_99:
 .test_eq 0x148, 0x0
 jump 0x65, jump_100
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_100:
 .test_eq 0x149, 0x0
 jump 0x66, jump_101
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_101:
 .test_eq 0x14a, 0x0
 jump 0x67, jump_102
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_102:
 .test_eq 0x14b, 0x0
 jump 0x68, jump_103
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_103:
 .test_eq 0x14c, 0x0
 jump 0x69, jump_104
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_104:
 .test_eq 0x14d, 0x0
 jump 0x6a, jump_105
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_105:
 .test_eq 0x14e, 0x0
 jump 0x6b, jump_106
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_106:
 .test_eq 0x14f, 0x0
 jump 0x6c, jump_107
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_107:
 .test_eq 0x150, 0x0
 jump 0x6d, jump_108
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_108:
 .test_eq 0x151, 0x0
 jump 0x6e, jump_109
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_109:
 .test_eq 0x152, 0x0
 jump 0x6f, jump_110
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_110:
 .test_eq 0x153, 0x0
 jump 0x70, jump_111
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_111:
 .test_eq 0x154, 0x0
 jump 0x71, jump_112
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_112:
 .test_eq 0x155, 0x0
 jump 0x72, jump_113
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_113:
 .test_eq 0x156, 0x0
 jump 0x73, jump_114
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_114:
 .test_eq 0x157, 0x0
 jump 0x74, jump_115
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_115:
 .test_eq 0x158, 0x0
 jump 0x75, jump_116
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_116:
 .test_eq 0x159, 0x0
 jump 0x76, jump_117
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_117:
 .test_eq 0x15a, 0x0
 jump 0x77, jump_118
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_118:
 .test_eq 0x15b, 0x0
 jump 0x78, jump_119
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_119:
 .test_eq 0x15d, 0x0
 jump 0x79, jump_120
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_120:
 .test_eq 0x168, 0x0
 jump 0x7a, jump_121
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_121:
 .test_eq 0x169, 0x0
 jump 0x7b, jump_122
-add_completion_points 0x1
+.add_completion_points 0x1
 jump_122:
 display_scene 0xe, 0x1e
 .test_eq 0x16a, 0x1
@@ -574,7 +574,7 @@ jump 0x1c7, jump_431
 .test_eq 0x1, 0xffffffff
 jump 0x1cc, jump_436
 jump_125:
-display_location 0x1
+.display_location 0x1
 .empty_text_box
 display_scene 0x7, 0x0
 display_scene 0xf, 0x82
@@ -871,7 +871,7 @@ set_text_buffer "*c4Meramon*c7"
 set_text_buffer "I\'ll make toast out of you..."
 .display_text_buffer
 .wait_input
-battle 0x4
+.battle 0x4
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -1007,7 +1007,7 @@ set_text_buffer "*c4Phoenixmon*c7"
 set_text_buffer "Taste the power of my Air Attack!"
 .display_text_buffer
 .wait_input
-battle 0x5
+.battle 0x5
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -1159,7 +1159,7 @@ set_text_buffer "*c4Veemon*c7"
 set_text_buffer "OK! Hit me with your best shot!"
 .display_text_buffer
 .wait_input
-battle 0x6
+.battle 0x6
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -1737,7 +1737,7 @@ set_text_buffer "It\'s a super powerful Deck!"
 .wait_input
 display_scene 0x11, 0x93
 jump_196:
-battle 0x1b
+.battle 0x1b
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -2061,7 +2061,7 @@ set_text_buffer "*c4ExVeemon*c7"
 set_text_buffer "OK!"
 .display_text_buffer
 .wait_input
-battle 0x36
+.battle 0x36
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -2182,7 +2182,7 @@ set_text_buffer "*c4Flamedramon*c7"
 set_text_buffer "Let\'s battle and rattle hard!"
 .display_text_buffer
 .wait_input
-battle 0x37
+.battle 0x37
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -2315,7 +2315,7 @@ set_text_buffer "*c4Raidramon*c7"
 set_text_buffer "OK! I\'m relaxed!"
 .display_text_buffer
 .wait_input
-battle 0x38
+.battle 0x38
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -2477,7 +2477,7 @@ set_text_buffer "*c4Paildramon*c7"
 set_text_buffer "I see."
 .display_text_buffer
 .wait_input
-battle 0x51
+.battle 0x51
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -2648,7 +2648,7 @@ set_text_buffer "I see..."
 set_text_buffer "If you insist. I will battle you!"
 .display_text_buffer
 .wait_input
-battle 0x67
+.battle 0x67
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -2838,7 +2838,7 @@ set_text_buffer "*c4Imperialdramon*c7"
 set_text_buffer "Let\'s fight the ultimate battle!"
 .display_text_buffer
 .wait_input
-battle 0x6e
+.battle 0x6e
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -3086,7 +3086,7 @@ set_text_buffer "*c4Garudamon*c7"
 set_text_buffer "We must do our very best!"
 .display_text_buffer
 .wait_input
-battle 0x52
+.battle 0x52
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -3339,7 +3339,7 @@ set_text_buffer "*c4Sora*c7"
 set_text_buffer "I won\'t be defeated!"
 .display_text_buffer
 .wait_input
-battle 0x53
+.battle 0x53
 display_scene 0xf, 0x82
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -3556,7 +3556,7 @@ set_text_buffer "*c4Apokarimon*c7"
 set_text_buffer "Be engulfed in a flame of hatred!"
 .display_text_buffer
 .wait_input
-battle 0x7a
+.battle 0x7a
 display_scene 0xf, 0x80
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -3858,7 +3858,7 @@ jump_291:
 .empty_text_box
 .set_var 0x112, 0x1
 display_scene 0xf, 0x7c
-display_location 0x2
+.display_location 0x2
 .set_bg_battle_arena
 jump_292:
 .test_eq 0x10d, 0x1
@@ -3941,7 +3941,7 @@ set_text_buffer "*c4Meramon*c7"
 set_text_buffer "I\'ll burn you to a crisp..."
 .display_text_buffer
 .wait_input
-battle 0x4
+.battle 0x4
 display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -4077,7 +4077,7 @@ set_text_buffer "*c4Phoenixmon*c7"
 set_text_buffer "Taste the power of my Air Attack!"
 .display_text_buffer
 .wait_input
-battle 0x5
+.battle 0x5
 display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -4215,7 +4215,7 @@ set_text_buffer "*c4Veemon*c7"
 set_text_buffer "OK! Hit me with your best shot!"
 .display_text_buffer
 .wait_input
-battle 0x6
+.battle 0x6
 display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -4609,7 +4609,7 @@ jump_339:
 .empty_text_box
 .set_var 0x113, 0x1
 display_scene 0xf, 0x7d
-display_location 0x3
+.display_location 0x3
 .set_bg_battle_arena
 jump_340:
 .test_eq 0x10d, 0x1
@@ -4709,7 +4709,7 @@ set_text_buffer "*c4ExVeemon*c7"
 set_text_buffer "OK!!"
 .display_text_buffer
 .wait_input
-battle 0x36
+.battle 0x36
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -4843,7 +4843,7 @@ set_text_buffer "*c4Flamedramon*c7"
 set_text_buffer "Go for it!"
 .display_text_buffer
 .wait_input
-battle 0x37
+.battle 0x37
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -4981,7 +4981,7 @@ set_text_buffer "*c4Raidramon*c7"
 set_text_buffer "OK! I\'m ready!"
 .display_text_buffer
 .wait_input
-battle 0x38
+.battle 0x38
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -5116,7 +5116,7 @@ jump_362:
 .empty_text_box
 .set_var 0x114, 0x1
 display_scene 0xf, 0x7d
-display_location 0x3
+.display_location 0x3
 .set_bg_battle_arena
 jump_363:
 .test_eq 0x10d, 0x1
@@ -5181,7 +5181,7 @@ set_text_buffer "*c4Flamedramon*c7"
 set_text_buffer "Go for it!"
 .display_text_buffer
 .wait_input
-battle 0x37
+.battle 0x37
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -5294,7 +5294,7 @@ set_text_buffer "*c4Raidramon*c7"
 set_text_buffer "OK! I\'m ready!"
 .display_text_buffer
 .wait_input
-battle 0x38
+.battle 0x38
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -5443,7 +5443,7 @@ set_text_buffer "*c4Paildramon*c7"
 set_text_buffer "Ha...!"
 .display_text_buffer
 .wait_input
-battle 0x51
+.battle 0x51
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -5584,7 +5584,7 @@ jump_385:
 .empty_text_box
 .set_var 0x115, 0x1
 display_scene 0xf, 0x7d
-display_location 0x3
+.display_location 0x3
 .set_bg_battle_arena
 jump_386:
 .test_eq 0x10d, 0x1
@@ -5651,7 +5651,7 @@ set_text_buffer "*c4Raidramon*c7"
 set_text_buffer "OK! I\'m ready!"
 .display_text_buffer
 .wait_input
-battle 0x38
+.battle 0x38
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -5772,7 +5772,7 @@ set_text_buffer "*c4Paildramon*c7"
 set_text_buffer "Ha...!"
 .display_text_buffer
 .wait_input
-battle 0x51
+.battle 0x51
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -5921,7 +5921,7 @@ set_text_buffer "I see..."
 set_text_buffer "If you insist, I will battle you!"
 .display_text_buffer
 .wait_input
-battle 0x67
+.battle 0x67
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -6058,7 +6058,7 @@ jump_408:
 .empty_text_box
 .set_var 0x116, 0x1
 display_scene 0xf, 0x7d
-display_location 0x3
+.display_location 0x3
 .set_bg_battle_arena
 jump_409:
 .test_eq 0x10d, 0x1
@@ -6125,7 +6125,7 @@ set_text_buffer "*c4Paildramon*c7"
 set_text_buffer "Ha...!"
 .display_text_buffer
 .wait_input
-battle 0x51
+.battle 0x51
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -6249,7 +6249,7 @@ set_text_buffer "I see..."
 set_text_buffer "If you insist. I will battle you!"
 .display_text_buffer
 .wait_input
-battle 0x67
+.battle 0x67
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0
@@ -6397,7 +6397,7 @@ set_text_buffer "*c4Imperialdramon*c7"
 set_text_buffer "This will be our moment in history."
 .display_text_buffer
 .wait_input
-battle 0x6e
+.battle 0x6e
 display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 .test_eq 0x1, 0x0

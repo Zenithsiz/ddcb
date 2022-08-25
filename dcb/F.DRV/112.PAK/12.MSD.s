@@ -120,14 +120,14 @@ jump 0x0, jump_2
 jump_3:
 .set_var 0x3b, 0xff
 .set_var 0x0, 0xffffffff
-add_partner 0x1
+.add_partner 0x1
 .set_var 0x1be, 0x0
 display_scene 0xe, 0x0
-display_location 0x1
+.display_location 0x1
 .set_var 0x1be, 0x1
 display_scene 0xe, 0x1
 .set_var 0x1be, 0x0
-display_location 0x2b
+.display_location 0x2b
 unknown 0x3000c
 unknown 0x160000
 unknown 0x6b0000
@@ -137,90 +137,90 @@ unknown 0x630000
 display_scene 0x3, 0x8d
 display_scene 0x3, 0x66
 display_scene 0x3, 0x42
-display_location 0x0
-display_location 0x2
-display_location 0x3
-display_location 0x4
-display_location 0x5
-display_location 0x6
-display_location 0x7
-display_location 0x21
-display_location 0x22
-display_location 0x2b
-display_location 0x2c
-display_location 0x2d
-display_location 0x2e
-display_location 0x2f
-display_location 0x30
-display_location 0x31
-add_partner 0xa
+.display_location 0x0
+.display_location 0x2
+.display_location 0x3
+.display_location 0x4
+.display_location 0x5
+.display_location 0x6
+.display_location 0x7
+.display_location 0x21
+.display_location 0x22
+.display_location 0x2b
+.display_location 0x2c
+.display_location 0x2d
+.display_location 0x2e
+.display_location 0x2f
+.display_location 0x30
+.display_location 0x31
+.add_partner 0xa
 display_scene 0x3, 0x69
 display_scene 0x3, 0x67
-battle 0x4
-display_location 0x8
-display_location 0x9
-display_location 0xa
-display_location 0xb
-display_location 0xc
-display_location 0x23
-display_location 0x24
-display_location 0x32
-display_location 0x33
-display_location 0x34
-display_location 0x35
-display_location 0x36
-display_location 0x37
-display_location 0x38
-add_partner 0xa
-display_location 0xd
-display_location 0xe
-display_location 0xf
-display_location 0x10
-display_location 0x11
-display_location 0x25
-display_location 0x26
-display_location 0x39
-display_location 0x3a
-display_location 0x3b
-display_location 0x3c
-display_location 0x3d
-display_location 0x3e
-display_location 0x3f
-add_partner 0xa
+.battle 0x4
+.display_location 0x8
+.display_location 0x9
+.display_location 0xa
+.display_location 0xb
+.display_location 0xc
+.display_location 0x23
+.display_location 0x24
+.display_location 0x32
+.display_location 0x33
+.display_location 0x34
+.display_location 0x35
+.display_location 0x36
+.display_location 0x37
+.display_location 0x38
+.add_partner 0xa
+.display_location 0xd
+.display_location 0xe
+.display_location 0xf
+.display_location 0x10
+.display_location 0x11
+.display_location 0x25
+.display_location 0x26
+.display_location 0x39
+.display_location 0x3a
+.display_location 0x3b
+.display_location 0x3c
+.display_location 0x3d
+.display_location 0x3e
+.display_location 0x3f
+.add_partner 0xa
 display_scene 0x3, 0x67
-display_location 0x12
-display_location 0x13
-display_location 0x14
-display_location 0x15
-display_location 0x16
-display_location 0x27
-display_location 0x28
-display_location 0x40
-display_location 0x41
-display_location 0x42
-display_location 0x43
-display_location 0x44
-display_location 0x45
-display_location 0x46
-add_partner 0xa
-display_location 0x17
-display_location 0x18
-display_location 0x19
-display_location 0x1a
-display_location 0x1b
-display_location 0x29
-display_location 0x2a
-display_location 0x47
-display_location 0x48
-add_partner 0xa
-display_location 0x1c
-display_location 0x1d
-display_location 0x1e
-display_location 0x1f
-display_location 0x20
-add_partner 0x3c
+.display_location 0x12
+.display_location 0x13
+.display_location 0x14
+.display_location 0x15
+.display_location 0x16
+.display_location 0x27
+.display_location 0x28
+.display_location 0x40
+.display_location 0x41
+.display_location 0x42
+.display_location 0x43
+.display_location 0x44
+.display_location 0x45
+.display_location 0x46
+.add_partner 0xa
+.display_location 0x17
+.display_location 0x18
+.display_location 0x19
+.display_location 0x1a
+.display_location 0x1b
+.display_location 0x29
+.display_location 0x2a
+.display_location 0x47
+.display_location 0x48
+.add_partner 0xa
+.display_location 0x1c
+.display_location 0x1d
+.display_location 0x1e
+.display_location 0x1f
+.display_location 0x20
+.add_partner 0x3c
 display_scene 0x7, 0x16
 display_scene 0x7, 0x17
-add_partner 0x14
+.add_partner 0x14
 display_scene 0xe, 0x0
 .set_var 0x0, 0x0

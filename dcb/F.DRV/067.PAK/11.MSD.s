@@ -226,25 +226,25 @@ jump 0x0, jump_5
 jump 0x0, jump_4
 jump_5:
 .set_var 0x0, 0xffffffff
-add_partner 0x1
+.add_partner 0x1
 display_scene 0xe, 0x0
-battle 0x3
+.battle 0x3
 .set_var 0x7, 0x0
-add_partner 0x3c
+.add_partner 0x3c
 .set_var 0x7, 0xffffffc4
 unknown 0x3000c
 unknown 0x170000
 unknown 0x610000
-display_location 0x1e
-display_location 0x1f
-display_location 0x20
-display_location 0x21
-display_location 0x22
-display_location 0x23
-display_location 0x24
-display_location 0x25
-display_location 0x26
-display_location 0x27
+.display_location 0x1e
+.display_location 0x1f
+.display_location 0x20
+.display_location 0x21
+.display_location 0x22
+.display_location 0x23
+.display_location 0x24
+.display_location 0x25
+.display_location 0x26
+.display_location 0x27
 .add_var 0x7, 0x5f
 unknown 0xa000b
 unknown 0x70001
@@ -252,16 +252,16 @@ unknown 0x70001
 unknown 0x3000c
 unknown 0x170000
 unknown 0x610000
-display_location 0x28
-display_location 0x29
-display_location 0x2a
-display_location 0x2b
-display_location 0x2c
-display_location 0x2d
-display_location 0x2e
-display_location 0x2f
-display_location 0x30
-display_location 0x31
+.display_location 0x28
+.display_location 0x29
+.display_location 0x2a
+.display_location 0x2b
+.display_location 0x2c
+.display_location 0x2d
+.display_location 0x2e
+.display_location 0x2f
+.display_location 0x30
+.display_location 0x31
 .add_var 0x7, 0x85
 unknown 0xa000b
 unknown 0x70001
@@ -269,16 +269,16 @@ unknown 0x70001
 unknown 0x3000c
 unknown 0x170000
 unknown 0x610000
-display_location 0x32
-display_location 0x33
-display_location 0x34
-display_location 0x35
-display_location 0x36
-display_location 0x37
-display_location 0x38
-display_location 0x39
-display_location 0x3a
-display_location 0x3b
+.display_location 0x32
+.display_location 0x33
+.display_location 0x34
+.display_location 0x35
+.display_location 0x36
+.display_location 0x37
+.display_location 0x38
+.display_location 0x39
+.display_location 0x3a
+.display_location 0x3b
 .add_var 0x7, 0x8a
 unknown 0xa000b
 unknown 0x70001
@@ -286,10 +286,10 @@ unknown 0x70001
 unknown 0x3000c
 unknown 0x170000
 unknown 0x820000
-display_location 0x0
-display_location 0x1
-display_location 0x2
-display_location 0x3
+.display_location 0x0
+.display_location 0x1
+.display_location 0x2
+.display_location 0x3
 .add_var 0x7, 0x8e
 unknown 0xa000b
 unknown 0x70001
@@ -301,6 +301,6 @@ unknown 0x830000
 unknown 0xa000b
 unknown 0x70001
 .set_var 0x7, 0xffffff42
-add_partner 0xf
-battle 0x0
+.add_partner 0xf
+.battle 0x0
 .set_var 0x0, 0x0

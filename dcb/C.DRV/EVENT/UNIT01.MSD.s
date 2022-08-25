@@ -396,7 +396,7 @@ set_text_buffer "Do you want to stop Card Fusion?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
-battle 0x1
+.battle 0x1
 .set_var 0x8, 0xffffffff
 .test_eq 0x1, 0x0
 jump 0x12, jump_15
@@ -461,7 +461,7 @@ set_text_buffer "to Fuse these Cards?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
-battle 0x2
+.battle 0x2
 .test_eq 0x1, 0x1
 jump 0x1e, jump_27
 open_screen 0x12
@@ -576,7 +576,7 @@ jump 0x2e, jump_42
 jump 0x2d, jump_41
 jump 0x2c, jump_40
 jump_41:
-display_location 0x0
+.display_location 0x0
 open_screen 0xf
 combo_box_add_button 0x1
 open_combo_box 0x0
@@ -600,7 +600,7 @@ set_text_buffer "the maximum number of"
 set_text_buffer "this Card possible!"
 .start_transition
 .reset_choose_partner
-display_location 0x1
+.display_location 0x1
 display_scene 0x4, 0x1
 open_screen 0x14
 jump 0x2b, jump_39
@@ -702,10 +702,10 @@ set_text_buffer "these 2 Cards?"
 .start_transition
 set_buffer 0x6, ""
 set_buffer 0x5, ""
-battle 0x1
+.battle 0x1
 .test_eq 0x1, 0x1
 jump 0x3a, jump_54
-display_location 0x1
+.display_location 0x1
 display_scene 0x4, 0x1
 open_screen 0x14
 jump 0x2b, jump_39
