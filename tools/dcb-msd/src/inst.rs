@@ -344,18 +344,7 @@ impl Inst {
 		let (mnemonic, args) = match *self {
 			// TODO: Return custom type from here?
 			Self::OpenScreen { screen } => ("open_screen", vec![num!(screen)]),
-			Self::ChangeVar { var, op, value } => match (var, op) {
-				// Arena intro colors
-				// TODO: Maybe convert to string like "yubrg" for all colors
-				(0x5, 0) => ("set_arena_match_intro_colors", vec![num!(value)]),
-
-				// Arena match intro index
-				(0xb, 0) => ("set_arena_match_intro_idx", vec![num!(value)]),
-
-				(_, 0) => ("set_var", vec![num!(var), num!(value)]),
-				(_, 1) => ("add_var", vec![num!(var), num!(value)]),
-				_ => ("mod_var", vec![num!(op), num!(var), num!(value)]),
-			},
+			Self::ChangeVar { var, op, value } => ("mod_var", vec![num!(op), num!(var), num!(value)]),
 			Self::Test { var, op, value } => match op {
 				3 => ("test_eq", vec![num!(var), num!(value)]),
 				5 => ("test_lt", vec![num!(var), num!(value)]),

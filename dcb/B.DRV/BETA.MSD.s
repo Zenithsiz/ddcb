@@ -4,7 +4,7 @@
 .include "/msd-macros.s"
 .include "/msd-vars.s"
 
-set_var 0x1, 0x0
+.set_var 0x1, 0x0
 unknown 0x1000c
 unknown 0x0
 unknown 0x5b0000
@@ -97,7 +97,7 @@ unknown 0x1d0000
 unknown 0x210000
 set_buffer 0x0, "Practice"
 .battle_cafe_await
-set_var 0x1, 0x1
+.set_var 0x1, 0x1
 unknown 0x1000c
 unknown 0x0
 unknown 0x340000
@@ -203,9 +203,9 @@ unknown 0x10000
 unknown 0x0
 test 0x0, 0x2, 0x2
 jump 0x0, jump_0
-set_var 0x8, 0x78
+.set_var 0x8, 0x78
 display_scene 0x6, 0x1
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 set_buffer 0x0, "It looks like I get 1st Turn!"
 .start_transition
 jump_1:
@@ -227,7 +227,7 @@ open_combo_box 0x1e
 battle 0x4
 set_buffer 0x0, "Next, I pick a Digimon to battle with.\\nIt will go into the Battle Slot."
 .start_transition
-set_var 0x9, 0x1
+.set_var 0x9, 0x1
 display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
@@ -274,7 +274,7 @@ set_light 0x0, 0x110, 0x67, 0xc
 set_buffer 0x0, "This number is DP\\n (Digivolve Pts.)."
 .start_transition
 .empty_text_box
-set_var 0x9, 0x2
+.set_var 0x9, 0x2
 display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
@@ -305,7 +305,7 @@ jump_7:
 test 0x0, 0x2, 0x17
 jump 0x7, jump_7
 battle 0xa
-set_var 0x9, 0x0
+.set_var 0x9, 0x0
 display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
@@ -340,7 +340,7 @@ unknown 0xc
 unknown 0x0
 unknown 0x0
 display_scene 0x6, 0x0
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 set_buffer 0x0, "Now it\'s your Turn to Draw Cards."
 .start_transition
 jump_9:
@@ -372,7 +372,7 @@ open_screen 0x8
 .combo_box_await
 test 0x0, 0x2, 0x7
 jump 0xc, jump_12
-set_var 0x9, 0x0
+.set_var 0x9, 0x0
 display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x0
@@ -427,7 +427,7 @@ unknown 0x50000
 battle 0x4
 set_buffer 0x0, "Now, pick your Digimon to battle with."
 .start_transition
-set_var 0x9, 0x1
+.set_var 0x9, 0x1
 display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x0
@@ -460,7 +460,7 @@ jump_18:
 open_screen 0x8
 test 0x0, 0x3, 0x1
 jump 0x11, jump_17
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 jump_19:
 .combo_box_await
 test 0x0, 0x2, 0xb
@@ -474,7 +474,7 @@ unknown 0x70000
 battle 0x7
 set_buffer 0x0, "*p, your Digivolve Phase is next.\\nYou have to collect DP to digivolve.\\nWhich Card would be best?"
 .start_transition
-set_var 0x9, 0x2
+.set_var 0x9, 0x2
 display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x0
@@ -512,7 +512,7 @@ jump_22:
 open_screen 0x8
 test 0x0, 0x3, 0x3
 jump 0x15, jump_21
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 jump_23:
 .combo_box_await
 test 0x0, 0x2, 0xe
@@ -521,11 +521,11 @@ open_combo_box 0x1e
 set_buffer 0x0, "Like I told you before,\\nif you have enough DP, you can\\ndigivolve your Digimon now."
 .start_transition
 set_light 0x0, 0x6f, 0x95, 0x40
-set_var 0x8, 0x40
+.set_var 0x8, 0x40
 set_buffer 0x0, "But you don\'t have a Level *e4 Digimon\\nCard of the same Color as Agumon, so\\nyou can\'t digivolve even with enough DP."
 .start_transition
 .empty_text_box
-set_var 0x8, 0x78
+.set_var 0x8, 0x78
 set_buffer 0x0, "Now the Digivolve Phase is done."
 .start_transition
 jump_24:
@@ -609,7 +609,7 @@ set_buffer 0x0, "Let\'s make use of Digimon Cards and\\nOption Cards to support 
 .start_transition
 set_buffer 0x0, "Because you get to attack first, I\\nchoose my Support Card before you."
 .start_transition
-set_var 0x9, 0x4
+.set_var 0x9, 0x4
 display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
@@ -636,7 +636,7 @@ unknown 0x70000
 battle 0xe
 set_buffer 0x0, "*p, it\'s your turn to choose."
 .start_transition
-set_var 0x9, 0x4
+.set_var 0x9, 0x4
 display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x0
@@ -683,10 +683,10 @@ unknown 0x200000
 unknown 0x70000
 display_scene 0x3, 0xa2
 open_combo_box 0x1e
-set_var 0x8, 0xaa
+.set_var 0x8, 0xaa
 set_buffer 0x0, "By the way, you can check your Opponent\'s\\nHand and his Support Card."
 .start_transition
-set_var 0x8, 0x78
+.set_var 0x8, 0x78
 set_buffer 0x0, "The player attacking first picks his\\nSupport Card after seeing what Card the\\nOpponent has used. A big advantage."
 .start_transition
 set_buffer 0x0, "Now, choose the Recovery Floppy Card,\\nand press *b2 to use it."
@@ -713,7 +713,7 @@ jump_32:
 open_screen 0x8
 test 0x0, 0x3, 0x2
 jump 0x1f, jump_31
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 jump_33:
 .combo_box_await
 test 0x0, 0x2, 0x20
@@ -732,7 +732,7 @@ unknown 0xc
 unknown 0x10000
 unknown 0x0
 display_scene 0x6, 0x1
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 set_buffer 0x0, "OK, the first battle is over\\nand it\'s my Turn again."
 .start_transition
 set_buffer 0x0, "Whoever reduces the Opponent Digimon\'s\\nHP to 0 wins the Round. The first one\\nto win 3 Rounds wins the Match!"
@@ -765,7 +765,7 @@ set_buffer 0x0, "Now it\'s the Digivolve Phase. Let\'s rock!"
 .start_transition
 set_buffer 0x0, "First, collect enough DP.\\nBy the way, this can be skipped with *b0,\\nbut don\'t worry about that for now."
 .start_transition
-set_var 0x9, 0x2
+.set_var 0x9, 0x2
 display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
@@ -787,7 +787,7 @@ display_scene 0x3, 0xa2
 open_combo_box 0x1e
 display_scene 0x5, 0x1
 combo_box_add_button 0x24
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 jump_38:
 .combo_box_await
 test 0x0, 0x2, 0xe
@@ -799,7 +799,7 @@ jump_39:
 test 0x0, 0x2, 0x13
 jump 0x27, jump_39
 battle 0x9
-set_var 0x9, 0x3
+.set_var 0x9, 0x3
 display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x1e0000
@@ -826,14 +826,14 @@ open_combo_box 0x1e
 set_buffer 0x0, "Of course, you can only digivolve to a\\nDigimon of the same color (Speciality).\\nOK, let\'s pick this one."
 .start_transition
 combo_box_add_button 0x1e
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 display_scene 0x5, 0x1
 jump_40:
 .combo_box_await
 test 0x0, 0x2, 0x17
 jump 0x28, jump_40
 set_light 0x0, 0xc4, 0x89, 0xa
-set_var 0x8, 0x40
+.set_var 0x8, 0x40
 set_buffer 0x0, "All right! Digivolving complete!\\nAlso, the old HP are now replaced with\\nthe new Digimon\'s HP!"
 .start_transition
 set_light 0x0, 0x114, 0x7b, 0x1c
@@ -842,7 +842,7 @@ set_buffer 0x0, "After digivolving, all DP in DP slot\\nwill be deleted."
 .empty_text_box
 .wait_input
 battle 0xa
-set_var 0x8, 0x78
+.set_var 0x8, 0x78
 set_buffer 0x0, "Now the Digivolve Phase is over."
 .start_transition
 unknown 0x2000c
@@ -901,7 +901,7 @@ battle 0xd
 display_scene 0x6, 0x0
 set_buffer 0x0, "The player who attacks second\\ngets to choose a Support Card first.\\nSo, *p, this time you choose first."
 .start_transition
-set_var 0x9, 0x4
+.set_var 0x9, 0x4
 display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x0
@@ -929,7 +929,7 @@ jump_47:
 open_screen 0x8
 test 0x0, 0x3, 0x0
 jump 0x2e, jump_46
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 jump_48:
 .combo_box_await
 test 0x0, 0x2, 0x1d
@@ -960,7 +960,7 @@ unknown 0xc
 unknown 0x0
 unknown 0x0
 display_scene 0x6, 0x0
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 set_buffer 0x0, "*p, it\'s your Turn again."
 .start_transition
 jump_51:
@@ -992,7 +992,7 @@ open_screen 0x8
 .combo_box_await
 test 0x0, 0x2, 0x7
 jump 0x36, jump_54
-set_var 0x9, 0x0
+.set_var 0x9, 0x0
 display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x40000
@@ -1079,7 +1079,7 @@ unknown 0x0
 unknown 0x10000
 set_buffer 0x0, "*p, it\'s your turn to digivolve.\\nBe sure to get enough DP to digivolve."
 .start_transition
-set_var 0x9, 0x2
+.set_var 0x9, 0x2
 display_scene 0x4, 0x0
 unknown 0x3000c
 unknown 0x80000
@@ -1113,7 +1113,7 @@ test 0x0, 0x2, 0x15
 jump 0x40, jump_64
 open_combo_box 0x14
 .combo_box_await
-set_var 0x9, 0x3
+.set_var 0x9, 0x3
 unknown 0x3000c
 unknown 0x80000
 unknown 0x0
@@ -1145,7 +1145,7 @@ jump_67:
 open_screen 0x8
 test 0x0, 0x3, 0x1
 jump 0x42, jump_66
-set_var 0x9, 0xffffffff
+.set_var 0x9, 0xffffffff
 jump_68:
 .combo_box_await
 test 0x0, 0x2, 0x17
@@ -1210,7 +1210,7 @@ set_buffer 0x0, "Things are getting interesting.\\nNow, choose a Support Card."
 .start_transition
 set_buffer 0x0, "I attack second, so I have first pick."
 .start_transition
-set_var 0x9, 0x4
+.set_var 0x9, 0x4
 display_scene 0x4, 0x1
 unknown 0x3000c
 unknown 0x220000

@@ -165,30 +165,6 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 			screen: screen.try_into().context("Unable to fit screen number into a `u16`")?,
 		}),
 
-		"set_arena_match_intro_colors" => number_arg!(inst.args, value => Inst::ChangeVar {
-			var: 0x5,
-			op: 0x0,
-			value: value.try_into().context("Unable to fit value into a `u16`")?
-		}),
-
-		"set_arena_match_intro_idx" => number_arg!(inst.args, value => Inst::ChangeVar {
-			var: 0xb,
-			op: 0x0,
-			value: value.try_into().context("Unable to fit value into a `u16`")?
-		}),
-
-		"set_var" => number_number_arg!(inst.args, (var, value) => Inst::ChangeVar {
-			var: var.try_into().context("Unable to fit variable into a `u16`")?,
-			op: 0x0,
-			value: value.try_into().context("Unable to fit value into a `u16`")?
-		}),
-
-		"add_var" => number_number_arg!(inst.args, (var, value) => Inst::ChangeVar {
-			var: var.try_into().context("Unable to fit variable into a `u16`")?,
-			op: 0x1,
-			value: value.try_into().context("Unable to fit value into a `u16`")?
-		}),
-
 		"mod_var" => number_number_number_arg!(inst.args, (op, var, value) => Inst::ChangeVar {
 			var: var.try_into().context("Unable to fit variable into a `u16`")?,
 			op: op.try_into().context("Unable to fit operation into a `u32`")?,

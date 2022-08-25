@@ -87,7 +87,7 @@ set_text_buffer "Partner Fusion."
 set_text_buffer "Isn\'t that cool?"
 .start_transition
 .reset_choose_partner
-set_var 0x1d, 0x1
+.set_var 0x1d, 0x1
 jump 0x5, jump_3
 jump_1:
 test_eq 0x18, 0x1
@@ -171,7 +171,7 @@ set_text_buffer "by using Partner Fusion."
 set_text_buffer "This is pretty cool too."
 .start_transition
 .reset_choose_partner
-set_var 0x1d, 0x1
+.set_var 0x1d, 0x1
 jump 0x5, jump_3
 jump_2:
 set_text_buffer "*c4Andromon No.3*c7"
@@ -206,7 +206,7 @@ set_text_buffer "when a Special Fusion is"
 set_text_buffer "about to happen."
 .start_transition
 .reset_choose_partner
-set_var 0x16, 0x1
+.set_var 0x16, 0x1
 test_eq 0x15, 0x1
 jump 0x9, jump_7
 jump_5:
@@ -232,7 +232,7 @@ set_text_buffer "know Fusion Mutation will occur"
 set_text_buffer "before it happens."
 .start_transition
 .reset_choose_partner
-set_var 0x17, 0x1
+.set_var 0x17, 0x1
 jump 0xa, jump_8
 jump_7:
 test_eq 0x17, 0x1
@@ -253,7 +253,7 @@ set_text_buffer "a Fusion Mutation is about"
 set_text_buffer "to happen."
 .start_transition
 .reset_choose_partner
-set_var 0x17, 0x1
+.set_var 0x17, 0x1
 jump 0xa, jump_8
 jump_8:
 set_text_buffer "*c4Andromon No.3*c7"
@@ -267,13 +267,13 @@ test_eq 0x1d, 0x1
 jump 0xd, jump_11
 test_eq 0x1b, 0x1
 jump 0xc, jump_10
-set_var 0xc, 0x0
+.set_var 0xc, 0x0
 jump 0xe, jump_12
 jump_10:
-set_var 0xc, 0x2
+.set_var 0xc, 0x2
 jump 0xe, jump_12
 jump_11:
-set_var 0xc, 0x3
+.set_var 0xc, 0x3
 jump_12:
 .display_text_buffer
 jump_13:
@@ -302,7 +302,7 @@ set_text_buffer "leaving my shop already?"
 set_buffer 0x6, ""
 set_buffer 0x5, ""
 battle 0x1
-set_var 0x8, 0xffffffff
+.set_var 0x8, 0xffffffff
 test_eq 0x1, 0x0
 jump 0xf, jump_13
 test_eq 0x1, 0x2
@@ -385,7 +385,7 @@ test_eq 0x8, 0xffffffff
 jump 0x17, jump_21
 jump 0x1c, jump_26
 jump_27:
-set_var 0x12, 0xffffffff
+.set_var 0x12, 0xffffffff
 display_scene 0x5, 0x9
 .set_bg_battle_arena
 set_text_buffer "*c4Andromon No.3*c7"
@@ -422,7 +422,7 @@ set_text_buffer "a Digi-Part too!"
 .reset_choose_partner
 jump 0x1c, jump_26
 jump_30:
-set_var 0x12, 0xffffffff
+.set_var 0x12, 0xffffffff
 .set_bg_battle_arena
 display_scene 0x5, 0x9
 set_text_buffer "*c4Andromon No.3*c7"
@@ -576,4 +576,4 @@ jump 0x33, jump_48
 open_screen 0x15
 jump 0xb, jump_9
 jump_49:
-set_var 0x0, 0x0
+.set_var 0x0, 0x0

@@ -14,3 +14,9 @@
 .macro reset_game_completion  , open_screen, 0x13
 
 .macro display_center_text_box, open_screen, 0x16
+
+.macro set_arena_match_intro_colors, mod_var, 0x0, 0x5, $0
+.macro set_arena_match_intro_idx   , mod_var, 0x0, 0xb, $0
+
+.macro set_var, mod_var, 0x0, $0, $1
+.macro add_var, mod_var, 0x1, $0, $1

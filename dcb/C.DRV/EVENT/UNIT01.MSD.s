@@ -86,7 +86,7 @@ set_text_buffer "*c4Andromon No.2*c7"
 set_text_buffer "If you have extra Cards, try it."
 .start_transition
 .reset_choose_partner
-set_var 0x1b, 0x1
+.set_var 0x1b, 0x1
 jump 0x8, jump_5
 jump_0:
 set_text_buffer "*c4Andromon No.2*c7"
@@ -164,7 +164,7 @@ set_text_buffer "If you have extra Cards"
 set_text_buffer "try doing it."
 .start_transition
 .reset_choose_partner
-set_var 0x1b, 0x1
+.set_var 0x1b, 0x1
 jump 0x8, jump_5
 jump_1:
 set_text_buffer "*c4Andromon No.2*c7"
@@ -229,8 +229,8 @@ set_text_buffer "*c4Andromon No.2*c7"
 set_text_buffer "If you have extra Cards try it."
 .start_transition
 .reset_choose_partner
-set_var 0x1b, 0x1
-set_var 0x1c, 0x1
+.set_var 0x1b, 0x1
+.set_var 0x1c, 0x1
 jump 0x8, jump_5
 jump_2:
 test_eq 0x1c, 0x1
@@ -253,7 +253,7 @@ set_text_buffer "Now that I have this data, you"
 set_text_buffer "can Fuse any Cards you like."
 .start_transition
 .reset_choose_partner
-set_var 0x1c, 0x1
+.set_var 0x1c, 0x1
 jump 0x8, jump_5
 jump_3:
 test_eq 0x1c, 0x1
@@ -301,7 +301,7 @@ set_text_buffer "when a Special Fusion is"
 set_text_buffer "about to happen!"
 .start_transition
 .reset_choose_partner
-set_var 0x16, 0x1
+.set_var 0x16, 0x1
 test_eq 0x15, 0x1
 jump 0xc, jump_9
 jump_7:
@@ -329,7 +329,7 @@ set_text_buffer "a Fusion Mutation is"
 set_text_buffer "about to happen!"
 .start_transition
 .reset_choose_partner
-set_var 0x17, 0x1
+.set_var 0x17, 0x1
 jump 0xd, jump_10
 jump_9:
 test_eq 0x17, 0x1
@@ -350,7 +350,7 @@ set_text_buffer "With this, you\'ll know when a"
 set_text_buffer "Fusion Mutation is about happen!"
 .start_transition
 .reset_choose_partner
-set_var 0x17, 0x1
+.set_var 0x17, 0x1
 jump 0xd, jump_10
 jump_10:
 set_text_buffer "*c4Andromon No.2*c7"
@@ -364,13 +364,13 @@ test_eq 0x1d, 0x1
 jump 0x10, jump_13
 test_eq 0x1b, 0x1
 jump 0xf, jump_12
-set_var 0xc, 0x0
+.set_var 0xc, 0x0
 jump 0x11, jump_14
 jump_12:
-set_var 0xc, 0x2
+.set_var 0xc, 0x2
 jump 0x11, jump_14
 jump_13:
-set_var 0xc, 0x3
+.set_var 0xc, 0x3
 jump_14:
 .display_text_buffer
 jump_15:
@@ -397,7 +397,7 @@ set_text_buffer "Do you want to stop Card Fusion?"
 set_buffer 0x6, ""
 set_buffer 0x5, ""
 battle 0x1
-set_var 0x8, 0xffffffff
+.set_var 0x8, 0xffffffff
 test_eq 0x1, 0x0
 jump 0x12, jump_15
 test_eq 0x1, 0x2
@@ -482,7 +482,7 @@ test_eq 0x8, 0xffffffff
 jump 0x1a, jump_23
 jump 0x1f, jump_28
 jump_29:
-set_var 0x12, 0xffffffff
+.set_var 0x12, 0xffffffff
 .set_bg_battle_arena
 display_scene 0x5, 0x9
 set_text_buffer "*c4Andromon No.2*c7"
@@ -519,7 +519,7 @@ set_text_buffer "a Digi-Part too!"
 .reset_choose_partner
 jump 0x1f, jump_28
 jump_32:
-set_var 0x12, 0xffffffff
+.set_var 0x12, 0xffffffff
 .set_bg_battle_arena
 display_scene 0x5, 0x9
 set_text_buffer "*c4Andromon No.2*c7"
@@ -727,4 +727,4 @@ jump 0x3b, jump_55
 open_screen 0x15
 jump 0xe, jump_11
 jump_56:
-set_var 0x0, 0x0
+.set_var 0x0, 0x0

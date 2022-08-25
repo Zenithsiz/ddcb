@@ -6,7 +6,7 @@
 
 jump_0:
 .empty_text_box
-set_var 0x16d, 0x0
+.set_var 0x16d, 0x0
 test_eq 0x169, 0x1
 jump 0x1, jump_1
 open_screen 0x10
@@ -14,7 +14,7 @@ test_lt 0x1, 0xc8
 jump 0x1, jump_1
 test_eq 0xf8, 0x0
 jump 0x1, jump_1
-set_var 0x169, 0x1
+.set_var 0x169, 0x1
 jump_1:
 test_eq 0x112, 0x1
 jump 0x126, jump_290
@@ -36,11 +36,11 @@ display_scene 0xf, 0x73
 display_location 0xffff
 .start_transition
 jump_2:
-set_var 0x10c, 0x0
-set_var 0x10d, 0x0
-set_var 0x10e, 0x0
-set_var 0x10f, 0x0
-set_var 0x110, 0x0
+.set_var 0x10c, 0x0
+.set_var 0x10d, 0x0
+.set_var 0x10e, 0x0
+.set_var 0x10f, 0x0
+.set_var 0x110, 0x0
 .reset_game_completion
 test_eq 0xc, 0x0
 jump 0x4, jump_3
@@ -900,7 +900,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0xa7, jump_165
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -1080,7 +1080,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0xae, jump_172
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -1211,7 +1211,7 @@ set_text_buffer "Oh, it\'s no use."
 set_text_buffer "I gotta get to the Arena."
 .display_text_buffer
 .wait_input
-set_var 0x71, 0x1
+.set_var 0x71, 0x1
 test_eq 0x86, 0x0
 jump 0xa1, jump_159
 test_eq 0x62, 0x0
@@ -1373,7 +1373,7 @@ set_text_buffer "But a battle is a battle..."
 set_text_buffer "so I\'m gonna give it all I got."
 .display_text_buffer
 .wait_input
-set_var 0x72, 0x1
+.set_var 0x72, 0x1
 jump 0xa1, jump_159
 jump_177:
 set_light_left_char 0x80
@@ -1540,7 +1540,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0xbc, jump_185
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -1614,7 +1614,7 @@ display_scene 0xe, 0x3c
 jump_184:
 test_eq 0x11e, 0x1
 jump 0xa1, jump_159
-set_var 0x11e, 0x1
+.set_var 0x11e, 0x1
 display_scene 0xd, 0x8
 set_light_left_char 0x30
 set_light_right_char 0x30
@@ -1788,7 +1788,7 @@ set_text_buffer "*c4Cody*c7"
 set_text_buffer "Goodbye and good luck."
 .display_text_buffer
 .wait_input
-set_var 0x62, 0x1
+.set_var 0x62, 0x1
 test_eq 0x86, 0x0
 jump 0xa1, jump_159
 test_eq 0x71, 0x0
@@ -1887,14 +1887,14 @@ jump 0xc2, jump_191
 display_scene 0xd, 0x9
 set_text_buffer "You got a *c6Patamon Card*c7!"
 .display_text_buffer
-set_var 0x13a, 0x1
+.set_var 0x13a, 0x1
 jump 0xc3, jump_192
 jump_191:
 .empty_text_box
 display_scene 0xd, 0x9
 set_text_buffer "You got a *c6Gatomon Card*c7!"
 .display_text_buffer
-set_var 0x13a, 0x1
+.set_var 0x13a, 0x1
 jump_192:
 display_scene 0xe, 0x3c
 .wait_input
@@ -1926,7 +1926,7 @@ set_text_buffer "*c4Cody*c7"
 set_text_buffer "Well, see you later. Goodbye."
 .display_text_buffer
 .wait_input
-set_var 0x13a, 0x1
+.set_var 0x13a, 0x1
 jump 0xa1, jump_159
 jump_193:
 test_eq 0x8a, 0x1
@@ -2093,14 +2093,14 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0xd2, jump_207
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 test_eq 0x13d, 0x0
 jump 0xcd, jump_202
 test_eq 0xf5, 0x0
 jump 0xcd, jump_202
-add_var 0x170, 0x1
+.add_var 0x170, 0x1
 jump_202:
 .empty_text_box
 set_text_buffer "*c4Cody*c7"
@@ -2133,7 +2133,7 @@ set_text_buffer "You got a *c4Yellow Pack*c7."
 display_scene 0x9, 0x8
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x75, 0x1
+.set_var 0x75, 0x1
 jump 0xcf, jump_204
 jump_203:
 set_light_left_char 0x80
@@ -2160,7 +2160,7 @@ jump 0xa1, jump_159
 jump_205:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0x170, 0x0
+.set_var 0x170, 0x0
 test_eq 0x158, 0x1
 jump 0xd1, jump_206
 .empty_text_box
@@ -2170,7 +2170,7 @@ set_text_buffer "You got a *c3Digi-Part*c7."
 display_scene 0xe, 0x1e
 display_scene 0x10, 0x56
 display_scene 0xe, 0x3c
-set_var 0x158, 0x1
+.set_var 0x158, 0x1
 .wait_input
 jump_206:
 jump 0xa1, jump_159
@@ -2264,7 +2264,7 @@ set_text_buffer "*c6Those ready to rumble, come on down!"
 .display_text_buffer
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x6e, 0x1
+.set_var 0x6e, 0x1
 jump 0xa1, jump_159
 jump_210:
 set_light_left_char 0x80
@@ -2408,7 +2408,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0xdc, jump_217
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -2689,7 +2689,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0xea, jump_231
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -2862,7 +2862,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0xf1, jump_238
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -3042,7 +3042,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0xf8, jump_245
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -3236,7 +3236,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0xff, jump_252
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -3374,7 +3374,7 @@ set_text_buffer "If you can beat me, you might want to"
 set_text_buffer "battle with Matt. You\'ll learn a lot!"
 .display_text_buffer
 .wait_input
-set_var 0x69, 0x1
+.set_var 0x69, 0x1
 jump 0xa1, jump_159
 jump_255:
 set_light_left_char 0x80
@@ -3447,7 +3447,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x107, jump_260
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -3490,7 +3490,7 @@ set_text_buffer "*c6Those ready to rumble, come on down!"
 .display_text_buffer
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x6a, 0x1
+.set_var 0x6a, 0x1
 jump 0xa1, jump_159
 jump_259:
 set_light_left_char 0x80
@@ -3602,7 +3602,7 @@ set_text_buffer "Don\'t be so modest."
 set_text_buffer "How about a battle with me right now?"
 .display_text_buffer
 .wait_input
-set_var 0x6b, 0x1
+.set_var 0x6b, 0x1
 jump 0xa1, jump_159
 jump_263:
 set_light_left_char 0x80
@@ -3680,7 +3680,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x110, jump_269
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -3714,7 +3714,7 @@ set_text_buffer "You got a *c4S-Blue Pack*c7."
 display_scene 0x9, 0xb
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x6c, 0x1
+.set_var 0x6c, 0x1
 jump 0xa1, jump_159
 jump_268:
 set_light_left_char 0x80
@@ -3824,7 +3824,7 @@ set_text_buffer "*c6Those ready to rumble, come on down!"
 .display_text_buffer
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x76, 0x1
+.set_var 0x76, 0x1
 jump 0xa1, jump_159
 jump_272:
 set_light_left_char 0x80
@@ -3924,7 +3924,7 @@ display_scene 0xf, 0x81
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x11a, jump_279
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -3959,7 +3959,7 @@ set_text_buffer "*c4BKMetalGarurumon*c7"
 set_text_buffer "I shall see you again."
 .display_text_buffer
 .wait_input
-set_var 0x70, 0x1
+.set_var 0x70, 0x1
 set_light_left_char 0x80
 set_light_right_char 0x80
 test_eq 0x153, 0x1
@@ -3971,7 +3971,7 @@ set_text_buffer "You got a *c6Reverse Sevens Card*c7."
 set_light_unknown 0x123
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x153, 0x1
+.set_var 0x153, 0x1
 jump 0xa1, jump_159
 jump_278:
 .empty_text_box
@@ -4168,7 +4168,7 @@ set_text_buffer "*c5*h0*c7"
 set_text_buffer "What? Hey!"
 .display_text_buffer
 .wait_input
-set_var 0x86, 0x1
+.set_var 0x86, 0x1
 test_eq 0x71, 0x0
 jump 0xa1, jump_159
 test_eq 0x62, 0x0
@@ -4265,7 +4265,7 @@ jump 0x126, jump_290
 jump 0x2, jump_2
 jump_290:
 .empty_text_box
-set_var 0x112, 0x1
+.set_var 0x112, 0x1
 display_scene 0xf, 0x7c
 display_location 0x2
 .set_bg_battle_arena
@@ -4278,13 +4278,13 @@ test_eq 0x10c, 0x1
 jump 0x12e, jump_297
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x1
+.set_var 0xa, 0x1
 set_buffer 0x9, "Frigimon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x1
-set_var 0x7, 0x3
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x0
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x1
+.set_var 0x7, 0x3
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x0
 open_screen 0xd
 test_eq 0x5e, 0x1
 jump 0x129, jump_292
@@ -4303,7 +4303,7 @@ set_text_buffer "My Deck is full of good food."
 set_text_buffer "You\'re buying me lunch if I win!"
 .display_text_buffer
 .wait_input
-set_var 0x5e, 0x1
+.set_var 0x5e, 0x1
 jump_292:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -4357,7 +4357,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x12c, jump_295
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -4375,7 +4375,7 @@ set_text_buffer "This isn\'t fair!"
 set_text_buffer "I\'m hungry!"
 .display_text_buffer
 .wait_input
-set_var 0x10c, 0x1
+.set_var 0x10c, 0x1
 jump 0x12e, jump_297
 jump_295:
 set_light_left_char 0x30
@@ -4416,13 +4416,13 @@ jump 0x129, jump_292
 jump_297:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x2
+.set_var 0xa, 0x2
 set_buffer 0x9, "Whamon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x2
-set_var 0x7, 0x3
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x1
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x2
+.set_var 0x7, 0x3
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x1
 open_screen 0xd
 test_eq 0x5f, 0x1
 jump 0x130, jump_298
@@ -4455,7 +4455,7 @@ set_text_buffer "*c4Whamon*c7"
 set_text_buffer "You\'re going down, kid."
 .display_text_buffer
 .wait_input
-set_var 0x5f, 0x1
+.set_var 0x5f, 0x1
 jump_298:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -4509,7 +4509,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x133, jump_301
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -4539,7 +4539,7 @@ set_text_buffer "I hope you will continue on"
 set_text_buffer "to become a great Card Tamer."
 .display_text_buffer
 .wait_input
-set_var 0x10d, 0x1
+.set_var 0x10d, 0x1
 jump 0x135, jump_303
 jump_301:
 set_light_left_char 0x30
@@ -4597,13 +4597,13 @@ jump 0x130, jump_298
 jump_303:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x3
+.set_var 0xa, 0x3
 set_buffer 0x9, "Garurumon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x3
-set_var 0x7, 0x3
-set_var 0x8, 0x3
-set_arena_match_intro_idx 0x2
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x3
+.set_var 0x7, 0x3
+.set_var 0x8, 0x3
+.set_arena_match_intro_idx 0x2
 open_screen 0xd
 test_eq 0x60, 0x1
 jump 0x137, jump_304
@@ -4624,7 +4624,7 @@ set_text_buffer "Hang in there!"
 set_text_buffer "I\'ll set you free!"
 .display_text_buffer
 .wait_input
-set_var 0x60, 0x1
+.set_var 0x60, 0x1
 jump_304:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -4677,7 +4677,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x13a, jump_307
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -4700,7 +4700,7 @@ set_text_buffer "Here, it\'s OK!"
 set_text_buffer "You\'re gonna be OK!"
 .display_text_buffer
 .wait_input
-set_var 0x10e, 0x1
+.set_var 0x10e, 0x1
 jump 0x13c, jump_309
 jump_307:
 set_light_left_char 0x30
@@ -4741,13 +4741,13 @@ jump 0x137, jump_304
 jump_309:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0xe
+.set_var 0xa, 0xe
 set_buffer 0x9, "Stingmon"
-set_arena_match_intro_colors 0x2
-set_var 0x6, 0x3
-set_var 0x7, 0x3
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x5
+.set_arena_match_intro_colors 0x2
+.set_var 0x6, 0x3
+.set_var 0x7, 0x3
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x5
 open_screen 0xd
 test_eq 0x61, 0x1
 jump 0x13e, jump_310
@@ -4775,7 +4775,7 @@ set_text_buffer "I\'ll show you my new digivolved power."
 set_text_buffer "Let\'s see what you\'re really made of!"
 .display_text_buffer
 .wait_input
-set_var 0x61, 0x1
+.set_var 0x61, 0x1
 jump_310:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -4832,7 +4832,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x141, jump_313
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -4905,7 +4905,7 @@ set_text_buffer "I have no luck! Well, I guess"
 set_text_buffer "I\'ll hit Battle Cafe for now."
 .display_text_buffer
 .wait_input
-set_var 0x57, 0x1
+.set_var 0x57, 0x1
 jump 0x145, jump_317
 jump_313:
 set_light_left_char 0x30
@@ -4968,7 +4968,7 @@ test_eq 0x1, 0x1
 jump 0x145, jump_317
 jump 0x127, jump_291
 jump_317:
-set_var 0x112, 0x0
+.set_var 0x112, 0x0
 jump 0x0, jump_0
 jump_318:
 test_eq 0x11e, 0x1
@@ -4996,7 +4996,7 @@ jump 0x149, jump_320
 jump 0x2, jump_2
 jump_320:
 .empty_text_box
-set_var 0x113, 0x1
+.set_var 0x113, 0x1
 display_scene 0xf, 0x7c
 display_location 0x2
 .set_bg_battle_arena
@@ -5007,13 +5007,13 @@ test_eq 0x10c, 0x1
 jump 0x151, jump_327
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x1
+.set_var 0xa, 0x1
 set_buffer 0x9, "Frigimon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x1
-set_var 0x7, 0x3
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x0
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x1
+.set_var 0x7, 0x3
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x0
 open_screen 0xd
 jump_322:
 set_light_left_char 0x80
@@ -5068,7 +5068,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x14f, jump_325
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -5086,7 +5086,7 @@ set_text_buffer "I didn\'t know that! This isn\'t fair!"
 set_text_buffer "I\'m starving!"
 .display_text_buffer
 .wait_input
-set_var 0x10c, 0x1
+.set_var 0x10c, 0x1
 jump 0x151, jump_327
 jump_325:
 set_light_left_char 0x30
@@ -5127,13 +5127,13 @@ jump 0x14c, jump_322
 jump_327:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x2
+.set_var 0xa, 0x2
 set_buffer 0x9, "Whamon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x2
-set_var 0x7, 0x3
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x1
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x2
+.set_var 0x7, 0x3
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x1
 open_screen 0xd
 jump_328:
 set_light_left_char 0x80
@@ -5188,7 +5188,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x155, jump_331
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -5218,7 +5218,7 @@ set_text_buffer "I hope you will continue on"
 set_text_buffer "to become a great Card Tamer."
 .display_text_buffer
 .wait_input
-set_var 0x10d, 0x1
+.set_var 0x10d, 0x1
 jump 0x157, jump_333
 jump_331:
 set_light_left_char 0x30
@@ -5264,13 +5264,13 @@ jump 0x152, jump_328
 jump_333:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x3
+.set_var 0xa, 0x3
 set_buffer 0x9, "Garurumon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x3
-set_var 0x7, 0x3
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x5
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x3
+.set_var 0x7, 0x3
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x5
 open_screen 0xd
 test_eq 0x73, 0x1
 jump 0x159, jump_334
@@ -5291,7 +5291,7 @@ set_text_buffer "I will show you what"
 set_text_buffer "this Battle Master can do!"
 .display_text_buffer
 .wait_input
-set_var 0x73, 0x1
+.set_var 0x73, 0x1
 jump_334:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -5345,7 +5345,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x17a, jump_366
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -5676,7 +5676,7 @@ set_text_buffer "We look forward to seeing you again."
 .display_text_buffer
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x58, 0x1
+.set_var 0x58, 0x1
 jump 0x17e, jump_369
 jump_365:
 set_text_buffer "Congratulations on winning!"
@@ -5750,7 +5750,7 @@ test_eq 0x1, 0x1
 jump 0x17e, jump_369
 jump 0x14a, jump_321
 jump_369:
-set_var 0x113, 0x0
+.set_var 0x113, 0x0
 jump 0x0, jump_0
 jump_370:
 test_eq 0x6a, 0x1
@@ -5778,7 +5778,7 @@ jump 0x182, jump_372
 jump 0x2, jump_2
 jump_372:
 .empty_text_box
-set_var 0x119, 0x1
+.set_var 0x119, 0x1
 display_scene 0xf, 0x7c
 display_location 0x2
 .set_bg_battle_arena
@@ -5789,13 +5789,13 @@ test_eq 0x10c, 0x1
 jump 0x18a, jump_379
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x1
+.set_var 0xa, 0x1
 set_buffer 0x9, "Frigimon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x1
-set_var 0x7, 0x3
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x0
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x1
+.set_var 0x7, 0x3
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x0
 open_screen 0xd
 jump_374:
 set_light_left_char 0x80
@@ -5850,7 +5850,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x188, jump_377
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -5868,7 +5868,7 @@ set_text_buffer "I didn\'t know that! This isn\'t fair!"
 set_text_buffer "I\'m hungry!"
 .display_text_buffer
 .wait_input
-set_var 0x10c, 0x1
+.set_var 0x10c, 0x1
 jump 0x18a, jump_379
 jump_377:
 set_light_left_char 0x30
@@ -5909,13 +5909,13 @@ jump 0x185, jump_374
 jump_379:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x2
+.set_var 0xa, 0x2
 set_buffer 0x9, "Whamon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x2
-set_var 0x7, 0x3
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x1
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x2
+.set_var 0x7, 0x3
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x1
 open_screen 0xd
 jump_380:
 set_light_left_char 0x80
@@ -5970,7 +5970,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x18e, jump_383
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -6000,7 +6000,7 @@ set_text_buffer "I hope you will continue on"
 set_text_buffer "to become a great Card Tamer."
 .display_text_buffer
 .wait_input
-set_var 0x10d, 0x1
+.set_var 0x10d, 0x1
 jump 0x190, jump_385
 jump_383:
 set_light_left_char 0x30
@@ -6046,13 +6046,13 @@ jump 0x18b, jump_380
 jump_385:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0xb
+.set_var 0xa, 0xb
 set_buffer 0x9, "MetalGarurumon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x4
-set_var 0x7, 0x4
-set_var 0x8, 0x3
-set_arena_match_intro_idx 0x5
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x4
+.set_var 0x7, 0x4
+.set_var 0x8, 0x3
+.set_arena_match_intro_idx 0x5
 open_screen 0xd
 test_eq 0x74, 0x1
 jump 0x192, jump_386
@@ -6078,7 +6078,7 @@ set_text_buffer "But watch out or I\'ll get you."
 set_text_buffer "Ha ha ha ha ha..."
 .display_text_buffer
 .wait_input
-set_var 0x74, 0x1
+.set_var 0x74, 0x1
 jump_386:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -6132,7 +6132,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x195, jump_389
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -6236,7 +6236,7 @@ test_eq 0x1, 0x1
 jump 0x199, jump_392
 jump 0x183, jump_373
 jump_392:
-set_var 0x119, 0x0
+.set_var 0x119, 0x0
 jump 0x0, jump_0
 jump_393:
 test_eq 0x169, 0x0
@@ -6266,7 +6266,7 @@ jump 0x19d, jump_395
 jump 0x2, jump_2
 jump_395:
 .empty_text_box
-set_var 0x114, 0x1
+.set_var 0x114, 0x1
 display_scene 0xf, 0x7c
 display_location 0x2
 .set_bg_battle_arena
@@ -6277,13 +6277,13 @@ test_eq 0x10c, 0x1
 jump 0x1a5, jump_402
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x3
+.set_var 0xa, 0x3
 set_buffer 0x9, "Garurumon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x3
-set_var 0x7, 0x3
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x0
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x3
+.set_var 0x7, 0x3
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x0
 open_screen 0xd
 jump_397:
 set_light_left_char 0x80
@@ -6338,7 +6338,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1a3, jump_400
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -6359,7 +6359,7 @@ set_text_buffer "*c4Garurumon*c7"
 set_text_buffer "Watch out!"
 .display_text_buffer
 .wait_input
-set_var 0x10c, 0x1
+.set_var 0x10c, 0x1
 jump 0x1a5, jump_402
 jump_400:
 set_light_left_char 0x30
@@ -6395,13 +6395,13 @@ jump 0x1a0, jump_397
 jump_402:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0xb
+.set_var 0xa, 0xb
 set_buffer 0x9, "MetalGarurumon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x4
-set_var 0x7, 0x4
-set_var 0x8, 0x3
-set_arena_match_intro_idx 0x1
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x4
+.set_var 0x7, 0x4
+.set_var 0x8, 0x3
+.set_arena_match_intro_idx 0x1
 open_screen 0xd
 jump_403:
 set_light_left_char 0x80
@@ -6456,7 +6456,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1a9, jump_406
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -6484,7 +6484,7 @@ set_text_buffer "*c4MetalGarurumon*c7"
 set_text_buffer "Good luck!"
 .display_text_buffer
 .wait_input
-set_var 0x10d, 0x1
+.set_var 0x10d, 0x1
 jump 0x1ab, jump_408
 jump_406:
 set_light_left_char 0x30
@@ -6523,13 +6523,13 @@ jump 0x1a6, jump_403
 jump_408:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0xd
+.set_var 0xa, 0xd
 set_buffer 0x9, "BKMetalGarurumon"
-set_arena_match_intro_colors 0x8
-set_var 0x6, 0x4
-set_var 0x7, 0x4
-set_var 0x8, 0x4
-set_arena_match_intro_idx 0x5
+.set_arena_match_intro_colors 0x8
+.set_var 0x6, 0x4
+.set_var 0x7, 0x4
+.set_var 0x8, 0x4
+.set_arena_match_intro_idx 0x5
 open_screen 0xd
 test_eq 0x6d, 0x1
 jump 0x1ad, jump_409
@@ -6560,7 +6560,7 @@ set_text_buffer "*c4BKMetalGarurumon*c7"
 set_text_buffer "It\'s time to battle. Hit me baby!"
 .display_text_buffer
 .wait_input
-set_var 0x6d, 0x1
+.set_var 0x6d, 0x1
 jump_409:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -6614,7 +6614,7 @@ display_scene 0xf, 0x7c
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1b0, jump_412
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -6669,7 +6669,7 @@ set_text_buffer "We look forward to seeing you again."
 .display_text_buffer
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x59, 0x1
+.set_var 0x59, 0x1
 jump 0x1b5, jump_415
 jump_412:
 set_text_buffer "Congratulations on winning!"
@@ -6754,7 +6754,7 @@ test_eq 0x1, 0x1
 jump 0x1b5, jump_415
 jump 0x19e, jump_396
 jump_415:
-set_var 0x114, 0x0
+.set_var 0x114, 0x0
 jump 0x0, jump_0
 jump_416:
 test_eq 0x3e, 0x1
@@ -6788,7 +6788,7 @@ jump 0x1ba, jump_418
 jump 0x2, jump_2
 jump_418:
 .empty_text_box
-set_var 0x115, 0x1
+.set_var 0x115, 0x1
 display_scene 0xf, 0x7d
 display_location 0x3
 .set_bg_battle_arena
@@ -6799,13 +6799,13 @@ test_eq 0x10c, 0x1
 jump 0x1c2, jump_425
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x5
+.set_var 0xa, 0x5
 set_buffer 0x9, "Armadillomon"
-set_arena_match_intro_colors 0x1
-set_var 0x6, 0x1
-set_var 0x7, 0x4
-set_var 0x8, 0x1
-set_arena_match_intro_idx 0x0
+.set_arena_match_intro_colors 0x1
+.set_var 0x6, 0x1
+.set_var 0x7, 0x4
+.set_var 0x8, 0x1
+.set_arena_match_intro_idx 0x0
 open_screen 0xd
 test_eq 0x63, 0x1
 jump 0x1bd, jump_420
@@ -6838,7 +6838,7 @@ set_text_buffer "*c4Armadillomon*c7"
 set_text_buffer "I\'m really serious! Yo!"
 .display_text_buffer
 .wait_input
-set_var 0x63, 0x1
+.set_var 0x63, 0x1
 jump_420:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -6892,7 +6892,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1c0, jump_423
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -6915,7 +6915,7 @@ set_text_buffer "*c4Armadillomon*c7"
 set_text_buffer "Let\'s see what you can do!"
 .display_text_buffer
 .wait_input
-set_var 0x10c, 0x1
+.set_var 0x10c, 0x1
 jump 0x1c2, jump_425
 jump_423:
 set_light_left_char 0x30
@@ -6959,13 +6959,13 @@ jump 0x1bd, jump_420
 jump_425:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x6
+.set_var 0xa, 0x6
 set_buffer 0x9, "Ankylomon"
-set_arena_match_intro_colors 0x1
-set_var 0x6, 0x2
-set_var 0x7, 0x4
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x1
+.set_arena_match_intro_colors 0x1
+.set_var 0x6, 0x2
+.set_var 0x7, 0x4
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x1
 open_screen 0xd
 test_eq 0x64, 0x1
 jump 0x1c4, jump_426
@@ -6989,7 +6989,7 @@ set_text_buffer "*c4Ankylomon*c7"
 set_text_buffer "Come on. Yo! Hit me. Yo!"
 .display_text_buffer
 .wait_input
-set_var 0x64, 0x1
+.set_var 0x64, 0x1
 jump_426:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -7045,7 +7045,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1c7, jump_429
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -7070,7 +7070,7 @@ set_text_buffer "This time I\'m going to win for sure!"
 set_text_buffer "Come on. Come on. Yo! Hit me. Yo!"
 .display_text_buffer
 .wait_input
-set_var 0x10d, 0x1
+.set_var 0x10d, 0x1
 jump 0x1c9, jump_431
 jump_429:
 set_light_left_char 0x30
@@ -7118,13 +7118,13 @@ jump 0x1c4, jump_426
 jump_431:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x7
+.set_var 0xa, 0x7
 set_buffer 0x9, "Digmon"
-set_arena_match_intro_colors 0x1
-set_var 0x6, 0x1
-set_var 0x7, 0x5
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x5
+.set_arena_match_intro_colors 0x1
+.set_var 0x6, 0x1
+.set_var 0x7, 0x5
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x5
 open_screen 0xd
 test_eq 0x65, 0x1
 jump 0x1cb, jump_432
@@ -7150,7 +7150,7 @@ set_text_buffer "*c4Digmon*c7"
 set_text_buffer "Get ready to lose. Yo!"
 .display_text_buffer
 .wait_input
-set_var 0x65, 0x1
+.set_var 0x65, 0x1
 jump_432:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -7206,7 +7206,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1cf, jump_436
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -7261,7 +7261,7 @@ set_text_buffer "We look forward to seeing you again."
 .display_text_buffer
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x5a, 0x1
+.set_var 0x5a, 0x1
 jump 0x1d3, jump_439
 jump_435:
 set_text_buffer "Congratulations on winning!"
@@ -7335,7 +7335,7 @@ test_eq 0x1, 0x1
 jump 0x1d3, jump_439
 jump 0x1bb, jump_419
 jump_439:
-set_var 0x115, 0x0
+.set_var 0x115, 0x0
 jump 0x0, jump_0
 jump_440:
 .empty_text_box
@@ -7352,7 +7352,7 @@ jump 0x1d5, jump_441
 jump 0x2, jump_2
 jump_441:
 .empty_text_box
-set_var 0x116, 0x1
+.set_var 0x116, 0x1
 display_scene 0xf, 0x7d
 display_location 0x3
 .set_bg_battle_arena
@@ -7363,13 +7363,13 @@ test_eq 0x10c, 0x1
 jump 0x1dd, jump_448
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x6
+.set_var 0xa, 0x6
 set_buffer 0x9, "Ankylomon"
-set_arena_match_intro_colors 0x1
-set_var 0x6, 0x2
-set_var 0x7, 0x4
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x0
+.set_arena_match_intro_colors 0x1
+.set_var 0x6, 0x2
+.set_var 0x7, 0x4
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x0
 open_screen 0xd
 jump_443:
 set_light_left_char 0x80
@@ -7426,7 +7426,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1db, jump_446
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -7451,7 +7451,7 @@ set_text_buffer "I\'m not going to lose that easy. Yo!"
 set_text_buffer "Let\'s see what you can do!"
 .display_text_buffer
 .wait_input
-set_var 0x10c, 0x1
+.set_var 0x10c, 0x1
 jump 0x1dd, jump_448
 jump_446:
 set_light_left_char 0x30
@@ -7499,13 +7499,13 @@ jump 0x1d8, jump_443
 jump_448:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x7
+.set_var 0xa, 0x7
 set_buffer 0x9, "Digmon"
-set_arena_match_intro_colors 0x1
-set_var 0x6, 0x1
-set_var 0x7, 0x5
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x1
+.set_arena_match_intro_colors 0x1
+.set_var 0x6, 0x1
+.set_var 0x7, 0x5
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x1
 open_screen 0xd
 jump_449:
 set_light_left_char 0x80
@@ -7562,7 +7562,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1e1, jump_452
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -7592,7 +7592,7 @@ set_text_buffer "*c4Digmon*c7"
 set_text_buffer "Come on. Come on. Yo! Hit me. Yo!"
 .display_text_buffer
 .wait_input
-set_var 0x10d, 0x1
+.set_var 0x10d, 0x1
 jump 0x1e3, jump_454
 jump_452:
 set_light_left_char 0x30
@@ -7633,13 +7633,13 @@ jump 0x1de, jump_449
 jump_454:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x8
+.set_var 0xa, 0x8
 set_buffer 0x9, "Submarimon"
-set_arena_match_intro_colors 0x9
-set_var 0x6, 0x3
-set_var 0x7, 0x4
-set_var 0x8, 0x3
-set_arena_match_intro_idx 0x5
+.set_arena_match_intro_colors 0x9
+.set_var 0x6, 0x3
+.set_var 0x7, 0x4
+.set_var 0x8, 0x3
+.set_arena_match_intro_idx 0x5
 open_screen 0xd
 test_eq 0x66, 0x1
 jump 0x1e5, jump_455
@@ -7660,7 +7660,7 @@ set_text_buffer "It\'s not going to be easy like before."
 set_text_buffer "You\'d better watch out. Yo!"
 .display_text_buffer
 .wait_input
-set_var 0x66, 0x1
+.set_var 0x66, 0x1
 jump_455:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -7716,7 +7716,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1e9, jump_459
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -7776,7 +7776,7 @@ set_text_buffer "We look forward to seeing you again."
 .display_text_buffer
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x5b, 0x1
+.set_var 0x5b, 0x1
 jump 0x1ed, jump_462
 jump_458:
 set_text_buffer "Congratulations on winning!"
@@ -7850,7 +7850,7 @@ test_eq 0x1, 0x1
 jump 0x1ed, jump_462
 jump 0x1d6, jump_442
 jump_462:
-set_var 0x116, 0x0
+.set_var 0x116, 0x0
 jump 0x0, jump_0
 jump_463:
 .empty_text_box
@@ -7867,7 +7867,7 @@ jump 0x1ef, jump_464
 jump 0x2, jump_2
 jump_464:
 .empty_text_box
-set_var 0x117, 0x1
+.set_var 0x117, 0x1
 display_scene 0xf, 0x7d
 display_location 0x3
 .set_bg_battle_arena
@@ -7878,13 +7878,13 @@ test_eq 0x10c, 0x1
 jump 0x1f7, jump_471
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x7
+.set_var 0xa, 0x7
 set_buffer 0x9, "Digmon"
-set_arena_match_intro_colors 0x1
-set_var 0x6, 0x1
-set_var 0x7, 0x5
-set_var 0x8, 0x2
-set_arena_match_intro_idx 0x0
+.set_arena_match_intro_colors 0x1
+.set_var 0x6, 0x1
+.set_var 0x7, 0x5
+.set_var 0x8, 0x2
+.set_arena_match_intro_idx 0x0
 open_screen 0xd
 jump_466:
 set_light_left_char 0x80
@@ -7941,7 +7941,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1f5, jump_469
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -7971,7 +7971,7 @@ set_text_buffer "*c4Digmon*c7"
 set_text_buffer "Come on. Come on. Yo! Hit me. Yo!"
 .display_text_buffer
 .wait_input
-set_var 0x10c, 0x1
+.set_var 0x10c, 0x1
 jump 0x1f7, jump_471
 jump_469:
 set_light_left_char 0x30
@@ -8012,13 +8012,13 @@ jump 0x1f2, jump_466
 jump_471:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x8
+.set_var 0xa, 0x8
 set_buffer 0x9, "Submarimon"
-set_arena_match_intro_colors 0x9
-set_var 0x6, 0x3
-set_var 0x7, 0x4
-set_var 0x8, 0x3
-set_arena_match_intro_idx 0x1
+.set_arena_match_intro_colors 0x9
+.set_var 0x6, 0x3
+.set_var 0x7, 0x4
+.set_var 0x8, 0x3
+.set_arena_match_intro_idx 0x1
 open_screen 0xd
 jump_472:
 set_light_left_char 0x80
@@ -8075,7 +8075,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x1fb, jump_475
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -8103,7 +8103,7 @@ set_text_buffer "*c4Submarimon*c7"
 set_text_buffer "I\'m ready. Yo! Come on. Hit me. Yo!"
 .display_text_buffer
 .wait_input
-set_var 0x10d, 0x1
+.set_var 0x10d, 0x1
 jump 0x1fd, jump_477
 jump_475:
 set_light_left_char 0x30
@@ -8144,13 +8144,13 @@ jump 0x1f8, jump_472
 jump_477:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x9
+.set_var 0xa, 0x9
 set_buffer 0x9, "Shakkoumon"
-set_arena_match_intro_colors 0x1
-set_var 0x6, 0x4
-set_var 0x7, 0x4
-set_var 0x8, 0x4
-set_arena_match_intro_idx 0x5
+.set_arena_match_intro_colors 0x1
+.set_var 0x6, 0x4
+.set_var 0x7, 0x4
+.set_var 0x8, 0x4
+.set_arena_match_intro_idx 0x5
 open_screen 0xd
 test_eq 0x67, 0x1
 jump 0x1ff, jump_478
@@ -8171,7 +8171,7 @@ set_text_buffer "I don\'t have any more weaknesses."
 set_text_buffer "Now I\'ll show you my true power!"
 .display_text_buffer
 .wait_input
-set_var 0x67, 0x1
+.set_var 0x67, 0x1
 jump_478:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -8227,7 +8227,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x203, jump_482
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -8277,7 +8277,7 @@ set_text_buffer "We look forward to seeing you again."
 .display_text_buffer
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x5c, 0x1
+.set_var 0x5c, 0x1
 jump 0x207, jump_485
 jump_481:
 set_text_buffer "Congratulations on winning!"
@@ -8353,7 +8353,7 @@ test_eq 0x1, 0x1
 jump 0x207, jump_485
 jump 0x1f0, jump_465
 jump_485:
-set_var 0x117, 0x0
+.set_var 0x117, 0x0
 jump 0x0, jump_0
 jump_486:
 .empty_text_box
@@ -8370,7 +8370,7 @@ jump 0x209, jump_487
 jump 0x2, jump_2
 jump_487:
 .empty_text_box
-set_var 0x118, 0x1
+.set_var 0x118, 0x1
 display_scene 0xf, 0x7d
 display_location 0x3
 .set_bg_battle_arena
@@ -8381,13 +8381,13 @@ test_eq 0x10c, 0x1
 jump 0x211, jump_494
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x8
+.set_var 0xa, 0x8
 set_buffer 0x9, "Submarimon"
-set_arena_match_intro_colors 0x9
-set_var 0x6, 0x3
-set_var 0x7, 0x4
-set_var 0x8, 0x3
-set_arena_match_intro_idx 0x0
+.set_arena_match_intro_colors 0x9
+.set_var 0x6, 0x3
+.set_var 0x7, 0x4
+.set_var 0x8, 0x3
+.set_arena_match_intro_idx 0x0
 open_screen 0xd
 jump_489:
 set_light_left_char 0x80
@@ -8444,7 +8444,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x20f, jump_492
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -8465,7 +8465,7 @@ set_text_buffer "*c4Submarimon*c7"
 set_text_buffer "I\'m ready. Yo! Come on. Hit me. Yo!"
 .display_text_buffer
 .wait_input
-set_var 0x10c, 0x1
+.set_var 0x10c, 0x1
 jump 0x211, jump_494
 jump_492:
 set_light_left_char 0x30
@@ -8506,13 +8506,13 @@ jump 0x20c, jump_489
 jump_494:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0x9
+.set_var 0xa, 0x9
 set_buffer 0x9, "Shakkoumon"
-set_arena_match_intro_colors 0x1
-set_var 0x6, 0x4
-set_var 0x7, 0x4
-set_var 0x8, 0x4
-set_arena_match_intro_idx 0x1
+.set_arena_match_intro_colors 0x1
+.set_var 0x6, 0x4
+.set_var 0x7, 0x4
+.set_var 0x8, 0x4
+.set_arena_match_intro_idx 0x1
 open_screen 0xd
 jump_495:
 set_light_left_char 0x80
@@ -8569,7 +8569,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x215, jump_498
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -8594,7 +8594,7 @@ set_text_buffer "I can\'t guarantee your safety. Yo!"
 set_text_buffer "If you want to run, run now!"
 .display_text_buffer
 .wait_input
-set_var 0x10d, 0x1
+.set_var 0x10d, 0x1
 jump 0x217, jump_500
 jump_498:
 set_light_left_char 0x30
@@ -8637,13 +8637,13 @@ jump 0x212, jump_495
 jump_500:
 set_light_left_char 0x80
 set_light_right_char 0x80
-set_var 0xa, 0xa
+.set_var 0xa, 0xa
 set_buffer 0x9, "Vikemon"
-set_arena_match_intro_colors 0x9
-set_var 0x6, 0x4
-set_var 0x7, 0x5
-set_var 0x8, 0x4
-set_arena_match_intro_idx 0x5
+.set_arena_match_intro_colors 0x9
+.set_var 0x6, 0x4
+.set_var 0x7, 0x5
+.set_var 0x8, 0x4
+.set_arena_match_intro_idx 0x5
 open_screen 0xd
 test_eq 0x68, 0x1
 jump 0x219, jump_501
@@ -8671,7 +8671,7 @@ set_text_buffer "You\'re free to challenge me..."
 set_text_buffer "But you won\'t have a chance."
 .display_text_buffer
 .wait_input
-set_var 0x68, 0x1
+.set_var 0x68, 0x1
 jump_501:
 set_light_left_char 0x80
 set_light_right_char 0x80
@@ -8727,7 +8727,7 @@ display_scene 0xf, 0x7d
 display_scene 0xe, 0x3c
 test_eq 0x1, 0x0
 jump 0x21d, jump_505
-add_var 0x16c, 0x1
+.add_var 0x16c, 0x1
 set_light_left_char 0x30
 set_light_right_char 0x80
 .empty_text_box
@@ -8784,7 +8784,7 @@ set_text_buffer "We look forward to seeing you again."
 .display_text_buffer
 display_scene 0xe, 0x3c
 .wait_input
-set_var 0x5d, 0x1
+.set_var 0x5d, 0x1
 jump 0x221, jump_508
 jump_504:
 set_text_buffer "Congratulations on winning!"
@@ -8865,10 +8865,10 @@ test_eq 0x1, 0x1
 jump 0x221, jump_508
 jump 0x20a, jump_488
 jump_508:
-set_var 0x118, 0x0
+.set_var 0x118, 0x0
 jump 0x0, jump_0
 jump_509:
-set_var 0x16a, 0x1
+.set_var 0x16a, 0x1
 .empty_text_box
 set_text_buffer "Pick a Menu Option."
 .display_text_buffer
@@ -8886,7 +8886,7 @@ jump 0x225, jump_512
 test_eq 0x1, 0xffffffff
 jump 0x223, jump_510
 jump_510:
-set_var 0x16a, 0x0
+.set_var 0x16a, 0x0
 jump 0x2, jump_2
 jump_511:
 .empty_text_box
@@ -8906,4 +8906,4 @@ jump 0x0, jump_0
 jump_514:
 .empty_text_box
 display_scene 0xf, 0x6f
-set_var 0x0, 0x0
+.set_var 0x0, 0x0
