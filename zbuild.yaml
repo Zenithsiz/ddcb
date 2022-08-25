@@ -17,14 +17,15 @@ alias:
   expand_asm            : tools/expand_asm.py
   generate_iso_deps     : tools/generate_iso_deps.py
   generate_compare_deps : tools/generate_compare_deps.py
-  mkdrv        : $(build_dir)/tools/dcb-mkdrv
-  mkdrv-deps   : $(build_dir)/tools/dcb-mkdrv-deps
-  mkpak        : $(build_dir)/tools/dcb-mkpak
-  mkpak-deps   : $(build_dir)/tools/dcb-mkpak-deps
-  mkmsd        : $(build_dir)/tools/dcb-mkmsd
-  mk-card-table: $(build_dir)/tools/dcb-mk-card-table
-  mk-deck-table: $(build_dir)/tools/dcb-mk-deck-table
-  mkpsexe      : $(build_dir)/tools/dcb-mkpsexe
+  tools_dir    : $(build_dir)/tools
+  mkdrv        : $(tools_dir)/dcb-mkdrv
+  mkdrv-deps   : $(tools_dir)/dcb-mkdrv-deps
+  mkpak        : $(tools_dir)/dcb-mkpak
+  mkpak-deps   : $(tools_dir)/dcb-mkpak-deps
+  mkmsd        : $(tools_dir)/dcb-mkmsd
+  mk-card-table: $(tools_dir)/dcb-mk-card-table
+  mk-deck-table: $(tools_dir)/dcb-mk-deck-table
+  mkpsexe      : $(tools_dir)/dcb-mkpsexe
 
   # Files
   build_dir      : build
@@ -121,17 +122,26 @@ rules:
       - [bash, -c, '$(generate_iso_deps) > $(dcb_bin_deps)']
 
   # Cargo tools
-  # TODO: Dependencies?
+  # TODO: Just use `$(tools_dir)/^(name)` when we can ensure it's not empty
   cargo-tool:
-    out: [$(build_dir)/tools/^(name)]
+    alias:
+      tool: $(tools_dir)/dcb-^(name)
+    out: [$(tool), deps_file: $(tool).d]
+    static_deps: [dir_name: $(tool)]
+    exec_cwd: tools/
     exec:
       - - $(cargo)
         - build
         - --release
-        - --manifest-path=tools/Cargo.toml
-        - --package=^(name)
+        - --package=dcb-^(name)
         - -Z=unstable-options
-        - --out-dir=$(build_dir)/tools
+        - --out-dir=../$(tools_dir)
+      - [cp, target/release/dcb-^(name).d, ../$(tool).d]
+      - - sed
+        - -i
+        - -e
+        - 's,tools/target/release/,$(tools_dir)/,g'
+        - ../$(tool).d
 
   # `drv`
   mkdrv:
