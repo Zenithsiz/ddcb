@@ -15,17 +15,24 @@ pub fn compile(ast: Ast) -> Result<Vec<Inst>, anyhow::Error> {
 	let mut labels = HashMap::new();
 
 	let mut cur_pos = 0;
+	let mut last_global_label: Option<ast::Label> = None;
 	for item in ast.items {
 		// Try to parse the item
 		let inst = match item {
 			// If we got a label, we can add it to the labels and stop here
 			ast::Item::Label(label) => {
-				labels.insert(label.name, cur_pos);
+				let label_name = self::label_name(&label.name, last_global_label.as_ref())?;
+				if label_name == label.name {
+					last_global_label = Some(label.clone());
+				}
+
+				labels.insert(label_name, cur_pos);
 				continue;
 			},
 
 			// Else parse the instruction
-			ast::Item::Inst(inst) => self::parse_inst(inst).context("Unable to parse instruction")?,
+			ast::Item::Inst(inst) =>
+				self::parse_inst(inst, last_global_label.as_ref()).context("Unable to parse instruction")?,
 
 			// All macros should have been handled by now
 			// TODO: Encode that information on the type system, maybe with a tag on
@@ -57,7 +64,7 @@ pub fn compile(ast: Ast) -> Result<Vec<Inst>, anyhow::Error> {
 }
 
 /// Parses an instruction
-fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
+fn parse_inst(inst: ast::Inst, last_global_label: Option<&ast::Label>) -> Result<TodoInst, anyhow::Error> {
 	// Macro to create an `TodoInst` from an instruction
 	macro inst($inst:expr) {
 		TodoInst::Done($inst)
@@ -66,7 +73,7 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 	// Macro to create an `TodoInst` from an instruction
 	macro inst_label_addr($label:expr, $size:expr, $addr:ident => $inst:expr) {
 		TodoInst::LabelAddr {
-			label: $label,
+			label: self::label_name($label, last_global_label)?,
 			size:  $size,
 			parse: Box::new(move |$addr| Ok($inst)),
 		}
@@ -178,7 +185,7 @@ fn parse_inst(inst: ast::Inst) -> Result<TodoInst, anyhow::Error> {
 		}),
 
 		"jump" => two_arg!(inst.args, (var, addr) => match (var, addr) {
-			(ast::Arg::Number(var), ast::Arg::Ident(label)) => inst_label_addr!(label, 8, addr => Inst::Jump {
+			(ast::Arg::Number(var), ast::Arg::Ident(label)) => inst_label_addr!(&label, 8, addr => Inst::Jump {
 				var: var.try_into().context("Unable to fit variable into a `u16`")?,
 				addr,
 			}),
@@ -229,4 +236,17 @@ enum TodoInst {
 		size:  u32,
 		parse: Box<dyn FnOnce(u32) -> Result<Inst, anyhow::Error>>,
 	},
+}
+
+/// Returns a label's name
+fn label_name(label_name: &str, last_global_label: Option<&ast::Label>) -> Result<String, anyhow::Error> {
+	match label_name.starts_with('_') {
+		// If it's a local label, add the previous global label to it
+		true => match last_global_label {
+			Some(global_label) => Ok(global_label.name.clone() + label_name),
+			None => anyhow::bail!("Cannot use local label {label_name:?} without a previous global label"),
+		},
+
+		false => Ok(label_name.to_owned()),
+	}
 }
