@@ -5,7 +5,9 @@
 # TODO: Check if the `display_scene 0xe, {0x1e, 0x3c}` is needed or not, it's in all of them
 .macro give_digi_part, display_scene, 0xe, 0x1e, /, display_scene, 0x10, $0, /, display_scene, 0xe, 0x3c
 
-
+# Gives you the `$0` card
+# TODO: Rename `set_light` since it cleary doesn't do just that
+.macro give_card, set_light, 0x1, $0, 0xffff, 0xffff
 
 
 
@@ -42,8 +44,6 @@
 
 .macro set_light_left_char , set_light, 0x0, 0x0, $0, 0xa
 .macro set_light_right_char, set_light, 0x0, 0x1, $0, 0xa
-
-.macro set_light_unknown, set_light, 0x1, $0, 0xffff, 0xffff
 
 .macro set_text_buffer, set_buffer, 0x4, $0
 

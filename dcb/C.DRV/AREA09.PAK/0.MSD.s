@@ -2685,7 +2685,7 @@ jump 0xe4, jump_222
 display_scene 0xd, 0x9
 .set_text_buffer "You got an *c6Apokarimon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x67
+.give_card 0x67
 display_scene 0xe, 0x3c
 .wait_input
 jump_222:
@@ -2922,7 +2922,7 @@ display_scene 0xe, 0x3c
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Speed Sevens Card*c7."
 .display_text_buffer
-.set_light_unknown 0x122
+.give_card 0x122
 display_scene 0xe, 0x3c
 .set_var 0x152, 0x1
 .wait_input

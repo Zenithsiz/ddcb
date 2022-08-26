@@ -1507,7 +1507,7 @@ jump 0xa6, jump_164
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Hacking Card*c7."
 .display_text_buffer
-.set_light_unknown 0xfe
+.give_card 0xfe
 display_scene 0xe, 0x3c
 .wait_input
 .set_text_buffer "*c4WereGarurumon*c7"

@@ -4894,7 +4894,7 @@ jump 0x139, jump_301
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6SkullGreymon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x71
+.give_card 0x71
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -4902,7 +4902,7 @@ jump_299:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Phantomon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x72
+.give_card 0x72
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -4910,7 +4910,7 @@ jump_300:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6WaruMonzaemon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x73
+.give_card 0x73
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -4918,7 +4918,7 @@ jump_301:
 display_scene 0xd, 0x9
 .set_text_buffer "You got an *c6Andromon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x74
+.give_card 0x74
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -4945,7 +4945,7 @@ jump 0x141, jump_309
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Paildramon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x4
+.give_card 0x4
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -4953,7 +4953,7 @@ jump_303:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Gigadramon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x5
+.give_card 0x5
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -4961,7 +4961,7 @@ jump_304:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6MetalGreymon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x6
+.give_card 0x6
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -4969,7 +4969,7 @@ jump_305:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Garudamon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x7
+.give_card 0x7
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -4977,7 +4977,7 @@ jump_306:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6MasterTyrannomon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x8
+.give_card 0x8
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -4985,7 +4985,7 @@ jump_307:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6MetalGreymon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x9
+.give_card 0x9
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -4993,7 +4993,7 @@ jump_308:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Vermilimon Card*c7."
 .display_text_buffer
-.set_light_unknown 0xa
+.give_card 0xa
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5001,7 +5001,7 @@ jump_309:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Meteormon Card*c7."
 .display_text_buffer
-.set_light_unknown 0xb
+.give_card 0xb
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5024,7 +5024,7 @@ jump 0x149, jump_317
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Rosemon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x49
+.give_card 0x49
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5032,7 +5032,7 @@ jump_311:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6HerculesKabuterimon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x4a
+.give_card 0x4a
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5040,7 +5040,7 @@ jump_312:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6MagnaAngemon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x4b
+.give_card 0x4b
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5048,7 +5048,7 @@ jump_313:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Sylphymon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x4c
+.give_card 0x4c
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5056,7 +5056,7 @@ jump_314:
 display_scene 0xd, 0x9
 .set_text_buffer "You got an *c6Angewomon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x4d
+.give_card 0x4d
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5064,7 +5064,7 @@ jump_315:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Lillymon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x4e
+.give_card 0x4e
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5072,7 +5072,7 @@ jump_316:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6MegaKabuterimon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x4f
+.give_card 0x4f
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5080,7 +5080,7 @@ jump_317:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Piximon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x50
+.give_card 0x50
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5103,7 +5103,7 @@ jump 0x151, jump_325
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Jijimon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x8f
+.give_card 0x8f
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5111,7 +5111,7 @@ jump_319:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Digitamamon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x90
+.give_card 0x90
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5119,7 +5119,7 @@ jump_320:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Vademon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x91
+.give_card 0x91
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5127,7 +5127,7 @@ jump_321:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Giromon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x92
+.give_card 0x92
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5135,7 +5135,7 @@ jump_322:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Monzaemon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x93
+.give_card 0x93
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5143,7 +5143,7 @@ jump_323:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6MetalMamemon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x94
+.give_card 0x94
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5151,7 +5151,7 @@ jump_324:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c6Mamemon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x95
+.give_card 0x95
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326
@@ -5159,7 +5159,7 @@ jump_325:
 display_scene 0xd, 0x9
 .set_text_buffer "You got an *c6Etemon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x96
+.give_card 0x96
 display_scene 0xe, 0x3c
 .wait_input
 jump 0x152, jump_326

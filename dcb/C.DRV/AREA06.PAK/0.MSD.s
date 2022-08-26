@@ -1556,7 +1556,7 @@ jump 0xa9, jump_166
 display_scene 0xd, 0x9
 .set_text_buffer "You got an *c6Apokarimon Card*c7."
 .display_text_buffer
-.set_light_unknown 0x67
+.give_card 0x67
 display_scene 0xe, 0x3c
 .wait_input
 jump_166:
