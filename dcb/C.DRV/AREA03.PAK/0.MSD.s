@@ -2167,9 +2167,7 @@ jump 0xd1, jump_206
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c3Digi-Part*c7."
 .display_text_buffer
-display_scene 0xe, 0x1e
-display_scene 0x10, 0x56
-display_scene 0xe, 0x3c
+.give_digi_part 0x56
 .set_var 0x158, 0x1
 .wait_input
 jump_206:

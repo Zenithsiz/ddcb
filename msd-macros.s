@@ -1,3 +1,14 @@
+# Macros
+
+
+# Gives you the `$0` digi-part
+# TODO: Check if the `display_scene 0xe, {0x1e, 0x3c}` is needed or not, it's in all of them
+.macro give_digi_part, display_scene, 0xe, 0x1e, /, display_scene, 0x10, $0, /, display_scene, 0xe, 0x3c
+
+
+
+
+
 
 # Old macros
 .macro start_transition       , open_screen, 0x00
@@ -38,3 +49,4 @@
 
 .macro open_combo_box      , display_scene, 0x0, $0
 .macro combo_box_add_button, display_scene, 0x1, $0
+

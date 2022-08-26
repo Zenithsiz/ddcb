@@ -1748,9 +1748,7 @@ jump_171:
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c3Digi-Part*c7."
 .display_text_buffer
-display_scene 0xe, 0x1e
-display_scene 0x10, 0x63
-display_scene 0xe, 0x3c
+.give_digi_part 0x63
 .set_var 0x15a, 0x1
 .wait_input
 jump 0x88, jump_132
@@ -2437,9 +2435,7 @@ jump 0xdb, jump_213
 display_scene 0xd, 0x9
 .set_text_buffer "You got a *c3Digi-Part*c7."
 .display_text_buffer
-display_scene 0xe, 0x1e
-display_scene 0x10, 0x72
-display_scene 0xe, 0x3c
+.give_digi_part 0x72
 .set_var 0x15b, 0x1
 .wait_input
 jump_213:
