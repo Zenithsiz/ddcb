@@ -81,7 +81,7 @@ rules:
   compare-deps:
     out: [$(compare_deps)]
     deps: [$(checksums), $(generate_compare_deps)]
-    static_deps: [dir_name: $(compare_deps)]
+    static_deps: [$(compare_deps::dir_name)]
     exec:
       - [bash, -c, '$(generate_compare_deps) > $(compare_deps)']
 
@@ -105,7 +105,7 @@ rules:
     alias:
       target_dir: target/mipsel-sony-psx/release
     out: [$(dcb_rs_lib), deps_file: $(dcb_rs_lib_deps)]
-    static_deps: [dir_name: $(dcb_rs_lib)]
+    static_deps: [$(dcb_rs_lib::dir_name)]
     exec_cwd: dcb-rs/
     exec:
       - - $(cargo)
@@ -132,26 +132,25 @@ rules:
   mkpsxiso-deps:
     out: [$(dcb_bin_deps)]
     deps: [$(dcb_bin_xml)]
-    static_deps: [dir_name: $(dcb_bin_deps)]
+    static_deps: [$(dcb_bin_deps::dir_name)]
     exec:
       - [bash, -c, '$(generate_iso_deps) > $(dcb_bin_deps)']
 
   # Cargo tools
-  # TODO: Just use `$(tools_dir)/^(name)` when we can ensure it's not empty
   cargo-tool:
     alias:
-      tool: $(tools_dir)/dcb-^(name)
+      tool: $(tools_dir)/^(name::non_empty)
     out: [$(tool), deps_file: $(tool).d]
-    static_deps: [dir_name: $(tool)]
+    static_deps: [$(tool::dir_name)]
     exec_cwd: tools/
     exec:
       - - $(cargo)
         - build
         - --release
-        - --package=dcb-^(name)
+        - --package=^(name)
         - -Z=unstable-options
         - --out-dir=../$(tools_dir)
-      - [cp, target/release/dcb-^(name).d, ../$(tool).d]
+      - [cp, target/release/^(name).d, ../$(tool).d]
       - - sed
         - -i
         - -e
@@ -170,7 +169,7 @@ rules:
       - $(drv_patch)
       - $(mkdrv)
       - deps_file: $(drv).d
-    static_deps: [dir_name: $(drv)]
+    static_deps: [$(drv::dir_name)]
     exec:
       - [$(mkdrv), $(drv_yaml), -o, $(drv)]
       - [$(bspatch), $(drv), $(drv), $(drv_patch)]
@@ -182,7 +181,7 @@ rules:
       drv_yaml: ^(path).DRV.yaml
     out: [$(drv).d]
     deps: [$(drv_yaml), $(mkdrv-deps)]
-    static_deps: [dir_name: $(drv)]
+    static_deps: [$(drv::dir_name)]
     exec:
       - - $(mkdrv-deps)
         - $(drv_yaml)
@@ -198,7 +197,7 @@ rules:
       pak_yaml: ^(path).PAK.yaml
     out: [$(pak)]
     deps: [$(pak_yaml), $(mkpak), deps_file: $(pak).d]
-    static_deps: [dir_name: $(pak)]
+    static_deps: [$(pak::dir_name)]
     exec:
       - [$(mkpak), $(pak_yaml), -o, $(pak)]
 
@@ -209,7 +208,7 @@ rules:
       pak_yaml: ^(path).PAK.yaml
     out: [$(pak).d]
     deps: [$(pak_yaml), $(mkpak-deps)]
-    static_deps: [dir_name: $(pak)]
+    static_deps: [$(pak::dir_name)]
     exec:
       - - $(mkpak-deps)
         - $(pak_yaml)
@@ -225,7 +224,7 @@ rules:
       arc_yaml: ^(path).ARC.yaml
     out: [$(arc)]
     deps: [$(arc_yaml), $(mkarc), deps_file: $(arc).d]
-    static_deps: [dir_name: $(arc)]
+    static_deps: [$(arc::dir_name)]
     exec:
       - [$(mkarc), $(arc_yaml), -o, $(arc)]
 
@@ -236,7 +235,7 @@ rules:
       arc_yaml: ^(path).ARC.yaml
     out: [$(arc).d]
     deps: [$(arc_yaml), $(mkarc-deps)]
-    static_deps: [dir_name: $(arc)]
+    static_deps: [$(arc::dir_name)]
     exec:
       - - $(mkarc-deps)
         - $(arc_yaml)
@@ -256,7 +255,7 @@ rules:
       - $(msd_src)
       - $(msd_patch)
       - $(mkmsd)
-    static_deps: [dir_name: $(msd)]
+    static_deps: [$(msd::dir_name)]
     exec:
       - [$(mkmsd), $(msd_src), -o, $(msd), --deps-file, $(msd).d]
       - [$(bspatch), $(msd), $(msd), $(msd_patch)]
@@ -270,7 +269,7 @@ rules:
       - ^(path).CDD.json
       - ^(path).CDD.bspatch
       - $(mk-card-table)
-    static_deps: [dir_name: $(cdd)]
+    static_deps: [$(cdd::dir_name)]
     exec:
       - [$(mk-card-table), ^(path).CDD.json, -o, $(cdd)]
       - [$(bspatch), $(cdd), $(cdd), ^(path).CDD.bspatch]
@@ -284,7 +283,7 @@ rules:
       - ^(path).DEK.json
       - ^(path).DEK.bspatch
       - $(mk-deck-table)
-    static_deps: [dir_name: $(dek)]
+    static_deps: [$(dek::dir_name)]
     exec:
       - [$(mk-deck-table), ^(path).DEK.json, -o, $(dek)]
       - [$(bspatch), $(dek), $(dek), ^(path).DEK.bspatch]
@@ -292,7 +291,7 @@ rules:
   # Buffer
   mmm_buffer:
     out: [$(mmm_buffer)]
-    static_deps: [dir_name: $(mmm_buffer)]
+    static_deps: [$(mmm_buffer::dir_name)]
     exec:
       - [touch, $(mmm_buffer)]
       - [truncate, --size=24240128, $(mmm_buffer)]
@@ -305,7 +304,7 @@ rules:
       dcb_elf_copy: $(dcb_elf).^(name)
     out: [$(dylib)]
     deps: [$(dcb_elf)]
-    static_deps: [dir_name: $(dylib)]
+    static_deps: [$(dylib::dir_name)]
 
     # Note: We make a copy of the `elf` because it seems like `objcopy` messes with the
     #       modification date, which `make` uses to check dependencies
@@ -318,7 +317,7 @@ rules:
   exe_psexe:
     out: [$(dcb_psexe)]
     deps: [$(dcb_elf), $(license_psexe), $(mkpsexe)]
-    static_deps: [dir_name: $(dcb_psexe)]
+    static_deps: [$(dcb_psexe::dir_name)]
     exec:
       - - $(mkpsexe)
         - $(dcb_elf)
@@ -336,7 +335,7 @@ rules:
       - $(dcb_rs_lib)
       - $(linker_script_symbols)
       - $(linker_script)
-    static_deps: [dir_name: $(dcb_elf)]
+    static_deps: [$(dcb_elf::dir_name)]
     exec:
       - - $(ld)
         - $(asm_obj)
@@ -359,7 +358,7 @@ rules:
       - symbols.yaml
       - section_addrs.yaml
       - $(generate_linker_script)
-    static_deps: [dir_name: $(linker_script_symbols)]
+    static_deps: [$(linker_script_symbols::dir_name)]
     exec:
       - [$(generate_linker_script)]
 
@@ -367,7 +366,7 @@ rules:
   asm_obj:
     out: [$(asm_obj), deps_file: $(asm_obj_deps)]
     deps: [$(asm_processed)]
-    static_deps: [dir_name: $(asm_obj)]
+    static_deps: [$(asm_obj::dir_name)]
     exec:
       - - $(as)
         - -MD
@@ -388,7 +387,7 @@ rules:
       - $(asm_expanded)
       - symbols.yaml
       - $(preprocess_asm)
-    static_deps: [dir_name: $(asm_processed)]
+    static_deps: [$(asm_processed::dir_name)]
     exec:
       - - $(preprocess_asm)
         - $(asm_expanded)
@@ -402,7 +401,7 @@ rules:
   expand_asm:
     out: [$(asm_expanded)]
     deps: [$(asm_src), $(expand_asm)]
-    static_deps: [dir_name: $(asm_expanded)]
+    static_deps: [$(asm_expanded::dir_name)]
     exec:
       - - $(expand_asm)
         - $(asm_src)
