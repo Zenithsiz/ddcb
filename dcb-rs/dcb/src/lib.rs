@@ -38,6 +38,11 @@ pub struct PsxStr<const N: usize>(pub [u8; N]);
 impl<const N: usize> PsxStr<N> {
 	/// Creates a string from a bytes, with *mandatory* null termination
 	pub const fn from_bytes(bytes: &[u8]) -> Self {
+		Self::from_bytes_with_padding(bytes, &[])
+	}
+
+	/// Creates a string from a bytes, with *mandatory* null termination, and padding at the end
+	pub const fn from_bytes_with_padding(bytes: &[u8], pad: &[u8]) -> Self {
 		// If `N` isn't a multiple of 4, panic
 		if N % 4 != 0 {
 			// SAFETY: This will only be called at compile time,
@@ -56,7 +61,7 @@ impl<const N: usize> PsxStr<N> {
 		}
 
 		// If we don't have any space for null terminators, panic
-		if idx == N {
+		if idx >= N - pad.len() {
 			// SAFETY: This will only be called at compile time,
 			//         which has a `panic` that doesn't cause U.B.
 			unsafe {
@@ -64,8 +69,15 @@ impl<const N: usize> PsxStr<N> {
 			}
 		}
 
-		while idx < N {
+		// Fill the null terminators
+		while idx < N - pad.len() {
 			s[idx] = 0;
+			idx += 1;
+		}
+
+		// Then fill the padding
+		while idx < N {
+			s[idx] = pad[idx - (N - pad.len())];
 			idx += 1;
 		}
 
@@ -75,6 +87,27 @@ impl<const N: usize> PsxStr<N> {
 }
 
 /// Gets a `PsxStr` from a `&str`
-macro psx_str($s:literal) {
-	PsxStr::from_bytes($s.as_bytes())
+macro psx_str {
+	// No padding
+	($s:literal) => {
+		PsxStr::from_bytes($s.as_bytes())
+	},
+
+	// With padding
+	($s:literal, $pad:literal) => {
+		PsxStr::from_bytes_with_padding($s.as_bytes(), $pad)
+	},
+}
+
+/// Gets a `PsxStr` from a `&[u8]`
+macro psx_str_bytes {
+	// No padding
+	($s:literal) => {
+		PsxStr::from_bytes($s)
+	},
+
+	// With padding
+	($s:literal, $pad:literal) => {
+		PsxStr::from_bytes_with_padding($s, $pad)
+	},
 }
