@@ -222,3 +222,42 @@ pub trait Receiver {}
 
 impl<T: ?Sized> Receiver for &T {}
 impl<T: ?Sized> Receiver for &mut T {}
+
+#[lang = "deref"]
+pub trait Deref {
+	#[lang = "deref_target"]
+	type Target: ?Sized;
+
+	#[must_use]
+	fn deref(&self) -> &Self::Target;
+}
+
+impl<T: ?Sized> const Deref for &T {
+	type Target = T;
+
+	fn deref(&self) -> &T {
+		self
+	}
+}
+
+impl<T: ?Sized> const Deref for &mut T {
+	type Target = T;
+
+	fn deref(&self) -> &T {
+		self
+	}
+}
+
+#[lang = "deref_mut"]
+pub trait DerefMut: Deref {
+	/// Mutably dereferences the value.
+	fn deref_mut(&mut self) -> &mut Self::Target;
+}
+
+impl<T: ?Sized> DerefMut for &mut T {
+	fn deref_mut(&mut self) -> &mut T {
+		self
+	}
+}
+
+impl<T: ?Sized> !DerefMut for &T {}

@@ -10,3 +10,15 @@ impl<T> [T] {
 		unsafe { PtrRepr { const_ptr: self }.components.metadata }
 	}
 }
+
+#[inline]
+#[must_use]
+pub const unsafe fn from_raw_parts<'a, T>(data: *const T, len: usize) -> &'a [T] {
+	unsafe { &*crate::ptr::from_raw_parts(data.cast(), len) }
+}
+
+#[inline]
+#[must_use]
+pub const unsafe fn from_raw_parts_mut<'a, T>(data: *mut T, len: usize) -> &'a mut [T] {
+	unsafe { &mut *crate::ptr::from_raw_parts_mut(data.cast(), len) }
+}

@@ -9,7 +9,9 @@
 	naked_functions,
 	auto_traits,
 	negative_impls,
-	intrinsics
+	intrinsics,
+	const_trait_impl,
+	const_mut_refs
 )]
 // Core / Std
 #![no_std]
@@ -19,8 +21,10 @@
 // Lints
 #![allow(clippy::match_like_matches_macro)] // We don't have `matches!` yet. TODO: impl it
 #![allow(clippy::missing_safety_doc)] // Most of the stuff here is a builtin
+#![deny(unsafe_op_in_unsafe_fn)] // TODO: Remove in newer nightlies where this isn't required
 
 // Modules
+pub mod array;
 pub mod cmp;
 pub mod drop;
 pub mod intrinsics;

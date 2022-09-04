@@ -16,7 +16,7 @@ pub struct Location<'a> {
 pub const unsafe fn panic(_expr: &'static str) -> ! {
 	// Note: We don't want any panic handling code to occur (yet),
 	//       so for now all panics are undefined behavior
-	intrinsics::unreachable();
+	unsafe { intrinsics::unreachable() }
 }
 
 

@@ -40,7 +40,9 @@ impl<T: ?Sized> *const T {
 		T: Sized,
 	{
 		#[allow(clippy::ptr_offset_with_cast)] // This is the definition for `add`
-		self.offset(count as isize)
+		unsafe {
+			self.offset(count as isize)
+		}
 	}
 
 	#[must_use = "returns a new pointer rather than modifying its argument"]
@@ -49,7 +51,7 @@ impl<T: ?Sized> *const T {
 	where
 		T: Sized,
 	{
-		intrinsics::offset(self, count) as Self
+		unsafe { intrinsics::offset(self, count) as Self }
 	}
 }
 
@@ -66,7 +68,9 @@ impl<T: ?Sized> *mut T {
 		T: Sized,
 	{
 		#[allow(clippy::ptr_offset_with_cast)] // This is the definition for `add`
-		self.offset(count as isize)
+		unsafe {
+			self.offset(count as isize)
+		}
 	}
 
 	#[must_use = "returns a new pointer rather than modifying its argument"]
@@ -75,7 +79,7 @@ impl<T: ?Sized> *mut T {
 	where
 		T: Sized,
 	{
-		intrinsics::offset(self, count) as Self
+		unsafe { intrinsics::offset(self, count) as Self }
 	}
 
 	#[inline(always)]
@@ -83,12 +87,32 @@ impl<T: ?Sized> *mut T {
 	where
 		T: Sized,
 	{
-		self::write(self, val)
+		unsafe { self::write(self, val) }
 	}
 }
 
 #[inline(always)]
 pub unsafe fn write<T>(dst: *mut T, src: T) {
-	intrinsics::copy_nonoverlapping(&src as *const T, dst, 1);
+	unsafe { intrinsics::copy_nonoverlapping(&src as *const T, dst, 1) }
 	intrinsics::forget(src);
+}
+
+#[inline]
+pub const fn from_raw_parts<T: ?Sized>(data_address: *const (), metadata: <T as Pointee>::Metadata) -> *const T {
+	unsafe {
+		PtrRepr {
+			components: PtrComponents { data_address, metadata },
+		}
+		.const_ptr
+	}
+}
+
+#[inline]
+pub const fn from_raw_parts_mut<T: ?Sized>(data_address: *mut (), metadata: <T as Pointee>::Metadata) -> *mut T {
+	unsafe {
+		PtrRepr {
+			components: PtrComponents { data_address, metadata },
+		}
+		.mut_ptr
+	}
 }
