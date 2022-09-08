@@ -27,7 +27,7 @@ mod todo;
 mod util;
 
 // Exports
-use partner_part::{PartnerPart, PARTNER_PART_LEVELS};
+use partner_part::{PartnerPart, PARTNER_PART_LEVELS, PARTNER_PART_DESCRIPTIONS};
 
 /// Aligned null-terminated byte string
 #[repr(C, align(4))]
@@ -37,6 +37,11 @@ impl<const N: usize> PsxStr<N> {
 	/// Creates a string from a bytes, with *mandatory* null termination
 	pub const fn from_bytes(bytes: &[u8]) -> Self {
 		Self::from_bytes_with_padding(bytes, &[])
+	}
+
+	/// Creates a string from a str, with *mandatory* null termination
+	pub const fn from_str(s: &str) -> Self {
+		Self::from_bytes(s.as_bytes())
 	}
 
 	/// Creates a string from a bytes, with *mandatory* null termination, and padding at the end
