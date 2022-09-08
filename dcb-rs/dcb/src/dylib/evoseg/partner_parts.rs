@@ -6,7 +6,7 @@ use crate::{PartnerPart, PARTNER_PART_LEVELS};
 /// Base address for the names
 const NAME_BASE_ADDR: u32 = 0x801df034;
 
-/// Partner cards
+/// Partner parts
 #[no_mangle]
 #[link_section = "dylib.evoseg.DYLIB_EVOSEG_PARTNER_PARTS"]
 #[rustfmt::skip]
