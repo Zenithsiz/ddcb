@@ -1,5 +1,8 @@
 //! Partner parts
 
+// Imports
+use crate::PsxStr;
+
 /// A partner part
 #[repr(C, align(4))]
 pub struct PartnerPart {
@@ -25,136 +28,135 @@ impl PartnerPart {
 const UNO: u8 = 0xff;
 
 /// Partner part descriptions
-pub const PARTNER_PART_DESCRIPTIONS: [&str; 128] = [
-	"HP+50.",
-	"HP+100.",
-	"HP+150.",
-	"HP+200.",
-	"HP+300.",
-	"HP+400.",
-	"HP+500.",
-	"All Attack Powers +50.",
-	"All Attack Powers +100.",
-	"All Attack Powers +200.",
-	"*b0 Attack Power +100.",
-	"*b0 Attack Power +150.",
-	"*b0 Attack Power +200.",
-	"*b0 Attack Power +250.",
-	"*b0 Attack Power +300.",
-	"*b1 Attack Power +50.",
-	"*b1 Attack Power +100.",
-	"*b1 Attack Power +150.",
-	"*b1 Attack Power +200.",
-	"*b1 Attack Power +250.",
-	"*b2 Attack Power +50.",
-	"*b2 Attack Power +100.",
-	"*b2 Attack Power +150.",
-	"*b2 Attack Power +200.",
-	"*b0 to 0, *b2 Attack Power -100.",
-	"*b1 to 0, *b2 Attack Power -100.",
-	"*b2 to 0, *b2 Attack Power -100.",
-	"Counter *b0,*b2 Attack Power to 0.",
-	"Counter *b1,*b2 Attack Power to 0.",
-	"Counter *b2,*b2 Attack Power to 0.",
-	"Opponent *a0 X3, *b2 Attack Power -200.",
-	"Opponent *a1 X3, *b2 Attack Power -200.",
-	"Opponent *a2 X3, *b2 Attack Power -200.",
-	"Opponent *a3 X3, *b2 Attack Power -200.",
-	"Opponent *a4 X3, *b2 Attack Power -200.",
-	"1st Attack, *b2 Attack Power -200.",
-	"Jamming Support, *b2 Attack Power -100.",
-	"Eat-up HP, *b2 Attack Power -200.",
-	"Add + 10 DP.",
-	"Add + 20 DP.",
-	"Add + 30 DP.",
-	"Boost Attack Power +50.",
-	"Boost Attack Power +100.",
-	"Boost Attack Power +200.",
-	"Boost Attack Power +300.",
-	"Attack Power is Doubled.",
-	"Boost *b0 Attack Power +300.",
-	"Boost *b0 Attack Power +400.",
-	"Boost *b0 Attack Power +500.",
-	"*b0 Attack Power is Doubled.",
-	"*b0 Attack Power is Tripled.",
-	"Boost *b1 Attack Power +200.",
-	"Boost *b1 Attack Power +300.",
-	"Boost *b1 Attack Power +400.",
-	"*b1 Attack Power is Doubled.",
-	"*b1 Attack Power is Tripled.",
-	"Boost *b2 Attack Power +100.",
-	"Boost *b2 Attack Power +200.",
-	"Boost *b2 Attack Power +300.",
-	"*b2 Attack Power is Doubled.",
-	"*b2 Attack Power is Tripled.",
-	"Attack Power becomes same as HP.",
-	"Get 1st Attack.",
-	"Attack becomes Eat-up HP.",
-	"Lower Opponent's *b0 Attack Power to 0.",
-	"Lower Opponent's *b1 Attack Power to 0.",
-	"Lower Opponent's *b2 Attack Power to 0.",
-	"*b0 Counterattack (Attack 2nd).",
-	"*b1 Counterattack (Attack 2nd).",
-	"*b2 Counterattack (Attack 2nd).",
-	"If *a0 Opponent, X2 own Attack Power.",
-	"If *a0 Opponent, X3 own Attack Power.",
-	"If *a1 Opponent, X2 own Attack Power.",
-	"If *a1 Opponent, X3 own Attack Power.",
-	"If *a2 Opponent, X2 own Attack Power.",
-	"If *a2 Opponent, X3 own Attack Power.",
-	"If *a3 Opponent, X2 own Attack Power.",
-	"If *a3 Opponent, X3 own Attack Power.",
-	"If *a4 Opponent, X2 own Attack Power.",
-	"If *a4 Opponent, X3 own Attack Power.",
-	"Change own Specialty to *a0.",
-	"Change own Specialty to *a1.",
-	"Change own Specialty to *a2.",
-	"Change own Specialty to *a3.",
-	"Change own Specialty to *a4.",
-	"Switch Opponent's Specialty to own.",
-	"Swap Specialty with Opponent's.",
-	"If *a0 Opponent, lower its AP to 0.",
-	"If *a1 Opponent, lower its AP to 0.",
-	"If *a2 Opponent, lower its AP to 0.",
-	"If *a3 Opponent, lower its AP to 0.",
-	"If *a4 Opponent, lower its AP to 0.",
-	"Reduce both Players' Atk Pwr to 0.",
-	"If *e3, boost Attack Power +200.",
-	"If *e4, boost Attack Power +300.",
-	"If *e5, boost Attack Power +400.",
-	"Opponent uses *b0 Attack.",
-	"Opponent uses *b1 Attack.",
-	"Opponent uses *b2 Attack.",
-	"Opponent uses same Attack.",
-	"Recover HP +200.",
-	"Recover HP +300.",
-	"Recover HP +400.",
-	"Halve Attack Power, recover HP +400.",
-	"Halve Attack Power, recover HP +600.",
-	"If HP < Opponent's HP, add HP +500.",
-	"If HP < Opponent's HP, add HP +700.",
-	"If KO'd in battle, revive w/ HP 300.",
-	"If KO'd in battle, revive w/ HP 600.",
-	"If KO'd in battle, revive w/ HP 1000.",
-	"Drop 1 Card in Opponent's Hand.",
-	"Drop 2 Cards in Opponent's Hand.",
-	"Drop Opponent's Top 2 DP Cards shown.",
-	"Drop Opponent's Top 3 DP Cards shown.",
-	"Drop Opponent's Top 4 DP Cards shown.",
-	"Drop 2 Cards in Opponent's Online Deck.",
-	"Drop 3 Cards in Opponent's Online Deck.",
-	"Move Offline Top Card to Online Deck.",
-	"Void Opponent's Support Effect.",
-	"Draw until there are 4 Cards.",
-	"Draw Online Partner Card, then Shuffle.",
-	"If *e3, HP + 200 & all Attack Powers +100.",
-	"If *ea, HP + 200 & all Attack Powers +100.",
-	"Boost Battle Experience by 10%.",
-	"Boost Battle Experience by 20%.",
-	"Boost Battle Experience by 30%.",
-	"Rare Card might appear after battle.",
-	"Rare Card even more likely to appear.",
-];
+// TODO: Define a single array/struct for everything?
+pub const PARTNER_PART_DESCRIPTIONS_000: PsxStr<8> = PsxStr::from_str("HP+50.");
+pub const PARTNER_PART_DESCRIPTIONS_001: PsxStr<8> = PsxStr::from_str("HP+100.");
+pub const PARTNER_PART_DESCRIPTIONS_002: PsxStr<8> = PsxStr::from_str("HP+150.");
+pub const PARTNER_PART_DESCRIPTIONS_003: PsxStr<8> = PsxStr::from_str("HP+200.");
+pub const PARTNER_PART_DESCRIPTIONS_004: PsxStr<8> = PsxStr::from_str("HP+300.");
+pub const PARTNER_PART_DESCRIPTIONS_005: PsxStr<8> = PsxStr::from_str("HP+400.");
+pub const PARTNER_PART_DESCRIPTIONS_006: PsxStr<8> = PsxStr::from_str("HP+500.");
+pub const PARTNER_PART_DESCRIPTIONS_007: PsxStr<24> = PsxStr::from_str("All Attack Powers +50.");
+pub const PARTNER_PART_DESCRIPTIONS_008: PsxStr<24> = PsxStr::from_str("All Attack Powers +100.");
+pub const PARTNER_PART_DESCRIPTIONS_009: PsxStr<24> = PsxStr::from_str("All Attack Powers +200.");
+pub const PARTNER_PART_DESCRIPTIONS_010: PsxStr<24> = PsxStr::from_str("*b0 Attack Power +100.");
+pub const PARTNER_PART_DESCRIPTIONS_011: PsxStr<24> = PsxStr::from_str("*b0 Attack Power +150.");
+pub const PARTNER_PART_DESCRIPTIONS_012: PsxStr<24> = PsxStr::from_str("*b0 Attack Power +200.");
+pub const PARTNER_PART_DESCRIPTIONS_013: PsxStr<24> = PsxStr::from_str("*b0 Attack Power +250.");
+pub const PARTNER_PART_DESCRIPTIONS_014: PsxStr<24> = PsxStr::from_str("*b0 Attack Power +300.");
+pub const PARTNER_PART_DESCRIPTIONS_015: PsxStr<24> = PsxStr::from_str("*b1 Attack Power +50.");
+pub const PARTNER_PART_DESCRIPTIONS_016: PsxStr<24> = PsxStr::from_str("*b1 Attack Power +100.");
+pub const PARTNER_PART_DESCRIPTIONS_017: PsxStr<24> = PsxStr::from_str("*b1 Attack Power +150.");
+pub const PARTNER_PART_DESCRIPTIONS_018: PsxStr<24> = PsxStr::from_str("*b1 Attack Power +200.");
+pub const PARTNER_PART_DESCRIPTIONS_019: PsxStr<24> = PsxStr::from_str("*b1 Attack Power +250.");
+pub const PARTNER_PART_DESCRIPTIONS_020: PsxStr<24> = PsxStr::from_str("*b2 Attack Power +50.");
+pub const PARTNER_PART_DESCRIPTIONS_021: PsxStr<24> = PsxStr::from_str("*b2 Attack Power +100.");
+pub const PARTNER_PART_DESCRIPTIONS_022: PsxStr<24> = PsxStr::from_str("*b2 Attack Power +150.");
+pub const PARTNER_PART_DESCRIPTIONS_023: PsxStr<24> = PsxStr::from_str("*b2 Attack Power +200.");
+pub const PARTNER_PART_DESCRIPTIONS_024: PsxStr<36> = PsxStr::from_str("*b0 to 0, *b2 Attack Power -100.");
+pub const PARTNER_PART_DESCRIPTIONS_025: PsxStr<36> = PsxStr::from_str("*b1 to 0, *b2 Attack Power -100.");
+pub const PARTNER_PART_DESCRIPTIONS_026: PsxStr<36> = PsxStr::from_str("*b2 to 0, *b2 Attack Power -100.");
+pub const PARTNER_PART_DESCRIPTIONS_027: PsxStr<36> = PsxStr::from_str("Counter *b0,*b2 Attack Power to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_028: PsxStr<36> = PsxStr::from_str("Counter *b1,*b2 Attack Power to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_029: PsxStr<36> = PsxStr::from_str("Counter *b2,*b2 Attack Power to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_030: PsxStr<40> = PsxStr::from_str("Opponent *a0 X3, *b2 Attack Power -200.");
+pub const PARTNER_PART_DESCRIPTIONS_031: PsxStr<40> = PsxStr::from_str("Opponent *a1 X3, *b2 Attack Power -200.");
+pub const PARTNER_PART_DESCRIPTIONS_032: PsxStr<40> = PsxStr::from_str("Opponent *a2 X3, *b2 Attack Power -200.");
+pub const PARTNER_PART_DESCRIPTIONS_033: PsxStr<40> = PsxStr::from_str("Opponent *a3 X3, *b2 Attack Power -200.");
+pub const PARTNER_PART_DESCRIPTIONS_034: PsxStr<40> = PsxStr::from_str("Opponent *a4 X3, *b2 Attack Power -200.");
+pub const PARTNER_PART_DESCRIPTIONS_035: PsxStr<36> = PsxStr::from_str("1st Attack, *b2 Attack Power -200.");
+pub const PARTNER_PART_DESCRIPTIONS_036: PsxStr<40> = PsxStr::from_str("Jamming Support, *b2 Attack Power -100.");
+pub const PARTNER_PART_DESCRIPTIONS_037: PsxStr<36> = PsxStr::from_str("Eat-up HP, *b2 Attack Power -200.");
+pub const PARTNER_PART_DESCRIPTIONS_038: PsxStr<16> = PsxStr::from_str("Add + 10 DP.");
+pub const PARTNER_PART_DESCRIPTIONS_039: PsxStr<16> = PsxStr::from_str("Add + 20 DP.");
+pub const PARTNER_PART_DESCRIPTIONS_040: PsxStr<16> = PsxStr::from_str("Add + 30 DP.");
+pub const PARTNER_PART_DESCRIPTIONS_041: PsxStr<24> = PsxStr::from_str("Boost Attack Power +50.");
+pub const PARTNER_PART_DESCRIPTIONS_042: PsxStr<28> = PsxStr::from_str("Boost Attack Power +100.");
+pub const PARTNER_PART_DESCRIPTIONS_043: PsxStr<28> = PsxStr::from_str("Boost Attack Power +200.");
+pub const PARTNER_PART_DESCRIPTIONS_044: PsxStr<28> = PsxStr::from_str("Boost Attack Power +300.");
+pub const PARTNER_PART_DESCRIPTIONS_045: PsxStr<28> = PsxStr::from_str("Attack Power is Doubled.");
+pub const PARTNER_PART_DESCRIPTIONS_046: PsxStr<32> = PsxStr::from_str("Boost *b0 Attack Power +300.");
+pub const PARTNER_PART_DESCRIPTIONS_047: PsxStr<32> = PsxStr::from_str("Boost *b0 Attack Power +400.");
+pub const PARTNER_PART_DESCRIPTIONS_048: PsxStr<32> = PsxStr::from_str("Boost *b0 Attack Power +500.");
+pub const PARTNER_PART_DESCRIPTIONS_049: PsxStr<32> = PsxStr::from_str("*b0 Attack Power is Doubled.");
+pub const PARTNER_PART_DESCRIPTIONS_050: PsxStr<32> = PsxStr::from_str("*b0 Attack Power is Tripled.");
+pub const PARTNER_PART_DESCRIPTIONS_051: PsxStr<32> = PsxStr::from_str("Boost *b1 Attack Power +200.");
+pub const PARTNER_PART_DESCRIPTIONS_052: PsxStr<32> = PsxStr::from_str("Boost *b1 Attack Power +300.");
+pub const PARTNER_PART_DESCRIPTIONS_053: PsxStr<32> = PsxStr::from_str("Boost *b1 Attack Power +400.");
+pub const PARTNER_PART_DESCRIPTIONS_054: PsxStr<32> = PsxStr::from_str("*b1 Attack Power is Doubled.");
+pub const PARTNER_PART_DESCRIPTIONS_055: PsxStr<32> = PsxStr::from_str("*b1 Attack Power is Tripled.");
+pub const PARTNER_PART_DESCRIPTIONS_056: PsxStr<32> = PsxStr::from_str("Boost *b2 Attack Power +100.");
+pub const PARTNER_PART_DESCRIPTIONS_057: PsxStr<32> = PsxStr::from_str("Boost *b2 Attack Power +200.");
+pub const PARTNER_PART_DESCRIPTIONS_058: PsxStr<32> = PsxStr::from_str("Boost *b2 Attack Power +300.");
+pub const PARTNER_PART_DESCRIPTIONS_059: PsxStr<32> = PsxStr::from_str("*b2 Attack Power is Doubled.");
+pub const PARTNER_PART_DESCRIPTIONS_060: PsxStr<32> = PsxStr::from_str("*b2 Attack Power is Tripled.");
+pub const PARTNER_PART_DESCRIPTIONS_061: PsxStr<36> = PsxStr::from_str("Attack Power becomes same as HP.");
+pub const PARTNER_PART_DESCRIPTIONS_062: PsxStr<16> = PsxStr::from_str("Get 1st Attack.");
+pub const PARTNER_PART_DESCRIPTIONS_063: PsxStr<28> = PsxStr::from_str("Attack becomes Eat-up HP.");
+pub const PARTNER_PART_DESCRIPTIONS_064: PsxStr<40> = PsxStr::from_str("Lower Opponent's *b0 Attack Power to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_065: PsxStr<40> = PsxStr::from_str("Lower Opponent's *b1 Attack Power to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_066: PsxStr<40> = PsxStr::from_str("Lower Opponent's *b2 Attack Power to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_067: PsxStr<32> = PsxStr::from_str("*b0 Counterattack (Attack 2nd).");
+pub const PARTNER_PART_DESCRIPTIONS_068: PsxStr<32> = PsxStr::from_str("*b1 Counterattack (Attack 2nd).");
+pub const PARTNER_PART_DESCRIPTIONS_069: PsxStr<32> = PsxStr::from_str("*b2 Counterattack (Attack 2nd).");
+pub const PARTNER_PART_DESCRIPTIONS_070: PsxStr<40> = PsxStr::from_str("If *a0 Opponent, X2 own Attack Power.");
+pub const PARTNER_PART_DESCRIPTIONS_071: PsxStr<40> = PsxStr::from_str("If *a0 Opponent, X3 own Attack Power.");
+pub const PARTNER_PART_DESCRIPTIONS_072: PsxStr<40> = PsxStr::from_str("If *a1 Opponent, X2 own Attack Power.");
+pub const PARTNER_PART_DESCRIPTIONS_073: PsxStr<40> = PsxStr::from_str("If *a1 Opponent, X3 own Attack Power.");
+pub const PARTNER_PART_DESCRIPTIONS_074: PsxStr<40> = PsxStr::from_str("If *a2 Opponent, X2 own Attack Power.");
+pub const PARTNER_PART_DESCRIPTIONS_075: PsxStr<40> = PsxStr::from_str("If *a2 Opponent, X3 own Attack Power.");
+pub const PARTNER_PART_DESCRIPTIONS_076: PsxStr<40> = PsxStr::from_str("If *a3 Opponent, X2 own Attack Power.");
+pub const PARTNER_PART_DESCRIPTIONS_077: PsxStr<40> = PsxStr::from_str("If *a3 Opponent, X3 own Attack Power.");
+pub const PARTNER_PART_DESCRIPTIONS_078: PsxStr<40> = PsxStr::from_str("If *a4 Opponent, X2 own Attack Power.");
+pub const PARTNER_PART_DESCRIPTIONS_079: PsxStr<40> = PsxStr::from_str("If *a4 Opponent, X3 own Attack Power.");
+pub const PARTNER_PART_DESCRIPTIONS_080: PsxStr<32> = PsxStr::from_str("Change own Specialty to *a0.");
+pub const PARTNER_PART_DESCRIPTIONS_081: PsxStr<32> = PsxStr::from_str("Change own Specialty to *a1.");
+pub const PARTNER_PART_DESCRIPTIONS_082: PsxStr<32> = PsxStr::from_str("Change own Specialty to *a2.");
+pub const PARTNER_PART_DESCRIPTIONS_083: PsxStr<32> = PsxStr::from_str("Change own Specialty to *a3.");
+pub const PARTNER_PART_DESCRIPTIONS_084: PsxStr<32> = PsxStr::from_str("Change own Specialty to *a4.");
+pub const PARTNER_PART_DESCRIPTIONS_085: PsxStr<36> = PsxStr::from_str("Switch Opponent's Specialty to own.");
+pub const PARTNER_PART_DESCRIPTIONS_086: PsxStr<32> = PsxStr::from_str("Swap Specialty with Opponent's.");
+pub const PARTNER_PART_DESCRIPTIONS_087: PsxStr<36> = PsxStr::from_str("If *a0 Opponent, lower its AP to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_088: PsxStr<36> = PsxStr::from_str("If *a1 Opponent, lower its AP to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_089: PsxStr<36> = PsxStr::from_str("If *a2 Opponent, lower its AP to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_090: PsxStr<36> = PsxStr::from_str("If *a3 Opponent, lower its AP to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_091: PsxStr<36> = PsxStr::from_str("If *a4 Opponent, lower its AP to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_092: PsxStr<36> = PsxStr::from_str("Reduce both Players' Atk Pwr to 0.");
+pub const PARTNER_PART_DESCRIPTIONS_093: PsxStr<36> = PsxStr::from_str("If *e3, boost Attack Power +200.");
+pub const PARTNER_PART_DESCRIPTIONS_094: PsxStr<36> = PsxStr::from_str("If *e4, boost Attack Power +300.");
+pub const PARTNER_PART_DESCRIPTIONS_095: PsxStr<36> = PsxStr::from_str("If *e5, boost Attack Power +400.");
+pub const PARTNER_PART_DESCRIPTIONS_096: PsxStr<28> = PsxStr::from_str("Opponent uses *b0 Attack.");
+pub const PARTNER_PART_DESCRIPTIONS_097: PsxStr<28> = PsxStr::from_str("Opponent uses *b1 Attack.");
+pub const PARTNER_PART_DESCRIPTIONS_098: PsxStr<28> = PsxStr::from_str("Opponent uses *b2 Attack.");
+pub const PARTNER_PART_DESCRIPTIONS_099: PsxStr<28> = PsxStr::from_str("Opponent uses same Attack.");
+pub const PARTNER_PART_DESCRIPTIONS_100: PsxStr<20> = PsxStr::from_str("Recover HP +200.");
+pub const PARTNER_PART_DESCRIPTIONS_101: PsxStr<20> = PsxStr::from_str("Recover HP +300.");
+pub const PARTNER_PART_DESCRIPTIONS_102: PsxStr<20> = PsxStr::from_str("Recover HP +400.");
+pub const PARTNER_PART_DESCRIPTIONS_103: PsxStr<40> = PsxStr::from_str("Halve Attack Power, recover HP +400.");
+pub const PARTNER_PART_DESCRIPTIONS_104: PsxStr<40> = PsxStr::from_str("Halve Attack Power, recover HP +600.");
+pub const PARTNER_PART_DESCRIPTIONS_105: PsxStr<36> = PsxStr::from_str("If HP < Opponent's HP, add HP +500.");
+pub const PARTNER_PART_DESCRIPTIONS_106: PsxStr<36> = PsxStr::from_str("If HP < Opponent's HP, add HP +700.");
+pub const PARTNER_PART_DESCRIPTIONS_107: PsxStr<40> = PsxStr::from_str("If KO'd in battle, revive w/ HP 300.");
+pub const PARTNER_PART_DESCRIPTIONS_108: PsxStr<40> = PsxStr::from_str("If KO'd in battle, revive w/ HP 600.");
+pub const PARTNER_PART_DESCRIPTIONS_109: PsxStr<40> = PsxStr::from_str("If KO'd in battle, revive w/ HP 1000.");
+pub const PARTNER_PART_DESCRIPTIONS_110: PsxStr<32> = PsxStr::from_str("Drop 1 Card in Opponent's Hand.");
+pub const PARTNER_PART_DESCRIPTIONS_111: PsxStr<36> = PsxStr::from_str("Drop 2 Cards in Opponent's Hand.");
+pub const PARTNER_PART_DESCRIPTIONS_112: PsxStr<40> = PsxStr::from_str("Drop Opponent's Top 2 DP Cards shown.");
+pub const PARTNER_PART_DESCRIPTIONS_113: PsxStr<40> = PsxStr::from_str("Drop Opponent's Top 3 DP Cards shown.");
+pub const PARTNER_PART_DESCRIPTIONS_114: PsxStr<40> = PsxStr::from_str("Drop Opponent's Top 4 DP Cards shown.");
+pub const PARTNER_PART_DESCRIPTIONS_115: PsxStr<40> = PsxStr::from_str("Drop 2 Cards in Opponent's Online Deck.");
+pub const PARTNER_PART_DESCRIPTIONS_116: PsxStr<40> = PsxStr::from_str("Drop 3 Cards in Opponent's Online Deck.");
+pub const PARTNER_PART_DESCRIPTIONS_117: PsxStr<40> = PsxStr::from_str("Move Offline Top Card to Online Deck.");
+pub const PARTNER_PART_DESCRIPTIONS_118: PsxStr<32> = PsxStr::from_str("Void Opponent's Support Effect.");
+pub const PARTNER_PART_DESCRIPTIONS_119: PsxStr<32> = PsxStr::from_str("Draw until there are 4 Cards.");
+pub const PARTNER_PART_DESCRIPTIONS_120: PsxStr<40> = PsxStr::from_str("Draw Online Partner Card, then Shuffle.");
+pub const PARTNER_PART_DESCRIPTIONS_121: PsxStr<44> = PsxStr::from_str("If *e3, HP + 200 & all Attack Powers +100.");
+pub const PARTNER_PART_DESCRIPTIONS_122: PsxStr<44> = PsxStr::from_str("If *ea, HP + 200 & all Attack Powers +100.");
+pub const PARTNER_PART_DESCRIPTIONS_123: PsxStr<32> = PsxStr::from_str("Boost Battle Experience by 10%.");
+pub const PARTNER_PART_DESCRIPTIONS_124: PsxStr<32> = PsxStr::from_str("Boost Battle Experience by 20%.");
+pub const PARTNER_PART_DESCRIPTIONS_125: PsxStr<32> = PsxStr::from_str("Boost Battle Experience by 30%.");
+pub const PARTNER_PART_DESCRIPTIONS_126: PsxStr<40> = PsxStr::from_str("Rare Card might appear after battle.");
+pub const PARTNER_PART_DESCRIPTIONS_127: PsxStr<40> = PsxStr::from_str("Rare Card even more likely to appear.");
 
 /// Partner part levels
 pub const PARTNER_PART_LEVELS: [[u8; 6]; 128] = [

@@ -27,7 +27,7 @@ mod todo;
 mod util;
 
 // Exports
-use partner_part::{PartnerPart, PARTNER_PART_LEVELS, PARTNER_PART_DESCRIPTIONS};
+use partner_part::{PartnerPart, PARTNER_PART_LEVELS};
 
 /// Aligned null-terminated byte string
 #[repr(C, align(4))]
