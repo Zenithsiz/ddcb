@@ -12,6 +12,16 @@ pub use self::{
 	u32_ptr::U32Ptr,
 };
 
+/// Declares several statics with `no_mangle` and a link section
+/// of `$base_link_section` + `.` + `$NAME`
+pub macro decl_static($base_link_section:literal, $($vis:vis static $NAME:ident: $T:ty = $value:expr; )*) {
+	$(
+		#[no_mangle]
+		#[link_section = concat!($base_link_section, ".", stringify!($NAME))]
+		$vis static $NAME: $T = $value;
+	)*
+}
+
 /// Assembly macro that appends `.set noat` and `.set noreorder` and allows usage of mips
 /// register names
 pub macro asm($($args:tt)*) {{
