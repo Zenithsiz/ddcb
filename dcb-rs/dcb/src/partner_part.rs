@@ -150,8 +150,10 @@ pub const PARTNER_PART_DESCRIPTIONS_117: PsxString<40> = PsxString::from_str("Mo
 pub const PARTNER_PART_DESCRIPTIONS_118: PsxString<32> = PsxString::from_str("Void Opponent's Support Effect.");
 pub const PARTNER_PART_DESCRIPTIONS_119: PsxString<32> = PsxString::from_str("Draw until there are 4 Cards.");
 pub const PARTNER_PART_DESCRIPTIONS_120: PsxString<40> = PsxString::from_str("Draw Online Partner Card, then Shuffle.");
-pub const PARTNER_PART_DESCRIPTIONS_121: PsxString<44> = PsxString::from_str("If *e3, HP + 200 & all Attack Powers +100.");
-pub const PARTNER_PART_DESCRIPTIONS_122: PsxString<44> = PsxString::from_str("If *ea, HP + 200 & all Attack Powers +100.");
+pub const PARTNER_PART_DESCRIPTIONS_121: PsxString<44> =
+	PsxString::from_str("If *e3, HP + 200 & all Attack Powers +100.");
+pub const PARTNER_PART_DESCRIPTIONS_122: PsxString<44> =
+	PsxString::from_str("If *ea, HP + 200 & all Attack Powers +100.");
 pub const PARTNER_PART_DESCRIPTIONS_123: PsxString<32> = PsxString::from_str("Boost Battle Experience by 10%.");
 pub const PARTNER_PART_DESCRIPTIONS_124: PsxString<32> = PsxString::from_str("Boost Battle Experience by 20%.");
 pub const PARTNER_PART_DESCRIPTIONS_125: PsxString<32> = PsxString::from_str("Boost Battle Experience by 30%.");

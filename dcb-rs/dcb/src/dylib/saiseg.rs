@@ -4,10 +4,7 @@
 mod partner_parts;
 
 // Imports
-use {
-	crate::{psx_str, PsxString},
-};
-use crate::util;
+use crate::{psx_str, util, PsxString};
 
 util::decl_static! {
 	"dylib.saiseg",
@@ -30,9 +27,7 @@ Can you achieve 100%?"#);
 	pub static DYLIB_SAISEG_S_0x801de188: PsxString<124> = psx_str!(r#"*w1Collector Rank is set by the number of
 Cards collected. 7 Titles from "General 
 	Public" to the highest, plus one more."#);
-	pub static DYLIB_SAISEG_S_0x801de204: PsxString<120> = psx_str!(r#"*w1Tamer Rank is based on Wins. There are 8 
-Ranks. "Beginner Tamer" with 0 wins
-to "Invincible Tamer" with 500+ Wins."#);
+	pub static DYLIB_SAISEG_S_0x801de204: PsxString<120> = psx_str!("*w1Tamer Rank is based on Wins. There are 8 \nRanks. \"Beginner Tamer\" with 0 wins\nto \"Invincible Tamer\" with 500+ Wins.");
 	pub static DYLIB_SAISEG_S_0x801de27c: PsxString<20> = psx_str!(r#"*w1Player's Name."#);
 	pub static DYLIB_SAISEG_S_0x801de290: u32 = 0x00000000;
 	pub static DYLIB_SAISEG_S_0x801de294: u32 = 0x801DFF5C;

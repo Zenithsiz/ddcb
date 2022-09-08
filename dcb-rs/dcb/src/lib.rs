@@ -23,8 +23,8 @@
 // Modules
 mod dylib;
 mod partner_part;
-mod todo;
 mod psx_str;
+mod todo;
 mod util;
 
 // Exports

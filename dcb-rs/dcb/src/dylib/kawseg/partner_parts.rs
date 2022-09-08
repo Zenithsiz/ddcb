@@ -1,7 +1,7 @@
 //! Partner parts
 
 // Imports
-use crate::{PsxString, PartnerPart, PARTNER_PART_LEVELS, partner_part, util};
+use crate::{partner_part, util, PartnerPart, PsxString, PARTNER_PART_LEVELS};
 
 /// Base address for the names
 const NAME_BASE_ADDR: u32 = 0x801df3e0;

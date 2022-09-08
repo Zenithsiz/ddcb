@@ -1,10 +1,7 @@
 //! Data
 
 // Imports
-use {
-	crate::{psx_str, PsxString},
-};
-use crate::util;
+use crate::{psx_str, util, PsxString};
 
 util::decl_static! {
 	".text",
