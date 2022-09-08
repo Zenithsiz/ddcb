@@ -44,7 +44,7 @@ alias:
 
   # Files
   checksums            : checksums.sha256
-  dcb_bin_xml          : dcb-iso.xml
+  dcb_bin_xml          : dcb-bin.xml
   asm_src              : dcb-asm/dcb.s
   linker_script        : psx.ld
   license_iso          : license.dat
@@ -54,7 +54,6 @@ alias:
   compare_deps         : $(build_dir)/compare.d
   dcb_bin              : $(build_dir)/dcb.bin
   dcb_bin_deps         : $(build_dir)/dcb.bin.d
-  dcb_bin_cue          : $(build_dir)/dcb.cue
   linker_script_symbols: $(exe_dir)/symbols.ld
   dcb_elf              : $(exe_dir)/dcb.elf
   dcb_psexe            : $(exe_dir)/dcb.psexe
@@ -123,7 +122,7 @@ rules:
 
   # `dcb.bin`
   mkpsxiso:
-    out: [$(dcb_bin), $(dcb_bin_cue)]
+    out: [$(dcb_bin)]
     deps: [$(dcb_bin_xml), $(license_iso), deps_file: $(dcb_bin_deps)]
     exec:
       - [$(mkpsxiso), $(dcb_bin_xml), -q, -y]
