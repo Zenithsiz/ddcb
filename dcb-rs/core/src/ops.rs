@@ -112,17 +112,6 @@ pub trait Index<Idx: ?Sized> {
 	fn index(&self, index: Idx) -> &Self::Output;
 }
 
-impl<const N: usize> Index<usize> for [u8; N] {
-	type Output = u8;
-
-	fn index(&self, _index: usize) -> &Self::Output {
-		// Note: This gets replaced with the actual implementation
-		unsafe {
-			crate::intrinsics::unreachable();
-		}
-	}
-}
-
 impl Index<usize> for [u8] {
 	type Output = u8;
 

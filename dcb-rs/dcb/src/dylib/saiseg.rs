@@ -1,7 +1,5 @@
 //! `saiseg` data
 
-// Lints
-
 // Modules
 mod partner_parts;
 

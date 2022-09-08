@@ -6204,7 +6204,7 @@ f423:
 	lw $v0, -0x1fac($s0)
 	nop
 	lbu $a1, 0x4($v0)
-	jal DYLIB_SUBSEG_S_0x801f1aa8
+	jal dylib_kawseg_func_53.0x801f1aa8
 		move_ $a0, $s5
 	jal f420
 		move_ $a0, $s5

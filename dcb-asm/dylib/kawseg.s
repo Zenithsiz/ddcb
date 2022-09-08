@@ -18889,7 +18889,7 @@ dylib_kawseg_func_53:
 .0x801f19bc: addiu $a2, $zr, 0x1a8
 .0x801f19c0: jal dylib_kawseg_func_48
 .0x801f19c4: 	addu $a3, $zr, $zr
-.0x801f19c8: j DYLIB_SUBSEG_S_0x801f1a78
+.0x801f19c8: j .0x801f1a78
 .0x801f19cc: 	nop
 .0x801f19d0: lui $v0, 0x8020
 .0x801f19d4: addiu $s1, $v0, -0x45d0
@@ -18975,7 +18975,7 @@ dylib_kawseg_func_53:
 .0x801f1b14: lbu $a1, 0x71($v0)
 .0x801f1b18: jal f292
 .0x801f1b1c: 	addiu $a2, $zr, 0x64
-.0x801f1b20: j DYLIB_SUBSEG_S_0x801f1b80
+.0x801f1b20: j .0x801f1b80
 .0x801f1b24: 	nop
 .0x801f1b28: jal rng_step
 .0x801f1b2c: 	nop
@@ -19053,7 +19053,7 @@ dylib_kawseg_func_53:
 .0x801f1c4c: nop
 .0x801f1c50: sh $v1, 0x0($a1)
 .0x801f1c54: lhu $v0, 0x1a($v0)
-.0x801f1c58: j DYLIB_SUBSEG_S_0x801f1c98
+.0x801f1c58: j .0x801f1c98
 .0x801f1c5c: 	addu $a0, $a2, $a0
 .0x801f1c60: addu $a1, $t0, $a0
 .0x801f1c64: sll $v0, $s1, 0x6

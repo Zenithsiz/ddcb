@@ -33,7 +33,7 @@ mod todo;
 mod util;
 
 // Exports
-use partner_part::PartnerPart;
+use partner_part::{PartnerPart, PARTNER_PART_LEVELS};
 
 // Imports
 use core::panic;

@@ -19593,7 +19593,7 @@ dylib_saiseg_func_120:
 .0x801f1988: addiu $a2, -0x1634
 .0x801f198c: jal f266
 .0x801f1990: 	addiu $a3, $zr, 0x7
-.0x801f1994: j DYLIB_SUBSEG_S_0x801f19b4
+.0x801f1994: j .0x801f19b4
 .0x801f1998: 	nop
 .0x801f199c: sw $a2, 0x10($sp)
 .0x801f19a0: addiu $a1, 0x1
@@ -19637,7 +19637,7 @@ dylib_saiseg_func_120:
 .0x801f1a38: lw $a2, 0x0($v0)
 .0x801f1a3c: jal f268
 .0x801f1a40: 	addiu $a3, $zr, 0x6
-.0x801f1a44: j DYLIB_SUBSEG_S_0x801f1a70
+.0x801f1a44: j .0x801f1a70
 .0x801f1a48: 	nop
 .0x801f1a4c: lh $a0, 0x0($s0)
 .0x801f1a50: lh $a1, 0x2($s0)

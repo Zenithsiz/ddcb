@@ -4,13 +4,13 @@
 use crate::{PartnerPart, PARTNER_PART_LEVELS};
 
 /// Base address for the names
-const NAME_BASE_ADDR: u32 = 0x801dfa28;
+const NAME_BASE_ADDR: u32 = 0x801df034;
 
 /// Partner cards
 #[no_mangle]
-#[link_section = "dylib.saiseg.DYLIB_SAISEG_PARTNER_PARTS"]
+#[link_section = "dylib.evoseg.DYLIB_EVOSEG_PARTNER_PARTS"]
 #[rustfmt::skip]
-static DYLIB_SAISEG_PARTNER_PARTS: [PartnerPart; 128] = [
+static DYLIB_EVOSEG_PARTNER_PARTS: [PartnerPart; 128] = [
 	PartnerPart::new(NAME_BASE_ADDR        , PARTNER_PART_LEVELS[000]),
 	PartnerPart::new(NAME_BASE_ADDR - 0x8  , PARTNER_PART_LEVELS[001]),
 	PartnerPart::new(NAME_BASE_ADDR - 0x10 , PARTNER_PART_LEVELS[002]),
