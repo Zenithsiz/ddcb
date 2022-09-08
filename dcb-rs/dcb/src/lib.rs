@@ -30,7 +30,7 @@ mod util;
 // Exports
 pub use {
 	partner_part::{PartnerPart, PARTNER_PART_LEVELS},
-	psx_str::{psx_str, PsxStr},
+	psx_str::{psx_str, PsxString},
 };
 
 // Dummy panic handler

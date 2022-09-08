@@ -2,9 +2,9 @@
 
 /// Aligned null-terminated byte string
 #[repr(C, align(4))]
-pub struct PsxStr<const N: usize>(pub [u8; N]);
+pub struct PsxString<const N: usize>(pub [u8; N]);
 
-impl<const N: usize> PsxStr<N> {
+impl<const N: usize> PsxString<N> {
 	/// Creates a string from a bytes, with *mandatory* null termination
 	pub const fn from_bytes(bytes: &[u8]) -> Self {
 		Self::from_bytes_with_padding(bytes, &[])
@@ -57,15 +57,15 @@ impl<const N: usize> PsxStr<N> {
 	}
 }
 
-/// Gets a `PsxStr` from a `&str`
+/// Gets a `PsxString` from a `&str`
 pub macro psx_str {
 	// No padding
 	($s:literal) => {
-		PsxStr::from_bytes($s.as_bytes())
+		PsxString::from_bytes($s.as_bytes())
 	},
 
 	// With padding
 	($s:literal, $pad:literal) => {
-		PsxStr::from_bytes_with_padding($s.as_bytes(), $pad)
+		PsxString::from_bytes_with_padding($s.as_bytes(), $pad)
 	},
 }

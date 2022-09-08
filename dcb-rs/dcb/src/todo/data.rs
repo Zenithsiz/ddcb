@@ -2,14 +2,14 @@
 
 // Imports
 use {
-	crate::{psx_str, PsxStr},
+	crate::{psx_str, PsxString},
 };
 use crate::util;
 
 util::decl_static! {
 	".text",
 	// File extension and version for iso9660 filesystem drv files
-	pub static cd_drv_extension_version: PsxStr<8> = psx_str!(".DRV;1");
+	pub static cd_drv_extension_version: PsxString<8> = psx_str!(".DRV;1");
 
 	// ?
 	pub static S_0x80010008: [u32; 7] = [
@@ -17,9 +17,9 @@ util::decl_static! {
 	];
 
 	// Generic strings
-	pub static S_0x80010024: PsxStr<4> = psx_str!("\n");
-	pub static S_0x80010028: PsxStr<4> = psx_str!("Yes");
-	pub static no_str: PsxStr<4> = psx_str!("No");
+	pub static S_0x80010024: PsxString<4> = psx_str!("\n");
+	pub static S_0x80010028: PsxString<4> = psx_str!("Yes");
+	pub static no_str: PsxString<4> = psx_str!("No");
 
 
 	pub static unknown_fn_ptrs0: [u32; 7] = [
@@ -44,11 +44,11 @@ util::decl_static! {
 	pub static unknown_fn_ptrs3: [u32; 6] = [0x80021428, 0x800214a0, 0x80021510, 0x80021590, 0x80021608, 0x80021668];
 
 	// Cd strings?
-	pub static unknown_cd_path0: PsxStr<20> = psx_str!("M:\\HDF%d\\%d_%d.hdf");
-	pub static unknown_cd_path1: PsxStr<20> = psx_str!("M:\\HDF%03d\\%c.hdf");
-	pub static unknown_cd_path2: PsxStr<16> = psx_str!("M:\\%d_%d.omd");
-	pub static unknown_cd_path3: PsxStr<12> = psx_str!("M:\\%03d.omd");
-	pub static unknown_cd_path4: PsxStr< 8> = psx_str!("M:\\%s");
+	pub static unknown_cd_path0: PsxString<20> = psx_str!("M:\\HDF%d\\%d_%d.hdf");
+	pub static unknown_cd_path1: PsxString<20> = psx_str!("M:\\HDF%03d\\%c.hdf");
+	pub static unknown_cd_path2: PsxString<16> = psx_str!("M:\\%d_%d.omd");
+	pub static unknown_cd_path3: PsxString<12> = psx_str!("M:\\%03d.omd");
+	pub static unknown_cd_path4: PsxString< 8> = psx_str!("M:\\%s");
 
 	// ?
 	pub static S_0x8001010c: [u32; 16] = [
@@ -89,7 +89,7 @@ util::decl_static! {
 		0x0,
 	];
 
-	pub static unknown_cd_drive: PsxStr<4> = psx_str!("M:");
+	pub static unknown_cd_drive: PsxString<4> = psx_str!("M:");
 	pub static unknown_data0: [u32; 12] = [
 		0x400ffff, 0x1500a00, 0x0,
 		0x190ffff, 0x200    , 0x0,
@@ -97,7 +97,7 @@ util::decl_static! {
 		0x190ffff, 0x200    , 0x0,
 	];
 
-	pub static system_tiles_path: PsxStr<16> = psx_str!("B:\\SYSTEM.TIM");
+	pub static system_tiles_path: PsxString<16> = psx_str!("B:\\SYSTEM.TIM");
 
 	pub static S_0x800101d0: [u32; 6] = [
 		0x80027a9c,
@@ -341,23 +341,23 @@ util::decl_static! {
 		0x8002a180,
 	];
 
-	pub static S_0x80010544: PsxStr<4> = psx_str!("1ab");
-	pub static S_0x80010548: PsxStr<4> = psx_str!("2cd");
-	pub static S_0x8001054c: PsxStr<4> = psx_str!("3ef");
-	pub static S_0x80010550: PsxStr<4> = psx_str!("gh");
-	pub static i_str: PsxStr<4> = psx_str!("i");
-	pub static S_0x80010558: PsxStr<4> = psx_str!("1st");
-	pub static S_0x8001055c: PsxStr<4> = psx_str!("2nd");
-	pub static S_0x80010560: PsxStr<4> = psx_str!("3rd");
-	pub static lowercase_th_str: PsxStr<4> = psx_str!("th");
-	pub static S_0x80010568: PsxStr<4> = psx_str!("1ST");
-	pub static S_0x8001056c: PsxStr<4> = psx_str!("2ND");
-	pub static S_0x80010570: PsxStr<4> = psx_str!("3RD");
-	pub static uppercase_th_str: PsxStr<4> = psx_str!("TH");
-	pub static sound_effect_path: PsxStr<12> = psx_str!("A:\\SE%d.PAK");
-	pub static bgm_path: PsxStr<20> = psx_str!("A:\\BGM\\BGM%02d.PAK");
-	pub static open_segment_path: PsxStr<16> = psx_str!("P:\\openseg.bin");
-	pub static opening_mv_cd_path: PsxStr<16> = psx_str!("\\DIGIMON.MOV;1");
+	pub static S_0x80010544: PsxString<4> = psx_str!("1ab");
+	pub static S_0x80010548: PsxString<4> = psx_str!("2cd");
+	pub static S_0x8001054c: PsxString<4> = psx_str!("3ef");
+	pub static S_0x80010550: PsxString<4> = psx_str!("gh");
+	pub static i_str: PsxString<4> = psx_str!("i");
+	pub static S_0x80010558: PsxString<4> = psx_str!("1st");
+	pub static S_0x8001055c: PsxString<4> = psx_str!("2nd");
+	pub static S_0x80010560: PsxString<4> = psx_str!("3rd");
+	pub static lowercase_th_str: PsxString<4> = psx_str!("th");
+	pub static S_0x80010568: PsxString<4> = psx_str!("1ST");
+	pub static S_0x8001056c: PsxString<4> = psx_str!("2ND");
+	pub static S_0x80010570: PsxString<4> = psx_str!("3RD");
+	pub static uppercase_th_str: PsxString<4> = psx_str!("TH");
+	pub static sound_effect_path: PsxString<12> = psx_str!("A:\\SE%d.PAK");
+	pub static bgm_path: PsxString<20> = psx_str!("A:\\BGM\\BGM%02d.PAK");
+	pub static open_segment_path: PsxString<16> = psx_str!("P:\\openseg.bin");
+	pub static opening_mv_cd_path: PsxString<16> = psx_str!("\\DIGIMON.MOV;1");
 
 	pub static S_0x800105b8: [u32; 6] = [
 		0x8002bba0,
@@ -523,19 +523,19 @@ util::decl_static! {
 		0x8002d378,
 	];
 
-	pub static S_0x800107f0: PsxStr<8> = psx_str!("Player");
-	pub static S_0x800107f8: PsxStr<24> = psx_str!("E:\\SKILL\\SKILL%d.MSD");
-	pub static S_0x80010810: PsxStr<12> = psx_str!("G:\\%03d.PAK");
-	pub static S_0x8001081c: PsxStr<12> = psx_str!("F:\\%03d.PAK");
-	pub static S_0x80010828: PsxStr<16> = psx_str!("A:\\BATTLE.PAK");
-	pub static S_0x80010838: PsxStr<16> = psx_str!("P:\\sugseg.bin");
-	pub static S_0x80010848: PsxStr<16> = psx_str!("P:\\kawseg.bin");
-	pub static S_0x80010858: PsxStr<12> = psx_str!("F:\\bg%d.pak");
-	pub static S_0x80010864: PsxStr<16> = psx_str!("P:\\openseg.bin");
-	pub static S_0x80010874: PsxStr<16> = psx_str!("P:\\saiseg.bin");
-	pub static S_0x80010884: PsxStr<16> = psx_str!("P:\\evoseg.bin");
-	pub static S_0x80010894: PsxStr<16> = psx_str!("P:\\subseg.bin");
-	pub static S_0x800108a4: PsxStr<12> = psx_str!("B:\\BG.ARC");
+	pub static S_0x800107f0: PsxString<8> = psx_str!("Player");
+	pub static S_0x800107f8: PsxString<24> = psx_str!("E:\\SKILL\\SKILL%d.MSD");
+	pub static S_0x80010810: PsxString<12> = psx_str!("G:\\%03d.PAK");
+	pub static S_0x8001081c: PsxString<12> = psx_str!("F:\\%03d.PAK");
+	pub static S_0x80010828: PsxString<16> = psx_str!("A:\\BATTLE.PAK");
+	pub static S_0x80010838: PsxString<16> = psx_str!("P:\\sugseg.bin");
+	pub static S_0x80010848: PsxString<16> = psx_str!("P:\\kawseg.bin");
+	pub static S_0x80010858: PsxString<12> = psx_str!("F:\\bg%d.pak");
+	pub static S_0x80010864: PsxString<16> = psx_str!("P:\\openseg.bin");
+	pub static S_0x80010874: PsxString<16> = psx_str!("P:\\saiseg.bin");
+	pub static S_0x80010884: PsxString<16> = psx_str!("P:\\evoseg.bin");
+	pub static S_0x80010894: PsxString<16> = psx_str!("P:\\subseg.bin");
+	pub static S_0x800108a4: PsxString<12> = psx_str!("B:\\BG.ARC");
 
 	pub static S_0x800108b0: [u32; 92] = [
 		0x80031280,
@@ -805,25 +805,25 @@ util::decl_static! {
 
 	pub static S_0x80010c9c: u32 = 0x801ddf38;
 
-	pub static S_0x80010ca0: PsxStr<40> = psx_str!("There are no more Cards, so %s loses!");
-	pub static S_0x80010cc8: PsxStr<52> = psx_str!("Redrawing Cards because there are\nno Digimon Cards.");
-	pub static S_0x80010cfc: PsxStr<44> = psx_str!("This will discard all Cards.\nIs this OK?");
-	pub static S_0x80010d28: PsxStr<20> = psx_str!("Please press \"Yes\"!");
-	pub static S_0x80010d3c: PsxStr<32> = psx_str!("Do you want to Armor Digivolve?");
-	pub static S_0x80010d5c: PsxStr<40> = psx_str!("Is it OK to end the Preparation Phase?");
-	pub static S_0x80010d84: PsxStr<40> = psx_str!("Press \"Yes\" to go to the next Phase!");
-	pub static S_0x80010dac: PsxStr<68> = psx_str!("This Digivolve Option has no Effect.\nDo you still want to use it?");
-	pub static S_0x80010df0: PsxStr<72> = psx_str!("Current Digimon will be discarded,\ndo you still want to \"Digi-devolve\"?");
-	pub static S_0x80010e38: PsxStr<84> = psx_str!("Your Digimon\'s Level will become *e3,\ndo you still want to \"Armor Digi-devolve\"?");
-	pub static S_0x80010e8c: PsxStr<40> = psx_str!("Is it OK to end the Digivolve Phase?");
-	pub static S_0x80010eb4: PsxStr<36> = psx_str!("Choose \"Yes\" to go to next Phase!");
-	pub static S_0x80010ed8: PsxStr<52> = psx_str!("Since %s has no Digimon,\nthere is no Battle Phase.");
-	pub static S_0x80010f0c: PsxStr<60> = psx_str!("You have no Cards left, so\nyou can\'t use any Support Cards!");
-	pub static S_0x80010f48: PsxStr<40> = psx_str!("Do you want to use this Support Card?");
-	pub static S_0x80010f70: PsxStr<48> = psx_str!("You\'re not using any Support Card.\nIs this OK?");
-	pub static S_0x80010fa0: PsxStr<24> = psx_str!("Please choose \"Yes\"!");
-	pub static S_0x80010fb8: PsxStr<28> = psx_str!("%d Wins, %d Losses-%s WINS!");
-	pub static S_0x80010fd4: PsxStr<48> = psx_str!("Since %s has no more Digimon,\nthe winner is %s!");
+	pub static S_0x80010ca0: PsxString<40> = psx_str!("There are no more Cards, so %s loses!");
+	pub static S_0x80010cc8: PsxString<52> = psx_str!("Redrawing Cards because there are\nno Digimon Cards.");
+	pub static S_0x80010cfc: PsxString<44> = psx_str!("This will discard all Cards.\nIs this OK?");
+	pub static S_0x80010d28: PsxString<20> = psx_str!("Please press \"Yes\"!");
+	pub static S_0x80010d3c: PsxString<32> = psx_str!("Do you want to Armor Digivolve?");
+	pub static S_0x80010d5c: PsxString<40> = psx_str!("Is it OK to end the Preparation Phase?");
+	pub static S_0x80010d84: PsxString<40> = psx_str!("Press \"Yes\" to go to the next Phase!");
+	pub static S_0x80010dac: PsxString<68> = psx_str!("This Digivolve Option has no Effect.\nDo you still want to use it?");
+	pub static S_0x80010df0: PsxString<72> = psx_str!("Current Digimon will be discarded,\ndo you still want to \"Digi-devolve\"?");
+	pub static S_0x80010e38: PsxString<84> = psx_str!("Your Digimon\'s Level will become *e3,\ndo you still want to \"Armor Digi-devolve\"?");
+	pub static S_0x80010e8c: PsxString<40> = psx_str!("Is it OK to end the Digivolve Phase?");
+	pub static S_0x80010eb4: PsxString<36> = psx_str!("Choose \"Yes\" to go to next Phase!");
+	pub static S_0x80010ed8: PsxString<52> = psx_str!("Since %s has no Digimon,\nthere is no Battle Phase.");
+	pub static S_0x80010f0c: PsxString<60> = psx_str!("You have no Cards left, so\nyou can\'t use any Support Cards!");
+	pub static S_0x80010f48: PsxString<40> = psx_str!("Do you want to use this Support Card?");
+	pub static S_0x80010f70: PsxString<48> = psx_str!("You\'re not using any Support Card.\nIs this OK?");
+	pub static S_0x80010fa0: PsxString<24> = psx_str!("Please choose \"Yes\"!");
+	pub static S_0x80010fb8: PsxString<28> = psx_str!("%d Wins, %d Losses-%s WINS!");
+	pub static S_0x80010fd4: PsxString<48> = psx_str!("Since %s has no more Digimon,\nthe winner is %s!");
 
 	pub static S_0x80011004: u32 = 0x00000000;
 
@@ -891,18 +891,18 @@ util::decl_static! {
 		0x80039100,
 	];
 
-	pub static S_0x800110e4: PsxStr<4> = psx_str!("=");
-	pub static S_0x800110e8: PsxStr<4> = psx_str!("+");
-	pub static S_0x800110ec: PsxStr<4> = psx_str!("-");
-	pub static S_0x800110f0: PsxStr<8> = psx_str!("%s%d");
+	pub static S_0x800110e4: PsxString<4> = psx_str!("=");
+	pub static S_0x800110e8: PsxString<4> = psx_str!("+");
+	pub static S_0x800110ec: PsxString<4> = psx_str!("-");
+	pub static S_0x800110f0: PsxString<8> = psx_str!("%s%d");
 	pub static S_0x800110f8: u32 = 0x808080;
-	pub static S_0x800110fc: PsxStr<4> = psx_str!("@@@");
-	pub static S_0x80011100: PsxStr<8> = psx_str!("*s0%4d");
-	pub static S_0x80011108: PsxStr<8> = psx_str!("*s0%2d");
-	pub static S_0x80011110: PsxStr<8> = psx_str!("%s Deck");
-	pub static S_0x80011118: PsxStr<28> = psx_str!("*h-1All-or-Nothing\nGamble!");
-	pub static S_0x80011134: PsxStr<68> = psx_str!("*h-1All-or-Nothing\nGamble!\nCards left in the\nOnline Deck are %d.");
-	pub static S_0x80011178: PsxStr<44> = psx_str!("*h-1Cards left in the\nOnline Deck is %d.");
+	pub static S_0x800110fc: PsxString<4> = psx_str!("@@@");
+	pub static S_0x80011100: PsxString<8> = psx_str!("*s0%4d");
+	pub static S_0x80011108: PsxString<8> = psx_str!("*s0%2d");
+	pub static S_0x80011110: PsxString<8> = psx_str!("%s Deck");
+	pub static S_0x80011118: PsxString<28> = psx_str!("*h-1All-or-Nothing\nGamble!");
+	pub static S_0x80011134: PsxString<68> = psx_str!("*h-1All-or-Nothing\nGamble!\nCards left in the\nOnline Deck are %d.");
+	pub static S_0x80011178: PsxString<44> = psx_str!("*h-1Cards left in the\nOnline Deck is %d.");
 
 	pub static S_0x800111a4: [u32; 12] = [
 		0x80039e48,
@@ -1427,7 +1427,7 @@ util::decl_static! {
 		0x00000000,
 	];
 
-	pub static CARD_TABLE_PATH: PsxStr<0x10> = psx_str!("B:\\CARD2.CDD");
+	pub static CARD_TABLE_PATH: PsxString<0x10> = psx_str!("B:\\CARD2.CDD");
 
 	pub static S_0x80011968: [u32; 1280] = [
 		0x80047220,
