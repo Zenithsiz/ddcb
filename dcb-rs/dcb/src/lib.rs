@@ -91,7 +91,7 @@ impl<const N: usize> PsxStr<N> {
 
 		Self(s)
 	}
-	
+
 	/// Returns a `*const u8` pointer to this string
 	pub const fn to_ptr(&self) -> *const u8 {
 		self as *const Self as *const u8

@@ -6,9 +6,9 @@ pub struct PartnerPart {
 	/// Name
 	// TODO: Make this a `*const u32` once rustc doesn't ICE with it
 	name: u32,
-	
+
 	/// Partner levels.
-	/// 
+	///
 	/// Order:
 	/// Veemon, Hawkmon, Armadillomon, Gatomon, Wormmon, Patamon
 	levels: [u8; 6],
