@@ -6,9 +6,8 @@ use crate::PsxString;
 /// A partner part
 #[repr(C, align(4))]
 pub struct PartnerPart {
-	/// Name
-	// TODO: Make this a `*const u32` once rustc doesn't ICE with it
-	name: u32,
+	/// Description
+	description: *const u8,
 
 	/// Partner levels.
 	///
@@ -19,10 +18,14 @@ pub struct PartnerPart {
 
 impl PartnerPart {
 	/// Creates a new partner part
-	pub const fn new(name: u32, levels: [u8; 6]) -> Self {
-		Self { name, levels }
+	pub const fn new(description: *const u8, levels: [u8; 6]) -> Self {
+		Self { description, levels }
 	}
 }
+
+// SAFETY: This is a compile-time only type, we only implement this
+//         since it's requires for statics.
+unsafe impl Sync for PartnerPart {}
 
 /// Sentinel value used for unobtainable parts
 const UNO: u8 = 0xff;
