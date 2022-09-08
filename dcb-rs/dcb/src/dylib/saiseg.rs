@@ -6,7 +6,6 @@ mod partner_parts;
 // Imports
 use {
 	crate::{psx_str, PsxStr},
-	core::{concat, stringify},
 };
 
 // Helper macro to declare all statics

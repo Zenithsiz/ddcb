@@ -12,7 +12,6 @@
 	asm_const
 )]
 #![no_std]
-#![no_core]
 // Lints
 // Most functions are inherently unsafe
 #![allow(clippy::missing_safety_doc)]
@@ -20,11 +19,6 @@
 #![allow(dead_code)]
 // A lot of numbers are zero-prefixed in game even in decimal, so we replicate that here
 #![allow(clippy::zero_prefixed_literal)]
-
-
-// Extern crates
-extern crate core;
-extern crate dcb_macros;
 
 // Modules
 mod dylib;
@@ -34,9 +28,6 @@ mod util;
 
 // Exports
 use partner_part::{PartnerPart, PARTNER_PART_LEVELS};
-
-// Imports
-use core::panic;
 
 /// Aligned null-terminated byte string
 #[repr(C, align(4))]
@@ -52,11 +43,7 @@ impl<const N: usize> PsxStr<N> {
 	pub const fn from_bytes_with_padding(bytes: &[u8], pad: &[u8]) -> Self {
 		// If `N` isn't a multiple of 4, panic
 		if N % 4 != 0 {
-			// SAFETY: This will only be called at compile time,
-			//         which has a `panic` that doesn't cause U.B.
-			unsafe {
-				panic!("Psx strings should be aligned to 4");
-			}
+			panic!("Psx strings should be aligned to 4");
 		}
 
 		let mut s = [0u8; N];
@@ -69,11 +56,7 @@ impl<const N: usize> PsxStr<N> {
 
 		// If we don't have any space for null terminators, panic
 		if idx >= N - pad.len() {
-			// SAFETY: This will only be called at compile time,
-			//         which has a `panic` that doesn't cause U.B.
-			unsafe {
-				panic!("No space for null terminator!");
-			}
+			panic!("No space for null terminator!");
 		}
 
 		// Fill the null terminators
@@ -109,4 +92,16 @@ macro psx_str {
 	($s:literal, $pad:literal) => {
 		PsxStr::from_bytes_with_padding($s.as_bytes(), $pad)
 	},
+}
+
+// Dummy panic handler
+#[panic_handler]
+#[inline(never)]
+fn _panic_handler(_info: &core::panic::PanicInfo) -> ! {
+	// SAFETY: This function will not make it to the final binary
+	//         due to our linker script discarding it and being
+	//         annotated with `inline(never)`
+	unsafe {
+		core::hint::unreachable_unchecked();
+	}
 }

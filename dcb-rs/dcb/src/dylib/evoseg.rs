@@ -3,9 +3,6 @@
 // Modules
 mod partner_parts;
 
-// Imports
-use core::{concat, stringify};
-
 // Helper macro to declare all statics
 macro decl_static($( $NAME:ident: $T:ty = $value:expr; )*) {
 	$(

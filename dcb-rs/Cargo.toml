@@ -1,7 +1,11 @@
 [workspace]
 
 members = [
-  "core",
   "dcb-macros",
   "dcb",
 ]
+
+# Note: with opt-level 0 we get some llvm error, so we compile
+#       dev with at least opt-level 1
+[profile.dev]
+opt-level = 1

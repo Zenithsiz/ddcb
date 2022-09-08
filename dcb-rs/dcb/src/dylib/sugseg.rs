@@ -4,9 +4,6 @@
 // They are uppercase, they just have a hex number with lowercase digits
 #![allow(non_upper_case_globals)]
 
-// Imports
-use core::{concat, stringify};
-
 // Helper macro to declare all statics
 macro decl_static($( $NAME:ident: $T:ty = $value:expr; )*) {
 	$(
