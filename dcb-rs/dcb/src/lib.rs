@@ -18,6 +18,9 @@
 #![allow(clippy::missing_safety_doc)]
 // We're still experimenting a lot, so stuff might be left unused for a while
 #![allow(dead_code)]
+// A lot of numbers are zero-prefixed in game even in decimal, so we replicate that here
+#![allow(clippy::zero_prefixed_literal)]
+
 
 // Extern crates
 extern crate core;
@@ -25,14 +28,18 @@ extern crate dcb_macros;
 
 // Modules
 mod dylib;
+mod partner_part;
 mod todo;
 mod util;
+
+// Exports
+use partner_part::PartnerPart;
 
 // Imports
 use core::panic;
 
 /// Aligned null-terminated byte string
-#[repr(align(4))]
+#[repr(C, align(4))]
 pub struct PsxStr<const N: usize>(pub [u8; N]);
 
 impl<const N: usize> PsxStr<N> {
@@ -84,6 +91,11 @@ impl<const N: usize> PsxStr<N> {
 
 		Self(s)
 	}
+	
+	/// Returns a `*const u8` pointer to this string
+	pub const fn to_ptr(&self) -> *const u8 {
+		self as *const Self as *const u8
+	}
 }
 
 /// Gets a `PsxStr` from a `&str`
@@ -96,18 +108,5 @@ macro psx_str {
 	// With padding
 	($s:literal, $pad:literal) => {
 		PsxStr::from_bytes_with_padding($s.as_bytes(), $pad)
-	},
-}
-
-/// Gets a `PsxStr` from a `&[u8]`
-macro psx_str_bytes {
-	// No padding
-	($s:literal) => {
-		PsxStr::from_bytes($s)
-	},
-
-	// With padding
-	($s:literal, $pad:literal) => {
-		PsxStr::from_bytes_with_padding($s, $pad)
 	},
 }
