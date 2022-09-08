@@ -56,7 +56,7 @@ fn main() -> Result<(), anyhow::Error> {
 	fs::create_dir_all(&args.output_dir).context("Unable to create output directory")?;
 	for (section_idx, section) in sections.iter().enumerate() {
 		let out_path = args.output_dir.join(format!("{section_idx}"));
-		fs::write(out_path, &section).context("Unable to write section to file")?;
+		fs::write(out_path, section).context("Unable to write section to file")?;
 	}
 
 	// Finally write the yaml if we got any
@@ -68,7 +68,7 @@ fn main() -> Result<(), anyhow::Error> {
 				.map(|section_idx| {
 					let section_path = args.output_dir.join(format!("{section_idx}"));
 					let rel_path = section_path
-						.strip_prefix(&output_yaml_parent)
+						.strip_prefix(output_yaml_parent)
 						.context("Unable to get output path relative to output yaml")?
 						.to_path_buf();
 					Ok(rel_path)
