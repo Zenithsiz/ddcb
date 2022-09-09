@@ -22,6 +22,11 @@ impl<const N: usize> PsxString<N> {
 			panic!("Psx strings should be aligned to 4");
 		}
 
+		// If `N` isn't big enough, panic
+		if N <= bytes.len() {
+			panic!("Not enough space for string");
+		}
+
 		let mut s = [0u8; N];
 
 		let mut idx = 0;
@@ -33,6 +38,11 @@ impl<const N: usize> PsxString<N> {
 		// If we don't have any space for null terminators, panic
 		if idx >= N - pad.len() {
 			panic!("No space for null terminator!");
+		}
+
+		// If the null terminator is bigger than 4 bytes, panic
+		if N - pad.len() - idx > 4 {
+			panic!("Null terminator is larger than 4 bytes");
 		}
 
 		// Fill the null terminators
