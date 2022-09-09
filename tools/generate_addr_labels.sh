@@ -1,7 +1,7 @@
 #!/bin/env bash
 
-nm build/dcb.elf \
+nm build/exe/dcb.elf \
 	| sed -E "s/ . /\": /g" \
 	| sed -E "s/^/\"0x/g" \
 	| sort \
-	> resources/addrs_label.yaml
+	> addrs_label.yaml
