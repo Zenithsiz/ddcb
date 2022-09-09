@@ -1,9 +1,11 @@
 //! Item differences
 
 // Imports
-use crate::property::{ArrowColor, Effect, EffectCondition};
-use std::ops::Try;
-use zutil::{AsciiStrArr, TryOrEmpty};
+use {
+	crate::property::{ArrowColor, Effect, EffectCondition},
+	std::ops::Try,
+	zutil::{AsciiStrArr, TryOrEmpty},
+};
 
 /// Visitor trait for differences between two items
 pub trait DiffVisitor {
@@ -15,7 +17,10 @@ pub trait DiffVisitor {
 
 	/// Visits an effect description difference
 	fn visit_effect_description(
-		&mut self, idx: usize, lhs: &AsciiStrArr<0x14>, rhs: &AsciiStrArr<0x14>,
+		&mut self,
+		idx: usize,
+		lhs: &AsciiStrArr<0x14>,
+		rhs: &AsciiStrArr<0x14>,
 	) -> Self::Result;
 
 	/// Visits an effect arrow color difference
@@ -23,7 +28,10 @@ pub trait DiffVisitor {
 
 	/// Visits an effect condition difference
 	fn visit_effect_condition(
-		&mut self, idx: usize, lhs: Option<EffectCondition>, rhs: Option<EffectCondition>,
+		&mut self,
+		idx: usize,
+		lhs: Option<EffectCondition>,
+		rhs: Option<EffectCondition>,
 	) -> Self::Result;
 
 	/// Visits an effect difference
@@ -74,7 +82,10 @@ where
 	}
 
 	fn visit_effect_description(
-		&mut self, idx: usize, lhs: &AsciiStrArr<0x14>, rhs: &AsciiStrArr<0x14>,
+		&mut self,
+		idx: usize,
+		lhs: &AsciiStrArr<0x14>,
+		rhs: &AsciiStrArr<0x14>,
 	) -> Self::Result {
 		T::into_try(self(DiffKind::EffectDescription { idx, lhs, rhs }))
 	}
@@ -84,7 +95,10 @@ where
 	}
 
 	fn visit_effect_condition(
-		&mut self, idx: usize, lhs: Option<EffectCondition>, rhs: Option<EffectCondition>,
+		&mut self,
+		idx: usize,
+		lhs: Option<EffectCondition>,
+		rhs: Option<EffectCondition>,
 	) -> Self::Result {
 		T::into_try(self(DiffKind::EffectCondition { idx, lhs, rhs }))
 	}

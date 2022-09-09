@@ -1,9 +1,11 @@
 //! Errors
 
 // Imports
-use super::Table;
-use crate::deck;
-use dcb_bytes::bytes_io_ext::{ReadDeserializeError, WriteSerializeError};
+use {
+	super::Table,
+	crate::deck,
+	dcb_bytes::bytes_io_ext::{ReadDeserializeError, WriteSerializeError},
+};
 
 /// Error type for [`Table::deserialize`]
 #[derive(Debug, thiserror::Error)]

@@ -25,7 +25,8 @@ fn main() -> Result<(), anyhow::Error> {
 	tracing::trace!(?map, "Map");
 
 	// Try to write all dependencies
-	dcb_mkdrv::write::write_deps(&map, &args.output_file, &args.dep_file).context("Unable to write `drv` filesystem")?;
+	dcb_mkdrv::write::write_deps(&map, &args.output_file, &args.dep_file)
+		.context("Unable to write `drv` filesystem")?;
 
 	Ok(())
 }

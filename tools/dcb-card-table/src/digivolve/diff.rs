@@ -1,9 +1,11 @@
 //! Digivolve differences
 
 // Imports
-use crate::property::DigivolveEffect;
-use std::ops::Try;
-use zutil::{AsciiStrArr, TryOrEmpty};
+use {
+	crate::property::DigivolveEffect,
+	std::ops::Try,
+	zutil::{AsciiStrArr, TryOrEmpty},
+};
 
 /// Visitor trait for differences between two digivolves
 pub trait DiffVisitor {
@@ -15,7 +17,10 @@ pub trait DiffVisitor {
 
 	/// Visits an effect description difference
 	fn visit_effect_description(
-		&mut self, idx: usize, lhs: &AsciiStrArr<0x14>, rhs: &AsciiStrArr<0x14>,
+		&mut self,
+		idx: usize,
+		lhs: &AsciiStrArr<0x14>,
+		rhs: &AsciiStrArr<0x14>,
 	) -> Self::Result;
 
 	/// Visits an effect difference
@@ -50,7 +55,10 @@ where
 	}
 
 	fn visit_effect_description(
-		&mut self, idx: usize, lhs: &AsciiStrArr<0x14>, rhs: &AsciiStrArr<0x14>,
+		&mut self,
+		idx: usize,
+		lhs: &AsciiStrArr<0x14>,
+		rhs: &AsciiStrArr<0x14>,
 	) -> Self::Result {
 		T::into_try(self(DiffKind::EffectDescription { idx, lhs, rhs }))
 	}

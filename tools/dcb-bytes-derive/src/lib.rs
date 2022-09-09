@@ -25,7 +25,7 @@ pub fn proxy_sentinel_derive(input: proc_macro::TokenStream) -> proc_macro::Toke
 	let mut wrapper_type = None;
 	for attr in &input.attrs {
 		match attr.parse_meta() {
-			Ok(syn::Meta::List(list)) if list.path.get_ident().map_or(false, |ident| ident == "proxy_sentinel") => {
+			Ok(syn::Meta::List(list)) if list.path.get_ident().map_or(false, |ident| ident == "proxy_sentinel") =>
 				for nested_attr in &list.nested {
 					match nested_attr {
 						syn::NestedMeta::Meta(syn::Meta::NameValue(name_value)) => match name_value.path.get_ident() {
@@ -36,8 +36,7 @@ pub fn proxy_sentinel_derive(input: proc_macro::TokenStream) -> proc_macro::Toke
 						},
 						_ => panic!("You must supply a value in `proxy_sentinel`"),
 					}
-				}
-			},
+				},
 			_ => continue,
 		}
 	}

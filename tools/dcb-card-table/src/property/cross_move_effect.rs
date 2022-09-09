@@ -1,8 +1,10 @@
 //! Cross move effect
 
 // Imports
-use super::{AttackType, Speciality};
-use std::fmt;
+use {
+	super::{AttackType, Speciality},
+	std::fmt,
+};
 
 /// A digimon's cross move effect
 #[derive(PartialEq, Eq, Clone, Copy, Hash, Debug)]

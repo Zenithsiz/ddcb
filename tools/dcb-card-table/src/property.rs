@@ -18,21 +18,23 @@ pub mod slot;
 pub mod speciality;
 
 // Exports
-pub use arrow_color::ArrowColor;
-pub use attack_type::AttackType;
-pub use card_type::CardType;
-pub use cross_move_effect::CrossMoveEffect;
-pub use digimon_property::DigimonProperty;
-pub use digivolve_effect::DigivolveEffect;
-pub use effect::{Effect, MaybeEffect};
-pub use effect_condition::{EffectCondition, MaybeEffectCondition};
-pub use effect_condition_operation::EffectConditionOperation;
-pub use effect_operation::EffectOperation;
-pub use level::Level;
-pub use moves::Move;
-pub use player_type::PlayerType;
-pub use slot::Slot;
-pub use speciality::Speciality;
+pub use {
+	arrow_color::ArrowColor,
+	attack_type::AttackType,
+	card_type::CardType,
+	cross_move_effect::CrossMoveEffect,
+	digimon_property::DigimonProperty,
+	digivolve_effect::DigivolveEffect,
+	effect::{Effect, MaybeEffect},
+	effect_condition::{EffectCondition, MaybeEffectCondition},
+	effect_condition_operation::EffectConditionOperation,
+	effect_operation::EffectOperation,
+	level::Level,
+	moves::Move,
+	player_type::PlayerType,
+	slot::Slot,
+	speciality::Speciality,
+};
 
 /// A possible [`ArrowColor`]
 #[repr(transparent)]

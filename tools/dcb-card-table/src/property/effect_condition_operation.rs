@@ -61,7 +61,7 @@ impl Bytes for EffectConditionOperation {
 			4 => Ok(Self::DifferentFromNumber),
 			5 => Ok(Self::EqualToNumber),
 			// TODO: Not do this here and just have someone above check?
-			0xFF => {
+			0xff => {
 				log::warn!("Found byte 0xFF for effect condition operation. Interpreting as `EqualToNumber`");
 				log::info!("The previous warning should only appear for \"Aquilamon\" in the original game file.");
 				Ok(Self::EqualToNumber)

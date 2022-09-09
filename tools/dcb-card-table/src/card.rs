@@ -7,11 +7,13 @@ mod error;
 pub use error::{DeserializeError, SerializeError};
 
 // Imports
-use super::property::CardType;
-use crate::{Digimon, Digivolve, Item};
-use dcb_bytes::{BytesReadExt, BytesWriteExt};
-use std::io;
-use zutil::AsciiStrArr;
+use {
+	super::property::CardType,
+	crate::{Digimon, Digivolve, Item},
+	dcb_bytes::{BytesReadExt, BytesWriteExt},
+	std::io,
+	zutil::AsciiStrArr,
+};
 
 /// A card
 #[derive(PartialEq, Eq, Clone, Copy, Hash, Debug)]

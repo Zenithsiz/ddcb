@@ -1,8 +1,7 @@
 //! Errors
 
 // Imports
-use crate::property::digivolve_effect;
-use zutil::null_ascii_string;
+use {crate::property::digivolve_effect, zutil::null_ascii_string};
 
 /// Error type for [`Bytes::deserialize_bytes`](dcb_bytes::Bytes::deserialize_bytes)
 #[derive(PartialEq, Eq, Clone, Copy, Debug, thiserror::Error)]

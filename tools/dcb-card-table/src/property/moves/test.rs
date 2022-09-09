@@ -1,8 +1,7 @@
 // Unit tests
 
 // Imports
-use super::*;
-use std::convert::TryFrom;
+use {super::*, std::convert::TryFrom};
 
 #[test]
 fn valid_bytes() {
