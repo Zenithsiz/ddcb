@@ -59,6 +59,7 @@ alias:
   dcb_psexe            : $(exe_dir)/dcb.psexe
   mmm_buffer           : $(misc_dir)/MMM.DAT
   asm_expanded         : $(asm_dir)/dcb-expanded.s
+  asm_expanded_deps    : $(asm_dir)/dcb-expanded.d
   asm_processed        : $(asm_dir)/dcb-processed.s
   asm_obj              : $(asm_dir)/dcb.o
   asm_obj_deps         : $(asm_dir)/dcb.d
@@ -396,9 +397,8 @@ rules:
         - --add-label-section
 
   # Expanded asm
-  # TODO: Make `expand_asm` emit a dependency file
   expand_asm:
-    out: [$(asm_expanded)]
+    out: [$(asm_expanded), deps_file: $(asm_expanded_deps)]
     deps: [$(asm_src), $(expand_asm)]
     static_deps: [$(asm_expanded::dir_name)/]
     exec:
@@ -406,3 +406,5 @@ rules:
         - $(asm_src)
         - -o
         - $(asm_expanded)
+        - --deps-file
+        - $(asm_expanded_deps)
