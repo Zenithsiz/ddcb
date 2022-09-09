@@ -77,7 +77,7 @@ impl Bytes for SubHeader {
 	type SerializeError = SerializeBytesError;
 
 	fn deserialize_bytes(bytes: &Self::ByteArray) -> Result<Self, Self::DeserializeError> {
-		let bytes = zutil::array_split!(bytes,
+		let bytes = dcb_bytes::array_split!(bytes,
 			file       : 0x1,
 			channel    : 0x1,
 			submode    : 0x1,
@@ -93,7 +93,7 @@ impl Bytes for SubHeader {
 	}
 
 	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
-		let bytes = zutil::array_split_mut!(bytes,
+		let bytes = dcb_bytes::array_split_mut!(bytes,
 			file       : 0x1,
 			channel    : 0x1,
 			submode    : 0x1,

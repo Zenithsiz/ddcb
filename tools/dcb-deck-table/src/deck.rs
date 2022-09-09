@@ -1,13 +1,15 @@
 //! Decks
 
 // Imports
-use crate::{armor_evo, city, music, ArmorEvo, City, MaybeArmorEvo, MaybeCity, MaybeMusic, Music};
-use byteorder::{ByteOrder, LittleEndian};
-use dcb_bytes::Bytes;
-use ref_cast::RefCast;
-use zutil::{
-	null_ascii_string::{self, NullAsciiString},
-	AsciiStrArr,
+use {
+	crate::{armor_evo, city, music, ArmorEvo, City, MaybeArmorEvo, MaybeCity, MaybeMusic, Music},
+	byteorder::{ByteOrder, LittleEndian},
+	dcb_bytes::Bytes,
+	ref_cast::RefCast,
+	zutil::{
+		null_ascii_string::{self, NullAsciiString},
+		AsciiStrArr,
+	},
 };
 
 /// Card id type
@@ -87,7 +89,7 @@ impl Bytes for Deck {
 
 	fn deserialize_bytes(bytes: &Self::ByteArray) -> Result<Self, Self::DeserializeError> {
 		// Split the bytes
-		let bytes = zutil::array_split!(bytes,
+		let bytes = dcb_bytes::array_split!(bytes,
 			deck         : [0x3c],
 			name         : [0x13],
 			owner        : [0x15],
@@ -129,7 +131,7 @@ impl Bytes for Deck {
 
 	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
 		// Split the bytes
-		let bytes = zutil::array_split_mut!(bytes,
+		let bytes = dcb_bytes::array_split_mut!(bytes,
 			deck         : [0x3c],
 			name         : [0x13],
 			owner        : [0x15],

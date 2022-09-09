@@ -7,9 +7,11 @@ mod error;
 pub use error::DeserializeBytesError;
 
 // Includes
-use crate::property::CardType;
-use byteorder::{ByteOrder, LittleEndian};
-use dcb_bytes::Bytes;
+use {
+	crate::property::CardType,
+	byteorder::{ByteOrder, LittleEndian},
+	dcb_bytes::Bytes,
+};
 
 /// Card header
 pub struct CardHeader {
@@ -27,7 +29,7 @@ impl Bytes for CardHeader {
 	type SerializeError = !;
 
 	fn deserialize_bytes(bytes: &Self::ByteArray) -> Result<Self, Self::DeserializeError> {
-		let bytes = zutil::array_split!(bytes,
+		let bytes = dcb_bytes::array_split!(bytes,
 			id: [0x2],
 			ty: 0x1,
 		);
@@ -39,7 +41,7 @@ impl Bytes for CardHeader {
 	}
 
 	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
-		let bytes = zutil::array_split_mut!(bytes,
+		let bytes = dcb_bytes::array_split_mut!(bytes,
 			id: [0x2],
 			ty: 0x1,
 		);

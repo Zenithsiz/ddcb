@@ -33,6 +33,7 @@
 			"addu",
 			"andi",
 			"Armadillomon",
+			"arrayref",
 			"asciiz",
 			"beqz",
 			"bgez",

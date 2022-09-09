@@ -119,7 +119,7 @@ impl Bytes for DirEntry {
 	type SerializeError = !;
 
 	fn deserialize_bytes(bytes: &Self::ByteArray) -> Result<Self, Self::DeserializeError> {
-		let bytes = zutil::array_split!(bytes,
+		let bytes = dcb_bytes::array_split!(bytes,
 			kind      :  0x1,
 			extension : [0x3],
 			sector_pos: [0x4],
@@ -169,7 +169,7 @@ impl Bytes for DirEntry {
 	}
 
 	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
-		let bytes = zutil::array_split_mut!(bytes,
+		let bytes = dcb_bytes::array_split_mut!(bytes,
 			kind      :  0x1,
 			extension : [0x3],
 			sector_pos: [0x4],

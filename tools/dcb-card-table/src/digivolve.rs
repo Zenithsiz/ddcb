@@ -5,14 +5,18 @@ mod diff;
 mod error;
 
 // Exports
-pub use diff::{DiffKind, DiffVisitor};
-pub use error::DeserializeBytesError;
+pub use {
+	diff::{DiffKind, DiffVisitor},
+	error::DeserializeBytesError,
+};
 
 // Imports
-use crate::property::DigivolveEffect;
-use dcb_bytes::Bytes;
-use std::{iter, ops::Try};
-use zutil::{null_ascii_string::NullAsciiString, AsciiStrArr};
+use {
+	crate::property::DigivolveEffect,
+	dcb_bytes::Bytes,
+	std::{iter, ops::Try},
+	zutil::{null_ascii_string::NullAsciiString, AsciiStrArr},
+};
 
 /// A digivolve card
 ///
@@ -62,7 +66,7 @@ impl Bytes for Digivolve {
 
 	fn deserialize_bytes(bytes: &Self::ByteArray) -> Result<Self, Self::DeserializeError> {
 		// Split bytes
-		let bytes = zutil::array_split!(bytes,
+		let bytes = dcb_bytes::array_split!(bytes,
 			name                : [0x15],
 			effect              : [0x3],
 			effect_description_0: [0x15],
@@ -102,7 +106,7 @@ impl Bytes for Digivolve {
 
 	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
 		// Split bytes
-		let bytes = zutil::array_split_mut!(bytes,
+		let bytes = dcb_bytes::array_split_mut!(bytes,
 			name                : [0x15],
 			effect              : [0x3],
 			effect_description_0: [0x15],

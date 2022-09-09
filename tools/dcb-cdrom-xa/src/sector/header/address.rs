@@ -51,7 +51,7 @@ impl dcb_bytes::Bytes for Address {
 	type SerializeError = SerializeBytesError;
 
 	fn deserialize_bytes(bytes: &Self::ByteArray) -> Result<Self, Self::DeserializeError> {
-		let bytes = zutil::array_split!(bytes,
+		let bytes = dcb_bytes::array_split!(bytes,
 			min  : 0x1,
 			sec  : 0x1,
 			block: 0x1,
@@ -78,7 +78,7 @@ impl dcb_bytes::Bytes for Address {
 	}
 
 	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
-		let bytes = zutil::array_split_mut!(bytes,
+		let bytes = dcb_bytes::array_split_mut!(bytes,
 			min  : 0x1,
 			sec  : 0x1,
 			block: 0x1,

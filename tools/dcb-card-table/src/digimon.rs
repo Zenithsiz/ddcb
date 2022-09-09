@@ -172,7 +172,7 @@ impl Bytes for Digimon {
 
 	fn deserialize_bytes(bytes: &Self::ByteArray) -> Result<Self, Self::DeserializeError> {
 		// Split bytes
-		let bytes = zutil::array_split!(bytes,
+		let bytes = dcb_bytes::array_split!(bytes,
 			name                : [0x15], // 0x0
 			unknown_15          : [0x2],  // 0x15
 			speciality_level    : 0x1,    // 0x17
@@ -275,7 +275,7 @@ impl Bytes for Digimon {
 
 	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
 		// Split bytes
-		let bytes = zutil::array_split_mut!(bytes,
+		let bytes = dcb_bytes::array_split_mut!(bytes,
 			name                : [0x15],
 			unknown_15          : [0x2],
 			speciality_level    : 0x1,
