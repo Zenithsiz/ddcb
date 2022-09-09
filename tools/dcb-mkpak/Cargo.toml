@@ -13,13 +13,13 @@ clap = {version = "3.2.17", features = ["derive"]}
 
 # Logging
 tracing = "0.1.36"
-tracing-subscriber = { version = "0.3.15", features = ["env-filter"] }
+tracing-subscriber = {version = "0.3.15", features = ["env-filter"]}
 
 # Error handling
 anyhow = "1.0.61"
 
 # Util
-zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "2a029369ac5aa4e7dbd6f6afb78ae419ee18666f", features = ["use_serde"]}
+zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "6778fdcb86dfc367429127840dac355c6fb8b54c", features = ["use_serde"]}
 
 # Serde
 serde = {version = "1.0.143", features = ["derive"]}
