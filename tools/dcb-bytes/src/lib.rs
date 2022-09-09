@@ -18,3 +18,5 @@ pub use self::{
 	bytes_io_ext::{BytesReadExt, BytesWriteExt},
 	validate::{Validate, ValidateVisitor},
 };
+#[doc(hidden)]
+pub use ::arrayref; // Export `arrayref` to use in macros

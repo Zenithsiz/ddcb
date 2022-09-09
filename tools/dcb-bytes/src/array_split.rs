@@ -1,9 +1,5 @@
 //! Array splitting
 
-// Export `arrayref` to use in macros
-#[doc(hidden)]
-pub use ::arrayref;
-
 /// Splits a byte array reference into several smaller byte arrays references,
 /// or even single byte references.
 pub macro array_split
@@ -39,7 +35,7 @@ pub macro array_split
 			$(
 				$name
 			),*
-		) = $crate::array_split::arrayref::array_refs!(
+		) = $crate::arrayref::array_refs!(
 			$arr,
 			$(
 				$( $arr_size )?
@@ -95,7 +91,7 @@ pub macro array_split_mut(
 			$(
 				$name
 			),*
-		) = $crate::array_split::arrayref::mut_array_refs!(
+		) = $crate::arrayref::mut_array_refs!(
 			$arr,
 			$(
 				$( $arr_size )?
