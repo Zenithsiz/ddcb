@@ -425,6 +425,8 @@ util::decl_static! {
 	pub static DYLIB_OPENSEG_S_0x801f002c: u32 = 0x801E10A4;
 	pub static DYLIB_OPENSEG_S_0x801f0030: u32 = 0x801E11D4;
 	pub static DYLIB_OPENSEG_S_0x801f0034: u32 = 0x801E1308;
+	
+	// New game string pointers + data
 	pub static DYLIB_OPENSEG_S_0x801f0038: u32 = 0x801DE960;
 	pub static DYLIB_OPENSEG_S_0x801f003c: u32 = 0xFF001600;
 	pub static DYLIB_OPENSEG_S_0x801f0040: u32 = 0x801DE908;
@@ -491,6 +493,8 @@ util::decl_static! {
 	pub static DYLIB_OPENSEG_S_0x801f0134: u32 = 0x06002000;
 	pub static DYLIB_OPENSEG_S_0x801f0138: u32 = 0x801DE184;
 	pub static DYLIB_OPENSEG_S_0x801f013c: u32 = 0xFF00180A;
+
+	// Digimon list of ... something
 	pub static DYLIB_OPENSEG_S_0x801f0140: u32 = 0x00080005;
 	pub static DYLIB_OPENSEG_S_0x801f0144: u32 = 0x00090003;
 	pub static DYLIB_OPENSEG_S_0x801f0148: u32 = 0x000E000A;
@@ -571,6 +575,8 @@ util::decl_static! {
 	pub static DYLIB_OPENSEG_S_0x801f0274: u32 = 0x01290127;
 	pub static DYLIB_OPENSEG_S_0x801f0278: u32 = 0x012C012B;
 	pub static DYLIB_OPENSEG_S_0x801f027c: u32 = 0x0000FFFF;
+
+	// ??
 	pub static DYLIB_OPENSEG_S_0x801f0280: u32 = 0x00A00340;
 	pub static DYLIB_OPENSEG_S_0x801f0284: u32 = 0x002E006C;
 	pub static DYLIB_OPENSEG_S_0x801f0288: u32 = 0x00D10360;
@@ -680,6 +686,8 @@ util::decl_static! {
 	pub static DYLIB_OPENSEG_S_0x801f0428: u32 = 0x03600001;
 	pub static DYLIB_OPENSEG_S_0x801f042c: u32 = 0x012800CE;
 	pub static DYLIB_OPENSEG_S_0x801f0430: u32 = 0xFFF4001C;
+
+
 	pub static DYLIB_OPENSEG_S_0x801f0434: u32 = 0x020100F0;
 	pub static DYLIB_OPENSEG_S_0x801f0438: u32 = 0x004A0340;
 	pub static DYLIB_OPENSEG_S_0x801f043c: u32 = 0x00560040;
@@ -716,21 +724,30 @@ util::decl_static! {
 	pub static DYLIB_OPENSEG_S_0x801f04b8: u32 = 0x37363534;
 	pub static DYLIB_OPENSEG_S_0x801f04bc: u32 = 0x0C003938;
 	pub static DYLIB_OPENSEG_S_0x801f04c0: u32 = 0x00BEB6AF;
-	pub static DYLIB_OPENSEG_S_0x801f04c4: u32 = 0x0074000B;
-	pub static DYLIB_OPENSEG_S_0x801f04c8: u32 = 0x00830019;
-	pub static DYLIB_OPENSEG_S_0x801f04cc: u32 = 0x0089001C;
-	pub static DYLIB_OPENSEG_S_0x801f04d0: u32 = 0x008A001F;
-	pub static DYLIB_OPENSEG_S_0x801f04d4: u32 = 0x010200F9;
-	pub static DYLIB_OPENSEG_S_0x801f04d8: u32 = 0x00960050;
-	pub static DYLIB_OPENSEG_S_0x801f04dc: u32 = 0x00A40060;
-	pub static DYLIB_OPENSEG_S_0x801f04e0: u32 = 0x00A60062;
-	pub static DYLIB_OPENSEG_S_0x801f04e4: u32 = 0x00AB0064;
-	pub static DYLIB_OPENSEG_S_0x801f04e8: u32 = 0x010900FA;
-	pub static DYLIB_OPENSEG_S_0x801f04ec: u32 = 0x0095002D;
-	pub static DYLIB_OPENSEG_S_0x801f04f0: u32 = 0x00A0003C;
-	pub static DYLIB_OPENSEG_S_0x801f04f4: u32 = 0x00A70041;
-	pub static DYLIB_OPENSEG_S_0x801f04f8: u32 = 0x00A90044;
-	pub static DYLIB_OPENSEG_S_0x801f04fc: u32 = 0x010300FB;
+	
+	// Starter random packs
+		// Veemon
+		pub static DYLIB_OPENSEG_S_0x801f04c4: u32 = 0x0074000B; // Andromon  + Meteormon
+		pub static DYLIB_OPENSEG_S_0x801f04c8: u32 = 0x00830019; // Zassomon  + BomberNanimon
+		pub static DYLIB_OPENSEG_S_0x801f04cc: u32 = 0x0089001C; // Aruraumon + Solarmon
+		pub static DYLIB_OPENSEG_S_0x801f04d0: u32 = 0x008A001F; // Sharmamon + Candlemon
+		pub static DYLIB_OPENSEG_S_0x801f04d4: u32 = 0x010200F9; // Fire Spot + Circle Hitter
+
+		// Hawkmon
+		pub static DYLIB_OPENSEG_S_0x801f04d8: u32 = 0x00960050; // Etemon          + Piximon
+		pub static DYLIB_OPENSEG_S_0x801f04dc: u32 = 0x00A40060; // SandYanmamon    + MoriShellmon
+		pub static DYLIB_OPENSEG_S_0x801f04e0: u32 = 0x00A60062; // Hagurumon       + Palmon
+		pub static DYLIB_OPENSEG_S_0x801f04e4: u32 = 0x00AB0064; // ModokiBetamon   + Elecmon
+		pub static DYLIB_OPENSEG_S_0x801f04e8: u32 = 0x010900FA; // High Speed Disk + Triangle Hitter
+
+		// Armadillomon
+		pub static DYLIB_OPENSEG_S_0x801f04ec: u32 = 0x0095002D; // Mamemon      + BlueMeramon
+		pub static DYLIB_OPENSEG_S_0x801f04f0: u32 = 0x00A0003C; // Geremon      + Icemon
+		pub static DYLIB_OPENSEG_S_0x801f04f4: u32 = 0x00A70041; // ToyAgumon    + Gizamon
+		pub static DYLIB_OPENSEG_S_0x801f04f8: u32 = 0x00A90044; // Vi-Elecmon   + SnowGoburimon
+		pub static DYLIB_OPENSEG_S_0x801f04fc: u32 = 0x010300FB; // Ice Crystal  + Cross Hitter
+
+	// ??
 	pub static DYLIB_OPENSEG_S_0x801f0500: u32 = 0x00000001;
 	pub static DYLIB_OPENSEG_S_0x801f0504: u32 = 0x00000000;
 	pub static DYLIB_OPENSEG_S_0x801f0508: u32 = 0x00000001;
@@ -751,6 +768,7 @@ util::decl_static! {
 	pub static DYLIB_OPENSEG_S_0x801f0544: u32 = 0x00740000;
 	pub static DYLIB_OPENSEG_S_0x801f0548: u32 = 0x00200020;
 	pub static DYLIB_OPENSEG_S_0x801f054c: u32 = 0x00000005;
+	
 	pub static DYLIB_OPENSEG_S_0x801f0550: u32 = 0x00000000;
 	pub static DYLIB_OPENSEG_S_0x801f0554: u32 = 0x00740020;
 	pub static DYLIB_OPENSEG_S_0x801f0558: u32 = 0x00200020;
@@ -828,6 +846,8 @@ util::decl_static! {
 	pub static DYLIB_OPENSEG_S_0x801f0678: u32 = 0x00200020;
 	pub static DYLIB_OPENSEG_S_0x801f067c: u32 = 0x00000004;
 	pub static DYLIB_OPENSEG_S_0x801f0680: u32 = 0x00000000;
+
+	// City name pointers
 	pub static DYLIB_OPENSEG_S_0x801f0684: u32 = 0x801DEDE4;
 	pub static DYLIB_OPENSEG_S_0x801f0688: u32 = 0x801DEDD8;
 	pub static DYLIB_OPENSEG_S_0x801f068c: u32 = 0x801DEDCC;
@@ -840,62 +860,72 @@ util::decl_static! {
 	pub static DYLIB_OPENSEG_S_0x801f06a8: u32 = 0x801DED70;
 	pub static DYLIB_OPENSEG_S_0x801f06ac: u32 = 0x801DED60;
 	pub static DYLIB_OPENSEG_S_0x801f06b0: u32 = 0x801DED50;
-	pub static DYLIB_OPENSEG_S_0x801f06b4: u32 = 0x801DED44;
-	pub static DYLIB_OPENSEG_S_0x801f06b8: u32 = 0x801DED38;
-	pub static DYLIB_OPENSEG_S_0x801f06bc: u32 = 0x801DED38;
-	pub static DYLIB_OPENSEG_S_0x801f06c0: u32 = 0x801DED2C;
-	pub static DYLIB_OPENSEG_S_0x801f06c4: u32 = 0x801DEE24;
-	pub static DYLIB_OPENSEG_S_0x801f06c8: u32 = 0x801DEE0C;
-	pub static DYLIB_OPENSEG_S_0x801f06cc: u32 = 0x801DEDF4;
-	pub static DYLIB_OPENSEG_S_0x801f06d0: u32 = 0x801DEE24;
+	
+	// Area name pointers
+	pub static DYLIB_OPENSEG_S_0x801f06b4: u32 = 0x801DED44; // Mega
+	pub static DYLIB_OPENSEG_S_0x801f06b8: u32 = 0x801DED38; // Giga
+	pub static DYLIB_OPENSEG_S_0x801f06bc: u32 = 0x801DED38; // Giga
+	pub static DYLIB_OPENSEG_S_0x801f06c0: u32 = 0x801DED2C; // Tera
+	
+	// To area name pointers
+	pub static DYLIB_OPENSEG_S_0x801f06c4: u32 = 0x801DEE24; // Giga
+	pub static DYLIB_OPENSEG_S_0x801f06c8: u32 = 0x801DEE0C; // Mega
+	pub static DYLIB_OPENSEG_S_0x801f06cc: u32 = 0x801DEDF4; // Tera
+	pub static DYLIB_OPENSEG_S_0x801f06d0: u32 = 0x801DEE24; // Giga
+
+	// Beginner area name pointer
 	pub static DYLIB_OPENSEG_S_0x801f06d4: u32 = 0x801DEF00;
-	pub static DYLIB_OPENSEG_S_0x801f06d8: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f06dc: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f06e0: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f06e4: u32 = 0x801DEEF0;
-	pub static DYLIB_OPENSEG_S_0x801f06e8: u32 = 0x801DEEE4;
-	pub static DYLIB_OPENSEG_S_0x801f06ec: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f06f0: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f06f4: u32 = 0x801DEED4;
-	pub static DYLIB_OPENSEG_S_0x801f06f8: u32 = 0x801DEEE4;
-	pub static DYLIB_OPENSEG_S_0x801f06fc: u32 = 0x801DEEC8;
-	pub static DYLIB_OPENSEG_S_0x801f0700: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0704: u32 = 0x801DEEBC;
-	pub static DYLIB_OPENSEG_S_0x801f0708: u32 = 0x801DEEE4;
-	pub static DYLIB_OPENSEG_S_0x801f070c: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0710: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0714: u32 = 0x801DEEB0;
-	pub static DYLIB_OPENSEG_S_0x801f0718: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f071c: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0720: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0724: u32 = 0x801DEEA4;
-	pub static DYLIB_OPENSEG_S_0x801f0728: u32 = 0x801DEEE4;
-	pub static DYLIB_OPENSEG_S_0x801f072c: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0730: u32 = 0x801DEE94;
-	pub static DYLIB_OPENSEG_S_0x801f0734: u32 = 0x801DEE84;
-	pub static DYLIB_OPENSEG_S_0x801f0738: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f073c: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0740: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0744: u32 = 0x801DEE74;
-	pub static DYLIB_OPENSEG_S_0x801f0748: u32 = 0x801DEEE4;
-	pub static DYLIB_OPENSEG_S_0x801f074c: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0750: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0754: u32 = 0x801DEE68;
-	pub static DYLIB_OPENSEG_S_0x801f0758: u32 = 0x801DEEE4;
-	pub static DYLIB_OPENSEG_S_0x801f075c: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0760: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0764: u32 = 0x801DEE5C;
-	pub static DYLIB_OPENSEG_S_0x801f0768: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f076c: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0770: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0774: u32 = 0x801DEE4C;
-	pub static DYLIB_OPENSEG_S_0x801f0778: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f077c: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0780: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0784: u32 = 0x801DEE3C;
-	pub static DYLIB_OPENSEG_S_0x801f0788: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f078c: u32 = 0x801DEEFC;
-	pub static DYLIB_OPENSEG_S_0x801f0790: u32 = 0x801DEEFC;
+	
+	// Arena name pointers
+	pub static DYLIB_OPENSEG_S_0x801f06d8: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f06dc: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f06e0: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f06e4: u32 = 0x801DEEF0; // Flame arena
+	pub static DYLIB_OPENSEG_S_0x801f06e8: u32 = 0x801DEEE4; // Extra arena
+	pub static DYLIB_OPENSEG_S_0x801f06ec: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f06f0: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f06f4: u32 = 0x801DEED4; // Jungle arena
+	pub static DYLIB_OPENSEG_S_0x801f06f8: u32 = 0x801DEEE4; // Extra arena
+	pub static DYLIB_OPENSEG_S_0x801f06fc: u32 = 0x801DEEC8; // Beet arena
+	pub static DYLIB_OPENSEG_S_0x801f0700: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0704: u32 = 0x801DEEBC; // Igloo arena
+	pub static DYLIB_OPENSEG_S_0x801f0708: u32 = 0x801DEEE4; // Extra arena
+	pub static DYLIB_OPENSEG_S_0x801f070c: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0710: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0714: u32 = 0x801DEEB0; // Junk arena
+	pub static DYLIB_OPENSEG_S_0x801f0718: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f071c: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0720: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0724: u32 = 0x801DEEA4; // Dark arena
+	pub static DYLIB_OPENSEG_S_0x801f0728: u32 = 0x801DEEE4; // Extra arena
+	pub static DYLIB_OPENSEG_S_0x801f072c: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0730: u32 = 0x801DEE94; // Haunted arena
+	pub static DYLIB_OPENSEG_S_0x801f0734: u32 = 0x801DEE84; // Desert arena
+	pub static DYLIB_OPENSEG_S_0x801f0738: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f073c: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0740: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0744: u32 = 0x801DEE74; // Pyramid arena
+	pub static DYLIB_OPENSEG_S_0x801f0748: u32 = 0x801DEEE4; // Extra arena
+	pub static DYLIB_OPENSEG_S_0x801f074c: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0750: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0754: u32 = 0x801DEE68; // Sky arena
+	pub static DYLIB_OPENSEG_S_0x801f0758: u32 = 0x801DEEE4; // Extra arena
+	pub static DYLIB_OPENSEG_S_0x801f075c: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0760: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0764: u32 = 0x801DEE5C; // Steep arena
+	pub static DYLIB_OPENSEG_S_0x801f0768: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f076c: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0770: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0774: u32 = 0x801DEE4C; // Wiseman arena
+	pub static DYLIB_OPENSEG_S_0x801f0778: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f077c: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0780: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0784: u32 = 0x801DEE3C; // Infinity arena
+	pub static DYLIB_OPENSEG_S_0x801f0788: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f078c: u32 = 0x801DEEFC; // ??
+	pub static DYLIB_OPENSEG_S_0x801f0790: u32 = 0x801DEEFC; // ??
+	
+	// Saving string pointers
 	pub static DYLIB_OPENSEG_S_0x801f0794: u32 = 0x801DF610;
 	pub static DYLIB_OPENSEG_S_0x801f0798: u32 = 0x801DF5BC;
 	pub static DYLIB_OPENSEG_S_0x801f079c: u32 = 0x801DF558;
@@ -925,6 +955,8 @@ util::decl_static! {
 	pub static DYLIB_OPENSEG_S_0x801f07fc: u32 = 0x801DF958;
 	pub static DYLIB_OPENSEG_S_0x801f0800: u32 = 0x801DF948;
 	pub static DYLIB_OPENSEG_S_0x801f0804: u32 = 0x801DF938;
+
+	// Zerofilled except for 1 data (might be garbage)
 	pub static DYLIB_OPENSEG_S_0x801f0808: u32 = 0x00000000;
 	pub static DYLIB_OPENSEG_S_0x801f080c: u32 = 0x00000000;
 	pub static DYLIB_OPENSEG_S_0x801f0810: u32 = 0x00000000;
@@ -954,7 +986,7 @@ util::decl_static! {
 	pub static DYLIB_OPENSEG_S_0x801f0870: u32 = 0x00000000;
 	pub static DYLIB_OPENSEG_S_0x801f0874: u32 = 0x00000000;
 	pub static DYLIB_OPENSEG_S_0x801f0878: u32 = 0x00000000;
-	pub static DYLIB_OPENSEG_S_0x801f087c: u32 = 0xAFB40020;
+	pub static DYLIB_OPENSEG_S_0x801f087c: u32 = 0xAFB40020; // ??
 	pub static DYLIB_OPENSEG_S_0x801f0880: u32 = 0x00000000;
 	pub static DYLIB_OPENSEG_S_0x801f0884: u32 = 0x00000000;
 	pub static DYLIB_OPENSEG_S_0x801f0888: u32 = 0x00000000;
