@@ -227,3 +227,100 @@
 | 27    |           |            |             |
 | 28    |           |            |             |
 | 29    |           |            |             |
+
+# Packs
+
+## Pack codes
+
+```asm
+display_scene 0x9, $code
+display_scene 0xe, 0x3c # Maybe not required?
+```
+
+| Pack          | Code |
+| ------------- | ---- |
+| Basic Pack    | 0x0  |
+| Hyper Pack    | 0x1  |
+| Super Pack    | 0x2  |
+| Great Pack    | 0x3  |
+| Red Pack      | 0x4  |
+| Blue Pack     | 0x5  |
+| Green Pack    | 0x6  |
+| Black Pack    | 0x7  |
+| Yellow Pack   | 0x8  |
+| Option        | 0x9  |
+| S-Red Pack    | 0xa  |
+| S-Blue Pack   | 0xb  |
+| S-Green Pack  | 0xc  |
+| S-Black Pack  | 0xd  |
+| S-Yellow Pack | 0xe  |
+| S-Option Pack | 0xf  |
+
+## Pack contents
+
+### Basic Pack
+
+Last 3 champions of each color
+All rookies of each color
+
+- 024-033
+- 058-068
+- 094-102
+- 129-138
+- 162-171
+
+### Hyper Pack:
+
+1 ultimate of each color
+All champions (except top 3) of red, blue, green and black
+All champions of yellow
+All rookies of each color
+
+- 011
+- 015-033
+- 045
+- 049-068
+- 080
+- 085-102
+- 116
+- 120-138
+- 150
+- 153-171
+
+### Super Pack
+
+Last 5 ultimates of each color
+All champions of each color
+Assorted Items
+Digi-devolve
+
+- 007-026
+- 041-060
+- 076-096
+- 112-131
+- 146-164
+- 236-252
+- 255-264
+- 266-272
+- 300
+
+### Great Pack
+
+- 003-019
+- 038-052
+- 075-087
+- 108-123
+- 143-157
+- 191-199
+- 201-241
+- 253-254
+- 265
+- 294-299
+
+### S-Option Pack
+
+- 197-199
+- 201-241
+- 254
+- 265
+- 294-299
