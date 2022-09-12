@@ -19,24 +19,24 @@
 
 | Value | Box   | Buttons       |
 | ----- | ----- | ------------- |
-| 0x0   | small | Player Room   |
-| 0x1   | small | Menu          |
-| 0x2   | small | Battle Cafe   |
-| 0x3   | small | Battle Arena  |
-| 0x4   | small | Extra Arena   |
-| 0x5   | small | Beet Arena    |
-| 0x6   | small | Haunted Arena |
-| 0x7   | small | Fusion Shop   |
-| 0x8   | small | Yes           |
-| 0x9   | small | No            |
-| 0x0c  | large | Talk          |
-| 0x0d  | large | Battle        |
-| 0x0e  | large | Deck Data     |
-| 0x0f  | large | Save          |
-| 0x10  | large | Yes           |
-| 0x11  | large | No            |
-| 0x12  | large | Cards         |
-| 0x13  | large | Partner       |
+| 0x0   | large | Player Room   |
+| 0x1   | large | Menu          |
+| 0x2   | large | Battle Cafe   |
+| 0x3   | large | Battle Arena  |
+| 0x4   | large | Extra Arena   |
+| 0x5   | large | Beet Arena    |
+| 0x6   | large | Haunted Arena |
+| 0x7   | large | Fusion Shop   |
+| 0x8   | large | Yes           |
+| 0x9   | large | No            |
+| 0x0c  | small | Talk          |
+| 0x0d  | small | Battle        |
+| 0x0e  | small | Deck Data     |
+| 0x0f  | small | Save          |
+| 0x10  | small | Yes           |
+| 0x11  | small | No            |
+| 0x12  | small | Cards         |
+| 0x13  | small | Partner       |
 
 # Locations
 
@@ -48,6 +48,29 @@
 | 3     | Extra Arena   |
 | 4     | Beet Arena    |
 | 5     | Haunted Arena |
+
+# Screens
+
+| value | screen       |
+| ----- | ------------ |
+| 0x0   |              |
+| 0x1   |              |
+| 0x2   | Battle cafe  |
+| 0x3   | ---          |
+| 0x4   |              |
+| 0x5   | Message?     |
+| 0x6   |              |
+| 0x7   |              |
+| 0x8   |              |
+| 0x9   |              |
+| 0xa   |              |
+| 0xb   |              |
+| 0xc   |              |
+| 0xd   | Crash        |
+| 0xe   | ---          |
+| 0xf   | Keyword      |
+| 0x10  | ---          |
+| 0x11  | Edit partner |
 
 # Partner
 
