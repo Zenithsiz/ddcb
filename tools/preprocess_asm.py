@@ -12,7 +12,7 @@ import argparse
 # TODO: Maybe support dots in labels?
 line_non_dot_label_def_regex = re.compile("^\s*([^#.\s]*):")
 line_dot_label_def_regex = re.compile("^\s*\.([^#.\s]*):")
-line_dot_label_use_regex = re.compile("\S\s+\.([^:\"\s.]*)$")
+line_dot_label_use_regex = re.compile("\S\s+\.([^:\"\s.]*)(\s*#.*)?$")
 
 # Get all symbols
 symbols = yaml.safe_load(open("symbols.yaml"))
