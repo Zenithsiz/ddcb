@@ -6747,9 +6747,9 @@
   - f1049.0
   - f1049.1
   - f1049.2
-  - f1050
-  - f1050.0
-  - f1050.1
+  - memzero
+  - memzero.zero_all
+  - memzero.ret
   - f1051
   - f1051.0
   - f1051.1

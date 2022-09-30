@@ -50472,7 +50472,7 @@ f1045:
 	andi $v0, 0x1
 	beqz $v0, .2
 		move_ $a0, $s2
-	jal f1050
+	jal memzero
 		li $a1, 0x80
 	jal f1029
 		nop
@@ -50534,12 +50534,12 @@ f1046:
 	sw $s0, 0x10($sp)
 	move_ $a0, $s4
 .0:
-	jal f1050
+	jal memzero
 		li $a1, 0x80
 	sll $s0, $s2, 0x5
 	addu $s1, $s0, $fp
 	move_ $a0, $s1
-	jal f1050
+	jal memzero
 		li $a1, 0x20
 	lui $at, 0x801e
 	addu $at, $s0
@@ -50600,7 +50600,7 @@ f1046:
 .1:
 	sw $s5, ($s0)
 	move_ $a0, $s1
-	jal f1050
+	jal memzero
 		li $a1, 0x80
 	lwl $v0, 0x3($s0)
 	lwr $v0, ($s0)
@@ -50618,7 +50618,7 @@ f1046:
 		addiu $s0, 0x4
 	move_ $s0, $s1
 	move_ $a0, $s0
-	jal f1050
+	jal memzero
 		li $a1, 0x80
 	move_ $a0, $s3
 	move_ $a1, $zr
@@ -50633,7 +50633,7 @@ f1046:
 	bne $s0, $v0, .6
 		move_ $v0, $zr
 	move_ $a0, $s1
-	jal f1050
+	jal memzero
 		li $a1, 0x80
 	jal f1029
 		nop
@@ -50715,22 +50715,6 @@ f1049:
 	nop
 	nop
 	nop
-
-f1050:
-	beqz $a0, .1
-		move_ $v0, $zr
-	bgtz $a1, .0
-		move_ $v0, $a0
-	j .1
-		move_ $v0, $zr
-.0:
-	sb $zr, ($a0)
-	addiu $a1, -0x1
-	bgtz $a1, .0
-		addiu $a0, 0x1
-.1:
-	jr $ra
-		nop
 
 f1051:
 	beqz $a0, .2
@@ -53240,7 +53224,7 @@ f1122:
 	la_ $s0, 0x801ddcb0
 	move_ $a0, $s0
 	sw $ra, 0x14($sp)
-	jal f1050
+	jal memzero
 		li $a1, 0x1e0
 	la_ $v0, 0x801dde90
 	la_ $v1, 0x801dded8
@@ -53429,7 +53413,7 @@ f1126:
 	move_ $s0, $a0
 	addiu $a0, $s0, 0x57
 	sw $ra, 0x14($sp)
-	jal f1050
+	jal memzero
 		li $a1, 0x6
 	lhu $v0, 0xe6($s0)
 	nop

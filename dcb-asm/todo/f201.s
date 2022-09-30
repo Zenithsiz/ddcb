@@ -714,7 +714,7 @@ f215:
 	sw $v0, 0x13c($v1)
 	move_ $s3, $v0
 	move_ $a0, $s3
-	jal f1050
+	jal memzero
 		li $a1, 0x28f8
 	sw $s6, 0x26f4($s3)
 	jal f197

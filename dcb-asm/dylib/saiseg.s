@@ -65,6 +65,15 @@ dylib_saiseg_fns:
 .0x801dfb68: 	addiu $sp, 0x70
 
 ##########
+#```
+#fn dylib_saiseg_func_0(ptr: *u8) {
+#	for (u32 n=0; n<3; n++) {
+#		ptr[0x3c] = 0xff;
+#		memzero(ptr, 0x3c);
+#		ptr += 0x40;
+#	}
+#}
+#```
 dylib_saiseg_func_0:
 # fn()
 .0x801dfb6c:	addiu $sp, -0x20
@@ -72,18 +81,24 @@ dylib_saiseg_func_0:
 .0x801dfb74:	sw $s2, 0x18($sp)
 .0x801dfb78:	sw $s1, 0x14($sp)
 .0x801dfb7c:	sw $s0, 0x10($sp)
-.0x801dfb80:	addu $s0, $a0, $zr
-.0x801dfb84:	addu $s1, $zr, $zr
-.0x801dfb88:	addiu $s2, $zr, -0x1
+
+.0x801dfb80:	addu $s0, $a0, $zr   # $s0 = ptr
+.0x801dfb84:	addu $s1, $zr, $zr   # $s1 = 0
+.0x801dfb88:	addiu $s2, $zr, -0x1 # $s2 = -1
 	.0:
+	# ptr[0x3e] = -1
 .0x801dfb8c:	sb $s2, 0x3e($s0)
+	# memzero($s0, 0x3c)
 .0x801dfb90:	addu $a0, $s0, $zr
-.0x801dfb94:	jal f1050
+.0x801dfb94:	jal memzero
 .0x801dfb98:		addiu $a1, $zr, 0x3c
+	# $s1 += 1
 .0x801dfb9c:	addiu $s1, 0x1
 .0x801dfba0:	slti $v0, $s1, 0x3
 .0x801dfba4:	bnez $v0, .0
+	# $s0 += 0x40
 .0x801dfba8:		addiu $s0, 0x40
+
 .0x801dfbac:	lw $ra, 0x1c($sp)
 .0x801dfbb0:	lw $s2, 0x18($sp)
 .0x801dfbb4:	lw $s1, 0x14($sp)
@@ -4726,7 +4741,7 @@ dylib_saiseg_func_37:
 .0x801e3e28:	addiu $v0, $zr, 0xa
 .0x801e3e2c:	sb $v0, 0x10e($s0)
 .0x801e3e30:	addiu $a0, $s0, 0xfc
-.0x801e3e34:	jal f1050
+.0x801e3e34:	jal memzero
 .0x801e3e38:		addiu $a1, $zr, 0xd
 .0x801e3e3c:	jal f8
 .0x801e3e40:		addiu $s0, 0xfc
@@ -9157,7 +9172,7 @@ dylib_saiseg_func_56:
 .0x801e7fd0:	jal f268
 .0x801e7fd4:		addiu $a3, $zr, 0x7
 .0x801e7fd8:	addiu $a0, $sp, 0x38
-.0x801e7fdc:	jal f1050
+.0x801e7fdc:	jal memzero
 .0x801e7fe0:		addiu $a1, $zr, 0x19
 .0x801e7fe4:	addiu $v0, $zr, 0x1
 .0x801e7fe8:	beq $s1, $v0, .5
@@ -12597,7 +12612,7 @@ dylib_saiseg_func_77:
 .0x801eb220: addu $s7, $a0, $zr
 .0x801eb224: lui $s0, 0x801f
 .0x801eb228: addiu $a0, $s0, 0x4572
-.0x801eb22c: jal f1050
+.0x801eb22c: jal memzero
 .0x801eb230: 	addiu $a1, $zr, 0xd
 .0x801eb234: addiu $a0, $s0, 0x4572
 .0x801eb238: jal f1055

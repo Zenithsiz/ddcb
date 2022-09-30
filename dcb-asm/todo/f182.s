@@ -2066,7 +2066,7 @@ f196:
 		li $a1, 0x7f
 	sw $v0, 0x6a4c($s0)
 	move_ $a0, $v0
-	jal f1050
+	jal memzero
 		li $a1, 0x29c
 	lw $a1, 0x6a4c($s0)
 	move_ $a0, $zr

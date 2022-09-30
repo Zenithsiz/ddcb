@@ -8702,7 +8702,7 @@ dylib_evoseg_func_34:
 .0x801e7864:	bnez $v0, .1
 .0x801e7868:		addiu $t0, $zr, 0x9
 .0x801e786c:	addiu $a0, $sp, 0x20
-.0x801e7870:	jal f1050
+.0x801e7870:	jal memzero
 .0x801e7874:		addiu $a1, $zr, 0x21
 .0x801e7878:	addiu $a0, $sp, 0x20
 .0x801e787c:	lui $a1, 0x801e
@@ -10627,7 +10627,7 @@ dylib_evoseg_func_55:
 .0x801e93dc:	nop
 .0x801e93e0:	bnez $v0, .3
 .0x801e93e4:		addu $a0, $s0, $zr
-.0x801e93e8:	jal f1050
+.0x801e93e8:	jal memzero
 .0x801e93ec:		addiu $a1, $zr, 0x3c
 .0x801e93f0:	bnez $s1, .1
 .0x801e93f4:		sb $s2, 0x3e($s0)
@@ -13120,7 +13120,7 @@ dylib_evoseg_func_78:
 .0x801eb6bc:	nop
 .0x801eb6c0:	addu $s0, $v0, $v1
 .0x801eb6c4:	addiu $a0, $sp, 0x10
-.0x801eb6c8:	jal f1050
+.0x801eb6c8:	jal memzero
 .0x801eb6cc:		addiu $a1, $zr, 0xa1
 .0x801eb6d0:	lb $v0, 0xb6($s1)
 .0x801eb6d4:	nop

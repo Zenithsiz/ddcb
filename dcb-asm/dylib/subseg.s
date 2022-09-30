@@ -1224,7 +1224,7 @@ dylib_subseg_func_0:
 .0x801e0c3c: addu $s7, $a2, $zr
 .0x801e0c40: lui $s0, 0x801f
 .0x801e0c44: addiu $a0, $s0, 0x2491
-.0x801e0c48: jal f1050
+.0x801e0c48: jal memzero
 .0x801e0c4c: 	addiu $a1, $zr, 0xd
 .0x801e0c50: addiu $a0, $s0, 0x2491
 .0x801e0c54: jal f1055

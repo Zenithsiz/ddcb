@@ -90,4 +90,5 @@
 .include "todo/f399.s"
 .include "todo/f400.s"
 .include "todo/f475.s"
+.include "todo/memzero.s"
 .include "todo/f1053.s"

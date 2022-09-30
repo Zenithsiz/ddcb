@@ -17127,7 +17127,7 @@ dylib_openseg_func_62:
 .0x801efb70:	jal f921
 .0x801efb74:		addu $a0, $zr, $zr
 .0x801efb78:	addiu $a0, $sp, 0x1d0
-.0x801efb7c:	jal f1050
+.0x801efb7c:	jal memzero
 .0x801efb80:		addiu $a1, $zr, 0x42
 .0x801efb84:	lui $v0, 0x8007
 .0x801efb88:	lw $v0, -0x1fac($v0)
