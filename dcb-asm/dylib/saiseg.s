@@ -139,8 +139,8 @@ n=$v1
 .0x801dfbf4:		addiu ptr, 0x40
 .0x801dfbf8:	jr $ra
 .0x801dfbfc:		move_ $v0, $zr
-#ptr=
-#n=
+ptr=$
+n=$
 ##########
 
 ##########
