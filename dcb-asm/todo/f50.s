@@ -229,8 +229,7 @@ f50:
 	or $v0, $a0
 	sw $v0, 0x70($a1)
 	addiu $s2, 0x1
-	slti $v0, $s2, 0x4
-	bnez $v0, .5
+	blti $s2, 0x4, .5
 		lui $s3, %hi(S_0x800897e8)
 	move_ $s2, $zr
 	lui $v0, %hi(S_0x8006de88)
@@ -303,8 +302,7 @@ f50:
 	or $v0, $s1
 	sw $v0, 0x70($a0)
 	addiu $s2, 0x1
-	slti $v0, $s2, 0x2
-	bnez $v0, .6
+	blti $s2, 0x2, .6
 		sll $s0, $s2, 0x2
 .7:
 	lw $ra, 0x3c($sp)

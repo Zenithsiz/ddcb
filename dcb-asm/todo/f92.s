@@ -162,8 +162,7 @@ f95:
 	sw $zr, 0x487c($s5)
 	move_ $s0, $s7
 .2:
-	slti $v0, $s0, 0x110
-	bnez $v0, .6
+	blti $s0, 0x110, .6
 		lui $v0, 0x801d
 	addiu $s3, $v0, 0x5108
 	lui $v0, 0x801d

@@ -15,8 +15,7 @@ f58:
 	sb $v0, 0x4c($s2)
 	lh $v0, 0x20($s0)
 	nop
-	slti $v0, $v0, 0x2
-	bnez $v0, .18
+	blti $v0, 0x2, .18
 		nop
 	lbu $v0, 0x25($s0)
 	nop

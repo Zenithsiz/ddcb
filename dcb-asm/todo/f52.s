@@ -34,8 +34,7 @@ f52:
 	jal f127
 		move_ $a3, $zr
 	addiu $s1, 0x1
-	slti $v0, $s1, 0x2
-	bnez $v0, .0
+	blti $s1, 0x2, .0
 		sll $s0, $s1, 0x3
 	move_ $a0, $s2
 	move_ $a1, $s5

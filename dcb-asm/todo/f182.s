@@ -657,8 +657,7 @@ f186:
 	nop
 	sh $v1, ($v0)
 	addiu $a1, 0x1
-	slti $v0, $a1, 0x2
-	bnez $v0, .26
+	blti $a1, 0x2, .26
 		addiu $a0, 0x4
 .28:
 	j f186.35
@@ -691,8 +690,7 @@ f186:
 	nop
 	sh $v1, ($v0)
 	addiu $a1, 0x1
-	slti $v0, $a1, 0x3
-	bnez $v0, .29
+	blti $a1, 0x3, .29
 		addiu $a0, 0x4
 .31:
 	j f186.35
@@ -725,8 +723,7 @@ f186:
 	nop
 	sh $v1, ($v0)
 	addiu $a1, 0x1
-	slti $v0, $a1, 0x4
-	bnez $v0, .32
+	blti $a1, 0x4, .32
 		addiu $a0, 0x4
 .34:
 	addiu $s1, 0x14
@@ -2046,8 +2043,7 @@ f195:
 		move_ $a0, $s0
 .2:
 	addiu $s1, 0x1
-	slti $v0, $s1, 0x18
-	bnez $v0, .0
+	blti $s1, 0x18, .0
 		lui $v0, 0x801d
 	lui $v0, 0x8008
 	lw $a0, -0x6b10($v0)

@@ -55,8 +55,7 @@ f53:
 f54:
 	lb $v0, 0x4d($a0)
 	nop
-	slti $v0, $v0, 0x6
-	bnez $v0, .0
+	blti $v0, 0x6, .0
 		nop
 	sb $zr, 0x4d($a0)
 .0:

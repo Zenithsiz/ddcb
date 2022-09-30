@@ -149,8 +149,7 @@ f64:
 	addu $v1, $a1, $v1
 	sw $v1, ($v0)
 	addiu $a0, 0x1
-	slti $v0, $a0, 0x2
-	bnez $v0, .0
+	blti $a0, 0x2, .0
 		sll $v0, $a0, 0x2
 	jal f66
 		nop
@@ -230,8 +229,7 @@ f66:
 	jal f65
 		li $a2, 0x2
 	addiu $s0, 0x1
-	slti $v0, $s0, 0x2
-	bnez $v0, .0
+	blti $s0, 0x2, .0
 		sll $v1, $s0, 0x2
 	lw $ra, 0x18($sp)
 	lw $s1, 0x14($sp)
@@ -424,8 +422,7 @@ f68:
 	sh $zr, 0xa($s0)
 .2:
 	addiu $s1, 0x1
-	slti $v0, $s1, 0x2
-	bnez $v0, .0
+	blti $s1, 0x2, .0
 		nop
 	lw $ra, 0x20($sp)
 	lw $s3, 0x1c($sp)

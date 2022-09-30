@@ -562,8 +562,7 @@ f48:
 	or $v0, $s1
 	sw $v0, ($fp)
 	addiu $s4, 0x1
-	slti $v0, $s4, 0x4
-	bnez $v0, .0
+	blti $s4, 0x4, .0
 		sll $s1, $s4, 0x2
 .1:
 	lui $v0, %hi(S_0x800897e8)

@@ -109,8 +109,7 @@ f88:
 	lui $v0, 0x8008
 	addiu $s7, $v0, -0x6b08
 .0:
-	slti $v0, $s3, 0xf1
-	bnez $v0, .1
+	blti $s3, 0xf1, .1
 		sll $s0, $s2, 0x6
 	addu $s0, $s2
 	sll $s0, 0x2
@@ -206,8 +205,7 @@ f88:
 	sb $zr, 0x1a($s0)
 	sb $zr, 0x1b($s0)
 	addiu $s2, 0x1
-	slti $v0, $s2, 0x2
-	bnez $v0, .0
+	blti $s2, 0x2, .0
 		sb $s6, 0x105($s1)
 	lui $v0, 0x8008
 	sw $zr, -0x6abc($v0)

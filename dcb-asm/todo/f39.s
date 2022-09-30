@@ -28,8 +28,7 @@ f39:
 	sw $zr, 0x4148($v0)
 	addu $v1, $a2
 	addiu $a1, 0x1
-	slti $v0, $a1, 0x2
-	bnez $v0, .0
+	blti $a1, 0x2, .0
 		sw $zr, ($v1)
 	jr $ra
 		nop

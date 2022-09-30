@@ -53,8 +53,7 @@ f4:
 	j .6
 		nop
 .5:
-	slti $v0, $a1, 0x20
-	bnez $v0, .7
+	blti $a1, 0x20, .7
 		sll $v0, $a1, 0x1
 	addiu $a1, -0x20
 	sll $v0, $a1, 0x1

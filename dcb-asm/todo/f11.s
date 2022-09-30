@@ -225,8 +225,7 @@ f20:
 	addiu $v1, 0x1
 	sw $v1, 0x24($v0)
 	addiu $a0, 0x1
-	slti $v0, $a0, 0x2
-	bnez $v0, .0
+	blti $a0, 0x2, .0
 		sll $v0, $a0, 0x6
 .1:
 	# TODO: These addresses resolve to `0x800794ec`,
@@ -305,12 +304,10 @@ f21:
 	jal f974
 		li $a1, 0x1
 	addiu $s1, 0x1
-	slti $v0, $s1, 0x2
-	bnez $v0, .1
+	blti $s1, 0x2, .1
 		sll $a0, $s1, 0x1
 	addiu $s3, 0x1
-	slti $v0, $s3, 0x2
-	bnez $v0, .0
+	blti $s3, 0x2, .0
 		move_ $s1, $zr
 	la_ $a0, 0x800794a8
 	jal f1000
@@ -595,8 +592,7 @@ f23:
 .0:
 	sw $zr, ($a0)
 	addiu $v1, 0x1
-	slti $v0, $v1, 0x100
-	bnez $v0, .0
+	blti $v1, 0x100, .0
 		addiu $a0, 0x4
 	lui $v0, %hi(S_0x800794f8)
 	addiu $v1, $v0, %lo(S_0x800794f8)
@@ -1246,8 +1242,7 @@ f29:
 	addu $v0, $v1, $v0
 	sw $zr, ($v0)
 	addiu $s0, 0x1
-	slti $v0, $s0, 0x4
-	bnez $v0, .9
+	blti $s0, 0x4, .9
 		sll $v0, $s0, 0x2
 	move_ $s4, $zr
 	move_ $s0, $zr
@@ -1276,8 +1271,7 @@ f29:
 	addu $v1, $s2, $s0
 	sb $v0, ($v1)
 	addiu $s0, 0x1
-	slti $v0, $s0, 0x10
-	bnez $v0, .10
+	blti $s0, 0x10, .10
 		li $v0, 0x2e
 	lbu $a0, ($s1)
 	nop
@@ -1308,8 +1302,7 @@ f29:
 	sllv $v0, $v0, $s0
 	addu $s4, $v0
 	addiu $s0, 0x8
-	slti $v0, $s0, 0x18
-	bnez $v0, .15
+	blti $s0, 0x18, .15
 		nop
 	j .19
 		nop

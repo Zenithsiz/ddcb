@@ -105,8 +105,7 @@ f199:
 	sw $zr, ($v0)
 .1:
 	addiu $a1, 0x1
-	slti $v0, $a1, 0x20
-	bnez $v0, .0
+	blti $a1, 0x20, .0
 		nop
 	lw $ra, 0x14($sp)
 	lw $s0, 0x10($sp)
@@ -128,15 +127,13 @@ f200:
 	lw $v0, ($v1)
 	nop
 	and $v0, $t0
-	slti $v0, $v0, 0x3e80
-	bnez $v0, .1
+	blti $v0, 0x3e80, .1
 		addu $v0, $a2, $a0
 	sw $zr, ($v1)
 	sw $zr, ($v0)
 .1:
 	addiu $a1, 0x1
-	slti $v0, $a1, 0x20
-	bnez $v0, .0
+	blti $a1, 0x20, .0
 		sll $a0, $a1, 0x3
 	jal f76
 		li $a0, 0x82

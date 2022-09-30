@@ -51,8 +51,7 @@ f160:
 	nop
 	addu $v0, $v1
 	sw $v0, 0x69e4($a0)
-	slti $v0, $v0, 0x100
-	bnez $v0, .4
+	blti $v0, 0x100, .4
 		lui $v0, 0x801d
 	li $v0, 0xff
 	sw $v0, 0x69e4($a0)

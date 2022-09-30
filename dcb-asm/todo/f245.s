@@ -233,8 +233,7 @@ f249:
 	addu $v0, $a3, $v0
 	sw $v0, ($v1)
 	addiu $a1, 0x1
-	slti $v0, $a1, 0x2
-	bnez $v0, .0
+	blti $a1, 0x2, .0
 		sll $v1, $a1, 0x6
 	jal f250
 		nop
@@ -349,8 +348,7 @@ f250:
 		nop
 .2:
 	addiu $t2, 0x1
-	slti $v0, $t2, 0x2
-	bnez $v0, .0
+	blti $t2, 0x2, .0
 		nop
 .3:
 	jr $ra
@@ -1020,8 +1018,7 @@ f259:
 .9:
 	lbu $s1, ($s0)
 	nop
-	slti $v0, $s1, 0x61
-	bnez $v0, .10
+	blti $s1, 0x61, .10
 		addiu $s0, 0x1
 	addiu $s1, -0x20
 .10:
@@ -1310,8 +1307,7 @@ f261:
 .5:
 	lbu $s1, ($s0)
 	nop
-	slti $v0, $s1, 0x61
-	bnez $v0, .6
+	blti $s1, 0x61, .6
 		addiu $s0, 0x1
 	addiu $s1, -0x20
 .6:

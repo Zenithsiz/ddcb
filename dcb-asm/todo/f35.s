@@ -88,8 +88,7 @@ f35:
 	lw $v0, 0x28($s1)
 	nop
 	addu $v0, $s2, $v0
-	slti $v0, $v0, 0x4
-	bnez $v0, .9
+	blti $v0, 0x4, .9
 		li $v0, -0x1
 	lw $v0, 0x28($s1)
 	j .11

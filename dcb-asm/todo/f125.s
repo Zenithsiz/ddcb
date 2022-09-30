@@ -63,8 +63,7 @@ f125:
 	addu $v0, $a1, $a3
 	sll $v0, 0x10
 	sra $a1, $v0, 0x10
-	slti $v0, $a1, 0x80
-	bnez $v0, .3
+	blti $a1, 0x80, .3
 		andi $a3, $a1, 0xff
 	move_ $a0, $s0
 	jal f974

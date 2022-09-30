@@ -19,8 +19,7 @@ f7:
 	addiu $s1, 0x1
 .1:
 	addiu $s0, 0x1
-	slti $v0, $s0, 0x20
-	bnez $v0, .0
+	blti $s0, 0x20, .0
 		move_ $v0, $s1
 	lw $ra, 0x1c($sp)
 	lw $s2, 0x18($sp)

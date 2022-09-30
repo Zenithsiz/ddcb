@@ -100,8 +100,7 @@ f221:
 	addiu $v0, 0x3ffc
 	sw $v0, 0x10($a1)
 	addiu $s0, 0x1
-	slti $v0, $s0, 0x2
-	bnez $v0, .0
+	blti $s0, 0x2, .0
 		nop
 	jal f890
 		nop
@@ -562,8 +561,7 @@ f223:
 		addiu $s0, 0x10
 .2:
 	addiu $s5, 0x1
-	slti $v0, $s5, 0x2
-	bnez $v0, .0
+	blti $s5, 0x2, .0
 		lui $s2, 0x801d
 	lh $v0, 0x69fc($s2)
 	lui $s0, 0x801d
@@ -694,8 +692,7 @@ f224:
 	lw $a0, ($v0)
 	jal f75
 		addiu $s0, 0x1
-	slti $v0, $s0, 0x2
-	bnez $v0, .0
+	blti $s0, 0x2, .0
 		sll $v0, $s0, 0x2
 	lui $v0, 0x801d
 	lw $a0, 0x6a50($v0)

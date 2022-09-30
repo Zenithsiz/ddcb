@@ -94,8 +94,7 @@ f475:
 	addu $v0, $a1
 	sh $a0, ($v0)
 	addiu $v1, 0x1
-	slti $v0, $v1, 0xbf # Number of digimon cards is hardcoded...
-	bnez $v0, .0
+	blti $v1, 0xbf, .0 # Number of digimon cards is hardcoded...
 		addiu $a0, 0x1
 
 # $a1 = f19_r + *(f19_r + 4) * 0x13c
@@ -115,8 +114,7 @@ f475:
 	addu $v0, $a1
 	sh $a0, ($v0)
 	addiu $v1, 0x1
-	slti $v0, $v1, 0x66 # Number of item cards is hardcoded...
-	bnez $v0, .1
+	blti $v1, 0x66, .1 # Number of item cards is hardcoded...
 		addiu $a0, 0x1
 	move_ $v1, $zr
 	lui $v0, 0x801e
@@ -134,8 +132,7 @@ f475:
 	addu $v0, $a1
 	sh $a0, ($v0)
 	addiu $v1, 0x1
-	slti $v0, $v1, 0x8 # Number of digivolve cards is hardcoded...
-	bnez $v0, .2
+	blti $v1, 0x8, .2 # Number of digivolve cards is hardcoded...
 		addiu $a0, 0x1
 
 	lw $ra, 0x24($sp)

@@ -97,8 +97,7 @@ f40:
 	jal f127
 		move_ $a3, $zr
 	addiu $s3, 0x1
-	slti $v0, $s3, 0x4
-	bnez $v0, .2
+	blti $s3, 0x4, .2
 		sll $s1, $s3, 0x2
 	move_ $s3, $zr
 .3:
@@ -120,8 +119,7 @@ f40:
 	jal f127
 		move_ $a3, $zr
 	addiu $s3, 0x1
-	slti $v0, $s3, 0x2
-	bnez $v0, .3
+	blti $s3, 0x2, .3
 		sh $s4, 0x22a($s1)
 	li $a0, 0xe
 	addiu $a1, $s2, 0xf0
@@ -150,8 +148,7 @@ f40:
 		addiu $s2, 0x294
 .4:
 	addiu $s6, 0x1
-	slti $v0, $s6, 0x2
-	bnez $v0, .0
+	blti $s6, 0x2, .0
 		sll $a0, $s6, 0x6
 	lui $v1, %hi(S_0x800897e8)
 	lwi $v0, S_0x800793a0
