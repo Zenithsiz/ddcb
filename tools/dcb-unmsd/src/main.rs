@@ -8,8 +8,7 @@
 	iter_advance_by,
 	try_blocks,
 	cow_is_borrowed,
-	map_first_last,
-	generic_associated_types
+	map_first_last
 )]
 
 // Modules

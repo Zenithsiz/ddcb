@@ -1,7 +1,6 @@
 //! `.PAK` extractor
 
 // Features
-#![feature(let_else)]
 
 // Modules
 mod args;

@@ -110,7 +110,7 @@ impl Bytes for EffectCondition {
 		);
 
 		// Misfire
-		*bytes.misfire = if self.misfire { 1 } else { 0 };
+		*bytes.misfire = u8::from(self.misfire);
 
 		// Condition
 		self.property_cmp.serialize_bytes(bytes.property_cmp).into_ok();

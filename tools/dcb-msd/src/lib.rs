@@ -3,14 +3,7 @@
 // TODO: Proper error handling with spans and what-not
 
 // Features
-#![feature(
-	assert_matches,
-	generic_associated_types,
-	decl_macro,
-	try_blocks,
-	iter_advance_by,
-	map_try_insert
-)]
+#![feature(assert_matches, decl_macro, try_blocks, iter_advance_by, map_try_insert)]
 
 // Modules
 mod ast;

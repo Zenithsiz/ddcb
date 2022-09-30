@@ -1,7 +1,7 @@
 //! `.psexe` packer
 
 // Features
-#![feature(seek_stream_len, let_else)]
+#![feature(seek_stream_len)]
 
 // Modules
 mod args;
