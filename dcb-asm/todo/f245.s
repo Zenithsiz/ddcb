@@ -688,8 +688,7 @@ f257:
 	move_ $s4, $a1
 	lw $s2, 0x38($sp)
 	andi $s0, $a2, 0xff
-	sltiu $v0, $s0, 0x21
-	bnez $v0, .0
+	bltiu $s0, 0x21, .0
 		move_ $s1, $a3
 	jal f272
 		nop
@@ -988,8 +987,7 @@ f259:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	nop
-	sltiu $v0, $a3, 0x34
-	bnez $v0, .5
+	bltiu $a3, 0x34, .5
 		addiu $a3, -0x23
 	lbu $v1, ($s0)
 	li $v0, 0x61
@@ -1260,8 +1258,7 @@ f261:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	nop
-	sltiu $v0, $a3, 0x34
-	bnez $v0, .4
+	bltiu $a3, 0x34, .4
 		addiu $a3, -0x23
 	lbu $v1, ($s0)
 	li $v0, 0x61
@@ -1753,8 +1750,7 @@ f265:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	nop
-	sltiu $v0, $a3, 0x34
-	bnez $v0, .5
+	bltiu $a3, 0x34, .5
 		addiu $a3, -0x23
 	lbu $v1, ($s0)
 	li $v0, 0x61
@@ -2287,8 +2283,7 @@ f269:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	nop
-	sltiu $v0, $a3, 0x34
-	bnez $v0, .1
+	bltiu $a3, 0x34, .1
 		addiu $a3, -0x23
 	lbu $v1, ($s0)
 	li $v0, 0x61
@@ -3372,8 +3367,7 @@ f276:
 	nop
 	addiu $v0, 0x7f
 	andi $v0, 0xff
-	sltiu $v0, $v0, 0x18
-	bnez $v0, .9
+	bltiu $v0, 0x18, .9
 		nop
 	lbu $v0, ($s0)
 	nop
@@ -3440,8 +3434,7 @@ f276:
 	addiu $s0, 0x1
 	lbu $a3, ($s0)
 	nop
-	sltiu $v0, $a3, 0x34
-	bnez $v0, .2
+	bltiu $a3, 0x34, .2
 		addiu $a3, -0x23
 	lbu $v1, ($s0)
 	li $v0, 0x61
@@ -3822,8 +3815,7 @@ f278:
 	nop
 	sb $v0, ($v1)
 	addiu $v1, -0x1
-	sltu $v0, $t0, $v1
-	bnez $v0, .1
+	bltu $t0, $v1, .1
 		nop
 .2:
 	addiu $t0, 0x1
@@ -3852,8 +3844,7 @@ f278:
 	nop
 	sb $v0, ($v1)
 	addiu $v1, -0x1
-	sltu $v0, $t0, $v1
-	bnez $v0, .4
+	bltu $t0, $v1, .4
 		nop
 .5:
 	addiu $t0, 0x1

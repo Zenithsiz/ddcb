@@ -37,8 +37,7 @@ f36:
 	bgtz $s0, .4
 		addiu $v0, $v1, 0x1
 .2:
-	sltiu $v0, $v0, 0x2
-	bnez $v0, .4
+	bltiu $v0, 0x2, .4
 		li $v0, 0xa
 	beq $v1, $v0, .4
 		li $v0, 0x1a
@@ -50,8 +49,7 @@ f36:
 		move_ $a0, $s3
 	move_ $v1, $v0
 	addiu $v0, $v1, 0x1
-	sltiu $v0, $v0, 0x2
-	bnez $v0, .4
+	bltiu $v0, 0x2, .4
 		nop
 	beq $v1, $s2, .4
 		nop

@@ -745,8 +745,7 @@ f186:
 		nop
 	lw $v0, 0x10($s3)
 	nop
-	sltu $v0, $v1, $v0
-	bnez $v0, .1
+	bltu $v1, $v0, .1
 		nop
 .37:
 	sw $s1, 0x8($s3)

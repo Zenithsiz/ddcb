@@ -13,8 +13,7 @@ f99:
 	move_ $fp, $a0
 	move_ $s7, $a1
 	move_ $s5, $a2
-	sltiu $v0, $s7, 0x2
-	bnez $v0, .6
+	bltiu $s7, 0x2, .6
 		sw $a3, 0x44($sp)
 	li $v0, 0x2
 	bne $s7, $v0, .0
@@ -47,8 +46,7 @@ f99:
 	jalr $v1
 		move_ $a1, $s2
 	blez $v0, .4
-		sltu $v0, $s1, $s3
-	bnez $v0, .4
+		bltu $s1, $s3, .4
 		move_ $s0, $s3
 	mult $s5, $s0
 .3:
@@ -63,13 +61,11 @@ f99:
 		mult $s5, $s0
 .4:
 	addiu $s1, 0x1
-	sltu $v0, $s1, $s6
-	bnez $v0, .2
+	bltu $s1, $s6, .2
 		addu $s2, $s5
 .5:
 	addiu $s3, 0x1
-	sltu $v0, $s3, $s7
-	bnez $v0, .1
+	bltu $s3, $s7, .1
 		addu $s4, $s5
 .6:
 	lw $ra, 0x34($sp)
@@ -98,8 +94,7 @@ f100:
 	nop
 	sb $v0, ($a0)
 	addiu $a3, 0x1
-	sltu $v0, $a3, $a2
-	bnez $v0, .0
+	bltu $a3, $a2, .0
 		sb $a1, ($v1)
 .1:
 	jr $ra

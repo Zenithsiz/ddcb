@@ -196,8 +196,7 @@ f42:
 	nop
 	sb $v0, 0x3f($t0)
 	sb $zr, 0x41($t0)
-	sltiu $v0, $t1, 0x101
-	bnez $v0, .13
+	bltiu $t1, 0x101, .13
 		sb $t2, 0x42($t0)
 	li $v0, 0xff
 	j .14

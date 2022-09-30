@@ -229,8 +229,7 @@ f95:
 .9:
 	addu $s4, $s0
 .10:
-	sltu $v0, $s4, $fp
-	bnez $v0, .1
+	bltu $s4, $fp, .1
 		nop
 .11:
 	lw $ra, 0x34($sp)

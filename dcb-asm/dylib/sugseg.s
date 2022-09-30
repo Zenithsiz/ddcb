@@ -8884,8 +8884,7 @@ dylib_sugseg_func_26:
 .0x801e64bc:	swl $v0, 0x47($s5)
 .0x801e64c0:	swr $v0, 0x44($s5)
 .0x801e64c4:	sh $s3, 0x48($s5)
-.0x801e64c8:	sltiu $v0, $s6, 0x2
-.0x801e64cc:	bnez $v0, .0
+.0x801e64c8:	bltiu $s6, 0x2, .0
 .0x801e64d0:		sb $s6, 0x4b($s5)
 .0x801e64d4:	addiu $v0, $zr, 0x3
 .0x801e64d8:	bne $s6, $v0, .1
@@ -11777,8 +11776,7 @@ dylib_sugseg_func_49:
 .0x801e8e88:	nop
 .0x801e8e8c:	sb $v0, 0x13f($v1)
 .0x801e8e90:	andi $v0, 0xff
-.0x801e8e94:	sltiu $v0, $v0, 0x2
-.0x801e8e98:	bnez $v0, .19
+.0x801e8e94:	bltiu $v0, 0x2, .19
 .0x801e8e9c:		nop
 .0x801e8ea0:	lhu $v0, 0x78($s1)
 .0x801e8ea4:	j .19

@@ -73,3 +73,15 @@ bnez $v0, \addr
 slti $v0, \reg, \imm
 bnez $v0, \addr
 .endm
+
+# `sltu` with `$v0` + `bnez`
+.macro bltu lhs, rhs, addr
+sltu $v0, \lhs, \rhs
+bnez $v0, \addr
+.endm
+
+# `sltiu` with `$v0` + `bnez`
+.macro bltiu reg, imm, addr
+sltiu $v0, \reg, \imm
+bnez $v0, \addr
+.endm

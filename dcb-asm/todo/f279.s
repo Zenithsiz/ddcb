@@ -32,8 +32,7 @@ f279:
 	nop
 	sb $v0, ($v1)
 	addiu $v1, -0x1
-	sltu $v0, $t0, $v1
-	bnez $v0, .1
+	bltu $t0, $v1, .1
 		nop
 .2:
 	addiu $t0, 0x1
@@ -210,10 +209,8 @@ f283:
 	nop
 	lbu $v1, ($a1)
 	nop
-	sltiu $v0, $v1, 0x81
-	bnez $v0, .2
-		sltiu $v0, $v1, 0xa0
-	bnez $v0, .0
+	bltiu $v1, 0x81, .2
+		bltiu $v1, 0xa0, .0
 		nop
 	lbu $v0, ($a1)
 	nop
@@ -225,10 +222,8 @@ f283:
 .0:
 	lbu $v1, 0x1($a1)
 	nop
-	sltiu $v0, $v1, 0x40
-	bnez $v0, .2
-		sltiu $v0, $v1, 0x7f
-	bnez $v0, .1
+	bltiu $v1, 0x40, .2
+		bltiu $v1, 0x7f, .1
 		nop
 	lbu $v0, 0x1($a1)
 	nop
@@ -257,10 +252,8 @@ f283:
 		sw $v1, ($a0)
 	lbu $v1, ($a0)
 	nop
-	sltiu $v0, $v1, 0x81
-	bnez $v0, .5
-		sltiu $v0, $v1, 0xa0
-	bnez $v0, .3
+	bltiu $v1, 0x81, .5
+		bltiu $v1, 0xa0, .3
 		nop
 	lbu $v0, ($a0)
 	nop
@@ -272,10 +265,8 @@ f283:
 .3:
 	lbu $v1, 0x1($a0)
 	nop
-	sltiu $v0, $v1, 0x40
-	bnez $v0, .5
-		sltiu $v0, $v1, 0x7f
-	bnez $v0, .4
+	bltiu $v1, 0x40, .5
+		bltiu $v1, 0x7f, .4
 		nop
 	lbu $v0, 0x1($a0)
 	nop
@@ -376,8 +367,7 @@ f286:
 	nop
 	sh $v0, ($v1)
 	addiu $v1, -0x2
-	sltu $v0, $t0, $v1
-	bnez $v0, .1
+	bltu $t0, $v1, .1
 		nop
 .2:
 	addiu $t0, 0x2
@@ -2058,8 +2048,7 @@ f325:
 	jal f317
 		li $a0, 0x1
 	addiu $v0, -0x1
-	sltiu $v0, $v0, 0x2
-	bnez $v0, .6
+	bltiu $v0, 0x2, .6
 		lui $v0, 0x801e
 	lui $v0, 0x801e
 	lw $v1, -0x7e60($v0)
@@ -2263,8 +2252,7 @@ f327:
 	jal f317
 		li $a0, 0x1
 	addiu $v0, -0x1
-	sltiu $v0, $v0, 0x2
-	bnez $v0, .6
+	bltiu $v0, 0x2, .6
 		lui $v0, 0x801e
 	lui $v0, 0x801e
 	lw $v1, -0x7e60($v0)
@@ -2583,8 +2571,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x18($v0)
 	nop
-	sltiu $v0, $v0, 0xa
-	bnez $v0, .1
+	bltiu $v0, 0xa, .1
 		lui $v0, 0x8007
 	li $a1, 0x1
 	lui $v0, 0x8007
@@ -2599,8 +2586,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x18($v0)
 	nop
-	sltiu $v0, $v0, 0x19
-	bnez $v0, .1
+	bltiu $v0, 0x19, .1
 		lui $v0, 0x8007
 	li $a1, 0x2
 	lui $v0, 0x8007
@@ -2615,8 +2601,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x18($v0)
 	nop
-	sltiu $v0, $v0, 0x32
-	bnez $v0, .1
+	bltiu $v0, 0x32, .1
 		lui $v0, 0x8007
 	li $a1, 0x3
 	lui $v0, 0x8007
@@ -2631,8 +2616,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x18($v0)
 	nop
-	sltiu $v0, $v0, 0x64
-	bnez $v0, .1
+	bltiu $v0, 0x64, .1
 		lui $v0, 0x8007
 	li $a1, 0x4
 	lui $v0, 0x8007
@@ -2647,8 +2631,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x18($v0)
 	nop
-	sltiu $v0, $v0, 0xc8
-	bnez $v0, .1
+	bltiu $v0, 0xc8, .1
 		lui $v0, 0x8007
 	li $a1, 0x5
 	lui $v0, 0x8007
@@ -2663,8 +2646,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x18($v0)
 	nop
-	sltiu $v0, $v0, 0x12c
-	bnez $v0, .1
+	bltiu $v0, 0x12c, .1
 		lui $v0, 0x8007
 	li $a1, 0x6
 	lui $v0, 0x8007
@@ -2679,8 +2661,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x18($v0)
 	nop
-	sltiu $v0, $v0, 0x1f4
-	bnez $v0, .1
+	bltiu $v0, 0x1f4, .1
 		lui $v0, 0x8007
 	li $a1, 0x7
 .0:
@@ -2926,8 +2907,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x1c($v0)
 	nop
-	sltiu $v0, $v0, 0xa
-	bnez $v0, .14
+	bltiu $v0, 0xa, .14
 		lui $v0, 0x8007
 	li $a1, 0x1
 	lui $v0, 0x8007
@@ -2942,8 +2922,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x1c($v0)
 	nop
-	sltiu $v0, $v0, 0x14
-	bnez $v0, .14
+	bltiu $v0, 0x14, .14
 		lui $v0, 0x8007
 	li $a1, 0x2
 	lui $v0, 0x8007
@@ -2958,8 +2937,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x1c($v0)
 	nop
-	sltiu $v0, $v0, 0x1e
-	bnez $v0, .14
+	bltiu $v0, 0x1e, .14
 		lui $v0, 0x8007
 	li $a1, 0x3
 	lui $v0, 0x8007
@@ -2974,8 +2952,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x1c($v0)
 	nop
-	sltiu $v0, $v0, 0x28
-	bnez $v0, .14
+	bltiu $v0, 0x28, .14
 		lui $v0, 0x8007
 	li $a1, 0x4
 	lui $v0, 0x8007
@@ -2990,8 +2967,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x1c($v0)
 	nop
-	sltiu $v0, $v0, 0x3c
-	bnez $v0, .14
+	bltiu $v0, 0x3c, .14
 		lui $v0, 0x8007
 	li $a1, 0x5
 	lui $v0, 0x8007
@@ -3006,8 +2982,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x1c($v0)
 	nop
-	sltiu $v0, $v0, 0x50
-	bnez $v0, .14
+	bltiu $v0, 0x50, .14
 		lui $v0, 0x8007
 	li $a1, 0x6
 	lui $v0, 0x8007
@@ -3022,8 +2997,7 @@ f332:
 	addu $v0, $a0
 	lhu $v0, 0x1c($v0)
 	nop
-	sltiu $v0, $v0, 0x64
-	bnez $v0, .14
+	bltiu $v0, 0x64, .14
 		lui $v0, 0x8007
 	li $a1, 0x7
 .13:

@@ -177,8 +177,7 @@ dylib_saiseg_func_2:
 .0x801dfc68:	nop
 .0x801dfc6c:	addiu $v0, 0x7f
 .0x801dfc70:	andi $v0, 0xff
-.0x801dfc74:	sltiu $v0, $v0, 0x18
-.0x801dfc78:	bnez $v0, .7
+.0x801dfc74:	bltiu $v0, 0x18, .7
 .0x801dfc7c:		addiu $v0, $zr, 0x2a
 .0x801dfc80:	lbu $v1, 0x0($s0)
 .0x801dfc84:	nop
@@ -369,8 +368,7 @@ dylib_saiseg_func_3:
 .0x801dff08:	nop
 .0x801dff0c:	addiu $v0, 0x7f
 .0x801dff10:	andi $v0, 0xff
-.0x801dff14:	sltiu $v0, $v0, 0x18
-.0x801dff18:	bnez $v0, .4
+.0x801dff14:	bltiu $v0, 0x18, .4
 .0x801dff1c:		addiu $v0, $zr, 0x2a
 .0x801dff20:	bne $v1, $v0, .3
 .0x801dff24:		nop
@@ -6167,8 +6165,7 @@ dylib_saiseg_func_44:
 .0x801e53dc: addiu $v1, $v0, 0x4588
 .0x801e53e0: lw $v0, 0xf0($v1)
 .0x801e53e4: nop
-.0x801e53e8: sltiu $v0, $v0, 0x3
-.0x801e53ec: bnez $v0, .0x801e53f8
+.0x801e53e8: bltiu $v0, 0x3, .0x801e53f8
 .0x801e53f0: 	lui $v0, 0x8003
 .0x801e53f4: sw $zr, 0xf0($v1)
 .0x801e53f8: addiu $v0, -0x1324
@@ -6990,8 +6987,7 @@ dylib_saiseg_func_50:
 .0x801e5ff0:	addiu $v1, $v0, 0x4588
 .0x801e5ff4:	lbu $v0, 0xe4($v1)
 .0x801e5ff8:	nop
-.0x801e5ffc:	sltiu $v0, $v0, 0x3
-.0x801e6000:	bnez $v0, .9
+.0x801e5ffc:	bltiu $v0, 0x3, .9
 .0x801e6004:		nop
 .0x801e6008:	sb $zr, 0xe4($v1)
 	.9:
@@ -10372,8 +10368,7 @@ dylib_saiseg_func_64:
 .0x801e9268:	sw $ra, 0x3c($sp)
 .0x801e926c:	andi $a2, $a0, 0xff
 .0x801e9270:	addiu $v0, $a2, -0x1
-.0x801e9274:	sltiu $v0, $v0, 0x4
-.0x801e9278:	bnez $v0, .0
+.0x801e9274:	bltiu $v0, 0x4, .0
 .0x801e927c:		sw $s0, 0x38($sp)
 .0x801e9280:	addu $a2, $zr, $zr
 	.0:
@@ -11342,8 +11337,7 @@ dylib_saiseg_func_76:
 .0x801ea058: 	addiu $s2, $zr, 0xff
 .0x801ea05c: bne $v1, $v0, .0x801ea084
 .0x801ea060: 	lui $v1, 0x801f
-.0x801ea064: sltiu $v0, $s2, 0x9
-.0x801ea068: bnez $v0, .0x801ea078
+.0x801ea064: bltiu $s2, 0x9, .0x801ea078
 .0x801ea06c: 	addiu $v0, $s2, -0x8
 .0x801ea070: j dylib_sugseg_func_53.0x801ea084
 .0x801ea074: 	andi $s2, $v0, 0xff
@@ -12111,8 +12105,7 @@ dylib_saiseg_func_77:
 .0x801eabd4: 	addu $a0, $zr, $zr
 .0x801eabd8: lbu $v0, 0x18($s0)
 .0x801eabdc: nop
-.0x801eabe0: sltiu $v0, $v0, 0xb
-.0x801eabe4: bnez $v0, .0x801eacdc
+.0x801eabe0: bltiu $v0, 0xb, .0x801eacdc
 .0x801eabe8: 	lui $v0, 0x801f
 .0x801eabec: j dylib_sugseg_func_63.9
 .0x801eabf0: 	addiu $v0, 0x4568
