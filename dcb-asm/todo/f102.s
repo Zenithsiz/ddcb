@@ -27,8 +27,7 @@ f102:
 	sll $v1, $s3, 0x2
 	mult $s0, $v1
 	mflo $v1
-	slt $v0, $v0, $v1
-	beqz $v0, .1
+	bge $v0, $v1, .1
 		sll $v0, $s3, 0x2
 	jal f70
 		nop
@@ -72,8 +71,7 @@ f102:
 .5:
 	lh $v1, 0x16($sp)
 	nop
-	slt $v0, $a0, $v1
-	beqz $v0, .6
+	bge $a0, $v1, .6
 		nop
 	move_ $v1, $a0
 .6:

@@ -5,8 +5,7 @@ f46:
 	lhu $a0, ($a1)
 	lh $v1, ($a1)
 	nop
-	slt $v0, $v0, $v1
-	beqz $v0, .0
+	bge $v0, $v1, .0
 		subu $v0, $a0, $a3
 	lhu $v1, 0x4($a2)
 	nop
@@ -21,8 +20,7 @@ f46:
 	lhu $a0, 0x2($a1)
 	lh $v1, 0x2($a1)
 	nop
-	slt $v0, $v0, $v1
-	beqz $v0, .1
+	bge $v0, $v1, .1
 		subu $v0, $a0, $a3
 	lhu $v1, 0x6($a2)
 	nop
@@ -43,8 +41,7 @@ f46:
 	lh $v1, 0x4($a1)
 	nop
 	addu $v0, $v1
-	slt $v0, $v0, $a0
-	beqz $v0, .2
+	bge $v0, $a0, .2
 		addu $v0, $t0, $a3
 	subu $v0, $t1
 	sh $v0, 0x4($a2)
@@ -60,8 +57,7 @@ f46:
 	lh $v1, 0x6($a1)
 	nop
 	addu $v0, $v1
-	slt $v0, $v0, $a0
-	beqz $v0, .3
+	bge $v0, $a0, .3
 		addu $v0, $t0, $a3
 	subu $v0, $t1
 	sh $v0, 0x6($a2)

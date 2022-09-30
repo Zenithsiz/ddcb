@@ -7,41 +7,35 @@ f124:
 	lbu $a2, ($a1)
 	lbu $v1, ($a3)
 	lbu $a0, ($t5)
-	slt $v0, $a2, $t1
-	beqz $v0, .0
+	bge $a2, $t1, .0
 		move_ $t0, $zr
 	addu $v0, $a2, $t3
 	sll $v0, 0x10
 	sra $a2, $v0, 0x10
-	slt $v0, $t1, $a2
-	beqz $v0, .2
+	bge $t1, $a2, .2
 		sll $v0, $t1, 0x10
 	sra $a2, $v0, 0x10
 	j f124.2
 		li $t0, 0x1
 .0:
-	slt $v0, $t1, $a2
-	beqz $v0, .1
+	bge $t1, $a2, .1
 		subu $v0, $a2, $t3
 	sll $v0, 0x10
 	sra $a2, $v0, 0x10
-	slt $v0, $a2, $t1
-	beqz $v0, .2
+	bge $a2, $t1, .2
 		sll $v0, $t1, 0x10
 	sra $a2, $v0, 0x10
 .1:
 	addiu $t0, 0x1
 .2:
-	slt $v0, $v1, $t2
-	beqz $v0, .3
+	bge $v1, $t2, .3
 		addu $v0, $v1, $t3
 	sll $v0, 0x10
 	sra $v1, $v0, 0x10
 	j .9
 		slt $v0, $t2, $v1
 .3:
-	slt $v0, $t2, $v1
-	beqz $v0, .4
+	bge $t2, $v1, .4
 		subu $v0, $v1, $t3
 	sll $v0, 0x10
 	sra $v1, $v0, 0x10
@@ -53,16 +47,14 @@ f124:
 .4:
 	addiu $t0, 0x1
 .5:
-	slt $v0, $a0, $t4
-	beqz $v0, .6
+	bge $a0, $t4, .6
 		addu $v0, $a0, $t3
 	sll $v0, 0x10
 	sra $a0, $v0, 0x10
 	j .10
 		slt $v0, $t4, $a0
 .6:
-	slt $v0, $t4, $a0
-	beqz $v0, .7
+	bge $t4, $a0, .7
 		nop
 	subu $v0, $a0, $t3
 	sll $v0, 0x10

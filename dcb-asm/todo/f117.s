@@ -47,8 +47,7 @@ f117:
 	lw $a0, 0x30($sp)
 	nop
 	addiu $v0, $a0, -0x2
-	sltiu $v0, $v0, 0xfff
-	beqz $v0, .2
+	bgeiu $v0, 0xfff, .2
 		nop
 	bnez $s0, .1
 		lui $s2, 0x8008

@@ -109,8 +109,7 @@ f42:
 	lhu $a0, 0x10($t0)
 	lh $v1, 0x10($t0)
 	nop
-	slt $v0, $v0, $v1
-	beqz $v0, .9
+	bge $v0, $v1, .9
 		nop
 	sh $a0, 0x8($t0)
 .9:
@@ -118,8 +117,7 @@ f42:
 	lhu $a0, 0x12($t0)
 	lh $v1, 0x12($t0)
 	nop
-	slt $v0, $v0, $v1
-	beqz $v0, .10
+	bge $v0, $v1, .10
 		nop
 	sh $a0, 0xa($t0)
 .10:
@@ -206,8 +204,7 @@ f42:
 .14:
 	sb $zr, 0x38($t0)
 	sra $v0, $t2, 0x4
-	slti $v0, $v0, 0x5
-	beqz $v0, .15
+	bgei $v0, 0x5, .15
 		sb $zr, 0x39($t0)
 	j .16
 		sb $zr, 0x43($t0)

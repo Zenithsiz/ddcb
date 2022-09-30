@@ -85,3 +85,27 @@ bnez $v0, \addr
 sltiu $v0, \reg, \imm
 bnez $v0, \addr
 .endm
+
+# `slt` with `$v0` + `beqz`
+.macro bge lhs, rhs, addr
+slt $v0, \lhs, \rhs
+beqz $v0, \addr
+.endm
+
+# `slti` with `$v0` + `beqz`
+.macro bgei reg, imm, addr
+slti $v0, \reg, \imm
+beqz $v0, \addr
+.endm
+
+# `sltu` with `$v0` + `beqz`
+.macro bgeu lhs, rhs, addr
+sltu $v0, \lhs, \rhs
+beqz $v0, \addr
+.endm
+
+# `sltiu` with `$v0` + `beqz`
+.macro bgeiu reg, imm, addr
+sltiu $v0, \reg, \imm
+beqz $v0, \addr
+.endm

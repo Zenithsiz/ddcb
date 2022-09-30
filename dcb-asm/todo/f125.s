@@ -9,8 +9,7 @@ f125:
 	sll $a1, 0x10
 	lbu $v1, ($s1)
 	nop
-	sltiu $v0, $v1, 0x5
-	beqz $v0, .4
+	bgeiu $v1, 0x5, .4
 		sra $a3, $a1, 0x10
 	la_ $v0, unknown_fn_ptrs1
 	sll $v1, 0x2
@@ -411,8 +410,7 @@ f141:
 	li $v0, 0x4
 	beq $v1, $v0, .2
 		sra $a3, 0x10
-	slti $v0, $v1, 0x5
-	beqz $v0, .0
+	bgei $v1, 0x5, .0
 		nop
 	beqz $v1, .1
 		nop
@@ -616,8 +614,7 @@ f150:
 		move_ $a0, $s2
 	li $v0, 0x2
 	beq $s0, $v0, .2
-		slti $v0, $s0, 0x3
-	beqz $v0, .0
+		bgei $s0, 0x3, .0
 		li $v0, 0x1
 	beq $s0, $v0, .3
 		move_ $a0, $s1

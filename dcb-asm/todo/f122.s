@@ -24,8 +24,7 @@ f122:
 		addiu $a3, $sp, 0x14
 	move_ $v1, $v0
 	addiu $v0, $v1, -0x2
-	sltiu $v0, $v0, 0xfff
-	beqz $v0, .1
+	bgeiu $v0, 0xfff, .1
 		nop
 	bnez $s5, .0
 		lui $s1, 0x8008

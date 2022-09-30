@@ -64,8 +64,7 @@ f58:
 	mflo $a2
 	lh $v0, 0x36($s1)
 	nop
-	slt $v0, $a2, $v0
-	beqz $v0, .19
+	bge $a2, $v0, .19
 		move_ $a0, $s1
 	jal f44
 		move_ $a1, $zr
@@ -96,8 +95,7 @@ f58:
 	sra $v0, 0x10
 	lh $v1, 0x20($s0)
 	nop
-	slt $v0, $v0, $v1
-	beqz $v0, .6
+	bge $v0, $v1, .6
 		move_ $a0, $s1
 	lh $v1, 0x14($s0)
 	lh $v0, 0x20($s0)

@@ -1069,8 +1069,7 @@ f27:
 	addiu $a1, $s0, 0x10
 	addiu $a0, 0x1
 .7:
-	slti $v0, $a0, 0x4
-	beqz $v0, .8
+	bgei $a0, 0x4, .8
 		sll $v0, $a0, 0x2
 	addu $v1, $a1, $v0
 	addu $v0, $s2, $v0
@@ -1124,8 +1123,7 @@ f28:
 	addiu $a3, $t0, 0x10
 	addiu $a2, 0x1
 .4:
-	slti $v0, $a2, 0x4
-	beqz $v0, .3
+	bgei $a2, 0x4, .3
 		sll $v0, $a2, 0x2
 	addu $v1, $a3, $v0
 	addu $v0, $a0, $v0
@@ -1255,8 +1253,7 @@ f29:
 	move_ $v1, $a0
 	beq $a0, $s6, .14
 		addiu $s1, 0x1
-	slti $v0, $a0, 0x2f
-	beqz $v0, .11
+	bgei $a0, 0x2f, .11
 		nop
 	beqz $a0, .19
 		sll $a0, 0x18
@@ -1474,8 +1471,7 @@ f32:
 	nop
 	blez $a0, .3
 		move_ $s4, $zr
-	slt $v0, $s3, $a0
-	beqz $v0, .0
+	bge $s3, $a0, .0
 		move_ $s4, $a0
 	move_ $a0, $s3
 	move_ $s4, $a0
@@ -1501,8 +1497,7 @@ f32:
 .3:
 	lw $v1, 0x20($s1)
 	nop
-	slt $v0, $v1, $s3
-	beqz $v0, .4
+	bge $v1, $s3, .4
 		nop
 	move_ $s3, $v1
 .4:
@@ -1617,8 +1612,7 @@ f32:
 	lw $a0, 0x28($s1)
 	nop
 	blez $a0, .18
-		slt $v0, $s3, $a0
-	beqz $v0, .16
+		bge $s3, $a0, .16
 		nop
 	move_ $a0, $s3
 .16:

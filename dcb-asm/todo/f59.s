@@ -76,8 +76,7 @@ f59:
 	lh $a0, 0xae($s0)
 	sll $v0, $v1, 0x11
 	sra $v1, $v0, 0x10
-	slt $v0, $a0, $v1
-	beqz $v0, .3
+	bge $a0, $v1, .3
 		sll $v0, $a0, 0x1
 	move_ $a0, $v1
 	sll $v0, $a0, 0x1
@@ -85,8 +84,7 @@ f59:
 	addiu $a0, $v0, 0x10
 	lh $v0, 0xa8($s0)
 	nop
-	slt $v0, $v0, $a0
-	beqz $v0, .4
+	bge $v0, $a0, .4
 		nop
 	sh $a0, 0xa8($s0)
 .4:

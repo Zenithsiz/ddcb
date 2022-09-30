@@ -53,8 +53,7 @@ f121:
 	lw $a0, 0x38($sp)
 	nop
 	addiu $v0, $a0, -0x2
-	sltiu $v0, $v0, 0xfff
-	beqz $v0, .3
+	bgeiu $v0, 0xfff, .3
 		nop
 	bnez $s0, .2
 		lui $s2, 0x8008

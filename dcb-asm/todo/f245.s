@@ -876,8 +876,7 @@ f259:
 	lbu $v1, ($s0)
 	nop
 	beq $v1, $v0, .8
-		slti $v0, $v1, 0x21
-	beqz $v0, .2
+		bgei $v1, 0x21, .2
 		li $v0, 0xa
 	beq $v1, $v0, .6
 		li $v0, 0xc
@@ -914,8 +913,7 @@ f259:
 	lbu $v0, ($s0)
 	nop
 	addiu $v1, $v0, -0x61
-	sltiu $v0, $v1, 0x5
-	beqz $v0, .6
+	bgeiu $v1, 0x5, .6
 		lui $v0, %hi(S_0x800101d0)
 	addiu $v0, %lo(S_0x800101d0)
 	sll $v1, 0x2
@@ -1181,8 +1179,7 @@ f261:
 	nop
 	beqz $v0, .7
 		addiu $v1, $v0, -0x1
-	sltiu $v0, $v1, 0x2a
-	beqz $v0, .5
+	bgeiu $v1, 0x2a, .5
 		lui $v0, %hi(S_0x800101e8)
 	addiu $v0, %lo(S_0x800101e8)
 	sll $v1, 0x2
@@ -1205,8 +1202,7 @@ f261:
 	lbu $v0, ($s0)
 	nop
 	addiu $v1, $v0, -0x61
-	sltiu $v0, $v1, 0x5
-	beqz $v0, .2
+	bgeiu $v1, 0x5, .2
 		lui $v0, %hi(S_0x80010290)
 	addiu $v0, %lo(S_0x80010290)
 	sll $v1, 0x2
@@ -1472,8 +1468,7 @@ f263:
 	lbu $v1, ($s1)
 	li $v0, 0x20
 	beq $v1, $v0, .2
-		slti $v0, $v1, 0x21
-	beqz $v0, .3
+		bgei $v1, 0x21, .3
 		li $v0, 0xa
 	beq $v1, $v0, .1
 		li $v0, 0xc
@@ -1680,8 +1675,7 @@ f265:
 	lbu $v1, ($s0)
 	nop
 	beq $v1, $v0, .8
-		slti $v0, $v1, 0x21
-	beqz $v0, .3
+		bgei $v1, 0x21, .3
 		li $v0, 0xa
 	beq $v1, $v0, .7
 		li $v0, 0xc
@@ -1697,8 +1691,7 @@ f265:
 	lbu $v0, ($s0)
 	nop
 	addiu $v1, $v0, -0x61
-	sltiu $v0, $v1, 0x5
-	beqz $v0, .2
+	bgeiu $v1, 0x5, .2
 		lui $v0, %hi(S_0x800102a8)
 	addiu $v0, %lo(S_0x800102a8)
 	sll $v1, 0x2
@@ -1963,8 +1956,7 @@ f267:
 	lbu $v1, ($s0)
 	li $v0, 0xa
 	beq $v1, $v0, .4
-		slti $v0, $v1, 0xb
-	beqz $v0, .1
+		bgei $v1, 0xb, .1
 		li $v0, 0x1
 	beq $v1, $v0, .2
 		move_ $a0, $s2
@@ -2208,8 +2200,7 @@ f269:
 	lbu $v0, ($s0)
 	nop
 	addiu $v1, $v0, -0x61
-	sltiu $v0, $v1, 0x17
-	beqz $v0, .7
+	bgeiu $v1, 0x17, .7
 		lui $v0, %hi(S_0x800102c0)
 	addiu $v0, %lo(S_0x800102c0)
 	sll $v1, 0x2
@@ -2302,8 +2293,7 @@ f269:
 	lui $v1, 0x801d
 	lw $v0, 0x6b18($v1)
 	nop
-	slt $v0, $v0, $s2
-	beqz $v0, .6
+	bge $v0, $s2, .6
 		nop
 	j .6
 		sw $s2, 0x6b18($v1)
@@ -2324,8 +2314,7 @@ f269:
 	lui $v1, 0x801d
 	lw $v0, 0x6b18($v1)
 	nop
-	slt $v0, $v0, $s2
-	beqz $v0, .0
+	bge $v0, $s2, .0
 		nop
 	j .0
 		sw $s2, 0x6b18($v1)
@@ -2391,16 +2380,14 @@ f269:
 	lui $v1, 0x801d
 	lw $v0, 0x6b18($v1)
 	nop
-	slt $v0, $v0, $s5
-	beqz $v0, .10
+	bge $v0, $s5, .10
 		addu $s3, $s7
 	sw $s5, 0x6b18($v1)
 .10:
 	lui $v1, 0x801d
 	lw $v0, 0x6b1c($v1)
 	nop
-	slt $v0, $v0, $s3
-	beqz $v0, .0
+	bge $v0, $s3, .0
 		nop
 	j .0
 		sw $s3, 0x6b1c($v1)
@@ -2554,8 +2541,7 @@ f269:
 	lui $v1, 0x801d
 	lw $v0, 0x6b18($v1)
 	nop
-	slt $v0, $v0, $s2
-	beqz $v0, .17
+	bge $v0, $s2, .17
 		nop
 	sw $s2, 0x6b18($v1)
 .17:
@@ -2615,8 +2601,7 @@ f270:
 	lbu $v0, ($a0)
 	nop
 	addiu $v1, $v0, -0x61
-	sltiu $v0, $v1, 0x17
-	beqz $v0, .4
+	bgeiu $v1, 0x17, .4
 		lui $v0, %hi(S_0x80010320)
 	addiu $v0, %lo(S_0x80010320)
 	sll $v1, 0x2
@@ -2701,8 +2686,7 @@ f270:
 	lui $v1, 0x801d
 	lw $v0, 0x6b1c($v1)
 	nop
-	slt $v0, $v0, $a2
-	beqz $v0, .0
+	bge $v0, $a2, .0
 		nop
 	j .0
 		sw $a2, 0x6b1c($v1)
@@ -2726,8 +2710,7 @@ f270:
 	lui $v1, 0x801d
 	lw $v0, 0x6b18($v1)
 	nop
-	slt $v0, $v0, $a1
-	beqz $v0, .0
+	bge $v0, $a1, .0
 		nop
 	j .0
 		sw $a1, 0x6b18($v1)
@@ -2825,8 +2808,7 @@ f271:
 	nop
 	beq $s0, $v0, .6
 		addiu $s1, 0x1
-	slti $v0, $s0, 0x2e
-	beqz $v0, .4
+	bgei $s0, 0x2e, .4
 		li $v0, 0x2b
 	beq $s0, $v0, .5
 		addiu $s0, -0x30
@@ -3029,8 +3011,7 @@ f274:
 	bnez $v0, .14
 		li $v0, 0x1
 	beq $s1, $v0, .7
-		slti $v0, $s1, 0x2
-	beqz $v0, .0
+		bgei $s1, 0x2, .0
 		li $v0, 0x2
 	beqz $s1, .1
 		lui $t0, 0x801d
@@ -3069,8 +3050,7 @@ f274:
 	addiu $v0, 0x7f
 	sb $v0, 0x15($v1)
 	addiu $v0, $s0, -0x15
-	sltiu $v0, $v0, 0x3
-	beqz $v0, .2
+	bgeiu $v0, 0x3, .2
 		lui $v0, 0x801d
 	lw $a0, 0x6b24($a2)
 	lhu $v1, 0x6b22($v0)
@@ -3093,8 +3073,7 @@ f274:
 	j .5
 		addiu $v1, 0x3
 .3:
-	sltiu $v0, $v0, 0x9
-	beqz $v0, .4
+	bgeiu $v0, 0x9, .4
 		lui $v0, 0x801d
 	lw $a0, 0x6b24($v0)
 	lui $v0, 0x801d
@@ -3143,8 +3122,7 @@ f274:
 	j .12
 		li $s3, 0x7
 .8:
-	slti $v0, $s0, 0xa
-	beqz $v0, .9
+	bgei $s0, 0xa, .9
 		lui $a0, 0x801d
 	lw $v1, 0x6b24($a0)
 	li $v0, 0xd8
@@ -3372,8 +3350,7 @@ f276:
 	lbu $v0, ($s0)
 	nop
 	addiu $v1, $v0, -0xa
-	sltiu $v0, $v1, 0x71
-	beqz $v0, .7
+	bgeiu $v1, 0x71, .7
 		lui $v0, %hi(S_0x80010380)
 	addiu $v0, %lo(S_0x80010380)
 	sll $v1, 0x2
@@ -3525,8 +3502,7 @@ f276:
 	lbu $v0, ($s0)
 	nop
 	addiu $v0, -0x30
-	sltiu $v0, $v0, 0xa
-	beqz $v0, .5
+	bgeiu $v0, 0xa, .5
 		nop
 	jal f272
 		nop
@@ -3807,8 +3783,7 @@ f278:
 	beqz $a2, .3
 		nop
 	addiu $a0, 0x1
-	sltu $v0, $t0, $a0
-	beqz $v0, .2
+	bgeu $t0, $a0, .2
 		move_ $v1, $a0
 .1:
 	lbu $v0, -0x1($v1)
@@ -3836,8 +3811,7 @@ f278:
 	bgtz $a3, .6
 		sb $v0, ($t0)
 	addiu $a0, 0x1
-	sltu $v0, $t0, $a0
-	beqz $v0, .5
+	bgeu $t0, $a0, .5
 		move_ $v1, $a0
 .4:
 	lbu $v0, -0x1($v1)

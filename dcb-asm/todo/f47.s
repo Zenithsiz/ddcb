@@ -92,8 +92,7 @@ f47:
 	lbu $t1, 0x3e($a2)
 	lb $a3, 0x3e($a2)
 	nop
-	slti $v0, $a3, 0x6
-	beqz $v0, .8
+	bgei $a3, 0x6, .8
 		lui $a0, 0x2aaa
 	lh $v0, 0x34($a2)
 	lhu $a1, 0x30($a2)
@@ -241,8 +240,7 @@ f47:
 	lbu $a0, 0x3c($a2)
 	lb $v0, 0x3c($a2)
 	nop
-	slt $v0, $v0, $v1
-	beqz $v0, .18
+	bge $v0, $v1, .18
 		li $v0, 0x1
 	sb $a0, 0x3d($a2)
 	sb $v0, 0x41($a2)

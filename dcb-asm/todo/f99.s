@@ -35,8 +35,7 @@ f99:
 .1:
 	addu $s2, $s4, $s5
 	addiu $v0, $s7, -0x1
-	sltu $v0, $s3, $v0
-	beqz $v0, .5
+	bgeu $s3, $v0, .5
 		move_ $s1, $s3
 	addiu $s6, $s7, -0x1
 .2:
@@ -56,8 +55,7 @@ f99:
 	jal f100
 		move_ $a2, $s5
 	addiu $s0, 0x1
-	sltu $v0, $s1, $s0
-	beqz $v0, .3
+	bgeu $s1, $s0, .3
 		mult $s5, $s0
 .4:
 	addiu $s1, 0x1

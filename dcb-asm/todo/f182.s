@@ -102,15 +102,13 @@ f186:
 	lw $v1, 0x10($s3)
 	lw $v0, 0xc($s3)
 	nop
-	sltu $v0, $v0, $v1
-	beqz $v0, .37
+	bgeu $v0, $v1, .37
 		move_ $s4, $zr
 .1:
 	lhu $a1, ($s1)
 	nop
 	addiu $v1, $a1, -0x5
-	sltiu $v0, $v1, 0xa
-	beqz $v0, .35
+	bgeiu $v1, 0xa, .35
 		lui $v0, %hi(unknown_fn_ptrs4)
 	addiu $v0, %lo(unknown_fn_ptrs4)
 	sll $v1, 0x2
@@ -154,8 +152,7 @@ f186:
 		nop
 	lhu $v1, 0x4($s1)
 	nop
-	sltiu $v0, $v1, 0x7
-	beqz $v0, .28
+	bgeiu $v1, 0x7, .28
 		move_ $s0, $s1
 	la_ $v0, unknown_fn_ptrs2
 	sll $v1, 0x2
@@ -394,8 +391,7 @@ f186:
 		nop
 	lhu $v1, 0x4($s1)
 	nop
-	sltiu $v0, $v1, 0x6
-	beqz $v0, .28
+	bgeiu $v1, 0x6, .28
 		move_ $a0, $s1
 	la_ $v0, unknown_fn_ptrs3
 	sll $v1, 0x2

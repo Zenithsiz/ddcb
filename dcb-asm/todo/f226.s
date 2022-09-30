@@ -235,8 +235,7 @@ f226:
 	addu $s2, $s1, $v0
 	lh $v0, 0x6($s1)
 	nop
-	slti $v0, $v0, 0x7d0
-	beqz $v0, .7
+	bgei $v0, 0x7d0, .7
 		addiu $s4, $s1, 0x18
 	lh $a0, 0xa7a($s1)
 	nop

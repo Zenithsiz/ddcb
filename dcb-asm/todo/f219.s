@@ -252,8 +252,7 @@ f222:
 	sh $v0, 0x6($s2)
 	sll $v0, 0x10
 	sra $v0, 0x10
-	slti $v0, $v0, 0x3c
-	beqz $v0, .1
+	bgei $v0, 0x3c, .1
 		li $v0, -0x1
 	sh $v0, 0x6($s2)
 .1:
@@ -301,13 +300,11 @@ f222:
 .5:
 	lhu $v0, 0x6($s2)
 	nop
-	sltiu $v0, $v0, 0x1000
-	beqz $v0, .7
+	bgeiu $v0, 0x1000, .7
 		nop
 	lhu $v0, 0xe($s2)
 	nop
-	sltiu $v0, $v0, 0x1000
-	beqz $v0, .7
+	bgeiu $v0, 0x1000, .7
 		nop
 	lw $v0, ($s5)
 	nop
@@ -394,8 +391,7 @@ f222:
 .12:
 	lhu $v0, 0x6($s0)
 	nop
-	sltiu $v0, $v0, 0x1000
-	beqz $v0, .14
+	bgeiu $v0, 0x1000, .14
 		nop
 	lui $a0, 0x801d
 	lh $v0, 0x69fc($a0)
@@ -404,8 +400,7 @@ f222:
 	addu $v0, $s0
 	lhu $v0, 0x6($v0)
 	nop
-	sltiu $v0, $v0, 0x1000
-	beqz $v0, .14
+	bgeiu $v0, 0x1000, .14
 		nop
 	lw $v0, ($s6)
 	nop
@@ -771,14 +766,12 @@ f225:
 	j f225.7
 		move_ $t0, $v1
 .5:
-	slt $v0, $v0, $t0
-	beqz $v0, .6
+	bge $v0, $t0, .6
 		lui $v0, 0xffff
 	j f225.7
 		li $t0, 0x8000
 .6:
-	slt $v0, $t0, $v0
-	beqz $v0, .7
+	bge $t0, $v0, .7
 		nop
 	li $t0, -0x8000
 .7:
@@ -807,14 +800,12 @@ f225:
 	j f225.12
 		move_ $t0, $v1
 .10:
-	slt $v0, $v0, $t0
-	beqz $v0, .11
+	bge $v0, $t0, .11
 		lui $v0, 0xffff
 	j f225.12
 		li $t0, 0x8000
 .11:
-	slt $v0, $t0, $v0
-	beqz $v0, .12
+	bge $t0, $v0, .12
 		nop
 	li $t0, -0x8000
 .12:
@@ -845,14 +836,12 @@ f225:
 	j f225.17
 		li $t0, 0x1
 .15:
-	slt $v0, $v0, $t0
-	beqz $v0, .16
+	bge $v0, $t0, .16
 		lui $v0, 0xffff
 	j f225.17
 		li $t0, 0x8000
 .16:
-	slt $v0, $t0, $v0
-	beqz $v0, .17
+	bge $t0, $v0, .17
 		nop
 	li $t0, -0x8000
 .17:

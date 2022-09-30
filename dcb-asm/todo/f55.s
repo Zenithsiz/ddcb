@@ -3,8 +3,7 @@ f55:
 	lbu $a3, 0x4d($t1)
 	lb $a2, 0x4d($t1)
 	nop
-	slti $v0, $a2, 0x6
-	beqz $v0, .0
+	bgei $a2, 0x6, .0
 		move_ $t2, $a1
 	lh $v0, 0x38($t1)
 	lhu $a0, 0x30($t1)

@@ -280,8 +280,7 @@ f67:
 	lbu $v0, 0x1b($s0)
 	nop
 	addiu $v1, $v0, -0x1
-	sltiu $v0, $v1, 0x7
-	beqz $v0, .2
+	bgeiu $v1, 0x7, .2
 		move_ $a0, $zr
 	la_ $v0, unknown_fn_ptrs0
 	sll $v1, 0x2
@@ -506,8 +505,7 @@ f70:
 		nop
 	lw $v1, 0x4($a0)
 	nop
-	slt $v0, $a2, $v1
-	beqz $v0, .1
+	bge $a2, $v1, .1
 		nop
 	move_ $a2, $v1
 .1:

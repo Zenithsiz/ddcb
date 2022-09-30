@@ -24,8 +24,7 @@ f3:
 	andi $v1, $a0, 0xffff
 	lhu $v0, %lo(S_0x80077a1c)($a2)
 	nop
-	sltu $v0, $v0, $v1
-	beqz $v0, .2
+	bgeu $v0, $v1, .2
 		nop
 	lh $a0, %lo(S_0x80077a1c)($a2)
 	lui $v0, %hi(S_0x80077a14)

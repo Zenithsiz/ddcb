@@ -257,8 +257,7 @@ f206:
 	sw $v0, 0x80($s2)
 	lh $v0, 0x4($s4)
 	nop
-	slt $v0, $s6, $v0
-	beqz $v0, .5
+	bge $s6, $v0, .5
 		move_ $v0, $v1
 	bgez $v0, .2
 		nop
@@ -676,8 +675,7 @@ f215:
 	move_ $s5, $a1
 	move_ $s1, $a2
 	lb $s7, 0x70($sp)
-	slti $v0, $s0, 0x18
-	beqz $v0, .6
+	bgei $s0, 0x18, .6
 		move_ $s6, $a3
 	lwi $v0, 0x801d6a4c
 	sll $v1, $s0, 0x2

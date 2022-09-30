@@ -32,8 +32,7 @@ f92:
 f93:
 	lwi $v0, 0x801d4868
 	nop
-	slt $v0, $v0, $a0
-	beqz $v0, .1
+	bge $v0, $a0, .1
 		move_ $t1, $zr
 	lui $t0, 0x801d
 	lui $a3, 0x801d
@@ -89,8 +88,7 @@ f94:
 	nop
 	addiu $v1, $s1, 0x1
 	sw $v1, 0x4878($v0)
-	slti $v0, $s1, 0x21f
-	beqz $v0, .2
+	bgei $s1, 0x21f, .2
 		li $v0, -0x1
 	jal f94
 		sll $s0, $s1, 0x2
@@ -143,8 +141,7 @@ f95:
 	addiu $v1, 0x1
 	blt $v1, $s1, .0
 		addu $v0, $v1, $a0
-	sltu $v0, $s4, $fp
-	beqz $v0, .11
+	bgeu $s4, $fp, .11
 		lui $s5, 0x801d
 	lui $s6, 0x801d
 .1:
@@ -177,16 +174,14 @@ f95:
 .5:
 	lw $s0, ($v0)
 	nop
-	slti $v0, $s0, 0x110
-	beqz $v0, .3
+	bgei $s0, 0x110, .3
 		nop
 .6:
 	lw $v0, 0x487c($s5)
 	nop
 	addiu $v0, 0x1
 	sw $v0, 0x487c($s5)
-	slti $v0, $s0, 0x100
-	beqz $v0, .7
+	bgei $s0, 0x100, .7
 		lui $v1, 0x801d
 	lw $v0, 0x4874($s6)
 	nop

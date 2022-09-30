@@ -88,8 +88,7 @@ f44:
 	lh $v1, 0x10($a0)
 	nop
 	subu $v1, $v0, $v1
-	slt $v0, $v1, $a1
-	beqz $v0, .1
+	bge $v1, $a1, .1
 		nop
 	move_ $a1, $v1
 .1:
@@ -97,8 +96,7 @@ f44:
 	lh $v1, 0x12($a0)
 	nop
 	subu $v1, $v0, $v1
-	slt $v0, $v1, $a2
-	beqz $v0, .2
+	bge $v1, $a2, .2
 		nop
 	move_ $a2, $v1
 .2:

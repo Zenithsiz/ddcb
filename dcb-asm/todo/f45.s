@@ -18,13 +18,11 @@ f45:
 	move_ $s7, $v0
 	lh $v0, 0x1c($s5)
 	nop
-	slti $v0, $v0, 0x140
-	beqz $v0, .12
+	bgei $v0, 0x140, .12
 		move_ $v0, $s7
 	lh $v0, 0x1e($s5)
 	nop
-	slti $v0, $v0, 0xf0
-	beqz $v0, .12
+	bgei $v0, 0xf0, .12
 		move_ $v0, $s7
 	lh $v0, 0x1c($s5)
 	lh $v1, 0x20($s5)
@@ -161,8 +159,7 @@ f45:
 	beqz $v1, .10
 		li $v0, 0x2
 	beq $v1, $v0, .4
-		slti $v0, $v1, 0x3
-	beqz $v0, .2
+		bgei $v1, 0x3, .2
 		li $v0, 0x1
 	beq $v1, $v0, .3
 		addiu $s1, $sp, 0x40

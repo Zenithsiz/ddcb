@@ -42,16 +42,14 @@ f48:
 	lhu $a2, ($v0)
 	lh $v1, ($v0)
 	nop
-	slti $v0, $v1, 0x140
-	beqz $v0, .5
+	bgei $v1, 0x140, .5
 		nop
 	lw $a1, 0x90($sp)
 	nop
 	lhu $t0, 0x2($a1)
 	lh $a0, 0x2($a1)
 	nop
-	slti $v0, $a0, 0xf0
-	beqz $v0, .5
+	bgei $a0, 0xf0, .5
 		nop
 	lhu $t1, 0x4($a1)
 	lh $v0, 0x4($a1)

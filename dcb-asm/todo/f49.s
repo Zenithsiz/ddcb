@@ -35,8 +35,7 @@ f49:
 	lh $v1, 0x12($s3)
 	lh $v0, 0xa($s3)
 	nop
-	slt $v0, $v1, $v0
-	beqz $v0, .7
+	bge $v1, $v0, .7
 		nop
 	lh $s0, ($s3)
 	lh $v0, 0x4($s3)

@@ -48,8 +48,7 @@ f115:
 	lw $a0, 0x38($sp)
 	nop
 	addiu $v0, $a0, -0x2
-	sltiu $v0, $v0, 0xfff
-	beqz $v0, .2
+	bgeiu $v0, 0xfff, .2
 		nop
 	bnez $s1, .1
 		lui $v0, 0x8008

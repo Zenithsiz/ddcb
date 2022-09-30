@@ -21,16 +21,14 @@ f4:
 .1:
 	addiu $a0, 0x1
 .2:
-	slti $v0, $a0, 0x20
-	beqz $v0, .0
+	bgei $a0, 0x20, .0
 		addiu $s0, 0xc0
 	lw $v0, ($s0)
 	nop
 	bltz $v0, .2
 		addiu $a0, 0x1
 	addiu $a0, -0x1
-	slti $v0, $a0, 0x20
-	beqz $v0, .13
+	bgei $a0, 0x20, .13
 		li $v0, -0x1
 .3:
 	bgez $a1, .5
@@ -46,8 +44,7 @@ f4:
 	nop
 	lhu $v0, ($a1)
 	nop
-	slt $v0, $a2, $v0
-	beqz $v0, .4
+	bge $a2, $v0, .4
 		nop
 	j .6
 		nop
@@ -67,8 +64,7 @@ f4:
 	lw $v1, ($a1)
 	nop
 	andi $v0, $v1, 0xffff
-	slt $v0, $v0, $a2
-	beqz $v0, .6
+	bge $v0, $a2, .6
 		nop
 	li $s1, -0x86
 	move_ $a2, $v1
@@ -88,8 +84,7 @@ f4:
 	lw $a1, ($v1)
 	nop
 	andi $v0, $a1, 0xffff
-	slt $v0, $a2, $v0
-	beqz $v0, .8
+	bge $a2, $v0, .8
 		nop
 	li $s1, -0x86
 	move_ $a2, $a1

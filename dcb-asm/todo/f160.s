@@ -457,8 +457,7 @@ f169:
 .1:
 	lwi $v0, 0x1f800020
 	nop
-	sltu $v0, $v1, $v0
-	beqz $v0, .2
+	bgeu $v1, $v0, .2
 		sll $v1, 0x2
 	addu $v1, $a1
 	lw $v0, ($v1)
@@ -508,8 +507,7 @@ f170:
 .1:
 	lwi $v0, 0x1f800020
 	nop
-	sltu $v0, $v1, $v0
-	beqz $v0, .2
+	bgeu $v1, $v0, .2
 		sll $v1, 0x2
 	addu $v1, $a1
 	lw $v0, ($v1)
@@ -547,8 +545,7 @@ f171:
 .1:
 	lwi $v0, 0x1f800020
 	nop
-	sltu $v0, $v1, $v0
-	beqz $v0, .2
+	bgeu $v1, $v0, .2
 		sll $v1, 0x2
 	addu $v1, $a1
 	lw $v0, ($v1)
@@ -590,8 +587,7 @@ f172:
 .1:
 	lwi $v0, 0x1f800020
 	nop
-	sltu $v0, $v1, $v0
-	beqz $v0, .2
+	bgeu $v1, $v0, .2
 		sll $v1, 0x2
 	addu $v1, $a1
 	lw $v0, ($v1)
@@ -1557,8 +1553,7 @@ f180:
 	mfc2 $v1, $7
 	lw $v0, 0x20($a0)
 	nop
-	sltu $v0, $v1, $v0
-	beqz $v0, .2
+	bgeu $v1, $v0, .2
 		sll $v0, $v1, 0x2
 	addu $v0, $a1
 	lw $v1, ($v0)

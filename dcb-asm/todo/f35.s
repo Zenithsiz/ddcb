@@ -8,8 +8,7 @@ f35:
 	move_ $s1, $a0
 	lw $v1, 0x28($s1)
 	nop
-	slti $v0, $v1, 0x4
-	beqz $v0, .8
+	bgei $v1, 0x4, .8
 		move_ $a1, $v1
 	move_ $s2, $zr
 	beqz $v1, .1
