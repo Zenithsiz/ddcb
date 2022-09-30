@@ -75,7 +75,6 @@ dylib_saiseg_fns:
 #}
 #```
 dylib_saiseg_func_0:
-# fn()
 .0x801dfb6c:	addiu $sp, -0x20
 .0x801dfb70:	sw $ra, 0x1c($sp)
 .0x801dfb74:	sw $s2, 0x18($sp)
@@ -109,26 +108,42 @@ dylib_saiseg_func_0:
 
 
 ##########
+#```
+#fn dylib_saiseg_func_1(ptr: *u8) -> *u8 {
+#	for (u32 n=0; n<3; n++) {
+#		if ptr[0x3c] == 0xff {
+#			ptr[0x3e] = 0u8;
+#			ptr[0x3c] = 0u16;
+#			return ptr;
+#		}
+#		ptr += 0x40;
+#	}
+#	return NULL;
+#}
+#```
 dylib_saiseg_func_1:
-# fn()
-.0x801dfbc4:	addu $v1, $zr, $zr
+ptr=$a0
+n=$v1
+.0x801dfbc4:	addu n, $zr, $zr
 .0x801dfbc8:	addiu $a1, $zr, -0x1
 	.0:
-.0x801dfbcc:	lb $v0, 0x3e($a0)
+.0x801dfbcc:	lb $v0, 0x3e(ptr)
 .0x801dfbd0:	nop
-.0x801dfbd4:	bne $v0, $a1, .0x801dfbec
-.0x801dfbd8:		addiu $v1, 0x1
-.0x801dfbdc:	sb $zr, 0x3e($a0)
-.0x801dfbe0:	sh $zr, 0x3c($a0)
+.0x801dfbd4:	bne $v0, $a1, .1
+.0x801dfbd8:		addiu n, 0x1
+.0x801dfbdc:	sb $zr, 0x3e(ptr)
+.0x801dfbe0:	sh $zr, 0x3c(ptr)
 .0x801dfbe4:	jr $ra
-.0x801dfbe8:		addu $v0, $a0, $zr
+.0x801dfbe8:		move_ $v0, ptr
+	.1:
+.0x801dfbec:	slti $v0, n, 0x3
+.0x801dfbf0:	bnez $v0, .0
+.0x801dfbf4:		addiu ptr, 0x40
+.0x801dfbf8:	jr $ra
+.0x801dfbfc:		move_ $v0, $zr
+#ptr=
+#n=
 ##########
-
-.0x801dfbec: slti $v0, $v1, 0x3
-.0x801dfbf0: bnez $v0, dylib_saiseg_func_1.0
-.0x801dfbf4: 	addiu $a0, 0x40
-.0x801dfbf8: jr $ra
-.0x801dfbfc: 	addu $v0, $zr, $zr
 
 ##########
 dylib_saiseg_func_2:
