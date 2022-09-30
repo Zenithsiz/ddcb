@@ -29,8 +29,7 @@ f71:
 		nop
 	lw $a1, 0x4($v1)
 	nop
-	slt $v0, $a1, $s0
-	bnez $v0, .4
+	blt $a1, $s0, .4
 		lui $v0, 0x8000 # TODO: Is this the start of an address?
 	or $s1, $a0, $v0
 	sw $s1, ($v1)

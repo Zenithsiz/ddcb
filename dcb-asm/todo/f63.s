@@ -333,8 +333,7 @@ f67:
 	sra $v0, 0x10
 	lh $v1, 0x16($s0)
 	nop
-	slt $v0, $v0, $v1
-	bnez $v0, .7
+	blt $v0, $v1, .7
 		move_ $v0, $zr
 	beqz $a2, .6
 		li $v0, 0x1
@@ -347,8 +346,7 @@ f67:
 	lh $v0, 0x12($s0)
 	lh $v1, 0x18($s0)
 	nop
-	slt $v0, $v0, $v1
-	bnez $v0, .7
+	blt $v0, $v1, .7
 		move_ $v0, $zr
 	sh $zr, 0x12($s0)
 	lhu $v0, 0x6($s0)

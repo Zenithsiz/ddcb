@@ -39,8 +39,7 @@ f4:
 	addiu $a1, $v0, %lo(S_0x80077ba0)
 	lhu $v0, %lo(S_0x80077ba0)($v0)
 	nop
-	slt $v0, $a2, $v0
-	bnez $v0, .6
+	blt $a2, $v0, .6
 		nop
 .4:
 	lw $a1, 0xc($a1)

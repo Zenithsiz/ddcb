@@ -349,16 +349,14 @@ f222:
 	lh $v0, 0x69fc($s6)
 	nop
 	addiu $v0, -0x1
-	slt $v0, $s3, $v0
-	bnez $v0, .4
+	blt $s3, $v0, .4
 		addiu $s5, 0x4
 .8:
 	addiu $s4, 0x1
 	addiu $s2, 0x8
 	lhi $v0, 0x801d69fe
 	nop
-	slt $v0, $s4, $v0
-	bnez $v0, .3
+	blt $s4, $v0, .3
 		addiu $s5, 0x4
 .9:
 	lui $v0, 0x801d
@@ -459,16 +457,14 @@ f222:
 	lh $v0, 0x69fe($v1)
 	nop
 	addiu $v0, -0x1
-	slt $v0, $s4, $v0
-	bnez $v0, .11
+	blt $s4, $v0, .11
 		addu $v0, $s3, $s4
 .15:
 	addiu $s3, 0x1
 	addiu $s2, 0x8
 	lh $v0, 0x69fc($fp)
 	nop
-	slt $v0, $s3, $v0
-	bnez $v0, .10
+	blt $s3, $v0, .10
 		addiu $s5, 0x4
 .16:
 	lui $v1, 0x8007
@@ -556,8 +552,7 @@ f223:
 	addiu $s1, 0x1
 	lh $v0, 0x6a00($s3)
 	nop
-	slt $v0, $s1, $v0
-	bnez $v0, .1
+	blt $s1, $v0, .1
 		addiu $s0, 0x10
 .2:
 	addiu $s5, 0x1
@@ -653,13 +648,11 @@ f223:
 	addiu $s1, 0x1
 	lhi $v0, 0x801d69fc
 	nop
-	slt $v0, $s1, $v0
-	bnez $v0, .4
+	blt $s1, $v0, .4
 		addiu $s3, 0x8
 .10:
 	addiu $t0, 0x1
-	slt $v0, $t0, $t2
-	bnez $v0, .3
+	blt $t0, $t2, .3
 		nop
 .11:
 	lui $a0, 0x8002

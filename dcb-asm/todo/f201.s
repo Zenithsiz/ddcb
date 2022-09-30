@@ -21,8 +21,7 @@ f201:
 	move_ $a3, $v1
 .2:
 	addiu $t0, 0x1
-	slt $v0, $t0, $a1
-	bnez $v0, .0
+	blt $t0, $a1, .0
 		addiu $v1, 0x8
 .3:
 	sw $a3, ($a2)
@@ -335,8 +334,7 @@ f206:
 	lh $v0, 0x4($s4)
 	nop
 	addiu $v0, 0x1
-	slt $v0, $s6, $v0
-	bnez $v0, .0
+	blt $s6, $v0, .0
 		addiu $s7, 0x8
 .6:
 	lw $a0, 0x38($sp)
@@ -371,8 +369,7 @@ f207:
 	addu $v0, $a0, $v0
 	sw $v0, 0x14($v1)
 	addiu $a1, 0x1
-	slt $v0, $a1, $a2
-	bnez $v0, .0
+	blt $a1, $a2, .0
 		addiu $v1, 0x18
 .1:
 	jr $ra
@@ -399,8 +396,7 @@ f209:
 	addiu $a2, 0x1
 	lh $v0, 0x4($a0)
 	nop
-	slt $v0, $a2, $v0
-	bnez $v0, .0
+	blt $a2, $v0, .0
 		addiu $a1, 0xc
 .1:
 	jr $ra
@@ -470,8 +466,7 @@ f210:
 	addiu $s4, 0x10
 	lh $v0, 0x4($s3)
 	nop
-	slt $v0, $s2, $v0
-	bnez $v0, .0
+	blt $s2, $v0, .0
 		addiu $s0, 0x50
 .3:
 	lw $ra, 0x24($sp)
@@ -953,8 +948,7 @@ f215:
 	addiu $s4, 0x1
 	lh $v0, 0x4($s3)
 	nop
-	slt $v0, $s4, $v0
-	bnez $v0, .13
+	blt $s4, $v0, .13
 		nop
 	j .20
 		nop
@@ -993,8 +987,7 @@ f215:
 	addiu $s4, 0x1
 	lh $v0, 0x4($s3)
 	nop
-	slt $v0, $s4, $v0
-	bnez $v0, .17
+	blt $s4, $v0, .17
 		nop
 .20:
 	jal f210
@@ -1393,8 +1386,7 @@ f218:
 	addiu $s2, 0x1
 	lh $v0, 0x4($s1)
 	nop
-	slt $v0, $s2, $v0
-	bnez $v0, .5
+	blt $s2, $v0, .5
 		addiu $s0, 0x10
 .8:
 	jal f805

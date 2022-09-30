@@ -343,8 +343,7 @@ f250:
 	addiu $t0, 0x1
 	lhu $v0, 0x6b10($t3)
 	nop
-	slt $v0, $t0, $v0
-	bnez $v0, .1
+	blt $t0, $v0, .1
 		nop
 .2:
 	addiu $t2, 0x1

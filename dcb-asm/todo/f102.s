@@ -89,8 +89,7 @@ f102:
 	nop
 	addu $v0, $v1
 	sh $v0, 0x12($sp)
-	slt $v0, $s0, $s3
-	bnez $v0, .5
+	blt $s0, $s3, .5
 		subu $a0, $s3, $s0
 .7:
 	jal f921

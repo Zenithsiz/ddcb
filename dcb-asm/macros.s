@@ -62,6 +62,12 @@ lui $at, %hi(\addr)
 sb \reg, %lo(\addr)($at)
 .endm
 
+# `slt` with `$v0` + `bnez`
+.macro blt lhs, rhs, addr
+slt $v0, \lhs, \rhs
+bnez $v0, \addr
+.endm
+
 # `slti` with `$v0` + `bnez`
 .macro blti reg, imm, addr
 slti $v0, \reg, \imm

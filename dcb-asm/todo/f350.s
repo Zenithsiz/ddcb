@@ -2540,8 +2540,7 @@ f384:
 	addu $v1, $a0
 	bltz $v0, .0
 		sw $v1, 0x38($s3)
-	slt $v0, $v1, $a1
-	bnez $v0, .3
+	blt $v1, $a1, .3
 		nop
 	j .1
 		sw $a1, 0x38($s3)
@@ -2549,8 +2548,7 @@ f384:
 	lw $v0, 0x38($s3)
 	lw $v1, 0xbc($s3)
 	nop
-	slt $v0, $v1, $v0
-	bnez $v0, .3
+	blt $v1, $v0, .3
 		nop
 	sw $v1, 0x38($s3)
 .1:
@@ -2573,8 +2571,7 @@ f384:
 	addu $v1, $a0
 	bltz $v0, .4
 		sw $v1, 0x3c($s3)
-	slt $v0, $v1, $a1
-	bnez $v0, .7
+	blt $v1, $a1, .7
 		nop
 	j .5
 		sw $a1, 0x3c($s3)
@@ -2582,8 +2579,7 @@ f384:
 	lw $v0, 0x3c($s3)
 	lw $v1, 0xc0($s3)
 	nop
-	slt $v0, $v1, $v0
-	bnez $v0, .7
+	blt $v1, $v0, .7
 		nop
 	sw $v1, 0x3c($s3)
 .5:
@@ -2606,8 +2602,7 @@ f384:
 	addu $v1, $a0
 	bltz $v0, .8
 		sw $v1, 0x40($s3)
-	slt $v0, $v1, $a1
-	bnez $v0, .11
+	blt $v1, $a1, .11
 		nop
 	j .9
 		sw $a1, 0x40($s3)
@@ -2615,8 +2610,7 @@ f384:
 	lw $v0, 0x40($s3)
 	lw $v1, 0xc4($s3)
 	nop
-	slt $v0, $v1, $v0
-	bnez $v0, .11
+	blt $v1, $v0, .11
 		nop
 	sw $v1, 0x40($s3)
 .9:
@@ -3578,8 +3572,7 @@ f387:
 	addiu $s3, 0x1
 	lw $v1, 0x180($s1)
 	nop
-	slt $v0, $s3, $v1
-	bnez $v0, .0
+	blt $s3, $v1, .0
 		addiu $s0, 0x8
 .25:
 	lw $ra, 0x24($sp)
@@ -3817,8 +3810,7 @@ f388:
 	lw $v0, 0x180($s7)
 	nop
 	sll $v0, 0x1
-	slt $v0, $s0, $v0
-	bnez $v0, .5
+	blt $s0, $v0, .5
 		nop
 .7:
 	addiu $s2, 0x1
@@ -4143,8 +4135,7 @@ f389:
 	addiu $s5, 0x1
 	lw $v0, 0x180($s1)
 	nop
-	slt $v0, $s5, $v0
-	bnez $v0, .13
+	blt $s5, $v0, .13
 		addiu $s3, 0x30
 	j f389.21
 		nop
@@ -4327,8 +4318,7 @@ f389:
 	addiu $s5, 0x1
 	lw $v0, 0x180($s1)
 	nop
-	slt $v0, $s5, $v0
-	bnez $v0, .18
+	blt $s5, $v0, .18
 		addiu $s3, 0x30
 .21:
 	jal f805
@@ -4839,8 +4829,7 @@ f391:
 	addiu $s4, 0x1
 	lhu $v0, 0x152($s2)
 	nop
-	slt $v0, $s4, $v0
-	bnez $v0, .6
+	blt $s4, $v0, .6
 		addiu $s1, 0x88
 .28:
 	lw $v1, 0xa8($sp)
@@ -5083,8 +5072,7 @@ f392:
 	addiu $s7, 0x1
 	lhu $v0, 0x152($s5)
 	nop
-	slt $v0, $s7, $v0
-	bnez $v0, .3
+	blt $s7, $v0, .3
 		addiu $s3, 0x88
 	j f392.34
 		nop
@@ -5270,8 +5258,7 @@ f392:
 	addiu $s7, 0x1
 	lhu $v0, 0x152($s5)
 	nop
-	slt $v0, $s7, $v0
-	bnez $v0, .10
+	blt $s7, $v0, .10
 		addiu $s3, 0x88
 	j f392.34
 		nop
@@ -5398,8 +5385,7 @@ f392:
 	addiu $s7, 0x1
 	lhu $v0, 0x152($s5)
 	nop
-	slt $v0, $s7, $v0
-	bnez $v0, .19
+	blt $s7, $v0, .19
 		addiu $s3, 0x88
 	j f392.34
 		nop
@@ -5561,8 +5547,7 @@ f392:
 	addiu $s7, 0x1
 	lhu $v0, 0x152($s5)
 	nop
-	slt $v0, $s7, $v0
-	bnez $v0, .26
+	blt $s7, $v0, .26
 		addiu $s3, 0x88
 .34:
 	lhu $v0, 0x150($s5)

@@ -153,8 +153,7 @@ f282:
 .0:
 	sb $a1, ($a0)
 	addiu $v1, 0x1
-	slt $v0, $v1, $s0
-	bnez $v0, .0
+	blt $v1, $s0, .0
 		addiu $a0, 0x1
 	j .7
 		sb $zr, ($a0)
@@ -2510,8 +2509,7 @@ f330:
 	addu $v0, $v1, $v0
 	andi $v1, $v0, 0xff
 	addiu $a2, 0x1
-	slt $v0, $a2, $a0
-	bnez $v0, .0
+	blt $a2, $a0, .0
 		addiu $a1, 0x1
 .1:
 	lbu $v0, ($a1)
@@ -2541,8 +2539,7 @@ f331:
 	addu $v0, $v1, $v0
 	andi $v1, $v0, 0xff
 	addiu $a2, 0x1
-	slt $v0, $a2, $a0
-	bnez $v0, .0
+	blt $a2, $a0, .0
 		addiu $a1, 0x1
 .1:
 	sb $a3, ($a1)
@@ -4372,8 +4369,7 @@ f349:
 	sra $v0, 0x18
 	lb $v1, 0x12f($v1)
 	nop
-	slt $v0, $v0, $v1
-	bnez $v0, .2
+	blt $v0, $v1, .2
 		nop
 	lw $v1, 0x26d4($a2)
 	nop

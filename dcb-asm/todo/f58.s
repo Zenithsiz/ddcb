@@ -266,8 +266,7 @@ f58:
 	sra $v0, 0x10
 	lh $v1, 0x20($s0)
 	nop
-	slt $v0, $v0, $v1
-	bnez $v0, .14
+	blt $v0, $v1, .14
 		lui $v1, %hi(S_0x80089840)
 	addiu $v1, %lo(S_0x80089840)
 	lbu $v0, 0x28($s0)

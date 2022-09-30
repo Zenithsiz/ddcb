@@ -143,8 +143,7 @@ f40:
 	addiu $s5, 0x1
 	lhu $v0, %lo(S_0x800897ec)($s7)
 	nop
-	slt $v0, $s5, $v0
-	bnez $v0, .1
+	blt $s5, $v0, .1
 		addiu $s2, 0x294
 .4:
 	addiu $s6, 0x1

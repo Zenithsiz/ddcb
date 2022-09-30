@@ -130,8 +130,7 @@ f42:
 	lh $a0, 0x10($t0)
 	nop
 	subu $v1, $a0
-	slt $v0, $v0, $v1
-	bnez $v0, .11
+	blt $v0, $v1, .11
 		subu $v0, $a2, $a1
 	sh $v0, 0x4($t0)
 .11:
@@ -142,8 +141,7 @@ f42:
 	lh $a0, 0x12($t0)
 	nop
 	subu $v1, $a0
-	slt $v0, $v0, $v1
-	bnez $v0, .12
+	blt $v0, $v1, .12
 		subu $v0, $a2, $a1
 	sh $v0, 0x6($t0)
 .12:

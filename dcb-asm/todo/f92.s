@@ -59,8 +59,7 @@ f93:
 	sw $v0, 0x486c($a3)
 	addiu $v1, 0x1
 	sw $v1, 0x4870($a2)
-	slt $v0, $a1, $a0
-	bnez $v0, .0
+	blt $a1, $a0, .0
 		sw $a1, 0x4868($t0)
 .1:
 	lui $v0, 0x801d
@@ -142,8 +141,7 @@ f95:
 .0:
 	sb $zr, ($v0)
 	addiu $v1, 0x1
-	slt $v0, $v1, $s1
-	bnez $v0, .0
+	blt $v1, $s1, .0
 		addu $v0, $v1, $a0
 	sltu $v0, $s4, $fp
 	beqz $v0, .11
@@ -226,8 +224,7 @@ f95:
 	sb $v1, ($v0)
 	addiu $s1, 0x1
 	addiu $a0, 0x1
-	slt $v0, $a0, $s0
-	bnez $v0, .8
+	blt $a0, $s0, .8
 		andi $s1, 0xfff
 .9:
 	addu $s4, $s0
