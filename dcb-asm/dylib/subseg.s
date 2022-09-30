@@ -7768,12 +7768,12 @@ dylib_subseg_func_6:
 .0x801e7184: 	nop
 .0x801e7188: beqz $s6, .0x801e71ac
 .0x801e718c: 	sll $v0, $s5, 0x2
-.0x801e7190: j dylib_sugseg_func_33dylib_sugseg_func_33.0x801e72e4
+.0x801e7190: j dylib_sugseg_func_33.0x801e72e4
 .0x801e7194: 	nop
 .0x801e7198: addiu $v0, $zr, 0x2
 .0x801e719c: beq $s6, $v0, .0x801e7268
 .0x801e71a0: 	addiu $a0, $s2, 0x74
-.0x801e71a4: j dylib_sugseg_func_33dylib_sugseg_func_33.0x801e72e4
+.0x801e71a4: j dylib_sugseg_func_33.0x801e72e4
 .0x801e71a8: 	nop
 .0x801e71ac: addu $s0, $v0, $fp
 .0x801e71b0: lw $v0, 0x0($s0)
@@ -7811,7 +7811,7 @@ dylib_subseg_func_6:
 .0x801e7230: addu $a2, $zr, $zr
 .0x801e7234: jal f274
 .0x801e7238: 	addiu $a3, 0x10
-.0x801e723c: j dylib_sugseg_func_33dylib_sugseg_func_33.0x801e72e4
+.0x801e723c: j dylib_sugseg_func_33.0x801e72e4
 .0x801e7240: 	nop
 .0x801e7244: sw $s4, 0x10($sp)
 .0x801e7248: sw $s3, 0x14($sp)
@@ -7820,7 +7820,7 @@ dylib_subseg_func_6:
 .0x801e7254: addu $a2, $zr, $zr
 .0x801e7258: jal f274
 .0x801e725c: 	addiu $a3, $zr, 0x5
-.0x801e7260: j dylib_sugseg_func_33dylib_sugseg_func_33.0x801e72e4
+.0x801e7260: j dylib_sugseg_func_33.0x801e72e4
 .0x801e7264: 	nop
 .0x801e7268: sw $s4, 0x10($sp)
 .0x801e726c: sw $s3, 0x14($sp)
@@ -7828,7 +7828,7 @@ dylib_subseg_func_6:
 .0x801e7274: addu $a2, $zr, $zr
 .0x801e7278: jal f274
 .0x801e727c: 	addiu $a3, $zr, 0x6
-.0x801e7280: j dylib_sugseg_func_33dylib_sugseg_func_33.0x801e72e4
+.0x801e7280: j dylib_sugseg_func_33.0x801e72e4
 .0x801e7284: 	nop
 .0x801e7288: addiu $s7, $zr, 0x9
 .0x801e728c: sw $s7, 0x10($sp)

@@ -47,13 +47,25 @@ def main(args):
 			dot_def_matches = line_dot_label_def_regex.search(line)
 			if dot_def_matches is not None:
 				label = dot_def_matches.group(1)
-				line = line.replace(f".{label}", f"{latest_non_dot_label_def}.{label}")
+				# TODO: This doesn't account for `label :`, which might be invalid syntax, not sure,
+				#       if not, support it.
+				line = line.replace(f".{label}:", f"{latest_non_dot_label_def}.{label}:")
 
 			# If this is a dot label usage, add the latest non-dot definition
 			dot_use_matches = line_dot_label_use_regex.search(line)
 			if dot_use_matches is not None:
 				label = dot_use_matches.group(1)
-				line = line.replace(f".{label}", f"{latest_non_dot_label_def}.{label}")
+				# Get the comment index, or use the end of the line
+				comment_idx = line.find('#')
+				if comment_idx == -1:
+					comment_idx = len(line)
+
+				# Get the end of the labels section (that we don't want to modify), or use the start of the line if none
+				after_label_idx = line[:comment_idx].rfind(':')
+				if after_label_idx == -1:
+					after_label_idx = 0
+				line = line[:after_label_idx] + line[after_label_idx:].replace(f".{label}",
+				                                                               f"{latest_non_dot_label_def}.{label}")
 
 		output_file.write(line)
 
