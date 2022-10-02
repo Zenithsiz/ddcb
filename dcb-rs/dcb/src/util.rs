@@ -14,11 +14,11 @@ pub use self::{
 
 /// Declares several statics with `no_mangle` and a link section
 /// of `$base_link_section` + `.` + `$NAME`
-pub macro decl_static($base_link_section:literal, $($vis:vis static $NAME:ident: $T:ty = $value:expr; )*) {
+pub macro decl_static($base_link_section:literal, $($vis:vis static mut $NAME:ident: $T:ty = $value:expr; )*) {
 	$(
 		#[no_mangle]
 		#[link_section = concat!($base_link_section, ".", stringify!($NAME))]
-		$vis static $NAME: $T = $value;
+		$vis static mut $NAME: $T = $value;
 	)*
 }
 
