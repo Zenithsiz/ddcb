@@ -413,18 +413,21 @@ Cards collected. 7 Titles from "General
 	pub static mut DYLIB_SAISEG_S_0x801f3558: u32 = 0x0100000F;
 	pub static mut DYLIB_SAISEG_S_0x801f355c: u32 = 0x00000E00;
 	pub static mut DYLIB_SAISEG_S_0x801f3560: u32 = 0x00000000;
-	pub static mut DYLIB_SAISEG_S_0x801f3564: u32 = 0x801DE27C;
-	pub static mut DYLIB_SAISEG_S_0x801f3568: u32 = 0x801DE204;
-	pub static mut DYLIB_SAISEG_S_0x801f356c: u32 = 0x801DE188;
-	pub static mut DYLIB_SAISEG_S_0x801f3570: u32 = 0x801DE144;
-	pub static mut DYLIB_SAISEG_S_0x801f3574: u32 = 0x801DE118;
-	pub static mut DYLIB_SAISEG_S_0x801f3578: u32 = 0x801DE0EC;
-	pub static mut DYLIB_SAISEG_S_0x801f357c: u32 = 0x801DE070;
-	pub static mut DYLIB_SAISEG_S_0x801f3580: u32 = 0x801DDFF8;
-	pub static mut DYLIB_SAISEG_S_0x801f3584: u32 = 0x801DDFD4;
-	pub static mut DYLIB_SAISEG_S_0x801f3588: u32 = 0x801DDFAC;
-	pub static mut DYLIB_SAISEG_S_0x801f358c: u32 = 0x801DDF88;
-	pub static mut DYLIB_SAISEG_S_0x801f3590: u32 = 0x801DDF3C;
+
+	// String pointers
+	pub static mut DYLIB_SAISEG_S_0x801f3564: *const u8 = unsafe { DYLIB_SAISEG_S_0x801de27c.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f3568: *const u8 = unsafe { DYLIB_SAISEG_S_0x801de204.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f356c: *const u8 = unsafe { DYLIB_SAISEG_S_0x801de188.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f3570: *const u8 = unsafe { DYLIB_SAISEG_S_0x801de144.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f3574: *const u8 = unsafe { DYLIB_SAISEG_S_0x801de118.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f3578: *const u8 = unsafe { DYLIB_SAISEG_S_0x801de0ec.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f357c: *const u8 = unsafe { DYLIB_SAISEG_S_0x801de070.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f3580: *const u8 = unsafe { DYLIB_SAISEG_S_0x801ddff8.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f3584: *const u8 = unsafe { DYLIB_SAISEG_S_0x801ddfd4.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f3588: *const u8 = unsafe { DYLIB_SAISEG_S_0x801ddfac.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f358c: *const u8 = unsafe { DYLIB_SAISEG_S_0x801ddf88.to_ptr() };
+	pub static mut DYLIB_SAISEG_S_0x801f3590: *const u8 = unsafe { DYLIB_SAISEG_S_0x801ddf3c.to_ptr() };
+
 	pub static mut DYLIB_SAISEG_S_0x801f3594: u32 = 0x801E0480;
 	pub static mut DYLIB_SAISEG_S_0x801f3598: u32 = 0x801E04B8;
 	pub static mut DYLIB_SAISEG_S_0x801f359c: u32 = 0x801E0650;
