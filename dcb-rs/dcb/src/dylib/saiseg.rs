@@ -1133,8 +1133,12 @@ Cards collected. 7 Titles from "General
 	pub static DYLIB_SAISEG_S_0x801f4698: u32 = 0x00000000;
 	pub static DYLIB_SAISEG_S_0x801f469c: u32 = 0x00000000;
 	pub static DYLIB_SAISEG_S_0x801f46a0: u32 = 0x00000000;
-	pub static DYLIB_SAISEG_S_0x801f46a4: u32 = 0x00000000;
-	pub static DYLIB_SAISEG_S_0x801f46a8: u32 = 0x00000000;
+	pub static DYLIB_SAISEG_S_0x801f46a4: u16 = 0x0000;
+	pub static DYLIB_SAISEG_S_0x801f46a6: u8  = 0x00;
+	pub static DYLIB_SAISEG_S_0x801f46a7: u8  = 0x00;
+	pub static DYLIB_SAISEG_S_0x801f46a8: u8  = 0x00;
+	pub static DYLIB_SAISEG_S_0x801f46a9: u8  = 0x00;
+	pub static DYLIB_SAISEG_S_0x801f46aa: u16 = 0x0000;
 	pub static DYLIB_SAISEG_S_0x801f46ac: u32 = 0x00000000;
 	pub static DYLIB_SAISEG_S_0x801f46b0: u32 = 0x00000000;
 	pub static DYLIB_SAISEG_S_0x801f46b4: u32 = 0x00000000;
