@@ -31,6 +31,8 @@ def main(args):
 	latest_non_dot_label_def = None
 
 	for line in input_lines:
+		line = line.lstrip('\t')
+
 		# If this is a non-dot label definition, set it as the lastest
 		non_dot_def_matches = line_non_dot_label_def_regex.search(line)
 		if non_dot_def_matches is not None:
