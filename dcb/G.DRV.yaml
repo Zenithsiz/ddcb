@@ -1,115 +1,153 @@
 ---
 - name: '178'
+  extension: PAK
   date: '2000-10-19T11:51:20'
   path: build/pak/dcb/G.DRV/178.PAK
 - name: '028'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/028.PAK
 - name: '040'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/040.PAK
 - name: '042'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/042.PAK
 - name: '054'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/054.PAK
 - name: '056'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/056.PAK
 - name: '059'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/059.PAK
 - name: '020'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/020.PAK
 - name: '060'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/060.PAK
 - name: '061'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/061.PAK
 - name: '066'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/066.PAK
 - name: '070'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/070.PAK
 - name: '112'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/112.PAK
 - name: '117'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/117.PAK
 - name: '128'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/128.PAK
 - name: '129'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/129.PAK
 - name: '138'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/138.PAK
 - name: '139'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/139.PAK
 - name: '014'
+  extension: PAK
   date: '2000-11-05T13:28:14'
   path: build/pak/dcb/G.DRV/014.PAK
 - name: '141'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/141.PAK
 - name: '142'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/142.PAK
 - name: '158'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/158.PAK
 - name: '159'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/159.PAK
 - name: '160'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/160.PAK
 - name: '161'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/161.PAK
 - name: '162'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/162.PAK
 - name: '164'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/164.PAK
 - name: '165'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/165.PAK
 - name: '166'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/166.PAK
 - name: '168'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/168.PAK
 - name: '169'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/169.PAK
 - name: '170'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/170.PAK
 - name: '173'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/173.PAK
 - name: '174'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/174.PAK
 - name: '140'
+  extension: PAK
   date: '2000-11-05T13:28:16'
   path: build/pak/dcb/G.DRV/140.PAK
 - name: '180'
+  extension: PAK
   date: '2000-11-05T13:28:18'
   path: build/pak/dcb/G.DRV/180.PAK
 - name: '230'
+  extension: PAK
   date: '2000-11-05T13:28:18'
   path: build/pak/dcb/G.DRV/230.PAK
 - name: VSSVER
+  extension: SCC
   date: '2001-01-09T02:55:26'
   path: dcb/G.DRV/VSSVER.SCC
