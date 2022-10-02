@@ -58,11 +58,11 @@ alias:
   dcb_elf              : $(exe_dir)/dcb.elf
   dcb_psexe            : $(exe_dir)/dcb.psexe
   mmm_buffer           : $(misc_dir)/MMM.DAT
-  asm_expanded         : $(asm_dir)/dcb-expanded.s
-  asm_expanded_deps    : $(asm_dir)/dcb-expanded.d
-  asm_processed        : $(asm_dir)/dcb-processed.s
-  asm_obj              : $(asm_dir)/dcb.o
-  asm_obj_deps         : $(asm_dir)/dcb.d
+  asm_expanded         : $(asm_dir)/expanded/^(path).s
+  asm_expanded_deps    : $(asm_dir)/expanded/^(path).d
+  asm_processed        : $(asm_dir)/processed/^(path).s
+  asm_obj              : $(asm_dir)/obj/^(path).o
+  asm_obj_deps         : $(asm_dir)/obj/^(path).d
   dcb_rs_lib           : $(dcb_rs_dir)/libdcb.a
   dcb_rs_lib_deps      : $(dcb_rs_dir)/libdcb.d
 
@@ -337,14 +337,14 @@ rules:
     out: [$(dcb_elf)]
 
     deps:
-      - $(asm_obj)
+      - $(asm_dir)/obj/dcb-asm/dcb.o
       - $(dcb_rs_lib)
       - $(linker_script_symbols)
       - $(linker_script)
       - static: $(dcb_elf::dir_name)/
     exec:
       - - $(ld)
-        - $(asm_obj)
+        - $(asm_dir)/obj/dcb-asm/dcb.o
         - -o
         - $(dcb_elf)
         - --whole-archive
