@@ -1,9 +1,9 @@
 ---
 '.text': 0x80010000
-'dylib.endseg': 0x801ddf38
-'dylib.evoseg': 0x801ddf38
-'dylib.kawseg': 0x801ddf38
-'dylib.openseg': 0x801ddf38
-'dylib.saiseg': 0x801ddf38
-'dylib.subseg': 0x801ddf38
-'dylib.sugseg': 0x801ddf38
+'dylib.endseg': 0x801ddf38 # 0a 00 00 00
+'dylib.evoseg': 0x801ddf38 # 09 00 00 00
+'dylib.kawseg': 0x801ddf38 # 05 00 00 00
+'dylib.openseg': 0x801ddf38 # 08 00 00 00
+'dylib.saiseg': 0x801ddf38 # 06 00 00 00
+'dylib.subseg': 0x801ddf38 # 07 00 00 00
+'dylib.sugseg': 0x801ddf38 # 04 00 00 00
