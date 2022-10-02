@@ -349,7 +349,6 @@ rules:
         - $(dcb_elf)
         - --whole-archive
         - -EL
-        - --nmagic
         - --script
         - $(linker_script)
         - --warn-section-align

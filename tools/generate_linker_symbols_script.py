@@ -25,7 +25,7 @@ def main(in_path="symbols.yaml", out_path="build/exe/symbols.ld"):
 			for symbol in symbols[section]:
 				symbols_file.write(f"\t\tKEEP(*({section}.{symbol}));\n")
 
-			symbols_file.write(f"\t}}\n")
+			symbols_file.write("\t}\n")
 
 		symbols_file.write("}\n")
 

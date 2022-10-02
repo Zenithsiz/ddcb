@@ -26,6 +26,7 @@
 			}
 		},
 		"rust-analyzer.checkOnSave.allTargets": false,
+		"python.formatting.provider": "yapf",
 		"cSpell.words": [
 			"acqrel",
 			"addiu",
