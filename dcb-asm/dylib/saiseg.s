@@ -5261,13 +5261,13 @@ dylib_saiseg_func_41:
 .0x801e4788: addiu $a0, $sp, 0x20
 .0x801e478c: lui $a1, 0x801e
 .0x801e4790: jal f1064
-.0x801e4794: 	addiu $a1, -0x1ab4
+.0x801e4794: 	addiu $a1, -0x1ab4# "C:\DEBUG\area0%d.TIS"
 .0x801e4798: j dylib_sugseg_func_22.0x801e47b8
 .0x801e479c: 	nop
 .0x801e47a0: lw $v0, -0x1fb0($v0)
 .0x801e47a4: addiu $a0, $sp, 0x20
 .0x801e47a8: lui $a1, 0x801e
-.0x801e47ac: lbu $a2, 0xe($v0)
+.0x801e47ac: lbu $a2, 0xe($v0) # "C:\DEBUG\area%d.TIS"
 .0x801e47b0: jal f1064
 .0x801e47b4: 	addiu $a1, -0x1a9c
 .0x801e47b8: jal f8
@@ -5293,7 +5293,7 @@ dylib_saiseg_func_41:
 .0x801e4808: addu $a0, $s1, $zr
 .0x801e480c: lui $a1, 0x801e
 .0x801e4810: jal f1064
-.0x801e4814: 	addiu $a1, -0x1a88
+.0x801e4814: 	addiu $a1, -0x1a88 # "C:\OBJECT\world.TIS"
 .0x801e4818: jal f8
 .0x801e481c: 	nop
 .0x801e4820: sw $s0, 0x10($sp)
@@ -13347,13 +13347,13 @@ dylib_saiseg_func_87:
 .0x801ebfdc: addiu $a0, $sp, 0x20
 .0x801ebfe0: lui $a1, 0x801e
 .0x801ebfe4: jal f1064
-.0x801ebfe8: 	addiu $a1, -0x17c4
+.0x801ebfe8: 	addiu $a1, -0x17c4 # "C:\OBJECT\world.TIS", used when re-entering the world menu from the cards menu / edit partner
 .0x801ebfec: j dylib_sugseg_func_75.0x801ec004
 .0x801ebff0: 	nop
 .0x801ebff4: addiu $a0, $sp, 0x20
 .0x801ebff8: lui $a1, 0x801e
 .0x801ebffc: jal f1064
-.0x801ec000: 	addiu $a1, -0x17b0
+.0x801ec000: 	addiu $a1, -0x17b0 # "C:\OBJECT\map.TIS", used when exiting from a city
 .0x801ec004: jal f8
 .0x801ec008: 	nop
 .0x801ec00c: lui $v1, 0x8002
