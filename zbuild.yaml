@@ -2,9 +2,9 @@
 alias:
   # External tools
   # prettier-ignore
-  ld       : mips-linux-gnu-ld
-  as       : mips-linux-gnu-as
-  objcopy  : mips-linux-gnu-objcopy
+  ld       : mips-elf-ld
+  as       : mips-elf-as
+  objcopy  : mips-elf-objcopy
   mkpsxiso : mkpsxiso
   cargo    : cargo
   sha256sum: sha256sum
