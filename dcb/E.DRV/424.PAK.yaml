@@ -11,12 +11,12 @@
 - file_path: '424.PAK/3.A2D'
   id: 4242
   kind: a2d
-- file_path: '424.PAK/4.BIN'
+- file_path: '424.PAK/4.TIM'
   id: 4240
   kind: bin
-- file_path: '424.PAK/5.BIN'
+- file_path: '424.PAK/5.TIM'
   id: 4241
   kind: bin
-- file_path: '424.PAK/6.BIN'
+- file_path: '424.PAK/6.TIM'
   id: 4242
   kind: bin

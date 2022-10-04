@@ -11,12 +11,12 @@
 - file_path: '2031.PAK/3.UN1'
   id: 20310
   kind: un1
-- file_path: '2031.PAK/4.BIN'
+- file_path: '2031.PAK/4.TIM'
   id: 20310
   kind: bin
-- file_path: '2031.PAK/5.BIN'
+- file_path: '2031.PAK/5.TIM'
   id: 20311
   kind: bin
-- file_path: '2031.PAK/6.BIN'
+- file_path: '2031.PAK/6.TIM'
   id: 20312
   kind: bin

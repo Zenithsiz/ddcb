@@ -11,15 +11,15 @@
 - file_path: '502.PAK/3.A2D'
   id: 5022
   kind: a2d
-- file_path: '502.PAK/4.BIN'
+- file_path: '502.PAK/4.TIM'
   id: 5020
   kind: bin
-- file_path: '502.PAK/5.BIN'
+- file_path: '502.PAK/5.TIM'
   id: 5022
   kind: bin
-- file_path: '502.PAK/6.BIN'
+- file_path: '502.PAK/6.TIM'
   id: 5051
   kind: bin
-- file_path: '502.PAK/7.BIN'
+- file_path: '502.PAK/7.TIM'
   id: 642
   kind: bin

@@ -14,12 +14,12 @@
 - file_path: '492.PAK/4.A2D'
   id: 7140
   kind: a2d
-- file_path: '492.PAK/5.BIN'
+- file_path: '492.PAK/5.TIM'
   id: 4270
   kind: bin
-- file_path: '492.PAK/6.BIN'
+- file_path: '492.PAK/6.TIM'
   id: 7140
   kind: bin
-- file_path: '492.PAK/7.BIN'
+- file_path: '492.PAK/7.TIM'
   id: 4920
   kind: bin

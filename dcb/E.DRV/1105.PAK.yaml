@@ -20,24 +20,24 @@
 - file_path: '1105.PAK/6.UN1'
   id: 11052
   kind: un1
-- file_path: '1105.PAK/7.BIN'
+- file_path: '1105.PAK/7.TIM'
   id: 11051
   kind: bin
-- file_path: '1105.PAK/8.BIN'
+- file_path: '1105.PAK/8.TIM'
   id: 11052
   kind: bin
-- file_path: '1105.PAK/9.BIN'
+- file_path: '1105.PAK/9.TIM'
   id: 11053
   kind: bin
-- file_path: '1105.PAK/10.BIN'
+- file_path: '1105.PAK/10.TIM'
   id: 11054
   kind: bin
-- file_path: '1105.PAK/11.BIN'
+- file_path: '1105.PAK/11.TIM'
   id: 11050
   kind: bin
-- file_path: '1105.PAK/12.BIN'
+- file_path: '1105.PAK/12.TIM'
   id: 10591
   kind: bin
-- file_path: '1105.PAK/13.BIN'
+- file_path: '1105.PAK/13.TIM'
   id: 1730
   kind: bin

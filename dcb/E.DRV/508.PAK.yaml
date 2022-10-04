@@ -14,12 +14,12 @@
 - file_path: '508.PAK/4.UN2'
   id: 5081
   kind: un2
-- file_path: '508.PAK/5.BIN'
+- file_path: '508.PAK/5.TIM'
   id: 5080
   kind: bin
-- file_path: '508.PAK/6.BIN'
+- file_path: '508.PAK/6.TIM'
   id: 5081
   kind: bin
-- file_path: '508.PAK/7.BIN'
+- file_path: '508.PAK/7.TIM'
   id: 592
   kind: bin

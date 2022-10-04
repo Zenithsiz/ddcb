@@ -14,12 +14,12 @@
 - file_path: '2008.PAK/4.A2D'
   id: 10471
   kind: a2d
-- file_path: '2008.PAK/5.BIN'
+- file_path: '2008.PAK/5.TIM'
   id: 3543
   kind: bin
-- file_path: '2008.PAK/6.BIN'
+- file_path: '2008.PAK/6.TIM'
   id: 10471
   kind: bin
-- file_path: '2008.PAK/7.BIN'
+- file_path: '2008.PAK/7.TIM'
   id: 20080
   kind: bin

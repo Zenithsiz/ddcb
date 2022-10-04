@@ -11,15 +11,15 @@
 - file_path: '2037.PAK/3.A2D'
   id: 20373
   kind: a2d
-- file_path: '2037.PAK/4.BIN'
+- file_path: '2037.PAK/4.TIM'
   id: 20373
   kind: bin
-- file_path: '2037.PAK/5.BIN'
+- file_path: '2037.PAK/5.TIM'
   id: 20370
   kind: bin
-- file_path: '2037.PAK/6.BIN'
+- file_path: '2037.PAK/6.TIM'
   id: 20371
   kind: bin
-- file_path: '2037.PAK/7.BIN'
+- file_path: '2037.PAK/7.TIM'
   id: 20372
   kind: bin

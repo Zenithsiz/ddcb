@@ -2,9 +2,9 @@
 - file_path: '1193.PAK/0.M3D'
   id: 11930
   kind: m3d
-- file_path: '1193.PAK/1.BIN'
+- file_path: '1193.PAK/1.TIM'
   id: 11930
   kind: bin
-- file_path: '1193.PAK/2.BIN'
+- file_path: '1193.PAK/2.TIM'
   id: 2021
   kind: bin

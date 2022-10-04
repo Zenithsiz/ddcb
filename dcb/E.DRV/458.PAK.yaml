@@ -14,12 +14,12 @@
 - file_path: '458.PAK/4.UN2'
   id: 9991
   kind: un2
-- file_path: '458.PAK/5.BIN'
+- file_path: '458.PAK/5.TIM'
   id: 4580
   kind: bin
-- file_path: '458.PAK/6.BIN'
+- file_path: '458.PAK/6.TIM'
   id: 4581
   kind: bin
-- file_path: '458.PAK/7.BIN'
+- file_path: '458.PAK/7.TIM'
   id: 9991
   kind: bin

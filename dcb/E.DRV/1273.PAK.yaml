@@ -11,15 +11,15 @@
 - file_path: '1273.PAK/3.UN1'
   id: 12730
   kind: un1
-- file_path: '1273.PAK/4.BIN'
+- file_path: '1273.PAK/4.TIM'
   id: 12730
   kind: bin
-- file_path: '1273.PAK/5.BIN'
+- file_path: '1273.PAK/5.TIM'
   id: 12731
   kind: bin
-- file_path: '1273.PAK/6.BIN'
+- file_path: '1273.PAK/6.TIM'
   id: 12732
   kind: bin
-- file_path: '1273.PAK/7.BIN'
+- file_path: '1273.PAK/7.TIM'
   id: 2290
   kind: bin

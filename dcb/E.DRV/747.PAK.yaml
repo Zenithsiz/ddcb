@@ -5,12 +5,12 @@
 - file_path: '747.PAK/1.A2D'
   id: 7517
   kind: a2d
-- file_path: '747.PAK/2.BIN'
+- file_path: '747.PAK/2.TIM'
   id: 4281
   kind: bin
-- file_path: '747.PAK/3.BIN'
+- file_path: '747.PAK/3.TIM'
   id: 7517
   kind: bin
-- file_path: '747.PAK/4.BIN'
+- file_path: '747.PAK/4.TIM'
   id: 1051
   kind: bin

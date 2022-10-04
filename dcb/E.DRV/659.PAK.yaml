@@ -8,15 +8,15 @@
 - file_path: '659.PAK/2.A2D'
   id: 2671
   kind: a2d
-- file_path: '659.PAK/3.BIN'
+- file_path: '659.PAK/3.TIM'
   id: 2671
   kind: bin
-- file_path: '659.PAK/4.BIN'
+- file_path: '659.PAK/4.TIM'
   id: 8031
   kind: bin
-- file_path: '659.PAK/5.BIN'
+- file_path: '659.PAK/5.TIM'
   id: 6590
   kind: bin
-- file_path: '659.PAK/6.BIN'
+- file_path: '659.PAK/6.TIM'
   id: 380
   kind: bin

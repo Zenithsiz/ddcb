@@ -17,18 +17,18 @@
 - file_path: '1209.PAK/5.UN2'
   id: 2220
   kind: un2
-- file_path: '1209.PAK/6.BIN'
+- file_path: '1209.PAK/6.TIM'
   id: 2220
   kind: bin
-- file_path: '1209.PAK/7.BIN'
+- file_path: '1209.PAK/7.TIM'
   id: 12090
   kind: bin
-- file_path: '1209.PAK/8.BIN'
+- file_path: '1209.PAK/8.TIM'
   id: 2222
   kind: bin
-- file_path: '1209.PAK/9.BIN'
+- file_path: '1209.PAK/9.TIM'
   id: 5370
   kind: bin
-- file_path: '1209.PAK/10.BIN'
+- file_path: '1209.PAK/10.TIM'
   id: 2072
   kind: bin

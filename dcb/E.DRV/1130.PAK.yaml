@@ -17,24 +17,24 @@
 - file_path: '1130.PAK/5.A2D'
   id: 11305
   kind: a2d
-- file_path: '1130.PAK/6.BIN'
+- file_path: '1130.PAK/6.TIM'
   id: 11303
   kind: bin
-- file_path: '1130.PAK/7.BIN'
+- file_path: '1130.PAK/7.TIM'
   id: 11304
   kind: bin
-- file_path: '1130.PAK/8.BIN'
+- file_path: '1130.PAK/8.TIM'
   id: 11305
   kind: bin
-- file_path: '1130.PAK/9.BIN'
+- file_path: '1130.PAK/9.TIM'
   id: 11300
   kind: bin
-- file_path: '1130.PAK/10.BIN'
+- file_path: '1130.PAK/10.TIM'
   id: 11301
   kind: bin
-- file_path: '1130.PAK/11.BIN'
+- file_path: '1130.PAK/11.TIM'
   id: 11302
   kind: bin
-- file_path: '1130.PAK/12.BIN'
+- file_path: '1130.PAK/12.TIM'
   id: 1811
   kind: bin

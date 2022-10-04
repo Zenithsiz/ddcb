@@ -20,27 +20,27 @@
 - file_path: '799.PAK/6.A2D'
   id: 7515
   kind: a2d
-- file_path: '799.PAK/7.BIN'
+- file_path: '799.PAK/7.TIM'
   id: 7516
   kind: bin
-- file_path: '799.PAK/8.BIN'
+- file_path: '799.PAK/8.TIM'
   id: 7510
   kind: bin
-- file_path: '799.PAK/9.BIN'
+- file_path: '799.PAK/9.TIM'
   id: 7511
   kind: bin
-- file_path: '799.PAK/10.BIN'
+- file_path: '799.PAK/10.TIM'
   id: 7512
   kind: bin
-- file_path: '799.PAK/11.BIN'
+- file_path: '799.PAK/11.TIM'
   id: 7513
   kind: bin
-- file_path: '799.PAK/12.BIN'
+- file_path: '799.PAK/12.TIM'
   id: 7514
   kind: bin
-- file_path: '799.PAK/13.BIN'
+- file_path: '799.PAK/13.TIM'
   id: 7515
   kind: bin
-- file_path: '799.PAK/14.BIN'
+- file_path: '799.PAK/14.TIM'
   id: 532
   kind: bin

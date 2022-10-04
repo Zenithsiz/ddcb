@@ -11,18 +11,18 @@
 - file_path: '690.PAK/3.A2D'
   id: 6900
   kind: a2d
-- file_path: '690.PAK/4.BIN'
+- file_path: '690.PAK/4.TIM'
   id: 6903
   kind: bin
-- file_path: '690.PAK/5.BIN'
+- file_path: '690.PAK/5.TIM'
   id: 6901
   kind: bin
-- file_path: '690.PAK/6.BIN'
+- file_path: '690.PAK/6.TIM'
   id: 6902
   kind: bin
-- file_path: '690.PAK/7.BIN'
+- file_path: '690.PAK/7.TIM'
   id: 6900
   kind: bin
-- file_path: '690.PAK/8.BIN'
+- file_path: '690.PAK/8.TIM'
   id: 671
   kind: bin

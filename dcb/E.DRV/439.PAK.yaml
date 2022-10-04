@@ -17,12 +17,12 @@
 - file_path: '439.PAK/5.A2D'
   id: 3543
   kind: a2d
-- file_path: '439.PAK/6.BIN'
+- file_path: '439.PAK/6.TIM'
   id: 4390
   kind: bin
-- file_path: '439.PAK/7.BIN'
+- file_path: '439.PAK/7.TIM'
   id: 5602
   kind: bin
-- file_path: '439.PAK/8.BIN'
+- file_path: '439.PAK/8.TIM'
   id: 3543
   kind: bin

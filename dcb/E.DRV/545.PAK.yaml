@@ -14,15 +14,15 @@
 - file_path: '545.PAK/4.UN2'
   id: 5550
   kind: un2
-- file_path: '545.PAK/5.BIN'
+- file_path: '545.PAK/5.TIM'
   id: 5551
   kind: bin
-- file_path: '545.PAK/6.BIN'
+- file_path: '545.PAK/6.TIM'
   id: 5552
   kind: bin
-- file_path: '545.PAK/7.BIN'
+- file_path: '545.PAK/7.TIM'
   id: 5550
   kind: bin
-- file_path: '545.PAK/8.BIN'
+- file_path: '545.PAK/8.TIM'
   id: 690
   kind: bin

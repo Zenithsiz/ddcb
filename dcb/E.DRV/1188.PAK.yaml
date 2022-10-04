@@ -14,18 +14,18 @@
 - file_path: '1188.PAK/4.A2D'
   id: 11882
   kind: a2d
-- file_path: '1188.PAK/5.BIN'
+- file_path: '1188.PAK/5.TIM'
   id: 11882
   kind: bin
-- file_path: '1188.PAK/6.BIN'
+- file_path: '1188.PAK/6.TIM'
   id: 11880
   kind: bin
-- file_path: '1188.PAK/7.BIN'
+- file_path: '1188.PAK/7.TIM'
   id: 11881
   kind: bin
-- file_path: '1188.PAK/8.BIN'
+- file_path: '1188.PAK/8.TIM'
   id: 5121
   kind: bin
-- file_path: '1188.PAK/9.BIN'
+- file_path: '1188.PAK/9.TIM'
   id: 2002
   kind: bin

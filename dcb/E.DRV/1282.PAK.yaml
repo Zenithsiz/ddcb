@@ -14,21 +14,21 @@
 - file_path: '1282.PAK/4.UN1'
   id: 12822
   kind: un1
-- file_path: '1282.PAK/5.BIN'
+- file_path: '1282.PAK/5.TIM'
   id: 12820
   kind: bin
-- file_path: '1282.PAK/6.BIN'
+- file_path: '1282.PAK/6.TIM'
   id: 12821
   kind: bin
-- file_path: '1282.PAK/7.BIN'
+- file_path: '1282.PAK/7.TIM'
   id: 12822
   kind: bin
-- file_path: '1282.PAK/8.BIN'
+- file_path: '1282.PAK/8.TIM'
   id: 10472
   kind: bin
-- file_path: '1282.PAK/9.BIN'
+- file_path: '1282.PAK/9.TIM'
   id: 11082
   kind: bin
-- file_path: '1282.PAK/10.BIN'
+- file_path: '1282.PAK/10.TIM'
   id: 2320
   kind: bin

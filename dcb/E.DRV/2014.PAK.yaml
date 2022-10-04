@@ -23,12 +23,12 @@
 - file_path: '2014.PAK/7.UN1'
   id: 20143
   kind: un1
-- file_path: '2014.PAK/8.BIN'
+- file_path: '2014.PAK/8.TIM'
   id: 20140
   kind: bin
-- file_path: '2014.PAK/9.BIN'
+- file_path: '2014.PAK/9.TIM'
   id: 20141
   kind: bin
-- file_path: '2014.PAK/10.BIN'
+- file_path: '2014.PAK/10.TIM'
   id: 20142
   kind: bin

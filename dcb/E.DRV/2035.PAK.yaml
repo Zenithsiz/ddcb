@@ -14,15 +14,15 @@
 - file_path: '2035.PAK/4.A2D'
   id: 20353
   kind: a2d
-- file_path: '2035.PAK/5.BIN'
+- file_path: '2035.PAK/5.TIM'
   id: 20350
   kind: bin
-- file_path: '2035.PAK/6.BIN'
+- file_path: '2035.PAK/6.TIM'
   id: 20351
   kind: bin
-- file_path: '2035.PAK/7.BIN'
+- file_path: '2035.PAK/7.TIM'
   id: 20352
   kind: bin
-- file_path: '2035.PAK/8.BIN'
+- file_path: '2035.PAK/8.TIM'
   id: 20353
   kind: bin

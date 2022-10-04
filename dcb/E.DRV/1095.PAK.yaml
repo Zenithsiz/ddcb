@@ -20,21 +20,21 @@
 - file_path: '1095.PAK/6.UN2'
   id: 6370
   kind: un2
-- file_path: '1095.PAK/7.BIN'
+- file_path: '1095.PAK/7.TIM'
   id: 10950
   kind: bin
-- file_path: '1095.PAK/8.BIN'
+- file_path: '1095.PAK/8.TIM'
   id: 6372
   kind: bin
-- file_path: '1095.PAK/9.BIN'
+- file_path: '1095.PAK/9.TIM'
   id: 6373
   kind: bin
-- file_path: '1095.PAK/10.BIN'
+- file_path: '1095.PAK/10.TIM'
   id: 6374
   kind: bin
-- file_path: '1095.PAK/11.BIN'
+- file_path: '1095.PAK/11.TIM'
   id: 6370
   kind: bin
-- file_path: '1095.PAK/12.BIN'
+- file_path: '1095.PAK/12.TIM'
   id: 1692
   kind: bin

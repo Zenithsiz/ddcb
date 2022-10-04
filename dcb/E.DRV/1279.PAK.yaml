@@ -11,18 +11,18 @@
 - file_path: '1279.PAK/3.A2D'
   id: 12791
   kind: a2d
-- file_path: '1279.PAK/4.BIN'
+- file_path: '1279.PAK/4.TIM'
   id: 4000
   kind: bin
-- file_path: '1279.PAK/5.BIN'
+- file_path: '1279.PAK/5.TIM'
   id: 12790
   kind: bin
-- file_path: '1279.PAK/6.BIN'
+- file_path: '1279.PAK/6.TIM'
   id: 11451
   kind: bin
-- file_path: '1279.PAK/7.BIN'
+- file_path: '1279.PAK/7.TIM'
   id: 12791
   kind: bin
-- file_path: '1279.PAK/8.BIN'
+- file_path: '1279.PAK/8.TIM'
   id: 2310
   kind: bin

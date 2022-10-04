@@ -11,18 +11,18 @@
 - file_path: '1097.PAK/3.A2D'
   id: 11610
   kind: a2d
-- file_path: '1097.PAK/4.BIN'
+- file_path: '1097.PAK/4.TIM'
   id: 11610
   kind: bin
-- file_path: '1097.PAK/5.BIN'
+- file_path: '1097.PAK/5.TIM'
   id: 10970
   kind: bin
-- file_path: '1097.PAK/6.BIN'
+- file_path: '1097.PAK/6.TIM'
   id: 10971
   kind: bin
-- file_path: '1097.PAK/7.BIN'
+- file_path: '1097.PAK/7.TIM'
   id: 10972
   kind: bin
-- file_path: '1097.PAK/8.BIN'
+- file_path: '1097.PAK/8.TIM'
   id: 1701
   kind: bin

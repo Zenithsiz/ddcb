@@ -20,21 +20,21 @@
 - file_path: '1148.PAK/6.A2D'
   id: 11484
   kind: a2d
-- file_path: '1148.PAK/7.BIN'
+- file_path: '1148.PAK/7.TIM'
   id: 11484
   kind: bin
-- file_path: '1148.PAK/8.BIN'
+- file_path: '1148.PAK/8.TIM'
   id: 11483
   kind: bin
-- file_path: '1148.PAK/9.BIN'
+- file_path: '1148.PAK/9.TIM'
   id: 11481
   kind: bin
-- file_path: '1148.PAK/10.BIN'
+- file_path: '1148.PAK/10.TIM'
   id: 11480
   kind: bin
-- file_path: '1148.PAK/11.BIN'
+- file_path: '1148.PAK/11.TIM'
   id: 11482
   kind: bin
-- file_path: '1148.PAK/12.BIN'
+- file_path: '1148.PAK/12.TIM'
   id: 1871
   kind: bin

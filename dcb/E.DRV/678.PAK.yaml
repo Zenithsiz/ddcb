@@ -2,9 +2,9 @@
 - file_path: '678.PAK/0.A2D'
   id: 2671
   kind: a2d
-- file_path: '678.PAK/1.BIN'
+- file_path: '678.PAK/1.TIM'
   id: 2671
   kind: bin
-- file_path: '678.PAK/2.BIN'
+- file_path: '678.PAK/2.TIM'
   id: 681
   kind: bin

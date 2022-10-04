@@ -17,18 +17,18 @@
 - file_path: '1081.PAK/5.UN2'
   id: 10810
   kind: un2
-- file_path: '1081.PAK/6.BIN'
+- file_path: '1081.PAK/6.TIM'
   id: 20382
   kind: bin
-- file_path: '1081.PAK/7.BIN'
+- file_path: '1081.PAK/7.TIM'
   id: 10810
   kind: bin
-- file_path: '1081.PAK/8.BIN'
+- file_path: '1081.PAK/8.TIM'
   id: 10811
   kind: bin
-- file_path: '1081.PAK/9.BIN'
+- file_path: '1081.PAK/9.TIM'
   id: 10812
   kind: bin
-- file_path: '1081.PAK/10.BIN'
+- file_path: '1081.PAK/10.TIM'
   id: 1650
   kind: bin

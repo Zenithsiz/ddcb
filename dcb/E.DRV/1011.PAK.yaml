@@ -5,18 +5,18 @@
 - file_path: '1011.PAK/1.UN2'
   id: 9991
   kind: un2
-- file_path: '1011.PAK/2.BIN'
+- file_path: '1011.PAK/2.TIM'
   id: 1011
   kind: bin
-- file_path: '1011.PAK/3.BIN'
+- file_path: '1011.PAK/3.TIM'
   id: 4241
   kind: bin
-- file_path: '1011.PAK/4.BIN'
+- file_path: '1011.PAK/4.TIM'
   id: 9991
   kind: bin
-- file_path: '1011.PAK/5.BIN'
+- file_path: '1011.PAK/5.TIM'
   id: 8031
   kind: bin
-- file_path: '1011.PAK/6.BIN'
+- file_path: '1011.PAK/6.TIM'
   id: 1392
   kind: bin

@@ -2,15 +2,15 @@
 - file_path: '1165.PAK/0.M3D'
   id: 11650
   kind: m3d
-- file_path: '1165.PAK/1.BIN'
+- file_path: '1165.PAK/1.TIM'
   id: 5121
   kind: bin
-- file_path: '1165.PAK/2.BIN'
+- file_path: '1165.PAK/2.TIM'
   id: 11651
   kind: bin
-- file_path: '1165.PAK/3.BIN'
+- file_path: '1165.PAK/3.TIM'
   id: 11650
   kind: bin
-- file_path: '1165.PAK/4.BIN'
+- file_path: '1165.PAK/4.TIM'
   id: 1930
   kind: bin

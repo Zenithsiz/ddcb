@@ -8,12 +8,12 @@
 - file_path: '2040.PAK/2.M3D'
   id: 20402
   kind: m3d
-- file_path: '2040.PAK/3.BIN'
+- file_path: '2040.PAK/3.TIM'
   id: 20400
   kind: bin
-- file_path: '2040.PAK/4.BIN'
+- file_path: '2040.PAK/4.TIM'
   id: 20401
   kind: bin
-- file_path: '2040.PAK/5.BIN'
+- file_path: '2040.PAK/5.TIM'
   id: 20402
   kind: bin

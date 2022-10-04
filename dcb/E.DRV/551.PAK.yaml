@@ -17,18 +17,18 @@
 - file_path: '551.PAK/5.UN2'
   id: 5550
   kind: un2
-- file_path: '551.PAK/6.BIN'
+- file_path: '551.PAK/6.TIM'
   id: 5551
   kind: bin
-- file_path: '551.PAK/7.BIN'
+- file_path: '551.PAK/7.TIM'
   id: 5552
   kind: bin
-- file_path: '551.PAK/8.BIN'
+- file_path: '551.PAK/8.TIM'
   id: 5360
   kind: bin
-- file_path: '551.PAK/9.BIN'
+- file_path: '551.PAK/9.TIM'
   id: 5550
   kind: bin
-- file_path: '551.PAK/10.BIN'
+- file_path: '551.PAK/10.TIM'
   id: 800
   kind: bin

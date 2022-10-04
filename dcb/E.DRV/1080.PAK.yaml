@@ -11,18 +11,18 @@
 - file_path: '1080.PAK/3.M3D'
   id: 10803
   kind: m3d
-- file_path: '1080.PAK/4.BIN'
+- file_path: '1080.PAK/4.TIM'
   id: 10800
   kind: bin
-- file_path: '1080.PAK/5.BIN'
+- file_path: '1080.PAK/5.TIM'
   id: 10801
   kind: bin
-- file_path: '1080.PAK/6.BIN'
+- file_path: '1080.PAK/6.TIM'
   id: 10802
   kind: bin
-- file_path: '1080.PAK/7.BIN'
+- file_path: '1080.PAK/7.TIM'
   id: 10803
   kind: bin
-- file_path: '1080.PAK/8.BIN'
+- file_path: '1080.PAK/8.TIM'
   id: 1642
   kind: bin

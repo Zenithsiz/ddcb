@@ -5,9 +5,9 @@
 - file_path: '602.PAK/1.UN2'
   id: 6020
   kind: un2
-- file_path: '602.PAK/2.BIN'
+- file_path: '602.PAK/2.TIM'
   id: 6020
   kind: bin
-- file_path: '602.PAK/3.BIN'
+- file_path: '602.PAK/3.TIM'
   id: 940
   kind: bin

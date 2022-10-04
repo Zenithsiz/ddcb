@@ -17,21 +17,21 @@
 - file_path: '1277.PAK/5.A2D'
   id: 12762
   kind: a2d
-- file_path: '1277.PAK/6.BIN'
+- file_path: '1277.PAK/6.TIM'
   id: 12770
   kind: bin
-- file_path: '1277.PAK/7.BIN'
+- file_path: '1277.PAK/7.TIM'
   id: 12771
   kind: bin
-- file_path: '1277.PAK/8.BIN'
+- file_path: '1277.PAK/8.TIM'
   id: 12772
   kind: bin
-- file_path: '1277.PAK/9.BIN'
+- file_path: '1277.PAK/9.TIM'
   id: 5690
   kind: bin
-- file_path: '1277.PAK/10.BIN'
+- file_path: '1277.PAK/10.TIM'
   id: 12762
   kind: bin
-- file_path: '1277.PAK/11.BIN'
+- file_path: '1277.PAK/11.TIM'
   id: 2301
   kind: bin

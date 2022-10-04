@@ -11,12 +11,12 @@
 - file_path: '574.PAK/3.UN2'
   id: 2230
   kind: un2
-- file_path: '574.PAK/4.BIN'
+- file_path: '574.PAK/4.TIM'
   id: 2230
   kind: bin
-- file_path: '574.PAK/5.BIN'
+- file_path: '574.PAK/5.TIM'
   id: 2231
   kind: bin
-- file_path: '574.PAK/6.BIN'
+- file_path: '574.PAK/6.TIM'
   id: 1042
   kind: bin

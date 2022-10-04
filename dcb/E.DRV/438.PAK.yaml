@@ -8,12 +8,12 @@
 - file_path: '438.PAK/2.A2D'
   id: 4382
   kind: a2d
-- file_path: '438.PAK/3.BIN'
+- file_path: '438.PAK/3.TIM'
   id: 4380
   kind: bin
-- file_path: '438.PAK/4.BIN'
+- file_path: '438.PAK/4.TIM'
   id: 4381
   kind: bin
-- file_path: '438.PAK/5.BIN'
+- file_path: '438.PAK/5.TIM'
   id: 4382
   kind: bin

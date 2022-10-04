@@ -14,15 +14,15 @@
 - file_path: '626.PAK/4.A2D'
   id: 4241
   kind: a2d
-- file_path: '626.PAK/5.BIN'
+- file_path: '626.PAK/5.TIM'
   id: 4241
   kind: bin
-- file_path: '626.PAK/6.BIN'
+- file_path: '626.PAK/6.TIM'
   id: 6260
   kind: bin
-- file_path: '626.PAK/7.BIN'
+- file_path: '626.PAK/7.TIM'
   id: 6261
   kind: bin
-- file_path: '626.PAK/8.BIN'
+- file_path: '626.PAK/8.TIM'
   id: 600
   kind: bin

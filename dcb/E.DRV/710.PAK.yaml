@@ -17,18 +17,18 @@
 - file_path: '710.PAK/5.A2D'
   id: 8222
   kind: a2d
-- file_path: '710.PAK/6.BIN'
+- file_path: '710.PAK/6.TIM'
   id: 7100
   kind: bin
-- file_path: '710.PAK/7.BIN'
+- file_path: '710.PAK/7.TIM'
   id: 7101
   kind: bin
-- file_path: '710.PAK/8.BIN'
+- file_path: '710.PAK/8.TIM'
   id: 7517
   kind: bin
-- file_path: '710.PAK/9.BIN'
+- file_path: '710.PAK/9.TIM'
   id: 8222
   kind: bin
-- file_path: '710.PAK/10.BIN'
+- file_path: '710.PAK/10.TIM'
   id: 650
   kind: bin

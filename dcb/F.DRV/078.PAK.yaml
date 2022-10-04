@@ -41,6 +41,6 @@
 - file_path: '/build/msd/dcb/F.DRV/078.PAK/13.MSD'
   id: 403
   kind: msd
-- file_path: '078.PAK/14.BIN'
+- file_path: '078.PAK/14.TIM'
   id: 78
   kind: bin

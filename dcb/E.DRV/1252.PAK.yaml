@@ -8,15 +8,15 @@
 - file_path: '1252.PAK/2.M3D'
   id: 12522
   kind: m3d
-- file_path: '1252.PAK/3.BIN'
+- file_path: '1252.PAK/3.TIM'
   id: 12520
   kind: bin
-- file_path: '1252.PAK/4.BIN'
+- file_path: '1252.PAK/4.TIM'
   id: 12521
   kind: bin
-- file_path: '1252.PAK/5.BIN'
+- file_path: '1252.PAK/5.TIM'
   id: 12522
   kind: bin
-- file_path: '1252.PAK/6.BIN'
+- file_path: '1252.PAK/6.TIM'
   id: 2220
   kind: bin

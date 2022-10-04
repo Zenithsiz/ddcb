@@ -20,15 +20,15 @@
 - file_path: '421.PAK/6.A2D'
   id: 2612
   kind: a2d
-- file_path: '421.PAK/7.BIN'
+- file_path: '421.PAK/7.TIM'
   id: 4210
   kind: bin
-- file_path: '421.PAK/8.BIN'
+- file_path: '421.PAK/8.TIM'
   id: 2611
   kind: bin
-- file_path: '421.PAK/9.BIN'
+- file_path: '421.PAK/9.TIM'
   id: 2612
   kind: bin
-- file_path: '421.PAK/10.BIN'
+- file_path: '421.PAK/10.TIM'
   id: 4591
   kind: bin

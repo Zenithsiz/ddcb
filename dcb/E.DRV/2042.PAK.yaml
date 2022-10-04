@@ -5,9 +5,9 @@
 - file_path: '2042.PAK/1.A2D'
   id: 11610
   kind: a2d
-- file_path: '2042.PAK/2.BIN'
+- file_path: '2042.PAK/2.TIM'
   id: 11610
   kind: bin
-- file_path: '2042.PAK/3.BIN'
+- file_path: '2042.PAK/3.TIM'
   id: 20420
   kind: bin

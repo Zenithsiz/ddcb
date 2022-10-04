@@ -14,9 +14,9 @@
 - file_path: '498.PAK/4.A2D'
   id: 4982
   kind: a2d
-- file_path: '498.PAK/5.BIN'
+- file_path: '498.PAK/5.TIM'
   id: 4982
   kind: bin
-- file_path: '498.PAK/6.BIN'
+- file_path: '498.PAK/6.TIM'
   id: 4980
   kind: bin

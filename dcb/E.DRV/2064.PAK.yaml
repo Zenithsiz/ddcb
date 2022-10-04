@@ -17,12 +17,12 @@
 - file_path: '2064.PAK/5.A2D'
   id: 4701
   kind: a2d
-- file_path: '2064.PAK/6.BIN'
+- file_path: '2064.PAK/6.TIM'
   id: 20640
   kind: bin
-- file_path: '2064.PAK/7.BIN'
+- file_path: '2064.PAK/7.TIM'
   id: 20641
   kind: bin
-- file_path: '2064.PAK/8.BIN'
+- file_path: '2064.PAK/8.TIM'
   id: 4701
   kind: bin

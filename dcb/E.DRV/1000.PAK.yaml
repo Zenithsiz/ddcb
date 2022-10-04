@@ -26,21 +26,21 @@
 - file_path: '1000.PAK/8.UN2'
   id: 10000
   kind: un2
-- file_path: '1000.PAK/9.BIN'
+- file_path: '1000.PAK/9.TIM'
   id: 7517
   kind: bin
-- file_path: '1000.PAK/10.BIN'
+- file_path: '1000.PAK/10.TIM'
   id: 10001
   kind: bin
-- file_path: '1000.PAK/11.BIN'
+- file_path: '1000.PAK/11.TIM'
   id: 10002
   kind: bin
-- file_path: '1000.PAK/12.BIN'
+- file_path: '1000.PAK/12.TIM'
   id: 10000
   kind: bin
-- file_path: '1000.PAK/13.BIN'
+- file_path: '1000.PAK/13.TIM'
   id: 10003
   kind: bin
-- file_path: '1000.PAK/14.BIN'
+- file_path: '1000.PAK/14.TIM'
   id: 1360
   kind: bin

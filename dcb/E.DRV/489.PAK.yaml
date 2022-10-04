@@ -11,15 +11,15 @@
 - file_path: '489.PAK/3.UN2'
   id: 9991
   kind: un2
-- file_path: '489.PAK/4.BIN'
+- file_path: '489.PAK/4.TIM'
   id: 6882
   kind: bin
-- file_path: '489.PAK/5.BIN'
+- file_path: '489.PAK/5.TIM'
   id: 6883
   kind: bin
-- file_path: '489.PAK/6.BIN'
+- file_path: '489.PAK/6.TIM'
   id: 6884
   kind: bin
-- file_path: '489.PAK/7.BIN'
+- file_path: '489.PAK/7.TIM'
   id: 9991
   kind: bin

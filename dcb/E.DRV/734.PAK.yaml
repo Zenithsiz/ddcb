@@ -23,18 +23,18 @@
 - file_path: '734.PAK/7.UN1'
   id: 7343
   kind: un1
-- file_path: '734.PAK/8.BIN'
+- file_path: '734.PAK/8.TIM'
   id: 7340
   kind: bin
-- file_path: '734.PAK/9.BIN'
+- file_path: '734.PAK/9.TIM'
   id: 7341
   kind: bin
-- file_path: '734.PAK/10.BIN'
+- file_path: '734.PAK/10.TIM'
   id: 7342
   kind: bin
-- file_path: '734.PAK/11.BIN'
+- file_path: '734.PAK/11.TIM'
   id: 7343
   kind: bin
-- file_path: '734.PAK/12.BIN'
+- file_path: '734.PAK/12.TIM'
   id: 370
   kind: bin

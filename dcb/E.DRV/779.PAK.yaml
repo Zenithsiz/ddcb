@@ -5,9 +5,9 @@
 - file_path: '779.PAK/1.UN1'
   id: 3350
   kind: un1
-- file_path: '779.PAK/2.BIN'
+- file_path: '779.PAK/2.TIM'
   id: 3350
   kind: bin
-- file_path: '779.PAK/3.BIN'
+- file_path: '779.PAK/3.TIM'
   id: 410
   kind: bin
