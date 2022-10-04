@@ -24,7 +24,7 @@
     - name: A_4
       extension: TIM
       date: '2000-10-19T11:49:46'
-      path: dcb/C.DRV/OBJECT/A_4.TIM
+      path: build/tim/dcb/C.DRV/OBJECT/A_4.TIM
     - name: MAP
       extension: TIS
       date: '2001-04-09T06:02:18'
@@ -32,11 +32,11 @@
     - name: A_2
       extension: TIM
       date: '2000-10-19T11:49:46'
-      path: dcb/C.DRV/OBJECT/A_2.TIM
+      path: build/tim/dcb/C.DRV/OBJECT/A_2.TIM
     - name: A_3
       extension: TIM
       date: '2000-10-19T11:49:46'
-      path: dcb/C.DRV/OBJECT/A_3.TIM
+      path: build/tim/dcb/C.DRV/OBJECT/A_3.TIM
     - name: SAVELOAD
       extension: TIS
       date: '2000-10-19T11:49:48'
@@ -44,7 +44,7 @@
     - name: A_1
       extension: TIM
       date: '2000-10-19T11:49:46'
-      path: dcb/C.DRV/OBJECT/A_1.TIM
+      path: build/tim/dcb/C.DRV/OBJECT/A_1.TIM
     - name: DECK
       extension: TIS
       date: '2001-03-13T02:19:18'

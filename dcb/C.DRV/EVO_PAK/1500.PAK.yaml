@@ -11,9 +11,9 @@
 - file_path: '1500.PAK/3.UN1'
   id: 15002
   kind: un1
-- file_path: '1500.PAK/4.TIM'
+- file_path: '/build/tim/dcb/C.DRV/EVO_PAK/1500.PAK/4.TIM'
   id: 15001
   kind: bin
-- file_path: '1500.PAK/5.TIM'
+- file_path: '/build/tim/dcb/C.DRV/EVO_PAK/1500.PAK/5.TIM'
   id: 15002
   kind: bin

@@ -11,18 +11,18 @@
 - file_path: '1185.PAK/3.A2D'
   id: 5690
   kind: a2d
-- file_path: '1185.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1185.PAK/4.TIM'
   id: 5602
   kind: bin
-- file_path: '1185.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1185.PAK/5.TIM'
   id: 5690
   kind: bin
-- file_path: '1185.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1185.PAK/6.TIM'
   id: 12750
   kind: bin
-- file_path: '1185.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1185.PAK/7.TIM'
   id: 12751
   kind: bin
-- file_path: '1185.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1185.PAK/8.TIM'
   id: 1992
   kind: bin

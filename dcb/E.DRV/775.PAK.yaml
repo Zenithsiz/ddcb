@@ -11,15 +11,15 @@
 - file_path: '775.PAK/3.UN2'
   id: 7750
   kind: un2
-- file_path: '775.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/775.PAK/4.TIM'
   id: 2671
   kind: bin
-- file_path: '775.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/775.PAK/5.TIM'
   id: 9991
   kind: bin
-- file_path: '775.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/775.PAK/6.TIM'
   id: 7750
   kind: bin
-- file_path: '775.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/775.PAK/7.TIM'
   id: 562
   kind: bin

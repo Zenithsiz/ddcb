@@ -8,9 +8,9 @@
 - file_path: '406.PAK/2.UN2'
   id: 4060
   kind: un2
-- file_path: '406.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/406.PAK/3.TIM'
   id: 4060
   kind: bin
-- file_path: '406.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/406.PAK/4.TIM'
   id: 4062
   kind: bin

@@ -5,9 +5,9 @@
 - file_path: '405.PAK/1.A2D'
   id: 4051
   kind: a2d
-- file_path: '405.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/405.PAK/2.TIM'
   id: 4050
   kind: bin
-- file_path: '405.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/405.PAK/3.TIM'
   id: 4051
   kind: bin

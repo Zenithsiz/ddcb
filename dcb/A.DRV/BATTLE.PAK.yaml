@@ -5,6 +5,6 @@
 - file_path: '/build/msd/dcb/A.DRV/BATTLE.PAK/1.MSD'
   id: 999
   kind: msd
-- file_path: 'BATTLE.PAK/2.TIM'
+- file_path: '/build/tim/dcb/A.DRV/BATTLE.PAK/2.TIM'
   id: 104
   kind: bin

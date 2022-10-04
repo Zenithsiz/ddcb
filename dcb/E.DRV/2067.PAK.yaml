@@ -11,9 +11,9 @@
 - file_path: '2067.PAK/3.UN1'
   id: 20672
   kind: un1
-- file_path: '2067.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2067.PAK/4.TIM'
   id: 20671
   kind: bin
-- file_path: '2067.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2067.PAK/5.TIM'
   id: 20672
   kind: bin

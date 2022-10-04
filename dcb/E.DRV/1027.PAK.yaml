@@ -17,21 +17,21 @@
 - file_path: '1027.PAK/5.UN1'
   id: 10273
   kind: un1
-- file_path: '1027.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1027.PAK/6.TIM'
   id: 1400
   kind: bin
-- file_path: '1027.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1027.PAK/7.TIM'
   id: 10270
   kind: bin
-- file_path: '1027.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1027.PAK/8.TIM'
   id: 10271
   kind: bin
-- file_path: '1027.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1027.PAK/9.TIM'
   id: 10272
   kind: bin
-- file_path: '1027.PAK/10.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1027.PAK/10.TIM'
   id: 10273
   kind: bin
-- file_path: '1027.PAK/11.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1027.PAK/11.TIM'
   id: 1470
   kind: bin

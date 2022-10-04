@@ -17,12 +17,12 @@
 - file_path: '484.PAK/5.A2D'
   id: 4843
   kind: a2d
-- file_path: '484.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/484.PAK/6.TIM'
   id: 4840
   kind: bin
-- file_path: '484.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/484.PAK/7.TIM'
   id: 5632
   kind: bin
-- file_path: '484.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/484.PAK/8.TIM'
   id: 4843
   kind: bin

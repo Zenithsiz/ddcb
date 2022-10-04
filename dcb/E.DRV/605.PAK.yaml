@@ -20,21 +20,21 @@
 - file_path: '605.PAK/6.UN2'
   id: 9991
   kind: un2
-- file_path: '605.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/605.PAK/7.TIM'
   id: 6051
   kind: bin
-- file_path: '605.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/605.PAK/8.TIM'
   id: 6052
   kind: bin
-- file_path: '605.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/605.PAK/9.TIM'
   id: 6053
   kind: bin
-- file_path: '605.PAK/10.TIM'
+- file_path: '/build/tim/dcb/E.DRV/605.PAK/10.TIM'
   id: 6050
   kind: bin
-- file_path: '605.PAK/11.TIM'
+- file_path: '/build/tim/dcb/E.DRV/605.PAK/11.TIM'
   id: 9991
   kind: bin
-- file_path: '605.PAK/12.TIM'
+- file_path: '/build/tim/dcb/E.DRV/605.PAK/12.TIM'
   id: 1100
   kind: bin

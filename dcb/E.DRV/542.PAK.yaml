@@ -5,12 +5,12 @@
 - file_path: '542.PAK/1.A2D'
   id: 5650
   kind: a2d
-- file_path: '542.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/542.PAK/2.TIM'
   id: 5420
   kind: bin
-- file_path: '542.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/542.PAK/3.TIM'
   id: 5650
   kind: bin
-- file_path: '542.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/542.PAK/4.TIM'
   id: 770
   kind: bin

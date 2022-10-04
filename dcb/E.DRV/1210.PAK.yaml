@@ -11,12 +11,12 @@
 - file_path: '1210.PAK/3.UN2'
   id: 12100
   kind: un2
-- file_path: '1210.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1210.PAK/4.TIM'
   id: 12100
   kind: bin
-- file_path: '1210.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1210.PAK/5.TIM'
   id: 12101
   kind: bin
-- file_path: '1210.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1210.PAK/6.TIM'
   id: 2080
   kind: bin

@@ -2,9 +2,9 @@
 - file_path: '819.PAK/0.UN2'
   id: 9991
   kind: un2
-- file_path: '819.PAK/1.TIM'
+- file_path: '/build/tim/dcb/E.DRV/819.PAK/1.TIM'
   id: 9991
   kind: bin
-- file_path: '819.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/819.PAK/2.TIM'
   id: 841
   kind: bin

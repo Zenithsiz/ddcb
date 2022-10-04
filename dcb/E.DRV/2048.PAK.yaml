@@ -11,12 +11,12 @@
 - file_path: '2048.PAK/3.A2D'
   id: 10901
   kind: a2d
-- file_path: '2048.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2048.PAK/4.TIM'
   id: 10901
   kind: bin
-- file_path: '2048.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2048.PAK/5.TIM'
   id: 20480
   kind: bin
-- file_path: '2048.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2048.PAK/6.TIM'
   id: 20481
   kind: bin

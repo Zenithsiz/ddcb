@@ -2,9 +2,9 @@
 - file_path: '1225.PAK/0.M3D'
   id: 12250
   kind: m3d
-- file_path: '1225.PAK/1.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1225.PAK/1.TIM'
   id: 12250
   kind: bin
-- file_path: '1225.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1225.PAK/2.TIM'
   id: 2130
   kind: bin

@@ -5,9 +5,9 @@
 - file_path: '443.PAK/1.A2D'
   id: 4431
   kind: a2d
-- file_path: '443.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/443.PAK/2.TIM'
   id: 4430
   kind: bin
-- file_path: '443.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/443.PAK/3.TIM'
   id: 4431
   kind: bin

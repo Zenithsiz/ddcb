@@ -14,12 +14,12 @@
 - file_path: '450.PAK/4.UN2'
   id: 4500
   kind: un2
-- file_path: '450.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/450.PAK/5.TIM'
   id: 4500
   kind: bin
-- file_path: '450.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/450.PAK/6.TIM'
   id: 4501
   kind: bin
-- file_path: '450.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/450.PAK/7.TIM'
   id: 4410
   kind: bin

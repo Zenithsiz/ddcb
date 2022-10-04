@@ -8,12 +8,12 @@
 - file_path: '2030.PAK/2.M3D'
   id: 20302
   kind: m3d
-- file_path: '2030.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2030.PAK/3.TIM'
   id: 20300
   kind: bin
-- file_path: '2030.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2030.PAK/4.TIM'
   id: 20301
   kind: bin
-- file_path: '2030.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2030.PAK/5.TIM'
   id: 20302
   kind: bin

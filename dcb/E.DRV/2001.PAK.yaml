@@ -2,9 +2,9 @@
 - file_path: '2001.PAK/0.A2D'
   id: 4470
   kind: a2d
-- file_path: '2001.PAK/1.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2001.PAK/1.TIM'
   id: 4470
   kind: bin
-- file_path: '2001.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2001.PAK/2.TIM'
   id: 9991
   kind: bin

@@ -5,12 +5,12 @@
 - file_path: '1192.PAK/1.M3D'
   id: 11921
   kind: m3d
-- file_path: '1192.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1192.PAK/2.TIM'
   id: 11920
   kind: bin
-- file_path: '1192.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1192.PAK/3.TIM'
   id: 11921
   kind: bin
-- file_path: '1192.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1192.PAK/4.TIM'
   id: 2020
   kind: bin

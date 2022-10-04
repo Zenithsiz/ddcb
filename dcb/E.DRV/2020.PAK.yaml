@@ -14,18 +14,18 @@
 - file_path: '2020.PAK/4.A2D'
   id: 10610
   kind: a2d
-- file_path: '2020.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2020.PAK/5.TIM'
   id: 20200
   kind: bin
-- file_path: '2020.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2020.PAK/6.TIM'
   id: 20201
   kind: bin
-- file_path: '2020.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2020.PAK/7.TIM'
   id: 20202
   kind: bin
-- file_path: '2020.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2020.PAK/8.TIM'
   id: 20203
   kind: bin
-- file_path: '2020.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2020.PAK/9.TIM'
   id: 10610
   kind: bin

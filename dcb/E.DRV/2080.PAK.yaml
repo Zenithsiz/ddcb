@@ -5,9 +5,9 @@
 - file_path: '2080.PAK/1.A2D'
   id: 20801
   kind: a2d
-- file_path: '2080.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2080.PAK/2.TIM'
   id: 20800
   kind: bin
-- file_path: '2080.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2080.PAK/3.TIM'
   id: 20801
   kind: bin

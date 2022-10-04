@@ -23,21 +23,21 @@
 - file_path: '688.PAK/7.UN2'
   id: 6880
   kind: un2
-- file_path: '688.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/688.PAK/8.TIM'
   id: 6882
   kind: bin
-- file_path: '688.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/688.PAK/9.TIM'
   id: 6883
   kind: bin
-- file_path: '688.PAK/10.TIM'
+- file_path: '/build/tim/dcb/E.DRV/688.PAK/10.TIM'
   id: 6884
   kind: bin
-- file_path: '688.PAK/11.TIM'
+- file_path: '/build/tim/dcb/E.DRV/688.PAK/11.TIM'
   id: 6880
   kind: bin
-- file_path: '688.PAK/12.TIM'
+- file_path: '/build/tim/dcb/E.DRV/688.PAK/12.TIM'
   id: 6881
   kind: bin
-- file_path: '688.PAK/13.TIM'
+- file_path: '/build/tim/dcb/E.DRV/688.PAK/13.TIM'
   id: 812
   kind: bin

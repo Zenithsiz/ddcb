@@ -5,15 +5,15 @@
 - file_path: '1076.PAK/1.M3D'
   id: 10761
   kind: m3d
-- file_path: '1076.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1076.PAK/2.TIM'
   id: 10760
   kind: bin
-- file_path: '1076.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1076.PAK/3.TIM'
   id: 10761
   kind: bin
-- file_path: '1076.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1076.PAK/4.TIM'
   id: 10662
   kind: bin
-- file_path: '1076.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1076.PAK/5.TIM'
   id: 1631
   kind: bin

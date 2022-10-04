@@ -5,9 +5,9 @@
 - file_path: '427.PAK/1.UN1'
   id: 4270
   kind: un1
-- file_path: '427.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/427.PAK/2.TIM'
   id: 4270
   kind: bin
-- file_path: '427.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/427.PAK/3.TIM'
   id: 7681
   kind: bin

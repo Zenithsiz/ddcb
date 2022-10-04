@@ -5,9 +5,9 @@
 - file_path: '552.PAK/1.UN2'
   id: 2050
   kind: un2
-- file_path: '552.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/552.PAK/2.TIM'
   id: 2050
   kind: bin
-- file_path: '552.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/552.PAK/3.TIM'
   id: 801
   kind: bin

@@ -5,12 +5,12 @@
 - file_path: '636.PAK/1.UN2'
   id: 9991
   kind: un2
-- file_path: '636.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/636.PAK/2.TIM'
   id: 2671
   kind: bin
-- file_path: '636.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/636.PAK/3.TIM'
   id: 9991
   kind: bin
-- file_path: '636.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/636.PAK/4.TIM'
   id: 421
   kind: bin

@@ -14,12 +14,12 @@
 - file_path: '2018.PAK/4.A2D'
   id: 20180
   kind: a2d
-- file_path: '2018.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2018.PAK/5.TIM'
   id: 20181
   kind: bin
-- file_path: '2018.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2018.PAK/6.TIM'
   id: 20180
   kind: bin
-- file_path: '2018.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2018.PAK/7.TIM'
   id: 20182
   kind: bin

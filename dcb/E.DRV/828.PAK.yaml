@@ -2,9 +2,9 @@
 - file_path: '828.PAK/0.A2D'
   id: 2671
   kind: a2d
-- file_path: '828.PAK/1.TIM'
+- file_path: '/build/tim/dcb/E.DRV/828.PAK/1.TIM'
   id: 2671
   kind: bin
-- file_path: '828.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/828.PAK/2.TIM'
   id: 1291
   kind: bin

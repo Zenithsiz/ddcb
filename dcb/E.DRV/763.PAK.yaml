@@ -14,15 +14,15 @@
 - file_path: '763.PAK/4.UN2'
   id: 5081
   kind: un2
-- file_path: '763.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/763.PAK/5.TIM'
   id: 4241
   kind: bin
-- file_path: '763.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/763.PAK/6.TIM'
   id: 4470
   kind: bin
-- file_path: '763.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/763.PAK/7.TIM'
   id: 5081
   kind: bin
-- file_path: '763.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/763.PAK/8.TIM'
   id: 862
   kind: bin

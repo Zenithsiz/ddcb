@@ -11,18 +11,18 @@
 - file_path: '1043.PAK/3.A2D'
   id: 4241
   kind: a2d
-- file_path: '1043.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1043.PAK/4.TIM'
   id: 10430
   kind: bin
-- file_path: '1043.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1043.PAK/5.TIM'
   id: 2101
   kind: bin
-- file_path: '1043.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1043.PAK/6.TIM'
   id: 10152
   kind: bin
-- file_path: '1043.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1043.PAK/7.TIM'
   id: 4241
   kind: bin
-- file_path: '1043.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1043.PAK/8.TIM'
   id: 1521
   kind: bin

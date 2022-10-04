@@ -26,6 +26,6 @@
 - file_path: '160.PAK/8.UN1'
   id: 7
   kind: un1
-- file_path: '160.PAK/9.TIM'
+- file_path: '/build/tim/dcb/G.DRV/160.PAK/9.TIM'
   id: 160
   kind: bin

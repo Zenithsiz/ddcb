@@ -14,12 +14,12 @@
 - file_path: '2044.PAK/4.A2D'
   id: 4321
   kind: a2d
-- file_path: '2044.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2044.PAK/5.TIM'
   id: 20440
   kind: bin
-- file_path: '2044.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2044.PAK/6.TIM'
   id: 20441
   kind: bin
-- file_path: '2044.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2044.PAK/7.TIM'
   id: 4321
   kind: bin

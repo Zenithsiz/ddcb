@@ -14,18 +14,18 @@
 - file_path: '1046.PAK/4.UN2'
   id: 9991
   kind: un2
-- file_path: '1046.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1046.PAK/5.TIM'
   id: 5602
   kind: bin
-- file_path: '1046.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1046.PAK/6.TIM'
   id: 5811
   kind: bin
-- file_path: '1046.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1046.PAK/7.TIM'
   id: 9991
   kind: bin
-- file_path: '1046.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1046.PAK/8.TIM'
   id: 10273
   kind: bin
-- file_path: '1046.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1046.PAK/9.TIM'
   id: 1531
   kind: bin

@@ -409,7 +409,7 @@
 - name: BATTLE
   extension: TIM
   date: '2000-09-29T05:58:02'
-  path: dcb/A.DRV/BATTLE.TIM
+  path: build/tim/dcb/A.DRV/BATTLE.TIM
 - name: SE0
   extension: PAK
   date: '2000-09-11T03:19:10'

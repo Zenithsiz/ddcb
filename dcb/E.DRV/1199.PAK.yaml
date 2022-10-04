@@ -8,15 +8,15 @@
 - file_path: '1199.PAK/2.UN1'
   id: 10273
   kind: un1
-- file_path: '1199.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1199.PAK/3.TIM'
   id: 11990
   kind: bin
-- file_path: '1199.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1199.PAK/4.TIM'
   id: 10273
   kind: bin
-- file_path: '1199.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1199.PAK/5.TIM'
   id: 11991
   kind: bin
-- file_path: '1199.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1199.PAK/6.TIM'
   id: 2041
   kind: bin

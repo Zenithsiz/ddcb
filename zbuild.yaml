@@ -40,6 +40,7 @@ alias:
   pak_dir   : $(build_dir)/pak
   arc_dir   : $(build_dir)/arc
   msd_dir   : $(build_dir)/msd
+  tim_dir   : $(build_dir)/tim
   dylib_dir : $(build_dir)/dylib
 
   # Files
@@ -263,6 +264,22 @@ rules:
     exec:
       - [$(mkmsd), $(msd_src), -o, $(msd), --deps-file, $(msd).d]
       - [$(bspatch), $(msd), $(msd), $(msd_patch)]
+
+  # `tim`
+  # Note: This is just a dummy impl until we properly convert bmps
+  #       into tims.
+  mktim:
+    alias:
+      tim: $(tim_dir)/^(path).TIM
+      tim_bmp: ^(path).TIM
+      tim_yaml: ^(path).TIM
+    out: [$(tim)]
+    deps:
+      - $(tim_bmp)
+      - $(tim_yaml)
+      - static: $(tim::dir_name)/
+    exec:
+      - [cp, $(tim_bmp), $(tim)]
 
   # Card table
   card_table:

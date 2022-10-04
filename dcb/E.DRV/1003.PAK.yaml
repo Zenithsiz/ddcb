@@ -23,18 +23,18 @@
 - file_path: '1003.PAK/7.UN2'
   id: 10031
   kind: un2
-- file_path: '1003.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1003.PAK/8.TIM'
   id: 2671
   kind: bin
-- file_path: '1003.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1003.PAK/9.TIM'
   id: 10030
   kind: bin
-- file_path: '1003.PAK/10.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1003.PAK/10.TIM'
   id: 9991
   kind: bin
-- file_path: '1003.PAK/11.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1003.PAK/11.TIM'
   id: 10031
   kind: bin
-- file_path: '1003.PAK/12.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1003.PAK/12.TIM'
   id: 1370
   kind: bin

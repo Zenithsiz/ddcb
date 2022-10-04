@@ -2,9 +2,9 @@
 - file_path: '662.PAK/0.A2D'
   id: 6620
   kind: a2d
-- file_path: '662.PAK/1.TIM'
+- file_path: '/build/tim/dcb/E.DRV/662.PAK/1.TIM'
   id: 6620
   kind: bin
-- file_path: '662.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/662.PAK/2.TIM'
   id: 500
   kind: bin

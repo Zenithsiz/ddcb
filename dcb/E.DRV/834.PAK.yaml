@@ -14,18 +14,18 @@
 - file_path: '834.PAK/4.A2D'
   id: 2671
   kind: a2d
-- file_path: '834.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/834.PAK/5.TIM'
   id: 1380
   kind: bin
-- file_path: '834.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/834.PAK/6.TIM'
   id: 8340
   kind: bin
-- file_path: '834.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/834.PAK/7.TIM'
   id: 8341
   kind: bin
-- file_path: '834.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/834.PAK/8.TIM'
   id: 8343
   kind: bin
-- file_path: '834.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/834.PAK/9.TIM'
   id: 2671
   kind: bin

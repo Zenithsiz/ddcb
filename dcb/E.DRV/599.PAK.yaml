@@ -20,18 +20,18 @@
 - file_path: '599.PAK/6.UN2'
   id: 2220
   kind: un2
-- file_path: '599.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/599.PAK/7.TIM'
   id: 2221
   kind: bin
-- file_path: '599.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/599.PAK/8.TIM'
   id: 2220
   kind: bin
-- file_path: '599.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/599.PAK/9.TIM'
   id: 2222
   kind: bin
-- file_path: '599.PAK/10.TIM'
+- file_path: '/build/tim/dcb/E.DRV/599.PAK/10.TIM'
   id: 2223
   kind: bin
-- file_path: '599.PAK/11.TIM'
+- file_path: '/build/tim/dcb/E.DRV/599.PAK/11.TIM'
   id: 350
   kind: bin

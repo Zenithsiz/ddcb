@@ -17,9 +17,9 @@
 - file_path: '2010.PAK/5.UN1'
   id: 20103
   kind: un1
-- file_path: '2010.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2010.PAK/6.TIM'
   id: 20101
   kind: bin
-- file_path: '2010.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/2010.PAK/7.TIM'
   id: 20102
   kind: bin

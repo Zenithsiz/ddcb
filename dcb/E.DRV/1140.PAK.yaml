@@ -5,12 +5,12 @@
 - file_path: '1140.PAK/1.A2D'
   id: 11400
   kind: a2d
-- file_path: '1140.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1140.PAK/2.TIM'
   id: 11400
   kind: bin
-- file_path: '1140.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1140.PAK/3.TIM'
   id: 11391
   kind: bin
-- file_path: '1140.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1140.PAK/4.TIM'
   id: 1842
   kind: bin

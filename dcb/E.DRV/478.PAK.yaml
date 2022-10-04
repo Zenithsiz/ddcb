@@ -8,9 +8,9 @@
 - file_path: '478.PAK/2.A2D'
   id: 4781
   kind: a2d
-- file_path: '478.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/478.PAK/3.TIM'
   id: 4780
   kind: bin
-- file_path: '478.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/478.PAK/4.TIM'
   id: 4781
   kind: bin

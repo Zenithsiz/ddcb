@@ -8,15 +8,15 @@
 - file_path: '568.PAK/2.A2D'
   id: 5370
   kind: a2d
-- file_path: '568.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/568.PAK/3.TIM'
   id: 6550
   kind: bin
-- file_path: '568.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/568.PAK/4.TIM'
   id: 6551
   kind: bin
-- file_path: '568.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/568.PAK/5.TIM'
   id: 5370
   kind: bin
-- file_path: '568.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/568.PAK/6.TIM'
   id: 632
   kind: bin

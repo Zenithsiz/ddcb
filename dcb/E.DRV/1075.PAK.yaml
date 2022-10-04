@@ -11,21 +11,21 @@
 - file_path: '1075.PAK/3.M3D'
   id: 10750
   kind: m3d
-- file_path: '1075.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1075.PAK/4.TIM'
   id: 1631
   kind: bin
-- file_path: '1075.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1075.PAK/5.TIM'
   id: 10751
   kind: bin
-- file_path: '1075.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1075.PAK/6.TIM'
   id: 10752
   kind: bin
-- file_path: '1075.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1075.PAK/7.TIM'
   id: 10753
   kind: bin
-- file_path: '1075.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1075.PAK/8.TIM'
   id: 10750
   kind: bin
-- file_path: '1075.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1075.PAK/9.TIM'
   id: 1630
   kind: bin

@@ -11,9 +11,9 @@
 - file_path: '433.PAK/3.A2D'
   id: 4040
   kind: a2d
-- file_path: '433.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/433.PAK/4.TIM'
   id: 4331
   kind: bin
-- file_path: '433.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/433.PAK/5.TIM'
   id: 4040
   kind: bin

@@ -23,21 +23,21 @@
 - file_path: '664.PAK/7.A2D'
   id: 7517
   kind: a2d
-- file_path: '664.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/664.PAK/8.TIM'
   id: 8264
   kind: bin
-- file_path: '664.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/664.PAK/9.TIM'
   id: 8260
   kind: bin
-- file_path: '664.PAK/10.TIM'
+- file_path: '/build/tim/dcb/E.DRV/664.PAK/10.TIM'
   id: 8262
   kind: bin
-- file_path: '664.PAK/11.TIM'
+- file_path: '/build/tim/dcb/E.DRV/664.PAK/11.TIM'
   id: 8263
   kind: bin
-- file_path: '664.PAK/12.TIM'
+- file_path: '/build/tim/dcb/E.DRV/664.PAK/12.TIM'
   id: 7517
   kind: bin
-- file_path: '664.PAK/13.TIM'
+- file_path: '/build/tim/dcb/E.DRV/664.PAK/13.TIM'
   id: 502
   kind: bin

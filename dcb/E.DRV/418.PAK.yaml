@@ -29,12 +29,12 @@
 - file_path: '418.PAK/9.UN2'
   id: 4181
   kind: un2
-- file_path: '418.PAK/10.TIM'
+- file_path: '/build/tim/dcb/E.DRV/418.PAK/10.TIM'
   id: 4180
   kind: bin
-- file_path: '418.PAK/11.TIM'
+- file_path: '/build/tim/dcb/E.DRV/418.PAK/11.TIM'
   id: 4181
   kind: bin
-- file_path: '418.PAK/12.TIM'
+- file_path: '/build/tim/dcb/E.DRV/418.PAK/12.TIM'
   id: 4182
   kind: bin

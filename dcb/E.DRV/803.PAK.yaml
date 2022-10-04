@@ -11,15 +11,15 @@
 - file_path: '803.PAK/3.UN1'
   id: 8030
   kind: un1
-- file_path: '803.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/803.PAK/4.TIM'
   id: 8031
   kind: bin
-- file_path: '803.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/803.PAK/5.TIM'
   id: 8032
   kind: bin
-- file_path: '803.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/803.PAK/6.TIM'
   id: 8030
   kind: bin
-- file_path: '803.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/803.PAK/7.TIM'
   id: 390
   kind: bin

@@ -11,15 +11,15 @@
 - file_path: '487.PAK/3.UN2'
   id: 9991
   kind: un2
-- file_path: '487.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/487.PAK/4.TIM'
   id: 6372
   kind: bin
-- file_path: '487.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/487.PAK/5.TIM'
   id: 6373
   kind: bin
-- file_path: '487.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/487.PAK/6.TIM'
   id: 6374
   kind: bin
-- file_path: '487.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/487.PAK/7.TIM'
   id: 9991
   kind: bin

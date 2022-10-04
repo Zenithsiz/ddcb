@@ -2,6 +2,6 @@
 - file_path: '408.PAK/0.A2D'
   id: 4080
   kind: a2d
-- file_path: '408.PAK/1.TIM'
+- file_path: '/build/tim/dcb/E.DRV/408.PAK/1.TIM'
   id: 4080
   kind: bin

@@ -17,18 +17,18 @@
 - file_path: '1280.PAK/5.A2D'
   id: 20292
   kind: a2d
-- file_path: '1280.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1280.PAK/6.TIM'
   id: 6091
   kind: bin
-- file_path: '1280.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1280.PAK/7.TIM'
   id: 20292
   kind: bin
-- file_path: '1280.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1280.PAK/8.TIM'
   id: 10273
   kind: bin
-- file_path: '1280.PAK/9.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1280.PAK/9.TIM'
   id: 12800
   kind: bin
-- file_path: '1280.PAK/10.TIM'
+- file_path: '/build/tim/dcb/E.DRV/1280.PAK/10.TIM'
   id: 2311
   kind: bin

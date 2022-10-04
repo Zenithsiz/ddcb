@@ -5,15 +5,15 @@
 - file_path: '781.PAK/1.A2D'
   id: 7091
   kind: a2d
-- file_path: '781.PAK/2.TIM'
+- file_path: '/build/tim/dcb/E.DRV/781.PAK/2.TIM'
   id: 7812
   kind: bin
-- file_path: '781.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/781.PAK/3.TIM'
   id: 7810
   kind: bin
-- file_path: '781.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/781.PAK/4.TIM'
   id: 7091
   kind: bin
-- file_path: '781.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/781.PAK/5.TIM'
   id: 412
   kind: bin

@@ -14,9 +14,9 @@
 - file_path: '416.PAK/4.A2D'
   id: 4162
   kind: a2d
-- file_path: '416.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/416.PAK/5.TIM'
   id: 4162
   kind: bin
-- file_path: '416.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/416.PAK/6.TIM'
   id: 4160
   kind: bin

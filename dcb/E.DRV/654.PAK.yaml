@@ -8,12 +8,12 @@
 - file_path: '654.PAK/2.UN2'
   id: 6540
   kind: un2
-- file_path: '654.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/654.PAK/3.TIM'
   id: 6540
   kind: bin
-- file_path: '654.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/654.PAK/4.TIM'
   id: 6541
   kind: bin
-- file_path: '654.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/654.PAK/5.TIM'
   id: 481
   kind: bin

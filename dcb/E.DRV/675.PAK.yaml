@@ -14,15 +14,15 @@
 - file_path: '675.PAK/4.A2D'
   id: 6751
   kind: a2d
-- file_path: '675.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/675.PAK/5.TIM'
   id: 6751
   kind: bin
-- file_path: '675.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/675.PAK/6.TIM'
   id: 6750
   kind: bin
-- file_path: '675.PAK/7.TIM'
+- file_path: '/build/tim/dcb/E.DRV/675.PAK/7.TIM'
   id: 6752
   kind: bin
-- file_path: '675.PAK/8.TIM'
+- file_path: '/build/tim/dcb/E.DRV/675.PAK/8.TIM'
   id: 251
   kind: bin

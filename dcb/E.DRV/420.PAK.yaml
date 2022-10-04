@@ -8,6 +8,6 @@
 - file_path: '420.PAK/2.UN2'
   id: 4200
   kind: un2
-- file_path: '420.PAK/3.TIM'
+- file_path: '/build/tim/dcb/E.DRV/420.PAK/3.TIM'
   id: 4200
   kind: bin

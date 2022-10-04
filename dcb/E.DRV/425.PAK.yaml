@@ -11,12 +11,12 @@
 - file_path: '425.PAK/3.A2D'
   id: 4252
   kind: a2d
-- file_path: '425.PAK/4.TIM'
+- file_path: '/build/tim/dcb/E.DRV/425.PAK/4.TIM'
   id: 4251
   kind: bin
-- file_path: '425.PAK/5.TIM'
+- file_path: '/build/tim/dcb/E.DRV/425.PAK/5.TIM'
   id: 4252
   kind: bin
-- file_path: '425.PAK/6.TIM'
+- file_path: '/build/tim/dcb/E.DRV/425.PAK/6.TIM'
   id: 4250
   kind: bin
