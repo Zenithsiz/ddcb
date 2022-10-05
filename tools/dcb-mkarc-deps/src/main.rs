@@ -15,7 +15,7 @@ use {
 		env,
 		fs,
 		io::{BufWriter, Write},
-		path::PathBuf,
+		path::{Path, PathBuf},
 	},
 	tracing_subscriber::prelude::*,
 };
@@ -50,8 +50,8 @@ fn main() -> Result<(), anyhow::Error> {
 
 	let input_parent = args.input.parent().context("Unable to get parent dir of input file")?;
 	for file in &input.files {
-		write!(dep_file, "{} ", input_parent.join(file).display())
-			.context("Unable to write file to dependency file")?;
+		let file = self::resolve_input_path(file, input_parent);
+		write!(dep_file, "{} ", file.display()).context("Unable to write file to dependency file")?;
 	}
 
 	Ok(())
@@ -62,4 +62,14 @@ fn main() -> Result<(), anyhow::Error> {
 pub struct Input {
 	/// All files
 	files: Vec<PathBuf>,
+}
+
+/// Resolves input paths
+pub fn resolve_input_path(input_path: &Path, base_path: &Path) -> PathBuf {
+	// Note: Absolute => relative to current directory
+	//       Relative => relative to base path
+	match input_path.strip_prefix("/") {
+		Ok(path) => path.to_path_buf(),
+		Err(_) => base_path.join(input_path),
+	}
 }
