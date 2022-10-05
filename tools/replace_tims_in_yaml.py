@@ -7,7 +7,7 @@ list = yaml.safe_load(open("list.txt"))
 
 for (root, dirs, files) in os.walk("dcb"):
 	for file in files:
-		if not file.endswith(".yaml"):
+		if not file.endswith("ARC.yaml"):
 			continue
 
 		file_path = os.path.join(root, file)
@@ -22,8 +22,7 @@ for (root, dirs, files) in os.walk("dcb"):
 			if not file_path.startswith(path):
 				continue
 
-			#print(f"Replacing {file}")
-			replacement = f"{file.rstrip('BIN')}TIM"
+			replacement = f"/build/tim/{path}/{file.rstrip('BIN')}TIM"
 			lines = lines.replace(file, replacement)
 
 		open(file_path, "w").write(lines)
