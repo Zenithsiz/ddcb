@@ -1,7 +1,5 @@
 bpp: Color16
 clut: null
 img:
-  pos:
-  - 688
-  - 80
+  pos: [688, 80]
   path: 4.TIM.png
