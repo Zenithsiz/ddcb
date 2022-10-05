@@ -7,6 +7,7 @@ members = [
   "dcb-drv",
   "dcb-pak",
   "dcb-msd",
+  "dcb-tim",
   "dcb-card-table",
   "dcb-deck-table",
   "dcb-cdrom-xa", #

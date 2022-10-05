@@ -6,10 +6,9 @@ pub mod header;
 // Exports
 pub use header::ImgHeader;
 
-use crate::header::Bpp;
-
 // Imports
 use {
+	crate::header::Bpp,
 	anyhow::Context,
 	byteorder::{ByteOrder, LittleEndian},
 	itertools::Itertools,

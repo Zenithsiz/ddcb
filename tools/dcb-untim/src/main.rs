@@ -5,25 +5,15 @@
 
 // Modules
 mod args;
-mod header;
-mod img;
 
 // Imports
 use {
 	self::args::Args,
-	crate::{
-		header::{Bpp, TimHeader},
-		img::{ColorBpp, ColorImg, Image, ImgHeader},
-	},
 	anyhow::Context,
 	clap::Parser,
 	dcb_bytes::Bytes,
-	std::{
-		env,
-		fs,
-		io::Read,
-		path::{Path, PathBuf},
-	},
+	dcb_tim::{Bpp, ColorBpp, ColorImg, Config, ConfigClut, ConfigClutKind, ConfigImg, Image, ImgHeader, TimHeader},
+	std::{env, fs, io::Read, path::Path},
 	tracing_subscriber::prelude::*,
 };
 
@@ -187,59 +177,4 @@ fn main() -> Result<(), anyhow::Error> {
 	}
 
 	Ok(())
-}
-
-/// Config
-#[derive(Clone, Debug)]
-#[derive(serde::Serialize, serde::Deserialize)]
-pub struct Config {
-	/// Bits per pixel
-	bpp: Bpp,
-
-	/// Clut
-	clut: Option<ConfigClut>,
-
-	/// Image
-	img: ConfigImg,
-}
-
-/// Config clut
-#[derive(Clone, Debug)]
-#[derive(serde::Serialize, serde::Deserialize)]
-pub struct ConfigClut {
-	/// Position
-	pos: [u16; 2],
-
-	/// Kind
-	#[serde(flatten)]
-	kind: ConfigClutKind,
-}
-
-/// Config clut kind
-#[derive(Clone, Debug)]
-#[derive(serde::Serialize, serde::Deserialize)]
-#[serde(tag = "kind")]
-pub enum ConfigClutKind {
-	/// User
-	#[serde(rename = "user")]
-	User { path: PathBuf },
-
-	/// External
-	#[serde(rename = "external")]
-	External { path: PathBuf },
-
-	/// Auto
-	#[serde(rename = "auto")]
-	Auto,
-}
-
-/// Config image
-#[derive(Clone, Debug)]
-#[derive(serde::Serialize, serde::Deserialize)]
-pub struct ConfigImg {
-	/// Position
-	pos: [u16; 2],
-
-	/// Path
-	path: PathBuf,
 }
