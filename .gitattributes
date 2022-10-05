@@ -9,7 +9,6 @@
 /dcb/**/*.A2D filter=lfs diff=lfs merge=lfs -text
 /dcb/**/*.bspatch filter=lfs diff=lfs merge=lfs -text
 /dcb/**/*.M3D filter=lfs diff=lfs merge=lfs -text
-/dcb/**/*.TIS filter=lfs diff=lfs merge=lfs -text
 /dcb/**/*.UN1 filter=lfs diff=lfs merge=lfs -text
 /dcb/**/*.UN2 filter=lfs diff=lfs merge=lfs -text
 /dcb/**/VSSVER.SCC filter=lfs diff=lfs merge=lfs -text
