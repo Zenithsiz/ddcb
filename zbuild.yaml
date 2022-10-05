@@ -16,6 +16,8 @@ alias:
   generate_iso_deps     : tools/generate_iso_deps.py
   generate_compare_deps : tools/generate_compare_deps.py
   bspatch               : tools/bspatch.py
+  mkconcat              : tools/concat.py
+  mkconcat_deps         : tools/concat_deps.py
 
   # Cargo tools
   mkdrv        : $(tools_dir)/dcb-mkdrv
@@ -42,6 +44,7 @@ alias:
   msd_dir   : $(build_dir)/msd
   tim_dir   : $(build_dir)/tim
   dylib_dir : $(build_dir)/dylib
+  concat_dir: $(build_dir)/concat
 
   # Files
   checksums            : checksums.sha256
@@ -264,6 +267,35 @@ rules:
     exec:
       - [$(mkmsd), $(msd_src), -o, $(msd), --deps-file, $(msd).d]
       - [$(bspatch), $(msd), $(msd), $(msd_patch)]
+
+  # `concat`
+  mkconcat:
+    alias:
+      concat: $(concat_dir)/^(path).concat
+      concat_deps: $(concat_dir)/^(path).d
+      concat_yaml: ^(path).concat.yaml
+    out: [$(concat)]
+    deps:
+      - $(concat_yaml)
+      - $(mkconcat)
+      - deps_file: $(concat_deps)
+      - static: $(concat::dir_name)/
+    exec:
+      - [$(mkconcat), $(concat_yaml), $(concat)]
+
+  # `concat` dependencies
+  mkconcat_deps:
+    alias:
+      concat: $(concat_dir)/^(path).concat
+      concat_deps: $(concat_dir)/^(path).d
+      concat_yaml: ^(path).concat.yaml
+    out: [$(concat_deps)]
+    deps:
+      - $(concat_yaml)
+      - $(mkconcat_deps)
+      - static: $(concat::dir_name)/
+    exec:
+      - [$(mkconcat_deps), $(concat_yaml), $(concat), $(concat_deps)]
 
   # `tim`
   # Note: This is just a dummy impl until we properly convert bmps
