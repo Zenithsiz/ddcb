@@ -61,8 +61,30 @@ impl Bytes for TimHeader {
 		Ok(Self { bpp, has_clut })
 	}
 
-	fn serialize_bytes(&self, _bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
-		todo!()
+	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
+		let bytes = dcb_bytes::array_split_mut!(bytes,
+			magic: [0x4],
+			flags: [0x4],
+		);
+
+		*bytes.magic = Self::MAGIC;
+
+		let mut flags = 0;
+		flags |= match self.bpp {
+			Bpp::Indexed4 => 0b00,
+			Bpp::Indexed8 => 0b01,
+			Bpp::Color16 => 0b10,
+			Bpp::Color24 => 0b11,
+		};
+
+		flags |= match self.has_clut {
+			true => 0b1000,
+			false => 0b0000,
+		};
+
+		LittleEndian::write_u32(bytes.flags, flags);
+
+		Ok(())
 	}
 }
 

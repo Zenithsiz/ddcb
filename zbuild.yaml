@@ -18,6 +18,7 @@ alias:
   bspatch               : tools/bspatch.py
   mkconcat              : tools/concat.py
   mkconcat_deps         : tools/concat_deps.py
+  mktim_deps            : tools/mktim_deps.py
 
   # Cargo tools
   mkdrv        : $(tools_dir)/dcb-mkdrv
@@ -30,6 +31,7 @@ alias:
   mk-card-table: $(tools_dir)/dcb-mk-card-table
   mk-deck-table: $(tools_dir)/dcb-mk-deck-table
   mkpsexe      : $(tools_dir)/dcb-mkpsexe
+  mktim        : $(tools_dir)/dcb-mktim
 
   # Directories
   build_dir : build
@@ -303,16 +305,19 @@ rules:
       tim: $(tim_dir)/^(path).TIM
       tim_deps: $(tim_dir)/^(path).TIM.d
       tim_yaml: ^(path).TIM.yaml
+      tim_patch: ^(path).TIM.bspatch
     out: [$(tim)]
     deps:
       - $(tim_yaml)
-      - ^(path).TIM # Remove once we use `mktim`
+      - $(tim_patch)
+      - $(mktim)
       - deps_file: $(tim_deps)
       - static: $(tim::dir_name)/
     exec:
-      # TODO: Use `mktim` once that's ready
-      - [cp, ^(path).TIM, $(tim)]
+      - [$(mktim), $(tim_yaml), -o, $(tim)]
+      - [$(bspatch), $(tim), $(tim), $(tim_patch)]
 
+  # `tim` dependencies
   mktim_deps:
     alias:
       tim: $(tim_dir)/^(path).TIM
@@ -321,10 +326,10 @@ rules:
     out: [$(tim_deps)]
     deps:
       - $(tim_yaml)
-      - static: $(tim::dir_name)/
+      - $(mktim_deps)
+      - static: $(tim_deps::dir_name)/
     exec:
-      # TODO: Use `mktim_deps` once that's ready
-      - [bash, -c, 'echo "$(tim): ^(path).TIM.png $(tim_yaml)" > $(tim_deps)']
+      - [$(mktim_deps), $(tim_yaml), $(tim), $(tim_deps)]
 
   # Card table
   card_table:

@@ -26,7 +26,7 @@ impl Bytes for ImgHeader {
 			total_size: [0x4],
 			pos_x     : [0x2],
 			pos_y     : [0x2],
-			width_pre     : [0x2],
+			width_pre : [0x2],
 			height    : [0x2],
 		);
 
@@ -45,7 +45,21 @@ impl Bytes for ImgHeader {
 		})
 	}
 
-	fn serialize_bytes(&self, _bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
-		todo!()
+	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
+		let bytes = dcb_bytes::array_split_mut!(bytes,
+			total_size: [0x4],
+			pos_x     : [0x2],
+			pos_y     : [0x2],
+			width_pre : [0x2],
+			height    : [0x2],
+		);
+
+		LittleEndian::write_u32(bytes.total_size, self.total_size);
+		LittleEndian::write_u16(bytes.pos_x, self.pos_x);
+		LittleEndian::write_u16(bytes.pos_y, self.pos_y);
+		LittleEndian::write_u16(bytes.width_pre, self.width);
+		LittleEndian::write_u16(bytes.height, self.height);
+
+		Ok(())
 	}
 }

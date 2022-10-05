@@ -1,4 +1,4 @@
-//! `ARC` extractor
+//! `TIM` extractor
 
 // Features
 #![feature(array_chunks, array_windows, never_type, iter_array_chunks)]

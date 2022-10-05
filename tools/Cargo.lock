@@ -529,6 +529,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "dcb-mktim"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "clap 3.2.17",
+ "dcb-bytes",
+ "dcb-tim",
+ "hexdump",
+ "image",
+ "itertools 0.10.5",
+ "pathdiff",
+ "serde",
+ "serde_yaml 0.9.9",
+ "thiserror",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "dcb-msd"
 version = "0.1.0"
 dependencies = [

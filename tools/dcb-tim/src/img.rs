@@ -63,6 +63,32 @@ impl IndexedImg {
 		Ok(Self { idxs })
 	}
 
+	/// Writes a indexed image to a stream
+	pub fn write<W: io::Write>(&self, bpp: IndexBpp, mut writer: W) -> Result<(), anyhow::Error> {
+		// Read all indices
+		match bpp {
+			// TODO: What to do with leftover chunks?
+			IndexBpp::Four => {
+				anyhow::ensure!(
+					self.idxs.len() % 2 == 0,
+					"Cannot have an odd number of indexes on a bpp-4 image"
+				);
+
+				for &[idx0, idx1] in self.idxs.array_chunks::<2>() {
+					anyhow::ensure!(idx0 <= 16, "Found index over 16 on bpp-4 image");
+					anyhow::ensure!(idx1 <= 16, "Found index over 16 on bpp-4 image");
+					writer.write_all(&[idx0 | (idx1 << 4)]).context("Unable to write")?;
+				}
+			},
+			IndexBpp::Eight =>
+				for &idx in &self.idxs {
+					writer.write_all(&[idx]).context("Unable to write")?;
+				},
+		};
+
+		Ok(())
+	}
+
 	/// Creates an image buffer from this
 	pub fn to_image_buffer(
 		&self,
@@ -125,6 +151,30 @@ impl ColorImg {
 		Ok(Self { colors })
 	}
 
+	/// Writes a color image to a stream
+	pub fn write<W: io::Write>(&self, bpp: ColorBpp, mut writer: W) -> Result<(), anyhow::Error> {
+		match bpp {
+			ColorBpp::R5G5B6A =>
+				for color in &self.colors {
+					let mut color_bytes = [0; 2];
+					LittleEndian::write_u16(&mut color_bytes, color.to_r5g5b5a1());
+					writer.write_all(&color_bytes).context("Unable to write")?;
+				},
+			ColorBpp::R8G8B8 => {
+				for color in &self.colors {
+					let color_bytes = color.to_r8g8b8();
+					writer.write_all(&color_bytes).context("Unable to write")?;
+				}
+
+				if self.colors.len() % 2 != 0 {
+					writer.write_all(&[0]).context("Unable to write padding")?;
+				}
+			},
+		};
+
+		Ok(())
+	}
+
 	/// Creates an image buffer from this
 	pub fn to_image_buffer(
 		&self,
@@ -156,42 +206,85 @@ pub struct Color {
 	/// Red
 	pub b: u8,
 
-	/// Transparent
-	pub transparent: bool,
+	/// Special transparency bit
+	pub stp: bool,
 }
 
 impl Color {
 	/// Creates a color from a R5G5B5A1 representation
 	pub fn from_r5g5b5a1(color: u16) -> Self {
+		#[allow(clippy::identity_op)] // Consistency
 		Self {
-			#[allow(clippy::identity_op)] // Consistency
-			r:           (((color >> 0x0) & 0b11111) << 0x3) as u8,
-			g:           (((color >> 0x5) & 0b11111) << 0x3) as u8,
-			b:           (((color >> 0xa) & 0b11111) << 0x3) as u8,
-			transparent: (color >> 0xf) != 0,
+			r:   (((color >> 0x0) & 0b11111) << 0x3) as u8,
+			g:   (((color >> 0x5) & 0b11111) << 0x3) as u8,
+			b:   (((color >> 0xa) & 0b11111) << 0x3) as u8,
+			stp: (color >> 0xf) != 0,
 		}
+	}
+
+	/// Returns this color in it's R5G5B5A1 representation
+	///
+	/// Clamps any colors too near to be represented
+	pub fn to_r5g5b5a1(self) -> u16 {
+		let r = u16::from(self.r >> 0x3);
+		let g = u16::from(self.g >> 0x3);
+		let b = u16::from(self.b >> 0x3);
+		let a = u16::from(self.stp);
+
+		r | (g << 0x5) | (b << 0xa) | (a << 0xf)
 	}
 
 	/// Creates a color from a R8G8B8 representation
 	pub fn from_r8g8b8(color: [u8; 3]) -> Self {
 		Self {
-			r:           color[0],
-			g:           color[1],
-			b:           color[2],
-			transparent: false,
+			r:   color[0],
+			g:   color[1],
+			b:   color[2],
+			stp: false,
 		}
+	}
+
+	/// Returns this color in it's R8G8B8 representation.
+	///
+	/// Ignores transparency
+	pub fn to_r8g8b8(self) -> [u8; 3] {
+		[self.r, self.g, self.b]
+	}
+
+	/// Converts from an rgba representation.
+	pub fn from_rgba([r, g, b, a]: [u8; 4]) -> Self {
+		let stp = match (r, g, b, a) {
+			// Just black has the stp bit
+			(0, 0, 0, 255) => true,
+
+			// Full transparent doesn't have the stp
+			(0, 0, 0, 0) => false,
+
+			// Full opaque doesn't have stp
+			(.., 255) => false,
+
+			// Everything else can have stp
+			// TODO: Should we restrict this to a range?
+			_ => true,
+		};
+
+		Self { r, g, b, stp }
 	}
 
 	/// Converts this color into an rgba representation
 	pub fn to_rgba(self) -> [u8; 4] {
-		let a = match self.transparent {
-			true => 255,
-			false => match [self.r, self.g, self.b] {
-				// On transparent black, use full transparency
-				[0, 0, 0] => 0,
-				// Else use half transparency
-				_ => 127,
-			},
+		let a = match (self.r, self.g, self.b, self.stp) {
+			// Black with stp is actually just black
+			(0, 0, 0, true) => 255,
+
+			// Black without stp are full transparent
+			(0, 0, 0, false) => 0,
+
+			// Any other transparency is half
+			(.., true) => 127,
+
+			// Otherwise, not transparent
+			(.., false) => 255,
 		};
 
 		[self.r, self.g, self.b, a]
