@@ -1,0 +1,7 @@
+{
+	"name": "ddcb",
+	"packageManager": "yarn@3.2.3",
+	"devDependencies": {
+		"prettier": "^2.7.1"
+	}
+}

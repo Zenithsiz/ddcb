@@ -12,3 +12,12 @@ __pycache__
 # License
 /license.dat
 /license-psexe.dat
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
