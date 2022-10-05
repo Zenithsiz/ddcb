@@ -23,6 +23,7 @@ members = [
   "dcb-mkarc",
   "dcb-mkarc-deps",
   "dcb-unarc",
+  "dcb-untim",
   "dcb-un-card-table",
   "dcb-mk-card-table",
   "dcb-un-deck-table",

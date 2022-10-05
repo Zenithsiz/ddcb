@@ -1,5 +1,8 @@
 //! Array splitting
 
+// TODO: Add back a `PhantomData` field for when splitting nothing once
+//       rust-analyzer doesn't crap itself with it
+
 /// Splits a byte array reference into several smaller byte arrays references,
 /// or even single byte references.
 pub macro array_split
@@ -17,12 +20,11 @@ pub macro array_split
 		#[derive(Clone, Copy, Debug)]
 		struct Fields<'a, T> {
 			$(
-				$name:
+				pub $name:
 
 				$( &'a [T; $arr_size], )?
 				$( &'a T, #[cfg(invalid)] __field: [u8; $val_size], )?
 			)*
-			__phantom: ::std::marker::PhantomData<&'a T>,
 		}
 
 		// Get everything from `array_refs`
@@ -50,7 +52,6 @@ pub macro array_split
 				$( : &( $name[$val_size - $val_size] ) )?
 				,
 			)*
-			__phantom: ::std::marker::PhantomData,
 		}
 	}}
 
@@ -71,14 +72,13 @@ pub macro array_split_mut(
 		#[derive(Debug)]
 		struct Fields<'a, T> {
 			$(
-				$name:
+				pub $name:
 
 				$( &'a mut [T; $arr_size], )?
 				// Note: This `cfg` is simply done so that `__field` never appears.
 				//       The `__field` serves to identify when this part should be written.
 				$( &'a mut T, #[cfg(invalid)] __field: [u8; $val_size], )?
 			)*
-			__phantom: ::std::marker::PhantomData<&'a mut T>,
 		}
 
 		// Get everything from `mut_array_refs`
@@ -107,6 +107,5 @@ pub macro array_split_mut(
 				$( : &mut ( $name[$val_size - $val_size] ) )?
 				,
 			)*
-			__phantom: ::std::marker::PhantomData,
 		}
 	}}

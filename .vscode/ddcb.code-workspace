@@ -40,6 +40,7 @@
 			"bgez",
 			"bnez",
 			"byteorder",
+			"clut",
 			"Cmpt",
 			"cmpts",
 			"concat",

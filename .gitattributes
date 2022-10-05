@@ -11,6 +11,7 @@
 /dcb/**/*.M3D filter=lfs diff=lfs merge=lfs -text
 /dcb/**/*.UN1 filter=lfs diff=lfs merge=lfs -text
 /dcb/**/*.UN2 filter=lfs diff=lfs merge=lfs -text
+/dcb/**/*.png filter=lfs diff=lfs merge=lfs -text
 /dcb/**/VSSVER.SCC filter=lfs diff=lfs merge=lfs -text
 
 # Keep crlfs in all files in `/dcb`

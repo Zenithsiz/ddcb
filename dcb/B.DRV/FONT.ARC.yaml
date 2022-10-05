@@ -1,20 +1,20 @@
 files:
   - /build/tim/dcb/B.DRV/FONT.ARC/0.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/1.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/2.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/3.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/4.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/5.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/6.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/7.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/8.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/9.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/10.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/11.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/12.TIM
+  - FONT.ARC/1.BIN
+  - FONT.ARC/2.BIN
+  - FONT.ARC/3.BIN
+  - FONT.ARC/4.BIN
+  - FONT.ARC/5.BIN
+  - FONT.ARC/6.BIN
+  - FONT.ARC/7.BIN
+  - FONT.ARC/8.BIN
+  - FONT.ARC/9.BIN
+  - FONT.ARC/10.BIN
+  - FONT.ARC/11.BIN
+  - FONT.ARC/12.BIN
   - /build/tim/dcb/B.DRV/FONT.ARC/13.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/14.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/15.TIM
+  - FONT.ARC/14.BIN
+  - FONT.ARC/15.BIN
   - /build/tim/dcb/B.DRV/FONT.ARC/16.TIM
   - /build/tim/dcb/B.DRV/FONT.ARC/17.TIM
   - /build/tim/dcb/B.DRV/FONT.ARC/18.TIM
@@ -25,13 +25,13 @@ files:
   - /build/tim/dcb/B.DRV/FONT.ARC/23.TIM
   - /build/tim/dcb/B.DRV/FONT.ARC/24.TIM
   - /build/tim/dcb/B.DRV/FONT.ARC/25.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/26.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/27.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/28.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/29.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/30.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/31.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/32.TIM
+  - FONT.ARC/26.BIN
+  - FONT.ARC/27.BIN
+  - FONT.ARC/28.BIN
+  - FONT.ARC/29.BIN
+  - FONT.ARC/30.BIN
+  - FONT.ARC/31.BIN
+  - FONT.ARC/32.BIN
   - /build/tim/dcb/B.DRV/FONT.ARC/33.TIM
   - /build/tim/dcb/B.DRV/FONT.ARC/34.TIM
   - /build/tim/dcb/B.DRV/FONT.ARC/35.TIM
@@ -58,12 +58,12 @@ files:
   - /build/tim/dcb/B.DRV/FONT.ARC/56.TIM
   - /build/tim/dcb/B.DRV/FONT.ARC/57.TIM
   - /build/tim/dcb/B.DRV/FONT.ARC/58.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/59.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/60.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/61.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/62.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/63.TIM
-  - /build/tim/dcb/B.DRV/FONT.ARC/64.TIM
+  - FONT.ARC/59.BIN
+  - FONT.ARC/60.BIN
+  - FONT.ARC/61.BIN
+  - FONT.ARC/62.BIN
+  - FONT.ARC/63.BIN
+  - FONT.ARC/64.BIN
   - /build/tim/dcb/B.DRV/FONT.ARC/65.TIM
   - /build/tim/dcb/B.DRV/FONT.ARC/66.TIM
   - /build/tim/dcb/B.DRV/FONT.ARC/67.TIM

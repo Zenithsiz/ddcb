@@ -1,0 +1,7 @@
+bpp: Color16
+clut: null
+img:
+  pos:
+  - 688
+  - 83
+  path: 13.TIM.png
