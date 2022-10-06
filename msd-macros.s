@@ -10,6 +10,10 @@
 .macro give_card, set_light, 0x1, $0, 0xffff, 0xffff
 
 
+# Character light control
+.macro set_light_left_char , set_light, 0x0, 0x0, $0, 0xa
+.macro set_light_right_char, set_light, 0x0, 0x1, $0, 0xa
+.macro set_light_chars, .set_light_left_char, $0, /, .set_light_right_char, $1
 
 
 # Old macros
@@ -41,9 +45,6 @@
 .macro display_location     , display_scene, 0x8 , $0
 .macro add_partner          , display_scene, 0xa , $0
 .macro add_completion_points, display_scene, 0x12, $0
-
-.macro set_light_left_char , set_light, 0x0, 0x0, $0, 0xa
-.macro set_light_right_char, set_light, 0x0, 0x1, $0, 0xa
 
 .macro set_text_buffer, set_buffer, 0x4, $0
 

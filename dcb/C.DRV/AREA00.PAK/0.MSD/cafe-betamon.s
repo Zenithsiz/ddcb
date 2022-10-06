@@ -5,8 +5,7 @@ battle_cafe_betamon:
 	jump 0x94, _menu
 
 	# Intro
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -15,15 +14,13 @@ battle_cafe_betamon:
 	.set_text_buffer "I\'m your guide to this world!"
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x80
-	.set_light_right_char 0x30
+	.set_light_chars 0x80, 0x30
 	.set_text_buffer "*c5*h0*c7"
 	.display_text_buffer
 	.set_text_buffer "Hi, I\'m *h0!"
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
 	.set_text_buffer "Looks like you\'re just a rookie Tamer."
@@ -31,8 +28,7 @@ battle_cafe_betamon:
 	.set_text_buffer "Let me tell you about Digi-land."
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
 	.set_text_buffer "I\'m sure you already know, but this"
@@ -61,15 +57,13 @@ battle_cafe_betamon:
 	.set_text_buffer "Battle Arenas in most cities."
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x80
-	.set_light_right_char 0x30
+	.set_light_chars 0x80, 0x30
 	.set_text_buffer "*c5*h0*c7"
 	.display_text_buffer
 	.set_text_buffer "Battle Arenas?"
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
 	.set_text_buffer "That\'s right!"
@@ -91,15 +85,13 @@ battle_cafe_betamon:
 	.set_text_buffer "you have to win the Tournament."
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x80
-	.set_light_right_char 0x30
+	.set_light_chars 0x80, 0x30
 	.set_text_buffer "*c5*h0*c7"
 	.display_text_buffer
 	.set_text_buffer "Oh... I see."
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
 	.set_text_buffer "That\'s right."
@@ -154,8 +146,7 @@ battle_cafe_betamon:
 	.set_text_buffer "I wish you good luck!"
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x80
-	.set_light_right_char 0x30
+	.set_light_chars 0x80, 0x30
 	.set_text_buffer "*c5*h0*c7"
 	.display_text_buffer
 	.set_text_buffer "Thanks, Betamon!"
@@ -163,8 +154,7 @@ battle_cafe_betamon:
 	.wait_input
 
 	# Tutorial request
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
 	.set_text_buffer "If you like, I can show you how to"
@@ -193,8 +183,7 @@ battle_cafe_betamon:
 	jump 0x93, _do_tutorial
 
 _skip_tutorial:
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -208,8 +197,7 @@ _skip_tutorial:
 	.set_text_buffer "you want to battle!"
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x80
-	.set_light_right_char 0x30
+	.set_light_chars 0x80, 0x30
 	.set_text_buffer "*c5*h0*c7"
 	.display_text_buffer
 	.set_text_buffer "Sure. Thanks. I\'ll see you later!"
@@ -219,8 +207,7 @@ _skip_tutorial:
 	jump 0x90, battle_cafe
 
 _do_tutorial:
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -231,8 +218,7 @@ _do_tutorial:
 	display_scene 0xf, 0x81
 	display_scene 0xe, 0x3c
 	.add_var 0x16c, 0x1
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -246,8 +232,7 @@ _do_tutorial:
 	.set_text_buffer "you want to battle!"
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x80
-	.set_light_right_char 0x30
+	.set_light_chars 0x80, 0x30
 	.set_text_buffer "*c5*h0*c7"
 	.display_text_buffer
 	.set_text_buffer "Hey, thanks a lot. I\'ll see you later!"
@@ -258,8 +243,7 @@ _do_tutorial:
 
 # Non-tutorial menu
 _menu:
-	.set_light_left_char 0x80
-	.set_light_right_char 0x80
+	.set_light_chars 0x80, 0x80
 	.empty_text_box
 	.set_text_buffer "Pick a Menu Option."
 	.display_text_buffer
@@ -287,23 +271,20 @@ _menu:
 
 # Talk
 _talk:
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
 	.set_text_buffer "Hi! How are you doing?"
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x80
-	.set_light_right_char 0x30
+	.set_light_chars 0x80, 0x30
 	.set_text_buffer "*c5*h0*c7"
 	.display_text_buffer
 	.set_text_buffer "Fine, thank you."
 	.display_text_buffer
 	.wait_input
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
 	.set_text_buffer "If you have some time, let\'s play!"
@@ -313,8 +294,7 @@ _talk:
 
 # Battle
 _battle:
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -332,8 +312,7 @@ _battle:
 
 # Re-does the tutorial battle
 _redo_tutorial:
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -343,8 +322,7 @@ _redo_tutorial:
 	.battle 0x0
 	display_scene 0xf, 0x81
 	display_scene 0xe, 0x3c
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -362,8 +340,7 @@ _redo_tutorial:
 
 # Asks if you want to battle
 _try_battle:
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -379,8 +356,7 @@ _try_battle:
 	jump 0x99, _do_battle
 
 	# If `no`
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -395,8 +371,7 @@ _do_battle:
 	.test_eq 0xf, 0x1
 	jump 0x9a, _new_deck
 
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -406,8 +381,7 @@ _do_battle:
 	jump 0x9b, _exec_battle
 
 _new_deck:
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -442,8 +416,7 @@ _post_battle:
 	jump 0x9e, _post_battle_on_lose
 
 	# Else do the win text
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -460,8 +433,7 @@ _post_battle:
 	jump 0x90, battle_cafe
 
 _post_battle_on_lose:
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7"
 	.display_text_buffer
@@ -484,8 +456,7 @@ _check_deck:
 	jump 0xa0, _check_deck_new
 
 	# Else show the normal deck
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7:*c3Betamon Deck"
 	.display_text_buffer
@@ -498,8 +469,7 @@ _check_deck:
 
 # Info on the new deck
 _check_deck_new:
-	.set_light_left_char 0x30
-	.set_light_right_char 0x80
+	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.set_text_buffer "*c4Betamon*c7:*c3Pick Up Deck"
 	.display_text_buffer
