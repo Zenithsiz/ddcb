@@ -15,6 +15,8 @@
 .macro set_light_right_char, set_light, 0x0, 0x1, $0, 0xa
 .macro set_light_chars, .set_light_left_char, $0, /, .set_light_right_char, $1
 
+# Printing
+.macro print, .set_text_buffer, $0, /, .display_text_buffer
 
 # Old macros
 .macro start_transition       , open_screen, 0x00

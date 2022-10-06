@@ -7,160 +7,99 @@ battle_cafe_betamon:
 	# Intro
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Hi, I\'m Betamon."
-	.display_text_buffer
-	.set_text_buffer "I\'m your guide to this world!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Hi, I\'m Betamon."
+	.print "I\'m your guide to this world!"
 	.wait_input
 	.set_light_chars 0x80, 0x30
-	.set_text_buffer "*c5*h0*c7"
-	.display_text_buffer
-	.set_text_buffer "Hi, I\'m *h0!"
-	.display_text_buffer
+	.print "*c5*h0*c7"
+	.print "Hi, I\'m *h0!"
 	.wait_input
 	.set_light_chars 0x30, 0x80
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Looks like you\'re just a rookie Tamer."
-	.display_text_buffer
-	.set_text_buffer "Let me tell you about Digi-land."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Looks like you\'re just a rookie Tamer."
+	.print "Let me tell you about Digi-land."
 	.wait_input
 	.set_light_chars 0x30, 0x80
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "I\'m sure you already know, but this"
-	.display_text_buffer
-	.set_text_buffer "world revolves around Card Battles."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "I\'m sure you already know, but this"
+	.print "world revolves around Card Battles."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "There are many cities in"
-	.display_text_buffer
-	.set_text_buffer "Digi-land."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "There are many cities in"
+	.print "Digi-land."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "And all sorts of people and Digimon"
-	.display_text_buffer
-	.set_text_buffer "enjoy Card Battles."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "And all sorts of people and Digimon"
+	.print "enjoy Card Battles."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Card Battle tournaments are held at"
-	.display_text_buffer
-	.set_text_buffer "Battle Arenas in most cities."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Card Battle tournaments are held at"
+	.print "Battle Arenas in most cities."
 	.wait_input
 	.set_light_chars 0x80, 0x30
-	.set_text_buffer "*c5*h0*c7"
-	.display_text_buffer
-	.set_text_buffer "Battle Arenas?"
-	.display_text_buffer
+	.print "*c5*h0*c7"
+	.print "Battle Arenas?"
 	.wait_input
 	.set_light_chars 0x30, 0x80
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "That\'s right!"
-	.display_text_buffer
-	.set_text_buffer "There\'s one in Beginner City, too."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "That\'s right!"
+	.print "There\'s one in Beginner City, too."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Winning in a Tournament will get you"
-	.display_text_buffer
-	.set_text_buffer "the Passcode to the next city."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Winning in a Tournament will get you"
+	.print "the Passcode to the next city."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "So, if you want to go to the next city,"
-	.display_text_buffer
-	.set_text_buffer "you have to win the Tournament."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "So, if you want to go to the next city,"
+	.print "you have to win the Tournament."
 	.wait_input
 	.set_light_chars 0x80, 0x30
-	.set_text_buffer "*c5*h0*c7"
-	.display_text_buffer
-	.set_text_buffer "Oh... I see."
-	.display_text_buffer
+	.print "*c5*h0*c7"
+	.print "Oh... I see."
 	.wait_input
 	.set_light_chars 0x30, 0x80
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "That\'s right."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "That\'s right."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "After you win at Battle Arena, you can"
-	.display_text_buffer
-	.set_text_buffer "battle opponents in Battle Cafe."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "After you win at Battle Arena, you can"
+	.print "battle opponents in Battle Cafe."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "You receive new Cards by"
-	.display_text_buffer
-	.set_text_buffer "defeating your opponents."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "You receive new Cards by"
+	.print "defeating your opponents."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "You can also make Decks with Auto-Deck."
-	.display_text_buffer
-	.set_text_buffer "Other people\'s Cards have useful info."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "You can also make Decks with Auto-Deck."
+	.print "Other people\'s Cards have useful info."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "You need to collect the right types of"
-	.display_text_buffer
-	.set_text_buffer "Cards to make your Deck of choice."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "You need to collect the right types of"
+	.print "Cards to make your Deck of choice."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "When you enter a city, you should first"
-	.display_text_buffer
-	.set_text_buffer "visit Battle Cafe to get information!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "When you enter a city, you should first"
+	.print "visit Battle Cafe to get information!"
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "You can get useful information from"
-	.display_text_buffer
-	.set_text_buffer "the people hanging out at Battle Cafe."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "You can get useful information from"
+	.print "the people hanging out at Battle Cafe."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "I\'m sure you\'ll become a Battle Master!"
-	.display_text_buffer
-	.set_text_buffer "I wish you good luck!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "I\'m sure you\'ll become a Battle Master!"
+	.print "I wish you good luck!"
 	.wait_input
 	.set_light_chars 0x80, 0x30
-	.set_text_buffer "*c5*h0*c7"
-	.display_text_buffer
-	.set_text_buffer "Thanks, Betamon!"
-	.display_text_buffer
+	.print "*c5*h0*c7"
+	.print "Thanks, Betamon!"
 	.wait_input
 
 	# Tutorial request
 	.set_light_chars 0x30, 0x80
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "If you like, I can show you how to"
-	.display_text_buffer
-	.set_text_buffer "play Card Battle."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "If you like, I can show you how to"
+	.print "play Card Battle."
 	.open_combo_box 0x61
 	.combo_box_add_button 0x10
 	.combo_box_add_button 0x11
@@ -170,10 +109,8 @@ battle_cafe_betamon:
 
 	# Tutorial request confirmation
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Are you sure?"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Are you sure?"
 	.open_combo_box 0x61
 	.combo_box_add_button 0x10
 	.combo_box_add_button 0x11
@@ -185,23 +122,16 @@ battle_cafe_betamon:
 _skip_tutorial:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "OK!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "OK!"
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Come and see me whenever"
-	.display_text_buffer
-	.set_text_buffer "you want to battle!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Come and see me whenever"
+	.print "you want to battle!"
 	.wait_input
 	.set_light_chars 0x80, 0x30
-	.set_text_buffer "*c5*h0*c7"
-	.display_text_buffer
-	.set_text_buffer "Sure. Thanks. I\'ll see you later!"
-	.display_text_buffer
+	.print "*c5*h0*c7"
+	.print "Sure. Thanks. I\'ll see you later!"
 	.wait_input
 	.set_var 0x17, 0x1
 	jump 0x90, battle_cafe
@@ -209,10 +139,8 @@ _skip_tutorial:
 _do_tutorial:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "OK."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "OK."
 	.wait_input
 	.battle 0x0
 	display_scene 0xf, 0x81
@@ -220,23 +148,16 @@ _do_tutorial:
 	.add_var 0x16c, 0x1
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Don\'t worry, you\'ll get the hang of it."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Don\'t worry, you\'ll get the hang of it."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Come and see me whenever"
-	.display_text_buffer
-	.set_text_buffer "you want to battle!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Come and see me whenever"
+	.print "you want to battle!"
 	.wait_input
 	.set_light_chars 0x80, 0x30
-	.set_text_buffer "*c5*h0*c7"
-	.display_text_buffer
-	.set_text_buffer "Hey, thanks a lot. I\'ll see you later!"
-	.display_text_buffer
+	.print "*c5*h0*c7"
+	.print "Hey, thanks a lot. I\'ll see you later!"
 	.wait_input
 	.set_var 0x17, 0x1
 	jump 0x90, battle_cafe
@@ -245,8 +166,7 @@ _do_tutorial:
 _menu:
 	.set_light_chars 0x80, 0x80
 	.empty_text_box
-	.set_text_buffer "Pick a Menu Option."
-	.display_text_buffer
+	.print "Pick a Menu Option."
 	.open_combo_box 0x61
 	.combo_box_add_button 0xc
 	.combo_box_add_button 0xd
@@ -273,22 +193,16 @@ _menu:
 _talk:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Hi! How are you doing?"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Hi! How are you doing?"
 	.wait_input
 	.set_light_chars 0x80, 0x30
-	.set_text_buffer "*c5*h0*c7"
-	.display_text_buffer
-	.set_text_buffer "Fine, thank you."
-	.display_text_buffer
+	.print "*c5*h0*c7"
+	.print "Fine, thank you."
 	.wait_input
 	.set_light_chars 0x30, 0x80
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "If you have some time, let\'s play!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "If you have some time, let\'s play!"
 	.wait_input
 	jump 0x90, battle_cafe
 
@@ -296,12 +210,9 @@ _talk:
 _battle:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Do you want me to tell you how to"
-	.display_text_buffer
-	.set_text_buffer "play Card Battle again?"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Do you want me to tell you how to"
+	.print "play Card Battle again?"
 	.open_combo_box 0x61
 	.combo_box_add_button 0x10
 	.combo_box_add_button 0x11
@@ -314,27 +225,20 @@ _battle:
 _redo_tutorial:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "OK."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "OK."
 	.wait_input
 	.battle 0x0
 	display_scene 0xf, 0x81
 	display_scene 0xe, 0x3c
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "That wasn\'t too shabby."
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "That wasn\'t too shabby."
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Come and see me whenever"
-	.display_text_buffer
-	.set_text_buffer "you want to battle!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Come and see me whenever"
+	.print "you want to battle!"
 	.wait_input
 	jump 0x90, battle_cafe
 
@@ -342,10 +246,8 @@ _redo_tutorial:
 _try_battle:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Do you want to battle me, then?"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Do you want to battle me, then?"
 	.open_combo_box 0x61
 	.combo_box_add_button 0x10
 	.combo_box_add_button 0x11
@@ -358,10 +260,8 @@ _try_battle:
 	# If `no`
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "I see. Come back again!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "I see. Come back again!"
 	.wait_input
 	jump 0x90, battle_cafe
 
@@ -373,27 +273,20 @@ _do_battle:
 
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Alright. I\'m ready to battle!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Alright. I\'m ready to battle!"
 	.wait_input
 	jump 0x9b, _exec_battle
 
 _new_deck:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "By the way, I just picked up"
-	.display_text_buffer
-	.set_text_buffer "a Deck the other day!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "By the way, I just picked up"
+	.print "a Deck the other day!"
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Alright! I\'m using this Deck!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Alright! I\'m using this Deck!"
 	.wait_input
 
 _exec_battle:
@@ -418,34 +311,24 @@ _post_battle:
 	# Else do the win text
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Oh nooo! You\'re too strong!"
-	.display_text_buffer
-	.set_text_buffer "I didn\'t even have a chance!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Oh nooo! You\'re too strong!"
+	.print "I didn\'t even have a chance!"
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "That was fun. Let\'s do it again!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "That was fun. Let\'s do it again!"
 	.wait_input
 	jump 0x90, battle_cafe
 
 _post_battle_on_lose:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Great! I guess I got really lucky!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Great! I guess I got really lucky!"
 	.wait_input
-	.set_text_buffer "*c4Betamon*c7"
-	.display_text_buffer
-	.set_text_buffer "Next time, I\'ll do even better!"
-	.display_text_buffer
-	.set_text_buffer "That was fun. Let\'s do it again!"
-	.display_text_buffer
+	.print "*c4Betamon*c7"
+	.print "Next time, I\'ll do even better!"
+	.print "That was fun. Let\'s do it again!"
 	.wait_input
 	jump 0x90, battle_cafe
 
@@ -458,12 +341,9 @@ _check_deck:
 	# Else show the normal deck
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7:*c3Betamon Deck"
-	.display_text_buffer
-	.set_text_buffer "Betamon\'s main Deck. It\'s a cool Deck,"
-	.display_text_buffer
-	.set_text_buffer "good for battle against beginners."
-	.display_text_buffer
+	.print "*c4Betamon*c7:*c3Betamon Deck"
+	.print "Betamon\'s main Deck. It\'s a cool Deck,"
+	.print "good for battle against beginners."
 	.wait_input
 	jump 0x90, battle_cafe
 
@@ -471,9 +351,7 @@ _check_deck:
 _check_deck_new:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
-	.set_text_buffer "*c4Betamon*c7:*c3Pick Up Deck"
-	.display_text_buffer
-	.set_text_buffer "The legendary most powerful Deck."
-	.display_text_buffer
+	.print "*c4Betamon*c7:*c3Pick Up Deck"
+	.print "The legendary most powerful Deck."
 	.wait_input
 	jump 0x90, battle_cafe
