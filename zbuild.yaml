@@ -177,6 +177,7 @@ rules:
   mkdrv:
     alias:
       drv: $(drv_dir)/^(path).DRV
+      drv_unpatched: $(drv).unpatched
       drv_yaml: ^(path).DRV.yaml
       drv_patch: ^(path).DRV.bspatch
     out: [$(drv)]
@@ -184,11 +185,12 @@ rules:
       - $(drv_yaml)
       - $(drv_patch)
       - $(mkdrv)
+      - $(bspatch)
       - deps_file: $(drv).d
       - static: $(drv::dir_name)/
     exec:
-      - [$(mkdrv), $(drv_yaml), -o, $(drv)]
-      - [$(bspatch), $(drv), $(drv), $(drv_patch)]
+      - [$(mkdrv), $(drv_yaml), -o, $(drv_unpatched)]
+      - [$(bspatch), $(drv_unpatched), $(drv), $(drv_patch)]
 
   # `drv` dependencies
   mkdrv-deps:
@@ -261,6 +263,7 @@ rules:
   mkmsd:
     alias:
       msd: $(msd_dir)/^(path).MSD
+      msd_unpatched: $(msd).unpatched
       msd_src: ^(path).MSD.s
       msd_patch: ^(path).MSD.bspatch
     out: [$(msd), deps_file: $(msd).d]
@@ -268,10 +271,11 @@ rules:
       - $(msd_src)
       - $(msd_patch)
       - $(mkmsd)
+      - $(bspatch)
       - static: $(msd::dir_name)/
     exec:
-      - [$(mkmsd), $(msd_src), -o, $(msd), --deps-file, $(msd).d]
-      - [$(bspatch), $(msd), $(msd), $(msd_patch)]
+      - [$(mkmsd), $(msd_src), -o, $(msd_unpatched), --deps-file, $(msd).d]
+      - [$(bspatch), $(msd_unpatched), $(msd), $(msd_patch)]
 
   # `concat`
   mkconcat:
@@ -306,7 +310,8 @@ rules:
   mktim:
     alias:
       tim: $(tim_dir)/^(path).TIM
-      tim_deps: $(tim_dir)/^(path).TIM.d
+      tim_unpatched: $(tim).unpatched
+      tim_deps: $(tim).d
       tim_yaml: ^(path).TIM.yaml
       tim_patch: ^(path).TIM.bspatch
     out: [$(tim)]
@@ -314,17 +319,18 @@ rules:
       - $(tim_yaml)
       - $(tim_patch)
       - $(mktim)
+      - $(bspatch)
       - deps_file: $(tim_deps)
       - static: $(tim::dir_name)/
     exec:
-      - [$(mktim), $(tim_yaml), -o, $(tim)]
-      - [$(bspatch), $(tim), $(tim), $(tim_patch)]
+      - [$(mktim), $(tim_yaml), -o, $(tim_unpatched)]
+      - [$(bspatch), $(tim_unpatched), $(tim), $(tim_patch)]
 
   # `tim` dependencies
   mktim_deps:
     alias:
       tim: $(tim_dir)/^(path).TIM
-      tim_deps: $(tim_dir)/^(path).TIM.d
+      tim_deps: $(tim).d
       tim_yaml: ^(path).TIM.yaml
     out: [$(tim_deps)]
     deps:
@@ -364,29 +370,33 @@ rules:
   card_table:
     alias:
       cdd: $(misc_dir)/^(path).CDD
+      cdd_unpatched: $(cdd).unpatched
     out: [$(cdd)]
     deps:
       - ^(path).CDD.json
       - ^(path).CDD.bspatch
       - $(mk-card-table)
+      - $(bspatch)
       - static: $(cdd::dir_name)/
     exec:
-      - [$(mk-card-table), ^(path).CDD.json, -o, $(cdd)]
-      - [$(bspatch), $(cdd), $(cdd), ^(path).CDD.bspatch]
+      - [$(mk-card-table), ^(path).CDD.json, -o, $(cdd_unpatched)]
+      - [$(bspatch), $(cdd_unpatched), $(cdd), ^(path).CDD.bspatch]
 
   # Deck table
   deck_table:
     alias:
       dek: $(misc_dir)/^(path).DEK
+      dek_unpatched: $(dek).unpatched
     out: [$(dek)]
     deps:
       - ^(path).DEK.json
       - ^(path).DEK.bspatch
       - $(mk-deck-table)
+      - $(bspatch)
       - static: $(dek::dir_name)/
     exec:
-      - [$(mk-deck-table), ^(path).DEK.json, -o, $(dek)]
-      - [$(bspatch), $(dek), $(dek), ^(path).DEK.bspatch]
+      - [$(mk-deck-table), ^(path).DEK.json, -o, $(dek_unpatched)]
+      - [$(bspatch), $(dek_unpatched), $(dek), ^(path).DEK.bspatch]
 
   # Buffer
   mmm_buffer:
