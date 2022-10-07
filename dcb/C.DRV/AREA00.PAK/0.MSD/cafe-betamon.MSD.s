@@ -168,28 +168,19 @@ _menu:
 	.empty_text_box
 	.print "Pick a Menu Option."
 	.open_combo_box 0x61
-	.combo_box_add_button 0xc
-	.combo_box_add_button 0xd
-	.combo_box_add_button 0xe
+	.combo_box_add_button 0xc # Talk
+	.combo_box_add_button 0xd # Battle
+	.combo_box_add_button 0xe # Deck data
 	.combo_box_await
-
-	# Talk
 	.test_eq 0x1, 0x1
 	jump 0x95, _talk
-
-	# Battle
 	.test_eq 0x1, 0x2
-	jump 0x96, _battle
-
-	# Deck
+	jump 0x96, _try_redo_tutorial
 	.test_eq 0x1, 0x3
-	jump 0x9f, _check_deck
-
-	# Back
+	jump 0x9f, _deck_data
 	.test_eq 0x1, 0xffffffff
 	jump 0x90, battle_cafe
 
-# Talk
 _talk:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
@@ -206,20 +197,19 @@ _talk:
 	.wait_input
 	jump 0x90, battle_cafe
 
-# Battle
-_battle:
+_try_redo_tutorial:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Betamon*c7"
 	.print "Do you want me to tell you how to"
 	.print "play Card Battle again?"
 	.open_combo_box 0x61
-	.combo_box_add_button 0x10
-	.combo_box_add_button 0x11
+	.combo_box_add_button 0x10 # Yes
+	.combo_box_add_button 0x11 # No
 	.combo_box_await
 	.test_eq 0x1, 0x1
 	jump 0x97, _redo_tutorial
-	jump 0x98, _try_battle
+	jump 0x98, _battle_try
 
 # Re-does the tutorial battle
 _redo_tutorial:
@@ -243,21 +233,21 @@ _redo_tutorial:
 	jump 0x90, battle_cafe
 
 # Asks if you want to battle
-_try_battle:
+_battle_try:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Betamon*c7"
 	.print "Do you want to battle me, then?"
 	.open_combo_box 0x61
-	.combo_box_add_button 0x10
-	.combo_box_add_button 0x11
+	.combo_box_add_button 0x10 # Yes
+	.combo_box_add_button 0x11 # No
 	.combo_box_await
 
-	# If `yes`
+	# If do, do the battle
 	.test_eq 0x1, 0x1
-	jump 0x99, _do_battle
+	jump 0x99, _battle_accept
 
-	# If `no`
+_battle_decline:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Betamon*c7"
@@ -265,8 +255,7 @@ _try_battle:
 	.wait_input
 	jump 0x90, battle_cafe
 
-# Battles
-_do_battle:
+_battle_accept:
 	# If something, betamon gets a new deck
 	.test_eq 0xf, 0x1
 	jump 0x9a, _new_deck
@@ -296,19 +285,20 @@ _exec_battle:
 
 	# Else battle normally
 	.battle 0x8b
-	jump 0x9d, _post_battle
+	jump 0x9d, _battle_pos
 
-	_exec_battle_new_deck:
+_exec_battle_new_deck:
 	.battle 0x8d
 
-_post_battle:
+_battle_pos:
 	# If we lost, go to the lost text
 	display_scene 0xf, 0x81
 	display_scene 0xe, 0x3c
 	.test_eq 0x1, 0x0
-	jump 0x9e, _post_battle_on_lose
+	jump 0x9e, _battle_pos_on_lose
 
 	# Else do the win text
+_battle_pos_on_win:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Betamon*c7"
@@ -320,7 +310,7 @@ _post_battle:
 	.wait_input
 	jump 0x90, battle_cafe
 
-_post_battle_on_lose:
+_battle_pos_on_lose:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Betamon*c7"
@@ -333,10 +323,10 @@ _post_battle_on_lose:
 	jump 0x90, battle_cafe
 
 # Info on the deck
-_check_deck:
+_deck_data:
 	# If betamon has the new deck, show that instead
 	.test_eq 0xf, 0x1
-	jump 0xa0, _check_deck_new
+	jump 0xa0, _deck_data_new
 
 	# Else show the normal deck
 	.set_light_chars 0x30, 0x80
@@ -348,7 +338,7 @@ _check_deck:
 	jump 0x90, battle_cafe
 
 # Info on the new deck
-_check_deck_new:
+_deck_data_new:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Betamon*c7:*c3Pick Up Deck"

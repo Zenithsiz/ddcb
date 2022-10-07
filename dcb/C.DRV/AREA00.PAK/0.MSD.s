@@ -662,7 +662,7 @@ display_scene 0xf, 0x81
 .test_eq 0x2, 0x1
 jump 0xa1, battle_cafe_agumon
 .test_eq 0x2, 0x2
-jump 0xa9, jump_166
+jump 0xa9, battle_cafe_penguinmon
 .test_eq 0x2, 0x3
 jump 0xb0, jump_173
 .test_eq 0x2, 0x4
@@ -684,117 +684,9 @@ jump 0x0, jump_0
 
 .include "0.MSD/cafe-betamon.MSD.s"
 .include "0.MSD/cafe-agumon.MSD.s"
+.include "0.MSD/cafe-penguinmon.MSD.s"
 
-jump_166:
-.set_light_chars 0x80, 0x80
-.empty_text_box
-.print "Pick a Menu Option."
-.test_eq 0xc, 0x1
-jump 0xaa, jump_167
-.open_combo_box 0x61
-.combo_box_add_button 0xc
-.combo_box_add_button 0xe
-.combo_box_await
-.test_eq 0x1, 0x1
-jump 0xab, jump_168
-.test_eq 0x1, 0x2
-jump 0xaf, jump_172
-.test_eq 0x1, 0xffffffff
-jump 0x90, battle_cafe
-jump_167:
-.open_combo_box 0x61
-.combo_box_add_button 0xc
-.combo_box_add_button 0xd
-.combo_box_add_button 0xe
-.combo_box_await
-.test_eq 0x1, 0x1
-jump 0xab, jump_168
-.test_eq 0x1, 0x2
-jump 0xac, jump_169
-.test_eq 0x1, 0x3
-jump 0xaf, jump_172
-.test_eq 0x1, 0xffffffff
-jump 0x90, battle_cafe
-jump_168:
-.set_light_chars 0x30, 0x80
-.empty_text_box
-.print "*c4Penguinmon*c7"
-.print "Collecting Cards is the most important"
-.print "thing in creating strong Decks."
-.wait_input
-.print "*c4Penguinmon*c7"
-.print "In order to collect the Cards"
-.print "you need for a certain kind of Deck..."
-.wait_input
-.print "*c4Penguinmon*c7"
-.print "You need to know where to"
-.print "get those Cards."
-.wait_input
-.print "*c4Penguinmon*c7"
-.print "You usually get the same Packs and Cards"
-.print "from most opponents."
-.wait_input
-.print "*c4Penguinmon*c7"
-.print "So, if you know what your opponent has,"
-.print "you can collect what you need faster."
-.wait_input
-jump 0x90, battle_cafe
-jump_169:
-.set_light_chars 0x30, 0x80
-.empty_text_box
-.print "*c4Penguinmon*c7"
-.print "Do you want to battle with me?"
-.open_combo_box 0x61
-.combo_box_add_button 0x10
-.combo_box_add_button 0x11
-.combo_box_await
-.test_eq 0x1, 0x1
-jump 0xad, jump_170
-.set_light_chars 0x30, 0x80
-.empty_text_box
-.print "*c4Penguinmon*c7"
-.print "That\'s a pity. Come back again"
-.print "when you have time to play."
-.wait_input
-jump 0x90, battle_cafe
-jump_170:
-.set_light_chars 0x30, 0x80
-.empty_text_box
-.print "*c4Penguinmon*c7"
-.print "OK. Get ready. I\'m no pushover!"
-.wait_input
-.battle 0x2
-display_scene 0xf, 0x81
-display_scene 0xe, 0x3c
-.test_eq 0x1, 0x0
-jump 0xae, jump_171
-.add_var 0x16c, 0x1
-.set_light_chars 0x30, 0x80
-.empty_text_box
-.print "*c4Penguinmon*c7"
-.print "I lost. You\'re too good!"
-.wait_input
-.print "*c4Penguinmon*c7"
-.print "But I\'ll get you next time."
-.wait_input
-jump 0x90, battle_cafe
-jump_171:
-.set_light_chars 0x30, 0x80
-.empty_text_box
-.print "*c4Penguinmon*c7"
-.print "I think you\'re out of practice."
-.wait_input
-.print "*c4Penguinmon*c7"
-.print "Let\'s do this again. Goodbye."
-.wait_input
-jump 0x90, battle_cafe
-jump_172:
-.set_light_chars 0x30, 0x80
-.empty_text_box
-.print "*c4Penguinmon*c7:*c3Penguinmon Color Deck"
-.print "A Defensive Deck containing Ice & Rare."
-.wait_input
-jump 0x90, battle_cafe
+
 jump_173:
 .test_eq 0x8c, 0x1
 jump 0xb1, jump_174

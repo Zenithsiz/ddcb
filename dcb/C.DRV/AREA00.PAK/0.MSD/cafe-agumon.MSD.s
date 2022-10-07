@@ -28,7 +28,7 @@ _menu_2:
 	.test_eq 0x1, 0x1
 	jump 0xa3, _talk
 	.test_eq 0x1, 0x2
-	jump 0xa5, _battle
+	jump 0xa5, _battle_try
 	.test_eq 0x1, 0x3
 	jump 0xa8, _deck_data
 	.test_eq 0x1, 0xffffffff
@@ -93,17 +93,22 @@ _talk_2:
 	.wait_input
 	jump 0x90, battle_cafe
 
-_battle:
+_battle_try:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Agumon*c7"
 	.print "Do you want to battle with me?"
 	.open_combo_box 0x61
-	.combo_box_add_button 0x10
-	.combo_box_add_button 0x11
+	.combo_box_add_button 0x10 # Yes
+	.combo_box_add_button 0x11 # No
 	.combo_box_await
+
+	# If do, do the battle
 	.test_eq 0x1, 0x1
-	jump 0xa6, _do_battle
+	jump 0xa6, _battle_accept
+
+	# Else go back
+_battle_decline:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Agumon*c7"
@@ -112,7 +117,7 @@ _battle:
 	.wait_input
 	jump 0x90, battle_cafe
 
-_do_battle:
+_battle_accept:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Agumon*c7"
@@ -120,13 +125,14 @@ _do_battle:
 	.wait_input
 	.battle 0x1
 
-_post_battle:
+_battle_pos:
 	# If we lost, go to the lost text
 	display_scene 0xf, 0x81
 	display_scene 0xe, 0x3c
 	.test_eq 0x1, 0x0
-	jump 0xa7, _post_battle_on_lose
+	jump 0xa7, _battle_pos_on_lose
 
+_battle_pos_on_win:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Agumon*c7"
@@ -138,7 +144,7 @@ _post_battle:
 	.wait_input
 	jump 0x90, battle_cafe
 
-_post_battle_on_lose:
+_battle_pos_on_lose:
 	.set_light_chars 0x30, 0x80
 	.empty_text_box
 	.print "*c4Agumon*c7"
