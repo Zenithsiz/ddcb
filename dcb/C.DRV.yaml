@@ -28,7 +28,7 @@
     - name: MAP
       extension: TIS
       date: '2001-04-09T06:02:18'
-      path: dcb/C.DRV/OBJECT/MAP.TIS
+      path: build/tis/dcb/C.DRV/OBJECT/MAP.TIS
     - name: A_2
       extension: TIM
       date: '2000-10-19T11:49:46'
@@ -40,7 +40,7 @@
     - name: SAVELOAD
       extension: TIS
       date: '2000-10-19T11:49:48'
-      path: dcb/C.DRV/OBJECT/SAVELOAD.TIS
+      path: build/tis/dcb/C.DRV/OBJECT/SAVELOAD.TIS
     - name: A_1
       extension: TIM
       date: '2000-10-19T11:49:46'
@@ -48,11 +48,11 @@
     - name: DECK
       extension: TIS
       date: '2001-03-13T02:19:18'
-      path: dcb/C.DRV/OBJECT/DECK.TIS
+      path: build/tis/dcb/C.DRV/OBJECT/DECK.TIS
     - name: UNIT
       extension: TIS
       date: '2001-03-26T03:43:10'
-      path: dcb/C.DRV/OBJECT/UNIT.TIS
+      path: build/tis/dcb/C.DRV/OBJECT/UNIT.TIS
     - name: VSSVER
       extension: SCC
       date: '2001-04-11T06:36:24'
@@ -60,7 +60,7 @@
     - name: WORLD
       extension: TIS
       date: '2001-03-23T04:57:32'
-      path: dcb/C.DRV/OBJECT/WORLD.TIS
+      path: build/tis/dcb/C.DRV/OBJECT/WORLD.TIS
 - name: EVO_PAK
   date: '2001-01-12T07:07:24'
   entries:
@@ -86,19 +86,19 @@
     - name: AREA05
       extension: TIS
       date: '2001-03-23T04:58:36'
-      path: dcb/C.DRV/DEBUG/AREA05.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA05.TIS
     - name: AREA01
       extension: TIS
       date: '2001-03-23T04:57:50'
-      path: dcb/C.DRV/DEBUG/AREA01.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA01.TIS
     - name: AREA11
       extension: TIS
       date: '2001-03-23T04:59:30'
-      path: dcb/C.DRV/DEBUG/AREA11.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA11.TIS
     - name: AREA10
       extension: TIS
       date: '2001-03-23T04:59:20'
-      path: dcb/C.DRV/DEBUG/AREA10.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA10.TIS
     - name: VSSVER
       extension: SCC
       date: '2001-05-02T08:15:42'
@@ -106,35 +106,35 @@
     - name: AREA08
       extension: TIS
       date: '2001-03-23T04:59:04'
-      path: dcb/C.DRV/DEBUG/AREA08.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA08.TIS
     - name: AREA07
       extension: TIS
       date: '2001-03-23T04:58:54'
-      path: dcb/C.DRV/DEBUG/AREA07.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA07.TIS
     - name: AREA09
       extension: TIS
       date: '2001-03-23T04:59:14'
-      path: dcb/C.DRV/DEBUG/AREA09.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA09.TIS
     - name: AREA03
       extension: TIS
       date: '2001-03-23T04:58:18'
-      path: dcb/C.DRV/DEBUG/AREA03.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA03.TIS
     - name: AREA02
       extension: TIS
       date: '2001-03-23T04:57:54'
-      path: dcb/C.DRV/DEBUG/AREA02.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA02.TIS
     - name: AREA06
       extension: TIS
       date: '2001-03-23T04:58:46'
-      path: dcb/C.DRV/DEBUG/AREA06.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA06.TIS
     - name: AREA00
       extension: TIS
       date: '2001-03-23T04:57:44'
-      path: dcb/C.DRV/DEBUG/AREA00.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA00.TIS
     - name: AREA04
       extension: TIS
       date: '2001-03-23T04:58:26'
-      path: dcb/C.DRV/DEBUG/AREA04.TIS
+      path: build/tis/dcb/C.DRV/DEBUG/AREA04.TIS
     - name: CITY11
       extension: MSD
       date: '2001-05-02T08:15:14'

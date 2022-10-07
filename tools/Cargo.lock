@@ -549,6 +549,34 @@ dependencies = [
 ]
 
 [[package]]
+name = "dcb-mktis"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "clap 3.2.17",
+ "hexdump",
+ "serde",
+ "serde_yaml 0.9.9",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "dcb-mktis-deps"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "clap 3.2.17",
+ "hexdump",
+ "serde",
+ "serde_yaml 0.9.9",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "dcb-msd"
 version = "0.1.0"
 dependencies = [
@@ -719,6 +747,20 @@ dependencies = [
  "serde",
  "serde_yaml 0.9.9",
  "thiserror",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "dcb-untis"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "clap 3.2.17",
+ "hexdump",
+ "serde",
+ "serde_yaml 0.9.9",
  "tracing",
  "tracing-subscriber",
 ]

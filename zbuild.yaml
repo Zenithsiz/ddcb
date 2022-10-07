@@ -32,6 +32,8 @@ alias:
   mk-deck-table: $(tools_dir)/dcb-mk-deck-table
   mkpsexe      : $(tools_dir)/dcb-mkpsexe
   mktim        : $(tools_dir)/dcb-mktim
+  mktis        : $(tools_dir)/dcb-mktis
+  mktis-deps   : $(tools_dir)/dcb-mktis-deps
 
   # Directories
   build_dir : build
@@ -45,6 +47,7 @@ alias:
   arc_dir   : $(build_dir)/arc
   msd_dir   : $(build_dir)/msd
   tim_dir   : $(build_dir)/tim
+  tis_dir   : $(build_dir)/tis
   dylib_dir : $(build_dir)/dylib
   concat_dir: $(build_dir)/concat
 
@@ -330,6 +333,32 @@ rules:
       - static: $(tim_deps::dir_name)/
     exec:
       - [$(mktim_deps), $(tim_yaml), $(tim), $(tim_deps)]
+
+  # `tis`
+  mktis:
+    alias:
+      tis: $(tis_dir)/^(path).TIS
+      tis_yaml: ^(path).TIS.yaml
+    out: [$(tis)]
+    deps:
+      [$(tis_yaml), $(mktis), deps_file: $(tis).d, static: $(tis::dir_name)/]
+    exec:
+      - [$(mktis), $(tis_yaml), -o, $(tis)]
+
+  # `tis` dependencies
+  mktis-deps:
+    alias:
+      tis: $(tis_dir)/^(path).TIS
+      tis_yaml: ^(path).TIS.yaml
+    out: [$(tis).d]
+    deps: [$(tis_yaml), $(mktis-deps), static: $(tis::dir_name)/]
+    exec:
+      - - $(mktis-deps)
+        - $(tis_yaml)
+        - -o
+        - $(tis)
+        - --deps-file
+        - $(tis).d
 
   # Card table
   card_table:

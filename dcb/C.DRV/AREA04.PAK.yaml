@@ -2,6 +2,6 @@
 - file_path: '/build/msd/dcb/C.DRV/AREA04.PAK/0.MSD'
   id: 204
   kind: msd
-- file_path: 'AREA04.PAK/1.TIS'
+- file_path: '/build/tis/dcb/C.DRV/AREA04.PAK/1.TIS'
   id: 4004
   kind: bin
