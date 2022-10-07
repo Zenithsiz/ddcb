@@ -1,0 +1,8 @@
+bpp: Indexed8
+clut:
+  pos: [384, 505]
+  kind: user
+  path: 4.TIM.clut.png
+img:
+  pos: [468, 320]
+  path: 4.TIM.png

@@ -1,10 +1,10 @@
 files:
-- MAP.TIS/0.TIM
-- MAP.TIS/1.TIM
-- MAP.TIS/2.TIM
-- MAP.TIS/3.TIM
-- MAP.TIS/4.TIM
-- MAP.TIS/5.TIM
-- MAP.TIS/6.TIM
-- MAP.TIS/7.TIM
-- MAP.TIS/8.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/MAP.TIS/0.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/MAP.TIS/1.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/MAP.TIS/2.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/MAP.TIS/3.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/MAP.TIS/4.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/MAP.TIS/5.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/MAP.TIS/6.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/MAP.TIS/7.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/MAP.TIS/8.TIM

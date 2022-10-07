@@ -1,11 +1,11 @@
 files:
-- DECK.TIS/0.TIM
-- DECK.TIS/1.TIM
-- DECK.TIS/2.TIM
-- DECK.TIS/3.TIM
-- DECK.TIS/4.TIM
-- DECK.TIS/5.TIM
-- DECK.TIS/6.TIM
-- DECK.TIS/7.TIM
-- DECK.TIS/8.TIM
-- DECK.TIS/9.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/DECK.TIS/0.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/DECK.TIS/1.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/DECK.TIS/2.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/DECK.TIS/3.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/DECK.TIS/4.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/DECK.TIS/5.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/DECK.TIS/6.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/DECK.TIS/7.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/DECK.TIS/8.TIM
+  - /build/tim/dcb/C.DRV/OBJECT/DECK.TIS/9.TIM

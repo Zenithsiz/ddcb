@@ -13,7 +13,12 @@ use {
 	clap::Parser,
 	dcb_bytes::Bytes,
 	dcb_tim::{Bpp, ColorBpp, ColorImg, Config, ConfigClut, ConfigClutKind, ConfigImg, Image, ImgHeader, TimHeader},
-	std::{env, fs, io::Read, path::Path},
+	std::{
+		env,
+		fs,
+		io::{self, Read},
+		path::Path,
+	},
 	tracing_subscriber::prelude::*,
 };
 
@@ -88,15 +93,23 @@ fn main() -> Result<(), anyhow::Error> {
 		let expected_size = u32::from(header.width) * u32::from(header.height) * 2 + 12;
 		anyhow::ensure!(
 			expected_size == header.total_size,
-			"Expected clut size {expected_size:#x}, found size {:#x}",
+			"Expected image size {expected_size:#x}, found size {:#x}",
 			header.total_size
 		);
 		header
 	};
 
 	// Parse the image
-	let img = Image::read(header.bpp, input.by_ref().take(u64::from(img_header.total_size - 12)))
-		.context("Unable to read image")?;
+	let img = Image::read(
+		header.bpp,
+		input
+			.by_ref()
+			// Note: Some `tim`s are missing parts of their image, so we fill them with 0s.
+			// TODO: Is filling with 0s fine?
+			.chain(io::repeat(0))
+			.take(u64::from(img_header.total_size - 12)),
+	)
+	.context("Unable to read image")?;
 	match &img {
 		Image::Indexed(img) => tracing::debug!(img_idxs = img.idxs.len()),
 		Image::Color(img) => tracing::debug!(img_colors = img.colors.len()),
