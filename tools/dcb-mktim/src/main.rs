@@ -74,7 +74,7 @@ fn main() -> Result<(), anyhow::Error> {
 	// Read the input image
 	let image_path = self::resolve_input_path(&config.img.path, config_parent);
 	tracing::debug!(?image_path);
-	let img = image::open(&image_path).context("Unable to read image")?.into_rgba8();
+	let img = image::open(&image_path).context("Unable to read image")?.into_rgba16();
 	tracing::debug!(image_width = img.width(), image_height = img.height());
 
 	// Read the clut, if any
@@ -85,7 +85,9 @@ fn main() -> Result<(), anyhow::Error> {
 				ConfigClutKind::User { path } | ConfigClutKind::External { path } => {
 					let clut_img_path = self::resolve_input_path(path, config_parent);
 					tracing::debug!(?clut_img_path);
-					let clut_img = image::open(&clut_img_path).context("Unable to read clut")?.into_rgba8();
+					let clut_img = image::open(&clut_img_path)
+						.context("Unable to read clut")?
+						.into_rgba16();
 					tracing::debug!(clut_width = clut_img.width(), clut_height = clut_img.height());
 
 					(Some(clut_img), matches!(clut.kind, ConfigClutKind::User { .. }))
@@ -241,8 +243,8 @@ fn main() -> Result<(), anyhow::Error> {
 
 /// Generates the reverse lookup table
 fn generate_rev_clut(
-	clut_img: &Option<image::ImageBuffer<image::Rgba<u8>, Vec<u8>>>,
-) -> Result<HashMap<image::Rgba<u8>, usize>, anyhow::Error> {
+	clut_img: &Option<image::ImageBuffer<image::Rgba<u16>, Vec<u16>>>,
+) -> Result<HashMap<image::Rgba<u16>, usize>, anyhow::Error> {
 	let rev_clut = match &clut_img {
 		// Note: We only use colors from the first row, all others are palette swaps.
 		Some(clut_img) => clut_img

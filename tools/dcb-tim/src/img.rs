@@ -95,7 +95,7 @@ impl IndexedImg {
 		width: u16,
 		height: u16,
 		clut: &ColorImg,
-	) -> Result<image::ImageBuffer<image::Rgba<u8>, Vec<u8>>, anyhow::Error> {
+	) -> Result<image::ImageBuffer<image::Rgba<u16>, Vec<u16>>, anyhow::Error> {
 		let buffer = self
 			.idxs
 			.iter()
@@ -180,7 +180,7 @@ impl ColorImg {
 		&self,
 		width: u16,
 		height: u16,
-	) -> Result<image::ImageBuffer<image::Rgba<u8>, Vec<u8>>, anyhow::Error> {
+	) -> Result<image::ImageBuffer<image::Rgba<u16>, Vec<u16>>, anyhow::Error> {
 		let buffer = self.colors.iter().copied().flat_map(Color::to_rgba).collect();
 
 		image::ImageBuffer::from_raw(u32::from(width), u32::from(height), buffer).context("Image had too few colors")
@@ -195,16 +195,16 @@ pub enum ColorBpp {
 }
 
 /// Color
-#[derive(PartialEq, Eq, Clone, Copy, Debug)]
+#[derive(PartialEq, Eq, Clone, Copy, Hash, Debug)]
 pub struct Color {
 	/// Red
-	pub r: u8,
+	pub r: u16,
 
 	/// Red
-	pub g: u8,
+	pub g: u16,
 
 	/// Red
-	pub b: u8,
+	pub b: u16,
 
 	/// Special transparency bit
 	pub stp: bool,
@@ -215,9 +215,9 @@ impl Color {
 	pub fn from_r5g5b5a1(color: u16) -> Self {
 		#[allow(clippy::identity_op)] // Consistency
 		Self {
-			r:   (((color >> 0x0) & 0b11111) << 0x3) as u8,
-			g:   (((color >> 0x5) & 0b11111) << 0x3) as u8,
-			b:   (((color >> 0xa) & 0b11111) << 0x3) as u8,
+			r:   (((color >> 0x0) & 0b11111) << 0xb),
+			g:   (((color >> 0x5) & 0b11111) << 0xb),
+			b:   (((color >> 0xa) & 0b11111) << 0xb),
 			stp: (color >> 0xf) != 0,
 		}
 	}
@@ -226,9 +226,9 @@ impl Color {
 	///
 	/// Clamps any colors too near to be represented
 	pub fn to_r5g5b5a1(self) -> u16 {
-		let r = u16::from(self.r >> 0x3);
-		let g = u16::from(self.g >> 0x3);
-		let b = u16::from(self.b >> 0x3);
+		let r = self.r >> 0xb;
+		let g = self.g >> 0xb;
+		let b = self.b >> 0xb;
 		let a = u16::from(self.stp);
 
 		r | (g << 0x5) | (b << 0xa) | (a << 0xf)
@@ -237,9 +237,9 @@ impl Color {
 	/// Creates a color from a R8G8B8 representation
 	pub fn from_r8g8b8(color: [u8; 3]) -> Self {
 		Self {
-			r:   color[0],
-			g:   color[1],
-			b:   color[2],
+			r:   u16::from(color[0]) << 0x8,
+			g:   u16::from(color[1]) << 0x8,
+			b:   u16::from(color[2]) << 0x8,
 			stp: false,
 		}
 	}
@@ -248,20 +248,20 @@ impl Color {
 	///
 	/// Ignores transparency
 	pub fn to_r8g8b8(self) -> [u8; 3] {
-		[self.r, self.g, self.b]
+		[(self.r >> 0x8) as u8, (self.g >> 0x8) as u8, (self.b >> 0x8) as u8]
 	}
 
 	/// Converts from an rgba representation.
-	pub fn from_rgba([r, g, b, a]: [u8; 4]) -> Self {
+	pub fn from_rgba([r, g, b, a]: [u16; 4]) -> Self {
 		let stp = match (r, g, b, a) {
 			// Just black has the stp bit
-			(0, 0, 0, 255) => true,
+			(0, 0, 0, u16::MAX) => true,
 
 			// Full transparent doesn't have the stp
 			(0, 0, 0, 0) => false,
 
 			// Full opaque doesn't have stp
-			(.., 255) => false,
+			(.., u16::MAX) => false,
 
 			// Everything else can have stp
 			// TODO: Should we restrict this to a range?
@@ -272,19 +272,19 @@ impl Color {
 	}
 
 	/// Converts this color into an rgba representation
-	pub fn to_rgba(self) -> [u8; 4] {
+	pub fn to_rgba(self) -> [u16; 4] {
 		let a = match (self.r, self.g, self.b, self.stp) {
 			// Black with stp is actually just black
-			(0, 0, 0, true) => 255,
+			(0, 0, 0, true) => u16::MAX,
 
 			// Black without stp are full transparent
 			(0, 0, 0, false) => 0,
 
 			// Any other transparency is half
-			(.., true) => 127,
+			(.., true) => u16::MAX / 2,
 
 			// Otherwise, not transparent
-			(.., false) => 255,
+			(.., false) => u16::MAX,
 		};
 
 		[self.r, self.g, self.b, a]

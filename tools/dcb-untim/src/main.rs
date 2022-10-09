@@ -14,6 +14,7 @@ use {
 	dcb_bytes::Bytes,
 	dcb_tim::{Bpp, ColorBpp, ColorImg, Config, ConfigClut, ConfigClutKind, ConfigImg, Image, ImgHeader, TimHeader},
 	std::{
+		collections::HashMap,
 		env,
 		fs,
 		io::{self, Read},
@@ -72,12 +73,36 @@ fn main() -> Result<(), anyhow::Error> {
 			);
 
 			// Then read the image
-			let img = ColorImg::read(
+			let mut img = ColorImg::read(
 				ColorBpp::R5G5B6A,
 				input.by_ref().take(u64::from(header.total_size - 12)),
 			)
 			.context("Unable to read clut")?;
 			tracing::debug!(clut_colors = img.colors.len());
+
+			// Adjust the clut by increasing duplicate colors
+			let mut color_occurrences = HashMap::new();
+			for color_idx in 0..img.colors.len() {
+				let cur_color = img.colors[color_idx];
+				let prev_occurrences = *color_occurrences
+					.entry(cur_color)
+					.and_modify(|count| *count += 1)
+					.or_insert(0);
+
+				if prev_occurrences != 0 {
+					// Note: At most we have 256 colors, so this will never
+					//       overflow, as we have at least 11 bits of lenience (due to r5g5b5a1 format),
+					//       and we use 3 bits per duplicate
+					//       `cccccddd ddddd...`
+					//       c = original color (5 bits)
+					//       d = duplicate color (8 bits)
+					//       . = padding
+					// TODO: Make sure these are correct in terms of what the psx displays.
+					img.colors[color_idx].r += prev_occurrences << 3;
+					img.colors[color_idx].g += prev_occurrences << 3;
+					img.colors[color_idx].b += prev_occurrences << 3;
+				}
+			}
 
 			Some((header, img))
 		},
