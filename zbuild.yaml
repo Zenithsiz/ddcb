@@ -182,9 +182,9 @@ rules:
     out: [$(drv)]
     deps:
       - $(drv_yaml)
-      - $(drv_patch)
       - $(mkdrv)
       - $(bspatch)
+      - opt: $(drv_patch)
       - deps_file: $(drv).d
       - static: $(drv::dir_name)/
     exec:
@@ -267,9 +267,9 @@ rules:
     out: [$(msd), deps_file: $(msd).d]
     deps:
       - $(msd_src)
-      - $(msd_patch)
       - $(mkmsd)
       - $(bspatch)
+      - opt: $(msd_patch)
       - static: $(msd::dir_name)/
     exec:
       - [$(mkmsd), $(msd_src), -o, $(msd), --deps-file, $(msd).d]
@@ -314,9 +314,9 @@ rules:
     out: [$(tim), $(tim)]
     deps:
       - $(tim_yaml)
-      - $(tim_patch)
       - $(mktim)
       - $(bspatch)
+      - opt: $(tim_patch)
       - deps_file: $(tim_deps)
       - static: $(tim::dir_name)/
     exec:
