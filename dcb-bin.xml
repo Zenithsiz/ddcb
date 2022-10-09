@@ -19,7 +19,7 @@
 			<file name="F.DRV" type="data" source="build/drv/dcb/F.DRV" />
 			<file name="G.DRV" type="data" source="build/drv/dcb/G.DRV" />
 
-			<file name="MMM.DAT" type="data" source="build/misc/MMM.DAT" />
+			<file name="MMM.DAT" type="data" source="build/misc/dcb/MMM.DAT" />
 
 			<file name="SLUS_013.28" type="data" source="build/exe/dcb.psexe" />
 			<file name="DIGIMON.MOV" type="data" source="dcb/DIGIMON.MOV" />

@@ -66,7 +66,7 @@ alias:
   linker_script_symbols: $(exe_dir)/symbols.ld
   dcb_elf              : $(exe_dir)/dcb.elf
   dcb_psexe            : $(exe_dir)/dcb.psexe
-  mmm_buffer           : $(misc_dir)/MMM.DAT
+  mmm_buffer           : $(misc_dir)/dcb/MMM.DAT
   asm_expanded         : $(asm_dir)/expanded/^(path).s
   asm_expanded_deps    : $(asm_dir)/expanded/^(path).d
   asm_processed        : $(asm_dir)/processed/^(path).s
