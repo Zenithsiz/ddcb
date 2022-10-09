@@ -1,10 +1,10 @@
 ---
 - file_path: '1501.PAK/0.M3D'
   id: 15011
-  kind: m3d
+  kind: 0
 - file_path: '1501.PAK/1.UN1'
   id: 15011
-  kind: un1
+  kind: 1
 - file_path: '/build/tim/dcb/C.DRV/EVO_PAK/1501.PAK/2.TIM'
   id: 15011
-  kind: bin
+  kind: 5

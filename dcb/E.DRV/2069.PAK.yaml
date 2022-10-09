@@ -1,28 +1,28 @@
 ---
 - file_path: '2069.PAK/0.M3D'
   id: 20141
-  kind: m3d
+  kind: 0
 - file_path: '2069.PAK/1.M3D'
   id: 20142
-  kind: m3d
+  kind: 0
 - file_path: '2069.PAK/2.M3D'
   id: 20690
-  kind: m3d
+  kind: 0
 - file_path: '2069.PAK/3.UN1'
   id: 20142
-  kind: un1
+  kind: 1
 - file_path: '2069.PAK/4.UN1'
   id: 20690
-  kind: un1
+  kind: 1
 - file_path: '2069.PAK/5.A2D'
   id: 12841
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/2069.PAK/6.TIM'
   id: 12841
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2069.PAK/7.TIM'
   id: 20141
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2069.PAK/8.TIM'
   id: 20142
-  kind: bin
+  kind: 5

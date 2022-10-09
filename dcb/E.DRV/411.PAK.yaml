@@ -1,19 +1,19 @@
 ---
 - file_path: '411.PAK/0.A2D'
   id: 4110
-  kind: a2d
+  kind: 3
 - file_path: '411.PAK/1.A2D'
   id: 4111
-  kind: a2d
+  kind: 3
 - file_path: '411.PAK/2.A2D'
   id: 4112
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/411.PAK/3.TIM'
   id: 4110
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/411.PAK/4.TIM'
   id: 4111
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/411.PAK/5.TIM'
   id: 4112
-  kind: bin
+  kind: 5

@@ -1,25 +1,25 @@
 ---
 - file_path: '449.PAK/0.M3D'
   id: 4490
-  kind: m3d
+  kind: 0
 - file_path: '449.PAK/1.M3D'
   id: 4491
-  kind: m3d
+  kind: 0
 - file_path: '449.PAK/2.UN1'
   id: 4491
-  kind: un1
+  kind: 1
 - file_path: '449.PAK/3.A2D'
   id: 4400
-  kind: a2d
+  kind: 3
 - file_path: '449.PAK/4.UN2'
   id: 4490
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/449.PAK/5.TIM'
   id: 4490
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/449.PAK/6.TIM'
   id: 4491
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/449.PAK/7.TIM'
   id: 4400
-  kind: bin
+  kind: 5

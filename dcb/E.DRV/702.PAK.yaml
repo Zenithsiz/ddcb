@@ -1,10 +1,10 @@
 ---
 - file_path: '702.PAK/0.A2D'
   id: 4241
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/702.PAK/1.TIM'
   id: 4241
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/702.PAK/2.TIM'
   id: 321
-  kind: bin
+  kind: 5

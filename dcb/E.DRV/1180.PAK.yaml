@@ -1,28 +1,28 @@
 ---
 - file_path: '1180.PAK/0.M3D'
   id: 11800
-  kind: m3d
+  kind: 0
 - file_path: '1180.PAK/1.M3D'
   id: 11801
-  kind: m3d
+  kind: 0
 - file_path: '1180.PAK/2.M3D'
   id: 11802
-  kind: m3d
+  kind: 0
 - file_path: '/build/tim/dcb/E.DRV/1180.PAK/3.TIM'
   id: 11800
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1180.PAK/4.TIM'
   id: 11801
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1180.PAK/5.TIM'
   id: 11802
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1180.PAK/6.TIM'
   id: 11803
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1180.PAK/7.TIM'
   id: 5121
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1180.PAK/8.TIM'
   id: 1980
-  kind: bin
+  kind: 5

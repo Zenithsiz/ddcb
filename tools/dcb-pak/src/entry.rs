@@ -44,7 +44,7 @@ impl<R> EntryReader<R> {
 		reader
 			.read_exact(&mut header_bytes[0x4..])
 			.map_err(FromReaderError::ReadHeader)?;
-		let header = Header::deserialize_bytes(&header_bytes).map_err(FromReaderError::ParseHeader)?;
+		let header = Header::deserialize_bytes(&header_bytes).into_ok();
 
 		Ok(Some(Self { header, reader }))
 	}

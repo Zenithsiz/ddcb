@@ -1,40 +1,40 @@
 ---
 - file_path: '418.PAK/0.M3D'
   id: 4180
-  kind: m3d
+  kind: 0
 - file_path: '418.PAK/1.M3D'
   id: 4181
-  kind: m3d
+  kind: 0
 - file_path: '418.PAK/2.M3D'
   id: 4182
-  kind: m3d
+  kind: 0
 - file_path: '418.PAK/3.M3D'
   id: 4183
-  kind: m3d
+  kind: 0
 - file_path: '418.PAK/4.UN1'
   id: 4180
-  kind: un1
+  kind: 1
 - file_path: '418.PAK/5.UN1'
   id: 4181
-  kind: un1
+  kind: 1
 - file_path: '418.PAK/6.UN1'
   id: 4182
-  kind: un1
+  kind: 1
 - file_path: '418.PAK/7.UN1'
   id: 4183
-  kind: un1
+  kind: 1
 - file_path: '418.PAK/8.UN2'
   id: 4180
-  kind: un2
+  kind: 4
 - file_path: '418.PAK/9.UN2'
   id: 4181
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/418.PAK/10.TIM'
   id: 4180
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/418.PAK/11.TIM'
   id: 4181
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/418.PAK/12.TIM'
   id: 4182
-  kind: bin
+  kind: 5

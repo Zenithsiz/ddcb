@@ -1,16 +1,16 @@
 ---
 - file_path: '478.PAK/0.M3D'
   id: 4780
-  kind: m3d
+  kind: 0
 - file_path: '478.PAK/1.UN1'
   id: 4780
-  kind: un1
+  kind: 1
 - file_path: '478.PAK/2.A2D'
   id: 4781
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/478.PAK/3.TIM'
   id: 4780
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/478.PAK/4.TIM'
   id: 4781
-  kind: bin
+  kind: 5

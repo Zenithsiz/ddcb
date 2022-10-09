@@ -1,10 +1,10 @@
 ---
 - file_path: '/build/msd/dcb/A.DRV/BATTLE.PAK/0.MSD'
   id: 998
-  kind: msd
+  kind: 2
 - file_path: '/build/msd/dcb/A.DRV/BATTLE.PAK/1.MSD'
   id: 999
-  kind: msd
+  kind: 2
 - file_path: '/build/concat/dcb/A.DRV/BATTLE.PAK/2.TIM.concat'
   id: 104
-  kind: bin
+  kind: 5

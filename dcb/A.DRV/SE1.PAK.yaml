@@ -1,7 +1,7 @@
 ---
 - file_path: 'SE1.PAK/0.VH'
   id: 1
-  kind: vh
+  kind: 7
 - file_path: 'SE1.PAK/1.VB'
   id: 1
-  kind: vb
+  kind: 8

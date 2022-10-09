@@ -1,16 +1,16 @@
 ---
 - file_path: '1213.PAK/0.M3D'
   id: 12130
-  kind: m3d
+  kind: 0
 - file_path: '1213.PAK/1.M3D'
   id: 12131
-  kind: m3d
+  kind: 0
 - file_path: '/build/tim/dcb/E.DRV/1213.PAK/2.TIM'
   id: 12130
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1213.PAK/3.TIM'
   id: 12131
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1213.PAK/4.TIM'
   id: 2090
-  kind: bin
+  kind: 5

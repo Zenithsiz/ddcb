@@ -1,28 +1,28 @@
 ---
 - file_path: '620.PAK/0.M3D'
   id: 6200
-  kind: m3d
+  kind: 0
 - file_path: '620.PAK/1.UN1'
   id: 6200
-  kind: un1
+  kind: 1
 - file_path: '620.PAK/2.A2D'
   id: 6201
-  kind: a2d
+  kind: 3
 - file_path: '620.PAK/3.A2D'
   id: 6202
-  kind: a2d
+  kind: 3
 - file_path: '620.PAK/4.UN2'
   id: 6200
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/620.PAK/5.TIM'
   id: 6201
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/620.PAK/6.TIM'
   id: 6202
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/620.PAK/7.TIM'
   id: 6200
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/620.PAK/8.TIM'
   id: 170
-  kind: bin
+  kind: 5

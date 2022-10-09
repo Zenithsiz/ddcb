@@ -1,19 +1,19 @@
 ---
 - file_path: '2013.PAK/0.M3D'
   id: 20130
-  kind: m3d
+  kind: 0
 - file_path: '2013.PAK/1.UN1'
   id: 20130
-  kind: un1
+  kind: 1
 - file_path: '2013.PAK/2.A2D'
   id: 20132
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/2013.PAK/3.TIM'
   id: 20130
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2013.PAK/4.TIM'
   id: 20131
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2013.PAK/5.TIM'
   id: 20132
-  kind: bin
+  kind: 5

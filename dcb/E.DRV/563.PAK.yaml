@@ -1,37 +1,37 @@
 ---
 - file_path: '563.PAK/0.M3D'
   id: 5630
-  kind: m3d
+  kind: 0
 - file_path: '563.PAK/1.M3D'
   id: 5631
-  kind: m3d
+  kind: 0
 - file_path: '563.PAK/2.UN1'
   id: 5630
-  kind: un1
+  kind: 1
 - file_path: '563.PAK/3.UN1'
   id: 5631
-  kind: un1
+  kind: 1
 - file_path: '563.PAK/4.A2D'
   id: 5632
-  kind: a2d
+  kind: 3
 - file_path: '563.PAK/5.A2D'
   id: 5633
-  kind: a2d
+  kind: 3
 - file_path: '563.PAK/6.UN2'
   id: 5631
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/563.PAK/7.TIM'
   id: 5630
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/563.PAK/8.TIM'
   id: 5631
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/563.PAK/9.TIM'
   id: 5632
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/563.PAK/10.TIM'
   id: 5633
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/563.PAK/11.TIM'
   id: 1120
-  kind: bin
+  kind: 5

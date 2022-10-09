@@ -1,22 +1,22 @@
 ---
 - file_path: '2031.PAK/0.M3D'
   id: 20310
-  kind: m3d
+  kind: 0
 - file_path: '2031.PAK/1.M3D'
   id: 20311
-  kind: m3d
+  kind: 0
 - file_path: '2031.PAK/2.M3D'
   id: 20312
-  kind: m3d
+  kind: 0
 - file_path: '2031.PAK/3.UN1'
   id: 20310
-  kind: un1
+  kind: 1
 - file_path: '/build/tim/dcb/E.DRV/2031.PAK/4.TIM'
   id: 20310
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2031.PAK/5.TIM'
   id: 20311
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2031.PAK/6.TIM'
   id: 20312
-  kind: bin
+  kind: 5

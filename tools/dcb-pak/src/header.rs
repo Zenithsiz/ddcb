@@ -1,12 +1,5 @@
 //! Header
 
-// Modules
-mod error;
-pub mod kind;
-
-// Export
-pub use {error::DeserializeBytesError, kind::Kind};
-
 // Imports
 use {
 	byteorder::{ByteOrder, LittleEndian},
@@ -17,7 +10,7 @@ use {
 #[derive(PartialEq, Eq, Clone, Copy, Debug)]
 pub struct Header {
 	/// Kind
-	pub kind: Kind,
+	pub kind: u16,
 
 	/// Id
 	pub id: u16,
@@ -28,32 +21,32 @@ pub struct Header {
 
 impl Bytes for Header {
 	type ByteArray = [u8; 0x8];
-	type DeserializeError = DeserializeBytesError;
+	type DeserializeError = !;
 	type SerializeError = !;
 
 	fn deserialize_bytes(bytes: &Self::ByteArray) -> Result<Self, Self::DeserializeError> {
 		let bytes = dcb_bytes::array_split!(bytes,
-			file_kind: [0x2],
-			file_id  : [0x2],
-			size     : [0x4],
+			kind: [0x2],
+			id  : [0x2],
+			size: [0x4],
 		);
 
 		Ok(Self {
-			kind: Kind::deserialize_bytes(bytes.file_kind).map_err(DeserializeBytesError::Kind)?,
-			id:   LittleEndian::read_u16(bytes.file_id),
+			kind: LittleEndian::read_u16(bytes.kind),
+			id:   LittleEndian::read_u16(bytes.id),
 			size: LittleEndian::read_u32(bytes.size),
 		})
 	}
 
 	fn serialize_bytes(&self, bytes: &mut Self::ByteArray) -> Result<(), Self::SerializeError> {
 		let bytes = dcb_bytes::array_split_mut!(bytes,
-			file_kind: [0x2],
-			file_id  : [0x2],
-			size     : [0x4],
+			kind: [0x2],
+			id  : [0x2],
+			size: [0x4],
 		);
 
-		self.kind.serialize_bytes(bytes.file_kind).into_ok();
-		LittleEndian::write_u16(bytes.file_id, self.id);
+		LittleEndian::write_u16(bytes.kind, self.kind);
+		LittleEndian::write_u16(bytes.id, self.id);
 		LittleEndian::write_u32(bytes.size, self.size);
 
 		Ok(())

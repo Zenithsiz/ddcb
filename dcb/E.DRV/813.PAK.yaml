@@ -1,22 +1,22 @@
 ---
 - file_path: '813.PAK/0.A2D'
   id: 4241
-  kind: a2d
+  kind: 3
 - file_path: '813.PAK/1.A2D'
   id: 4291
-  kind: a2d
+  kind: 3
 - file_path: '813.PAK/2.A2D'
   id: 2091
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/813.PAK/3.TIM'
   id: 4241
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/813.PAK/4.TIM'
   id: 4291
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/813.PAK/5.TIM'
   id: 2091
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/813.PAK/6.TIM'
   id: 821
-  kind: bin
+  kind: 5

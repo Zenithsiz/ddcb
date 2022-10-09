@@ -1,7 +1,7 @@
 ---
 - file_path: '2049.PAK/0.M3D'
   id: 20490
-  kind: m3d
+  kind: 0
 - file_path: '/build/tim/dcb/E.DRV/2049.PAK/1.TIM'
   id: 20490
-  kind: bin
+  kind: 5

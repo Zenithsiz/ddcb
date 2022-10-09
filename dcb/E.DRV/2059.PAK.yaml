@@ -1,16 +1,16 @@
 ---
 - file_path: '2059.PAK/0.A2D'
   id: 20590
-  kind: a2d
+  kind: 3
 - file_path: '2059.PAK/1.A2D'
   id: 20591
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/2059.PAK/2.TIM'
   id: 20590
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2059.PAK/3.TIM'
   id: 20591
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2059.PAK/4.TIM'
   id: 11774
-  kind: bin
+  kind: 5

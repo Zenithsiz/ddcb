@@ -1,22 +1,22 @@
 ---
 - file_path: '739.PAK/0.A2D'
   id: 7390
-  kind: a2d
+  kind: 3
 - file_path: '739.PAK/1.A2D'
   id: 7391
-  kind: a2d
+  kind: 3
 - file_path: '739.PAK/2.A2D'
   id: 7392
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/739.PAK/3.TIM'
   id: 7390
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/739.PAK/4.TIM'
   id: 7391
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/739.PAK/5.TIM'
   id: 7392
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/739.PAK/6.TIM'
   id: 892
-  kind: bin
+  kind: 5

@@ -1,49 +1,49 @@
 ---
 - file_path: '076.PAK/0.M3D'
   id: 76
-  kind: m3d
+  kind: 0
 - file_path: '076.PAK/1.UN1'
   id: 0
-  kind: un1
+  kind: 1
 - file_path: '076.PAK/2.UN1'
   id: 1
-  kind: un1
+  kind: 1
 - file_path: '076.PAK/3.UN1'
   id: 2
-  kind: un1
+  kind: 1
 - file_path: '076.PAK/4.UN1'
   id: 3
-  kind: un1
+  kind: 1
 - file_path: '076.PAK/5.UN1'
   id: 4
-  kind: un1
+  kind: 1
 - file_path: '076.PAK/6.UN1'
   id: 5
-  kind: un1
+  kind: 1
 - file_path: '076.PAK/7.UN1'
   id: 6
-  kind: un1
+  kind: 1
 - file_path: '076.PAK/8.UN1'
   id: 7
-  kind: un1
+  kind: 1
 - file_path: '/build/msd/dcb/F.DRV/076.PAK/9.MSD'
   id: 530
-  kind: msd
+  kind: 2
 - file_path: '/build/msd/dcb/F.DRV/076.PAK/10.MSD'
   id: 531
-  kind: msd
+  kind: 2
 - file_path: '/build/msd/dcb/F.DRV/076.PAK/11.MSD'
   id: 532
-  kind: msd
+  kind: 2
 - file_path: '/build/msd/dcb/F.DRV/076.PAK/12.MSD'
   id: 406
-  kind: msd
+  kind: 2
 - file_path: '/build/msd/dcb/F.DRV/076.PAK/13.MSD'
   id: 414
-  kind: msd
+  kind: 2
 - file_path: '/build/msd/dcb/F.DRV/076.PAK/14.MSD'
   id: 400
-  kind: msd
+  kind: 2
 - file_path: '/build/tim/dcb/F.DRV/076.PAK/15.TIM'
   id: 76
-  kind: bin
+  kind: 5

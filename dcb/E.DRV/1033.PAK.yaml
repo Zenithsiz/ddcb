@@ -1,16 +1,16 @@
 ---
 - file_path: '1033.PAK/0.M3D'
   id: 10330
-  kind: m3d
+  kind: 0
 - file_path: '1033.PAK/1.A2D'
   id: 10331
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/1033.PAK/2.TIM'
   id: 10330
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1033.PAK/3.TIM'
   id: 10331
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1033.PAK/4.TIM'
   id: 1490
-  kind: bin
+  kind: 5

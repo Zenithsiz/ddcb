@@ -1,28 +1,28 @@
 ---
 - file_path: '2012.PAK/0.M3D'
   id: 20120
-  kind: m3d
+  kind: 0
 - file_path: '2012.PAK/1.UN1'
   id: 20120
-  kind: un1
+  kind: 1
 - file_path: '2012.PAK/2.A2D'
   id: 11280
-  kind: a2d
+  kind: 3
 - file_path: '2012.PAK/3.A2D'
   id: 11281
-  kind: a2d
+  kind: 3
 - file_path: '2012.PAK/4.A2D'
   id: 11285
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/2012.PAK/5.TIM'
   id: 11280
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2012.PAK/6.TIM'
   id: 11281
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2012.PAK/7.TIM'
   id: 11285
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2012.PAK/8.TIM'
   id: 20120
-  kind: bin
+  kind: 5

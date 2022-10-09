@@ -1,19 +1,19 @@
 ---
 - file_path: '497.PAK/0.M3D'
   id: 4971
-  kind: m3d
+  kind: 0
 - file_path: '497.PAK/1.A2D'
   id: 4970
-  kind: a2d
+  kind: 3
 - file_path: '497.PAK/2.A2D'
   id: 4972
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/497.PAK/3.TIM'
   id: 4971
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/497.PAK/4.TIM'
   id: 4970
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/497.PAK/5.TIM'
   id: 4972
-  kind: bin
+  kind: 5

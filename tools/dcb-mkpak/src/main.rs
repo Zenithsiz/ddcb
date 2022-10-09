@@ -21,8 +21,8 @@ use {
 	anyhow::Context,
 	args::Args,
 	clap::StructOpt,
-	dcb_mkpak::{Map, MapEntryKind},
-	dcb_pak::{entry, header},
+	dcb_mkpak::Map,
+	dcb_pak::entry,
 	std::{
 		convert::TryInto,
 		fs,
@@ -63,19 +63,6 @@ fn create_pak(map: &Map, base_path: &Path, output: &Path) -> Result<(), anyhow::
 		// Get the entry path
 		let entry_path = dcb_mkpak::resolve_entry_file_path(entry, base_path);
 
-		// Get the entry kind
-		let kind = match entry.kind {
-			MapEntryKind::Model3DSet => header::Kind::Model3DSet,
-			MapEntryKind::Unknown1 => header::Kind::Unknown1,
-			MapEntryKind::GameScript => header::Kind::GameScript,
-			MapEntryKind::Animation2D => header::Kind::Animation2D,
-			MapEntryKind::Unknown2 => header::Kind::Unknown2,
-			MapEntryKind::FileContents => header::Kind::FileContents,
-			MapEntryKind::AudioSeq => header::Kind::AudioSeq,
-			MapEntryKind::AudioVh => header::Kind::AudioVh,
-			MapEntryKind::AudioVb => header::Kind::AudioVb,
-		};
-
 		// Open the file for reader and get it's size
 		let entry_file =
 			fs::File::open(entry_path).with_context(|| format!("Unable to open file {}", entry.file_path.display()))?;
@@ -88,7 +75,7 @@ fn create_pak(map: &Map, base_path: &Path, output: &Path) -> Result<(), anyhow::
 
 		// Then create the header
 		let header = dcb_pak::Header {
-			kind,
+			kind: entry.kind,
 			id: entry.id,
 			size,
 		};

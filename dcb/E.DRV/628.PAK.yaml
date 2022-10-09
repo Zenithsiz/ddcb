@@ -1,16 +1,16 @@
 ---
 - file_path: '628.PAK/0.A2D'
   id: 4241
-  kind: a2d
+  kind: 3
 - file_path: '628.PAK/1.UN2'
   id: 9991
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/628.PAK/2.TIM'
   id: 4241
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/628.PAK/3.TIM'
   id: 9991
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/628.PAK/4.TIM'
   id: 602
-  kind: bin
+  kind: 5

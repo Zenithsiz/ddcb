@@ -1,13 +1,13 @@
 ---
 - file_path: '2079.PAK/0.A2D'
   id: 20790
-  kind: a2d
+  kind: 3
 - file_path: '2079.PAK/1.A2D'
   id: 20791
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/2079.PAK/2.TIM'
   id: 20790
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2079.PAK/3.TIM'
   id: 20791
-  kind: bin
+  kind: 5

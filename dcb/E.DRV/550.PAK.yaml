@@ -1,16 +1,16 @@
 ---
 - file_path: '550.PAK/0.A2D'
   id: 4100
-  kind: a2d
+  kind: 3
 - file_path: '550.PAK/1.A2D'
   id: 2671
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/550.PAK/2.TIM'
   id: 4100
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/550.PAK/3.TIM'
   id: 2671
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/550.PAK/4.TIM'
   id: 932
-  kind: bin
+  kind: 5

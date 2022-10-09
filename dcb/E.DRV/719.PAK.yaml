@@ -1,13 +1,13 @@
 ---
 - file_path: '719.PAK/0.M3D'
   id: 2650
-  kind: m3d
+  kind: 0
 - file_path: '719.PAK/1.UN2'
   id: 2650
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/719.PAK/2.TIM'
   id: 2650
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/719.PAK/3.TIM'
   id: 400
-  kind: bin
+  kind: 5

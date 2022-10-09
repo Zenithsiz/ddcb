@@ -1,28 +1,28 @@
 ---
 - file_path: '1092.PAK/0.M3D'
   id: 10920
-  kind: m3d
+  kind: 0
 - file_path: '1092.PAK/1.M3D'
   id: 10921
-  kind: m3d
+  kind: 0
 - file_path: '1092.PAK/2.M3D'
   id: 10923
-  kind: m3d
+  kind: 0
 - file_path: '1092.PAK/3.A2D'
   id: 10922
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/1092.PAK/4.TIM'
   id: 10922
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1092.PAK/5.TIM'
   id: 10920
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1092.PAK/6.TIM'
   id: 10921
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1092.PAK/7.TIM'
   id: 10923
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1092.PAK/8.TIM'
   id: 1682
-  kind: bin
+  kind: 5

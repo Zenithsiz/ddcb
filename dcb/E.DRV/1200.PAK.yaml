@@ -1,16 +1,16 @@
 ---
 - file_path: '1200.PAK/0.M3D'
   id: 12000
-  kind: m3d
+  kind: 0
 - file_path: '1200.PAK/1.UN1'
   id: 12000
-  kind: un1
+  kind: 1
 - file_path: '/build/tim/dcb/E.DRV/1200.PAK/2.TIM'
   id: 12000
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1200.PAK/3.TIM'
   id: 11082
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1200.PAK/4.TIM'
   id: 2042
-  kind: bin
+  kind: 5

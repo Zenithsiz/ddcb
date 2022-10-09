@@ -1,19 +1,19 @@
 ---
 - file_path: '2015.PAK/0.M3D'
   id: 20150
-  kind: m3d
+  kind: 0
 - file_path: '2015.PAK/1.M3D'
   id: 20152
-  kind: m3d
+  kind: 0
 - file_path: '2015.PAK/2.M3D'
   id: 20153
-  kind: m3d
+  kind: 0
 - file_path: '/build/tim/dcb/E.DRV/2015.PAK/3.TIM'
   id: 20150
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2015.PAK/4.TIM'
   id: 20152
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2015.PAK/5.TIM'
   id: 20153
-  kind: bin
+  kind: 5

@@ -36,37 +36,5 @@ pub struct MapEntry {
 	pub id: u16,
 
 	/// Kind
-	pub kind: MapEntryKind,
-}
-
-/// Map entry kind
-#[derive(PartialEq, Eq, Clone, Copy, Debug)]
-#[derive(serde::Serialize, serde::Deserialize)]
-pub enum MapEntryKind {
-	#[serde(rename = "m3d")]
-	Model3DSet,
-
-	#[serde(rename = "un1")]
-	Unknown1,
-
-	#[serde(rename = "msd")]
-	GameScript,
-
-	#[serde(rename = "a2d")]
-	Animation2D,
-
-	#[serde(rename = "un2")]
-	Unknown2,
-
-	#[serde(rename = "bin")]
-	FileContents,
-
-	#[serde(rename = "seq")]
-	AudioSeq,
-
-	#[serde(rename = "vh")]
-	AudioVh,
-
-	#[serde(rename = "vb")]
-	AudioVb,
+	pub kind: u16,
 }

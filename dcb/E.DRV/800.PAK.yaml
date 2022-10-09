@@ -1,19 +1,19 @@
 ---
 - file_path: '800.PAK/0.M3D'
   id: 8000
-  kind: m3d
+  kind: 0
 - file_path: '800.PAK/1.UN1'
   id: 8000
-  kind: un1
+  kind: 1
 - file_path: '800.PAK/2.A2D'
   id: 2671
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/800.PAK/3.TIM'
   id: 8000
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/800.PAK/4.TIM'
   id: 2671
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/800.PAK/5.TIM'
   id: 110
-  kind: bin
+  kind: 5

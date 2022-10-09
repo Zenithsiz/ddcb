@@ -1,25 +1,25 @@
 ---
 - file_path: '430.PAK/0.M3D'
   id: 4302
-  kind: m3d
+  kind: 0
 - file_path: '430.PAK/1.UN1'
   id: 4302
-  kind: un1
+  kind: 1
 - file_path: '430.PAK/2.A2D'
   id: 4300
-  kind: a2d
+  kind: 3
 - file_path: '430.PAK/3.A2D'
   id: 4301
-  kind: a2d
+  kind: 3
 - file_path: '430.PAK/4.UN2'
   id: 9991
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/430.PAK/5.TIM'
   id: 4300
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/430.PAK/6.TIM'
   id: 4301
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/430.PAK/7.TIM'
   id: 9991
-  kind: bin
+  kind: 5

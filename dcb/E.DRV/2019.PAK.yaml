@@ -1,19 +1,19 @@
 ---
 - file_path: '2019.PAK/0.M3D'
   id: 20190
-  kind: m3d
+  kind: 0
 - file_path: '2019.PAK/1.M3D'
   id: 20191
-  kind: m3d
+  kind: 0
 - file_path: '2019.PAK/2.A2D'
   id: 7091
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/2019.PAK/3.TIM'
   id: 20190
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2019.PAK/4.TIM'
   id: 20191
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2019.PAK/5.TIM'
   id: 7091
-  kind: bin
+  kind: 5

@@ -1,16 +1,16 @@
 ---
 - file_path: '737.PAK/0.M3D'
   id: 7370
-  kind: m3d
+  kind: 0
 - file_path: '737.PAK/1.A2D'
   id: 2671
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/737.PAK/2.TIM'
   id: 7370
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/737.PAK/3.TIM'
   id: 2671
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/737.PAK/4.TIM'
   id: 890
-  kind: bin
+  kind: 5

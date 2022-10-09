@@ -1,10 +1,10 @@
 ---
 - file_path: 'BGM141.PAK/0.SEQ'
   id: 141
-  kind: seq
+  kind: 6
 - file_path: 'BGM141.PAK/1.VH'
   id: 141
-  kind: vh
+  kind: 7
 - file_path: 'BGM141.PAK/2.VB'
   id: 141
-  kind: vb
+  kind: 8

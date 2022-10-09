@@ -1,16 +1,16 @@
 ---
 - file_path: '1009.PAK/0.A2D'
   id: 10090
-  kind: a2d
+  kind: 3
 - file_path: '1009.PAK/1.UN2'
   id: 9991
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/1009.PAK/2.TIM'
   id: 10090
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1009.PAK/3.TIM'
   id: 9991
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1009.PAK/4.TIM'
   id: 1390
-  kind: bin
+  kind: 5

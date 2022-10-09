@@ -1,19 +1,19 @@
 ---
 - file_path: '433.PAK/0.M3D'
   id: 4330
-  kind: m3d
+  kind: 0
 - file_path: '433.PAK/1.UN1'
   id: 4330
-  kind: un1
+  kind: 1
 - file_path: '433.PAK/2.A2D'
   id: 4331
-  kind: a2d
+  kind: 3
 - file_path: '433.PAK/3.A2D'
   id: 4040
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/433.PAK/4.TIM'
   id: 4331
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/433.PAK/5.TIM'
   id: 4040
-  kind: bin
+  kind: 5

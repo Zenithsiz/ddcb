@@ -1,61 +1,61 @@
 ---
 - file_path: '2061.PAK/0.M3D'
   id: 20610
-  kind: m3d
+  kind: 0
 - file_path: '2061.PAK/1.A2D'
   id: 11591
-  kind: a2d
+  kind: 3
 - file_path: '2061.PAK/2.A2D'
   id: 20611
-  kind: a2d
+  kind: 3
 - file_path: '2061.PAK/3.A2D'
   id: 20612
-  kind: a2d
+  kind: 3
 - file_path: '2061.PAK/4.A2D'
   id: 20613
-  kind: a2d
+  kind: 3
 - file_path: '2061.PAK/5.A2D'
   id: 20614
-  kind: a2d
+  kind: 3
 - file_path: '2061.PAK/6.A2D'
   id: 20615
-  kind: a2d
+  kind: 3
 - file_path: '2061.PAK/7.A2D'
   id: 20616
-  kind: a2d
+  kind: 3
 - file_path: '2061.PAK/8.A2D'
   id: 20617
-  kind: a2d
+  kind: 3
 - file_path: '2061.PAK/9.A2D'
   id: 20618
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/2061.PAK/10.TIM'
   id: 11591
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2061.PAK/11.TIM'
   id: 20611
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2061.PAK/12.TIM'
   id: 20612
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2061.PAK/13.TIM'
   id: 20613
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2061.PAK/14.TIM'
   id: 20614
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2061.PAK/15.TIM'
   id: 20615
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2061.PAK/16.TIM'
   id: 20616
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2061.PAK/17.TIM'
   id: 20617
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2061.PAK/18.TIM'
   id: 20618
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2061.PAK/19.TIM'
   id: 20610
-  kind: bin
+  kind: 5

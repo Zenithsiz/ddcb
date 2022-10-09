@@ -1,19 +1,19 @@
 ---
 - file_path: '1167.PAK/0.A2D'
   id: 11670
-  kind: a2d
+  kind: 3
 - file_path: '1167.PAK/1.A2D'
   id: 11671
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/1167.PAK/2.TIM'
   id: 11670
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1167.PAK/3.TIM'
   id: 11671
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1167.PAK/4.TIM'
   id: 10280
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1167.PAK/5.TIM'
   id: 1932
-  kind: bin
+  kind: 5

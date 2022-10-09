@@ -1,10 +1,10 @@
 ---
 - file_path: '1060.PAK/0.M3D'
   id: 10600
-  kind: m3d
+  kind: 0
 - file_path: '/build/tim/dcb/E.DRV/1060.PAK/1.TIM'
   id: 10600
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1060.PAK/2.TIM'
   id: 1580
-  kind: bin
+  kind: 5

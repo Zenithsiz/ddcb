@@ -1,13 +1,13 @@
 ---
 - file_path: '1022.PAK/0.A2D'
   id: 5370
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/1022.PAK/1.TIM'
   id: 5121
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1022.PAK/2.TIM'
   id: 5370
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1022.PAK/3.TIM'
   id: 1451
-  kind: bin
+  kind: 5

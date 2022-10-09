@@ -1,13 +1,13 @@
 ---
 - file_path: '602.PAK/0.M3D'
   id: 6020
-  kind: m3d
+  kind: 0
 - file_path: '602.PAK/1.UN2'
   id: 6020
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/602.PAK/2.TIM'
   id: 6020
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/602.PAK/3.TIM'
   id: 940
-  kind: bin
+  kind: 5

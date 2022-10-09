@@ -1,7 +1,7 @@
 ---
 - file_path: '/build/tim/dcb/E.DRV/1074.PAK/0.TIM'
   id: 10280
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1074.PAK/1.TIM'
   id: 1622
-  kind: bin
+  kind: 5

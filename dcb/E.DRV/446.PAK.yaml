@@ -1,7 +1,7 @@
 ---
 - file_path: '446.PAK/0.A2D'
   id: 4470
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/446.PAK/1.TIM'
   id: 4470
-  kind: bin
+  kind: 5

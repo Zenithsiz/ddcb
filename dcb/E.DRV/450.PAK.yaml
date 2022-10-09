@@ -1,25 +1,25 @@
 ---
 - file_path: '450.PAK/0.M3D'
   id: 4500
-  kind: m3d
+  kind: 0
 - file_path: '450.PAK/1.M3D'
   id: 4501
-  kind: m3d
+  kind: 0
 - file_path: '450.PAK/2.UN1'
   id: 4501
-  kind: un1
+  kind: 1
 - file_path: '450.PAK/3.A2D'
   id: 4410
-  kind: a2d
+  kind: 3
 - file_path: '450.PAK/4.UN2'
   id: 4500
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/450.PAK/5.TIM'
   id: 4500
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/450.PAK/6.TIM'
   id: 4501
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/450.PAK/7.TIM'
   id: 4410
-  kind: bin
+  kind: 5

@@ -1,22 +1,22 @@
 ---
 - file_path: '806.PAK/0.M3D'
   id: 8060
-  kind: m3d
+  kind: 0
 - file_path: '806.PAK/1.UN1'
   id: 8060
-  kind: un1
+  kind: 1
 - file_path: '806.PAK/2.A2D'
   id: 2671
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/806.PAK/3.TIM'
   id: 2671
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/806.PAK/4.TIM'
   id: 8031
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/806.PAK/5.TIM'
   id: 8060
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/806.PAK/6.TIM'
   id: 790
-  kind: bin
+  kind: 5

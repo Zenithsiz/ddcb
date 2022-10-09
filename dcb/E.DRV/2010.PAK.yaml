@@ -1,25 +1,25 @@
 ---
 - file_path: '2010.PAK/0.M3D'
   id: 20101
-  kind: m3d
+  kind: 0
 - file_path: '2010.PAK/1.M3D'
   id: 20102
-  kind: m3d
+  kind: 0
 - file_path: '2010.PAK/2.M3D'
   id: 20103
-  kind: m3d
+  kind: 0
 - file_path: '2010.PAK/3.UN1'
   id: 20101
-  kind: un1
+  kind: 1
 - file_path: '2010.PAK/4.UN1'
   id: 20102
-  kind: un1
+  kind: 1
 - file_path: '2010.PAK/5.UN1'
   id: 20103
-  kind: un1
+  kind: 1
 - file_path: '/build/tim/dcb/E.DRV/2010.PAK/6.TIM'
   id: 20101
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2010.PAK/7.TIM'
   id: 20102
-  kind: bin
+  kind: 5

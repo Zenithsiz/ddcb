@@ -1,22 +1,22 @@
 ---
 - file_path: '466.PAK/0.M3D'
   id: 4660
-  kind: m3d
+  kind: 0
 - file_path: '466.PAK/1.UN1'
   id: 4660
-  kind: un1
+  kind: 1
 - file_path: '466.PAK/2.A2D'
   id: 4661
-  kind: a2d
+  kind: 3
 - file_path: '466.PAK/3.A2D'
   id: 4662
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/466.PAK/4.TIM'
   id: 4661
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/466.PAK/5.TIM'
   id: 4662
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/466.PAK/6.TIM'
   id: 4660
-  kind: bin
+  kind: 5

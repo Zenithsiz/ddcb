@@ -10,7 +10,7 @@ use {
 	anyhow::Context,
 	args::Args,
 	clap::StructOpt,
-	dcb_pak::{header, EntryReader},
+	dcb_pak::EntryReader,
 	std::{
 		fs,
 		io,
@@ -72,21 +72,8 @@ fn extract_pak(input_file_path: &Path, output_dir: &Path, args: &Args) -> Result
 		let entry = EntryReader::from_reader(&mut input_file).context("Unable to read entry")?;
 		let Some(entry) = entry else { break };
 
-		// Get the extension
-		let extension = match entry.header().kind {
-			header::Kind::Model3DSet => "M3D",
-			header::Kind::Unknown1 => "UN1",
-			header::Kind::GameScript => "MSD",
-			header::Kind::Animation2D => "A2D",
-			header::Kind::Unknown2 => "UN2",
-			header::Kind::FileContents => "BIN",
-			header::Kind::AudioSeq => "SEQ",
-			header::Kind::AudioVh => "VH",
-			header::Kind::AudioVb => "VB",
-		};
-
 		let file_name = format!("{entry_idx}");
-		let file_path = output_dir.join(file_name).with_extension(extension);
+		let file_path = output_dir.join(file_name).with_extension("BIN");
 		if !args.quiet {
 			println!(
 				"{} ({}B)",

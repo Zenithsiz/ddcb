@@ -1,19 +1,19 @@
 ---
 - file_path: '2017.PAK/0.A2D'
   id: 20170
-  kind: a2d
+  kind: 3
 - file_path: '2017.PAK/1.A2D'
   id: 4321
-  kind: a2d
+  kind: 3
 - file_path: '2017.PAK/2.A2D'
   id: 4000
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/2017.PAK/3.TIM'
   id: 20170
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2017.PAK/4.TIM'
   id: 4321
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2017.PAK/5.TIM'
   id: 4000
-  kind: bin
+  kind: 5

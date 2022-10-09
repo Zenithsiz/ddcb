@@ -1,22 +1,22 @@
 ---
 - file_path: '2004.PAK/0.M3D'
   id: 20040
-  kind: m3d
+  kind: 0
 - file_path: '2004.PAK/1.UN1'
   id: 20040
-  kind: un1
+  kind: 1
 - file_path: '2004.PAK/2.A2D'
   id: 4140
-  kind: a2d
+  kind: 3
 - file_path: '2004.PAK/3.UN2'
   id: 9991
-  kind: un2
+  kind: 4
 - file_path: '/build/tim/dcb/E.DRV/2004.PAK/4.TIM'
   id: 4140
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2004.PAK/5.TIM'
   id: 9991
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/2004.PAK/6.TIM'
   id: 20040
-  kind: bin
+  kind: 5

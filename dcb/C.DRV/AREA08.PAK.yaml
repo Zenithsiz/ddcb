@@ -1,7 +1,7 @@
 ---
 - file_path: '/build/msd/dcb/C.DRV/AREA08.PAK/0.MSD'
   id: 208
-  kind: msd
+  kind: 2
 - file_path: '/build/tis/dcb/C.DRV/AREA08.PAK/1.TIS'
   id: 4008
-  kind: bin
+  kind: 5

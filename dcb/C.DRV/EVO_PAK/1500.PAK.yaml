@@ -1,19 +1,19 @@
 ---
 - file_path: '1500.PAK/0.M3D'
   id: 15001
-  kind: m3d
+  kind: 0
 - file_path: '1500.PAK/1.M3D'
   id: 15002
-  kind: m3d
+  kind: 0
 - file_path: '1500.PAK/2.UN1'
   id: 15001
-  kind: un1
+  kind: 1
 - file_path: '1500.PAK/3.UN1'
   id: 15002
-  kind: un1
+  kind: 1
 - file_path: '/build/tim/dcb/C.DRV/EVO_PAK/1500.PAK/4.TIM'
   id: 15001
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/C.DRV/EVO_PAK/1500.PAK/5.TIM'
   id: 15002
-  kind: bin
+  kind: 5

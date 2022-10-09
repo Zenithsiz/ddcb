@@ -1,19 +1,19 @@
 ---
 - file_path: '1163.PAK/0.M3D'
   id: 11630
-  kind: m3d
+  kind: 0
 - file_path: '1163.PAK/1.M3D'
   id: 11631
-  kind: m3d
+  kind: 0
 - file_path: '1163.PAK/2.UN1'
   id: 11631
-  kind: un1
+  kind: 1
 - file_path: '/build/tim/dcb/E.DRV/1163.PAK/3.TIM'
   id: 11630
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1163.PAK/4.TIM'
   id: 11631
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/1163.PAK/5.TIM'
   id: 1921
-  kind: bin
+  kind: 5

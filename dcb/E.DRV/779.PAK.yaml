@@ -1,13 +1,13 @@
 ---
 - file_path: '779.PAK/0.M3D'
   id: 3350
-  kind: m3d
+  kind: 0
 - file_path: '779.PAK/1.UN1'
   id: 3350
-  kind: un1
+  kind: 1
 - file_path: '/build/tim/dcb/E.DRV/779.PAK/2.TIM'
   id: 3350
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/779.PAK/3.TIM'
   id: 410
-  kind: bin
+  kind: 5

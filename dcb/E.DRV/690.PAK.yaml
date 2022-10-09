@@ -1,28 +1,28 @@
 ---
 - file_path: '690.PAK/0.M3D'
   id: 6903
-  kind: m3d
+  kind: 0
 - file_path: '690.PAK/1.A2D'
   id: 6901
-  kind: a2d
+  kind: 3
 - file_path: '690.PAK/2.A2D'
   id: 6902
-  kind: a2d
+  kind: 3
 - file_path: '690.PAK/3.A2D'
   id: 6900
-  kind: a2d
+  kind: 3
 - file_path: '/build/tim/dcb/E.DRV/690.PAK/4.TIM'
   id: 6903
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/690.PAK/5.TIM'
   id: 6901
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/690.PAK/6.TIM'
   id: 6902
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/690.PAK/7.TIM'
   id: 6900
-  kind: bin
+  kind: 5
 - file_path: '/build/tim/dcb/E.DRV/690.PAK/8.TIM'
   id: 671
-  kind: bin
+  kind: 5
