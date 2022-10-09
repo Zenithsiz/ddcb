@@ -39,6 +39,7 @@
 			"beqz",
 			"bgez",
 			"bnez",
+			"bspatch",
 			"byteorder",
 			"clut",
 			"Cmpt",
