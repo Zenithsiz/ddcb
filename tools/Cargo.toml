@@ -1,41 +1,67 @@
 [workspace]
 
 members = [
-  # Libraries
+  # Helpers
   "dcb-bytes",
   "dcb-bytes-derive",
   "dcb-logger",
-  "dcb-drv",
-  "dcb-pak",
-  "dcb-msd",
-  "dcb-tim",
+
+
+  # Card table / Deck table
   "dcb-card-table",
   "dcb-deck-table",
-  "dcb-cdrom-xa", #
-  # Binaries
+  "dcb-mk-card-table",
+  "dcb-mk-deck-table",
+  "dcb-un-card-table",
+  "dcb-un-deck-table",
+
+
+  # Cd
+  "dcb-cdrom-xa",
+  "dcb-unbin",
+
+
+  # Drv
+  "dcb-drv",
   "dcb-mkdrv",
   "dcb-mkdrv-deps",
   "dcb-undrv",
-  "dcb-unbin",
-  "dcb-unpak",
-  "dcb-mkpak",
-  "dcb-mkpak-deps",
-  "dcb-mkmsd",
-  "dcb-unmsd",
+
+
+  # Arc
   "dcb-mkarc",
   "dcb-mkarc-deps",
   "dcb-unarc",
-  "dcb-untim",
+
+
+  # Msd
+  "dcb-msd",
+  "dcb-mkmsd",
+  "dcb-unmsd",
+
+
+  # Pak
+  "dcb-pak",
+  "dcb-mkpak",
+  "dcb-mkpak-deps",
+  "dcb-unpak",
+
+
+  # Psexe
+  "dcb-mkpsexe",
+
+
+  # Tim
+  "dcb-tim",
   "dcb-mktim",
-  "dcb-untis",
+  "dcb-untim",
+
+
+  # Tis
   "dcb-mktis",
   "dcb-mktis-deps",
-  "dcb-un-card-table",
-  "dcb-mk-card-table",
-  "dcb-un-deck-table",
-  "dcb-mk-deck-table",
-  "dcb-mkpsexe",
+  "dcb-untis",
 ]
 
 [patch."https://github.com/Zenithsiz/zutil"]
-zutil = {path = "../../zutil"}
+zutil = { path = "../../zutil" }
