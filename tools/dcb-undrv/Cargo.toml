@@ -4,8 +4,10 @@ name = "dcb-undrv"
 version = "0.1.0"
 
 [dependencies]
+
 # Dcb
 dcb-drv = {path = "../dcb-drv"}
+dcb-logger = {path = "../dcb-logger"}
 
 # Util
 chrono = {version = "0.4.22", features = ["serde"]}
@@ -18,8 +20,7 @@ zutil = {git = "https://github.com/Zenithsiz/zutil", features = ["use_serde"], r
 clap = {version = "4.0.11", features = ["derive"]}
 
 # Logging
-log = "0.4.17"
-simplelog = "0.12.0"
+tracing = "0.1.37"
 
 # Error handling
 anyhow = "1.0.65"

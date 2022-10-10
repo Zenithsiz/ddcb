@@ -69,7 +69,7 @@ impl DirPtr {
 				#[allow(clippy::single_match)] // We might add more matches in the future
 				match &bytes {
 					b"\x01CDD\xd5/\x00\x00\xf0?\x01\x00\xe6u\xad:\x83R\x83S\x81[ \x81` CARD2\x00" => {
-						log::warn!(
+						tracing::warn!(
 							"Ignoring special directory entry: {:?}",
 							String::from_utf8_lossy(&bytes)
 						);

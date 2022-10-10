@@ -11,7 +11,7 @@ dcb-bytes = {path = "../dcb-bytes"}
 dcb-bytes-derive = {path = "../dcb-bytes-derive"}
 
 # Log
-log = "0.4.17"
+tracing = "0.1.37"
 
 # Util
 ascii = {version = "1.1.0", features = ["serde"]}

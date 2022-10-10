@@ -62,8 +62,8 @@ impl Bytes for EffectConditionOperation {
 			5 => Ok(Self::EqualToNumber),
 			// TODO: Not do this here and just have someone above check?
 			0xff => {
-				log::warn!("Found byte 0xff for effect condition operation. Interpreting as `EqualToNumber`");
-				log::info!("The previous warning should only appear for \"Aquilamon\" in the original game file.");
+				tracing::warn!("Found byte 0xff for effect condition operation. Interpreting as `EqualToNumber`");
+				tracing::info!("The previous warning should only appear for \"Aquilamon\" in the original game file.");
 				Ok(Self::EqualToNumber)
 			},
 			&byte => Err(DeserializeBytesError::UnknownValue { byte }),

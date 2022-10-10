@@ -4,8 +4,10 @@ name = "dcb-mkdrv"
 version = "0.1.0"
 
 [dependencies]
+
 # Dcb
 dcb-drv = {path = "../dcb-drv"}
+dcb-logger = {path = "../dcb-logger"}
 
 # Util
 chrono = {version = "0.4.22", features = ["serde"]}
@@ -18,7 +20,6 @@ clap = {version = "4.0.11", features = ["derive"]}
 
 # Logging
 tracing = "0.1.37"
-tracing-subscriber = {version = "0.3.16", features = ["env-filter"]}
 
 # Error handling
 anyhow = "1.0.65"

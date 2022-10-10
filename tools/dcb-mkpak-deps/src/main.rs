@@ -20,15 +20,12 @@ use {
 		io::{BufWriter, Write},
 		path::Path,
 	},
-	tracing_subscriber::prelude::*,
 };
 
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
-	tracing_subscriber::registry()
-		.with(tracing_subscriber::fmt::layer().with_filter(tracing_subscriber::EnvFilter::from_default_env()))
-		.init();
+	dcb_logger::init().context("Unable to initialize logger")?;
 
 	// Get all args
 	let args = Args::parse();

@@ -15,26 +15,15 @@ use {
 	dcb_tim::{Bpp, ColorBpp, ColorImg, Config, ConfigClut, ConfigClutKind, ConfigImg, Image, ImgHeader, TimHeader},
 	std::{
 		collections::HashMap,
-		env,
 		fs,
 		io::{self, Read},
 		path::Path,
 	},
-	tracing_subscriber::prelude::*,
 };
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
-	let log_use_color = env::var("RUST_LOG_COLOR").map_or(true, |value| {
-		matches!(value.trim().to_uppercase().as_str(), "1" | "YES" | "TRUE")
-	});
-	tracing_subscriber::registry()
-		.with(
-			tracing_subscriber::fmt::layer()
-				.with_ansi(log_use_color)
-				.with_filter(tracing_subscriber::EnvFilter::from_default_env()),
-		)
-		.init();
+	dcb_logger::init().context("Unable to initialize logger")?;
 
 	// Get all args
 	let args = Args::parse();

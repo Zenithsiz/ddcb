@@ -70,8 +70,10 @@ impl Bytes for EffectCondition {
 		debug_assert_eq!(*bytes.zero_0, 0);
 		match *bytes.zero_1 {
 			[0, 22, 0, 0, 0] => {
-				log::warn!("Found bytes `[0, 22, 0, 0, 0]` for effect condition `zero_1`.");
-				log::info!("The previous warning should only appear for \"Heap of Junk\" in the original game file.");
+				tracing::warn!("Found bytes `[0, 22, 0, 0, 0]` for effect condition `zero_1`.");
+				tracing::info!(
+					"The previous warning should only appear for \"Heap of Junk\" in the original game file."
+				);
 			},
 			_ => debug_assert_eq!(*bytes.zero_1, [0; 0x5]),
 		}

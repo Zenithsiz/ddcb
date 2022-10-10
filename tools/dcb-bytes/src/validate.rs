@@ -10,7 +10,7 @@
 ///
 /// 1. It is faster than serializing the data, as it doesn't need to write the raw bytes and
 ///    can focus on simply parsing possible errors.
-/// 2. It provides warnings alongside the errors. These are also provided via `log::warn`, but
+/// 2. It provides warnings alongside the errors. These are also provided via `tracing::warn`, but
 ///    these cannot be sent to the user easily.
 pub trait Validate<'a> {
 	/// Error type for this validation

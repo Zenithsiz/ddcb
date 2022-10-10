@@ -10,7 +10,7 @@ version = "0.1.0"
 dcb-bytes = {path = "../dcb-bytes"}
 
 # Log
-log = "0.4.17"
+tracing = "0.1.37"
 
 # Util
 byteorder = "1.4.3"

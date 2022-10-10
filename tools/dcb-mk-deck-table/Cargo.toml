@@ -9,10 +9,10 @@ version = "0.1.5"
 dcb-bytes = {path = "../dcb-bytes"}
 dcb-cdrom-xa = {path = "../dcb-cdrom-xa"}
 dcb-deck-table = {path = "../dcb-deck-table"}
+dcb-logger = {path = "../dcb-logger"}
 
 # Logging
-log = "0.4.17"
-simplelog = "0.12.0"
+tracing = "0.1.37"
 
 # Error
 anyhow = "1.0.65"

@@ -7,6 +7,7 @@ version = "0.1.0"
 
 # Dcb
 dcb-bytes = {path = "../dcb-bytes"}
+dcb-logger = {path = "../dcb-logger"}
 dcb-tim = {path = "../dcb-tim"}
 
 # Cmd
@@ -14,7 +15,6 @@ clap = {version = "4.0.11", features = ["derive"]}
 
 # Logging
 tracing = "0.1.37"
-tracing-subscriber = {version = "0.3.16", features = ["env-filter"]}
 
 # Image
 image = "0.24.4"

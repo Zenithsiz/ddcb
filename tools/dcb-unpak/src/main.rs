@@ -21,13 +21,7 @@ use {
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
-	simplelog::TermLogger::init(
-		log::LevelFilter::Info,
-		simplelog::Config::default(),
-		simplelog::TerminalMode::Stderr,
-		simplelog::ColorChoice::Auto,
-	)
-	.context("Unable to initialize logger")?;
+	dcb_logger::init().context("Unable to initialize logger")?;
 
 	// Get all args
 	let args = Args::parse();
@@ -45,7 +39,7 @@ fn main() -> Result<(), anyhow::Error> {
 
 		// Then extract the pak
 		if let Err(err) = self::extract_pak(input_file_path, &output_dir, &args) {
-			log::error!("Unable to extract files from {}: {:?}", input_file_path.display(), err);
+			tracing::error!("Unable to extract files from {}: {:?}", input_file_path.display(), err);
 		}
 	}
 

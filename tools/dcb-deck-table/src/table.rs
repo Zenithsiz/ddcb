@@ -47,7 +47,7 @@ impl Table {
 
 		// Extract the number of decks
 		let decks_count: usize = header_bytes[0x4].into();
-		log::trace!("Found {decks_count} decks");
+		tracing::trace!("Found {decks_count} decks");
 
 		// Then get each deck
 		let mut decks = vec![];
@@ -58,7 +58,7 @@ impl Table {
 				.map_err(|err| DeserializeError::ReadDeck { id, err })?;
 
 			// Log the deck
-			log::trace!("Found deck #{}: {}", id, deck.name);
+			tracing::trace!("Found deck #{}: {}", id, deck.name);
 
 			// And add it
 			decks.push(deck);
@@ -83,7 +83,7 @@ impl Table {
 		LittleEndian::write_u32(header.magic, Self::HEADER_MAGIC);
 
 		// Write deck len
-		log::trace!("Writing {} decks", self.decks.len());
+		tracing::trace!("Writing {} decks", self.decks.len());
 		*header.decks_count = self.decks.len().try_into().expect("Number of decks exceeded `u8`");
 
 		// And write the header

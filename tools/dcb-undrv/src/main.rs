@@ -18,13 +18,7 @@ use {
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
-	simplelog::TermLogger::init(
-		log::LevelFilter::Info,
-		simplelog::Config::default(),
-		simplelog::TerminalMode::Stderr,
-		simplelog::ColorChoice::Auto,
-	)
-	.expect("Unable to initialize logger");
+	dcb_logger::init().context("Unable to initialize logger")?;
 
 	// Get all args
 	let args = Args::parse();
@@ -59,7 +53,7 @@ fn main() -> Result<(), anyhow::Error> {
 
 	// Then extract the tree
 	if let Err(err) = dcb_drv::extract(&mut input_file, DirPtr::root(), &output_dir) {
-		log::error!("Unable to extract files from {}: {:?}", args.input_file.display(), err);
+		tracing::error!("Unable to extract files from {}: {:?}", args.input_file.display(), err);
 	}
 
 	// And set the directory time to the input file's

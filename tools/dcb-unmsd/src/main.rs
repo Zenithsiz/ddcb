@@ -34,13 +34,7 @@ use {
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
-	simplelog::TermLogger::init(
-		log::LevelFilter::Info,
-		simplelog::Config::default(),
-		simplelog::TerminalMode::Stderr,
-		simplelog::ColorChoice::Auto,
-	)
-	.expect("Unable to initialize logger");
+	dcb_logger::init().context("Unable to initialize logger")?;
 
 	// Get all arguments
 	let args = Args::parse();
@@ -79,7 +73,7 @@ fn main() -> Result<(), anyhow::Error> {
 		.collect::<Result<BTreeMap<_, _>, anyhow::Error>>()
 		.context("Unable to parse instructions")?;
 
-	log::info!("Found {} instructions", insts.len());
+	tracing::info!("Found {} instructions", insts.len());
 
 	// Construct some heuristic labels
 	let heuristic_labels = insts

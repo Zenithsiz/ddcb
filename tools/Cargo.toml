@@ -4,6 +4,7 @@ members = [
   # Libraries
   "dcb-bytes",
   "dcb-bytes-derive",
+  "dcb-logger",
   "dcb-drv",
   "dcb-pak",
   "dcb-msd",

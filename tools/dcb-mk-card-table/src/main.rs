@@ -17,13 +17,7 @@ use {
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
-	simplelog::TermLogger::init(
-		log::LevelFilter::Debug,
-		simplelog::Config::default(),
-		simplelog::TerminalMode::Stderr,
-		simplelog::ColorChoice::Auto,
-	)
-	.context("Unable to initialize logger")?;
+	dcb_logger::init().context("Unable to initialize logger")?;
 
 	// Get the arguments
 	let args = Args::parse();

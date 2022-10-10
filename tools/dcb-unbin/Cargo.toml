@@ -8,13 +8,13 @@ version = "0.1.0"
 
 # Dcb
 dcb-cdrom-xa = {path = "../dcb-cdrom-xa"}
+dcb-logger = {path = "../dcb-logger"}
 
 # Cmd
 clap = "4.0.11"
 
 # Logging
-log = "0.4.17"
-simplelog = "0.12.0"
+tracing = "0.1.37"
 
 # Error handling
 anyhow = "1.0.65"

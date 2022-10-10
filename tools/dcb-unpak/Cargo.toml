@@ -5,15 +5,16 @@ name = "dcb-unpak"
 version = "0.1.0"
 
 [dependencies]
+
 # Dcb
+dcb-logger = {path = "../dcb-logger"}
 dcb-pak = {path = "../dcb-pak"}
 
 # Cmd
 clap = {version = "4.0.11", features = ["derive"]}
 
 # Logging
-log = "0.4.17"
-simplelog = "0.12.0"
+tracing = "0.1.37"
 
 # Error handling
 anyhow = "1.0.65"

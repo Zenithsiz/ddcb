@@ -61,7 +61,7 @@ impl Table {
 		let item_cards = u16::from(header.items_len);
 		let digivolve_cards = u16::from(header.digivolves_len);
 		let cards_len = digimon_cards + item_cards + digivolve_cards;
-		log::trace!(
+		tracing::trace!(
 			"Found {cards_len} cards: {digimon_cards} digimons, {item_cards} items, {digivolve_cards} digivolves"
 		);
 
@@ -77,11 +77,11 @@ impl Table {
 				// Read the header
 				let card_header = CardHeader::deserialize_bytes(&card_header_bytes)
 					.map_err(|err| DeserializeError::ParseCardHeader { id, err })?;
-				log::trace!("#{}: {}", id, card_header.ty);
+				tracing::trace!("#{}: {}", id, card_header.ty);
 
 				// If the card id isn't what we expected, log warning
 				if card_header.id != id {
-					log::warn!("Card with id {} had unexpected id {}", id, card_header.id);
+					tracing::warn!("Card with id {} had unexpected id {}", id, card_header.id);
 				}
 				// And create the card
 				let card = Card::deserialize(card_header.ty, reader)

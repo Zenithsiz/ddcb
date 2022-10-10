@@ -7,13 +7,11 @@
 mod args;
 
 // Imports
-use {self::args::Args, anyhow::Context, clap::Parser, tracing_subscriber::prelude::*};
+use {self::args::Args, anyhow::Context, clap::Parser};
 
 fn main() -> Result<(), anyhow::Error> {
 	// Initialize the logger
-	tracing_subscriber::registry()
-		.with(tracing_subscriber::fmt::layer().with_filter(tracing_subscriber::EnvFilter::from_default_env()))
-		.init();
+	dcb_logger::init().context("Unable to initialize logger")?;
 
 	// Get all data from cli
 	let args = Args::parse();
