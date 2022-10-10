@@ -340,6 +340,24 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2f74abed44e4dbc4d0548b565869c66c9c6d6d84011a8c14cee2cacfdada3d60"
 
 [[package]]
+name = "dcb-bspatch"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "clap",
+ "dcb-logger",
+ "hexdump",
+ "itertools 0.10.5",
+ "pathdiff",
+ "same-file",
+ "serde",
+ "serde_yaml",
+ "thiserror",
+ "tracing",
+]
+
+[[package]]
 name = "dcb-bytes"
 version = "0.1.0"
 dependencies = [
@@ -1567,6 +1585,15 @@ name = "ryu"
 version = "1.0.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4501abdff3ae82a1c1b477a17252eb69cee9e66eb915c1abaa4f44d873df9f09"
+
+[[package]]
+name = "same-file"
+version = "1.0.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502"
+dependencies = [
+ "winapi-util",
+]
 
 [[package]]
 name = "scoped_threadpool"

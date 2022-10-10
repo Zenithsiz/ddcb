@@ -15,7 +15,6 @@ alias:
   expand_asm            : tools/expand_asm.py
   generate_iso_deps     : tools/generate_iso_deps.py
   generate_compare_deps : tools/generate_compare_deps.py
-  bspatch               : tools/bspatch.py
   mkconcat              : tools/concat.py
   mkconcat_deps         : tools/concat_deps.py
 
@@ -34,6 +33,7 @@ alias:
   mktim-deps   : $(tools_dir)/dcb-mktim-deps
   mktis        : $(tools_dir)/dcb-mktis
   mktis-deps   : $(tools_dir)/dcb-mktis-deps
+  bspatch      : $(tools_dir)/dcb-bspatch
 
   # Directories
   build_dir : build
@@ -189,7 +189,7 @@ rules:
       - static: $(drv::dir_name)/
     exec:
       - [$(mkdrv), $(drv_yaml), -o, $(drv)]
-      - [$(bspatch), $(drv), $(drv), $(drv_patch)]
+      - [$(bspatch), $(drv), -o, $(drv), --patch, $(drv_patch)]
 
   # `drv` dependencies
   mkdrv-deps:
@@ -273,7 +273,7 @@ rules:
       - static: $(msd::dir_name)/
     exec:
       - [$(mkmsd), $(msd_src), -o, $(msd), --deps-file, $(msd).d]
-      - [$(bspatch), $(msd), $(msd), $(msd_patch)]
+      - [$(bspatch), $(msd), -o, $(msd), --patch, $(msd_patch)]
 
   # `concat`
   mkconcat:
@@ -321,7 +321,7 @@ rules:
       - static: $(tim::dir_name)/
     exec:
       - [$(mktim), $(tim_yaml), -o, $(tim)]
-      - [$(bspatch), $(tim), $(tim), $(tim_patch)]
+      - [$(bspatch), $(tim), -o, $(tim), --patch, $(tim_patch)]
 
   # `tim` dependencies
   mktim_deps:
@@ -376,7 +376,7 @@ rules:
       - static: $(cdd::dir_name)/
     exec:
       - [$(mk-card-table), ^(path).CDD.json, -o, $(cdd)]
-      - [$(bspatch), $(cdd), $(cdd), ^(path).CDD.bspatch]
+      - [$(bspatch), $(cdd), -o, $(cdd), --patch, ^(path).CDD.bspatch]
 
   # Deck table
   deck_table:
@@ -391,7 +391,7 @@ rules:
       - static: $(dek::dir_name)/
     exec:
       - [$(mk-deck-table), ^(path).DEK.json, -o, $(dek)]
-      - [$(bspatch), $(dek), $(dek), ^(path).DEK.bspatch]
+      - [$(bspatch), $(dek), -o, $(dek), --patch, ^(path).DEK.bspatch]
 
   # Buffer
   mmm_buffer:
