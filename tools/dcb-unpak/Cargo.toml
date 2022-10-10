@@ -7,11 +7,11 @@ version = "0.1.0"
 [dependencies]
 
 # Dcb
-dcb-logger = {path = "../dcb-logger"}
-dcb-pak = {path = "../dcb-pak"}
+dcb-logger = { path = "../dcb-logger" }
+dcb-pak = { path = "../dcb-pak" }
 
 # Cmd
-clap = {version = "4.0.11", features = ["derive"]}
+clap = { version = "4.0.11", features = ["derive"] }
 
 # Logging
 tracing = "0.1.37"
@@ -22,8 +22,10 @@ anyhow = "1.0.65"
 # Util
 pathdiff = "0.2.1"
 size_format = "1.0.2"
-zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "6778fdcb86dfc367429127840dac355c6fb8b54c", features = ["use_serde"]}
+zutil = { git = "https://github.com/Zenithsiz/zutil", rev = "6778fdcb86dfc367429127840dac355c6fb8b54c", features = [
+  "use_serde",
+] }
 
 # Serde
-serde = {version = "1.0.145", features = ["derive"]}
+serde = { version = "1.0.145", features = ["derive"] }
 serde_yaml = "0.9.13"

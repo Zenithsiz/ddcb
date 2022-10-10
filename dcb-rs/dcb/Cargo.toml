@@ -8,4 +8,4 @@ crate-type = ["staticlib"]
 
 [dependencies]
 
-dcb-macros = {path = "../dcb-macros"}
+dcb-macros = { path = "../dcb-macros" }

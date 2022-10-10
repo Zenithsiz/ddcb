@@ -1,9 +1,6 @@
 [workspace]
 
-members = [
-  "dcb-macros",
-  "dcb",
-]
+members = ["dcb-macros", "dcb"]
 
 # Note: with opt-level 0 we get some llvm error, so we compile
 #       dev with at least opt-level 1

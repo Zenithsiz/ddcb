@@ -7,12 +7,12 @@ version = "0.1.0"
 [dependencies]
 
 # Dcb
-dcb-bytes = {path = "../dcb-bytes"}
-dcb-logger = {path = "../dcb-logger"}
-dcb-msd = {path = "../dcb-msd"}
+dcb-bytes = { path = "../dcb-bytes" }
+dcb-logger = { path = "../dcb-logger" }
+dcb-msd = { path = "../dcb-msd" }
 
 # Cmd
-clap = {version = "4.0.11", features = ["derive"]}
+clap = { version = "4.0.11", features = ["derive"] }
 
 # Logging
 tracing = "0.1.37"
@@ -24,7 +24,7 @@ anyhow = "1.0.65"
 byteorder = "1.4.3"
 dbg_hex = "0.1.1"
 itertools = "0.10.5"
-zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "6778fdcb86dfc367429127840dac355c6fb8b54c"}
+zutil = { git = "https://github.com/Zenithsiz/zutil", rev = "6778fdcb86dfc367429127840dac355c6fb8b54c" }
 
 # Strings
 encoding_rs = "0.8.31"

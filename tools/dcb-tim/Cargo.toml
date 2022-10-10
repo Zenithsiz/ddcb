@@ -6,7 +6,7 @@ version = "0.1.0"
 [dependencies]
 
 # Dcb
-dcb-bytes = {path = "../dcb-bytes"}
+dcb-bytes = { path = "../dcb-bytes" }
 
 # Logging
 tracing = "0.1.37"
@@ -25,4 +25,4 @@ itertools = "0.10.5"
 pathdiff = "0.2.1"
 
 # Serde
-serde = {version = "1.0.145", features = ["derive"]}
+serde = { version = "1.0.145", features = ["derive"] }

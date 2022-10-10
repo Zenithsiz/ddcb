@@ -7,7 +7,7 @@ version = "0.1.0"
 [dependencies]
 
 # Dcb
-dcb-bytes = {path = "../dcb-bytes"}
+dcb-bytes = { path = "../dcb-bytes" }
 
 # Log
 tracing = "0.1.37"
@@ -15,7 +15,7 @@ tracing = "0.1.37"
 # Util
 bitflags = "1.3.2"
 byteorder = "1.4.3"
-zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "6778fdcb86dfc367429127840dac355c6fb8b54c"}
+zutil = { git = "https://github.com/Zenithsiz/zutil", rev = "6778fdcb86dfc367429127840dac355c6fb8b54c" }
 
 # Derives
 thiserror = "1.0.37"
