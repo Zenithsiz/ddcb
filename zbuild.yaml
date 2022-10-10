@@ -18,7 +18,6 @@ alias:
   bspatch               : tools/bspatch.py
   mkconcat              : tools/concat.py
   mkconcat_deps         : tools/concat_deps.py
-  mktim_deps            : tools/mktim_deps.py
 
   # Cargo tools
   mkdrv        : $(tools_dir)/dcb-mkdrv
@@ -32,6 +31,7 @@ alias:
   mk-deck-table: $(tools_dir)/dcb-mk-deck-table
   mkpsexe      : $(tools_dir)/dcb-mkpsexe
   mktim        : $(tools_dir)/dcb-mktim
+  mktim-deps   : $(tools_dir)/dcb-mktim-deps
   mktis        : $(tools_dir)/dcb-mktis
   mktis-deps   : $(tools_dir)/dcb-mktis-deps
 
@@ -332,10 +332,10 @@ rules:
     out: [$(tim_deps)]
     deps:
       - $(tim_yaml)
-      - $(mktim_deps)
+      - $(mktim-deps)
       - static: $(tim_deps::dir_name)/
     exec:
-      - [$(mktim_deps), $(tim_yaml), $(tim), $(tim_deps)]
+      - [$(mktim-deps), $(tim_yaml), -o, $(tim), --deps-file, $(tim_deps)]
 
   # `tis`
   mktis:

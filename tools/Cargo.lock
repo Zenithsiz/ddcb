@@ -604,6 +604,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "dcb-mktim-deps"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "clap",
+ "dcb-bytes",
+ "dcb-logger",
+ "dcb-tim",
+ "hexdump",
+ "image",
+ "itertools 0.10.5",
+ "pathdiff",
+ "serde",
+ "serde_yaml",
+ "thiserror",
+ "tracing",
+]
+
+[[package]]
 name = "dcb-mktis"
 version = "0.1.0"
 dependencies = [
