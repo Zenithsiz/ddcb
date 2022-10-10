@@ -10,14 +10,14 @@ version = "0.1.0"
 dcb-bytes = {path = "../dcb-bytes"}
 
 # Log
-log = "0.4.13"
+log = "0.4.17"
 
 # Util
-byteorder = "1.4.2"
+byteorder = "1.4.3"
 zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "6778fdcb86dfc367429127840dac355c6fb8b54c"}
 
 # Error handling
-anyhow = "1.0.38"
+anyhow = "1.0.65"
 
 # Derives
-thiserror = "1.0.23"
+thiserror = "1.0.37"

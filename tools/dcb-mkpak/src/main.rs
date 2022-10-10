@@ -20,7 +20,7 @@ mod args;
 use {
 	anyhow::Context,
 	args::Args,
-	clap::StructOpt,
+	clap::Parser,
 	dcb_mkpak::Map,
 	dcb_pak::entry,
 	std::{

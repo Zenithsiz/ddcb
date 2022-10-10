@@ -7,7 +7,7 @@ version = "0.1.0"
 
 # Bytes
 arrayref = "0.3.6"
-byteorder = "1.4.2"
+byteorder = "1.4.3"
 
 # Error handling
-thiserror = "1.0.23"
+thiserror = "1.0.37"

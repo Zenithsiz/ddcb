@@ -6,6 +6,7 @@ mod cli;
 // Imports
 use {
 	anyhow::Context,
+	clap::Parser,
 	dcb_cdrom_xa::CdRomReader,
 	std::{fs, io::Write, path::Path},
 };
@@ -17,6 +18,7 @@ fn main() -> Result<(), anyhow::Error> {
 		log::LevelFilter::Info,
 		simplelog::Config::default(),
 		simplelog::TerminalMode::Stderr,
+		simplelog::ColorChoice::Auto,
 	)
 	.expect("Unable to initialize logger");
 
@@ -24,7 +26,13 @@ fn main() -> Result<(), anyhow::Error> {
 	let cli::CliData {
 		input_file,
 		output_file,
-	} = cli::CliData::new();
+	} = cli::CliData::parse();
+
+	let output_file = match output_file {
+		Some(output) => output,
+		// FIXME: If the user inputs a file that's a `.iso`, this uses the same file as output.
+		None => input_file.with_extension("iso"),
+	};
 
 	// Try to extract it into a `iso`
 	self::extract_cdrom_xa(&input_file, &output_file).context("Unable to extract file")?;

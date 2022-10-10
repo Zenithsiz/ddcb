@@ -9,7 +9,7 @@ mod args;
 use {
 	anyhow::Context,
 	args::Args,
-	clap::StructOpt,
+	clap::Parser,
 	dcb_pak::EntryReader,
 	std::{
 		fs,
@@ -25,6 +25,7 @@ fn main() -> Result<(), anyhow::Error> {
 		log::LevelFilter::Info,
 		simplelog::Config::default(),
 		simplelog::TerminalMode::Stderr,
+		simplelog::ColorChoice::Auto,
 	)
 	.context("Unable to initialize logger")?;
 

@@ -38,6 +38,7 @@ fn main() -> Result<(), anyhow::Error> {
 		log::LevelFilter::Info,
 		simplelog::Config::default(),
 		simplelog::TerminalMode::Stderr,
+		simplelog::ColorChoice::Auto,
 	)
 	.expect("Unable to initialize logger");
 

@@ -11,18 +11,18 @@ dcb-bytes = {path = "../dcb-bytes"}
 dcb-bytes-derive = {path = "../dcb-bytes-derive"}
 
 # Log
-log = "0.4.13"
+log = "0.4.17"
 
 # Util
-ascii = {version = "1.0.0", features = ["serde"]}
-byteorder = "1.4.2"
+ascii = {version = "1.1.0", features = ["serde"]}
+byteorder = "1.4.3"
 zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "6778fdcb86dfc367429127840dac355c6fb8b54c", features = ["use_serde"]}
 
 # Serde
-serde = {version = "1.0.120", features = ["derive"]}
+serde = {version = "1.0.145", features = ["derive"]}
 
 # Derives
-derive_more = "0.99.11"
-ref-cast = "1.0.6"
-strum = {version = "0.20.0", features = ["derive"]}
-thiserror = "1.0.23"
+derive_more = "0.99.17"
+ref-cast = "1.0.10"
+strum = {version = "0.24.1", features = ["derive"]}
+thiserror = "1.0.37"

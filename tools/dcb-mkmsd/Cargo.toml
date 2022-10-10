@@ -10,21 +10,21 @@ dcb-bytes = {path = "../dcb-bytes"}
 dcb-msd = {path = "../dcb-msd"}
 
 # Cmd
-clap = {version = "3.1.2", features = ["derive"]}
+clap = {version = "4.0.11", features = ["derive"]}
 
 # Logging
-tracing = "0.1.36"
-tracing-subscriber = {version = "0.3.15", features = ["env-filter"]}
+tracing = "0.1.37"
+tracing-subscriber = {version = "0.3.16", features = ["env-filter"]}
 
 # Error handling
-anyhow = "1.0.38"
+anyhow = "1.0.65"
 
 # Utility
 byteorder = "1.4.3"
 dbg_hex = "0.1.1"
-itertools = "0.10.0"
+itertools = "0.10.5"
 zutil = {git = "https://github.com/Zenithsiz/zutil", rev = "6778fdcb86dfc367429127840dac355c6fb8b54c"}
 
 # Strings
-encoding_rs = "0.8.28"
-unicode-xid = "0.2.3"
+encoding_rs = "0.8.31"
+unicode-xid = "0.2.4"

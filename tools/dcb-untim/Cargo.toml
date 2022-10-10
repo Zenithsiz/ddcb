@@ -10,18 +10,18 @@ dcb-bytes = {path = "../dcb-bytes"}
 dcb-tim = {path = "../dcb-tim"}
 
 # Cmd
-clap = {version = "3.2.17", features = ["derive"]}
+clap = {version = "4.0.11", features = ["derive"]}
 
 # Logging
-tracing = "0.1.36"
-tracing-subscriber = {version = "0.3.15", features = ["env-filter"]}
+tracing = "0.1.37"
+tracing-subscriber = {version = "0.3.16", features = ["env-filter"]}
 
 # Image
 image = "0.24.4"
 
 # Error handling
-anyhow = "1.0.61"
-thiserror = "1.0.23"
+anyhow = "1.0.65"
+thiserror = "1.0.37"
 
 # Util
 byteorder = "1.4.3"
@@ -30,5 +30,5 @@ itertools = "0.10.5"
 pathdiff = "0.2.1"
 
 # Serde
-serde = {version = "1.0.143", features = ["derive"]}
-serde_yaml = "0.9.9"
+serde = {version = "1.0.145", features = ["derive"]}
+serde_yaml = "0.9.13"

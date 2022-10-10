@@ -11,7 +11,7 @@ use {
 	anyhow::Context,
 	args::Args,
 	byteorder::{ByteOrder, LittleEndian},
-	clap::StructOpt,
+	clap::Parser,
 	goblin::Object,
 	std::{
 		fs,

@@ -10,18 +10,18 @@ dcb-bytes = {path = "../dcb-bytes"}
 zutil = {git = "https://github.com/Zenithsiz/zutil", features = ["use_serde"], rev = "6778fdcb86dfc367429127840dac355c6fb8b54c"}
 
 # Log
-log = "0.4.13"
+log = "0.4.17"
 
 # Util
-ascii = "1.0.0"
-byteorder = "1.4.2"
-chrono = {version = "0.4.19", features = ["serde"]}
-filetime = "0.2.14"
-ref-cast = "1.0.6"
+ascii = "1.1.0"
+byteorder = "1.4.3"
+chrono = {version = "0.4.22", features = ["serde"]}
+filetime = "0.2.17"
+ref-cast = "1.0.10"
 
 # Derives
-thiserror = "1.0.23"
+thiserror = "1.0.37"
 
 # Serde
-serde = {version = "1.0.136", features = ["derive"]}
-serde_with = "1.12.0"
+serde = {version = "1.0.145", features = ["derive"]}
+serde_with = "2.0.1"
