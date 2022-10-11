@@ -15,7 +15,7 @@ use {
 	std::{
 		fs,
 		io::{BufWriter, Write},
-		path::{Path, PathBuf},
+		path::PathBuf,
 	},
 };
 
@@ -38,7 +38,7 @@ fn main() -> Result<(), anyhow::Error> {
 	let files = input
 		.files
 		.iter()
-		.map(|file| self::resolve_input_path(file, input_parent))
+		.map(|file| dcb_util::resolve_input_path(file, input_parent))
 		.map(|file| fs::read(&file).with_context(|| format!("Unable to read {file:?}")))
 		.collect::<Result<Vec<_>, _>>()?;
 
@@ -76,14 +76,4 @@ fn main() -> Result<(), anyhow::Error> {
 pub struct Input {
 	/// All files
 	files: Vec<PathBuf>,
-}
-
-/// Resolves input paths
-pub fn resolve_input_path(input_path: &Path, base_path: &Path) -> PathBuf {
-	// Note: Absolute => relative to current directory
-	//       Relative => relative to base path
-	match input_path.strip_prefix("/") {
-		Ok(path) => path.to_path_buf(),
-		Err(_) => base_path.join(input_path),
-	}
 }

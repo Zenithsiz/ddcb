@@ -487,6 +487,7 @@ dependencies = [
  "byteorder",
  "clap",
  "dcb-logger",
+ "dcb-util",
  "hexdump",
  "serde",
  "serde_yaml",
@@ -501,6 +502,7 @@ dependencies = [
  "byteorder",
  "clap",
  "dcb-logger",
+ "dcb-util",
  "hexdump",
  "serde",
  "serde_yaml",
@@ -611,6 +613,7 @@ dependencies = [
  "dcb-bytes",
  "dcb-logger",
  "dcb-tim",
+ "dcb-util",
  "hexdump",
  "image",
  "itertools 0.10.5",
@@ -631,6 +634,7 @@ dependencies = [
  "dcb-bytes",
  "dcb-logger",
  "dcb-tim",
+ "dcb-util",
  "hexdump",
  "image",
  "itertools 0.10.5",
@@ -649,6 +653,7 @@ dependencies = [
  "byteorder",
  "clap",
  "dcb-logger",
+ "dcb-util",
  "hexdump",
  "serde",
  "serde_yaml",
@@ -663,6 +668,7 @@ dependencies = [
  "byteorder",
  "clap",
  "dcb-logger",
+ "dcb-util",
  "hexdump",
  "serde",
  "serde_yaml",
@@ -855,6 +861,16 @@ dependencies = [
  "hexdump",
  "serde",
  "serde_yaml",
+ "tracing",
+]
+
+[[package]]
+name = "dcb-util"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "dcb-logger",
+ "serde",
  "tracing",
 ]
 

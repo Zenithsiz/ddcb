@@ -33,12 +33,7 @@ use {
 		TimHeader,
 	},
 	itertools::Itertools,
-	std::{
-		collections::HashMap,
-		fs,
-		io::Write,
-		path::{Path, PathBuf},
-	},
+	std::{collections::HashMap, fs, io::Write},
 };
 
 fn main() -> Result<(), anyhow::Error> {
@@ -61,7 +56,7 @@ fn main() -> Result<(), anyhow::Error> {
 	tracing::debug!(?config);
 
 	// Read the input image
-	let image_path = self::resolve_input_path(&config.img.path, config_parent);
+	let image_path = dcb_util::resolve_input_path(&config.img.path, config_parent);
 	tracing::debug!(?image_path);
 	let img = image::open(&image_path).context("Unable to read image")?.into_rgba16();
 	tracing::debug!(image_width = img.width(), image_height = img.height());
@@ -72,7 +67,7 @@ fn main() -> Result<(), anyhow::Error> {
 		Some(clut) => {
 			let (clut_img, include_clut) = match &clut.kind {
 				ConfigClutKind::User { path } | ConfigClutKind::External { path } => {
-					let clut_img_path = self::resolve_input_path(path, config_parent);
+					let clut_img_path = dcb_util::resolve_input_path(path, config_parent);
 					tracing::debug!(?clut_img_path);
 					let clut_img = image::open(&clut_img_path)
 						.context("Unable to read clut")?
@@ -251,14 +246,4 @@ fn generate_rev_clut(
 
 
 	Ok(rev_clut)
-}
-
-/// Resolves input paths
-pub fn resolve_input_path(input_path: &Path, base_path: &Path) -> PathBuf {
-	// Note: Absolute => relative to current directory
-	//       Relative => relative to base path
-	match input_path.strip_prefix("/") {
-		Ok(path) => path.to_path_buf(),
-		Err(_) => base_path.join(input_path),
-	}
 }

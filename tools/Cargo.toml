@@ -66,6 +66,7 @@ members = [
 
   # Others
   "dcb-bspatch",
+  "dcb-util",
 ]
 
 [patch."https://github.com/Zenithsiz/zutil"]

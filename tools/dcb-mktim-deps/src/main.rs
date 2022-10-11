@@ -22,7 +22,6 @@ use {
 	std::{
 		fs,
 		io::{BufWriter, Write},
-		path::{Path, PathBuf},
 	},
 };
 
@@ -49,24 +48,14 @@ fn main() -> Result<(), anyhow::Error> {
 	let mut dep_file = BufWriter::new(dep_file);
 	write!(dep_file, "{}: ", args.output.display()).context("Unable to write dependency file header")?;
 
-	let output_path = self::resolve_input_path(&config.img.path, config_parent);
+	let output_path = dcb_util::resolve_input_path(&config.img.path, config_parent);
 	write!(dep_file, " {}", output_path.display()).context("Unable to write image path")?;
 	if let Some(clut) = &config.clut {
 		if let ConfigClutKind::User { path } | ConfigClutKind::External { path } = &clut.kind {
-			let clut_path = self::resolve_input_path(path, config_parent);
+			let clut_path = dcb_util::resolve_input_path(path, config_parent);
 			write!(dep_file, " {}", clut_path.display()).context("Unable to write clut path")?;
 		}
 	}
 
 	Ok(())
-}
-
-/// Resolves input paths
-pub fn resolve_input_path(input_path: &Path, base_path: &Path) -> PathBuf {
-	// Note: Absolute => relative to current directory
-	//       Relative => relative to base path
-	match input_path.strip_prefix("/") {
-		Ok(path) => path.to_path_buf(),
-		Err(_) => base_path.join(input_path),
-	}
 }
