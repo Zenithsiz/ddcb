@@ -11,7 +11,7 @@ use {
 	self::args::Args,
 	anyhow::Context,
 	clap::Parser,
-	dcb_bytes::Bytes,
+	dcb_bytes::BytesReadExt,
 	dcb_tim::{Bpp, ColorBpp, ColorImg, Config, ConfigClut, ConfigClutKind, ConfigImg, Image, ImgHeader, TimHeader},
 	std::{
 		collections::HashMap,
@@ -33,11 +33,7 @@ fn main() -> Result<(), anyhow::Error> {
 	let mut input = fs::File::open(&args.input).context("Unable to open input file")?;
 
 	// Read the header
-	let header = {
-		let mut header_bytes = [0; 0x8];
-		input.read_exact(&mut header_bytes).context("Unable to read header")?;
-		TimHeader::deserialize_bytes(&header_bytes).context("Unable to parse header")?
-	};
+	let header = input.read_deserialize::<TimHeader>().context("Unable to read header")?;
 	tracing::debug!(?header);
 
 	// Read the clut, if any
@@ -48,11 +44,9 @@ fn main() -> Result<(), anyhow::Error> {
 		},
 		true => {
 			// Read the header
-			let header = {
-				let mut header_bytes = [0; 0xc];
-				input.read_exact(&mut header_bytes).context("Unable to read header")?;
-				ImgHeader::deserialize_bytes(&header_bytes).context("Unable to parse header")?
-			};
+			let header = input
+				.read_deserialize::<ImgHeader>()
+				.context("Unable to read clut header")?;
 			tracing::debug!(clut_header = ?header);
 			let expected_size = u32::from(header.width) * u32::from(header.height) * 2 + 12;
 			anyhow::ensure!(
@@ -97,21 +91,18 @@ fn main() -> Result<(), anyhow::Error> {
 		},
 	};
 
-	let img_header = {
-		let mut header_bytes = [0; 0xc];
-		input.read_exact(&mut header_bytes).context("Unable to read header")?;
-		let header = ImgHeader::deserialize_bytes(&header_bytes).context("Unable to parse header")?;
-		tracing::debug!(img_header=?header);
+	let img_header = input
+		.read_deserialize::<ImgHeader>()
+		.context("Unable to read image header")?;
+	tracing::debug!(?img_header);
 
-		// TODO: Account for padding on bpp24
-		let expected_size = u32::from(header.width) * u32::from(header.height) * 2 + 12;
-		anyhow::ensure!(
-			expected_size == header.total_size,
-			"Expected image size {expected_size:#x}, found size {:#x}",
-			header.total_size
-		);
-		header
-	};
+	// TODO: Account for padding on bpp24
+	let expected_image_size = u32::from(img_header.width) * u32::from(img_header.height) * 2 + 12;
+	anyhow::ensure!(
+		expected_image_size == img_header.total_size,
+		"Expected image size {expected_image_size:#x}, found size {:#x}",
+		img_header.total_size
+	);
 
 	// Parse the image
 	let img = Image::read(
