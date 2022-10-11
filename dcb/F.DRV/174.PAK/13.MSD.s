@@ -1,8 +1,8 @@
 .header_unknown 0x1cc
 
 # Includes
-.include "/msd-macros.s"
-.include "/msd-vars.s"
+.include "/dcb-msd/macros.msd.s"
+.include "/dcb-msd/vars.msd.s"
 
 display_scene 0x10, 0x1f1
 set_light 0x0, 0x136c, 0x6, 0x0

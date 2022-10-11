@@ -1,8 +1,8 @@
 .header_unknown 0x1cc
 
 # Includes
-.include "/msd-macros.s"
-.include "/msd-vars.s"
+.include "/dcb-msd/macros.msd.s"
+.include "/dcb-msd/vars.msd.s"
 
 .open_combo_box 0xffff
 .set_var 0x3b, 0xff

@@ -1,8 +1,8 @@
 .header_unknown 0x1e
 
 # Includes
-.include "/msd-macros.s"
-.include "/msd-vars.s"
+.include "/dcb-msd/macros.msd.s"
+.include "/dcb-msd/vars.msd.s"
 
 .set_bg_battle_cafe
 .test_eq 0x1b, 0x1

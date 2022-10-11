@@ -1,8 +1,8 @@
 .header_unknown 0x174
 
 # Includes
-.include "/msd-macros.s"
-.include "/msd-vars.s"
+.include "/dcb-msd/macros.msd.s"
+.include "/dcb-msd/vars.msd.s"
 
 jump_0:
 .empty_text_box
