@@ -11,11 +11,8 @@ use {
 	self::args::Args,
 	anyhow::Context,
 	clap::Parser,
-	std::{
-		fs,
-		io::{BufWriter, Write},
-		path::PathBuf,
-	},
+	dcb_util::DepsFile,
+	std::{fs, path::PathBuf},
 };
 
 fn main() -> Result<(), anyhow::Error> {
@@ -33,15 +30,17 @@ fn main() -> Result<(), anyhow::Error> {
 	};
 
 	// Write all dependencies
-	let dep_file = fs::File::create(&args.deps_file).context("Unable to create dependency file")?;
-	let mut dep_file = BufWriter::new(dep_file);
-	write!(dep_file, "{}: ", args.output.display()).context("Unable to write dependency file header")?;
-
 	let input_parent = args.input.parent().context("Unable to get parent dir of input file")?;
-	for file in &input.files {
-		let file = dcb_util::resolve_input_path(file, input_parent);
-		write!(dep_file, "{} ", file.display()).context("Unable to write file to dependency file")?;
-	}
+	let mut deps_file = DepsFile::new(args.output);
+	deps_file.extend(
+		input
+			.files
+			.iter()
+			.map(|file| dcb_util::resolve_input_path(file, input_parent)),
+	);
+	deps_file
+		.write_to_file(args.deps_file)
+		.context("Unable to output dependency file")?;
 
 	Ok(())
 }

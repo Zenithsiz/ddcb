@@ -20,6 +20,7 @@ use {
 	args::Args,
 	byteorder::{ByteOrder, LittleEndian},
 	clap::Parser,
+	dcb_util::DepsFile,
 	std::{
 		fs,
 		io::{Seek, SeekFrom, Write},
@@ -71,13 +72,12 @@ fn main() -> Result<(), anyhow::Error> {
 	(&output_file).write_all(&header).context("Unable to write header")?;
 
 	// If we got a dependency file, also write it
-	if let Some(dep_file) = &args.dep_file {
-		let file = fs::File::create(dep_file).context("Unable to create dependency file")?;
-		write!(&file, "{}: ", args.output_file.display()).context("Unable to write dependency file header")?;
-
-		for dep in &deps {
-			write!(&file, "{} ", dep.display()).context("Unable to write dependency file entry")?;
-		}
+	if let Some(dep_path) = &args.dep_file {
+		let mut deps_file = DepsFile::new(args.output_file);
+		deps_file.extend(&deps);
+		deps_file
+			.write_to_file(dep_path)
+			.context("Unable to output dependency file")?;
 	}
 
 	Ok(())

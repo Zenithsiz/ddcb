@@ -10,6 +10,7 @@ version = "0.1.0"
 dcb-bytes = { path = "../dcb-bytes" }
 dcb-logger = { path = "../dcb-logger" }
 dcb-msd = { path = "../dcb-msd" }
+dcb-util = { path = "../dcb-util" }
 
 # Cmd
 clap = { version = "4.0.11", features = ["derive"] }

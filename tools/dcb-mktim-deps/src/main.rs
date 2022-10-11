@@ -19,10 +19,8 @@ use {
 	anyhow::Context,
 	clap::Parser,
 	dcb_tim::{Config, ConfigClutKind},
-	std::{
-		fs,
-		io::{BufWriter, Write},
-	},
+	dcb_util::DepsFile,
+	std::fs,
 };
 
 fn main() -> Result<(), anyhow::Error> {
@@ -44,18 +42,16 @@ fn main() -> Result<(), anyhow::Error> {
 	};
 	tracing::debug!(?config);
 
-	let dep_file = fs::File::create(args.dep_file).context("Unable to create dependency file")?;
-	let mut dep_file = BufWriter::new(dep_file);
-	write!(dep_file, "{}: ", args.output.display()).context("Unable to write dependency file header")?;
-
-	let output_path = dcb_util::resolve_input_path(&config.img.path, config_parent);
-	write!(dep_file, " {}", output_path.display()).context("Unable to write image path")?;
-	if let Some(clut) = &config.clut {
-		if let ConfigClutKind::User { path } | ConfigClutKind::External { path } = &clut.kind {
-			let clut_path = dcb_util::resolve_input_path(path, config_parent);
-			write!(dep_file, " {}", clut_path.display()).context("Unable to write clut path")?;
-		}
+	let mut deps_file = DepsFile::new(args.output);
+	deps_file.add(dcb_util::resolve_input_path(&config.img.path, config_parent));
+	if let Some(clut) = &config.clut &&
+		let ConfigClutKind::User { path } | ConfigClutKind::External { path } = &clut.kind
+	{
+		deps_file.add(dcb_util::resolve_input_path(path, config_parent));
 	}
+	deps_file
+		.write_to_file(args.dep_file)
+		.context("Unable to output dependency file")?;
 
 	Ok(())
 }

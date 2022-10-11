@@ -10,17 +10,7 @@
 mod args;
 
 // Imports
-use {
-	anyhow::Context,
-	args::Args,
-	clap::Parser,
-	dcb_mkpak::Map,
-	std::{
-		fs,
-		io::{BufWriter, Write},
-		path::Path,
-	},
-};
+use {anyhow::Context, args::Args, clap::Parser, dcb_mkpak::Map, dcb_util::DepsFile, std::path::Path};
 
 
 fn main() -> Result<(), anyhow::Error> {
@@ -43,18 +33,14 @@ fn main() -> Result<(), anyhow::Error> {
 }
 
 /// Writes all dependencies of `map` to `output`
-fn write_deps(map: &Map, base_path: &Path, output_path: &Path, dep_path: &Path) -> Result<(), anyhow::Error> {
-	let dep_file = fs::File::create(dep_path).context("Unable to create dependency file")?;
-	let mut dep_file = BufWriter::new(dep_file);
-	write!(dep_file, "{}: ", output_path.display()).context("Unable to write dependency file header")?;
-
-	for entry in &map.entries {
-		// Get the entry path
-		let entry_path = dcb_mkpak::resolve_entry_file_path(entry, base_path);
-
-		// Write the entry on the dependency file
-		write!(dep_file, "{} ", entry_path.display()).context("Unable to write entry to dependency file")?;
-	}
-
-	Ok(())
+fn write_deps(map: &Map, base_path: &Path, output_path: &Path, deps_path: &Path) -> Result<(), anyhow::Error> {
+	let mut deps_file = DepsFile::new(output_path);
+	deps_file.extend(
+		map.entries
+			.iter()
+			.map(|entry| dcb_mkpak::resolve_entry_file_path(entry, base_path)),
+	);
+	deps_file
+		.write_to_file(deps_path)
+		.context("Unable to output dependency file")
 }

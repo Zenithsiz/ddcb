@@ -9,38 +9,35 @@ use {
 	crate::entry,
 	anyhow::Context,
 	dcb_drv::{DirEntry, DirPtr, DrvMap, FilePtr},
+	dcb_util::DepsFile,
 	std::{
 		fs,
-		io::{self, SeekFrom, Write},
+		io::{self, SeekFrom},
 		path::Path,
 	},
 };
 
 /// Writes `.drv` dependencies to `dep_file`
-pub fn write_deps(map: &DrvMap, output_file: &Path, dep_file: &Path) -> Result<(), anyhow::Error> {
+pub fn write_deps(map: &DrvMap, output_file: &Path, deps_path: &Path) -> Result<(), anyhow::Error> {
 	// Create the dependency file
-	let mut dep_file = fs::File::create(dep_file).context("Unable to create dependency file")?;
-	write!(&mut dep_file, "{}: ", output_file.display()).context("Unable to write dependency file header")?;
+	let mut deps_file = DepsFile::new(output_file);
 
-	// Parse all entries
-	let entries = entry::entries(map).context("Unable to read all entries in map")?;
-
-	// Finally write all dependencies
-	fn visit_entries(entries: &[DirEntryWriter], dep_file: &mut fs::File) -> Result<(), anyhow::Error> {
+	// Visits all entries
+	fn visit_entries(entries: &[DirEntryWriter], deps_file: &mut DepsFile) {
 		for entry in entries {
 			match &entry.kind {
-				DirEntryWriterKind::Dir { entries } => visit_entries(entries, dep_file)?,
-				DirEntryWriterKind::File { path, .. } =>
-					write!(dep_file, "{} ", path.display()).context("Unable to write entry to dependency file")?,
+				DirEntryWriterKind::Dir { entries } => visit_entries(entries, deps_file),
+				DirEntryWriterKind::File { path, .. } => deps_file.add(path),
 			}
 		}
-
-		Ok(())
 	}
 
-	visit_entries(&entries, &mut dep_file).context("Unable to write all dependencies")?;
+	let entries = entry::entries(map).context("Unable to read all entries in map")?;
+	visit_entries(&entries, &mut deps_file);
 
-	Ok(())
+	deps_file
+		.write_to_file(deps_path)
+		.context("Unable to output dependency file")
 }
 
 /// Writes a `.drv` filesystem to `output_file`
