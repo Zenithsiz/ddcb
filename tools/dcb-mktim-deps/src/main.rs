@@ -1,4 +1,4 @@
-//! `TIM` creator
+//! `TIM` dependency generator
 
 // Features
 #![feature(
