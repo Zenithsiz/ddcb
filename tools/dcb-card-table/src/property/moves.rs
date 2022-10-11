@@ -7,7 +7,7 @@ mod test;
 // Imports
 use {
 	byteorder::{ByteOrder, LittleEndian},
-	dcb_bytes::{Bytes, Validate, ValidateVisitor},
+	dcb_bytes::Bytes,
 	zutil::{
 		null_ascii_string::{self, NullAsciiString},
 		AsciiStrArr,
@@ -75,26 +75,4 @@ impl Bytes for Move {
 		// And return Ok
 		Ok(())
 	}
-}
-
-impl<'a> Validate<'a> for Move {
-	type Error = !;
-	type Warning = ValidationWarning;
-
-	fn validate<V: ValidateVisitor<'a, Self>>(&'a self, mut visitor: V) {
-		// If the power isn't a multiple of 10, warn, as we don't know how the game handles
-		// powers that aren't multiples of 10.
-		// TODO: Verify if the game can handle non-multiple of 10 powers.
-		if self.power % 10 != 0 {
-			visitor.visit_warning(ValidationWarning::PowerMultiple10);
-		}
-	}
-}
-
-/// All warnings for [`Move`] validation
-#[derive(PartialEq, Eq, Clone, Debug, thiserror::Error)]
-pub enum ValidationWarning {
-	/// Power is not a multiple of 10
-	#[error("Power is not a multiple of 10.")]
-	PowerMultiple10,
 }
