@@ -22,7 +22,11 @@ fn main() -> Result<(), anyhow::Error> {
 	tracing::trace!(?map, "Map");
 
 	// Try to write the filesystem
-	dcb_mkdrv::write::write_fs(&map, &args.output_file).context("Unable to write `drv` filesystem")?;
+	let map_path_parent = args
+		.input_map
+		.parent()
+		.context("Input map file had no parent directory")?;
+	dcb_mkdrv::write::write_fs(map_path_parent, &map, &args.output_file).context("Unable to write `drv` filesystem")?;
 
 	Ok(())
 }

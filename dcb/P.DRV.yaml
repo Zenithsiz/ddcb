@@ -2,28 +2,28 @@
 - name: ENDSEG
   extension: BIN
   date: '2001-05-02T09:41:44'
-  path: build/dylib/endseg.BIN
+  path: /build/dylib/endseg.BIN
 - name: EVOSEG
   extension: BIN
   date: '2001-05-02T09:41:44'
-  path: build/dylib/evoseg.BIN
+  path: /build/dylib/evoseg.BIN
 - name: KAWSEG
   extension: BIN
   date: '2001-05-02T09:41:44'
-  path: build/dylib/kawseg.BIN
+  path: /build/dylib/kawseg.BIN
 - name: OPENSEG
   extension: BIN
   date: '2001-05-02T09:41:44'
-  path: build/dylib/openseg.BIN
+  path: /build/dylib/openseg.BIN
 - name: SAISEG
   extension: BIN
   date: '2001-05-02T09:41:44'
-  path: build/dylib/saiseg.BIN
+  path: /build/dylib/saiseg.BIN
 - name: SUBSEG
   extension: BIN
   date: '2001-05-02T09:41:44'
-  path: build/dylib/subseg.BIN
+  path: /build/dylib/subseg.BIN
 - name: SUGSEG
   extension: BIN
   date: '2001-05-02T09:41:44'
-  path: build/dylib/sugseg.BIN
+  path: /build/dylib/sugseg.BIN

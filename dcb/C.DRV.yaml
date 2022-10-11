@@ -5,237 +5,237 @@
     - name: UNIT00
       extension: MSD
       date: '2001-04-17T02:53:36'
-      path: build/msd/dcb/C.DRV/EVENT/UNIT00.MSD
+      path: /build/msd/dcb/C.DRV/EVENT/UNIT00.MSD
     - name: UNIT01
       extension: MSD
       date: '2001-04-17T02:53:38'
-      path: build/msd/dcb/C.DRV/EVENT/UNIT01.MSD
+      path: /build/msd/dcb/C.DRV/EVENT/UNIT01.MSD
     - name: UNIT02
       extension: MSD
       date: '2001-04-17T02:53:40'
-      path: build/msd/dcb/C.DRV/EVENT/UNIT02.MSD
+      path: /build/msd/dcb/C.DRV/EVENT/UNIT02.MSD
     - name: VSSVER
       extension: SCC
       date: '2001-04-17T02:56:44'
-      path: dcb/C.DRV/EVENT/VSSVER.SCC
+      path: C.DRV/EVENT/VSSVER.SCC
 - name: OBJECT
   date: '2000-12-22T09:45:54'
   entries:
     - name: A_4
       extension: TIM
       date: '2000-10-19T11:49:46'
-      path: build/tim/dcb/C.DRV/OBJECT/A_4.TIM
+      path: /build/tim/dcb/C.DRV/OBJECT/A_4.TIM
     - name: MAP
       extension: TIS
       date: '2001-04-09T06:02:18'
-      path: build/tis/dcb/C.DRV/OBJECT/MAP.TIS
+      path: /build/tis/dcb/C.DRV/OBJECT/MAP.TIS
     - name: A_2
       extension: TIM
       date: '2000-10-19T11:49:46'
-      path: build/tim/dcb/C.DRV/OBJECT/A_2.TIM
+      path: /build/tim/dcb/C.DRV/OBJECT/A_2.TIM
     - name: A_3
       extension: TIM
       date: '2000-10-19T11:49:46'
-      path: build/tim/dcb/C.DRV/OBJECT/A_3.TIM
+      path: /build/tim/dcb/C.DRV/OBJECT/A_3.TIM
     - name: SAVELOAD
       extension: TIS
       date: '2000-10-19T11:49:48'
-      path: build/tis/dcb/C.DRV/OBJECT/SAVELOAD.TIS
+      path: /build/tis/dcb/C.DRV/OBJECT/SAVELOAD.TIS
     - name: A_1
       extension: TIM
       date: '2000-10-19T11:49:46'
-      path: build/tim/dcb/C.DRV/OBJECT/A_1.TIM
+      path: /build/tim/dcb/C.DRV/OBJECT/A_1.TIM
     - name: DECK
       extension: TIS
       date: '2001-03-13T02:19:18'
-      path: build/tis/dcb/C.DRV/OBJECT/DECK.TIS
+      path: /build/tis/dcb/C.DRV/OBJECT/DECK.TIS
     - name: UNIT
       extension: TIS
       date: '2001-03-26T03:43:10'
-      path: build/tis/dcb/C.DRV/OBJECT/UNIT.TIS
+      path: /build/tis/dcb/C.DRV/OBJECT/UNIT.TIS
     - name: VSSVER
       extension: SCC
       date: '2001-04-11T06:36:24'
-      path: dcb/C.DRV/OBJECT/VSSVER.SCC
+      path: C.DRV/OBJECT/VSSVER.SCC
     - name: WORLD
       extension: TIS
       date: '2001-03-23T04:57:32'
-      path: build/tis/dcb/C.DRV/OBJECT/WORLD.TIS
+      path: /build/tis/dcb/C.DRV/OBJECT/WORLD.TIS
 - name: EVO_PAK
   date: '2001-01-12T07:07:24'
   entries:
     - name: '1501'
       extension: PAK
       date: '2000-10-19T11:49:46'
-      path: build/pak/dcb/C.DRV/EVO_PAK/1501.PAK
+      path: /build/pak/dcb/C.DRV/EVO_PAK/1501.PAK
     - name: '1502'
       extension: PAK
       date: '2000-10-19T11:49:46'
-      path: build/pak/dcb/C.DRV/EVO_PAK/1502.PAK
+      path: /build/pak/dcb/C.DRV/EVO_PAK/1502.PAK
     - name: '1500'
       extension: PAK
       date: '2000-10-19T11:49:46'
-      path: build/pak/dcb/C.DRV/EVO_PAK/1500.PAK
+      path: /build/pak/dcb/C.DRV/EVO_PAK/1500.PAK
     - name: VSSVER
       extension: SCC
       date: '2001-04-11T06:36:24'
-      path: dcb/C.DRV/EVO_PAK/VSSVER.SCC
+      path: C.DRV/EVO_PAK/VSSVER.SCC
 - name: DEBUG
   date: '2001-01-15T02:44:36'
   entries:
     - name: AREA05
       extension: TIS
       date: '2001-03-23T04:58:36'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA05.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA05.TIS
     - name: AREA01
       extension: TIS
       date: '2001-03-23T04:57:50'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA01.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA01.TIS
     - name: AREA11
       extension: TIS
       date: '2001-03-23T04:59:30'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA11.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA11.TIS
     - name: AREA10
       extension: TIS
       date: '2001-03-23T04:59:20'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA10.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA10.TIS
     - name: VSSVER
       extension: SCC
       date: '2001-05-02T08:15:42'
-      path: dcb/C.DRV/DEBUG/VSSVER.SCC
+      path: C.DRV/DEBUG/VSSVER.SCC
     - name: AREA08
       extension: TIS
       date: '2001-03-23T04:59:04'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA08.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA08.TIS
     - name: AREA07
       extension: TIS
       date: '2001-03-23T04:58:54'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA07.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA07.TIS
     - name: AREA09
       extension: TIS
       date: '2001-03-23T04:59:14'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA09.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA09.TIS
     - name: AREA03
       extension: TIS
       date: '2001-03-23T04:58:18'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA03.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA03.TIS
     - name: AREA02
       extension: TIS
       date: '2001-03-23T04:57:54'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA02.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA02.TIS
     - name: AREA06
       extension: TIS
       date: '2001-03-23T04:58:46'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA06.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA06.TIS
     - name: AREA00
       extension: TIS
       date: '2001-03-23T04:57:44'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA00.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA00.TIS
     - name: AREA04
       extension: TIS
       date: '2001-03-23T04:58:26'
-      path: build/tis/dcb/C.DRV/DEBUG/AREA04.TIS
+      path: /build/tis/dcb/C.DRV/DEBUG/AREA04.TIS
     - name: CITY11
       extension: MSD
       date: '2001-05-02T08:15:14'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY11.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY11.MSD
     - name: CITY10
       extension: MSD
       date: '2001-05-02T08:15:14'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY10.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY10.MSD
     - name: CITY09
       extension: MSD
       date: '2001-05-02T08:15:14'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY09.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY09.MSD
     - name: CITY06
       extension: MSD
       date: '2001-05-02T08:15:12'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY06.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY06.MSD
     - name: CITY08
       extension: MSD
       date: '2001-05-02T08:15:14'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY08.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY08.MSD
     - name: CITY07
       extension: MSD
       date: '2001-05-02T08:15:12'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY07.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY07.MSD
     - name: CITY03
       extension: MSD
       date: '2001-05-02T08:15:12'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY03.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY03.MSD
     - name: CITY05
       extension: MSD
       date: '2001-05-02T08:15:12'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY05.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY05.MSD
     - name: CITY00
       extension: MSD
       date: '2001-05-02T08:15:10'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY00.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY00.MSD
     - name: CITY04
       extension: MSD
       date: '2001-05-02T08:15:12'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY04.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY04.MSD
     - name: CITY02
       extension: MSD
       date: '2001-05-02T08:15:10'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY02.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY02.MSD
     - name: CITY01
       extension: MSD
       date: '2001-05-02T08:15:10'
-      path: build/msd/dcb/C.DRV/DEBUG/CITY01.MSD
+      path: /build/msd/dcb/C.DRV/DEBUG/CITY01.MSD
 - name: UNIT_EFF
   extension: ARC
   date: '2000-10-19T11:49:44'
-  path: build/arc/dcb/C.DRV/UNIT_EFF.ARC
+  path: /build/arc/dcb/C.DRV/UNIT_EFF.ARC
 - name: AREA04
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA04.PAK
+  path: /build/pak/dcb/C.DRV/AREA04.PAK
 - name: AREA05
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA05.PAK
+  path: /build/pak/dcb/C.DRV/AREA05.PAK
 - name: AREA01
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA01.PAK
+  path: /build/pak/dcb/C.DRV/AREA01.PAK
 - name: AREA06
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA06.PAK
+  path: /build/pak/dcb/C.DRV/AREA06.PAK
 - name: AREA02
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA02.PAK
+  path: /build/pak/dcb/C.DRV/AREA02.PAK
 - name: AREA03
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA03.PAK
+  path: /build/pak/dcb/C.DRV/AREA03.PAK
 - name: AREA00
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA00.PAK
+  path: /build/pak/dcb/C.DRV/AREA00.PAK
 - name: AREA08
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA08.PAK
+  path: /build/pak/dcb/C.DRV/AREA08.PAK
 - name: AREA09
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA09.PAK
+  path: /build/pak/dcb/C.DRV/AREA09.PAK
 - name: AREA10
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA10.PAK
+  path: /build/pak/dcb/C.DRV/AREA10.PAK
 - name: AREA11
   extension: PAK
   date: '2001-05-02T08:15:32'
-  path: build/pak/dcb/C.DRV/AREA11.PAK
+  path: /build/pak/dcb/C.DRV/AREA11.PAK
 - name: AREA07
   extension: PAK
   date: '2001-05-02T08:15:30'
-  path: build/pak/dcb/C.DRV/AREA07.PAK
+  path: /build/pak/dcb/C.DRV/AREA07.PAK
 - name: VSSVER
   extension: SCC
   date: '2001-05-02T08:15:42'
-  path: dcb/C.DRV/VSSVER.SCC
+  path: C.DRV/VSSVER.SCC

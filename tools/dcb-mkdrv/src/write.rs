@@ -18,22 +18,28 @@ use {
 };
 
 /// Writes `.drv` dependencies to `dep_file`
-pub fn write_deps(map: &DrvMap, output_file: &Path, deps_path: &Path) -> Result<(), anyhow::Error> {
+pub fn write_deps(
+	map_path_parent: &Path,
+	map: &DrvMap,
+	output_file: &Path,
+	deps_path: &Path,
+) -> Result<(), anyhow::Error> {
 	// Create the dependency file
 	let mut deps_file = DepsFile::new(output_file);
 
 	// Visits all entries
-	fn visit_entries(entries: &[DirEntryWriter], deps_file: &mut DepsFile) {
+	fn visit_entries(map_path_parent: &Path, entries: &[DirEntryWriter], deps_file: &mut DepsFile) {
 		for entry in entries {
 			match &entry.kind {
-				DirEntryWriterKind::Dir { entries } => visit_entries(entries, deps_file),
-				DirEntryWriterKind::File { path, .. } => deps_file.add(path),
+				DirEntryWriterKind::Dir { entries } => visit_entries(map_path_parent, entries, deps_file),
+				DirEntryWriterKind::File { path, .. } =>
+					deps_file.add(dcb_util::resolve_input_path(path, map_path_parent)),
 			}
 		}
 	}
 
 	let entries = entry::entries(map).context("Unable to read all entries in map")?;
-	visit_entries(&entries, &mut deps_file);
+	visit_entries(map_path_parent, &entries, &mut deps_file);
 
 	deps_file
 		.write_to_file(deps_path)
@@ -41,13 +47,14 @@ pub fn write_deps(map: &DrvMap, output_file: &Path, deps_path: &Path) -> Result<
 }
 
 /// Writes a `.drv` filesystem to `output_file`
-pub fn write_fs(map: &DrvMap, output_file: &Path) -> Result<(), anyhow::Error> {
+pub fn write_fs(map_path_parent: &Path, map: &DrvMap, output_file: &Path) -> Result<(), anyhow::Error> {
 	// Create the output file
 	let mut output_file = fs::File::create(output_file).context("Unable to create output file")?;
 
 	// Write the filesystem
 	let entries = entry::entries(map).context("Unable to read all entries in map")?;
-	self::write_dir_all(&mut output_file, DirPtr::root(), &entries).context("Unable to write drv filesystem")?;
+	self::write_dir_all(map_path_parent, &mut output_file, DirPtr::root(), &entries)
+		.context("Unable to write drv filesystem")?;
 
 	// Then pad the file to a sector `2048` if it isn't already
 	let len = output_file.metadata().context("Unable to get file length")?.len();
@@ -62,6 +69,7 @@ pub fn write_fs(map: &DrvMap, output_file: &Path) -> Result<(), anyhow::Error> {
 
 /// Writes all `entries` to `writer` at `ptr`.
 pub fn write_dir_all<W: io::Seek + io::Write>(
+	map_path_parent: &Path,
 	writer: &mut W,
 	ptr: DirPtr,
 	entries: &[DirEntryWriter],
@@ -86,11 +94,19 @@ pub fn write_dir_all<W: io::Seek + io::Write>(
 
 			// Then write it and get it's sector size
 			let (entry, sector_size) = match &entry.kind {
-				DirEntryWriterKind::File { extension, path } =>
-					self::write_file_entry(path, writer, cur_sector_pos, entry.name, *extension, entry.date)
-						.with_context(|| format!("Unable to write file {}.{}", entry.name, extension))?,
-				DirEntryWriterKind::Dir { entries } => self::write_dir_entry(cur_sector_pos, writer, entries, entry)
-					.with_context(|| format!("Unable to write directory {}", entry.name))?,
+				DirEntryWriterKind::File { extension, path } => self::write_file_entry(
+					path,
+					map_path_parent,
+					writer,
+					cur_sector_pos,
+					entry.name,
+					*extension,
+					entry.date,
+				)
+				.with_context(|| format!("Unable to write file {}.{}", entry.name, extension))?,
+				DirEntryWriterKind::Dir { entries } =>
+					self::write_dir_entry(map_path_parent, cur_sector_pos, writer, entries, entry)
+						.with_context(|| format!("Unable to write directory {}", entry.name))?,
 			};
 
 			// Update our sector pos
@@ -110,25 +126,29 @@ pub fn write_dir_all<W: io::Seek + io::Write>(
 
 /// Writes and creates a directory dir entry
 fn write_dir_entry<W: io::Seek + io::Write>(
+	map_path_parent: &Path,
 	cur_sector_pos: u32,
 	writer: &mut W,
 	entries: &[DirEntryWriter],
 	entry: &DirEntryWriter,
 ) -> Result<(DirEntry, u32), anyhow::Error> {
 	let ptr = DirPtr::new(cur_sector_pos);
-	let sector_size = self::write_dir_all(writer, ptr, entries).context("Unable to write all entries")?;
+	let sector_size =
+		self::write_dir_all(map_path_parent, writer, ptr, entries).context("Unable to write all entries")?;
 	Ok((DirEntry::dir(entry.name, entry.date, ptr), sector_size))
 }
 
 /// Writes and creates a file dir entry
 fn write_file_entry<W: io::Write>(
 	path: &Path,
+	map_path_parent: &Path,
 	writer: &mut W,
 	cur_sector_pos: u32,
 	name: zutil::AsciiStrArr<16>,
 	extension: zutil::AsciiStrArr<3>,
 	date: u32,
 ) -> Result<(DirEntry, u32), anyhow::Error> {
+	let path = dcb_util::resolve_input_path(path, map_path_parent);
 	let file = fs::File::open(path).context("Unable to open file")?;
 
 	let size: u32 = io::copy(&mut &file, writer)

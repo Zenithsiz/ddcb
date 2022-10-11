@@ -5,420 +5,420 @@
     - name: BGM01
       extension: PAK
       date: '2000-08-31T01:37:44'
-      path: build/pak/dcb/A.DRV/BGM/BGM01.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM01.PAK
     - name: BGM02
       extension: PAK
       date: '2000-08-31T01:37:44'
-      path: build/pak/dcb/A.DRV/BGM/BGM02.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM02.PAK
     - name: BGM03
       extension: PAK
       date: '2000-08-31T01:37:44'
-      path: build/pak/dcb/A.DRV/BGM/BGM03.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM03.PAK
     - name: BGM04
       extension: PAK
       date: '2000-08-31T01:37:44'
-      path: build/pak/dcb/A.DRV/BGM/BGM04.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM04.PAK
     - name: BGM05
       extension: PAK
       date: '2000-08-31T01:37:44'
-      path: build/pak/dcb/A.DRV/BGM/BGM05.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM05.PAK
     - name: BGM06
       extension: PAK
       date: '2000-08-31T01:37:44'
-      path: build/pak/dcb/A.DRV/BGM/BGM06.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM06.PAK
     - name: BGM07
       extension: PAK
       date: '2000-08-31T01:37:44'
-      path: build/pak/dcb/A.DRV/BGM/BGM07.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM07.PAK
     - name: BGM08
       extension: PAK
       date: '2000-08-31T01:37:44'
-      path: build/pak/dcb/A.DRV/BGM/BGM08.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM08.PAK
     - name: BGM09
       extension: PAK
       date: '2000-08-31T01:37:44'
-      path: build/pak/dcb/A.DRV/BGM/BGM09.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM09.PAK
     - name: BGM10
       extension: PAK
       date: '2000-08-31T01:37:44'
-      path: build/pak/dcb/A.DRV/BGM/BGM10.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM10.PAK
     - name: BGM102
       extension: PAK
       date: '2000-10-12T11:49:16'
-      path: build/pak/dcb/A.DRV/BGM/BGM102.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM102.PAK
     - name: BGM104
       extension: PAK
       date: '2000-10-12T11:49:16'
-      path: build/pak/dcb/A.DRV/BGM/BGM104.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM104.PAK
     - name: BGM106
       extension: PAK
       date: '2000-10-12T11:49:16'
-      path: build/pak/dcb/A.DRV/BGM/BGM106.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM106.PAK
     - name: BGM107
       extension: PAK
       date: '2000-10-12T11:49:16'
-      path: build/pak/dcb/A.DRV/BGM/BGM107.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM107.PAK
     - name: BGM108
       extension: PAK
       date: '2000-10-12T11:49:16'
-      path: build/pak/dcb/A.DRV/BGM/BGM108.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM108.PAK
     - name: BGM109
       extension: PAK
       date: '2000-10-12T11:49:16'
-      path: build/pak/dcb/A.DRV/BGM/BGM109.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM109.PAK
     - name: BGM11
       extension: PAK
       date: '2000-08-31T01:37:46'
-      path: build/pak/dcb/A.DRV/BGM/BGM11.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM11.PAK
     - name: BGM110
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM110.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM110.PAK
     - name: BGM111
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM111.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM111.PAK
     - name: BGM112
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM112.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM112.PAK
     - name: BGM113
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM113.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM113.PAK
     - name: BGM114
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM114.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM114.PAK
     - name: BGM115
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM115.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM115.PAK
     - name: BGM116
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM116.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM116.PAK
     - name: BGM117
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM117.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM117.PAK
     - name: BGM118
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM118.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM118.PAK
     - name: BGM119
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM119.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM119.PAK
     - name: BGM12
       extension: PAK
       date: '2000-08-31T01:37:48'
-      path: build/pak/dcb/A.DRV/BGM/BGM12.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM12.PAK
     - name: BGM120
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM120.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM120.PAK
     - name: BGM121
       extension: PAK
       date: '2000-10-12T11:49:18'
-      path: build/pak/dcb/A.DRV/BGM/BGM121.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM121.PAK
     - name: BGM122
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM122.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM122.PAK
     - name: BGM123
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM123.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM123.PAK
     - name: BGM124
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM124.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM124.PAK
     - name: BGM125
       extension: PAK
       date: '2000-10-17T08:34:04'
-      path: build/pak/dcb/A.DRV/BGM/BGM125.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM125.PAK
     - name: BGM126
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM126.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM126.PAK
     - name: BGM127
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM127.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM127.PAK
     - name: BGM128
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM128.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM128.PAK
     - name: BGM129
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM129.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM129.PAK
     - name: BGM13
       extension: PAK
       date: '2000-08-31T01:37:48'
-      path: build/pak/dcb/A.DRV/BGM/BGM13.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM13.PAK
     - name: BGM130
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM130.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM130.PAK
     - name: BGM131
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM131.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM131.PAK
     - name: BGM132
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM132.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM132.PAK
     - name: BGM133
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM133.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM133.PAK
     - name: BGM134
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM134.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM134.PAK
     - name: BGM135
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM135.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM135.PAK
     - name: BGM136
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM136.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM136.PAK
     - name: BGM137
       extension: PAK
       date: '2000-10-12T11:49:20'
-      path: build/pak/dcb/A.DRV/BGM/BGM137.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM137.PAK
     - name: BGM138
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM138.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM138.PAK
     - name: BGM139
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM139.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM139.PAK
     - name: BGM14
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM14.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM14.PAK
     - name: BGM140
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM140.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM140.PAK
     - name: BGM141
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM141.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM141.PAK
     - name: BGM142
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM142.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM142.PAK
     - name: BGM143
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM143.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM143.PAK
     - name: BGM144
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM144.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM144.PAK
     - name: BGM145
       extension: PAK
       date: '2000-10-17T08:34:06'
-      path: build/pak/dcb/A.DRV/BGM/BGM145.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM145.PAK
     - name: BGM146
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM146.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM146.PAK
     - name: BGM147
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM147.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM147.PAK
     - name: BGM148
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM148.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM148.PAK
     - name: BGM149
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM149.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM149.PAK
     - name: BGM15
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM15.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM15.PAK
     - name: BGM150
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM150.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM150.PAK
     - name: BGM151
       extension: PAK
       date: '2000-10-12T11:49:22'
-      path: build/pak/dcb/A.DRV/BGM/BGM151.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM151.PAK
     - name: BGM152
       extension: PAK
       date: '2000-10-12T11:49:24'
-      path: build/pak/dcb/A.DRV/BGM/BGM152.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM152.PAK
     - name: BGM16
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM16.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM16.PAK
     - name: BGM17
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM17.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM17.PAK
     - name: BGM18
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM18.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM18.PAK
     - name: BGM19
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM19.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM19.PAK
     - name: BGM20
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM20.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM20.PAK
     - name: BGM21
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM21.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM21.PAK
     - name: BGM22
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM22.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM22.PAK
     - name: BGM23
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM23.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM23.PAK
     - name: BGM24
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM24.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM24.PAK
     - name: BGM25
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM25.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM25.PAK
     - name: BGM26
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM26.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM26.PAK
     - name: BGM27
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM27.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM27.PAK
     - name: BGM28
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM28.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM28.PAK
     - name: BGM29
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM29.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM29.PAK
     - name: BGM30
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM30.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM30.PAK
     - name: BGM31
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM31.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM31.PAK
     - name: BGM32
       extension: PAK
       date: '2000-08-31T01:37:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM32.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM32.PAK
     - name: BGM33
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM33.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM33.PAK
     - name: BGM34
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM34.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM34.PAK
     - name: BGM35
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM35.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM35.PAK
     - name: BGM36
       extension: PAK
       date: '2000-08-15T05:55:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM36.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM36.PAK
     - name: BGM37
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM37.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM37.PAK
     - name: BGM38
       extension: PAK
       date: '2000-08-15T05:55:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM38.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM38.PAK
     - name: BGM39
       extension: PAK
       date: '2000-08-15T05:55:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM39.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM39.PAK
     - name: BGM40
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM40.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM40.PAK
     - name: BGM41
       extension: PAK
       date: '2000-08-15T05:55:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM41.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM41.PAK
     - name: BGM42
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM42.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM42.PAK
     - name: BGM43
       extension: PAK
       date: '2000-08-15T05:55:50'
-      path: build/pak/dcb/A.DRV/BGM/BGM43.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM43.PAK
     - name: BGM44
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM44.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM44.PAK
     - name: BGM45
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM45.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM45.PAK
     - name: BGM46
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM46.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM46.PAK
     - name: BGM47
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM47.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM47.PAK
     - name: BGM48
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM48.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM48.PAK
     - name: BGM49
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM49.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM49.PAK
     - name: BGM50
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM50.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM50.PAK
     - name: BGM51
       extension: PAK
       date: '2000-08-31T01:37:52'
-      path: build/pak/dcb/A.DRV/BGM/BGM51.PAK
+      path: /build/pak/dcb/A.DRV/BGM/BGM51.PAK
 - name: BATTLE
   extension: PAK
   date: '2001-03-16T06:51:16'
-  path: build/pak/dcb/A.DRV/BATTLE.PAK
+  path: /build/pak/dcb/A.DRV/BATTLE.PAK
 - name: BATTLE
   extension: TIM
   date: '2000-09-29T05:58:02'
-  path: build/concat/dcb/A.DRV/BATTLE.TIM.concat
+  path: /build/concat/dcb/A.DRV/BATTLE.TIM.concat
 - name: SE0
   extension: PAK
   date: '2000-09-11T03:19:10'
-  path: build/pak/dcb/A.DRV/SE0.PAK
+  path: /build/pak/dcb/A.DRV/SE0.PAK
 - name: SE1
   extension: PAK
   date: '2000-10-12T11:49:16'
-  path: build/pak/dcb/A.DRV/SE1.PAK
+  path: /build/pak/dcb/A.DRV/SE1.PAK
 - name: VSSVER
   extension: SCC
   date: '2001-03-16T06:51:16'
-  path: dcb/A.DRV/VSSVER.SCC
+  path: A.DRV/VSSVER.SCC

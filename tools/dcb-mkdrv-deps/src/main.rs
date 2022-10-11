@@ -23,7 +23,11 @@ fn main() -> Result<(), anyhow::Error> {
 	tracing::trace!(?map, "Map");
 
 	// Try to write all dependencies
-	dcb_mkdrv::write::write_deps(&map, &args.output_file, &args.dep_file)
+	let map_path_parent = args
+		.input_map
+		.parent()
+		.context("Input map file had no parent directory")?;
+	dcb_mkdrv::write::write_deps(map_path_parent, &map, &args.output_file, &args.dep_file)
 		.context("Unable to write `drv` filesystem")?;
 
 	Ok(())
