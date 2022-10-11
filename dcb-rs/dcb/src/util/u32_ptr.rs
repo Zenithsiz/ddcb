@@ -2,6 +2,7 @@
 
 
 /// Extension trait to treat a `u32` as a pointer
+#[const_trait]
 pub trait U32Ptr {
 	/// Returns the top-part of a pointer
 	fn ptr_hi(self) -> u16;
@@ -56,6 +57,7 @@ impl const U32Ptr for u32 {
 }
 
 /// Offsets for a `u32` offset
+#[const_trait]
 pub trait U32PtrOffset {
 	/// Converts this offset to an `i32`
 	fn to_i32(self) -> i32;
