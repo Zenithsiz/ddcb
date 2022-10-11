@@ -67,13 +67,53 @@ alias:
   dcb_elf              : $(exe_dir)/dcb.elf
   dcb_psexe            : $(exe_dir)/dcb.psexe
   mmm_buffer           : $(misc_dir)/dcb/MMM.DAT
+  dcb_rs_lib           : $(dcb_rs_dir)/libdcb.a
+  dcb_rs_lib_deps      : $(dcb_rs_dir)/libdcb.d
+  
+  # Assembly
   asm_expanded         : $(asm_dir)/expanded/^(path).s
   asm_expanded_deps    : $(asm_dir)/expanded/^(path).d
   asm_processed        : $(asm_dir)/processed/^(path).s
   asm_obj              : $(asm_dir)/obj/^(path).o
   asm_obj_deps         : $(asm_dir)/obj/^(path).d
-  dcb_rs_lib           : $(dcb_rs_dir)/libdcb.a
-  dcb_rs_lib_deps      : $(dcb_rs_dir)/libdcb.d
+
+  # Drv
+  drv: $(drv_dir)/^(path).DRV
+  drv_deps: $(drv).d
+  drv_yaml: ^(path).DRV.yaml
+  drv_patch: ^(path).DRV.bspatch
+  
+  # Pak
+  pak: $(pak_dir)/^(path).PAK
+  pak_deps: $(pak).d
+  pak_yaml: ^(path).PAK.yaml
+  
+  # Arc
+  arc: $(arc_dir)/^(path).ARC
+  arc_deps: $(arc).d
+  arc_yaml: ^(path).ARC.yaml
+  
+  # Msd
+  msd: $(msd_dir)/^(path).MSD
+  msd_deps: $(msd).d
+  msd_src: ^(path).MSD.s
+  msd_patch: ^(path).MSD.bspatch
+  
+  # Concat
+  concat: $(concat_dir)/^(path).concat
+  concat_deps: $(concat_dir)/^(path).d
+  concat_yaml: ^(path).concat.yaml
+  
+  # Tim
+  tim: $(tim_dir)/^(path).TIM
+  tim_deps: $(tim).d
+  tim_yaml: ^(path).TIM.yaml
+  tim_patch: ^(path).TIM.bspatch
+
+  # TIs
+  tis: $(tis_dir)/^(path).TIS
+  tis_deps: $(tis).d
+  tis_yaml: ^(path).TIS.yaml
 
 # By default built the final binary
 default:
@@ -175,17 +215,13 @@ rules:
 
   # `drv`
   mkdrv:
-    alias:
-      drv: $(drv_dir)/^(path).DRV
-      drv_yaml: ^(path).DRV.yaml
-      drv_patch: ^(path).DRV.bspatch
     out: [$(drv)]
     deps:
       - $(drv_yaml)
       - $(mkdrv)
       - $(bspatch)
       - opt: $(drv_patch)
-      - deps_file: $(drv).d
+      - deps_file: $(drv_deps)
       - static: $(drv::dir_name)/
     exec:
       - [$(mkdrv), $(drv_yaml), -o, $(drv)]
@@ -193,10 +229,7 @@ rules:
 
   # `drv` dependencies
   mkdrv-deps:
-    alias:
-      drv: $(drv_dir)/^(path).DRV
-      drv_yaml: ^(path).DRV.yaml
-    out: [$(drv).d]
+    out: [$(drv_deps)]
     deps: [$(drv_yaml), $(mkdrv-deps), static: $(drv::dir_name)/]
     exec:
       - - $(mkdrv-deps)
@@ -204,25 +237,19 @@ rules:
         - -o
         - $(drv)
         - --deps-file
-        - $(drv).d
+        - $(drv_deps)
 
   # `pak`
   mkpak:
-    alias:
-      pak: $(pak_dir)/^(path).PAK
-      pak_yaml: ^(path).PAK.yaml
     out: [$(pak)]
     deps:
-      [$(pak_yaml), $(mkpak), deps_file: $(pak).d, static: $(pak::dir_name)/]
+      [$(pak_yaml), $(mkpak), deps_file: $(pak_deps), static: $(pak::dir_name)/]
     exec:
       - [$(mkpak), $(pak_yaml), -o, $(pak)]
 
   # `pak` dependencies
   mkpak-deps:
-    alias:
-      pak: $(pak_dir)/^(path).PAK
-      pak_yaml: ^(path).PAK.yaml
-    out: [$(pak).d]
+    out: [$(pak_deps)]
     deps: [$(pak_yaml), $(mkpak-deps), static: $(pak::dir_name)/]
     exec:
       - - $(mkpak-deps)
@@ -230,25 +257,19 @@ rules:
         - -o
         - $(pak)
         - --deps-file
-        - $(pak).d
+        - $(pak_deps)
 
   # `arc`
   mkarc:
-    alias:
-      arc: $(arc_dir)/^(path).ARC
-      arc_yaml: ^(path).ARC.yaml
     out: [$(arc)]
     deps:
-      [$(arc_yaml), $(mkarc), deps_file: $(arc).d, static: $(arc::dir_name)/]
+      [$(arc_yaml), $(mkarc), deps_file: $(arc_deps), static: $(arc::dir_name)/]
     exec:
       - [$(mkarc), $(arc_yaml), -o, $(arc)]
 
   # `arc` dependencies
   mkarc-deps:
-    alias:
-      arc: $(arc_dir)/^(path).ARC
-      arc_yaml: ^(path).ARC.yaml
-    out: [$(arc).d]
+    out: [$(arc_deps)]
     deps: [$(arc_yaml), $(mkarc-deps), static: $(arc::dir_name)/]
     exec:
       - - $(mkarc-deps)
@@ -256,15 +277,11 @@ rules:
         - -o
         - $(arc)
         - --deps-file
-        - $(arc).d
+        - $(arc_deps)
 
   # `msd`
   mkmsd:
-    alias:
-      msd: $(msd_dir)/^(path).MSD
-      msd_src: ^(path).MSD.s
-      msd_patch: ^(path).MSD.bspatch
-    out: [$(msd), deps_file: $(msd).d]
+    out: [$(msd), deps_file: $(msd_deps)]
     deps:
       - $(msd_src)
       - $(mkmsd)
@@ -277,10 +294,6 @@ rules:
 
   # `concat`
   mkconcat:
-    alias:
-      concat: $(concat_dir)/^(path).concat
-      concat_deps: $(concat_dir)/^(path).d
-      concat_yaml: ^(path).concat.yaml
     out: [$(concat)]
     deps:
       - $(concat_yaml)
@@ -292,10 +305,6 @@ rules:
 
   # `concat` dependencies
   mkconcat_deps:
-    alias:
-      concat: $(concat_dir)/^(path).concat
-      concat_deps: $(concat_dir)/^(path).d
-      concat_yaml: ^(path).concat.yaml
     out: [$(concat_deps)]
     deps:
       - $(concat_yaml)
@@ -306,11 +315,6 @@ rules:
 
   # `tim`
   mktim:
-    alias:
-      tim: $(tim_dir)/^(path).TIM
-      tim_deps: $(tim).d
-      tim_yaml: ^(path).TIM.yaml
-      tim_patch: ^(path).TIM.bspatch
     out: [$(tim), $(tim)]
     deps:
       - $(tim_yaml)
@@ -325,10 +329,6 @@ rules:
 
   # `tim` dependencies
   mktim_deps:
-    alias:
-      tim: $(tim_dir)/^(path).TIM
-      tim_deps: $(tim).d
-      tim_yaml: ^(path).TIM.yaml
     out: [$(tim_deps)]
     deps:
       - $(tim_yaml)
@@ -339,21 +339,15 @@ rules:
 
   # `tis`
   mktis:
-    alias:
-      tis: $(tis_dir)/^(path).TIS
-      tis_yaml: ^(path).TIS.yaml
     out: [$(tis)]
     deps:
-      [$(tis_yaml), $(mktis), deps_file: $(tis).d, static: $(tis::dir_name)/]
+      [$(tis_yaml), $(mktis), deps_file: $(tis_deps), static: $(tis::dir_name)/]
     exec:
       - [$(mktis), $(tis_yaml), -o, $(tis)]
 
   # `tis` dependencies
   mktis-deps:
-    alias:
-      tis: $(tis_dir)/^(path).TIS
-      tis_yaml: ^(path).TIS.yaml
-    out: [$(tis).d]
+    out: [$(tis_deps)]
     deps: [$(tis_yaml), $(mktis-deps), static: $(tis::dir_name)/]
     exec:
       - - $(mktis-deps)
@@ -361,7 +355,7 @@ rules:
         - -o
         - $(tis)
         - --deps-file
-        - $(tis).d
+        - $(tis_deps)
 
   # Card table
   card_table:
